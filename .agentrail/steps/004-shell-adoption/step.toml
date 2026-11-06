@@ -1,0 +1,10 @@
+number = 4
+slug = "shell-adoption"
+status = "pending"
+description = """
+Step shell-adoption (docs/plan.md, Saga 1 row 4; decision G2;
+principle 6; CL..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T12:41:04"
+commits = []

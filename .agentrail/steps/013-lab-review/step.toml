@@ -1,0 +1,10 @@
+number = 13
+slug = "lab-review"
+status = "pending"
+description = """
+Step lab-review (docs/plan.md, Saga 1 row 13 and "Acceptance for the
+saga"; t..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T10:53:58"
+commits = []

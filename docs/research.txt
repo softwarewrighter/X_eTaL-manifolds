@@ -1,0 +1,1314 @@
+
+I want to learn more about manifolds and force vectors or vector fields.  mHC is a concept from ML papers within the past year.  How does ML relate to manifolds, and is there research into changing the shape/type/order of manifold when organizing ML training/inference?  What can I visualize to help understand ML algorithms and how can we explore alternative manifolds?
+Manifolds, vector fields, and the geometry of machine learning
+Your question connects several important areas of ML research: manifold learning, geometric deep learning, dynamical systems, optimization, and learned neural-network architectures.
+
+The particularly interesting possibility is that instead of merely training weights within a fixed neural-network architecture, we could change the geometry of the space in which learning and inference occur.
+
+That suggests several experiments for X_eTaL, including ones that could complement your work on mHC, LoRA, shared subspaces, and alternatives to backpropagation.
+
+1. The big picture
+Traditional neural networks are usually described using matrices, vectors, activation functions, and gradients. But these are also geometric objects and transformations.
+
+Consider five different questions:
+
+Concept
+
+Question it answers
+
+Manifold
+
+What geometric space does the data or representation occupy?
+
+Vector field
+
+In which direction does a point move at each location?
+
+Metric
+
+How do we measure distance, angle, and the steepness of a gradient?
+
+Topology
+
+How is the space connected, and what holes or loops does it contain?
+
+Dynamics
+
+How does a point or representation evolve through training or inference?
+
+These are related but independently controllable.
+
+For example, changing a metric can change the direction of steepest descent without changing the underlying topology. Changing the topology is a much more fundamental operation.
+
+
+
+Manifold geometry
+
+A curved space with locally defined directions
+MAM2046W - Second year nonlinear dynamics
+
+Vector field
+
+A direction and magnitude at each point
+Application of Machine Learning Techniques for Predicting Heating Coil Performance in Building Heating Ventilation and Air Conditioning Systems | MDPI
+
+Optimization landscape
+
+How training parameters move toward lower loss
+Swiss Roll reduction with LLE — scikit-learn 0.22.dev0 documentation
+
+Manifold learning
+
+Discovering lower-dimensional structure in high-dimensional data
+The key insight is that we can experiment with the geometry, metric, and dynamics separately, rather than treating all three as consequences of a fixed neural network.
+
+2. What exactly is a manifold?
+A manifold is a space that looks like ordinary Euclidean space when examined locally, even if its overall geometry is curved or topologically complicated.
+
+A sphere's surface, for example, is two-dimensional even though we normally represent it using three coordinates.
+
+The distinction is between:
+
+Ambient dimension: the number of coordinates used to represent the object.
+
+Intrinsic dimension: the number of independent coordinates needed to move around within it.
+
+A neural network might use 4,096-dimensional embeddings, while the representations relevant to a particular task occupy a substantially lower-dimensional structure.
+
+This is the manifold hypothesis. It is a useful modeling assumption, not a guarantee that every learned representation lies on a single smooth manifold.
+
+Different geometric spaces worth investigating
+3D Coordinate Axes Horizontal Grid Plane Perspective Style Mathematics Education Black White Element
+
+Euclidean space — zero curvature
+
+Ordinary vectors and matrices. The natural baseline for most neural-network operations. Easy to compute, but may be inefficient for hierarchical or periodic structures.
+
+Help | Sample Filtering | Autodesk
+
+Spherical geometry — positive curvature
+
+Useful for unit-normalized embeddings, directions, cosine similarity, and angular relationships. A unit sphere in 
+n
+n-dimensional ambient space has intrinsic dimension 
+n
+−
+1
+n−1.
+
+Sara Limido
+
+Hyperbolic geometry — negative curvature
+
+Particularly interesting for trees, taxonomies, and hierarchical relationships because space grows rapidly with radius.
+
+Math 21 S Harvard Summer 2024
+
+Torus — periodic topology
+
+Useful for cyclic variables, phases, and multiple periodic dimensions. Unlike a sphere, a torus has two independent noncontractible loops.
+
+Distances Between Subspaces |
+
+Grassmann and Stiefel manifolds
+
+Spaces of linear subspaces and orthonormal frames. Especially relevant to low-rank adaptation, shared subspaces, orthogonal transformations, and constrained weight optimization.
+
+There is no single universally superior geometry. A hierarchy may fit hyperbolic space well, while normalized semantic embeddings may be better represented spherically.
+
+3. Vector fields: how geometry becomes motion
+A vector field assigns a vector to every point in a space.
+
+In ML, that vector might represent:
+
+A negative gradient that reduces training loss.
+
+A learned velocity that transports a noisy sample toward a generated image.
+
+A residual update that changes a hidden representation.
+
+An attractive or repulsive interaction between learned representations.
+
+A trajectory in a neural ordinary differential equation (ODE).
+
+Mathematically:
+
+d
+x
+d
+t
+=
+v
+θ
+(
+x
+,
+t
+)
+dt
+dx
+​
+ =v 
+θ
+​
+ (x,t)
+Here, 
+v
+θ
+v 
+θ
+​
+  is a vector field parameterized by a neural network.
+
+The network does not necessarily predict a final output directly. It can predict how a representation should move.
+
+Interactive example: changing the vector field
+This simplified two-dimensional example lets you see how the same starting points behave under different dynamics.
+
+
+Attractor — convergence
+
+Rotation — periodic motion
+
+Spiral — rotation plus convergence
+
+Saddle — stable and unstable directions
+
+Expanding spiral — instability
+
+Integration steps
+
+60
+
+Step size
+
+0.035
+
+Colored lines are Euler-integrated trajectories. Dots mark initial positions; blue strokes indicate the local vector field. The plot is a 2D Euclidean illustration, not a learned neural field.
+An important distinction: a gradient field comes from a scalar potential such as a loss function, while a general vector field need not.
+
+For example, a pure rotational field cannot globally be expressed as the negative gradient of a single-valued scalar potential on the plane. That matters when comparing gradient descent with flow-based inference and non-gradient learning algorithms.
+
+4. How mHC fits into this picture
+The December 2025 DeepSeek paper, mHC: Manifold-Constrained Hyper-Connections, is a particularly good starting point. 
+
+arXiv
+
+But there is a crucial distinction:
+
+mHC does not primarily change the shape of the data manifold or the loss landscape. It constrains the space of allowed residual-stream mixing matrices.
+
+In conventional residual networks:
+
+x
+l
++
+1
+=
+x
+l
++
+F
+l
+(
+x
+l
+)
+x 
+l+1
+​
+ =x 
+l
+​
+ +F 
+l
+​
+ (x 
+l
+​
+ )
+Hyper-Connections generalize this to multiple residual streams with learned mixing. Unconstrained mixing can amplify or attenuate signals as they propagate through many layers.
+
+mHC constrains the mixing matrices to be approximately doubly stochastic:
+
+P
+i
+j
+≥
+0
+,
+∑
+j
+P
+i
+j
+=
+1
+,
+∑
+i
+P
+i
+j
+=
+1
+P 
+ij
+​
+ ≥0, 
+j
+∑
+​
+ P 
+ij
+​
+ =1, 
+i
+∑
+​
+ P 
+ij
+​
+ =1
+The set of such matrices is the Birkhoff polytope.
+
+Technically, this is a convex polytope rather than a smooth manifold everywhere. Its interior has manifold structure, but its boundaries and corners matter. The paper uses the broader term manifold-constrained.
+
+Visualizing the simplest interesting case
+For a 3×3 doubly stochastic matrix, the set of allowable matrices has dimension four, even though the matrix contains nine entries.
+
+Three especially useful examples are:
+
+Residual-stream mixing
+
+3 × 3
+0.67
+0.17
+0.17
+0.17
+0.67
+0.17
+0.17
+0.17
+0.67
+Identity
+
+Uniform mixing
+
+Mixing factor: 0.50
+
+Row sums
+
+1, 1, 1
+
+Column sums
+
+1, 1, 1
+
+Nonnegative
+
+Yes
+
+Interpolates between the identity matrix and uniform averaging. Every intermediate matrix is doubly stochastic. Actual mHC learns input-dependent mixing matrices rather than using this single slider.
+This constrained geometry helps control signal propagation, although it does not guarantee that an entire neural network will be stable under arbitrary conditions.
+
+Why this opens an interesting research direction
+The Birkhoff polytope is only one possible constraint space.
+
+What happens if we replace it with another?
+
+Constraint space
+
+Property
+
+Possible experiment
+
+Doubly stochastic
+
+Nonnegative, preserves averages
+
+mHC baseline
+
+Orthogonal group
+
+Preserves Euclidean vector norms
+
+Signal stability
+
+Symmetric positive definite
+
+Defines positive quadratic forms
+
+Learned metrics
+
+Stiefel manifold
+
+Orthonormal columns
+
+Low-rank projections
+
+Grassmann manifold
+
+Represents subspaces
+
+Shared-subspace adaptation
+
+Symplectic group
+
+Preserves symplectic structure
+
+Structured dynamics
+
+Sparse stochastic matrices
+
+Restricted connectivity
+
+Efficient routing
+
+These are not interchangeable replacements. For example, orthogonal matrices may contain negative entries, while doubly stochastic matrices are nonnegative. Each imposes different semantics on residual mixing.
+
+This would make an excellent mHC geometry comparison experiment, with ordinary residual connections and unconstrained Hyper-Connections as controls.
+
+There is already follow-on research. KromHC (ICML 2026) uses Kronecker products of smaller doubly stochastic matrices to reduce parameter complexity while retaining exact constraints. 
+
+Proceedings of Machine Learning Research
+
+That is particularly relevant to your interest in tensor operations and alternative parameterizations.
+
+5. Is there research into changing manifold shape, type, or dimensionality?
+Yes. It is useful to divide the research into four levels, from relatively conventional to more experimental.
+
+Level
+
+What changes?
+
+Research maturity
+
+1. Metric
+
+Distances and gradient directions
+
+Established
+
+2. Curvature
+
+Local geometry, such as hyperbolic curvature
+
+Active
+
+3. Dimension and embedding
+
+How representations occupy the space
+
+Established and active
+
+4. Topology
+
+Connectivity, holes, and number of components
+
+More difficult and exploratory
+
+Recent research worth reading
+Neural Feature Geometry Evolves as Discrete Ricci Flow — ICML 2026
+
+Particularly relevant to your question. The researchers study how learned feature geometry changes through neural networks. They report that the transformations resemble discrete Ricci flow, and relate changes in graph geometry to emerging class separability. 
+
+Proceedings of Machine Learning Research
+
+Experiment: Track a nearest-neighbor graph of hidden representations as a network learns. Visualize curvature estimates, graph communities, and classification boundaries over training time.
+
+Geometric Neural Ordinary Differential Equations: From Manifolds to Lie Groups — 2025
+
+Develops a framework for neural ODEs operating on manifolds and Lie groups, including intrinsic and extrinsic formulations. 
+
+PMC
+
+Experiment: Apply the same learned vector-field task in Euclidean, spherical, and Lie-group settings, using geometry-appropriate integrators.
+
+ODE-based Learning on Manifold and Its Expressive Power — January 2026
+
+Studies which smooth transformations can be represented by flows on manifolds, and under what assumptions they are learnable. 
+
+Springer Nature Link
+
+Experiment: Investigate what a continuous flow can and cannot accomplish without adding dimensions or changing the underlying topology.
+
+When Task Performance Deceives: Task-Geometry Decoupling in Learnable-Curvature Hyperbolic GNNs — November 2026
+
+Examines a subtle problem: optimizing task performance does not necessarily optimize geometric fidelity. It proposes curvature control based on distortion feedback. 
+
+ScienceDirect
+
+Experiment: Train curvature as a parameter, then compare task loss with geometric distortion. Observe whether accuracy improves even as the learned geometry becomes less faithful.
+
+The last example is especially important: learning the geometry is not automatically better than choosing the geometry. Geometry needs its own validation criteria.
+
+6. A particularly interesting idea: train the geometry itself
+Ordinary gradient descent updates the model parameters:
+
+θ
+t
++
+1
+=
+θ
+t
+−
+η
+∇
+θ
+L
+θ 
+t+1
+​
+ =θ 
+t
+​
+ −η∇ 
+θ
+​
+ L
+But the gradient depends on the geometry used to define steepest descent.
+
+With a learned, positive-definite metric tensor 
+G
+ϕ
+(
+θ
+)
+G 
+ϕ
+​
+ (θ), we can instead use:
+
+θ
+t
++
+1
+=
+θ
+t
+−
+η
+G
+ϕ
+(
+θ
+t
+)
+−
+1
+∇
+θ
+L
+θ 
+t+1
+​
+ =θ 
+t
+​
+ −ηG 
+ϕ
+​
+ (θ 
+t
+​
+ ) 
+−1
+ ∇ 
+θ
+​
+ L
+​
+ 
+This is a coordinate expression for a Riemannian-gradient step; a general manifold implementation also needs an appropriate retraction or exponential map.
+
+Here, we are potentially learning two things:
+
+θ
+θ: the model parameters.
+
+ϕ
+ϕ: the geometry governing how parameters are updated.
+
+This connects to natural-gradient optimization, information geometry, learned preconditioners, and meta-learning.
+
+Visualizing a change in metric
+Same loss function, different metric
+
+L
+(
+x
+,
+y
+)
+=
+1
+2
+(
+x
+2
++
+3
+y
+2
+)
+L(x,y)= 
+2
+1
+​
+ (x 
+2
+ +3y 
+2
+ )
+
+Metric anisotropy
+
+1.0
+
+Starting x coordinate
+
+2.3
+
+Contours represent the same fixed loss. Orange points show updates using metric diag(a, 1), where a is the anisotropy slider. Changing the metric changes the optimization trajectory without changing the objective.
+This distinction is central to your question about force vectors: the Euclidean negative gradient and the Riemannian negative gradient are generally different vector fields.
+
+It also suggests that alternatives to backpropagation and geometric optimization are orthogonal design choices. A weight-space evolutionary search, for example, can use a geometry-aware mutation distribution without using gradients.
+
+7. How this connects to LoRA, shared subspaces, and weight-space optimization
+Your fine-tuning experiments provide an especially interesting application.
+
+LoRA represents a weight update as:
+
+Δ
+W
+=
+B
+A
+ΔW=BA
+where 
+B
+∈
+R
+m
+×
+r
+B∈R 
+m×r
+  and 
+A
+∈
+R
+r
+×
+n
+A∈R 
+r×n
+ .
+
+The resulting updates have rank at most 
+r
+r. Fixed-rank matrices form a smooth manifold, while the set of matrices of rank at most 
+r
+r includes lower-rank singular strata.
+
+That creates several opportunities.
+
+Experiment
+
+Geometry being explored
+
+Potential benefit
+
+Standard LoRA
+
+Low-rank factorization
+
+Cheap baseline
+
+Orthogonal LoRA factors
+
+Stiefel constraints
+
+Better conditioning
+
+Shared-subspace adapters
+
+Grassmann geometry
+
+Reuse across tasks
+
+Adaptive-rank LoRA
+
+Rank-stratified matrix space
+
+Allocate capacity dynamically
+
+Geometry-aware ES
+
+Metric-shaped search distribution
+
+More efficient perturbations
+
+Geometry-aware mHC
+
+Constrained residual mixing
+
+Better signal propagation
+
+One caution: changing the rank changes the dimension of the fixed-rank stratum. It is not merely a smooth deformation within one fixed-dimensional manifold.
+
+A more ambitious research hypothesis
+Instead of searching for weight updates directly, search over a learned low-dimensional subspace and its geometry:
+
+Δ
+W
+t
+=
+U
+t
+C
+t
+V
+t
+⊤
+ΔW 
+t
+​
+ =U 
+t
+​
+ C 
+t
+​
+ V 
+t
+⊤
+​
+ 
+with orthonormal 
+U
+t
+U 
+t
+​
+  and 
+V
+t
+V 
+t
+​
+ , and a small trainable core 
+C
+t
+C 
+t
+​
+ .
+
+Then compare three strategies:
+
+Fix the subspaces; optimize only 
+C
+t
+C 
+t
+​
+ .
+
+Optimize both the core and the subspaces using geometry-aware updates.
+
+Adapt the subspaces and their rank based on task feedback, including compile failures, tests, and complexity grades.
+
+The third is especially relevant to your modern-Rust coding fine-tuning goals. It is a research proposal, not an established improvement.
+
+8. What I would build for X_eTaL
+I would start with a Manifold and Vector Field Explorer as a general educational and experimental library, rather than putting all the work into the existing LoRA demo.
+
+Proposed architecture
+
+X_eTaL-libraries
+
+Manifold definitions, metrics, projections, vector fields, integrators, plotting primitives
+
+X_eTaL-ML
+
+Interactive geometry explorer, neural ODE, learned curvature, training trajectories
+
+X_eTaL-fine-tuning
+
+LoRA subspaces, mHC comparisons, metric-aware optimization, ES experiments
+
+Optional X_eTaL-extensions
+
+Rust numerical acceleration only where necessary
+
+Suggested experiment sequence
+Phase
+
+Demo
+
+What it teaches
+
+1
+
+Manifold gallery
+
+Intrinsic vs ambient dimension, curvature, topology
+
+2
+
+Vector-field explorer
+
+Flow, divergence, curl, attraction, stability
+
+3
+
+Geometry-aware optimization
+
+How metrics change gradient trajectories
+
+4
+
+Neural ODE on sphere/torus
+
+Tangent vectors, projection, integration
+
+5
+
+mHC matrix explorer
+
+Constrained mixing, Sinkhorn, spectral properties
+
+6
+
+Learned curvature
+
+Jointly train representation and geometry
+
+7
+
+LoRA subspace explorer
+
+Fixed, shared, and adaptive low-rank spaces
+
+8
+
+Geometry-aware weight search
+
+Compare ES, gradient descent, and learned metrics
+
+For the first few phases, all the mathematics can be implemented with small vectors and matrices. There is no need for a large ML model or GPU.
+
+I would add a common set of diagnostics to every experiment: training loss, validation accuracy, gradient or update norm, numerical stability, constraint violation, runtime, and geometric distortion. For mHC, include singular values and row/column-sum errors.
+
+9. Three experiments I find most promising
+A. Learn the metric, not just the weights
+
+Compare Euclidean gradient descent, natural-gradient approximations, and a learned metric on identical small models. Determine whether the learned geometry improves convergence or robustness enough to justify its cost.
+
+Best for: optimization and non-backpropagation research
+
+B. Compare constraint spaces for residual mixing
+
+Implement mHC-like mixing with doubly stochastic, orthogonal, and structured sparse matrices. Test signal propagation and trainability at increasing depth.
+
+Best for: mHC and architectural experimentation
+
+C. Let the adapter subspace evolve
+
+Start with fixed-rank LoRA, then allow the orientation of its subspace to evolve, and finally experiment with rank changes. Measure performance against parameter count and compute cost.
+
+Best for: X_eTaL-fine-tuning and shared-subspace research
+
+10. The deeper question: can we change topology during learning?
+This is where the problem becomes particularly interesting.
+
+A continuous, invertible flow on a fixed manifold preserves its topology. It can stretch, bend, and redistribute points, but it cannot tear a connected manifold into two disconnected pieces.
+
+To change topology, we need something beyond an ordinary diffeomorphic flow, such as a noninvertible transformation, a change in the underlying space, or an embedding into a larger space followed by a suitable projection.
+
+That leads to a useful experimental distinction:
+
+Geometry learning: Change distances, curvature, or metric.
+
+Manifold learning: Discover or modify the representation space.
+
+Topology-changing learning: Allow the structure of the space itself to change.
+
+Architecture learning: Change the computational graph or allowed transformations.
+
+These are related, but they are not equivalent.
+
+For an initial experiment, train a small network on two interlocking circles or a Swiss-roll dataset. At each layer, visualize the representation and its neighborhood graph. Then compare a fixed Euclidean embedding, a learned-curvature embedding, and an augmented-dimensional flow.
+
+This makes the differences between bending, separating, and changing topology much easier to see.
+
+My recommended starting point
+I would build the general-purpose Manifold and Vector Field Explorer first, with three linked views: the manifold itself, the tangent vector field on it, and the optimization or inference trajectory over time.
+
+Then add a fourth view showing how a neural network transforms the representation from layer to layer.
+
+This creates an educational foundation that can subsequently support mHC, geometric LoRA, learned metrics, neural ODEs, and geometry-aware weight-space search—without coupling the general mathematics to one particular fine-tuning method.
+
+The most interesting long-term research question is not simply which manifold is best? It is:
+
+Can an ML system learn which geometry, metric, dimension, and constraints are appropriate for each layer, task, or stage of training—and can we demonstrate that this improves learning efficiency or generalization?
+
+That is a much broader architectural direction than mHC alone, and it is worth exploring systematically.
+
+I want to focus on the intersection between manifolds and ML.  I'm thinking a new demo repo, X_eTaL-manifolds as a place to explore this.  What do you think?  How can we focus the research and scope of related demos?
+X_eTaL-manifolds: Research scope and demo architecture
+I think softwarewrighter/X_eTaL-manifolds is a good choice, particularly if we make it an experimental research and educational repository rather than another general-purpose mathematical library.
+
+The distinction matters. The objective should not be to implement every type of manifold or reproduce a differential geometry textbook. Instead, the repository should investigate:
+
+How does the geometry of a representation, parameter space, or computational transformation influence how machine learning models learn, reason, and perform inference?
+
+That gives the repository a clear identity, separates it from X_eTaL-ML and X_eTaL-fine-tuning, and creates opportunities to explore recent research such as mHC without becoming exclusively focused on one paper.
+
+1. Proposed research mission
+X_eTaL-manifolds: Exploring the Geometry of Machine Learning
+
+I would organize the work around five research questions.
+
+Research area
+
+Central question
+
+Example
+
+Representation geometry
+
+Where do learned representations live?
+
+Euclidean vs spherical vs hyperbolic embeddings
+
+Optimization geometry
+
+How does geometry affect learning?
+
+Euclidean vs Riemannian gradients
+
+Dynamical geometry
+
+How do representations move?
+
+Neural ODEs and learned vector fields
+
+Constraint geometry
+
+Which transformations are permitted?
+
+mHC, orthogonal and stochastic mixing
+
+Adaptive geometry
+
+Can the model learn or change its geometry?
+
+Learned curvature, metric, or subspace
+
+These areas should be separate experimental modules with shared numerical and visualization infrastructure.
+
+The fifth area is potentially the most interesting research direction, but it should come after the others establish baselines.
+
+2. Define what is inside and outside the repository
+I'd use a fairly strict boundary.
+
+In scope
+
+Small reproducible ML experiments that compare geometries, metrics, constraints, or geometric dynamics. Interactive demonstrations that explain the underlying equations and visualize what changes during training or inference.
+
+Out of scope
+
+A comprehensive differential geometry package, production LLM training, general plotting infrastructure, duplicating LoRA implementations, or building a separate numerical backend unnecessarily.
+
+The guiding rule would be:
+
+Every major demo must compare at least two geometric choices on the same ML problem, explain why the choices matter, and measure the difference.
+
+This prevents the project from turning into a collection of attractive but scientifically inconclusive 3D visualizations.
+
+3. Focus the demos around ML questions, not mathematical objects
+I would avoid organizing the repository primarily into sphere/, torus/, hyperbolic/, and similar directories.
+
+Those are useful mathematical primitives, but they aren't the questions we want to answer.
+
+Instead, organize demos by the ML behavior being investigated.
+
+Proposed demo portfolio
+Demo
+
+ML problem
+
+Geometric comparison
+
+Priority
+
+01. Representation Explorer
+
+Classification and clustering
+
+Flat, spherical, hyperbolic
+
+P0
+
+02. Geometric Optimization
+
+Training a small neural network
+
+Euclidean vs metric-aware updates
+
+P0
+
+03. Manifold Dynamics
+
+Evolving hidden states
+
+Gradient flow vs general vector fields
+
+P0
+
+04. mHC Explorer
+
+Residual-stream stability
+
+Unconstrained vs stochastic mixing
+
+P0
+
+05. Learned Curvature
+
+Hierarchical classification
+
+Fixed vs learned curvature
+
+P1
+
+06. Geometry of Attention
+
+Similarity and retrieval
+
+Dot product, angular, geodesic
+
+P1
+
+07. Geometric Generative Models
+
+Distribution transport
+
+Euclidean vs manifold-constrained flows
+
+P1
+
+08. Adaptive Manifold
+
+Representation learning
+
+Fixed vs mixed/adaptive geometry
+
+P2
+
+09. Topology and Dimension
+
+Representation separability
+
+Fixed vs augmented latent dimensions
+
+P2
+
+10. Geometric Weight Updates
+
+Fine-tuning
+
+Fixed vs evolving low-rank subspaces
+
+P2
+
+I would implement only the first four initially. The others belong on a research roadmap, not in the first release.
+
+Example: Representation Explorer
+Embedding to non-Euclidean spaces — umap 0.5.8 documentation
+
+Euclidean
+
+Embedding to non-Euclidean spaces — umap 0.5.8 documentation
+
+Spherical
+
+Riemannian generative decoder
+
+Hyperbolic
+
+Give the user the same synthetic dataset and comparable model capacity, then allow changing the representation geometry.
+
+The user should be able to see not just where points land, but also:
+
+Pairwise distances and shortest paths (geodesics).
+
+Nearest neighbors and decision boundaries.
+
+Distortion relative to the original dataset.
+
+Classification accuracy and convergence.
+
+Effects of curvature and intrinsic dimension.
+
+This is where a manifold stops being an abstract surface and becomes an ML design choice.
+
+4. Make mHC a major research track, but not the entire project
+The original mHC paper (ICML 2026) is a useful anchor because it demonstrates the practical importance of constraining neural-network transformations. 
+
+Proceedings of Machine Learning Research
+
+There are now several follow-on directions particularly worth including:
+
+Paper
+
+Finding or question
+
+Demo opportunity
+
+Birkhoff Geometry of mHC (Oct 2026)
+
+Examines mean/difference channels, contraction, and Sinkhorn geometry
+
+Visualize spectral decay and information retention
+
+xHC (July 2026)
+
+Explores expanded residual streams and sparse updates
+
+Compare stream count, mixing, and computational cost
+
+mHC for PEFT (July 2026)
+
+Investigates residual routing for fine-tuning, including combinations with LoRA
+
+Compare adaptation through weights vs residual routing
+
+The October paper is especially interesting because it gives a geometric interpretation of information retention in mHC. The July PEFT work also reports that mHC alone does not consistently beat LoRA, while combinations can provide task-dependent improvements. 
+
+arXiv
++2
+
+I'd make the mHC explorer show:
+
+Residual streams as parallel channels.
+
+Mixing matrices as heatmaps.
+
+The permitted constraint space.
+
+Singular values and how they affect differences between streams.
+
+Training stability and actual task performance.
+
+This could eventually support a broader constrained-transformation laboratory comparing stochastic, orthogonal, sparse, and other parameterizations.
+
+One important technical distinction: the Birkhoff polytope is not globally a smooth manifold. The demo should teach that explicitly rather than conflating polytopes, matrix manifolds, and data manifolds.
+
+5. Use a common experiment and visualization architecture
+I'd separate the repository into four layers.
+
+Interactive Web Demos
+
+Explanations, tooltips, equations, animation, controls, charts
+
+ML Experiment Engine
+
+Models, datasets, training loops, metrics, comparison runs
+
+Geometry Abstractions
+
+Metrics, geodesics, tangent spaces, projections, retractions, vector fields
+
+Existing X_eTaL Libraries and Runtime
+
+Arrays, tensor operations, math functions, plotting
+
+Keep reusable mathematics and plotting primitives in X_eTaL-libraries, while keeping the experimental implementations and educational UI in X_eTaL-manifolds.
+
+The demos should be written in X_eTaL wherever feasible. Rust acceleration, if needed, belongs in X_eTaL-extensions, not as a separate implementation hidden inside this repository.
+
+Suggested repository structure
+X_eTaL-manifolds/
+├── README.md
+├── LICENSE
+├── docs/
+│   ├── introduction.md
+│   ├── glossary.md
+│   ├── research-questions.md
+│   ├── roadmap.md
+│   ├── papers/
+│   └── experiments/
+├── demos/
+│   ├── representation/
+│   ├── optimization/
+│   ├── dynamics/
+│   ├── mhc/
+│   └── shared/
+├── experiments/
+│   ├── datasets/
+│   ├── configurations/
+│   ├── baselines/
+│   └── results/
+├── tests/
+│   ├── geometry/
+│   ├── numerical/
+│   └── regression/
+└── site/
+The directory structure is conceptual; actual entry points should follow the conventions of the existing X_eTaL demo repositories.
+
+6. Establish a standard educational format for every demo
+One lesson from your LoRA Explorer work is that an interactive visualization alone does not necessarily teach the underlying algorithm.
+
+I would make every demo follow the same progression:
+
+Intuition
+
+Explain the ML problem in plain language, with a simple geometric illustration.
+
+Mathematics
+
+Show the equations, explain every variable, and connect the mathematical operations to the visualization.
+
+Interactive experiment
+
+Change geometry, curvature, dimension, metrics, or constraints and observe the consequences.
+
+Actual ML training or inference
+
+Run a small reproducible model, not just a mathematical animation.
+
+Analysis and comparison
+
+Show accuracy, convergence, distortion, stability, and computational costs.
+
+Research extension
+
+Explain what the experiment establishes, what remains unknown, and which papers motivate further investigation.
+
+A useful feature would be a synchronized equation, tensor, and geometry view. Selecting an operation in an X_eTaL tensor pipeline could highlight the corresponding vectors, tangent spaces, or matrix transformations.
+
+That would distinguish this project from most manifold visualization tools.
+
+7. Focus the research on three testable hypotheses
+Rather than accumulating unrelated papers, I would establish three overarching hypotheses.
+
+H1 — Geometry matching
+A representation space whose geometry matches the structure of the task can improve learning efficiency or generalization.
+
+Test: Compare Euclidean, spherical, and hyperbolic embeddings on flat, directional, and hierarchical datasets.
+
+H2 — Geometric constraints
+Constraining neural-network transformations can improve numerical stability and information propagation.
+
+Test: Compare unconstrained, doubly stochastic, and orthogonal mixing in small residual networks.
+
+H3 — Adaptive geometry
+Learning geometric properties jointly with model parameters can outperform fixed geometry on heterogeneous tasks.
+
+Test: Compare fixed curvature, trainable curvature, and mixed-curvature representations on the same datasets.
+
+For H3, recent work on adaptive manifold curvature regularization and mixed-curvature geometric learning provides useful starting points. 
+
+ScienceDirect
++1
+
+For every hypothesis, include a null result as a valid outcome. We should explicitly measure when geometric complexity adds cost without improving ML behavior.
+
+8. Proposed first release
+Milestone plan
+
+0 of 5 milestones completed
+
+0%
+
+
+M0 — Research foundation
+
+Glossary, paper catalog, hypotheses, experiment schema
+
+
+M1 — Representation Explorer
+
+Flat, spherical, hyperbolic embeddings with matched datasets
+
+
+M2 — Optimization Explorer
+
+Loss landscapes, metric-aware gradients, convergence
+
+
+M3 — mHC Explorer
+
+Sinkhorn mixing, spectral behavior, residual stability
+
+
+M4 — Dynamics Explorer
+
+Gradient fields, neural ODEs, manifold-constrained flows
+
+I would make M1 the first actual interactive demo, even though mHC motivated part of the research. Representation geometry is easier to teach visually and provides the conceptual foundation for the later demos.
+
+For each experiment, use fixed random seeds, identical datasets and data splits, comparable parameter budgets, and recorded numerical tolerances. Keep results in machine-readable files so that later versions of X_eTaL can be regression-tested against them.
+
+9. Relationship to your existing repositories
+Repository
+
+Responsibility
+
+X_eTaL
+
+Language and runtime
+
+X_eTaL-libraries
+
+Reusable geometry and plotting primitives
+
+X_eTaL-ML
+
+General ML algorithms and examples
+
+X_eTaL-manifolds
+
+Geometric ML research, experiments, and interactive explanations
+
+X_eTaL-fine-tuning
+
+Applying geometric techniques to parameter adaptation
+
+X_eTaL-extensions
+
+Optional Rust-backed numerical functionality
+
+I would also maintain a research catalog that records the source paper, publication date, mathematical assumptions, implementation status, and reproducibility results.
+
+This is especially useful in a fast-moving area where terms such as manifold, geometry, topology, and constraint are sometimes used loosely.
+
+Final recommendation
+Create X_eTaL-manifolds with the following initial commitments:
+
+One central theme: How geometry changes ML behavior.
+
+Three research hypotheses: Geometry matching, geometric constraints, adaptive geometry.
+
+Four initial demos: Representation, optimization, mHC, and dynamics.
+
+One reusable educational framework: Intuition → equations → visualization → experiment → analysis.
+
+One implementation principle: X_eTaL-first, with reusable primitives in existing libraries.
+
+I would deliberately defer topology-changing networks, large-model fine-tuning, and production-scale geometric neural networks until the first experiments produce useful measurements.
+
+The distinctive opportunity is to make this more than a visualization gallery: a small, reproducible laboratory where we can change the geometry of an ML algorithm and observe exactly what improves, degrades, or remains unchanged.
+
+
+
+
+
+0%
+
+

@@ -1,0 +1,10 @@
+number = 3
+slug = "experiment-kit"
+status = "pending"
+description = """
+Step experiment-kit (docs/plan.md, Saga 1 row 3; principle 1;
+decisions G3, G..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T10:53:57"
+commits = []

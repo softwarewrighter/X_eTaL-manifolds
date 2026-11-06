@@ -1,0 +1,10 @@
+number = 9
+slug = "mhc-matrices"
+status = "pending"
+description = """
+Step mhc-matrices (docs/plan.md, Saga 1 row 9: the research's
+milestone M3, f..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T10:53:57"
+commits = []

@@ -1,0 +1,10 @@
+number = 11
+slug = "vector-fields"
+status = "pending"
+description = """
+Step vector-fields (docs/plan.md, Saga 1 row 11: the research's
+milestone M4,..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T10:53:57"
+commits = []
