@@ -138,8 +138,8 @@ presentation: every algorithm and every number shown is X_eTaL's.
 | | |
 | - | - |
 | Now | the first live page, [manifold-tour](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/) (step manifold-tour of the first saga, `geometry-lab`, fourteen steps): five manifolds turning from X_eTaL's coordinates, the chain from the pins through the Manifold library to the browser proven; the machinery and `sphere-hello` at the command line (step foundation) |
-| Next | the glossary (its first rows are the tour's words), the paper catalog, the hypotheses and the function asks (step research-foundation); then the experiment kit |
-| Asks | the shared teaching shell ([`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM1, [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md) GF1) and the shared turning view (GM3), both planned in X_eTaL-ML; manifold-tour turns its pictures with a projection of its own until GM3 lands, and is re-framed by the shell when GM1 does |
+| Next | the experiment kit (three seeded data sets with a known structure, the run's record, baseline-knn; step experiment-kit); then step shell-adoption moves the X_eTaL-ML pin and takes the shared teaching shell and turning view, and the first pages on the shell go live |
+| Asks | the shared teaching shell (GM1, GF1) and the turning view (GM3) have landed in X_eTaL-ML (501ab15, 2026-11-07) and are taken when the pin moves; the function asks are filed ([`docs/xetal-libraries-asks.md`](docs/xetal-libraries-asks.md) GL1 to GL7, [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM4 to GM6), none a blocker |
 
 ## Build
 
@@ -197,10 +197,21 @@ repository's `libs/*/src`, then X_eTaL-ML's, then X_eTaL-libraries'.
   design discussion this repository came from (archival; its account
   of papers is checked against the papers before anything is built on
   it)
+- [`docs/glossary.md`](docs/glossary.md) -- one name for one thing:
+  every term the pages use, in plain words, with what it is not
+- [`docs/papers.md`](docs/papers.md) -- the paper catalog: every paper
+  the research names, found and read at its source, with the claim
+  checked, notes, and what is built from it (links only, no paper is
+  tracked)
+- [`docs/research-questions.md`](docs/research-questions.md) -- the
+  five research areas, H1 to H3 with what counts for and against each
+  written before any run, and the experiment schema (presets, a run's
+  record, comparisons, baselines)
 - [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md),
+  [`docs/xetal-libraries-asks.md`](docs/xetal-libraries-asks.md),
   [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md)
   -- what is asked of the sibling repositories so that code is shared
-  and not copied
+  and not copied, and the functions each is asked for
 - [`CHANGES.md`](CHANGES.md) -- every commit, newest first
 - each library's reference: [`libs/Manifold/docs/README.md`](libs/Manifold/docs/README.md)
 

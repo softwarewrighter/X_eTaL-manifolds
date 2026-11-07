@@ -10,12 +10,14 @@ written so that what is shared reaches both repositories through
 X_eTaL-ML ([`xetal-ML-asks.md`](xetal-ML-asks.md), GM1).
 
 Status words as in `xetal-ML-asks.md`. Written 2026-11-06 from
-reading X_eTaL-fine-tuning at d78aca4.
+reading X_eTaL-fine-tuning at d78aca4; the statuses read again
+2026-11-07 (step research-foundation) at X_eTaL-fine-tuning 8c3f245
+and X_eTaL-ML 2d23a96.
 
 | # | Status | Kind | Ask | Needed by | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
-| GF1 | not yet taken; **blocker** for step shell-adoption, with GM1 | refactoring | `shared/lesson` split into mechanism and content, and the mechanism offered to X_eTaL-ML. Details below | every live page here | none that does not copy the crate |
-| GF2 | not yet taken | docs | `docs/new-eyes.md`, the checklist a page is written and read against: its general part (the reader's assumed knowledge, plain explanations, a worked calculation, code in asides, the cold reading) kept where both repositories cite one copy, apart from what is particular to the fine-tuning lessons | every page here; step lab-review | cited here by its URL at a named commit; not copied |
+| GF1 | **answered through GM1** (X_eTaL-ML 501ab15 took `shared/lesson` in beside `shared/microscope`, configured by the dependent; its `shared/lesson/README.md` names this ask and says the tests run by hand with X_eTaL-fine-tuning as the dependent). X_eTaL-fine-tuning itself (8c3f245) still holds its own copy and has not switched; that is its choice and not needed here. No longer a blocker | refactoring | `shared/lesson` split into mechanism and content, and the mechanism offered to X_eTaL-ML. Details below | every live page here | none that does not copy the crate |
+| GF2 | not yet taken (nothing in X_eTaL-fine-tuning 8c3f245 or X_eTaL-ML 2d23a96 answers it); not a blocker: cited at a commit | docs | `docs/new-eyes.md`, the checklist a page is written and read against: its general part (the reader's assumed knowledge, plain explanations, a worked calculation, code in asides, the cold reading) kept where both repositories cite one copy, apart from what is particular to the fine-tuning lessons | every page here; step lab-review | cited here by its URL at a named commit; not copied |
 
 ## GF1: the lesson shell, mechanism apart from content
 

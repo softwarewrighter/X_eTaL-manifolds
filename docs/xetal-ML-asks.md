@@ -16,9 +16,11 @@ Two kinds of ask live here (`docs/plan.md`, G2 and G3):
   do not replicate. These are GM1 and GM2, below.
 - **functions**: machine learning that is not about manifolds (a
   learning task and its record, a preconditioned optimizer step, a
-  network unrolled as a flow). Added by step research-foundation after
-  each is checked at the pin. What is particular to manifolds is not
-  asked for: it is developed here, in `libs/`.
+  network unrolled as a flow). GM4 to GM6, added by step
+  research-foundation (2026-11-07) after each was checked at the pin
+  (X_eTaL-ML abc1745: Optim, Learn, NN, Net, Flow, Embed). What is
+  particular to manifolds is not asked for: it is developed here, in
+  `libs/`.
 
 Each entry: status, kind, the ask, which demos or steps here need it,
 and the workaround in use. Status: **not yet taken** (filed here, to
@@ -28,13 +30,21 @@ its reason), **blocker** (no workaround: the step waits, and the user
 is told).
 
 Written 2026-11-06 from reading X_eTaL-ML at b1dce11 and
-X_eTaL-fine-tuning at d78aca4.
+X_eTaL-fine-tuning at d78aca4; the statuses read again 2026-11-07
+(step research-foundation) at X_eTaL-ML 2d23a96, whose
+`docs/manifolds-asks.md` answers GM1 to GM3, and X_eTaL-fine-tuning
+8c3f245. "Landed" means at that HEAD; what this repository uses is at
+its pin (abc1745), which step shell-adoption moves (G1).
 
 | # | Status | Kind | Ask | Needed by | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
-| GM1 | planned there (X_eTaL-ML abc1745 inserted its step manifolds-asks for GM1 and GM3, 2026-11-06); **blocker** for step shell-adoption | refactoring | The teaching shell, shared: take X_eTaL-fine-tuning's `shared/lesson` in beside `shared/microscope`, configured by the dependent. Details below | every live page here (first: sphere-hello and baseline-knn, step shell-adoption) | none that does not copy the crate. Steps foundation, research-foundation and experiment-kit need no page and do not wait |
-| GM2 | not yet taken | refactoring | The scripts, shared: the repository-independent ones runnable from the clone at the pin against a dependent's root; 23 of 33 are unchanged here. Details and the record below | step foundation | adapted copies, each with a note of where it came from, as X_eTaL-fine-tuning holds them |
-| GM3 | planned there (X_eTaL-ML abc1745, step manifolds-asks); **workaround in use** since step manifold-tour (2026-11-07): `demos/manifold-tour/web/src/turn.rs`, the demo's own orthographic projection by yaw and pitch from pointer, keyboard and touch, removed when GM3 lands at the pin | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
+| GM1 | **landed** in X_eTaL-ML 501ab15 (its step manifolds-asks, closed d6343bd; read 2026-11-07 in its `docs/manifolds-asks.md` and `shared/lesson/README.md`): `shared/lesson` beside `shared/microscope`, a dependent configured by `LESSON_ROOT`, `LESSON_SITE`, `LESSON_GLOSSARY`, `LESSON_PINS`, `LESSON_LIBRARIES_PIN` in its `.cargo/config.toml`, `Frame::Other(name)` beside the six frames; not yet at this repository's pin: step shell-adoption moves the pin (G1) and takes it. No longer a blocker | refactoring | The teaching shell, shared: take X_eTaL-fine-tuning's `shared/lesson` in beside `shared/microscope`, configured by the dependent. Details below | every live page here (first: sphere-hello and baseline-knn, step shell-adoption) | none that does not copy the crate. Steps foundation, research-foundation and experiment-kit need no page and do not wait |
+| GM2 | **waiting on this list** (X_eTaL-ML's `docs/manifolds-asks.md`, 2026-11-06: "taken from that list"): the list is the record below, written by step foundation; nothing more is owed from here | refactoring | The scripts, shared: the repository-independent ones runnable from the clone at the pin against a dependent's root; 23 of 33 are unchanged here. Details and the record below | step foundation | adapted copies, each with a note of where it came from, as X_eTaL-fine-tuning holds them |
+| GM3 | **landed** in X_eTaL-ML 501ab15 (`microscope::turning`: a `Scene` of points, segments, vectors and wire lines, `Angle` as page state, `turn`, `key`, `project`, `marks`, `Turning` turned by pointer, touch and keys; read 2026-11-07); not yet at this repository's pin. **Workaround in use** since step manifold-tour (2026-11-07) until the pin moves (step shell-adoption): `demos/manifold-tour/web/src/turn.rs`, the demo's own orthographic projection by yaw and pitch from pointer, keyboard and touch, removed when GM3 lands at the pin | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
+
+| GM4 | not yet taken | feature | A gradient step under a metric, in Optim: `(lr, P) op:p_reconditioned (w, g)`, the weights moved against `P` times the gradient, `P` a diagonal (a vector of the gradient's shape) or a matrix over the raveled weights, `Num a => (Float, a) -> (a, a) -> Float` as `s_gd` is shaped; and the Fisher matrix of a small softmax model for the natural-gradient step, `(X, W) ml:f_isher`, the mean over the rows of X of the outer products of the per-example gradients of the log-likelihood (the empirical Fisher, said to be that in its doc), so the natural step is `(lr, mx:i_nverse F) op:p_reconditioned (w, g)`. Example: `(0.5, 1.0 0.25) op:p_reconditioned (1.0 2.0, 0.2 -0.4)` gives `0.9 2.05` | optimization-explorer (steps metric-descent and metric-training): plain, diagonal-preconditioned and natural-gradient steps compared on one model | written out in the demo's program: `w - lr * P mx:m_ul g` and the Fisher as `((o_\ G) mx:m_ul G) / n` over the per-example gradient rows G, named on the page |
+| GM5 | not yet taken (X_eTaL-fine-tuning asked the same, its FM7, which X_eTaL-ML marked not planned, 2d23a96 `docs/fine-tuning-asks.md`: "judged when your Saga 2 needs the harness"; one answer serves both) | feature | A learning task and its record, as a library (Learn, or a Task library, alias `tk:`): `seed tk:s_plit (n, frac)` (the indices of a held-out fraction, seeded), `tk:r_ecord` (a run's record as a tuple of named arrays: the loss by step, the held-out accuracy, the update sizes, the constraint violation, the cost), `(a, b) tk:c_ompare` (the difference of each measure and its sign), and the data generators with a known structure this repository's kit needs if they turn out general (blobs, directions, a tree) | experiment-kit, baseline-knn, every explorer | the experiment kit of this repository (step experiment-kit) writes these in the demos' programs and, where they are about manifolds (the directions and the tree), in `libs/`; named on each page. Not a blocker |
+| GM6 | not yet taken | feature | A small network as a vector field, unrolled as a flow, in Net or Flow: `(net, n, h) net:u_nroll x` applying the same field `h * f(x)` n times (a residual step, the Euler step of a neural ODE), and its gradient through the steps by Net's `m:g_radient`; so that dynamics-explorer compares the flat flow with Manifold's step held to the sphere on the same field | dynamics-explorer (step manifold-flows) | written out: `n '{ x -> x + h * f x } p_ower x0` with Net's gradient of the unrolled program, in the demo's program |
 
 ## GM1: the teaching shell, shared
 

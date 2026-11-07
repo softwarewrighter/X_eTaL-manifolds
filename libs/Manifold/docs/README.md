@@ -195,7 +195,10 @@ sphere as a Riemannian manifold (the exponential and logarithmic maps,
 the Frechet mean by fixed-point iteration), as in Absil, Mahony and
 Sepulchre, Optimization Algorithms on Matrix Manifolds (2008), chapter
 3. The ball's Mobius addition and its geodesic are the gyrovector
-forms (Ungar, Analytic Hyperbolic Geometry, 2005), as the hyperbolic
-neural networks of Ganea, Becigneul and Hofmann (2018) write them; the
-Swiss roll is the data manifold of Tenenbaum, de Silva and Langford's
-Isomap (2000), in the coordinates everyone uses.
+forms (Ungar, Analytic Hyperbolic Geometry, 2005; the formula read at
+source in Ungar, Hyperbolic Barycentric Coordinates, AJMAA 2009,
+Definition 6.1), as the hyperbolic neural networks of Ganea,
+Becigneul and Hofmann (NeurIPS 2018, their equations 6 to 15) write
+them at c = 1; the Swiss roll is the data manifold of Tenenbaum, de
+Silva and Langford's Isomap (Science 2000, their Figure 3), in the
+coordinates everyone uses. Each is a row of `docs/papers.md`.

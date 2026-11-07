@@ -1,6 +1,6 @@
 number = 3
 slug = "research-foundation"
-status = "pending"
+status = "in-progress"
 description = """
 Step research-foundation (docs/plan.md, Saga 1 row 3: the research's
 mileston..."""

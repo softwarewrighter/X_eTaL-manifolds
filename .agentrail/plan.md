@@ -223,27 +223,37 @@ it is the easiest to teach by eye and the others stand on it.
 
 By decision G3 (the user, 2026-11-06): particular to manifolds and
 the geometry of ML, a library here; general, X_eTaL-libraries;
-machine learning that is not about manifolds, X_eTaL-ML. A first
-sorting, made on 2026-11-06 from the READMEs and export lists of the
-siblings at their HEAD, not from their source; step
-research-foundation checks each at the pin, corrects the sorting
-where the source says otherwise, and writes the asks
-(`docs/xetal-libraries-asks.md`, and the function asks added to
-`docs/xetal-ML-asks.md`), each with its status, kind, the demos that
-need it, a minimal example with the signature wanted, and the
-workaround in use.
+machine learning that is not about manifolds, X_eTaL-ML. Sorted on
+2026-11-06 from the siblings' export lists and checked on 2026-11-07
+(step research-foundation) at the pins, reading each library's source
+and doc comments (X_eTaL-libraries 3465af3, X_eTaL-ML abc1745); the
+asks are written: `docs/xetal-libraries-asks.md` (GL1 to GL7) and the
+function asks GM4 to GM6 in `docs/xetal-ML-asks.md`, each with its
+status, kind, the demos that need it, a minimal example with the
+signature wanted, and the workaround in use. None is a blocker.
 
-What is there already, as far as the export lists show: Matrix
-(product, inverse, solve, an orthonormal basis, rank, projection onto
-a subspace and the remainder, symmetric eigenvalues and eigenvectors,
-singular values, the SVD and the best rank-k approximation), Graphs
-(shortest paths, components), Random (uniform and normal samples),
-Statistics, Trig (the hyperbolic functions), Plot (scatter, lines,
-function plots), Geometry (plane geometry only), Learn (k-means, k
-nearest neighbors, PCA, logistic regression), Embed (cosine
-neighbors, unit rows), Optim (gradient descent and Adam steps), NN
-and Net (dense layers, a network and its gradient from a line), Flow
-(pipelines and their trace), Norm.
+What is there at the pins, read in the source: Matrix (`m_ul`,
+`s_olve`, `i_nverse`, `d_et`, `o_rthonormal`, `r_ank`, `p_roject`,
+`r_emainder`, `c_oordinates`, `e_igenvalues`, `e_igenvectors`,
+`s_vd`, `s_ingular`, `t_runcate`: so the polar factor, the singular
+values of a mixing matrix and a spectral measure are one call each;
+no Sinkhorn), Graphs (`w_eighted`, `s_hortest`: the tree's distances;
+`l_evels`, `c_omponents`), Random (seeded `u_niform!`, `n_ormal!`,
+`s_huffle!`, `d_eal!`), Statistics, Trig (`a_tan2`, `a_sin`, `a_cos`,
+`s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh`, `h_ypot`), Plot
+(`s_catter`, `l_ine!`, `l_ines!`, `c_hart!`, `f_unction!`,
+`l_inspace`; no field or contour picture), Geometry (plane geometry
+only: `d_istances` takes points of the plane), Lists (`r_aze`,
+`w_indows`, `d_eltas`), Check; Learn (`k_means`, `a_ssign`,
+`f_arthest`, `k_nn`, `p_ca`, `p_roject`, `l_ogistic`, `p_redict`),
+Embed (`u_nit`, `c_osines`, `n_earest`), Optim (`s_gd`, `a_dam`,
+`a_damWith`: no preconditioned step), NN (`d_ense`, `s_oftmax`,
+`c_rossEntropy`, `m_se`, `a_ccuracy`, `o_neHot`, `a_rgmax`), Net (a
+macro library: `m:n_etwork`, `m:m_odel`, `m:g_radient`, `m:t_rain`,
+`m:p_arams`, a network and its gradient from one line), Flow (a macro
+library: `m:p_ipe`, `m:s_tages`, `m:t_ext`, `m:m_ath`: pipelines and
+their trace), Integrals (a macro library for definite integrals of one
+variable, not an integrator of a field), Norm, Activations.
 
 Libraries of this repository (names and aliases proposed; settled by
 the step that first builds each, against the aliases the siblings
@@ -251,23 +261,26 @@ use):
 
 | Library | What | Built by |
 | ------- | ---- | -------- |
-| Manifold (`mf:`) | for the sphere, then the Poincare ball: the distance along the space, putting a point back on it, the tangent part of a vector, a step along a tangent vector (exponential map or a retraction) and its inverse, a mean on the space; a gradient step that stays on the space; the distortion of an embedding against given distances; the tangent part of a field and a flow held to the space. The flat torus when a demo needs it | foundation (the sphere), representation-sphere (distortion), representation-hyperbolic (the Poincare ball), metric-descent (the step), manifold-flows (the flow) |
-| Mixing (`hc:`) | residual streams and their mixing: a block over n streams with a mixing matrix, the mixing free, doubly stochastic or orthogonal; a stack of them; the size of the signal and of the gradient by depth; the constraint's violation | mhc-matrices, mhc-depth |
+| Manifold (`mf:`) | the sphere (`s_phereProject`, `s_phereDistance`, `s_phereDistances`, `s_phereTangent`, `s_phereStep`, `s_phereArrow`, `s_phereMean`, `s_phereOff`: built, step foundation) and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps with the ball's `b_allDistance` and `b_allGeodesic` (built, step manifold-tour); then the ball's Project, Tangent, Step, Arrow, Mean, Off by the same verbs (representation-hyperbolic); `s_phereDistortion` and `b_allDistortion` of an embedding against given distances, and `d_istortion` for a flat one (representation-sphere); the cheap retraction `s_phereRetract` beside the step, and a gradient step that stays on the space, `(lr) s_phereDescend (p, g)` (metric-descent); the tangent part of a field at a set of points and a flow held to the sphere, `s_phereFlow` (manifold-flows). The flat torus when a demo needs it | foundation, manifold-tour, representation-sphere, representation-hyperbolic, metric-descent, manifold-flows |
+| Mixing (`hc:`) | residual streams and their mixing: `(n, w) hc:s_treams x` (n copies), `hc:b_lock` (a layer over n streams with a mixing matrix), the mixing `hc:f_ree M`, `k hc:s_tochastic L` (Sinkhorn's k sweeps on exp of the logits L, private until GL3 lands), `hc:p_ermutations w` (an exact convex combination of the permutations, after KromHC), `hc:o_rthogonal M` (the polar factor by `mx:s_vd`); `hc:s_tack` of blocks; `hc:g_ain` (the composite's largest absolute row and column sums, as mHC measures them), `hc:c_hannels` (the mean of the streams and their differences, after the Birkhoff-geometry paper), `hc:v_iolation` (row and column sum errors, distance from orthogonal); the sizes of the signal forward and of the gradient backward by depth | mhc-matrices, mhc-depth |
 | the three data sets | seeded data with a flat, a directional and a hierarchical structure (a tree with its distances): generators in a library here if they need functions, otherwise data files | experiment-kit |
 
 Asked of the siblings:
 
 | Need | Asked of | What | First needed |
 | ---- | -------- | ---- | ------------ |
-| the teaching shell, shared | X_eTaL-ML (GM1), X_eTaL-fine-tuning (GF1) | the lesson shell moved beside `microscope` and made a dependent's to configure; filed, see the asks files | step shell-adoption: **every live page waits on it** |
-| the scripts, shared | X_eTaL-ML (GM2) | the repository-independent scripts runnable from the clone at the pin | not a blocker: adapted copies meanwhile |
-| the new-eyes checklist, one copy | X_eTaL-fine-tuning (GF2) | its general part citable by both repositories | not a blocker: cited at a commit meanwhile |
-| matrix scaling | X_eTaL-libraries | Sinkhorn's alternating row and column normalization to a doubly stochastic matrix, with its iteration count and the row and column sum errors; the nearest orthogonal matrix (a polar factor) | mhc-explorer |
-| integrators and field measures | X_eTaL-libraries | Euler and Runge-Kutta steps of dx/dt = v(x, t); the divergence and curl of a plane field by differences | dynamics-explorer |
-| field and contour pictures | X_eTaL-libraries | a vector field drawn as arrows, trajectories over it, the contours of a function of two variables | optimization-explorer; dynamics-explorer |
-| a step under a metric | X_eTaL-ML | a gradient step preconditioned by a positive-definite matrix (Optim); the Fisher matrix of a small model, for a natural-gradient step | optimization-explorer |
-| a learning task and its record | X_eTaL-ML | the split, the run's record and the comparison harness; X_eTaL-fine-tuning has asked for the same (its FM7), so one answer serves both | step experiment-kit |
-| a network as a flow | X_eTaL-ML | a small network as a vector field, unrolled for a fixed number of steps, its gradient through the steps | dynamics-explorer |
+| the teaching shell, shared | X_eTaL-ML (GM1), X_eTaL-fine-tuning (GF1) | **landed** in X_eTaL-ML 501ab15 (2026-11-07): `shared/lesson` beside `microscope`, configured by the dependent's `.cargo/config.toml`; GF1 answered through it | step shell-adoption moves the pin and takes it; no longer a blocker |
+| the turning view, shared | X_eTaL-ML (GM3) | **landed** in X_eTaL-ML 501ab15: `microscope::turning` | step shell-adoption, with the pin; manifold-tour's own projection until then |
+| the scripts, shared | X_eTaL-ML (GM2) | waiting on this repository's list, which is GM2's record (step foundation) | not a blocker: adapted copies meanwhile |
+| the new-eyes checklist, one copy | X_eTaL-fine-tuning (GF2) | not yet taken | not a blocker: cited at a commit meanwhile |
+| pairwise distances in any dimension; small array words | X_eTaL-libraries (GL1, GL2) | the straight-line distance between every pair of rows; pairs, repeats, a polyline's length | every demo; written out meanwhile |
+| matrix scaling | X_eTaL-libraries (GL3) | Sinkhorn's alternating row and column normalization, its sweep count and the row and column sum errors; the polar factor (one line on `mx:s_vd`, which is at the pin) | mhc-explorer |
+| integrators and field measures | X_eTaL-libraries (GL4, GL5) | Euler and Runge-Kutta steps of dx/dt = v(x, t); the divergence and curl of a plane field by differences | dynamics-explorer |
+| field and contour pictures | X_eTaL-libraries (GL6) | a vector field drawn as arrows, trajectories over it, the contours of a function of two variables; the pages draw from printed numbers meanwhile | optimization-explorer; dynamics-explorer |
+| a Cholesky solve | X_eTaL-libraries (GL7) | for the Fisher matrix; `mx:s_olve` meanwhile | optimization-explorer |
+| a step under a metric | X_eTaL-ML (GM4) | a gradient step preconditioned by a diagonal or a matrix (Optim); the empirical Fisher matrix of a small softmax model | optimization-explorer |
+| a learning task and its record | X_eTaL-ML (GM5) | the split, the run's record and the comparison; X_eTaL-fine-tuning asked the same (its FM7, which X_eTaL-ML marked not planned), so one answer serves both | step experiment-kit; written here meanwhile |
+| a network as a flow | X_eTaL-ML (GM6) | a small network as a vector field, unrolled for a fixed number of steps, its gradient through the steps (Net's) | dynamics-explorer |
 
 ## Saga 1 -- geometry-lab  [ACTIVE]
 
@@ -424,4 +437,18 @@ new ones here.
 - The sorting of three borderline needs stands as the plan has it
   (2026-11-06): a preconditioned step and the Fisher matrix are
   X_eTaL-ML's, Sinkhorn's iteration is X_eTaL-libraries', the data
-  sets with a geometric structure are this repository's.
+  sets with a geometric structure are this repository's. Confirmed at
+  the pins 2026-11-07 (GM4, GL3; the data sets in the experiment kit).
+- The papers (2026-11-07, step research-foundation, `docs/papers.md`):
+  every paper the research names was found and read, all but one at
+  source (the task-geometry paper is paywalled: abstract and front
+  matter); "adaptive manifold curvature regularization" is no distinct
+  paper and nothing rests on it; the mixed-curvature paper is Gu,
+  Sala, Gunel and Re; the Birkhoff-geometry paper's notion is a
+  fading-memory horizon, not "information retention". H1 to H3 are
+  written with what counts for and against each before any run
+  (`docs/research-questions.md`).
+- GM1 and GM3 landed in X_eTaL-ML 501ab15 (2026-11-07): the teaching
+  shell and the turning view are there; step shell-adoption moves the
+  pin (G1) and takes both, and GF1 is answered through GM1. GM2 waits
+  on nothing from here (its list is its record). No ask is a blocker.
