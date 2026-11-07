@@ -1,10 +1,11 @@
 number = 2
 slug = "manifold-tour"
-status = "in-progress"
+status = "completed"
 description = """
 Step manifold-tour (docs/plan.md, Saga 1 row 2; the user, 2026-11-06:
 "when c..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T14:58:26"
-commits = []
+completed_at = "2026-11-07T12:09:46"
+commits = ["046fb72869bad470191dc292d6efeffa2b6c95b4"]
