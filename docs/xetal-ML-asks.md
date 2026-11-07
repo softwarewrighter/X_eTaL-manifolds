@@ -32,9 +32,9 @@ X_eTaL-fine-tuning at d78aca4.
 
 | # | Status | Kind | Ask | Needed by | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
-| GM1 | not yet taken; **blocker** for step shell-adoption | refactoring | The teaching shell, shared: take X_eTaL-fine-tuning's `shared/lesson` in beside `shared/microscope`, configured by the dependent. Details below | every live page here (first: sphere-hello and baseline-knn, step shell-adoption) | none that does not copy the crate. Steps foundation, research-foundation and experiment-kit need no page and do not wait |
-| GM2 | not yet taken | refactoring | The scripts, shared: the repository-independent ones runnable from the clone at the pin against a dependent's root. Details below | step foundation | adapted copies, each with a note of where it came from, as X_eTaL-fine-tuning holds them |
-| GM3 | not yet taken | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
+| GM1 | planned there (X_eTaL-ML abc1745 inserted its step manifolds-asks for GM1 and GM3, 2026-11-06); **blocker** for step shell-adoption | refactoring | The teaching shell, shared: take X_eTaL-fine-tuning's `shared/lesson` in beside `shared/microscope`, configured by the dependent. Details below | every live page here (first: sphere-hello and baseline-knn, step shell-adoption) | none that does not copy the crate. Steps foundation, research-foundation and experiment-kit need no page and do not wait |
+| GM2 | not yet taken | refactoring | The scripts, shared: the repository-independent ones runnable from the clone at the pin against a dependent's root; 23 of 33 are unchanged here. Details and the record below | step foundation | adapted copies, each with a note of where it came from, as X_eTaL-fine-tuning holds them |
+| GM3 | planned there (X_eTaL-ML abc1745, step manifolds-asks); a demo-private view is the workaround from step manifold-tour until it lands | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
 
 ## GM1: the teaching shell, shared
 
@@ -146,10 +146,43 @@ name and the port as arguments or environment), so that a dependent's
 `justfile` calls them and keeps only what differs: its `demo.toml`
 fields and their check, the frames its pages must have, its pins.
 
-**Not a blocker.** Step foundation adapts copies as the siblings did,
-notes in each where it came from, and records here precisely which
-scripts it could have called unchanged and what each of the others
-needed changed: that list is the specification of this ask.
+**Not a blocker.** Step foundation adapted copies as the siblings did,
+noted in each where it came from, and recorded here which scripts it
+could have called unchanged and what each of the others needed
+changed. That list is the specification of this ask.
+
+**The record (step foundation, 2026-11-06, against X_eTaL-fine-tuning
+at d78aca4).** Of 33 scripts, 23 are unchanged but for a comment
+naming where they came from; the 10 others changed only in the ways
+listed, none of which needs the script's logic.
+
+Unchanged (callable from a clone against this root as they are, if
+the root came in as an argument or environment): `py`, `xt`,
+`xetal-ml.sh`, `xetal-libraries.sh`, `ml-pin.sh`, `libpath.sh`,
+`doc-test.sh`, `run-demo.sh`, `run-lib.sh`, `new-demo.sh`,
+`new-lib.sh`, `test-demos.sh`, `test-libs.sh`, `selftest-demos.sh`,
+`selftest-libs.sh`, `libs.py`, `check-spelling.py`, `check-rebind.py`,
+`check-examples.py`, `doc-site.sh`, `browser-check.sh`,
+`browser-check.py` (a comment: a page here marks its own sections
+`data-frame` until the shell does), `affected.py` (only its self-test's
+names).
+
+Changed, and what:
+
+| Script | What differs | Why |
+| ------ | ------------ | --- |
+| `check-xetal.sh` | the libraries probed (Embed, Check, Matrix, Trig instead of LoRA, Check, Matrix) | each repository probes what its libraries build on: a list to pass in |
+| `demos.py` | the `demo.toml` fields: `problem`, `compares`, `hypothesis`, `intro` and their checks replace `track`'s list and `lesson`; a self-test | each repository's description schema: the shared script would take a schema, or each repository its own `demos.py` and nothing else |
+| `gate.sh` | the shared step tests `shared/` only if it holds a Cargo workspace; the pages are built only once a demo has a `web/`; the markdown list is computed (every tracked or new `.md` but `CLAUDE.md` and the saga's) instead of written out | the two guards suit any dependent; the computed list removes a per-repository edit |
+| `build-catalog.py` | the repository, the header's texts, the track names, the card's second line (the problem, the choices, the hypothesis) | the texts belong to each repository: a shared builder would take them from a file |
+| `build-pages.sh`, `serve-pages.sh`, `publish-pages.sh`, `check-live.sh`, `browser-dom.sh`, `screenshots.sh` | the site's name (`X_eTaL-manifolds`) and, in `serve-pages.sh`, the port (3285) | one name and one port per repository: two parameters |
+
+So the ask, made precise: the 23 take the repository root; the six
+page scripts take the site's name and port; `check-xetal.sh` takes
+the probes; `build-catalog.py` takes its texts from a file; `gate.sh`
+needs nothing further once it computes its markdown list; `demos.py`
+stays each repository's own, or takes a schema. The `justfile` would
+then be the only copy, and short.
 
 ## GM3: the turning view, shared
 

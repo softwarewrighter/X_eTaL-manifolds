@@ -1,4 +1,7 @@
-# X_eTaL manifolds
+<h1>
+  <img src="images/xetal-logo-orange.png" alt="X_eTaL logo" height="60" align="absmiddle">
+  <img src="images/x-etal-manifolds-title.svg" alt="X_eTaL manifolds" height="40" align="absmiddle">
+</h1>
 
 Exploring the geometry of machine learning, in
 [X_eTaL](https://github.com/softwarewrighter/X_eTaL), the eXperimental
@@ -98,11 +101,15 @@ low-rank subspaces.
 
 ## Demos
 
-None yet. The first, `sphere-hello`, comes with the build machinery
-and the Manifold library:
-straight-line and great-circle distance between unit vectors order
-neighbors the same way, and the plain average of points on a sphere
-is not on it.
+| Demo | Track | What it shows | Where |
+| ---- | ----- | ------------- | ----- |
+| [sphere-hello](demos/sphere-hello/) | start | six points on the unit sphere: the straight line through it and the great circle along it order every point's neighbors the same way (checked on the numbers); the plain average of the points is inside the sphere, and the mean along it is a different direction | `just run sphere-hello` |
+
+Next, `manifold-tour`: the first live page, an introduction to what a
+manifold is, the kinds these pages use (the circle, the sphere, the
+torus, a Swiss roll, the Poincare disk) and what each is for in the
+experiments to come, each surface turning in the browser from
+coordinates X_eTaL computed.
 
 ## Libraries
 
@@ -111,7 +118,7 @@ each function lives where it belongs:
 
 | What | Where | Examples |
 | ---- | ----- | -------- |
-| particular to manifolds and the geometry of ML | here, in `libs/` (to come) | Manifold: distances, maps and steps on the sphere and the Poincare ball, distortion; Mixing: residual streams mixed under a constraint |
+| particular to manifolds and the geometry of ML | here, in `libs/` | [Manifold](libs/Manifold/) (`mf:`): the unit sphere now, the Poincare ball to come: distance along the space, projection onto it, tangent vectors, a step that stays on it and the arrow that undoes it, a mean on it; later distortion. Mixing (`hc:`), to come: residual streams mixed under a constraint |
 | general | [X_eTaL-libraries](https://github.com/softwarewrighter/X_eTaL-libraries), asked for | Sinkhorn's iteration, integrators, field and contour pictures; Matrix, Plot, Graphs, Random, Statistics, Trig and Check are used as they are |
 | machine learning, not about manifolds | [X_eTaL-ML](https://github.com/softwarewrighter/X_eTaL-ML), asked for | a learning task and its record, a preconditioned optimizer step; NN, Net, Optim, Learn, Embed and Flow are used as they are |
 
@@ -120,33 +127,66 @@ shell (frames, glossary, stepper, heat maps) was written for
 X_eTaL-fine-tuning; the refactoring that lets both repositories use
 one copy is asked for in
 [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) and
-[`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md),
-and live pages here wait for it. Rust appears only as the pages'
+[`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md).
+Until it lands the pages are built on X_eTaL-ML's page shell alone,
+by path from the pinned clone. Rust appears only as the pages'
 presentation: every algorithm and every number shown is X_eTaL's.
 
 ## Status
 
 | | |
 | - | - |
-| Now | the plan ([`docs/plan.md`](docs/plan.md)), the research it came from, the rules, the asks of the sibling repositories, and the first saga, `geometry-lab`, of thirteen steps; nothing is built |
-| Next | the build machinery, the Manifold library's sphere and `sphere-hello` (step foundation); then the glossary, the paper catalog, the hypotheses and the function asks (step research-foundation) |
-| Asks | the shared teaching shell ([`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM1, [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md) GF1): no live page is built until it has landed; the first three steps do not need one |
+| Now | the machinery (the pins, the gate, the recipes, the site build), the Manifold library's sphere part and `sphere-hello` at the command line (step foundation of the first saga, `geometry-lab`, fourteen steps); no page is live yet |
+| Next | `manifold-tour`, the first live page (step manifold-tour); then the glossary, the paper catalog, the hypotheses and the function asks (step research-foundation) |
+| Asks | the shared teaching shell ([`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM1, [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md) GF1) and the shared turning view (GM3), both planned in X_eTaL-ML; the pages are re-framed by the shell when it lands |
 
 ## Build
 
-Not buildable yet: the first step of the saga adds the pins of
-X_eTaL-ML and X_eTaL-libraries, the `just` recipes, the gate and the
-live site, as in
-[X_eTaL-fine-tuning](https://github.com/softwarewrighter/X_eTaL-fine-tuning).
+You need Rust (stable), git, [just](https://github.com/casey/just),
+[uv](https://docs.astral.sh/uv/) and
+[reg-rs](https://github.com/softwarewrighter/reg-rs); for the pages,
+[trunk](https://trunkrs.dev/) and the `wasm32-unknown-unknown` target;
+for the browser checks and screenshots, Chrome and ImageMagick.
+
+```bash
+just xetal               # clone the pinned X_eTaL-ML and X_eTaL-libraries into work/ and build X_eTaL (once, a few minutes)
+just xetal-version       # the pins and the binary's own report
+just demos               # the demos, in catalog order
+just run sphere-hello    # a demo's program
+just show sphere-hello   # the same as a notebook: each statement, then its output
+just libs                # the libraries of this repository
+just demo Manifold       # a library's demos
+just test                # every demo and library baseline
+just gate                # the pre-commit gate; just gate --full for everything
+just pages               # build the live site into pages/
+just serve-pages         # serve it at http://127.0.0.1:3285/X_eTaL-manifolds/
+just publish             # pages/ as the gh-pages branch (needs a clean work tree)
+```
+
+The repository pins the X_eTaL-ML commit it works with
+(`XETAL_ML_COMMIT`, which pins its own X_eTaL) and its own
+X_eTaL-libraries commit (`XETAL_LIBRARIES_COMMIT`); `just xetal`
+fetches and builds exactly those, into the gitignored `work/`, and
+nothing else is installed. `just ml-pin` and `just libs-pin` move a
+pin, one at a time. The library search path (`just path`) is this
+repository's `libs/*/src`, then X_eTaL-ML's, then X_eTaL-libraries'.
 
 ### Layout
 
 - `docs/` -- the plan, the research it came from, and the asks.
-- `libs/<Name>/` (to come) -- a library of this repository: its
-  source, tests, reference and demos.
-- `demos/<slug>/` (to come) -- one experiment per directory: its
-  `.xtl` programs, a README, its data and presets, reg-rs baselines,
-  and its web page.
+- `libs/<Name>/` -- a library of this repository: `src/`, `tests/`
+  (reg-rs baselines), `docs/README.md` (the reference), `demos/`.
+- `demos/<slug>/` -- one demo per directory: `demo.toml` (what it
+  compares, on which problem, for which hypothesis), its `.xtl`
+  programs, a README in the page arc, its data and presets, reg-rs
+  baselines in `reg/`, and its web page in `web/` when it has one.
+- `demos/_template/`, `templates/Library/` -- what `just new-demo`
+  and `just new-lib` copy.
+- `scripts/` -- the logic behind the `just` recipes, adapted from
+  X_eTaL-fine-tuning's (each says where it came from).
+- `images/` -- the logo, the favicon and the title.
+- `work/`, `pages/`, `target/`, `.venv/` -- gitignored: the clones,
+  the built site, the Rust builds, the scripts' Python.
 
 ## Documentation
 
@@ -160,6 +200,8 @@ live site, as in
   [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md)
   -- what is asked of the sibling repositories so that code is shared
   and not copied
+- [`CHANGES.md`](CHANGES.md) -- every commit, newest first
+- each library's reference: [`libs/Manifold/docs/README.md`](libs/Manifold/docs/README.md)
 
 ## Development
 

@@ -1,0 +1,68 @@
+#!/usr/bin/env xetal
+# Manifold: the unit sphere, at the easy cases and the hard ones (the
+# same point, opposite points, a zero tangent vector, a point near its
+# neighbor). Run with "just run-lib Manifold sphere".
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+
+Pi := 3.141592653589793
+x := 1.0 0.0 0.0
+y := 0.0 1.0 0.0
+z := 0.0 0.0 1.0
+d := mf:s_phereProject 1.0 1.0 1.0      # a point off the axes
+
+# Project: onto the sphere, direction kept; a point on it stays.
+"project scales to length 1" ch:t_est 0.6 0.8 0.0 ch:n_ear mf:s_phereProject 3.0 4.0 0.0
+"a point on the sphere stays" ch:t_est x ch:n_ear mf:s_phereProject x
+"the projection is on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff mf:s_phereProject 0.1 0.2 0.3 0.4
+
+# Distance: the angle; 0 to the same point, pi to the opposite one.
+"a quarter turn" ch:t_est (Pi / 2.0) ch:n_ear x mf:s_phereDistance y
+"the same point" ch:t_est 0.0 ch:n_ear x mf:s_phereDistance x
+"opposite points" ch:t_est Pi ch:n_ear x mf:s_phereDistance n_eg x
+"symmetric" ch:t_est (x mf:s_phereDistance d) ch:n_ear d mf:s_phereDistance x
+# Near the same point a_cos alone would lose digits; the angle formula does not.
+near := mf:s_phereProject 1.0 0.000001 0.0
+"a tiny angle" ch:t_est 0.000001 ch:n_ear x mf:s_phereDistance near
+Q := (Pi / 2.0) * 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0   # a quarter turn between each pair
+"distances of a set" ch:t_est Q ch:n_ear mf:s_phereDistances 3 3 r_eshape x c_at y c_at z
+
+# Tangent: no part along p is left.
+t := x mf:s_phereTangent 2.0 3.0 4.0
+"tangent drops the part along p" ch:t_est 0.0 3.0 4.0 ch:n_ear t
+"a tangent vector is tangent" ch:t_est 0.0 ch:n_ear '+ r_/ t * x
+"the tangent of a tangent is itself" ch:t_est t ch:n_ear x mf:s_phereTangent t
+
+# Step: along the sphere, by the vector's length; it stays on the sphere.
+"a quarter turn lands on y" ch:t_est y ch:n_ear x mf:s_phereStep (Pi / 2.0) * y
+"a half turn lands opposite" ch:t_est (n_eg x) ch:n_ear x mf:s_phereStep Pi * y
+"a zero step goes nowhere" ch:t_est x ch:n_ear x mf:s_phereStep 0.0 0.0 0.0
+"the step stays on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff d mf:s_phereStep d mf:s_phereTangent 0.3 -0.7 0.2
+"the step goes the distance" ch:t_est 0.5 ch:n_ear d mf:s_phereDistance d mf:s_phereStep 0.5 * mf:s_phereProject d mf:s_phereTangent 0.3 -0.7 0.2
+
+# Arrow: the step's inverse.
+"the arrow to y" ch:t_est ((Pi / 2.0) * y) ch:n_ear x mf:s_phereArrow y
+"the arrow is tangent" ch:t_est 0.0 ch:n_ear '+ r_/ x * x mf:s_phereArrow d
+"the arrow is as long as the distance" ch:t_est (x mf:s_phereDistance d) ch:n_ear s_qrt '+ r_/ (x mf:s_phereArrow d) ^ 2.0
+"step after arrow returns the point" ch:t_est d ch:n_ear x mf:s_phereStep x mf:s_phereArrow d
+# A step longer than pi wraps past the opposite point, so the arrow back is the short way round: keep it under pi.
+u := 0.2 * t
+"arrow after step returns the vector" ch:t_est u ch:n_ear x mf:s_phereArrow x mf:s_phereStep u
+"the arrow to the same point is zero" ch:t_est 0.0 0.0 0.0 ch:n_ear x mf:s_phereArrow x
+"the arrow to the opposite point is zero (no one direction)" ch:t_est 0.0 0.0 0.0 ch:n_ear x mf:s_phereArrow n_eg x
+
+# Mean: on the sphere, where the plain mean is not.
+P := 3 3 r_eshape x c_at y c_at z
+"the plain mean is inside the sphere" ch:t_est (1.0 - 1.0 / s_qrt 3.0) ch:n_ear mf:s_phereOff ('+ r_/ P) / 3.0
+m := mf:s_phereMean P
+"the mean is on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff m
+"the mean of x, y and z is their direction" ch:t_est (mf:s_phereProject 1.0 1.0 1.0) ch:n_ear m
+"the mean of one point is the point" ch:t_est d ch:n_ear mf:s_phereMean 1 3 r_eshape d
+"the mean of two points is halfway" ch:t_est (x mf:s_phereDistance y) ch:n_ear 2.0 * x mf:s_phereDistance mf:s_phereMean 2 3 r_eshape x c_at y
+# At the mean the arrows to the points cancel (its defining property).
+"the arrows from the mean cancel" ch:t_est 0.0 0.0 0.0 ch:n_ear (m mf:s_phereArrow x) + (m mf:s_phereArrow y) + m mf:s_phereArrow z
+
+# Off: the distance from the sphere, as a size.
+"off, inside" ch:t_est 0.5 ch:n_ear mf:s_phereOff 0.0 0.5 0.0
+"off, outside" ch:t_est 1.0 ch:n_ear mf:s_phereOff 0.0 2.0 0.0
+"off, on" ch:t_est 0.0 ch:n_ear mf:s_phereOff d

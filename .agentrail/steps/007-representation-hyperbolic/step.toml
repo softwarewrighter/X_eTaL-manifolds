@@ -1,0 +1,10 @@
+number = 7
+slug = "representation-hyperbolic"
+status = "pending"
+description = """
+Step representation-hyperbolic (docs/plan.md, Saga 1 row 7:
+milestone M1, sec..."""
+role = "production"
+context_files = []
+created_at = "2026-11-06T10:53:57"
+commits = []

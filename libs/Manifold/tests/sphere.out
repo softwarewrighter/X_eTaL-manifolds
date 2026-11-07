@@ -1,0 +1,33 @@
+ok: project scales to length 1
+ok: a point on the sphere stays
+ok: the projection is on the sphere
+ok: a quarter turn
+ok: the same point
+ok: opposite points
+ok: symmetric
+ok: a tiny angle
+ok: distances of a set
+ok: tangent drops the part along p
+ok: a tangent vector is tangent
+ok: the tangent of a tangent is itself
+ok: a quarter turn lands on y
+ok: a half turn lands opposite
+ok: a zero step goes nowhere
+ok: the step stays on the sphere
+ok: the step goes the distance
+ok: the arrow to y
+ok: the arrow is tangent
+ok: the arrow is as long as the distance
+ok: step after arrow returns the point
+ok: arrow after step returns the vector
+ok: the arrow to the same point is zero
+ok: the arrow to the opposite point is zero (no one direction)
+ok: the plain mean is inside the sphere
+ok: the mean is on the sphere
+ok: the mean of x, y and z is their direction
+ok: the mean of one point is the point
+ok: the mean of two points is halfway
+ok: the arrows from the mean cancel
+ok: off, inside
+ok: off, outside
+ok: off, on

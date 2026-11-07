@@ -1,0 +1,18 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "sphere-hello"
+title = "Sphere hello"
+summary = "Six points on the unit sphere: the straight line through it and the great circle along it order every point's neighbors the same way, and the plain average of the points is not on the sphere, where the mean along it is."
+concepts = ["manifold", "geodesic distance", "mean on a manifold"]
+status = "draft"             # draft | live | deferred
+order = 10
+track = "start"
+# An introduction: it measures and compares two distances and two
+# means on one set of points; it trains nothing (docs/plan.md, G5).
+intro = true
+problem = "a handful of unit vectors: which points are neighbors, and where is the middle"
+compares = ["the straight line through the sphere", "the great circle along it"]
+hypothesis = "none"
+needs = []
+line = "mf:s_phereMean P"
+why = "The mean that stays on the sphere, in one call; the plain mean, ('+ r_/ P) / 6.0, is inside it."

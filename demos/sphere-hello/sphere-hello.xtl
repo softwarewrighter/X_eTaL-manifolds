@@ -1,0 +1,75 @@
+#!/usr/bin/env xetal
+## Sphere hello: a handful of points on the unit sphere. Two ways to
+## measure how far apart two of them are, the straight line through
+## the sphere and the great circle along it, order every point's
+## neighbors the same way; and the plain average of the points is not
+## on the sphere, where the mean along it is.
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+
+### The points
+
+## Six directions in three dimensions, chosen by hand (nothing is
+## random), each put onto the unit sphere: one point per row.
+P := mf:s_phereProject 6 3 r_eshape 1.0 0.2 0.1 0.9 0.5 0.0 0.3 1.0 0.2 -0.4 0.8 0.5 0.1 0.3 1.0 -0.6 -0.5 0.6
+P
+"every point is on the sphere" ch:t_est (6 r_eshape 0.0) ch:n_ear mf:s_phereOff P
+
+### Two distances
+
+## The straight line through the sphere (the chord) between every
+## pair: the length of the difference, summed one coordinate at a time.
+u:c_hords := { Q ->
+  n := f_irst s_hape Q
+  (D, _) := (2 s_elect s_hape Q) '{ (d, k) -> c := k s_elect_2 Q; (d + (c '- t_able c) ^ 2.0, k + 1) } p_ower ((n c_at n) r_eshape 0.0, 1)
+  s_qrt D
+}
+chord := u:c_hords P
+chord
+
+## The great circle along the sphere between every pair: the angle,
+## in radians (Manifold).
+arc := mf:s_phereDistances P
+arc
+
+## The two agree on a formula: a chord is 2 sin of half its arc, so
+## the arc can be read off the chord and back. Checked on every pair.
+"chord = 2 sin (arc / 2)" ch:t_est chord ch:n_ear 2.0 * s_in arc / 2.0
+## And the arc is never the shorter: along the sphere is the long way
+## round, by a little for near points and by more for far ones.
+"arc >= chord" ch:t_est 1 ch:n_ear '& r_/ r_avel arc >= chord
+## The widest gap between the two, over all the pairs, and the widest arc.
+'m_ax r_/ r_avel arc - chord
+'m_ax r_/ r_avel arc
+
+### The same neighbors
+
+## Each point's neighbors, nearest first (itself first of all, at
+## distance 0): one row per point, the points' numbers in order of
+## that row of the distance matrix.
+u:o_rders := { D ->
+  n := f_irst s_hape D
+  (R, _) := n '{ (acc, i) -> (acc c_at (1 c_at n) r_eshape g_rade i s_elect D, i + 1) } p_ower ((0 c_at n) r_eshape 0, 1)
+  R
+}
+byChord := u:o_rders chord
+byChord
+byArc := u:o_rders arc
+"the chord and the arc order every point's neighbors the same way" ch:t_est byChord ch:i_s byArc
+
+### Two means
+
+## The plain mean of the points, coordinate by coordinate: it lies
+## inside the sphere, and its length says how far in.
+plain := ('+ r_/ P) / 6.0
+plain
+s_qrt '+ r_/ plain * plain
+"the plain mean is off the sphere" ch:t_est 1 ch:i_s 0.0 < mf:s_phereOff plain
+
+## The mean on the sphere (Manifold): the point along the sphere
+## whose summed squared arcs to the points is least. It is on the
+## sphere, and it is not the plain mean put onto it.
+onSphere := mf:s_phereMean P
+onSphere
+"the mean on the sphere is on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff onSphere
+(mf:s_phereProject plain) mf:s_phereDistance onSphere

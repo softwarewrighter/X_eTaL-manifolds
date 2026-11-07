@@ -1,0 +1,8 @@
+l:s_phereProject : Num a => a -> Float
+l:s_phereDistance : (Num a, Num b) => a -> b -> Float
+l:s_phereDistances : Num a => a -> Float
+l:s_phereTangent : (Num a, Num b) => a -> b -> Float
+l:s_phereStep : (Num a, Num b) => a -> b -> Float
+l:s_phereArrow : (Num a, Num b) => a -> b -> Float
+l:s_phereMean : Num a => a -> Float
+l:s_phereOff : Num a => a -> Float

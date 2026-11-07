@@ -1,0 +1,20 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "__SLUG__"            # the directory name, demos/<slug>/
+title = "__TITLE__"
+summary = "One sentence: what you see and what it reveals."
+concepts = ["arrays"]        # the ideas it shows
+status = "draft"             # draft | live | deferred
+order = 100                  # position in the catalog (lower first)
+track = "representation"     # start | representation | optimization | constraints | dynamics | adaptive (docs/plan.md, Tracks)
+# Every demo compares (docs/plan.md, G5): the ML problem, two or more
+# geometric choices compared on it, and the hypothesis it bears on.
+problem = "classification by nearest neighbors"
+compares = ["flat space", "the sphere"]
+hypothesis = "none"          # H1 | H2 | H3 | none
+# intro = true               # an introduction may compare fewer than two
+needs = []                   # asks (docs/xetal-*-asks.md) it waits on or works around
+# Optional, shown on the catalog card: the demo's key line of X_eTaL
+# (drawn by xetal) and why it is one expression.
+# line = "'+ r_/ r_ange 10"
+# why = "One sentence."

@@ -1,0 +1,25 @@
+# Every Cargo workspace in this repo (demos/*/web/, shared/) builds
+# into the one ./target: cargo finds this file by walking up from where
+# it runs. The pinned X_eTaL CLI is built by X_eTaL-ML's own script
+# into work/xetal-ml/target/xetal/ (scripts/xetal-ml.sh).
+# Adapted from X_eTaL-fine-tuning's .cargo/config.toml (unchanged).
+[build]
+target-dir = "target"
+
+# The browser runs the evaluator on its stack (WebAssembly has no
+# threads): give it room for deep recursion, as X_eTaL's live demo does.
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "link-arg=-zstack-size=67108864"]
+
+# The pages run X_eTaL-libraries at this repository's own pin
+# (XETAL_LIBRARIES_COMMIT, cloned into work/xetal-libraries) and this
+# repository's own libraries (libs/): X_eTaL-ML's microscope embeds the
+# library roots named here after its own, a later root replacing an
+# earlier library of the same name, so the browser and the command line
+# (scripts/libpath.sh) agree. Cargo's `relative = true` prefixes only the
+# start of the value with this directory, so the second root is written
+# from microscope's own directory, work/xetal-ml/shared/microscope/, up
+# to this repository's libs/ (checked by the first page's build, step
+# manifold-tour).
+[env]
+MICROSCOPE_LIBS = { value = "work/xetal-libraries/libs:../../../../libs", relative = true }

@@ -1,0 +1,3 @@
+command = '"$XETAL" run --seed 1 --draw "$XETAL_DRAW" sphere-hello.xtl'
+exit_code = 0
+desc = "sphere-hello: sphere-hello.xtl run by the pinned xetal CLI"

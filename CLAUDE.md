@@ -316,16 +316,11 @@ libraries of its own for what is particular to manifolds (`libs/`);
 its process and scripts follow `../X_eTaL-fine-tuning`, the nearest
 sibling.
 
-As of 2026-11-06 the repository holds its plan, its saga and these
-rules, and no machinery: step foundation (Saga 1, step 1) builds the
-pins, the scripts, the gate and the live site. Rules below that name
-a recipe or a script hold from that step on.
-
 Read before working:
 
 - `docs/plan.md` -- the principles, architecture decisions (G1 to
-  G12), the tracks, the hypotheses (H1 to H3), the demo portfolio, the
-  saga roadmap, the open questions
+  G13), the tracks, the hypotheses (H1 to H3), the demo portfolio, the
+  saga roadmap, the settled questions
 - `docs/xetal-ML-asks.md`, `docs/xetal-fine-tuning-asks.md` -- what
   is asked of the siblings so that code is shared and not copied
   (GM1, GF1: the teaching shell every live page waits on)
@@ -397,11 +392,14 @@ Read before working:
    sibling already has is not copied here. The teaching shell
    (X_eTaL-fine-tuning's `shared/lesson`) is asked for as a shared
    crate (GM1 in `docs/xetal-ML-asks.md`, GF1 in
-   `docs/xetal-fine-tuning-asks.md`); until it has landed no live
-   page is built: a step that needs one is blocked and the user is
-   told. The scripts are adapted copies, each noting where it came
-   from, until GM2 lands. When you find yourself about to copy a
-   sibling's file, write the ask instead.
+   `docs/xetal-fine-tuning-asks.md`); until it has landed a page is
+   built on X_eTaL-ML's `shared/microscope` alone, by path from the
+   pinned clone, with plain sections of its own (G2 as amended), and
+   nothing of `shared/lesson` is copied: a step that needs the shell
+   itself is blocked and the user is told. The scripts are adapted
+   copies, each noting where it came from, until GM2 lands (the
+   record of what differs is in that ask). When you find yourself
+   about to copy a sibling's file, write the ask instead.
 3a. Rust is for presentation only: the pages' WebAssembly host runs
    the X_eTaL program, reads back what it printed and lays it out,
    draws and animates it. It never computes a distance, a gradient, a
@@ -460,8 +458,10 @@ Read before working:
    - figures are marked measured or analytical; an illustration that
      is not a trained or learned thing says so;
    - a surface or a cloud in three dimensions is shown turning (plan
-     G13, the shared view of ask GM3), with a flat reading view and
-     the numbers always beside it; the Poincare disk stays flat;
+     G13: the shared view of ask GM3 once it has landed at the pin;
+     until then a demo-private projection in its `web/`, named as the
+     workaround in GM3), with a flat reading view and the numbers
+     always beside it; the Poincare disk stays flat;
    - a page shows all the code it runs;
    - experiments are deterministic: fixed seeds, presets as data;
      every gradient checked against central differences; every
@@ -500,9 +500,8 @@ Read before working:
 ## Every step ends with
 
 1. Tests exist for what the step delivered, and `just gate` passes
-   (`just gate --full` after a pin or a change to the shared shell or
-   the scripts). Before step foundation has made the gate:
-   `sw-markdown-checker -f FILE` on every markdown file changed.
+   (`just gate --full` after a pin or a change to the shared page
+   code or the scripts; the gate checks every markdown file).
 2. Docs updated: README (demos, status), the demo's pages,
    `CHANGES.md`, `docs/plan.md` (then `agentrail plan --update
    docs/plan.md`), the asks files, `docs/papers.md` and
@@ -521,6 +520,13 @@ Read before working:
 agentrail status          # current saga state
 agentrail next            # current step + context
 agentrail plan            # the saga plan
-just                      # list recipes (from step foundation on)
+just                      # list the recipes
+just xetal                # the pinned toolchain, cloned into work/ and built (once)
+just xetal-version        # the pins
 just gate                 # pre-commit gate; --full for everything
+just run SLUG             # a demo's program; just show SLUG as a notebook
+just test-demo SLUG       # a demo's baselines; just bless SLUG to accept (review the diff)
+just test-lib Name        # a library's baselines; just bless-lib Name; just doc-test
+just new-demo SLUG "T"    # a demo from demos/_template; just new-lib Name x: "what"
+just pages                # the site into pages/; just serve-pages (port 3285); just publish; just check-live
 ```

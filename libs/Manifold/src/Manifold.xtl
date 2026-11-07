@@ -1,0 +1,186 @@
+## Manifold: the unit sphere, and in time the Poincare ball: the
+## distance measured along the space, putting a point onto it, the
+## tangent part of a vector at a point, a step from a point along a
+## tangent vector that stays on the space and the arrow that undoes it,
+## a mean that stays on the space, and how far off it a point is.
+## Import it with an alias of your choice: "mf:" u_se< "Manifold".
+## Put libs/Manifold/src on XETAL_PATH ("just path"); the reference is libs/Manifold/docs.
+## Names with l: are exported; those under h: are private to this file.
+##
+## A point is a vector of Floats, in any number of dimensions; a set
+## of points is a matrix, one point per row. Each space has a name
+## that starts its functions (s_phere now; b_all, the Poincare ball,
+## when it joins), and the word after it is the same verb for every
+## space: Project (onto it), Distance (along it), Tangent (the part of
+## a vector along it at a point), Step (from a point, along a tangent
+## vector, staying on it), Arrow (the tangent vector a Step would take
+## from one point to another), Mean (of a set, on it), Off (how far a
+## point is from it). So a program written for the sphere reads the
+## same on the ball. Every result is a Float.
+
+"tr:" u_se< "Trig"
+
+### Vectors
+
+## `u d_ot v`: the sum of the products, as a Float.
+h:d_ot := { u v -> '+ r_/ (f_loat u) * f_loat v }
+
+## `n_orm v`: the length of v, straight through the space it sits in.
+h:n_orm := { v -> s_qrt v h:d_ot v }
+
+## `s v s_caleRows M`: each row of M scaled by the matching item of s.
+h:s_caleRows := { s M -> M * s 'l_eft t_able o_ffsets 2 s_elect s_hape M }
+
+## `m a_ngle s`: the angle, 0 to pi, between two unit vectors p and
+## q, from the lengths m = |p - q| and s = |p + q|: 2 atan2(m, s).
+## Accurate near 0 and near pi alike, where a_cos of the product
+## p.q is not (near 0 it loses half the digits), because neither
+## length is a difference of nearly equal numbers.
+h:a_ngle := { m s -> 2.0 * (f_loat m) tr:a_tan2 f_loat s }
+
+## `p a_part q`: |p - q| and |p + q|, as a tuple.
+h:a_part := { p q -> (h:n_orm (f_loat p) - f_loat q, h:n_orm (f_loat p) + f_loat q) }
+
+## `P a_partRows p`: |r - p| and |r + p| for every row r of P.
+h:a_partRows := { P p ->
+  Q := ((f_irst s_hape P) r_eshape 1.0) '* t_able f_loat p   # p in every row
+  D := (f_loat P) - Q
+  S := (f_loat P) + Q
+  (s_qrt '+ r_/_2 D * D, s_qrt '+ r_/_2 S * S)
+}
+
+## `a_partPairs P`: |r - r'| and |r + r'| for every pair of rows of
+## P, two matrices, summed one coordinate at a time (so no number is
+## a difference of nearly equal ones).
+h:a_partPairs := { P ->
+  n := f_irst s_hape P
+  zero := (n c_at n) r_eshape 0.0
+  (D, S, _) := (2 s_elect s_hape P) '{ (d, s, k) ->
+    c := f_loat k s_elect_2 P
+    (d + (c '- t_able c) ^ 2.0, s + (c '+ t_able c) ^ 2.0, k + 1)
+  } p_ower (zero, zero, 1)
+  (s_qrt D, s_qrt S)
+}
+
+### The unit sphere
+
+## `s_phereProject v`: v put onto the unit sphere, scaled to length 1;
+## the direction of v, kept. Given a set (a matrix), every row. The
+## zero vector has no direction and is refused.
+## >> "mf:" u_se< "Manifold"
+## >> mf:s_phereProject 3.0 4.0 0.0
+## 0.6 0.8 0.0
+## >> mf:s_phereProject 2 3 r_eshape 3.0 4.0 0.0 0.0 0.0 2.0
+## 0.6 0.8 0.0
+## 0.0 0.0 1.0
+l:s_phereProject := { v ->
+  2 = t_ally s_hape v ? h:p_rojectRows v
+  n := h:n_orm v
+  n = 0.0 ? @ p_anic< "the zero vector has no direction: it cannot be put onto the sphere"
+  (f_loat v) / n
+}
+
+## Every row of P put onto the sphere.
+h:p_rojectRows := { P ->
+  n := s_qrt '+ r_/_2 (f_loat P) * f_loat P
+  '| r_/ n = 0.0 ? @ p_anic< "a zero row has no direction: it cannot be put onto the sphere"
+  (f_loat P) / n 'l_eft t_able o_ffsets 2 s_elect s_hape P
+}
+
+## `p s_phereDistance q`: the great-circle distance between two points
+## of the sphere, the angle between them in radians (0 to pi): the
+## shortest path along the sphere, as against the straight line
+## through it, which is shorter (its length is 2 sin of half the
+## angle). p and q must be on the sphere (s_phereProject).
+## >> "mf:" u_se< "Manifold"
+## >> 1.0 0.0 0.0 mf:s_phereDistance 0.0 1.0 0.0
+## 1.5707963267948966
+l:s_phereDistance := { p q -> (m, s) := p h:a_part q; m h:a_ngle s }
+
+## `s_phereDistances P`: the great-circle distance between every pair
+## of rows of P (points on the sphere): a matrix, 0 on its diagonal.
+## >> "mf:" u_se< "Manifold"
+## >> mf:s_phereDistances 2 2 r_eshape 1.0 0.0 0.0 1.0
+##                0.0 1.5707963267948966
+## 1.5707963267948966                0.0
+l:s_phereDistances := { P -> (M, S) := h:a_partPairs P; M h:a_ngle S }
+
+## `p s_phereTangent v`: the part of v that lies along the sphere at
+## p (in the tangent plane there): v less its part along p, the
+## normal. A tangent vector at p is one with no part along p.
+## >> "mf:" u_se< "Manifold"
+## >> 1.0 0.0 0.0 mf:s_phereTangent 2.0 3.0 0.0
+## 0.0 3.0 0.0
+l:s_phereTangent := { p v -> (f_loat v) - (p h:d_ot v) * f_loat p }
+
+## `p s_phereStep v`: the point reached from p by going along the
+## sphere in the direction of the tangent vector v, for a distance
+## equal to v's length (the exponential map): cos t p + sin t v / t
+## with t = |v|, put back onto the sphere so no rounding takes it
+## off. A zero v goes nowhere. (A quarter turn from the x axis along
+## y lands on the y axis; the x left over is cos of a quarter turn,
+## 0 up to the machine's rounding.)
+## >> "mf:" u_se< "Manifold"
+## >> 1.0 0.0 0.0 mf:s_phereStep 0.0 1.5707963267948966 0.0
+## 0.00000000000000006123233995736766 1.0 0.0
+l:s_phereStep := { p v ->
+  t := h:n_orm v
+  t = 0.0 ? f_loat p
+  l:s_phereProject ((c_os t) * f_loat p) + (s_in t) * (f_loat v) / t
+}
+
+## `p s_phereArrow q`: the tangent vector at p that s_phereStep
+## carries to q (the logarithmic map): it points along the sphere
+## toward q and is as long as the distance between them. For q = p
+## it is zero; for q the opposite point, which every direction
+## reaches at distance pi, it is zero too (there is no one arrow).
+## >> "mf:" u_se< "Manifold"
+## >> 1.0 0.0 0.0 mf:s_phereArrow 0.0 1.0 0.0
+## 0.0 1.5707963267948966 0.0
+l:s_phereArrow := { p q ->
+  u := p l:s_phereTangent q
+  n := h:n_orm u
+  n = 0.0 ? u
+  (p l:s_phereDistance q) * u / n
+}
+
+## The arrows at p to every row of P, one per row (s_phereArrow, over
+## a set at once): the mean's one step.
+h:a_rrows := { p P ->
+  c := (f_loat P) '+ '* i_nner f_loat p
+  U := (f_loat P) - c '* t_able f_loat p
+  n := s_qrt '+ r_/_2 U * U
+  (m, s) := P h:a_partRows p
+  ((m h:a_ngle s) / n m_ax 1e-300) h:s_caleRows U
+}
+
+## `s_phereMean P`: the mean of the rows of P on the sphere (the
+## Frechet or Karcher mean): the point whose summed squared distances
+## along the sphere to the rows is least. The plain mean of the rows
+## lies inside the sphere; this starts from that mean put onto the
+## sphere and takes 30 steps, each along the average of the arrows
+## to the rows, which is a fixed point when the arrows cancel. Points
+## spread over less than a hemisphere have one mean, and the steps
+## reach it; rows whose plain mean is the zero vector (say, two
+## opposite points) are refused.
+## >> "mf:" u_se< "Manifold"
+## >> mf:s_phereMean 2 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0
+## 0.7071067811865476 0.7071067811865476 0.0
+l:s_phereMean := { P ->
+  n := f_loat f_irst s_hape P
+  start := l:s_phereProject ('+ r_/ f_loat P) / n
+  30 '{ p -> p l:s_phereStep ('+ r_/ p h:a_rrows P) / n } p_ower start
+}
+
+## `s_phereOff p`: how far p is from the sphere: the difference
+## between its length and 1, as a size. 0 for a point on it; what a
+## test of a constraint reports. Given a set (a matrix), one per row.
+## >> "mf:" u_se< "Manifold"
+## >> mf:s_phereOff 0.0 0.5 0.0
+## 0.5
+## >> mf:s_phereOff 2 2 r_eshape 0.0 0.5 3.0 4.0
+## 0.5 4.0
+l:s_phereOff := { p ->
+  2 = t_ally s_hape p ? a_bs (s_qrt '+ r_/_2 (f_loat p) * f_loat p) - 1.0
+  a_bs (h:n_orm p) - 1.0
+}

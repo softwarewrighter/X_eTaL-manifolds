@@ -1,0 +1,24 @@
+#!/usr/bin/env xetal
+# Manifold in use: three points on the unit sphere, their distances
+# along it, a step and the arrow that undoes it, and their mean on the
+# sphere beside the plain mean, which is not. Run with "just demo Manifold sphere".
+"mf:" u_se< "Manifold"
+
+P := 3 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0   # the three axes, one point per row
+p := 1 s_elect P
+q := 2 s_elect P
+
+p mf:s_phereDistance q            # a quarter turn, in radians
+mf:s_phereDistances P             # every pair
+
+v := p mf:s_phereArrow q          # the arrow at p that reaches q
+v
+p mf:s_phereStep v                # the step along it: q, up to rounding
+p mf:s_phereStep 0.5 * v          # halfway there, still on the sphere
+mf:s_phereOff p mf:s_phereStep 0.5 * v
+
+m := ('+ r_/ P) / 3.0             # the plain mean: inside the sphere
+m
+mf:s_phereOff m
+mf:s_phereMean P                  # the mean on the sphere
+mf:s_phereOff mf:s_phereMean P
