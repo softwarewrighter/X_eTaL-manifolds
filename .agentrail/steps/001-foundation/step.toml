@@ -1,10 +1,11 @@
 number = 1
 slug = "foundation"
-status = "in-progress"
+status = "completed"
 description = """
 Step foundation (docs/plan.md, Saga 1 row 1; decisions G1, G2, G3,
 G4, G5, G1..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T10:53:57"
-commits = []
+completed_at = "2026-11-06T23:34:10"
+commits = ["629bc3a5600e677dbe31bb40fcdfc8911e9420b7"]
