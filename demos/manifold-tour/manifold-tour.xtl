@@ -1,0 +1,225 @@
+#!/usr/bin/env xetal
+## Manifold tour: five spaces this repository's experiments live on,
+## the circle, the sphere, the torus, the Swiss roll and the Poincare
+## disk, each drawn from its map (its own coordinates) into the space
+## around it, and on each one measurement of what a manifold is: two
+## points near each other are nearly as far apart along the space as
+## through it (locally flat), two points far apart are not; on the
+## roll, near through the air can be far along the sheet; on the disk,
+## near the rim a small step on paper is a long way. Nothing is trained.
+"mf:" u_se< "Manifold"
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+
+# -- the tour
+Pi := p_i @
+deg := Pi / 180.0
+
+## `a u:p_airs b`: a and b side by side, one (a, b) row per item (the
+## rows of a map). A general pairing belongs in X_eTaL-libraries: a
+## workaround here until it is asked for (docs/plan.md, G3b).
+u:p_airs := { a b -> o_\ (2 c_at t_ally a) r_eshape (f_loat a) c_at f_loat b }
+## `u:r_ound m`: m + 1 angles evenly round a full turn, 0 to 2 pi, the
+## first repeated last: a closed wire line.
+u:r_ound := { m -> (2.0 * Pi / f_loat m) * (f_loat r_ange m + 1) - 1.0 }
+## `n u:e_ach v`: every item of v repeated n times, in v's order.
+u:e_ach := { n v -> r_avel o_\ (n c_at t_ally v) r_eshape v }
+## `n u:t_imes v`: v whole, n times over.
+u:t_imes := { n v -> r_avel (n c_at t_ally v) r_eshape v }
+## `u:l_ength M`: the length of the wire line through the rows of M,
+## segment by segment (measured along the wire, not the curve).
+u:l_ength := { M -> '+ r_/ s_qrt '+ r_/_2 ((1 d_rop M) - -1 d_rop M) ^ 2.0 }
+## `p u:s_traight q`: the straight-line distance, through whatever
+## surrounds the space.
+u:s_traight := { p q -> s_qrt '+ r_/ ((f_loat p) - f_loat q) ^ 2.0 }
+## `u:t_wo M`: for the two points (rows) of M on the sphere or the
+## circle, the straight line through it and the distance along it.
+u:t_wo := { M -> ((1 s_elect M) u:s_traight 2 s_elect M) c_at (1 s_elect M) mf:s_phereDistance 2 s_elect M }
+## `u:l_onLat P`: points of the sphere back onto its map, (longitude,
+## latitude) in degrees: where a drawn arc runs on the flat view.
+u:l_onLat := { P -> (((2 s_elect_2 P) tr:a_tan2 1 s_elect_2 P) u:p_airs tr:a_sin 3 s_elect_2 P) / deg }
+
+### The circle: one dimension, drawn in two
+
+circleAngles := u:r_ound 72
+circle := mf:c_irclePoints circleAngles
+## Two points a tenth of a radian apart, and two 2.5 radians apart:
+## the chord through the disk and the arc along the circle, for each.
+circleNearA := 0.0 0.1
+circleFarA := 0.0 2.5
+circleNear := mf:c_irclePoints circleNearA
+circleFar := mf:c_irclePoints circleFarA
+circleNearD := u:t_wo circleNear
+circleFarD := u:t_wo circleFar
+
+### The sphere: two dimensions, drawn in three
+
+## The map's wire lines: five parallels (latitudes -60 to 60 degrees,
+## 48 segments round) and twelve half meridians (every 30 degrees of
+## longitude, pole to pole in 24 segments), as (longitude, latitude).
+parallelLL := (5 u:t_imes u:r_ound 48) u:p_airs 49 u:e_ach (30.0 * deg) * -2.0 -1.0 0.0 1.0 2.0
+meridianLL := (25 u:e_ach (30.0 * deg) * (f_loat r_ange 12) - 1.0) u:p_airs 12 u:t_imes (7.5 * deg) * (f_loat r_ange 25) - 13.0
+parallels := mf:s_pherePoints parallelLL
+meridians := mf:s_pherePoints meridianLL
+## Three points by longitude and latitude in degrees: p, q near it
+## (6 degrees east, 3 north), r far from it; the chord through the
+## sphere and the great circle along it, p to q and p to r; the arcs.
+sphereDeg := 3 2 r_eshape 20.0 30.0 26.0 33.0 110.0 -35.0
+sphereLL := deg * sphereDeg
+spherePts := mf:s_pherePoints sphereLL
+sphereNearD := u:t_wo 2 t_ake spherePts
+sphereFarD := u:t_wo (1 s_elect spherePts) c_at 3 s_elect spherePts
+sphereNearArc := (1 s_elect spherePts, 2 s_elect spherePts) mf:s_phereArc 12
+sphereFarArc := (1 s_elect spherePts, 3 s_elect spherePts) mf:s_phereArc 48
+sphereNearArcLL := u:l_onLat sphereNearArc
+sphereFarArcLL := u:l_onLat sphereFarArc
+## The chord from p to q worked in full: the differences coordinate
+## by coordinate, their squares, the sum (the chord is its square
+## root); and the length of p + q, from which the great circle is
+## 2 atan2(|p - q|, |p + q|).
+workedDiff := (1 s_elect spherePts) - 2 s_elect spherePts
+workedSq := workedDiff ^ 2.0
+workedSum := '+ r_/ workedSq
+workedPlus := s_qrt '+ r_/ ((1 s_elect spherePts) + 2 s_elect spherePts) ^ 2.0
+
+### The torus: two dimensions, drawn in three, with a hole
+
+radii := 3.0 1.0
+## Six rings round the hole (v every 60 degrees, 48 segments) and
+## twelve round the tube (u every 30 degrees, 24 segments), as (u, v).
+torusRingsUV := (6 u:t_imes u:r_ound 48) u:p_airs 49 u:e_ach (60.0 * deg) * (f_loat r_ange 6) - 1.0
+torusTubesUV := (25 u:e_ach (30.0 * deg) * (f_loat r_ange 12) - 1.0) u:p_airs 12 u:t_imes u:r_ound 24
+torusRings := radii mf:t_orusPoints torusRingsUV
+torusTubes := radii mf:t_orusPoints torusTubesUV
+## The outer ring (v = 0) and the inner ring (v = 180 degrees): the
+## same line of the map, measured along the wire.
+torusRimLengths := (u:l_ength 49 t_ake torusRings) c_at u:l_ength 49 t_ake 147 d_rop torusRings
+
+### The Swiss roll: a flat sheet rolled up, in three dimensions
+
+## The sheet: t from 1.5 pi to 4.5 pi (a turn and a half), h from -6
+## to 6. Five lines along the roll (60 segments) and thirteen across
+## it (straight, 2 points), as (t, h); and the map they unroll to,
+## (the length along the sheet, h).
+rollT := (1.5 * Pi) + (Pi / 20.0) * (f_loat r_ange 61) - 1.0
+rollAlongTH := (5 u:t_imes rollT) u:p_airs 61 u:e_ach -6.0 -3.0 0.0 3.0 6.0
+rollAcrossTH := (2 u:e_ach (1.5 * Pi) + (Pi / 4.0) * (f_loat r_ange 13) - 1.0) u:p_airs 13 u:t_imes -6.0 6.0
+rollAlong := mf:r_ollPoints rollAlongTH
+rollAcross := mf:r_ollPoints rollAcrossTH
+rollAlongMap := (mf:r_ollAlong 1 s_elect_2 rollAlongTH) u:p_airs 2 s_elect_2 rollAlongTH
+rollAcrossMap := (mf:r_ollAlong 1 s_elect_2 rollAcrossTH) u:p_airs 2 s_elect_2 rollAcrossTH
+## Three points of the sheet: a, b a little farther round, c one full
+## turn farther round at the same height, so that it sits right above
+## a's turn: through the air and along the sheet, a to b and a to c.
+rollTH := 3 2 r_eshape (5.2 0.0 5.5 0.0) c_at (5.2 + 2.0 * Pi) c_at 0.0
+rollPts := mf:r_ollPoints rollTH
+rollMap := (mf:r_ollAlong 1 s_elect_2 rollTH) u:p_airs 2 s_elect_2 rollTH
+rollNearD := ((1 s_elect rollPts) u:s_traight 2 s_elect rollPts) c_at (1 s_elect rollTH) mf:r_ollDistance 2 s_elect rollTH
+rollFarD := ((1 s_elect rollPts) u:s_traight 3 s_elect rollPts) c_at (1 s_elect rollTH) mf:r_ollDistance 3 s_elect rollTH
+
+### The Poincare disk: two dimensions, flat on the page, with its own ruler
+
+## The rim (not part of the disk: points of the disk never reach it),
+## and the disk's ruler laid along a diameter: the points 0, 1, 2, 3,
+## 4 and 5 apart from the middle by the disk's distance.
+rim := mf:c_irclePoints u:r_ound 90
+ruler := (t_anh (0.0 1.0 2.0 3.0 4.0 5.0) / 2.0) u:p_airs 6 r_eshape 0.0
+rulerD := '{ k -> 0.0 0.0 mf:b_allDistance k s_elect ruler } e_ach r_ange 6
+## Two points near the rim, 20 degrees apart round it (at the top,
+## off the ruler), and the same two drawn in toward the middle: on paper and by the disk's
+## distance, for each; and the geodesics between them.
+diskFar := 0.95 * mf:c_irclePoints deg * 80.0 100.0
+diskNear := 0.1 * mf:c_irclePoints deg * 80.0 100.0
+diskFarD := ((1 s_elect diskFar) u:s_traight 2 s_elect diskFar) c_at (1 s_elect diskFar) mf:b_allDistance 2 s_elect diskFar
+diskNearD := ((1 s_elect diskNear) u:s_traight 2 s_elect diskNear) c_at (1 s_elect diskNear) mf:b_allDistance 2 s_elect diskNear
+diskFarGeo := (1 s_elect diskFar, 2 s_elect diskFar) mf:b_allGeodesic 24
+diskNearGeo := (1 s_elect diskNear, 2 s_elect diskNear) mf:b_allGeodesic 24
+## Three more geodesics, to see their shape: a diameter, and two arcs.
+geo1 := (-0.9 0.0, 0.9 0.0) mf:b_allGeodesic 24
+geo2 := (-0.5 0.6, 0.7 0.2) mf:b_allGeodesic 24
+geo3 := (0.0 -0.9, 0.6 -0.6) mf:b_allGeodesic 24
+
+### The dimensions
+
+## Each space's intrinsic dimension (how many coordinates its map
+## has: the circle's map is a list of angles, the others' are pairs)
+## and its ambient dimension (how many coordinates the space it is
+## drawn in has), read off the arrays' shapes: one row per space, the
+## circle, the sphere, the torus, the roll, the disk.
+dims := ((t_ally s_hape circleAngles) c_at (2 s_elect s_hape parallelLL) c_at (2 s_elect s_hape torusRingsUV) c_at (2 s_elect s_hape rollAlongMap) c_at 2 s_elect s_hape rim) u:p_airs (2 s_elect s_hape circle) c_at (2 s_elect s_hape parallels) c_at (2 s_elect s_hape torusRings) c_at (2 s_elect s_hape rollAlong) c_at 2 s_elect s_hape rim
+# -- end of the core
+
+### The dimensions
+
+dims
+
+### The circle
+
+"intrinsic and ambient dimension" ch:t_est 1.0 2.0 ch:n_ear 1 s_elect dims
+"the circle's points have length 1" ch:t_est (73 r_eshape 0.0) ch:n_ear mf:s_phereOff circle
+circleNear
+"near: the chord and the arc agree to a part in a thousand" ch:t_est 1 ch:i_s 0.001 > a_bs 1.0 - (1 s_elect circleNearD) / 2 s_elect circleNearD
+circleNearD
+circleFar
+"far: they do not" ch:t_est 1 ch:i_s 0.1 < a_bs 1.0 - (1 s_elect circleFarD) / 2 s_elect circleFarD
+circleFarD
+
+### The sphere
+
+"intrinsic and ambient dimension" ch:t_est 2.0 3.0 ch:n_ear 2 s_elect dims
+"the wire lines are on the sphere" ch:t_est 0.0 ch:n_ear 'm_ax r_/ (mf:s_phereOff parallels) c_at mf:s_phereOff meridians
+s_hape parallels
+s_hape meridians
+sphereDeg
+spherePts
+"near: the chord and the great circle, p to q" ch:t_est 1 ch:i_s 0.01 > a_bs 1.0 - (1 s_elect sphereNearD) / 2 s_elect sphereNearD
+sphereNearD
+workedDiff
+workedSq
+workedSum
+s_qrt workedSum
+workedPlus
+"far: the chord and the great circle, p to r" ch:t_est 1 ch:i_s 0.1 < a_bs 1.0 - (1 s_elect sphereFarD) / 2 s_elect sphereFarD
+sphereFarD
+"the arc from p to r is on the sphere, p first and r last" ch:t_est ((1 s_elect spherePts) c_at 3 s_elect spherePts) ch:n_ear (1 s_elect sphereFarArc) c_at 49 s_elect sphereFarArc
+u:l_ength sphereFarArc
+
+### The torus
+
+"intrinsic and ambient dimension" ch:t_est 2.0 3.0 ch:n_ear 3 s_elect dims
+"the wire lines are on the torus" ch:t_est 0.0 ch:n_ear 'm_ax r_/ (radii mf:t_orusOff torusRings) c_at radii mf:t_orusOff torusTubes
+s_hape torusRings
+s_hape torusTubes
+"the outer rim is longer than the inner" ch:t_est 1 ch:i_s (1 s_elect torusRimLengths) > 2 s_elect torusRimLengths
+torusRimLengths
+(2.0 * Pi) * 4.0 2.0
+
+### The Swiss roll
+
+"intrinsic and ambient dimension" ch:t_est 2.0 3.0 ch:n_ear 4 s_elect dims
+"the roll's points are t from the axis" ch:t_est (1 s_elect_2 rollAlongTH) ch:n_ear s_qrt ((1 s_elect_2 rollAlong) ^ 2.0) + (3 s_elect_2 rollAlong) ^ 2.0
+s_hape rollAlong
+s_hape rollAcross
+rollTH
+rollPts
+rollMap
+"near: through the air and along the sheet, a to b" ch:t_est 1 ch:i_s 0.01 > a_bs 1.0 - (1 s_elect rollNearD) / 2 s_elect rollNearD
+rollNearD
+"a turn apart: near through the air, far along the sheet, a to c" ch:t_est 1 ch:i_s 5.0 < (2 s_elect rollFarD) / 1 s_elect rollFarD
+rollFarD
+
+### The Poincare disk
+
+"intrinsic and ambient dimension" ch:t_est 2.0 2.0 ch:n_ear 5 s_elect dims
+ruler
+"the ruler's marks are 0 to 5 from the middle" ch:t_est 0.0 1.0 2.0 3.0 4.0 5.0 ch:n_ear rulerD
+diskFar
+"near the rim: on paper and by the disk" ch:t_est 1 ch:i_s 5.0 < (2 s_elect diskFarD) / 1 s_elect diskFarD
+diskFarD
+diskNear
+"near the middle: on paper and by the disk, about twice" ch:t_est 1 ch:i_s 0.02 > a_bs 2.0 - (2 s_elect diskNearD) / 1 s_elect diskNearD
+diskNearD
+"the geodesics stay inside the disk" ch:t_est 1 ch:i_s 1.0 > 'm_ax r_/ s_qrt '+ r_/_2 (diskFarGeo c_at diskNearGeo c_at geo1 c_at geo2 c_at geo3) ^ 2.0
+"the diameter is straight" ch:t_est (25 r_eshape 0.0) ch:n_ear 2 s_elect_2 geo1
+"the geodesic near the rim bows toward the middle" ch:t_est 1 ch:i_s (s_qrt '+ r_/ (13 s_elect diskFarGeo) ^ 2.0) < s_qrt '+ r_/ ((1 s_elect diskFar) + 2 s_elect diskFar) ^ 2.0 / 4.0
+13 s_elect diskFarGeo

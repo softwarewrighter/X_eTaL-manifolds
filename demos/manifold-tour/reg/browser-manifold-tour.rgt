@@ -1,0 +1,3 @@
+command = "scripts/browser-check.sh manifold-tour"
+exit_code = 0
+desc = "manifold-tour: the built page run in headless Chrome shows X_eTaL's results"

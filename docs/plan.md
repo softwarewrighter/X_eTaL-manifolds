@@ -143,8 +143,11 @@ demos/<slug>/            an experiment and its page (G4)
   demo.toml README.md *.xtl data/ presets/ reg/ web/
 demos/_template/         what just new-demo copies
 libs/<Name>/             a library of this repository (G3, G4)
-shared/                  this repository's page content: its glossary rows
-                         (the shell itself is X_eTaL-ML's, ask GM1)
+shared/                  this repository's page content: its site (shared/site:
+                         the Site microscope's header takes, the footer with the
+                         pins, the plain framed sections of a page's arc) and in
+                         time its glossary rows (the shell itself is X_eTaL-ML's,
+                         ask GM1)
 scripts/                 the logic behind the just recipes
 docs/plan.md            this plan
 docs/research.txt        the research it came from (archival)
@@ -159,9 +162,11 @@ work/                    the clones (gitignored)
 pages/                   the built site (not tracked; just publish)
 ```
 
-As of step foundation (2026-11-06) the machinery, `libs/Manifold`
-and `demos/sphere-hello` exist; `shared/`, the other documents and
-the other demos are made by the steps of Saga 1 that name them.
+As of step manifold-tour (2026-11-07) the machinery, `libs/Manifold`
+(the sphere, the drawn spaces, the ball's distance and geodesic),
+`shared/site`, `demos/sphere-hello` and `demos/manifold-tour` (live)
+exist; the other documents and the other demos are made by the steps
+of Saga 1 that name them.
 
 ## Research areas and tracks
 
@@ -194,7 +199,7 @@ built in Saga 1; the rest are a roadmap.
 
 | # | Demo (slug) | ML problem | Geometric comparison | Priority | Saga |
 | - | ----------- | ---------- | -------------------- | -------- | ---- |
-| | manifold-tour | none: an introduction to what a manifold is, the kinds used here and what each is for | the circle, the sphere, the torus, a Swiss roll, the Poincare disk: one measurement each of local flatness | first | 1 |
+| | manifold-tour | none: an introduction to what a manifold is, the kinds used here and what each is for (live since 2026-11-07) | the circle, the sphere, the torus, a Swiss roll, the Poincare disk: one measurement each of local flatness | first | 1 |
 | | sphere-hello | nearest neighbors and an average of unit vectors | straight-line and great-circle distance; a plain mean and one put back on the sphere | first | 1 |
 | | baseline-knn | classification by nearest neighbors | none yet: straight-line distance on the three data sets, the row every later comparison is set against | first | 1 |
 | 01 | representation-explorer | classification and clustering | flat, spherical, hyperbolic | P0 | 1 |

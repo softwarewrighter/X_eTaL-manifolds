@@ -1,0 +1,15 @@
+[package]
+name = "manifold-tour-web"
+description = "Manifold tour: what a manifold is, on the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each turning in the browser from X_eTaL's coordinates, with its map and one measurement of near and far beside it"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+web-sys = { version = "0.3", features = ["KeyboardEvent", "PointerEvent"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

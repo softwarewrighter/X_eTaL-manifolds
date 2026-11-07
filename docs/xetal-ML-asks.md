@@ -34,7 +34,7 @@ X_eTaL-fine-tuning at d78aca4.
 | - | ------ | ---- | --- | --------- | ---------- |
 | GM1 | planned there (X_eTaL-ML abc1745 inserted its step manifolds-asks for GM1 and GM3, 2026-11-06); **blocker** for step shell-adoption | refactoring | The teaching shell, shared: take X_eTaL-fine-tuning's `shared/lesson` in beside `shared/microscope`, configured by the dependent. Details below | every live page here (first: sphere-hello and baseline-knn, step shell-adoption) | none that does not copy the crate. Steps foundation, research-foundation and experiment-kit need no page and do not wait |
 | GM2 | not yet taken | refactoring | The scripts, shared: the repository-independent ones runnable from the clone at the pin against a dependent's root; 23 of 33 are unchanged here. Details and the record below | step foundation | adapted copies, each with a note of where it came from, as X_eTaL-fine-tuning holds them |
-| GM3 | planned there (X_eTaL-ML abc1745, step manifolds-asks); a demo-private view is the workaround from step manifold-tour until it lands | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
+| GM3 | planned there (X_eTaL-ML abc1745, step manifolds-asks); **workaround in use** since step manifold-tour (2026-11-07): `demos/manifold-tour/web/src/turn.rs`, the demo's own orthographic projection by yaw and pitch from pointer, keyboard and touch, removed when GM3 lands at the pin | sharing | The turning view, shared: points, segments and a wire surface in three dimensions, turned by yaw and pitch from pointer, keyboard and touch, in `microscope`. Details below | sphere-hello and representation-explorer pages (steps shell-adoption and representation-sphere) | the flat views and the numbers, which every page has anyway; not a blocker |
 
 ## GM1: the teaching shell, shared
 
@@ -210,3 +210,13 @@ want the same part; a second projection here would be a copy of a
 thing X_eTaL-ML already has twice. Not a blocker: a page has its flat
 reading view and its numbers in any case, and shows the turning view
 once this lands.
+
+**The workaround in use** (step manifold-tour, 2026-11-07): the
+manifold-tour page turns its circle, sphere, torus and Swiss roll with
+`demos/manifold-tour/web/src/turn.rs` (about sixty lines: yaw round
+the up axis, pitch toward the viewer, orthographic, segments sorted
+back to front and lightened by depth, the angle in the caption), fed
+only coordinates the X_eTaL program printed. It is what this ask
+wants, written small and private to one demo, as the plan allows
+(G13 as amended) and no more: when GM3 lands the module goes and the
+page calls the shared view.

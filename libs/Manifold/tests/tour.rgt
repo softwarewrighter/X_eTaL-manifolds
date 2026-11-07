@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run tour.xtl"
+exit_code = 0

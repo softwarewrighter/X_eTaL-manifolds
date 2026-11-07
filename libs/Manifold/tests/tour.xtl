@@ -1,0 +1,98 @@
+#!/usr/bin/env xetal
+# Manifold: the spaces drawn (the circle, the sphere's map and arcs,
+# the torus, the Swiss roll) and the Poincare ball's distance and
+# geodesic. A point of each lies where its definition says: on the
+# sphere, at the torus's radii, on the roll's spiral; a geodesic runs
+# from its first point to its last, evenly, by the space's own
+# distance. Run with "just run-lib Manifold tour".
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+"tr:" u_se< "Trig"
+
+Pi := p_i @
+x := 1.0 0.0 0.0
+y := 0.0 1.0 0.0
+z := 0.0 0.0 1.0
+
+# The circle: unit length, at the angle given; the sphere's functions measure it.
+C := mf:c_irclePoints (Pi / 6.0) * 0.0 3.0 6.0 2.0   # 0, a quarter turn, a half, a third
+"circle points have length 1" ch:t_est (4 r_eshape 0.0) ch:n_ear mf:s_phereOff C
+"the angle 0 is (1, 0)" ch:t_est 1.0 0.0 ch:n_ear 1 s_elect C
+"a quarter turn is (0, 1)" ch:t_est 0.0 1.0 ch:n_ear 2 s_elect C
+"a third of a turn" ch:t_est (0.5 c_at s_qrt 0.75) ch:n_ear 4 s_elect C
+"the angle between two circle points is their arc" ch:t_est (Pi / 3.0) ch:n_ear (1 s_elect C) mf:s_phereDistance 4 s_elect C
+
+# The sphere's map: longitude and latitude to a point on the sphere.
+LL := (Pi / 2.0) * 4 2 r_eshape 0.0 0.0 1.0 0.0 0.0 1.0 2.0 -1.0
+S := mf:s_pherePoints LL
+"map points are on the sphere" ch:t_est (4 r_eshape 0.0) ch:n_ear mf:s_phereOff S
+"longitude 0, latitude 0 is x" ch:t_est x ch:n_ear 1 s_elect S
+"a quarter turn east is y" ch:t_est y ch:n_ear 2 s_elect S
+"the north pole is z" ch:t_est z ch:n_ear 3 s_elect S
+"the south pole is -z" ch:t_est (n_eg z) ch:n_ear 4 s_elect S
+"a parallel keeps its latitude" ch:t_est (3 r_eshape s_in 0.5) ch:n_ear 3 s_elect_2 mf:s_pherePoints 3 2 r_eshape 0.0 0.5 1.0 0.5 2.0 0.5
+
+# The great-circle arc: from p to q, on the sphere, evenly spaced along it.
+A := (x, y) mf:s_phereArc 4
+"the arc has n + 1 points" ch:t_est 5 3 ch:i_s s_hape A
+"the arc starts at p" ch:t_est x ch:n_ear 1 s_elect A
+"the arc ends at q" ch:t_est y ch:n_ear 5 s_elect A
+"the arc is on the sphere" ch:t_est (5 r_eshape 0.0) ch:n_ear mf:s_phereOff A
+"the arc is evenly spaced" ch:t_est ((Pi / 8.0) * 0.0 1.0 2.0 3.0 4.0) ch:n_ear 1 s_elect mf:s_phereDistances A
+"the arc to the same point stays put" ch:t_est (3 3 r_eshape x) ch:n_ear (x, x) mf:s_phereArc 2
+
+# The torus: at (u, v) the point is R + r cos v from the axis and r sin v up; on the torus.
+radii := 3.0 1.0
+UV := (Pi / 2.0) * 4 2 r_eshape 0.0 0.0 0.0 2.0 1.0 1.0 2.0 0.0
+T := radii mf:t_orusPoints UV
+"u = v = 0 is the outer rim" ch:t_est 4.0 0.0 0.0 ch:n_ear 1 s_elect T
+"v = pi is the inner rim" ch:t_est 2.0 0.0 0.0 ch:n_ear 2 s_elect T
+"v = pi / 2 is the top of the tube" ch:t_est 0.0 3.0 1.0 ch:n_ear 3 s_elect T
+"u = pi is across the hole" ch:t_est -4.0 0.0 0.0 ch:n_ear 4 s_elect T
+"torus points are on the torus" ch:t_est (4 r_eshape 0.0) ch:n_ear radii mf:t_orusOff T
+"the middle of the hole is R - r off" ch:t_est 2.0 ch:n_ear radii mf:t_orusOff 0.0 0.0 0.0
+"a point on the axis of the tube is r off" ch:t_est 1.0 ch:n_ear radii mf:t_orusOff 0.0 3.0 0.0
+"a point outside is as far off as it is out" ch:t_est 1.5 ch:n_ear radii mf:t_orusOff 5.5 0.0 0.0
+
+# The Swiss roll: at (t, h) the point is t from the axis, at angle t round it, h up.
+TH := o_\ 2 3 r_eshape (Pi * 0.0 1.0 2.0) c_at 0.0 1.0 -1.0
+W := mf:r_ollPoints TH
+"t = 0 is on the axis" ch:t_est 0.0 0.0 0.0 ch:n_ear 1 s_elect W
+"t = pi is pi from the axis, half a turn round, 1 up" ch:t_est ((n_eg Pi) c_at 1.0 0.0) ch:n_ear 2 s_elect W
+"t = 2 pi is a full turn round, -1 up" ch:t_est ((2.0 * Pi) c_at -1.0 0.0) ch:n_ear 3 s_elect W
+"the distance from the axis is t" ch:t_est (1 s_elect_2 TH) ch:n_ear s_qrt ((1 s_elect_2 W) ^ 2.0) + (3 s_elect_2 W) ^ 2.0
+"the height is h" ch:t_est (2 s_elect_2 TH) ch:n_ear 2 s_elect_2 W
+"along the sheet from the middle to 0 is 0" ch:t_est 0.0 ch:n_ear mf:r_ollAlong 0.0
+"along grows like half t squared, far out" ch:t_est 1 ch:i_s 0.01 > a_bs 1.0 - (mf:r_ollAlong 20.0) / 200.0 + 0.5 * tr:a_sinh 20.0
+# Central difference: the rate of along is the speed sqrt(1 + t^2) of the spiral (to the difference's own accuracy, a millionth).
+"along's rate is sqrt(1 + t^2)" ch:t_est 1 ch:i_s 0.000001 > a_bs (s_qrt 1.0 + 4.0) - ((mf:r_ollAlong 2.0001) - mf:r_ollAlong 1.9999) / 0.0002
+"the sheet distance up the roll is the height" ch:t_est 3.0 ch:n_ear 2.0 0.0 mf:r_ollDistance 2.0 3.0
+"the sheet distance round the roll is the length along" ch:t_est ((mf:r_ollAlong 5.0) - mf:r_ollAlong 2.0) ch:n_ear 2.0 0.0 mf:r_ollDistance 5.0 0.0
+"the sheet distance is symmetric" ch:t_est (2.0 1.0 mf:r_ollDistance 5.0 -1.0) ch:n_ear 5.0 -1.0 mf:r_ollDistance 2.0 1.0
+
+# The Poincare ball: distance, against the acosh form and the easy cases.
+o := 0.0 0.0
+p := 0.5 0.0
+q := 0.0 0.5
+"the same point" ch:t_est 0.0 ch:n_ear p mf:b_allDistance p
+"from the middle, 2 atanh r" ch:t_est (2.0 * tr:a_tanh 0.5) ch:n_ear o mf:b_allDistance p
+"symmetric" ch:t_est (p mf:b_allDistance q) ch:n_ear q mf:b_allDistance p
+u:a_coshForm := { a b -> tr:a_cosh 1.0 + (2.0 * '+ r_/ (a - b) ^ 2.0) / (1.0 - '+ r_/ a * a) * 1.0 - '+ r_/ b * b }
+"the acosh form agrees" ch:t_est (p u:a_coshForm q) ch:n_ear p mf:b_allDistance q
+"the acosh form agrees off the axes" ch:t_est (0.3 -0.4 u:a_coshForm -0.7 0.2) ch:n_ear 0.3 -0.4 mf:b_allDistance -0.7 0.2
+"near the middle, about twice the plain distance" ch:t_est 1 ch:i_s 0.001 > a_bs 2.0 - (o mf:b_allDistance 0.001 0.0) / 0.001
+"near the rim, far apart" ch:t_est 1 ch:i_s 5.0 < 0.99 0.0 mf:b_allDistance -0.99 0.0
+"the triangle inequality" ch:t_est 1 ch:i_s (p mf:b_allDistance q) <= (p mf:b_allDistance 0.2 0.3) + 0.2 0.3 mf:b_allDistance q
+
+# The geodesic: from p to q, inside the ball, evenly spaced by the ball's distance.
+G := (p, q) mf:b_allGeodesic 4
+"the geodesic has n + 1 points" ch:t_est 5 2 ch:i_s s_hape G
+"the geodesic starts at p" ch:t_est p ch:n_ear 1 s_elect G
+"the geodesic ends at q" ch:t_est q ch:n_ear 5 s_elect G
+"the geodesic stays inside the ball" ch:t_est 1 ch:i_s '& r_/ 1.0 > s_qrt '+ r_/_2 G * G
+d := p mf:b_allDistance q
+"the geodesic is evenly spaced" ch:t_est ((d / 4.0) * 0.0 1.0 2.0 3.0 4.0) ch:n_ear (p mf:b_allDistance 1 s_elect G) c_at (p mf:b_allDistance 2 s_elect G) c_at (p mf:b_allDistance 3 s_elect G) c_at (p mf:b_allDistance 4 s_elect G) c_at p mf:b_allDistance 5 s_elect G
+"a diameter is straight" ch:t_est (5 r_eshape 0.0) ch:n_ear 2 s_elect_2 (-0.5 0.0, 0.5 0.0) mf:b_allGeodesic 4
+"the geodesic to the same point stays put" ch:t_est (3 2 r_eshape p) ch:n_ear (p, p) mf:b_allGeodesic 2
+# A geodesic that is not a diameter bows toward the middle: its midpoint is nearer the middle than the chord's.
+"the geodesic bows toward the middle" ch:t_est 1 ch:i_s (s_qrt '+ r_/ (3 s_elect G) ^ 2.0) < s_qrt '+ r_/ ((p + q) / 2.0) ^ 2.0

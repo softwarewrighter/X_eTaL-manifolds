@@ -1,0 +1,11 @@
+[package]
+name = "site"
+description = "X_eTaL-manifolds' site for its pages: the Site microscope's header and footer take, a footer with the pins, and the plain framed sections of a page's arc"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[dependencies]
+microscope = { path = "../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }

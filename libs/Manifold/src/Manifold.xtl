@@ -1,22 +1,27 @@
-## Manifold: the unit sphere, and in time the Poincare ball: the
-## distance measured along the space, putting a point onto it, the
-## tangent part of a vector at a point, a step from a point along a
-## tangent vector that stays on the space and the arrow that undoes it,
-## a mean that stays on the space, and how far off it a point is.
+## Manifold: the unit sphere, the Poincare ball, and the pictures of
+## the circle, the sphere, the torus and the Swiss roll: the distance
+## measured along the space, putting a point onto it, the tangent part
+## of a vector at a point, a step from a point along a tangent vector
+## that stays on the space and the arrow that undoes it, a mean that
+## stays on the space, how far off it a point is; and the points of
+## each space at given coordinates of its map, for drawing it.
 ## Import it with an alias of your choice: "mf:" u_se< "Manifold".
 ## Put libs/Manifold/src on XETAL_PATH ("just path"); the reference is libs/Manifold/docs.
 ## Names with l: are exported; those under h: are private to this file.
 ##
 ## A point is a vector of Floats, in any number of dimensions; a set
 ## of points is a matrix, one point per row. Each space has a name
-## that starts its functions (s_phere now; b_all, the Poincare ball,
-## when it joins), and the word after it is the same verb for every
-## space: Project (onto it), Distance (along it), Tangent (the part of
-## a vector along it at a point), Step (from a point, along a tangent
-## vector, staying on it), Arrow (the tangent vector a Step would take
-## from one point to another), Mean (of a set, on it), Off (how far a
-## point is from it). So a program written for the sphere reads the
-## same on the ball. Every result is a Float.
+## that starts its functions (s_phere, b_all the Poincare ball,
+## c_ircle, t_orus, r_oll the Swiss roll), and the word after it is
+## the same verb for every space: Project (onto it), Distance (along
+## it), Tangent (the part of a vector along it at a point), Step (from
+## a point, along a tangent vector, staying on it), Arrow (the tangent
+## vector a Step would take from one point to another), Mean (of a
+## set, on it), Off (how far a point is from it); and for drawing,
+## Points (the points at rows of coordinates of the space's map), Arc
+## or Geodesic (points along the shortest path between two points).
+## So a program written for the sphere reads the same on the ball.
+## Every result is a Float.
 
 "tr:" u_se< "Trig"
 
@@ -183,4 +188,193 @@ l:s_phereMean := { P ->
 l:s_phereOff := { p ->
   2 = t_ally s_hape p ? a_bs (s_qrt '+ r_/_2 (f_loat p) * f_loat p) - 1.0
   a_bs (h:n_orm p) - 1.0
+}
+
+## `k c_oordinate p`: the k-th coordinate of a point, or the k-th
+## column of a set of points (a matrix), as Floats.
+h:c_oordinate := { k p -> 2 = t_ally s_hape p ? f_loat k s_elect_2 p; f_loat k s_elect p }
+
+## `c_olumns M`: the columns of a (rows x n) matrix given as one vector
+## of n columns laid end to end, back as the matrix: the transpose of
+## the n x rows reshape. For writing a set of points coordinate by
+## coordinate.
+h:c_olumns := { n v -> o_\ (n c_at (t_ally v) d_iv n) r_eshape v }
+
+### The sphere, drawn
+
+## `s_pherePoints LL`: the point of the unit sphere at each
+## (longitude, latitude) row of LL, in radians (longitude round the
+## z axis from the x axis, latitude up from the equator): one row
+## (x, y, z) per row of LL. These are the sphere's map: a parallel is
+## rows of one latitude and many longitudes, a meridian rows of one
+## longitude. (A quarter turn of latitude is the pole: its x is cos
+## of a quarter turn, 0 up to the machine's rounding.)
+## >> "mf:" u_se< "Manifold"
+## >> mf:s_pherePoints 2 2 r_eshape 0.0 0.0 0.0 1.5707963267948966
+##                                1.0 0.0 0.0
+## 0.00000000000000006123233995736766 0.0 1.0
+l:s_pherePoints := { LL ->
+  lon := 1 h:c_oordinate LL
+  lat := 2 h:c_oordinate LL
+  3 h:c_olumns ((c_os lat) * c_os lon) c_at ((c_os lat) * s_in lon) c_at s_in lat
+}
+
+## `(p, q) s_phereArc n`: n + 1 points along the great circle from p
+## to q (both on the sphere), p first and q last, evenly spaced along
+## it: the points s_phereStep reaches from p along 0, 1/n, ..., 1 of
+## the arrow to q. For q = p, or q the opposite point (no one arc),
+## every point is p.
+## >> "mf:" u_se< "Manifold"
+## >> (1.0 0.0 0.0, 0.0 1.0 0.0) mf:s_phereArc 2
+##                                1.0                0.0 0.0
+##                 0.7071067811865476 0.7071067811865475 0.0
+## 0.00000000000000006123233995736766                1.0 0.0
+l:s_phereArc := { (p, q) n ->
+  v := p l:s_phereArrow q
+  t := h:n_orm v
+  rows := (n + 1) r_eshape 1.0
+  t = 0.0 ? rows '* t_able f_loat p
+  T := (t / f_loat n) * (f_loat r_ange n + 1) - 1.0
+  h:p_rojectRows ((c_os T) '* t_able f_loat p) + (s_in T) '* t_able v / t
+}
+
+### The circle
+
+## `c_irclePoints A`: the point of the unit circle at each angle of A
+## (radians from the x axis, counterclockwise): one row (x, y) per
+## angle. The circle is the sphere of one dimension, the unit sphere
+## in two: s_phereProject puts a point onto it, s_phereDistance
+## measures along it (the angle between two points), s_phereArc draws
+## between them.
+## >> "mf:" u_se< "Manifold"
+## >> mf:c_irclePoints 0.0 3.141592653589793
+##  1.0                                0.0
+## -1.0 0.00000000000000012246467991473532
+l:c_irclePoints := { A -> a := f_loat A; 2 h:c_olumns (c_os a) c_at s_in a }
+
+### The torus
+
+## `radii t_orusPoints UV`: the point of the torus of radii R r (R
+## from the middle of the hole to the middle of the tube, r the
+## tube's) at each (u, v) row of UV, in radians (u round the hole, v
+## round the tube): ((R + r cos v) cos u, (R + r cos v) sin u,
+## r sin v), one row per row of UV. The torus's map is the (u, v)
+## rectangle, 0 to 2 pi each way, each pair of opposite edges joined.
+## >> "mf:" u_se< "Manifold"
+## >> 3.0 1.0 mf:t_orusPoints 2 2 r_eshape 0.0 0.0 0.0 3.141592653589793
+## 4.0 0.0                                0.0
+## 2.0 0.0 0.00000000000000012246467991473532
+l:t_orusPoints := { radii UV ->
+  R := f_loat 1 s_elect radii
+  r := f_loat 2 s_elect radii
+  u := 1 h:c_oordinate UV
+  v := 2 h:c_oordinate UV
+  w := R + r * c_os v
+  3 h:c_olumns (w * c_os u) c_at (w * s_in u) c_at r * s_in v
+}
+
+## `radii t_orusOff p`: how far p is from the torus of radii R r: the
+## distance from p to the circle through the middle of the tube, less
+## r, as a size. 0 for a point on it. Given a set (a matrix), one per
+## row.
+## >> "mf:" u_se< "Manifold"
+## >> 3.0 1.0 mf:t_orusOff 0.0 0.0 0.0
+## 2.0
+## >> 3.0 1.0 mf:t_orusOff 2 3 r_eshape 4.0 0.0 0.0 3.0 0.0 0.0
+## 0.0 1.0
+l:t_orusOff := { radii p ->
+  R := f_loat 1 s_elect radii
+  r := f_loat 2 s_elect radii
+  x := 1 h:c_oordinate p
+  y := 2 h:c_oordinate p
+  z := 3 h:c_oordinate p
+  rho := s_qrt (x * x) + y * y
+  a_bs (s_qrt ((rho - R) ^ 2.0) + z * z) - r
+}
+
+### The Swiss roll
+
+## `r_ollPoints TH`: the point of the Swiss roll at each (t, h) row of
+## TH: (t cos t, h, t sin t). The roll is a flat sheet rolled up:
+## along t it winds round the y axis, farther out with every turn (a
+## spiral whose radius is t); along h it runs straight up the axis.
+## Its map is the sheet itself, the rectangle of (r_ollAlong t, h).
+## >> "mf:" u_se< "Manifold"
+## >> mf:r_ollPoints 2 2 r_eshape 0.0 0.0 3.141592653589793 1.0
+##                0.0 0.0                                0.0
+## -3.141592653589793 1.0 0.00000000000000038473413874435795
+l:r_ollPoints := { TH ->
+  t := 1 h:c_oordinate TH
+  h := 2 h:c_oordinate TH
+  3 h:c_olumns (t * c_os t) c_at h c_at t * s_in t
+}
+
+## `r_ollAlong t`: the length of the roll's spiral from its middle
+## (t = 0) out to t, (t sqrt(1 + t^2) + asinh t) / 2: how far along
+## the unrolled sheet the points at t lie. Its map's first coordinate.
+## >> "mf:" u_se< "Manifold"
+## >> mf:r_ollAlong 0.0 1.0
+## 0.0 1.147793574696319
+l:r_ollAlong := { t -> x := f_loat t; ((x * s_qrt 1.0 + x * x) + tr:a_sinh x) / 2.0 }
+
+## `a r_ollDistance b`: the distance along the sheet between the
+## points of the roll at (t, h) a and b. The sheet is flat, so it is
+## the plain distance between the two unrolled,
+## sqrt((along a - along b)^2 + (h_a - h_b)^2): two points a turn
+## apart are near in three dimensions and far along the sheet.
+## >> "mf:" u_se< "Manifold"
+## >> 0.0 0.0 mf:r_ollDistance 1.0 0.0
+## 1.147793574696319
+l:r_ollDistance := { a b ->
+  da := (l:r_ollAlong 1 s_elect a) - l:r_ollAlong 1 s_elect b
+  dh := (f_loat 2 s_elect a) - f_loat 2 s_elect b
+  s_qrt (da * da) + dh * dh
+}
+
+### The Poincare ball
+
+## `u m_obius v`: Mobius addition, the ball's own way of adding (u
+## then v, each inside the unit ball): ((1 + 2 u.v + |v|^2) u +
+## (1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2). The result stays in
+## the ball; (-u) m_obius v is v seen from u, as a vector at the
+## middle.
+h:m_obius := { u v ->
+  uv := u h:d_ot v
+  uu := u h:d_ot u
+  vv := v h:d_ot v
+  (((1.0 + (2.0 * uv) + vv) * f_loat u) + (1.0 - uu) * f_loat v) / (1.0 + (2.0 * uv) + uu * vv)
+}
+
+## `p b_allDistance q`: the distance between two points of the
+## Poincare ball (the inside of the unit sphere with the hyperbolic
+## metric; in two dimensions the Poincare disk), 2 atanh of the
+## length of q seen from p, (-p) m_obius q. Near the middle it is
+## twice the plain distance; toward the rim it grows without bound,
+## so points near the rim a little apart in the plane are far apart
+## along the ball. p and q must be inside the ball (length under 1).
+## >> "mf:" u_se< "Manifold"
+## >> 0.0 0.0 mf:b_allDistance 0.5 0.0
+## 1.0986122886681098
+l:b_allDistance := { p q -> 2.0 * tr:a_tanh h:n_orm (n_eg p) h:m_obius q }
+
+## `(p, q) b_allGeodesic n`: n + 1 points along the geodesic (the
+## shortest path, by the ball's distance) from p to q, p first and q
+## last, evenly spaced along it: p m_obius the arrow to q scaled by
+## 0, 1/n, ..., 1 in the ball's way (tanh of that fraction of atanh
+## its length). Drawn flat, a geodesic is an arc of a circle that
+## meets the rim at right angles, or a diameter.
+## >> "mf:" u_se< "Manifold"
+## >> (0.0 0.0, 0.6 0.0) mf:b_allGeodesic 2
+##                0.0 0.0
+## 0.3333333333333333 0.0
+##                0.6 0.0
+l:b_allGeodesic := { (p, q) n ->
+  w := (n_eg p) h:m_obius q
+  r := h:n_orm w
+  rows := (n + 1) r_eshape 1.0
+  r = 0.0 ? rows '* t_able f_loat p
+  S := (t_anh (tr:a_tanh r) * ((f_loat r_ange n + 1) - 1.0) / f_loat n) / r
+  d := t_ally p
+  (M, _) := (n + 1) '{ (M, k) -> (M c_at (1 c_at d) r_eshape p h:m_obius (k s_elect S) * w, k + 1) } p_ower ((0 c_at d) r_eshape 0.0, 1)
+  M
 }

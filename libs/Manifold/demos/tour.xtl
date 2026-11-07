@@ -1,0 +1,36 @@
+#!/usr/bin/env xetal
+# Manifold, the spaces drawn: a point of each kind from its map, and
+# one distance measured along each space against the straight line
+# through it. Run with "just demo Manifold tour".
+"mf:" u_se< "Manifold"
+
+Pi := p_i @
+
+# Two points of the sphere a tenth of a radian apart along the
+# equator, and two a quarter turn apart: the straight line and the
+# great circle, nearly equal near, not far.
+near := mf:s_pherePoints 2 2 r_eshape 0.0 0.0 0.1 0.0
+far := mf:s_pherePoints (Pi / 2.0) * 2 2 r_eshape 0.0 0.0 1.0 0.0
+(s_qrt '+ r_/ ((1 s_elect near) - 2 s_elect near) ^ 2.0) c_at (1 s_elect near) mf:s_phereDistance 2 s_elect near
+(s_qrt '+ r_/ ((1 s_elect far) - 2 s_elect far) ^ 2.0) c_at (1 s_elect far) mf:s_phereDistance 2 s_elect far
+
+# Five points along the great circle between the two far points.
+(1 s_elect far, 2 s_elect far) mf:s_phereArc 4
+
+# The torus of radii 3 and 1: its outer rim, its inner rim, and how
+# far off it the middle of the hole is.
+3.0 1.0 mf:t_orusPoints Pi * 2 2 r_eshape 0.0 0.0 0.0 1.0
+3.0 1.0 mf:t_orusOff 0.0 0.0 0.0
+
+# Two points of the Swiss roll one turn apart at the same height: 2 pi
+# apart through the air, and along the sheet much farther.
+a := 6.0 0.0
+b := (6.0 + 2.0 * Pi) c_at 0.0
+W := mf:r_ollPoints 2 2 r_eshape a c_at b
+W
+(s_qrt '+ r_/ ((1 s_elect W) - 2 s_elect W) ^ 2.0) c_at a mf:r_ollDistance b
+
+# Two points of the Poincare disk 0.2 apart in the plane, near the
+# middle and near the rim: the disk's distance between them.
+(0.0 0.0 mf:b_allDistance 0.2 0.0) c_at 0.78 0.0 mf:b_allDistance 0.98 0.0
+(0.78 0.0, 0.98 0.0) mf:b_allGeodesic 2

@@ -1,0 +1,20 @@
+page: loaded
+frame: question
+frame: background
+frame: rationale
+frame: purpose
+frame: summary
+frame: next
+errors: none
+found: intrinsic dimension 1, ambient dimension 2 (read off the arrays by the program)
+found: intrinsic dimension 2, ambient dimension 3 (read off the arrays by the program)
+found: intrinsic dimension 2, ambient dimension 2 (read off the arrays by the program)
+found: the chord, the square root of the sum: 0.1034
+found: |p - q| = 0.1034 and |p + q| = 1.9973: 0.1035
+found: 25.1148
+found: 52.8061
+found: 3.8667
+found: turned 308 degrees round and 20 degrees toward you
+found: html: class="wire"
+found: html: class="geo"
+cross-reference links: 0, dead: none

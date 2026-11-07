@@ -1,0 +1,18 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "manifold-tour"
+title = "Manifold tour"
+summary = "What a manifold is, on five of them: the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each turning in the browser from X_eTaL's coordinates, with its map beside it and one measurement each of near and far, along the space and through it; and what each is for in the experiments to come."
+concepts = ["manifold", "intrinsic and ambient dimension", "locally flat", "geodesic", "data manifold"]
+status = "live"              # draft | live | deferred
+order = 5
+track = "start"
+# An introduction: it measures distances along five spaces against the
+# straight line through them and trains nothing (docs/plan.md, G5).
+intro = true
+problem = "what a manifold is, and why a machine-learning experiment would care"
+compares = ["the straight line through the space", "the distance along it"]
+hypothesis = "none"
+needs = ["GM3"]              # the shared turning view; a demo-private projection until it lands
+line = "(p, q) mf:s_phereArc 48"
+why = "The great circle from p to q as 49 points X_eTaL computed; the browser only draws them, turned."

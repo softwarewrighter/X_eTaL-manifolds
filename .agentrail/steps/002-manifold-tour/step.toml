@@ -1,6 +1,6 @@
 number = 2
 slug = "manifold-tour"
-status = "pending"
+status = "in-progress"
 description = """
 Step manifold-tour (docs/plan.md, Saga 1 row 2; the user, 2026-11-06:
 "when c..."""

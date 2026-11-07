@@ -1,0 +1,52 @@
+ok: circle points have length 1
+ok: the angle 0 is (1, 0)
+ok: a quarter turn is (0, 1)
+ok: a third of a turn
+ok: the angle between two circle points is their arc
+ok: map points are on the sphere
+ok: longitude 0, latitude 0 is x
+ok: a quarter turn east is y
+ok: the north pole is z
+ok: the south pole is -z
+ok: a parallel keeps its latitude
+ok: the arc has n + 1 points
+ok: the arc starts at p
+ok: the arc ends at q
+ok: the arc is on the sphere
+ok: the arc is evenly spaced
+ok: the arc to the same point stays put
+ok: u = v = 0 is the outer rim
+ok: v = pi is the inner rim
+ok: v = pi / 2 is the top of the tube
+ok: u = pi is across the hole
+ok: torus points are on the torus
+ok: the middle of the hole is R - r off
+ok: a point on the axis of the tube is r off
+ok: a point outside is as far off as it is out
+ok: t = 0 is on the axis
+ok: t = pi is pi from the axis, half a turn round, 1 up
+ok: t = 2 pi is a full turn round, -1 up
+ok: the distance from the axis is t
+ok: the height is h
+ok: along the sheet from the middle to 0 is 0
+ok: along grows like half t squared, far out
+ok: along's rate is sqrt(1 + t^2)
+ok: the sheet distance up the roll is the height
+ok: the sheet distance round the roll is the length along
+ok: the sheet distance is symmetric
+ok: the same point
+ok: from the middle, 2 atanh r
+ok: symmetric
+ok: the acosh form agrees
+ok: the acosh form agrees off the axes
+ok: near the middle, about twice the plain distance
+ok: near the rim, far apart
+ok: the triangle inequality
+ok: the geodesic has n + 1 points
+ok: the geodesic starts at p
+ok: the geodesic ends at q
+ok: the geodesic stays inside the ball
+ok: the geodesic is evenly spaced
+ok: a diameter is straight
+ok: the geodesic to the same point stays put
+ok: the geodesic bows toward the middle

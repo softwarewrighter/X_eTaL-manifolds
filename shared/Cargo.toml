@@ -1,0 +1,6 @@
+# This repository's shared page code: what its pages share beyond the
+# shells of the siblings (X_eTaL-ML's microscope, by path; the teaching
+# shell once ask GM1 has landed). Tested by the gate (scripts/gate.sh).
+[workspace]
+members = ["site"]
+resolver = "2"

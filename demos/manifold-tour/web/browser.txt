@@ -1,0 +1,17 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+# The dimensions, read off the arrays.
+intrinsic dimension 1, ambient dimension 2 (read off the arrays by the program)
+intrinsic dimension 2, ambient dimension 3 (read off the arrays by the program)
+intrinsic dimension 2, ambient dimension 2 (read off the arrays by the program)
+# The sphere's two distances and the worked chord.
+the chord, the square root of the sum: 0.1034
+|p - q| = 0.1034 and |p + q| = 1.9973: 0.1035
+# The torus's rings, the roll's turn, the disk's rim pair.
+25.1148
+52.8061
+3.8667
+# The turning view's state, as the page reports it (the sphere's start).
+turned 308 degrees round and 20 degrees toward you
+# The pictures: a wire segment and a geodesic exist only once the run has given their points.
+html: class="wire"
+html: class="geo"
