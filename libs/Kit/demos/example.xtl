@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+# Kit in use: the three data sets at small sizes, from their seeds.
+# Run with "just demo Kit example".
+"kt:" u_se< "Kit"
+
+(X, y) := kt:f_lat (1, 3, 2, 2, 0.2)       # three flat clusters of two points in the plane
+X
+y
+(D, c) := kt:d_irections (7, 2, 3, 0.1)    # two directions, three points each, lengths varied
+D
+c
+kt:t_ree (2, 2)                             # a tree of depth 2, branching 2: 7 nodes
+kt:t_reeDistances (2, 2)
+kt:t_reeClasses (2, 2)
+kt:t_reeLayout (2, 2)

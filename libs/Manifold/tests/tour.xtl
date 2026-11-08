@@ -96,3 +96,12 @@ d := p mf:b_allDistance q
 "the geodesic to the same point stays put" ch:t_est (3 2 r_eshape p) ch:n_ear (p, p) mf:b_allGeodesic 2
 # A geodesic that is not a diameter bows toward the middle: its midpoint is nearer the middle than the chord's.
 "the geodesic bows toward the middle" ch:t_est 1 ch:i_s (s_qrt '+ r_/ (3 s_elect G) ^ 2.0) < s_qrt '+ r_/ ((p + q) / 2.0) ^ 2.0
+
+# Distortion: how badly an embedding's distances keep the data's; 0 when kept.
+D3 := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0
+"distances kept: no distortion" ch:t_est 0.0 0.0 ch:n_ear D3 mf:d_istortion D3
+"every distance doubled: 1 everywhere" ch:t_est 1.0 1.0 ch:n_ear D3 mf:d_istortion 2.0 * D3
+"every distance halved: a half everywhere" ch:t_est 0.5 0.5 ch:n_ear D3 mf:d_istortion 0.5 * D3
+"one pair too short: its share of the mean, and the worst" ch:t_est ((0.5 / 3.0) c_at 0.5) ch:n_ear D3 mf:d_istortion 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
+"a pair at distance 0 in the data is left out" ch:t_est 0.0 0.0 ch:n_ear (3 3 r_eshape 0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0 0.0) mf:d_istortion 3 3 r_eshape 0.0 5.0 1.0 5.0 0.0 1.0 1.0 1.0 0.0
+"no pairs at all: 0 0" ch:t_est 0.0 0.0 ch:n_ear (1 1 r_eshape 0.0) mf:d_istortion 1 1 r_eshape 0.0

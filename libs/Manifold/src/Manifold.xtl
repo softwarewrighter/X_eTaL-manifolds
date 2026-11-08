@@ -3,8 +3,9 @@
 ## measured along the space, putting a point onto it, the tangent part
 ## of a vector at a point, a step from a point along a tangent vector
 ## that stays on the space and the arrow that undoes it, a mean that
-## stays on the space, how far off it a point is; and the points of
-## each space at given coordinates of its map, for drawing it.
+## stays on the space, how far off it a point is; the points of each
+## space at given coordinates of its map, for drawing it; and the
+## distortion of an embedding's distances against those it should keep.
 ## Import it with an alias of your choice: "mf:" u_se< "Manifold".
 ## Put libs/Manifold/src on XETAL_PATH ("just path"); the reference is libs/Manifold/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -377,4 +378,34 @@ l:b_allGeodesic := { (p, q) n ->
   d := t_ally p
   (M, _) := (n + 1) '{ (M, k) -> (M c_at (1 c_at d) r_eshape p h:m_obius (k s_elect S) * w, k + 1) } p_ower ((0 c_at d) r_eshape 0.0, 1)
   M
+}
+
+### Distortion
+
+## `D d_istortion E`: how badly the distances E (between every pair of
+## points of an embedding, a matrix as s_phereDistances gives) keep
+## the distances D they should have (the same shape: the data's own
+## distances, say along a tree): for every pair of different points,
+## |E / D - 1|, the fraction by which the pair's distance is too long
+## or too short; the mean over the pairs and the worst pair, as a
+## pair of Floats. 0 0 when every distance is kept; 1 for a pair twice
+## or half as far as it should be (half: 0.5). Pairs at D = 0 (the
+## same point twice) are left out; the diagonal always is. The measure
+## of H1 (docs/research-questions.md), the same whatever space E was
+## measured along.
+## >> "mf:" u_se< "Manifold"
+## >> D := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0
+## >> D mf:d_istortion D
+## 0.0 0.0
+## >> D mf:d_istortion 2.0 * D
+## 1.0 1.0
+## >> D mf:d_istortion 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
+## 0.16666666666666666 0.5
+l:d_istortion := { D E ->
+  n := f_irst s_hape D
+  pair := ((r_ange n) '< t_able r_ange n) & (f_loat D) > 0.0   # each pair once, where there is a distance to keep
+  k := '+ r_/ r_avel pair
+  k = 0 ? 0.0 0.0
+  off := r_avel (f_loat pair) * a_bs ((f_loat E) / (f_loat D) m_ax 1e-300) - 1.0
+  (('+ r_/ off) / f_loat k) c_at 'm_ax r_/ off
 }

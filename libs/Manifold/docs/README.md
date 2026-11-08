@@ -5,8 +5,9 @@ the sphere, the torus and the Swiss roll: the distance measured along
 the space, putting a point onto it, the tangent part of a vector at a
 point, a step from a point along a tangent vector that stays on the
 space and the arrow that undoes it, a mean that stays on the space,
-how far off it a point is; and the points of each space at given
-coordinates of its map, for drawing it.
+how far off it a point is; the points of each space at given
+coordinates of its map, for drawing it; and the distortion of an
+embedding's distances against the distances they should keep.
 
 ```
 "mf:" u_se< "Manifold"
@@ -117,6 +118,18 @@ geodesic is an arc of a circle meeting the rim at right angles, or a
 diameter. Project, Tangent, Step, Arrow, Mean and Off for the ball are
 step representation-hyperbolic's.
 
+## Distortion
+
+| Function | Type | What |
+| -------- | ---- | ---- |
+| `D mf:d_istortion E` | `(Num a, Num b) => a -> b -> Float` | how badly the distances E of an embedding (every pair, a matrix) keep the distances D they should have: over the pairs of different points with D > 0, the mean and the worst of the fraction by which each pair is too long or too short, as a pair of Floats; 0 0 when every distance is kept |
+
+The measure of H1 (`docs/research-questions.md`), the same whatever
+space E was measured along: a tree's distances against the
+straight-line distances of a layout, or the great-circle distances
+of a set on the sphere, or the ball's. Multiplying every distance by
+2 gives 1 1; halving gives 0.5 0.5.
+
 ## Examples
 
 From `../demos/sphere.xtl` (`P` is the three axes, one per row;
@@ -177,7 +190,8 @@ from its first point to its last, on the space, evenly spaced by the
 space's distance; the ball's distance agrees with the acosh form, is
 symmetric, about twice the plain distance near the middle and large
 near the rim; a diameter is straight and another geodesic bows toward
-the middle.
+the middle; the distortion of kept, doubled and halved distances, a
+pair left out at D = 0.
 
 ## Demos
 

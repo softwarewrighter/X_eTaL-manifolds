@@ -5,8 +5,9 @@ the sphere, the torus and the Swiss roll: the distance measured along
 the space, putting a point onto it, the tangent part of a vector at a
 point, a step from a point along a tangent vector that stays on the
 space and the arrow that undoes it, a mean that stays on the space,
-how far off it a point is; and the points of each space at given
-coordinates of its map, for drawing it.
+how far off it a point is; the points of each space at given
+coordinates of its map, for drawing it; and the distortion of an
+embedding's distances against those it should keep.
 
 ```
 "mf:" u_se< "Manifold"

@@ -1,0 +1,198 @@
+## Kit: the experiment kit's data sets, each with a known structure and
+## made from its own seed: flat (Gaussian clusters), directional
+## (classes that differ by direction, not length) and hierarchical (a
+## tree, its distances along the tree, a class per branch, and a plain
+## layout of it in the plane); and the seeded numbers they are made of.
+## Import it with an alias of your choice: "kt:" u_se< "Kit".
+## Put libs/Kit/src on XETAL_PATH ("just path"); the reference is libs/Kit/docs.
+## Names with l: are exported; those under h: are private to this file.
+##
+## A data set is (X, y): X a matrix, one point per row; y its labels,
+## 1 to k. Every set is a function of its seed and its sizes alone (not
+## of the run's seed, nor of what was drawn before it), so two demos
+## asking for the same set get the same numbers: the seed is a whole
+## number, and the generator is Park and Miller's (1988) multiplier
+## 16807 modulo 2^31 - 1, written out here until X_eTaL-libraries'
+## Random takes a seed of its own (docs/xetal-libraries-asks.md, GL8).
+## The comparisons this repository makes are between geometries on the
+## same data: what these functions give is held equal across them.
+
+"mf:" u_se< "Manifold"
+"gr:" u_se< "Graphs"
+
+### Seeded numbers
+
+## `u_niform (seed, n)`: n Floats in [0, 1), each a function of the
+## seed and its place: the Park-Miller sequence x -> 16807 x mod
+## (2^31 - 1) started from 1 + |seed| mod (2^31 - 2) (so seed 0 is a
+## seed like any other and no seed is the sequence's fixed point 0),
+## divided by 2^31 - 1. The same seed gives the same numbers in any
+## run.
+## >> "kt:" u_se< "Kit"
+## >> kt:u_niform (42, 3)
+## 0.00033653387815530127 0.6561248901561484 0.4910288543864288
+l:u_niform := { (seed, n) ->
+  m := 2147483647
+  start := 1 + (a_bs seed) m_od m - 1
+  (v, _) := n '{ (v, x) -> y := (16807 * x) m_od m; (v c_at y, y) } p_ower (0 r_eshape 0, start)
+  (f_loat v) / f_loat m
+}
+
+## `n_ormal (seed, n)`: n Floats from the standard normal distribution
+## (mean 0, standard deviation 1), by Box and Muller from 2n uniform
+## numbers of the seed.
+## >> "kt:" u_se< "Kit"
+## >> kt:n_ormal (42, 2)
+## -0.025904525013204074 -0.2561352551643429
+l:n_ormal := { (seed, n) ->
+  u := l:u_niform (seed, 2 * n)
+  a := n t_ake u
+  b := n d_rop u
+  (s_qrt -2.0 * l_og 1.0 - a) * c_os 6.283185307179586 * b
+}
+
+## `n_ormals (seed, rows, cols)`: a rows by cols matrix of standard
+## normal numbers of the seed.
+h:n_ormals := { (seed, rows, cols) -> (rows c_at cols) r_eshape l:n_ormal (seed, rows * cols) }
+
+### Flat clusters
+
+## `f_lat (seed, k, n, d, spread)`: k Gaussian clusters of n points
+## each in d dimensions: the k centers are standard normal numbers of
+## the seed scaled by 4 (so clusters sit a few units apart), and each
+## point is its center plus `spread` times a standard normal vector;
+## (X, y), X of k n rows and y the cluster of each row, 1 to k, in
+## order. The structure is flat: straight-line distance is the right
+## one, and a point's nearest neighbors are mostly its own cluster
+## when spread is well under the centers' spacing.
+## >> "kt:" u_se< "Kit"
+## >> (X, y) := kt:f_lat (1, 2, 2, 2, 0.1)
+## >> y
+## 1 1 2 2
+## >> s_hape X
+## 4 2
+l:f_lat := { (seed, k, n, d, spread) ->
+  C := 4.0 * h:n_ormals (seed, k, d)
+  N := h:n_ormals (seed + 1, k * n, d)
+  y := n h:e_ach r_ange k
+  X := ((f_loat spread) * N) + y s_elect C
+  (X, y)
+}
+
+## `n e_ach v`: every item of v repeated n times, in order (a general
+## word, written out until GL2 lands).
+h:e_ach := { n v -> r_avel o_\ (n c_at t_ally v) r_eshape v }
+
+### Directions
+
+## `d_irections (seed, k, n, cone)`: k classes of n points in three
+## dimensions that differ by direction and not by length: each class
+## has a direction (a seeded standard normal vector put onto the unit
+## sphere) and each point is that direction plus `cone` times a
+## standard normal vector, put back onto the sphere, then scaled by a
+## length drawn between 0.5 and 2 (uniform), so the lengths carry
+## nothing about the class; (X, y). The structure is directional: the
+## angle between points is the right distance, and their straight-line
+## distance mixes in the lengths.
+## >> "kt:" u_se< "Kit"
+## >> (X, y) := kt:d_irections (7, 2, 2, 0.1)
+## >> y
+## 1 1 2 2
+## >> s_hape X
+## 4 3
+l:d_irections := { (seed, k, n, cone) ->
+  D := mf:s_phereProject h:n_ormals (seed, k, 3)
+  N := h:n_ormals (seed + 1, k * n, 3)
+  y := n h:e_ach r_ange k
+  U := mf:s_phereProject ((f_loat cone) * N) + y s_elect D
+  lengths := 0.5 + 1.5 * l:u_niform (seed + 2, k * n)
+  (lengths h:s_caleRows U, y)
+}
+
+## `s v s_caleRows M`: each row of M scaled by the matching item of s.
+h:s_caleRows := { s M -> M * s 'l_eft t_able o_ffsets 2 s_elect s_hape M }
+
+### A tree
+
+## `t_ree (depth, branching)`: the edges of a rooted tree in which
+## every node but the leaves has `branching` children and every leaf
+## is `depth` edges from the root: node 1 is the root and the nodes
+## are numbered level by level, so node i's children are the nodes
+## branching (i - 1) + 2 up to branching i + 1. The edges as Graphs
+## takes them: two rows, from (the parent) over to (the child). Depth
+## 4 and branching 2 give 31 nodes and 30 edges.
+## >> "kt:" u_se< "Kit"
+## >> kt:t_ree (2, 2)
+## 1 1 2 2 3 3
+## 2 3 4 5 6 7
+l:t_ree := { (depth, branching) ->
+  n := h:n_odes (depth, branching)
+  child := 1 d_rop r_ange n
+  parent := 1 + (child - 2) d_iv branching
+  (2 c_at n - 1) r_eshape parent c_at child
+}
+
+## The number of nodes of the tree: 1 + b + b^2 + ... + b^depth.
+h:n_odes := { (depth, branching) -> '+ r_/ branching ^ (r_ange depth + 1) - 1 }
+
+## `t_reeDistances (depth, branching)`: the distance between every two
+## nodes of the tree along it (the number of edges on the one path
+## between them), by Graphs' shortest paths over the tree's edges
+## taken both ways: an n by n matrix of Floats, 0 on the diagonal,
+## 2 depth at most (leaf to leaf through the root).
+## >> "kt:" u_se< "Kit"
+## >> kt:t_reeDistances (1, 2)
+## 0.0 1.0 1.0
+## 1.0 0.0 2.0
+## 1.0 2.0 0.0
+l:t_reeDistances := { (depth, branching) ->
+  n := h:n_odes (depth, branching)
+  e := l:t_ree (depth, branching)
+  w := n gr:w_eighted e c_at (n - 1) r_eshape 1
+  gr:s_hortest gr:u_ndirected w
+}
+
+## `t_reeClasses (depth, branching)`: the class of each node, its
+## branch: the child of the root it descends from, 1 to branching;
+## the root itself, which is under no branch, is given class 1 (and
+## a classifier is excused it: it is alone). So the hierarchical
+## set's labels, one per node.
+## >> "kt:" u_se< "Kit"
+## >> kt:t_reeClasses (2, 2)
+## 1 1 2 1 1 2 2
+l:t_reeClasses := { (depth, branching) ->
+  n := h:n_odes (depth, branching)
+  parent := f_irst l:t_ree (depth, branching)
+  up := depth '{ v -> '{ c -> parent h:u_p c } e_ach v } p_ower r_ange n   # each node's ancestor just under the root (the root stays)
+  1 m_ax up - 1
+}
+
+## `parent u_p c`: the parent of node c, unless that is the root (or c
+## is), in which case c: one step up the tree that stops under the root.
+h:u_p := { parent c -> c = 1 ? 1; p := (c - 1) s_elect parent; p = 1 ? c; p }
+
+## `t_reeLayout (depth, branching)`: a plain picture of the tree in
+## the plane, one row (x, y) per node: the root at the origin, each
+## level a circle of radius its depth, the nodes of a level spread
+## evenly round it in their order, so that each subtree is a wedge
+## (the two children of the root at the top and the bottom, their x
+## cos of a quarter turn, 0 up to the machine's rounding). It is a
+## layout, not an embedding that keeps the tree's distances:
+## the straight-line distance between two nodes of this picture is a
+## poor copy of their distance along the tree (two leaves of
+## neighboring branches are near in the picture and 2 depth apart
+## in the tree), which is what the baseline measures.
+## >> "kt:" u_se< "Kit"
+## >> kt:t_reeLayout (1, 2)
+##                                 0.0  0.0
+##  0.00000000000000006123233995736766  1.0
+## -0.00000000000000018369701987210297 -1.0
+l:t_reeLayout := { (depth, branching) ->
+  n := h:n_odes (depth, branching)
+  level := 1 s_elect l:t_reeDistances (depth, branching)          # each node's distance from the root
+  before := '{ L -> '+ r_/ 0 c_at branching ^ (r_ange L) - 1 } e_ach f_loor level   # nodes on the levels above
+  on := f_loat branching ^ f_loor level                              # nodes on the node's level
+  pos := (f_loat (r_ange n) - before) - 0.5                          # its place round the circle, from 0.5
+  angle := 6.283185307179586 * pos / on
+  o_\ (2 c_at n) r_eshape (0.0 + level * c_os angle) c_at 0.0 + level * s_in angle
+}

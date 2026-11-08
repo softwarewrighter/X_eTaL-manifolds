@@ -1,0 +1,42 @@
+ok: the same seed, the same numbers
+ok: another seed, other numbers
+ok: a prefix of a longer draw is the shorter draw
+ok: uniform numbers lie in [0, 1)
+ok: their mean is near a half
+ok: normal numbers have mean near 0
+ok: and standard deviation near 1
+ok: seed 0 is a seed like any other (not the generator's fixed point)
+ok: flat: k n rows of d
+ok: flat: labels 1 to k, n each, in order
+ok: flat: the same seed gives the same set
+ok: flat: another seed gives another set
+ok: flat: in five dimensions too
+ok: flat: within a cluster nearer than across
+ok: directions: k n rows of 3
+ok: directions: labels 1 to k
+ok: directions: the same seed gives the same set
+ok: directions: lengths between 0.5 and 2
+ok: directions: lengths vary (they carry nothing)
+ok: directions: within a class, angles under half a radian
+ok: directions: between classes, angles over half a radian
+ok: tree: 30 edges, two rows
+ok: tree: the root is node 1 and has two children
+ok: tree: every node but the root has one parent
+ok: tree: a parent comes before its child
+ok: tree distances: 31 by 31
+ok: tree distances: symmetric, zero on the diagonal
+ok: tree distances: zero on the diagonal only
+ok: tree distances: the farthest pair is 2 depth apart
+ok: tree distances: a leaf is depth from the root
+ok: tree distances: a child is 1 from its parent
+ok: tree classes: one per node
+ok: tree classes: the root's children start the branches
+ok: tree classes: half the leaves in each branch
+ok: tree classes: below the root's children, a node's class is its parent's
+ok: tree classes: three branches when branching is 3
+ok: tree layout: 31 rows of 2
+ok: tree layout: the root at the origin
+ok: tree layout: each node on the circle of its depth
+ok: tree layout: the leaves of a branch share its half of the plane
+ok: the layout distorts the tree's distances by a sixth on average
+ok: and the worst pair by four fifths

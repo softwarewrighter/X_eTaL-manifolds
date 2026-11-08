@@ -1,6 +1,6 @@
 number = 4
 slug = "experiment-kit"
-status = "pending"
+status = "in-progress"
 description = """
 Step experiment-kit (docs/plan.md, Saga 1 row 4; principle 1;
 decisions G3, G..."""

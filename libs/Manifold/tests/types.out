@@ -16,3 +16,4 @@ l:r_ollAlong : Num a => a -> Float
 l:r_ollDistance : (Num a, Num b) => a -> b -> Float
 l:b_allDistance : (Num a, Num b) => a -> b -> Float
 l:b_allGeodesic : (Num a, Num b) => (a, b) -> Int -> Float
+l:d_istortion : (Num a, Num b) => a -> b -> Float

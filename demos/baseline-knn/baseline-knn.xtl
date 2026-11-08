@@ -1,0 +1,113 @@
+#!/usr/bin/env xetal
+## Baseline, nearest neighbors: k nearest neighbors under the
+## straight-line distance on the three data sets of the kit (flat
+## clusters, directions, a tree), each split the same seeded way, the
+## held-out accuracy and the cost of each run recorded as the
+## experiment schema says; and for the tree, how badly a plain layout
+## of it keeps its distances. The row every comparison of H1 is set
+## against: no geometry chosen yet.
+"kt:" u_se< "Kit"
+"ml:" u_se< "Learn"
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+
+# -- the kit
+## The split, the run and its record, and the comparison of two runs
+## are machine learning and not about manifolds: X_eTaL-ML's by the
+## plan's G3, asked for as GM5 (docs/xetal-ML-asks.md), and written
+## out here, few and short, until it lands.
+
+## `u:s_plit (seed, n)`: the held-out quarter of n points, seeded: a
+## seeded order of 1 to n (the grade of seeded uniform numbers), the
+## first quarter held out and the rest trained on; (train, held), two
+## vectors of row numbers.
+u:s_plit := { (seed, n) -> order := g_rade kt:u_niform (seed, n); h := n d_iv 4; (h d_rop order, h t_ake order) }
+
+## `u:r_un (X, y, k, seed)`: one run of k nearest neighbors on the set
+## (X, y) under the straight-line distance (Learn's k_nn), the
+## held-out quarter guessed from the rest; the record, as the schema
+## says: the held-out accuracy (measured), how many were held out,
+## the numbers trained (none: nearest neighbors learns no number) and
+## the operations counted (one distance per held-out point per
+## training point, each of d coordinates). Runtime is never recorded.
+u:r_un := { (X, y, k, seed) ->
+  (train, held) := u:s_plit (seed, f_irst s_hape X)
+  guess := (k, train s_elect X, train s_elect y) ml:k_nn held s_elect X
+  right := '+ r_/ guess = held s_elect y
+  accuracy := (f_loat right) / f_loat t_ally held
+  accuracy c_at (f_loat t_ally held) c_at 0.0 c_at f_loat (t_ally train) * (t_ally held) * 2 s_elect s_hape X
+}
+
+## `a u:c_ompare b`: two records side by side and their difference,
+## measure by measure (the second less the first), as three rows.
+u:c_ompare := { a b -> (3 c_at t_ally a) r_eshape (f_loat a) c_at (f_loat b) c_at (f_loat b) - f_loat a }
+
+## `u:c_hords Q`: the straight-line distance between every pair of
+## rows (a general function, for X_eTaL-libraries: GL1; written out
+## here as in sphere-hello).
+u:c_hords := { Q -> n := f_irst s_hape Q; (D, _) := (2 s_elect s_hape Q) '{ (d, k) -> c := k s_elect_2 Q; (d + (c '- t_able c) ^ 2.0, k + 1) } p_ower ((n c_at n) r_eshape 0.0, 1); s_qrt D }
+
+# -- the runs
+k := 5
+splitSeed := 11
+
+### Flat clusters
+
+## Three clusters of 40 points in the plane, spread 1.6 about centers
+## a few units apart (seed 1), so the clusters touch; and four
+## clusters of 30 in five dimensions, spread 1.6 (seed 2). The record: accuracy, held out,
+## numbers trained, operations.
+(F, fy) := kt:f_lat (1, 3, 40, 2, 1.6)
+flat := u:r_un (F, fy, k, splitSeed)
+flat
+"flat clusters: most held-out points go to their cluster" ch:t_est 1 ch:i_s 0.8 < 1 s_elect flat
+(F5, f5y) := kt:f_lat (2, 4, 30, 5, 1.6)
+flat5 := u:r_un (F5, f5y, k, splitSeed)
+flat5
+"flat clusters in five dimensions: the same" ch:t_est 1 ch:i_s 0.8 < 1 s_elect flat5
+
+### Directions
+
+## Four classes of 40 points that differ by direction (cone 0.6
+## about each class direction, so the classes overlap at their edges)
+## and not by length (lengths from 0.5 to 2; seed 5). The straight-line distance mixes the lengths in, which
+## carry nothing about the class: this is the row the sphere is
+## compared against (representation-explorer).
+(D, dy) := kt:d_irections (5, 4, 40, 0.6)
+directions := u:r_un (D, dy, k, splitSeed)
+directions
+"directions: the straight line gets most right, lengths and all" ch:t_est 1 ch:i_s 0.6 < 1 s_elect directions
+## The same set with every point put onto the unit sphere (lengths
+## dropped), still under the straight-line distance between the unit
+## points: what the lengths were costing, measured; the comparison
+## rows are (lengths kept, lengths dropped, the difference).
+unit := u:r_un (mf:s_phereProject D, dy, k, splitSeed)
+directions u:c_ompare unit
+"directions: dropping the lengths does not lose accuracy" ch:t_est 1 ch:i_s (1 s_elect unit) >= 1 s_elect directions
+
+### A tree
+
+## The tree of depth 4 and branching 2 (31 nodes), each node's class
+## its branch, and the plain layout of it in the plane: nearest
+## neighbors on the layout's coordinates (k = 3, the held-out quarter
+## is 7 nodes), and the distortion of the layout's straight-line
+## distances against the distances along the tree (Manifold's: the
+## mean and the worst pair), which is what the hyperbolic disk is
+## compared against (representation-explorer).
+T := kt:t_reeDistances (4, 2)
+L := kt:t_reeLayout (4, 2)
+ty := kt:t_reeClasses (4, 2)
+tree := u:r_un (L, ty, 3, splitSeed)
+tree
+"tree: the layout's halves give the branch away" ch:t_est 1 ch:i_s 0.8 < 1 s_elect tree
+distortion := T mf:d_istortion u:c_hords L
+distortion
+"tree: the layout keeps the tree's distances badly (the mean, the worst pair)" ch:t_est 1 1 ch:i_s ((1 s_elect distortion) > 0.15) c_at (2 s_elect distortion) > 0.75
+# -- end of the runs
+
+### The record of every run
+## One row per run: flat (plane), flat (five dimensions), directions,
+## directions on the unit sphere, the tree's layout; the columns
+## accuracy, held out, numbers trained, operations. All measured. The
+## baseline row of the H1 table (docs/experiments.md).
+5 4 r_eshape flat c_at flat5 c_at directions c_at unit c_at tree

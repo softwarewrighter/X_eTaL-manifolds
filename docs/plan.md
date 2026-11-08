@@ -162,11 +162,13 @@ work/                    the clones (gitignored)
 pages/                   the built site (not tracked; just publish)
 ```
 
-As of step manifold-tour (2026-11-07) the machinery, `libs/Manifold`
-(the sphere, the drawn spaces, the ball's distance and geodesic),
-`shared/site`, `demos/sphere-hello` and `demos/manifold-tour` (live)
-exist; the other documents and the other demos are made by the steps
-of Saga 1 that name them.
+As of step experiment-kit (2026-11-07) the machinery, `libs/Manifold`
+(the sphere, the drawn spaces, the ball's distance and geodesic,
+distortion), `libs/Kit` (the three data sets), `shared/site`,
+`demos/sphere-hello`, `demos/manifold-tour` (live) and
+`demos/baseline-knn` exist, with `docs/glossary.md`, `docs/papers.md`,
+`docs/research-questions.md` and `docs/experiments.md`; the other
+demos are made by the steps of Saga 1 that name them.
 
 ## Research areas and tracks
 
@@ -201,7 +203,7 @@ built in Saga 1; the rest are a roadmap.
 | - | ----------- | ---------- | -------------------- | -------- | ---- |
 | | manifold-tour | none: an introduction to what a manifold is, the kinds used here and what each is for (live since 2026-11-07) | the circle, the sphere, the torus, a Swiss roll, the Poincare disk: one measurement each of local flatness | first | 1 |
 | | sphere-hello | nearest neighbors and an average of unit vectors | straight-line and great-circle distance; a plain mean and one put back on the sphere | first | 1 |
-| | baseline-knn | classification by nearest neighbors | none yet: straight-line distance on the three data sets, the row every later comparison is set against | first | 1 |
+| | baseline-knn | classification by nearest neighbors | none yet: straight-line distance on the three data sets, the row every later comparison is set against (built, step experiment-kit: `docs/experiments.md`) | first | 1 |
 | 01 | representation-explorer | classification and clustering | flat, spherical, hyperbolic | P0 | 1 |
 | 02 | optimization-explorer | training a small model | Euclidean and metric-aware updates | P0 | 1 |
 | 04 | mhc-explorer | stability of residual streams | plain residual, unconstrained, doubly stochastic, orthogonal mixing | P0 | 1 |
@@ -263,7 +265,7 @@ use):
 | ------- | ---- | -------- |
 | Manifold (`mf:`) | the sphere (`s_phereProject`, `s_phereDistance`, `s_phereDistances`, `s_phereTangent`, `s_phereStep`, `s_phereArrow`, `s_phereMean`, `s_phereOff`: built, step foundation) and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps with the ball's `b_allDistance` and `b_allGeodesic` (built, step manifold-tour); then the ball's Project, Tangent, Step, Arrow, Mean, Off by the same verbs (representation-hyperbolic); `s_phereDistortion` and `b_allDistortion` of an embedding against given distances, and `d_istortion` for a flat one (representation-sphere); the cheap retraction `s_phereRetract` beside the step, and a gradient step that stays on the space, `(lr) s_phereDescend (p, g)` (metric-descent); the tangent part of a field at a set of points and a flow held to the sphere, `s_phereFlow` (manifold-flows). The flat torus when a demo needs it | foundation, manifold-tour, representation-sphere, representation-hyperbolic, metric-descent, manifold-flows |
 | Mixing (`hc:`) | residual streams and their mixing: `(n, w) hc:s_treams x` (n copies), `hc:b_lock` (a layer over n streams with a mixing matrix), the mixing `hc:f_ree M`, `k hc:s_tochastic L` (Sinkhorn's k sweeps on exp of the logits L, private until GL3 lands), `hc:p_ermutations w` (an exact convex combination of the permutations, after KromHC), `hc:o_rthogonal M` (the polar factor by `mx:s_vd`); `hc:s_tack` of blocks; `hc:g_ain` (the composite's largest absolute row and column sums, as mHC measures them), `hc:c_hannels` (the mean of the streams and their differences, after the Birkhoff-geometry paper), `hc:v_iolation` (row and column sum errors, distance from orthogonal); the sizes of the signal forward and of the gradient backward by depth | mhc-matrices, mhc-depth |
-| the three data sets | seeded data with a flat, a directional and a hierarchical structure (a tree with its distances): generators in a library here if they need functions, otherwise data files | experiment-kit |
+| Kit (`kt:`) | the three data sets, each a function of its own seed and sizes: `f_lat` (Gaussian clusters), `d_irections` (classes by direction, lengths varied, on Manifold's sphere), `t_ree`, `t_reeDistances` (Graphs' shortest paths), `t_reeClasses`, `t_reeLayout`; and the seeded numbers they are made of (`u_niform`, `n_ormal`, Park-Miller, until GL8). Functions, not files, because the explorers vary the sizes, the spread and the seed; here, because what they make is a geometric structure (built, step experiment-kit) | experiment-kit |
 
 Asked of the siblings:
 

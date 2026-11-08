@@ -1,0 +1,80 @@
+#!/usr/bin/env xetal
+# Kit: every data set is a function of its seed and its sizes alone,
+# has the shape and the labels it says, and has the structure it was
+# made with. Run with "just run-lib Kit kit".
+"kt:" u_se< "Kit"
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+
+# Seeded numbers: the same seed gives the same numbers, another seed others.
+"the same seed, the same numbers" ch:t_est (kt:u_niform (42, 5)) ch:i_s kt:u_niform (42, 5)
+"another seed, other numbers" ch:t_est 0 ch:i_s (kt:u_niform (42, 5)) m_atch kt:u_niform (43, 5)
+"a prefix of a longer draw is the shorter draw" ch:t_est (kt:u_niform (42, 3)) ch:i_s 3 t_ake kt:u_niform (42, 5)
+u := kt:u_niform (3, 1000)
+"uniform numbers lie in [0, 1)" ch:t_est 1 ch:i_s '& r_/ (u >= 0.0) & u < 1.0
+"their mean is near a half" ch:t_est 1 ch:i_s 0.03 > a_bs 0.5 - ('+ r_/ u) / 1000.0
+g := kt:n_ormal (3, 1000)
+"normal numbers have mean near 0" ch:t_est 1 ch:i_s 0.1 > a_bs ('+ r_/ g) / 1000.0
+"and standard deviation near 1" ch:t_est 1 ch:i_s 0.1 > a_bs 1.0 - s_qrt ('+ r_/ g * g) / 1000.0
+"seed 0 is a seed like any other (not the generator's fixed point)" ch:t_est 1 ch:i_s 0.0 < 'm_ax r_/ kt:u_niform (0, 3)
+
+# Flat clusters: the shape, the labels, and the clusters apart.
+(X, y) := kt:f_lat (1, 3, 10, 2, 0.1)
+"flat: k n rows of d" ch:t_est 30 2 ch:i_s s_hape X
+"flat: labels 1 to k, n each, in order" ch:t_est y ch:i_s (10 r_eshape 1) c_at (10 r_eshape 2) c_at 10 r_eshape 3
+(Xa, _) := kt:f_lat (1, 3, 10, 2, 0.1)
+"flat: the same seed gives the same set" ch:t_est X ch:i_s Xa
+(X2, _) := kt:f_lat (2, 3, 10, 2, 0.1)
+"flat: another seed gives another set" ch:t_est 0 ch:i_s X m_atch X2
+(X5, y5) := kt:f_lat (1, 4, 5, 5, 0.3)
+"flat: in five dimensions too" ch:t_est 20 5 ch:i_s s_hape X5
+# Within a cluster, points are nearer than any two points of different clusters.
+u:c_hords := { Q -> n := f_irst s_hape Q; (Dd, _) := (2 s_elect s_hape Q) '{ (d, k) -> col := k s_elect_2 Q; (d + (col '- t_able col) ^ 2.0, k + 1) } p_ower ((n c_at n) r_eshape 0.0, 1); s_qrt Dd }
+Cd := u:c_hords X
+sameCluster := y '= t_able y
+"flat: within a cluster nearer than across" ch:t_est 1 ch:i_s ('m_ax r_/ r_avel Cd * f_loat sameCluster) < 'm_in r_/ r_avel Cd + 100.0 * f_loat sameCluster
+
+# Directions: the shape, the labels, lengths that vary, directions that do not.
+(D, c) := kt:d_irections (7, 3, 10, 0.1)
+"directions: k n rows of 3" ch:t_est 30 3 ch:i_s s_hape D
+"directions: labels 1 to k" ch:t_est c ch:i_s (10 r_eshape 1) c_at (10 r_eshape 2) c_at 10 r_eshape 3
+(Da, _) := kt:d_irections (7, 3, 10, 0.1)
+"directions: the same seed gives the same set" ch:t_est D ch:i_s Da
+lengths := s_qrt '+ r_/_2 D * D
+"directions: lengths between 0.5 and 2" ch:t_est 1 ch:i_s '& r_/ (lengths >= 0.5) & lengths <= 2.0
+"directions: lengths vary (they carry nothing)" ch:t_est 1 ch:i_s 0.5 < ('m_ax r_/ lengths) - 'm_in r_/ lengths
+# Within a class the angle between points is small; between classes it is not.
+A := mf:s_phereDistances mf:s_phereProject D
+same := c '= t_able c
+"directions: within a class, angles under half a radian" ch:t_est 1 ch:i_s 0.5 > 'm_ax r_/ r_avel A * f_loat same
+"directions: between classes, angles over half a radian" ch:t_est 1 ch:i_s 0.5 < 'm_in r_/ r_avel A + 10.0 * f_loat same
+
+# The tree: 31 nodes at depth 4, branching 2; distances along it; classes by branch.
+e := kt:t_ree (4, 2)
+"tree: 30 edges, two rows" ch:t_est 2 30 ch:i_s s_hape e
+"tree: the root is node 1 and has two children" ch:t_est 1 1 ch:i_s 2 t_ake f_irst e
+"tree: every node but the root has one parent" ch:t_est (1 d_rop r_ange 31) ch:i_s f_irst 1 d_rop e
+"tree: a parent comes before its child" ch:t_est 1 ch:i_s '& r_/ (f_irst e) < f_irst 1 d_rop e
+T := kt:t_reeDistances (4, 2)
+"tree distances: 31 by 31" ch:t_est 31 31 ch:i_s s_hape T
+"tree distances: symmetric, zero on the diagonal" ch:t_est T ch:n_ear o_\ T
+"tree distances: zero on the diagonal only" ch:t_est 31 ch:i_s '+ r_/ r_avel T = 0.0
+"tree distances: the farthest pair is 2 depth apart" ch:t_est 8.0 ch:n_ear 'm_ax r_/ r_avel T
+"tree distances: a leaf is depth from the root" ch:t_est 4.0 ch:n_ear 31 s_elect 1 s_elect T
+"tree distances: a child is 1 from its parent" ch:t_est 1.0 ch:n_ear 2 s_elect 1 s_elect T
+cls := kt:t_reeClasses (4, 2)
+"tree classes: one per node" ch:t_est 31 ch:i_s t_ally cls
+"tree classes: the root's children start the branches" ch:t_est 1 1 2 ch:i_s 3 t_ake cls
+"tree classes: half the leaves in each branch" ch:t_est 8 8 ch:i_s ('+ r_/ 1 = 16 t_ake 15 d_rop cls) c_at '+ r_/ 2 = 16 t_ake 15 d_rop cls
+"tree classes: below the root's children, a node's class is its parent's" ch:t_est (3 d_rop cls) ch:i_s (2 d_rop f_irst e) s_elect cls
+"tree classes: three branches when branching is 3" ch:t_est 1 1 2 3 ch:i_s 4 t_ake kt:t_reeClasses (2, 3)
+L := kt:t_reeLayout (4, 2)
+"tree layout: 31 rows of 2" ch:t_est 31 2 ch:i_s s_hape L
+"tree layout: the root at the origin" ch:t_est 0.0 0.0 ch:n_ear 1 s_elect L
+"tree layout: each node on the circle of its depth" ch:t_est (1 s_elect T) ch:n_ear s_qrt '+ r_/_2 L * L
+"tree layout: the leaves of a branch share its half of the plane" ch:t_est 1 ch:i_s '& r_/ ((2 s_elect_2 16 t_ake 15 d_rop L) > 0.0) = (1 = 16 t_ake 15 d_rop cls)
+
+# Distortion (Manifold) of the layout against the tree: the layout is not an embedding.
+dist := T mf:d_istortion u:c_hords L
+"the layout distorts the tree's distances by a sixth on average" ch:t_est 1 ch:i_s (1 s_elect dist) > 0.15
+"and the worst pair by four fifths" ch:t_est 1 ch:i_s (2 s_elect dist) > 0.75

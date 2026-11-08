@@ -50,3 +50,9 @@ ok: the geodesic is evenly spaced
 ok: a diameter is straight
 ok: the geodesic to the same point stays put
 ok: the geodesic bows toward the middle
+ok: distances kept: no distortion
+ok: every distance doubled: 1 everywhere
+ok: every distance halved: a half everywhere
+ok: one pair too short: its share of the mean, and the worst
+ok: a pair at distance 0 in the data is left out
+ok: no pairs at all: 0 0

@@ -1,0 +1,19 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "baseline-knn"
+title = "Baseline: nearest neighbors"
+summary = "k nearest neighbors under the straight-line distance on the kit's three data sets (flat clusters, directions, a tree), split the same seeded way, each run's accuracy and cost recorded as the experiment schema says: the row every comparison of H1 is set against, with no geometry chosen yet; and how badly a plain layout of the tree keeps its distances."
+concepts = ["nearest neighbors", "the experiment kit", "a run's record", "distortion"]
+status = "draft"             # draft | live | deferred
+order = 20
+track = "start"
+# An introduction: the baseline row, one choice (the straight line);
+# the geometries it is set against are representation-explorer's
+# (docs/plan.md, G5).
+intro = true
+problem = "classification by nearest neighbors on three data sets with a known structure"
+compares = ["the straight-line distance, lengths and all", "the straight-line distance with the lengths dropped (the directions put on the sphere)"]
+hypothesis = "H1"
+needs = ["GM5", "GL1"]       # the split and the record are written out; so are the pairwise distances
+line = "(k, train s_elect X, train s_elect y) ml:k_nn held s_elect X"
+why = "Learn's nearest neighbors on the held-out quarter, one line; everything else on this page is what was held equal."

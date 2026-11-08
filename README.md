@@ -105,6 +105,7 @@ low-rank subspaces.
 | ---- | ----- | ------------- | ----- |
 | [manifold-tour](demos/manifold-tour/) | start | what a manifold is, on five of them: the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each drawn by X_eTaL from its own map and turning in the browser, with its flat view and one measurement each of near and far (the straight line through the space against the distance along it: near pairs agree, far pairs do not); and what each is for in the experiments to come | [live](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/), `just run manifold-tour` |
 | [sphere-hello](demos/sphere-hello/) | start | six points on the unit sphere: the straight line through it and the great circle along it order every point's neighbors the same way (checked on the numbers); the plain average of the points is inside the sphere, and the mean along it is a different direction | `just run sphere-hello` |
+| [baseline-knn](demos/baseline-knn/) | start | k nearest neighbors under the straight-line distance on the kit's three data sets (flat clusters, directions, a tree), the same seeded split, each run's accuracy and cost recorded: the row every comparison of H1 is set against (`docs/experiments.md`); and how badly a plain layout of the tree keeps its distances | `just run baseline-knn` |
 
 The live site is <https://softwarewrighter.github.io/X_eTaL-manifolds/>:
 the catalog, every page, and the cross-reference of every program and
@@ -117,7 +118,7 @@ each function lives where it belongs:
 
 | What | Where | Examples |
 | ---- | ----- | -------- |
-| particular to manifolds and the geometry of ML | here, in `libs/` | [Manifold](libs/Manifold/) (`mf:`): the unit sphere (distance along it, projection onto it, tangent vectors, a step that stays on it and the arrow that undoes it, a mean on it), the Poincare ball's distance and geodesic (the rest to come), and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps; later distortion. Mixing (`hc:`), to come: residual streams mixed under a constraint |
+| particular to manifolds and the geometry of ML | here, in `libs/` | [Manifold](libs/Manifold/) (`mf:`): the unit sphere (distance along it, projection onto it, tangent vectors, a step that stays on it and the arrow that undoes it, a mean on it), the Poincare ball's distance and geodesic (the rest to come), the pictures of the circle, the sphere, the torus and the Swiss roll from their maps, and the distortion of an embedding's distances. [Kit](libs/Kit/) (`kt:`): the experiment kit's data sets, each with a known structure (flat clusters, directions, a tree with its distances) from its own seed. Mixing (`hc:`), to come: residual streams mixed under a constraint |
 | general | [X_eTaL-libraries](https://github.com/softwarewrighter/X_eTaL-libraries), asked for | Sinkhorn's iteration, integrators, field and contour pictures; Matrix, Plot, Graphs, Random, Statistics, Trig and Check are used as they are |
 | machine learning, not about manifolds | [X_eTaL-ML](https://github.com/softwarewrighter/X_eTaL-ML), asked for | a learning task and its record, a preconditioned optimizer step; NN, Net, Optim, Learn, Embed and Flow are used as they are |
 
@@ -137,8 +138,8 @@ presentation: every algorithm and every number shown is X_eTaL's.
 
 | | |
 | - | - |
-| Now | the first live page, [manifold-tour](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/) (step manifold-tour of the first saga, `geometry-lab`, fourteen steps): five manifolds turning from X_eTaL's coordinates, the chain from the pins through the Manifold library to the browser proven; the machinery and `sphere-hello` at the command line (step foundation) |
-| Next | the experiment kit (three seeded data sets with a known structure, the run's record, baseline-knn; step experiment-kit); then step shell-adoption moves the X_eTaL-ML pin and takes the shared teaching shell and turning view, and the first pages on the shell go live |
+| Now | the experiment kit (step experiment-kit of the first saga, `geometry-lab`, fourteen steps): the Kit library's three seeded data sets, the run's record, `baseline-knn` and the first row of the H1 table; the first live page, [manifold-tour](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/); the research foundation (`docs/glossary.md`, `docs/papers.md`, `docs/research-questions.md`); the machinery and `sphere-hello` |
+| Next | step shell-adoption moves the X_eTaL-ML pin and takes the shared teaching shell and turning view (both landed there); sphere-hello and baseline-knn go live on the shell; then the explorers |
 | Asks | the shared teaching shell (GM1, GF1) and the turning view (GM3) have landed in X_eTaL-ML (501ab15, 2026-11-07) and are taken when the pin moves; the function asks are filed ([`docs/xetal-libraries-asks.md`](docs/xetal-libraries-asks.md) GL1 to GL7, [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM4 to GM6), none a blocker |
 
 ## Build
@@ -207,13 +208,15 @@ repository's `libs/*/src`, then X_eTaL-ML's, then X_eTaL-libraries'.
   five research areas, H1 to H3 with what counts for and against each
   written before any run, and the experiment schema (presets, a run's
   record, comparisons, baselines)
+- [`docs/experiments.md`](docs/experiments.md) -- the results tables
+  of the hypotheses, one row per run, null results included
 - [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md),
   [`docs/xetal-libraries-asks.md`](docs/xetal-libraries-asks.md),
   [`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md)
   -- what is asked of the sibling repositories so that code is shared
   and not copied, and the functions each is asked for
 - [`CHANGES.md`](CHANGES.md) -- every commit, newest first
-- each library's reference: [`libs/Manifold/docs/README.md`](libs/Manifold/docs/README.md)
+- each library's reference: [`libs/Manifold/docs/README.md`](libs/Manifold/docs/README.md), [`libs/Kit/docs/README.md`](libs/Kit/docs/README.md)
 
 ## Development
 
