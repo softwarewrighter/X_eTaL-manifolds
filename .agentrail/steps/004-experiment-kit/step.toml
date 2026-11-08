@@ -1,10 +1,11 @@
 number = 4
 slug = "experiment-kit"
-status = "in-progress"
+status = "completed"
 description = """
 Step experiment-kit (docs/plan.md, Saga 1 row 4; principle 1;
 decisions G3, G..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T10:53:57"
-commits = []
+completed_at = "2026-11-07T17:47:10"
+commits = ["143cbc6b79a094bdc344484361c65c5535fbfc8d"]
