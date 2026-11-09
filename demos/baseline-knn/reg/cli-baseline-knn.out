@@ -17,3 +17,4 @@ ok: tree: the layout keeps the tree's distances badly (the mean, the worst pair)
               0.75 40.0 0.0 14400.0
              0.775 40.0 0.0 14400.0
                1.0  7.0 0.0   336.0
+ok: every run held out a quarter and trained no number

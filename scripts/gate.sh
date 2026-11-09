@@ -108,6 +108,8 @@ if [ ${#libs[@]} -gt 0 ]; then
 fi
 step "the cheap checks"
 "$root/scripts/py" "$root/scripts/check-examples.py"
+# The pages' glossary is made from docs/glossary.md and never drifts from it.
+"$root/scripts/py" "$root/scripts/glossary.py" --check
 # Each name bound once in its scope (X_eTaL lang-choices M1).
 "$root/scripts/py" "$root/scripts/check-rebind.py" --self-test
 "$root/scripts/py" "$root/scripts/check-rebind.py"

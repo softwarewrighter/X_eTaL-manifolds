@@ -1,19 +1,23 @@
-//! The page: the question, what to know first, the idea and what the
-//! page is; then the five spaces, each with its turning view, its flat
-//! view and its numbers, and what it is for here; the summary against
-//! the question, what is next, and the program. Presentation only:
-//! every number shown is one X_eTaL printed.
-
-use std::rc::Rc;
+//! The page, on the shared teaching shell (X_eTaL-ML's lesson, ask GM1)
+//! and its turning view (microscope::turning, ask GM3): the question,
+//! what to know first, the idea, what the page is; the intuition, the
+//! mathematics, the experiment, the run (none), the analysis, the
+//! extension; the five spaces, each with its turning view, its flat
+//! view and its numbers; the summary, what is next, every idea
+//! explained, the program. Words open plain explanations; every number
+//! shown is one X_eTaL printed. Presentation only.
 
 use yew::prelude::*;
 
-use microscope::source::{between, block};
-use site::{footer, frame, header, mark, p, Frame};
+use lesson::chrome::{footer, frame, header, Frame};
+use lesson::code::Linker;
+use lesson::eli5::{index, li, p, prose, Here};
+use lesson::explain::definition;
+use microscope::turning::{Angle, Point, Scene, Segment, Turning};
+use site::{comparison, functions, mark, own_function, Cell, ANALYSIS, EXPERIMENT, EXTENSION, INTUITION, MATHEMATICS, RUN};
 
 use crate::micro::{program, run, Pair, Tour, P2, P3, SPACES};
 use crate::text;
-use crate::turn::{project, radius, segments, Turn, Up, SIZE};
 
 /// A number as the page quotes it: four decimals (the run's full
 /// digits are in the program's output).
@@ -25,110 +29,68 @@ fn f1(x: f64) -> String {
     format!("{x:.1}")
 }
 
-// -- the turning view (the page's projection: the GM3 workaround) --
+// -- the turning views, through the shared view --
 
-/// A line drawn over the wires: its points, its class, its name.
-#[derive(Clone, Debug, PartialEq)]
-pub struct Path3 {
-    pub points: Vec<P3>,
-    pub class: &'static str,
+/// The shared view turns about the vertical axis, y. The sphere and
+/// the torus are written with z up, so their points are turned a
+/// quarter turn about x for drawing, (x, y, z) to (x, z, -y): a
+/// rotation, so the picture keeps its handedness and no number changes
+/// its meaning. The Swiss roll has its height as y already.
+#[derive(Clone, Copy, PartialEq)]
+pub enum Up {
+    Z,
+    Y,
 }
 
-/// A labeled point.
-#[derive(Clone, Debug, PartialEq)]
-pub struct Point3 {
-    pub at: P3,
-    pub label: &'static str,
-    pub class: &'static str,
+pub fn upright(p: P3, up: Up) -> [f64; 3] {
+    match up {
+        Up::Z => [p[0], p[2], -p[1]],
+        Up::Y => p,
+    }
 }
+
+/// A space's scene: its wire lines (analytical), its paths (the arcs,
+/// measured), its chords (straight lines through the room) and its
+/// labeled points, all from the run.
+fn scene(wires: &[Vec<P3>], paths: &[(&[P3], &str)], chords: &[(P3, P3)], points: &[(P3, &str, &str)], up: Up) -> Scene {
+    let mut segments: Vec<Segment> = chords.iter().map(|(a, b)| Segment { from: upright(*a, up), to: upright(*b, up), color: "#868e96".into(), arrow: false }).collect();
+    for (path, color) in paths {
+        for w in path.windows(2) {
+            segments.push(Segment { from: upright(w[0], up), to: upright(w[1], up), color: color.to_string(), arrow: false });
+        }
+    }
+    Scene {
+        points: points.iter().map(|(at, label, color)| Point { at: upright(*at, up), color: color.to_string(), label: label.to_string() }).collect(),
+        segments,
+        wires: wires.iter().map(|w| w.iter().map(|p| upright(*p, up)).collect()).collect(),
+    }
+}
+
+const NEAR: &str = "#2b8a3e";
+const FAR: &str = "#e8590c";
+const INK: &str = "#868e96";
 
 #[derive(Properties, PartialEq)]
-pub struct TurningProps {
-    pub name: &'static str,
-    pub wires: Rc<Vec<Vec<P3>>>,
-    pub paths: Rc<Vec<Path3>>,
-    pub chords: Rc<Vec<(P3, P3)>>,
-    pub points: Rc<Vec<Point3>>,
-    pub up: Up,
-    pub start: (f64, f64),
+struct ViewProps {
+    name: &'static str,
+    scene: Scene,
+    start: Angle,
 }
 
-/// A picture in three dimensions, turned by dragging, the arrow keys
-/// or a finger. Its angle is this component's state and nothing else's.
-#[function_component(Turning)]
-pub fn turning(props: &TurningProps) -> Html {
-    let turn = use_state(|| Turn { yaw: props.start.0, pitch: props.start.1 });
-    let drag = use_state(|| None::<(f64, f64)>);
-    let r = radius(&props.wires);
-    let t = *turn;
-    let segs = segments(&props.wires, props.up, t, r);
-    let down = {
-        let drag = drag.clone();
-        Callback::from(move |e: PointerEvent| drag.set(Some((e.client_x() as f64, e.client_y() as f64))))
-    };
-    let mv = {
-        let (drag, turn) = (drag.clone(), turn.clone());
-        Callback::from(move |e: PointerEvent| {
-            if let Some((x0, y0)) = *drag {
-                let (x, y) = (e.client_x() as f64, e.client_y() as f64);
-                turn.set(turn.tipped((x - x0) * 0.01, (y - y0) * 0.01));
-                drag.set(Some((x, y)));
-            }
-        })
-    };
-    let up = {
-        let drag = drag.clone();
-        Callback::from(move |_: PointerEvent| drag.set(None))
-    };
-    let leave = {
-        let drag = drag.clone();
-        Callback::from(move |_: PointerEvent| drag.set(None))
-    };
-    let key = {
-        let turn = turn.clone();
-        Callback::from(move |e: KeyboardEvent| {
-            let step = 5f64.to_radians();
-            let (dy, dp) = match e.key().as_str() {
-                "ArrowLeft" => (-step, 0.0),
-                "ArrowRight" => (step, 0.0),
-                "ArrowUp" => (0.0, step),
-                "ArrowDown" => (0.0, -step),
-                _ => return,
-            };
-            e.prevent_default();
-            turn.set(turn.tipped(dy, dp));
-        })
-    };
-    let (yaw, pitch) = t.degrees();
-    let c = |d: f64| format!("{d:.1}");
+/// One turning view with its own angle (page state) and its caption.
+#[function_component(View)]
+fn view(props: &ViewProps) -> Html {
+    let angle = use_state(|| props.start);
+    let turned = { let a = angle.clone(); Callback::from(move |n: Angle| a.set(n)) };
+    let (yaw, pitch) = ((angle.yaw.to_degrees().round() as i32).rem_euclid(360), angle.pitch.to_degrees().round() as i32);
     html! {
         <figure class="turning">
-            <svg viewBox={format!("0 0 {SIZE} {SIZE}")} role="img" tabindex="0"
-                aria-label={format!("the {} in three dimensions, turned {yaw} degrees round and {pitch} degrees toward you; drag, use the arrow keys or swipe to turn it", props.name)}
-                onpointerdown={down} onpointermove={mv} onpointerup={up} onpointerleave={leave} onkeydown={key}>
-                { for segs.iter().map(|s| html! {
-                    <line class="wire" x1={c(s.a.x)} y1={c(s.a.y)} x2={c(s.b.x)} y2={c(s.b.y)} opacity={format!("{:.2}", 0.18 + 0.62 * s.near)} />
-                }) }
-                { for props.chords.iter().map(|(a, b)| {
-                    let (a, b) = (project(*a, props.up, t, r), project(*b, props.up, t, r));
-                    html! { <line class="chord" x1={c(a.x)} y1={c(a.y)} x2={c(b.x)} y2={c(b.y)} /> }
-                }) }
-                { for props.paths.iter().map(|path| {
-                    let pts: Vec<String> = path.points.iter().map(|q| { let d = project(*q, props.up, t, r); format!("{:.1},{:.1}", d.x, d.y) }).collect();
-                    html! { <polyline class={path.class} points={pts.join(" ")} /> }
-                }) }
-                { for props.points.iter().map(|q| {
-                    let d = project(q.at, props.up, t, r);
-                    html! { <g>
-                        <circle class={classes!("pt", q.class)} cx={c(d.x)} cy={c(d.y)} r="4.5" />
-                        <text class="lbl" x={c(d.x + 7.0)} y={c(d.y - 6.0)}>{ q.label }</text>
-                    </g> }
-                }) }
-            </svg>
+            <Turning scene={props.scene.clone()} angle={*angle} {turned} size={420.0}
+                label={format!("the {} in three dimensions, turned {yaw} degrees round and {pitch} degrees toward you; drag, use the arrow keys or swipe to turn it", props.name)} />
             <figcaption>
                 { format!("The {} in three dimensions, turned ", props.name) }
                 <span class="state">{ format!("{yaw} degrees round and {pitch} degrees toward you") }</span>
-                { ". Drag it, press the arrow keys once it has the focus (click or tab to it), or swipe, to turn it; turning changes no number on this page, only the side you see. Nothing nearer is drawn bigger: the view is orthographic." }
+                { ". Drag it, press the arrow keys once it has the focus (click or tab to it), or swipe, to turn it; turning changes no number on this page, only the side you see. The shared view of these repositories: a mild perspective, the nearest drawn last." }
                 { mark(false) }
             </figcaption>
         </figure>
@@ -137,7 +99,6 @@ pub fn turning(props: &TurningProps) -> Html {
 
 // -- the flat views --
 
-/// A polyline of map points, (x, y) mapped to the SVG by `at`.
 fn polyline(points: &[P2], class: &str, at: &dyn Fn(P2) -> (f64, f64)) -> Html {
     let pts: Vec<String> = points.iter().map(|q| { let (x, y) = at(*q); format!("{x:.1},{y:.1}") }).collect();
     html! { <polyline class={class.to_string()} points={pts.join(" ")} /> }
@@ -153,8 +114,6 @@ fn dot(q: P2, label: &str, class: &str, at: &dyn Fn(P2) -> (f64, f64)) -> Html {
 
 const W: f64 = 420.0;
 
-/// The circle unrolled: its map, the angle from 0 to 2 pi, with the
-/// near pair and the far pair marked where the program put them.
 fn circle_flat(t: &Tour) -> Html {
     let two_pi = t.circle_angles[t.circle_angles.len() - 1];
     let h = 120.0;
@@ -179,7 +138,6 @@ fn circle_flat(t: &Tour) -> Html {
     }
 }
 
-/// The sphere's map: longitude 0 to 360 across, latitude -90 to 90 up.
 fn sphere_map(t: &Tour) -> Html {
     let h = W / 2.0;
     let at = |q: P2| (W * q[0] / 360.0, h / 2.0 - h * q[1] / 180.0);
@@ -198,7 +156,6 @@ fn sphere_map(t: &Tour) -> Html {
     }
 }
 
-/// The torus's map: u across, v up, both 0 to 360.
 fn torus_map(t: &Tour) -> Html {
     let h = W;
     let at = |q: P2| (12.0 + (W - 24.0) * q[0] / 360.0, 22.0 + (h - 44.0) * (1.0 - q[1] / 360.0));
@@ -214,8 +171,6 @@ fn torus_map(t: &Tour) -> Html {
     }
 }
 
-/// The Swiss roll unrolled: the length along the sheet across, the
-/// height up, in the sheet's own units (the only map here to scale).
 fn roll_map(t: &Tour) -> Html {
     let (x0, x1) = (t.roll_along_map[0][0][0], t.roll_along_map[0][60][0]);
     let (y0, y1) = (-6.0, 6.0);
@@ -234,8 +189,6 @@ fn roll_map(t: &Tour) -> Html {
     }
 }
 
-/// The Poincare disk, flat: the rim, the ruler, the geodesics, the
-/// two pairs.
 fn disk(t: &Tour) -> Html {
     let at = |q: P2| (W / 2.0 + 0.44 * W * q[0], W / 2.0 - 0.44 * W * q[1]);
     html! {
@@ -262,7 +215,6 @@ fn disk(t: &Tour) -> Html {
 
 // -- the numbers --
 
-/// The two distances of a pair, as a table row.
 fn pair_row(name: &str, p: &Pair) -> Html {
     html! { <tr><td>{ name.to_string() }</td><td>{ show(p.straight) }</td><td>{ show(p.along) }</td><td>{ format!("{:.4}", p.ratio()) }</td></tr> }
 }
@@ -276,7 +228,6 @@ fn pairs(rows: &[(&str, &Pair)], along: &str) -> Html {
     }
 }
 
-/// A space's section: its heading, its dimensions, its prose, the figure row, what it is for.
 fn space(name: &str, dims: P2, intro: &str, measured: &str, after: &[&str], figure: Html, numbers: Html, extra: Html, for_here: &str) -> Html {
     html! {
         <section class="space" id={name.replace(' ', "-")}>
@@ -316,7 +267,7 @@ fn dims_table(t: &Tour) -> Html {
 fn worked(t: &Tour) -> Html {
     let (pp, qq) = (t.sphere_pts[0], t.sphere_pts[1]);
     html! {
-        <div class="worked">
+        <div class="worked-out">
             <p><b>{ "Worked in full: the chord from p to q." }</b>{ " Every number below is printed by the program (its workedDiff, workedSq, workedSum lines)." }</p>
             <p>{ format!("p = ({}, {}, {}); q = ({}, {}, {})", show(pp[0]), show(pp[1]), show(pp[2]), show(qq[0]), show(qq[1]), show(qq[2])) }</p>
             <p>{ format!("the differences p - q: {}, {}, {}", show(t.worked_diff[0]), show(t.worked_diff[1]), show(t.worked_diff[2])) }</p>
@@ -327,94 +278,143 @@ fn worked(t: &Tour) -> Html {
     }
 }
 
-fn source() -> Html {
-    let src = program();
-    let range = between(&src, "sphereFarArc := ", "\n");
-    block(&src, range)
+/// The comparison of the page (plan G5): the pairs against the two
+/// distances and their ratio, all measured.
+fn analysis(t: &Tour) -> Html {
+    let row = |name: &'static str, p: &Pair| (name, vec![Cell::measured(show(p.straight)), Cell::measured(show(p.along)), Cell::measured(format!("{:.4}", p.ratio()))]);
+    let rows = [
+        row("circle, 0.1 radians apart (near)", &t.circle_near_d),
+        row("circle, 2.5 radians apart (far)", &t.circle_far_d),
+        row("sphere, p to q (near)", &t.sphere_near_d),
+        row("sphere, p to r (far)", &t.sphere_far_d),
+        row("Swiss roll, a to b (near)", &t.roll_near_d),
+        row("Swiss roll, a to c (a turn apart)", &t.roll_far_d),
+        row("Poincare disk, near the middle", &t.disk_near_d),
+        row("Poincare disk, near the rim", &t.disk_far_d),
+    ];
+    let sentences = vec![
+        lesson::narrate::moved("the ratio along to through, circle, near to far", t.circle_near_d.ratio(), t.circle_far_d.ratio()),
+        lesson::narrate::moved("the ratio along to through, sphere, near to far", t.sphere_near_d.ratio(), t.sphere_far_d.ratio()),
+        lesson::narrate::moved("the ratio along to through, Swiss roll, near to a turn apart", t.roll_near_d.ratio(), t.roll_far_d.ratio()),
+        lesson::narrate::moved("the ratio by the disk to on paper, from the middle to the rim", t.disk_near_d.ratio(), t.disk_far_d.ratio()),
+        lesson::narrate::moved("the torus's ring length, from the inner ring to the outer", t.torus_rim_lengths[1], t.torus_rim_lengths[0]),
+    ];
+    html! { <>
+        { comparison(&["straight line", "along the space", "ratio"], &rows, &sentences) }
+        { for text::ANALYSIS.iter().map(|s| p(s)) }
+    </> }
+}
+
+/// The Manifold functions the program uses, each explained from the
+/// library's own source, in an aside.
+fn library_asides(linker: &Linker) -> Html {
+    let aside = |name: &str, purpose: &str, reading: &str| match definition("Manifold", name) {
+        Some(d) => own_function("mf:", &d, p(purpose), html! { <p>{ reading.to_string() }</p> }),
+        None => html! {},
+    };
+    html! { <>
+        { aside("s_pherePoints", "Turns rows of (longitude, latitude) into points of the unit sphere: the sphere's map, read backward. Every wire line of the sphere and its three points come from it.", "Read the body right to left: the two columns are taken out of the map, and three lists (x, y, z) are made from cosines and sines and put side by side as columns.") }
+        { aside("s_phereArc", "The great-circle arc from p to q as n + 1 points, evenly spaced along it: what the orange and green arcs on the sphere are.", "The arrow from p to q is found first (the tangent vector a step would follow), then the points at the fractions 0, 1/n, ..., 1 of it, each put back on the sphere.") }
+        { aside("s_phereDistance", "The great-circle distance between two points of the sphere: the angle between them, from the lengths of their difference and their sum.", "Two helpers: a_part gives |p - q| and |p + q|; a_ngle gives 2 atan2 of them.") }
+        { aside("r_ollDistance", "The distance along the Swiss roll's sheet between two points given on its map: Pythagoras on (the length along the spiral, the height), because the sheet is flat.", "Each point's length along the spiral comes from r_ollAlong; the differences in that and in height are squared, summed and rooted.") }
+        { aside("b_allDistance", "The Poincare disk's distance: 2 atanh of the length of q seen from p, by the disk's own addition (Mobius addition, the private helper m_obius).", "Read right to left: q seen from p, its length, atanh, times 2.") }
+        <p class="note">{ "The program's own small functions (pairs, repeats, a wire's length, the straight line) are written out at its top; see " }{ linker.code("u:p_airs") }{ " and the others in the program below." }</p>
+    </> }
 }
 
 #[function_component(App)]
 pub fn app() -> Html {
     let tour = use_memo((), |_| run());
+    let src = program();
+    let linker = Linker::of(&src);
     let body = match &*tour {
         Err(e) => html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped: {e}") }</p></section> },
         Ok(t) => spaces(t),
     };
+    let after = match &*tour {
+        Ok(t) => analysis(t),
+        Err(_) => html! {},
+    };
+    let texts = text::all();
     html! {
-        <>
+        <ContextProvider<Here> context={Here("manifold-tour".into())}>
         <header>
             { header("Manifold tour", "What a manifold is, on five of them: the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each drawn by X_eTaL from its own map and turning in your browser, with its flat view and one measurement each of near and far: the straight line through the space against the distance along it. Nothing here is trained.") }
         </header>
         <main>
             { frame(Frame::Question, "The question", html! { <>
-                <p class="hint">{ text::HINT }</p>
+                <p class="hint">{ prose(text::HINT) }</p>
                 <p class="prose"><b>{ text::QUESTION[0] }</b></p>
                 { for text::QUESTION[1..].iter().map(|s| p(s)) }
             </> }) }
             { frame(Frame::Background, "What you need to know first", html! { <>
                 { p(text::BACKGROUND[0]) }
-                <ul>{ for text::BACKGROUND[1..4].iter().map(|s| html! { <li>{ s.to_string() }</li> }) }</ul>
+                <ul>{ for text::BACKGROUND[1..4].iter().map(|s| li(s)) }</ul>
                 { p(text::BACKGROUND[4]) }
             </> }) }
             { frame(Frame::Rationale, "The idea: a space that is flat up close", html! { <>
                 { for text::RATIONALE[0..3].iter().map(|s| p(s)) }
                 <ul>{ for text::RATIONALE[3].split(". A representation").enumerate().map(|(i, s)| {
                     let s = if i == 0 { s.to_string() } else { format!("A representation{s}") };
-                    html! { <li>{ s }</li> }
+                    li(&s)
                 }) }</ul>
                 { for text::RATIONALE[4..].iter().map(|s| p(s)) }
             </> }) }
-            { frame(Frame::Purpose, "What this page is, and is not", html! { <>
-                { for text::PURPOSE.iter().map(|s| p(s)) }
-            </> }) }
+            { frame(Frame::Purpose, "What this page is, and is not", html! { <>{ for text::PURPOSE.iter().map(|s| p(s)) }</> }) }
+            { frame(INTUITION, "The intuition: an ant on a ball", html! { <>{ for text::INTUITION.iter().map(|s| p(s)) }</> }) }
+            { frame(MATHEMATICS, "The mathematics: two distances, and a map", html! { <>{ for text::MATHEMATICS.iter().map(|s| p(s)) }</> }) }
+            { frame(EXPERIMENT, "The experiment: a near pair and a far pair on each space", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }</> }) }
+            { frame(RUN, "The run: nothing is trained", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
             { body }
-            { frame(Frame::Summary, "What this page showed", html! { <>
-                { for text::SUMMARY.iter().map(|s| p(s)) }
-            </> }) }
-            { frame(Frame::Next, "What is next", html! { <>
-                <ul>{ for text::NEXT.iter().map(|s| html! { <li>{ s.to_string() }</li> }) }</ul>
-            </> }) }
-            <section class="panel code">
-                <h2>{ "The program" }</h2>
-                { for text::CODE.iter().map(|s| html! { <p class="note">{ s.to_string() }</p> }) }
-                { source() }
+            { frame(ANALYSIS, "The analysis: the ratios, compared", after) }
+            { frame(EXTENSION, "Beyond this page: what it rests on, what is open", html! { <>{ for text::EXTENSION.iter().map(|s| p(s)) }</> }) }
+            { frame(Frame::Summary, "What this page showed", html! { <>{ for text::SUMMARY.iter().map(|s| p(s)) }</> }) }
+            { frame(Frame::Next, "What is next", html! { <ul>{ for text::NEXT.iter().map(|s| li(s)) }</ul> }) }
+            <section class="panel">
+                <h2>{ "Every idea on this page, explained simply" }</h2>
+                <p class="note">{ "The same explanations the underlined words open, in one place. Open any of them." }</p>
+                { index(&texts) }
+            </section>
+            <section class="panel code" id="code">
+                <h2>{ "The code, for those who want it" }</h2>
+                { for text::CODE.iter().map(|s| p(s)) }
+                <h3>{ "The library functions behind the pictures" }</h3>
+                { library_asides(&linker) }
+                <h3>{ "Every library function the program calls" }</h3>
+                { functions(&src) }
+                <h3>{ "The program" }</h3>
+                { linker.block(&src) }
+                <p class="links"><a href="../doc/demos-manifold-tour-manifold-tour.xtl.html">{ "This program in the cross-reference" }</a></p>
             </section>
         </main>
         { footer() }
-        </>
+        </ContextProvider<Here>>
     }
 }
 
 /// The five spaces, from the tour the program computed.
 fn spaces(t: &Tour) -> Html {
-    let no_chords: Rc<Vec<(P3, P3)>> = Rc::new(vec![]);
-    let no_paths: Rc<Vec<Path3>> = Rc::new(vec![]);
-    // The circle, in three dimensions as a flat ring (z = 0), so it turns like the rest.
     let lift = |q: P2| [q[0], q[1], 0.0];
     let circle3: Vec<P3> = t.circle.iter().map(|q| lift(*q)).collect();
-    // The arcs along the circle: the circle's own points up to the pair's angle, then the pair's point.
     let arc = |upto: f64, end: P2| -> Vec<P3> {
         t.circle_angles.iter().zip(&t.circle).filter(|(a, _)| **a <= upto).map(|(_, q)| lift(*q)).chain([lift(end)]).collect()
     };
-    let circle_paths = Rc::new(vec![
-        Path3 { points: arc(t.circle_far_a[1], t.circle_far[1]), class: "far" },
-        Path3 { points: arc(t.circle_near_a[1], t.circle_near[1]), class: "near" },
-    ]);
+    let (far_arc, near_arc) = (arc(t.circle_far_a[1], t.circle_far[1]), arc(t.circle_near_a[1], t.circle_near[1]));
     let circle_figure = html! { <>
-        <Turning name="circle" wires={Rc::new(vec![circle3])} paths={circle_paths}
-            chords={Rc::new(vec![(lift(t.circle_near[0]), lift(t.circle_near[1])), (lift(t.circle_far[0]), lift(t.circle_far[1]))])}
-            points={Rc::new(vec![Point3 { at: lift(t.circle_near[0]), label: "0", class: "" }, Point3 { at: lift(t.circle_near[1]), label: "0.1", class: "near" }, Point3 { at: lift(t.circle_far[1]), label: "2.5", class: "far" }])}
-            up={Up::Y} start={(0.0, 0.0)} />
-        { flat("The circle's map: one number, the angle. The near pair (green) and the far pair (orange) are marked; the dashed lines in the picture are the chords through the plane.", circle_flat(t), false) }
+        <View name="circle" scene={scene(&[circle3], &[(&far_arc, FAR), (&near_arc, NEAR)],
+            &[(lift(t.circle_near[0]), lift(t.circle_near[1])), (lift(t.circle_far[0]), lift(t.circle_far[1]))],
+            &[(lift(t.circle_near[0]), "0", INK), (lift(t.circle_near[1]), "0.1", NEAR), (lift(t.circle_far[1]), "2.5", FAR)], Up::Y)}
+            start={Angle { yaw: 0.0, pitch: 0.0 }} />
+        { flat("The circle's map: one number, the angle. The near pair (green) and the far pair (orange) are marked; the gray lines in the picture are the chords through the plane.", circle_flat(t), false) }
     </> };
     let circle_numbers = pairs(&[("0 and 0.1 (near)", &t.circle_near_d), ("0 and 2.5 (far)", &t.circle_far_d)], "along the circle");
 
+    let sphere_wires: Vec<Vec<P3>> = t.parallels.iter().chain(&t.meridians).cloned().collect();
     let sphere_figure = html! { <>
-        <Turning name="sphere" wires={Rc::new(t.parallels.iter().chain(&t.meridians).cloned().collect::<Vec<_>>())}
-            paths={Rc::new(vec![Path3 { points: t.sphere_far_arc.clone(), class: "far" }, Path3 { points: t.sphere_near_arc.clone(), class: "near" }])}
-            chords={Rc::new(vec![(t.sphere_pts[0], t.sphere_pts[2])])}
-            points={Rc::new(vec![Point3 { at: t.sphere_pts[0], label: "p", class: "" }, Point3 { at: t.sphere_pts[1], label: "q", class: "near" }, Point3 { at: t.sphere_pts[2], label: "r", class: "far" }])}
-            up={Up::Z} start={(-0.9, 0.35)} />
+        <View name="sphere" scene={scene(&sphere_wires, &[(&t.sphere_far_arc, FAR), (&t.sphere_near_arc, NEAR)],
+            &[(t.sphere_pts[0], t.sphere_pts[2])],
+            &[(t.sphere_pts[0], "p", INK), (t.sphere_pts[1], "q", NEAR), (t.sphere_pts[2], "r", FAR)], Up::Z)}
+            start={Angle { yaw: -0.9, pitch: 0.35 }} />
         { flat("The sphere's map, longitude across and latitude up, with the parallels and meridians of the picture, p, q and r, and the two great-circle arcs (which curve on the map). Positions can be read off it; lengths cannot.", sphere_map(t), false) }
     </> };
     let sphere_numbers = html! { <>
@@ -425,10 +425,10 @@ fn spaces(t: &Tour) -> Html {
         </table>
     </> };
 
+    let torus_wires: Vec<Vec<P3>> = t.torus_rings.iter().chain(&t.torus_tubes).cloned().collect();
     let torus_figure = html! { <>
-        <Turning name="torus" wires={Rc::new(t.torus_rings.iter().chain(&t.torus_tubes).cloned().collect::<Vec<_>>())}
-            paths={Rc::new(vec![Path3 { points: t.torus_rings[0].clone(), class: "far" }, Path3 { points: t.torus_rings[3].clone(), class: "near" }])}
-            chords={no_chords.clone()} points={Rc::new(vec![])} up={Up::Z} start={(0.5, 0.9)} />
+        <View name="torus" scene={scene(&torus_wires, &[(&t.torus_rings[0], FAR), (&t.torus_rings[3], NEAR)], &[], &[], Up::Z)}
+            start={Angle { yaw: 0.5, pitch: 0.9 }} />
         { flat("The torus's map: a square of two angles, its opposite edges joined. The outer ring (orange) and the inner ring (green) are two rows of the same width here, and twice as long one as the other on the torus.", torus_map(t), false) }
     </> };
     let torus_numbers = html! {
@@ -442,12 +442,11 @@ fn spaces(t: &Tour) -> Html {
         </table>
     };
 
+    let roll_wires: Vec<Vec<P3>> = t.roll_along.iter().chain(&t.roll_across).cloned().collect();
     let roll_figure = html! { <>
-        <Turning name="Swiss roll" wires={Rc::new(t.roll_along.iter().chain(&t.roll_across).cloned().collect::<Vec<_>>())}
-            paths={no_paths.clone()}
-            chords={Rc::new(vec![(t.roll_pts[0], t.roll_pts[2]), (t.roll_pts[0], t.roll_pts[1])])}
-            points={Rc::new(vec![Point3 { at: t.roll_pts[0], label: "a", class: "" }, Point3 { at: t.roll_pts[1], label: "b", class: "near" }, Point3 { at: t.roll_pts[2], label: "c", class: "far" }])}
-            up={Up::Y} start={(0.4, 0.5)} />
+        <View name="Swiss roll" scene={scene(&roll_wires, &[], &[(t.roll_pts[0], t.roll_pts[2]), (t.roll_pts[0], t.roll_pts[1])],
+            &[(t.roll_pts[0], "a", INK), (t.roll_pts[1], "b", NEAR), (t.roll_pts[2], "c", FAR)], Up::Y)}
+            start={Angle { yaw: 0.4, pitch: 0.5 }} />
         { flat("The sheet unrolled: the length along it across, the height up. This map is to scale, because the sheet is flat: a and c, a layer apart in the picture, are far apart here.", roll_map(t), false) }
     </> };
     let roll_numbers = html! { <>
@@ -474,7 +473,7 @@ fn spaces(t: &Tour) -> Html {
     html! { <>
         <section class="space" id="dimensions">
             <h2>{ "Five spaces, two dimensions each" }</h2>
-            { p("Each space has an intrinsic dimension (the number of coordinates of its map, the directions an ant on it can move in) and an ambient dimension (the number of coordinates of the space it is drawn in). The program reads both off the shapes of its arrays:") }
+            { p("Each space has an [intrinsic dimension|intrinsic-dimension] (the number of coordinates of its map, the directions an ant on it can move in) and an [ambient dimension|ambient-dimension] (the number of coordinates of the space it is drawn in). The program reads both off the shapes of its arrays:") }
             { dims_table(t) }
             { p("Only the disk's agree: it is drawn in its own two dimensions, with a different ruler. The others are curved inside a room with one more dimension than they have.") }
         </section>

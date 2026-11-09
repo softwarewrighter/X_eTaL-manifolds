@@ -1,0 +1,3 @@
+command = "scripts/browser-check.sh baseline-knn"
+exit_code = 0
+desc = "baseline-knn: the built page run in headless Chrome shows X_eTaL's results"

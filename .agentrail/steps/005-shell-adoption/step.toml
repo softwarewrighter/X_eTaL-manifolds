@@ -1,6 +1,6 @@
 number = 5
 slug = "shell-adoption"
-status = "pending"
+status = "in-progress"
 description = """
 Step shell-adoption (docs/plan.md, Saga 1 row 5; decision G2;
 principle 6; CL..."""

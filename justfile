@@ -103,6 +103,10 @@ test:
 doc-test:
     scripts/doc-test.sh
 
+# Write shared/glossary.tsv (the pages' glossary rows) from docs/glossary.md, the one source; the gate checks they agree
+glossary:
+    scripts/py scripts/glossary.py
+
 # Check that every name is bound once in its scope (X_eTaL lang-choices M1); the gate runs it
 check-rebind:
     scripts/py scripts/check-rebind.py

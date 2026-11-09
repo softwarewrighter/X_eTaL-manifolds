@@ -389,17 +389,20 @@ Read before working:
    differences, every constraint's violation tested. Planned: Manifold
    and Mixing (plan, "The functions the demos need").
 3c. Share, do not replicate (the user, 2026-11-06; plan G2). Code a
-   sibling already has is not copied here. The teaching shell
-   (X_eTaL-fine-tuning's `shared/lesson`) is asked for as a shared
-   crate (GM1 in `docs/xetal-ML-asks.md`, GF1 in
-   `docs/xetal-fine-tuning-asks.md`); until it has landed a page is
-   built on X_eTaL-ML's `shared/microscope` alone, by path from the
-   pinned clone, with plain sections of its own (G2 as amended), and
-   nothing of `shared/lesson` is copied: a step that needs the shell
-   itself is blocked and the user is told. The scripts are adapted
-   copies, each noting where it came from, until GM2 lands (the
-   record of what differs is in that ask). When you find yourself
-   about to copy a sibling's file, write the ask instead.
+   sibling already has is not copied here. The teaching shell is
+   X_eTaL-ML's `shared/lesson` (ask GM1, landed and at the pin since
+   step shell-adoption) and the turning view its `microscope::turning`
+   (GM3): every page is built on them by path from the pinned clone,
+   configured in `.cargo/config.toml` (the `LESSON_*` settings), with
+   this repository's own parts in `shared/site` (the six added frames,
+   the marks, the comparison table pending GM8, the own-library aside
+   pending GM7) and its glossary rows in `shared/glossary.tsv`, made
+   from `docs/glossary.md` by `just glossary` (the gate checks they
+   agree). What the shell lacks is an ask with a thin workaround here,
+   never a copy. The scripts are adapted copies, each noting where it
+   came from, until GM2 lands (the record of what differs is in that
+   ask). When you find yourself about to copy a sibling's file, write
+   the ask instead.
 3a. Rust is for presentation only: the pages' WebAssembly host runs
    the X_eTaL program, reads back what it printed and lays it out,
    draws and animates it. It never computes a distance, a gradient, a
@@ -458,10 +461,18 @@ Read before working:
    - figures are marked measured or analytical; an illustration that
      is not a trained or learned thing says so;
    - a surface or a cloud in three dimensions is shown turning (plan
-     G13: the shared view of ask GM3 once it has landed at the pin;
-     until then a demo-private projection in its `web/`, named as the
-     workaround in GM3), with a flat reading view and the numbers
-     always beside it; the Poincare disk stays flat;
+     G13: the shared view, `microscope::turning`, which turns about
+     y; a program that writes z up turns its points a quarter turn
+     about x for drawing, a rotation, said on the page), with a flat
+     reading view and the numbers always beside it; the Poincare disk
+     stays flat;
+   - every page has the twelve frames (the shell's six and this
+     repository's six: intuition, mathematics, experiment, run,
+     analysis, extension), which the browser check requires, and its
+     README the matching sections, which `scripts/demos.py check`
+     requires; every word a reader may not know is a glossary mark
+     (`[shown|id]`), and a test of the page finds any mark the
+     glossary lacks and any verdict word;
    - a page shows all the code it runs;
    - experiments are deterministic: fixed seeds, presets as data;
      every gradient checked against central differences; every
@@ -528,5 +539,6 @@ just run SLUG             # a demo's program; just show SLUG as a notebook
 just test-demo SLUG       # a demo's baselines; just bless SLUG to accept (review the diff)
 just test-lib Name        # a library's baselines; just bless-lib Name; just doc-test
 just new-demo SLUG "T"    # a demo from demos/_template; just new-lib Name x: "what"
+just glossary             # the pages' glossary rows from docs/glossary.md (edit that file, never the tsv)
 just pages                # the site into pages/; just serve-pages (port 3285); just publish; just check-live
 ```

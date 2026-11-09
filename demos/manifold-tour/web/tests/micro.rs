@@ -92,3 +92,35 @@ fn the_dimensions_and_the_counts() {
     assert!((t.torus_rings_uv[3][0][1] - 180.0).abs() < 1e-9);
     assert!(t.ruler_d.iter().zip([0.0, 1.0, 2.0, 3.0, 4.0, 5.0]).all(|(a, b)| (a - b).abs() < 1e-9));
 }
+
+// New eyes (X_eTaL-fine-tuning's docs/new-eyes.md, cited): the reader
+// knows neither geometry nor machine learning nor X_eTaL, so nothing
+// the page shows goes unexplained, and nothing is called better.
+
+#[test]
+fn every_word_that_opens_names_an_idea_the_glossary_has() {
+    let texts = manifold_tour_web::text::all();
+    assert_eq!(lesson::eli5::missing(&texts), Vec::<String>::new());
+    let used = lesson::eli5::used(&texts);
+    for id in ["manifold", "intrinsic-dimension", "ambient-dimension", "locally-flat", "geodesic", "manifold-hypothesis", "data-manifold", "polytope", "metric", "curvature", "measured-analytical", "distortion"] {
+        assert!(used.contains(&id.to_string()), "{id} not opened anywhere; used: {used:?}");
+    }
+}
+
+#[test]
+fn no_verdict_word_in_the_prose() {
+    for t in manifold_tour_web::text::all() {
+        assert_eq!(lesson::narrate::forbidden(t), Vec::<&str>::new(), "{t:.60}");
+    }
+}
+
+#[test]
+fn every_library_function_the_program_calls_is_found_in_its_source() {
+    let src = program();
+    let calls = lesson::explain::calls(&src);
+    assert!(calls.iter().any(|(l, n)| l == "Manifold" && n == "s_phereArc"), "{calls:?}");
+    for (lib, name) in &calls {
+        assert!(lesson::explain::definition(lib, name).is_some(), "{lib}:{name} has no definition the shell can show");
+    }
+    assert!(site::own("Manifold") && !site::own("Trig"));
+}

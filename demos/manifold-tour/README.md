@@ -40,6 +40,40 @@ can be put on a chosen manifold, an optimizer's step has a metric, and
 a set of allowed parameters is a curved set of its own (some smooth
 manifolds, some polytopes, which are not).
 
+## What this is, and is not
+
+An introduction and a proof of a chain: it introduces what a manifold
+is on five of them, and it proves that a page here can run an X_eTaL
+program in the browser, read every coordinate back and draw it
+turning. It trains nothing and compares no models; the only
+comparison is of two distances, for a near pair and a far pair of
+points on each space.
+
+## The intuition
+
+An ant on a ball: under its feet the ball is a floor, and two ants a
+step apart measure the same gap through the air or along the ball;
+two ants on opposite sides cannot stretch a string along the ball at
+all. On the Swiss roll the floor is the rolled sheet: a point on the
+next layer out is a step away through the air and a turn away on the
+floor, and a method that cannot tell the two apart calls them
+neighbors.
+
+## The mathematics
+
+The straight line between p and q: the differences of their
+coordinates squared, added, rooted (Pythagoras). The great circle on
+the unit sphere: the angle between p and q, computed as
+2 atan2(|p - q|, |p + q|), which keeps its digits for near points
+where acos of the dot product does not. The Swiss roll's point at
+(t, h) is (t cos t, h, t sin t); the length along its spiral from the
+middle is (t sqrt(1 + t^2) + asinh t) / 2 and the sheet is flat, so
+the distance along it is Pythagoras on (that length, h). The Poincare
+disk's distance is 2 atanh of the length of q seen from p by Mobius
+addition. Each space's map is the pair of numbers its points are made
+from: its intrinsic dimension is the count of those, its ambient
+dimension the count of coordinates they are turned into.
+
 ## What is compared
 
 An introduction (`intro = true` in `demo.toml`): it compares no
@@ -59,6 +93,13 @@ The near pairs nearly agree (locally flat); the far pairs do not. The
 torus's measurement is of its map's honesty: the same row of the map
 is twice as long outside the ring as inside it. Every number is in
 `reg/cli-manifold-tour.out`.
+
+## The run
+
+Nothing is trained and no model is run: the only computation is the
+program, which makes the five spaces from their maps and measures the
+pairs. The experiments that train something begin with baseline-knn
+and the explorers after it.
 
 ## The program
 
@@ -100,6 +141,30 @@ in the unrolled coordinates, because the sheet is flat; the disk's is
 geodesic is p plus the ball's fraction of the arrow to q. The wire
 lines are analytical (a formula drawn); the distances are measured.
 
+## Results
+
+The ratios, along against through, from the run: circle 1.0004 (near)
+and 1.3172 (far); sphere 1.0004 and 1.686; Swiss roll 1.004 and 8.40;
+Poincare disk 2.02 near the middle and 11.7 near the rim; the torus's
+outer ring is 2.000 times its inner ring's length. The near pairs are
+within a part in a thousand (half a percent on the roll) of 1, as the
+page's hypothesis said; the far pairs are not. The disk's near pair is
+2.02 because the disk's ruler is twice the plain one even at the
+middle. Nothing here can count against locally flat: the spaces are
+formulas made so; the measurement shows the size of the effect.
+
+## Beyond this page
+
+What this rests on, read at source (`docs/papers.md`): Isomap
+(Tenenbaum, de Silva and Langford, 2000) for the Swiss roll and the
+two distances; Fefferman, Mitter and Narayanan (2016) for the manifold
+assumption as a testable assumption; Ungar's gyrovector forms as
+Ganea, Becigneul and Hofmann (2018) write them for the disk. Open for
+this repository: whether a geometry that matches the data helps a
+model learn (H1), which representation-explorer tests with
+baseline-knn as its first row. Not established here: that any real
+data set is a manifold; the five spaces are formulas.
+
 ## Run it
 
 ```bash
@@ -121,20 +186,24 @@ geometries on learning problems. Next: the research foundation (the
 glossary, whose first rows are this page's words; the paper catalog;
 the hypotheses), then the experiment kit and the explorers.
 
+## Next
+
+sphere-hello, live: six points on the sphere, the two distances for a
+pair the reader picks, the neighbors under each, the plain mean and
+the mean on the sphere. baseline-knn, live: the three data sets and
+the H1 table's first row. Then the explorers.
+
 ## Workarounds
 
-- The turning view is the page's own (`web/src/turn.rs`: yaw and
-  pitch from pointer drag, arrow keys and touch, an orthographic
-  projection), the demo-private stopgap for ask GM3 in
-  `docs/xetal-ML-asks.md`, X_eTaL-ML's shared turning view; it is
-  removed when GM3 lands at the pin. It draws and never computes a
-  coordinate (`web/README.md`).
 - `u:p_airs` (two vectors side by side as rows), `u:e_ach` and
   `u:t_imes` (repeating), `u:l_ength` (a polyline's length) and
   `u:s_traight` (the straight-line distance) are written out in the
   program: general array words, for X_eTaL-libraries (to be asked for
   in `docs/xetal-libraries-asks.md` by step research-foundation, with
   sphere-hello's `u:c_hords`).
-- The page's sections are marked `data-frame` by the page itself
-  (`shared/site`), not by the teaching shell (ask GM1): when the shell
-  lands they are the sections it re-frames.
+- The page's turning views are X_eTaL-ML's shared `microscope::turning`
+  (ask GM3, landed); its frames, glossary, asides and code links are
+  the shared teaching shell's (`shared/lesson`, ask GM1, landed). The
+  page's own parts are `shared/site`'s: the six added frames, the
+  marks, the comparison table (ask GM8) and the aside for this
+  repository's own library functions (ask GM7).

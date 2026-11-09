@@ -143,11 +143,13 @@ demos/<slug>/            an experiment and its page (G4)
   demo.toml README.md *.xtl data/ presets/ reg/ web/
 demos/_template/         what just new-demo copies
 libs/<Name>/             a library of this repository (G3, G4)
-shared/                  this repository's page content: its site (shared/site:
-                         the Site microscope's header takes, the footer with the
-                         pins, the plain framed sections of a page's arc) and in
-                         time its glossary rows (the shell itself is X_eTaL-ML's,
-                         ask GM1)
+shared/                  this repository's own page parts on the shared shells
+                         (shared/site: the six frames it adds to the arc, the
+                         marks measured and analytical, the comparison table, the
+                         aside for its own libraries' functions) and its glossary
+                         rows (shared/glossary.tsv, made from docs/glossary.md);
+                         the shells themselves are X_eTaL-ML's lesson and
+                         microscope, by path (GM1, GM3)
 scripts/                 the logic behind the just recipes
 docs/plan.md            this plan
 docs/research.txt        the research it came from (archival)
@@ -162,13 +164,15 @@ work/                    the clones (gitignored)
 pages/                   the built site (not tracked; just publish)
 ```
 
-As of step experiment-kit (2026-11-07) the machinery, `libs/Manifold`
+As of step shell-adoption (2026-11-08) the machinery, `libs/Manifold`
 (the sphere, the drawn spaces, the ball's distance and geodesic,
-distortion), `libs/Kit` (the three data sets), `shared/site`,
-`demos/sphere-hello`, `demos/manifold-tour` (live) and
-`demos/baseline-knn` exist, with `docs/glossary.md`, `docs/papers.md`,
-`docs/research-questions.md` and `docs/experiments.md`; the other
-demos are made by the steps of Saga 1 that name them.
+distortion), `libs/Kit` (the three data sets), `shared/site` and
+`shared/glossary.tsv`, and three live pages on the shared teaching
+shell (`demos/manifold-tour`, `demos/sphere-hello`,
+`demos/baseline-knn`) exist, with `docs/glossary.md`,
+`docs/papers.md`, `docs/research-questions.md` and
+`docs/experiments.md`; the other demos are made by the steps of Saga 1
+that name them.
 
 ## Research areas and tracks
 
@@ -271,8 +275,9 @@ Asked of the siblings:
 
 | Need | Asked of | What | First needed |
 | ---- | -------- | ---- | ------------ |
-| the teaching shell, shared | X_eTaL-ML (GM1), X_eTaL-fine-tuning (GF1) | **landed** in X_eTaL-ML 501ab15 (2026-11-07): `shared/lesson` beside `microscope`, configured by the dependent's `.cargo/config.toml`; GF1 answered through it | step shell-adoption moves the pin and takes it; no longer a blocker |
-| the turning view, shared | X_eTaL-ML (GM3) | **landed** in X_eTaL-ML 501ab15: `microscope::turning` | step shell-adoption, with the pin; manifold-tour's own projection until then |
+| the teaching shell, shared | X_eTaL-ML (GM1), X_eTaL-fine-tuning (GF1) | **landed and taken** (X_eTaL-ML 501ab15; the pin at 2d23a96 since step shell-adoption, 2026-11-08): every page is on `shared/lesson` | done |
+| the turning view, shared | X_eTaL-ML (GM3) | **landed and taken**: `microscope::turning` turns every picture; the demo-private projection is gone | done |
+| the shell's gaps found in wiring | X_eTaL-ML (GM7, GM8, GM9) | a dependent's own libraries credited to X_eTaL-libraries (GM7); a comparison table of choices against measures (GM8); the linker's anchors for subscripted built-ins (GM9) | thin workarounds in `shared/site` and `scripts/browser-check.py`; not blockers |
 | the scripts, shared | X_eTaL-ML (GM2) | waiting on this repository's list, which is GM2's record (step foundation) | not a blocker: adapted copies meanwhile |
 | the new-eyes checklist, one copy | X_eTaL-fine-tuning (GF2) | not yet taken | not a blocker: cited at a commit meanwhile |
 | pairwise distances in any dimension; small array words | X_eTaL-libraries (GL1, GL2) | the straight-line distance between every pair of rows; pairs, repeats, a polyline's length | every demo; written out meanwhile |
@@ -450,7 +455,11 @@ new ones here.
   fading-memory horizon, not "information retention". H1 to H3 are
   written with what counts for and against each before any run
   (`docs/research-questions.md`).
-- GM1 and GM3 landed in X_eTaL-ML 501ab15 (2026-11-07): the teaching
-  shell and the turning view are there; step shell-adoption moves the
-  pin (G1) and takes both, and GF1 is answered through GM1. GM2 waits
-  on nothing from here (its list is its record). No ask is a blocker.
+- GM1 and GM3 landed in X_eTaL-ML 501ab15 (2026-11-07) and were
+  taken by step shell-adoption (2026-11-08, the pin at 2d23a96): every
+  page is on the shared teaching shell and turns with the shared view;
+  GF1 is answered through GM1; GM2 waits on nothing from here. Wiring
+  the shell filed GM7, GM8 and GM9, each with a thin workaround here.
+  The page arc is twelve frames (the shell's six and this
+  repository's six), required of every page by the browser check and
+  of every README by the demos check. No ask is a blocker.

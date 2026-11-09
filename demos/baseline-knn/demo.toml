@@ -4,7 +4,7 @@ slug = "baseline-knn"
 title = "Baseline: nearest neighbors"
 summary = "k nearest neighbors under the straight-line distance on the kit's three data sets (flat clusters, directions, a tree), split the same seeded way, each run's accuracy and cost recorded as the experiment schema says: the row every comparison of H1 is set against, with no geometry chosen yet; and how badly a plain layout of the tree keeps its distances."
 concepts = ["nearest neighbors", "the experiment kit", "a run's record", "distortion"]
-status = "draft"             # draft | live | deferred
+status = "live"              # draft | live | deferred
 order = 20
 track = "start"
 # An introduction: the baseline row, one choice (the straight line);

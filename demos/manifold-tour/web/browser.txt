@@ -15,3 +15,4 @@ turned 308 degrees round and 20 degrees toward you
 # The pictures: a wire segment and a geodesic exist only once the run has given their points.
 html: class="wire"
 html: class="geo"
+html: class="numbers comparison"

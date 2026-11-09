@@ -1,0 +1,24 @@
+page: loaded
+frame: question
+frame: background
+frame: rationale
+frame: purpose
+frame: intuition
+frame: mathematics
+frame: experiment
+frame: run
+frame: analysis
+frame: extension
+frame: summary
+frame: next
+errors: none
+found: flat clusters, the plane
+found: directions, lengths dropped
+found: 0.7750
+found: 0.9000
+found: 0.1789
+found: of the 7 held out guessed wrong
+found: html: class="numbers comparison"
+found: html: data-aside="ml:k_nn"
+found: html: data-aside="kt:f_lat"
+cross-reference links: 48, dead: none

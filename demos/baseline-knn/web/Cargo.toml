@@ -1,0 +1,15 @@
+[package]
+name = "baseline-knn-web"
+description = "Baseline, nearest neighbors: the kit's three data sets drawn, k nearest neighbors under the straight-line distance on each, the held-out points and the guesses, the record of every run as the H1 table's first row"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

@@ -22,9 +22,9 @@ a baseline (browser-<slug> in the demo's reg/).
 
   scripts/py scripts/browser-check.py SLUG
 
-Adapted from X_eTaL-fine-tuning's scripts/browser-check.py: unchanged but
-for this note; a page here marks its sections data-frame itself until
-the shared shell frames it (docs/xetal-ML-asks.md, GM1, GM2).
+Adapted from X_eTaL-fine-tuning's scripts/browser-check.py: the frames
+required are twelve here, the shell's six and this repository's six
+(docs/xetal-ML-asks.md, GM1, GM2).
 """
 import html
 import os
@@ -34,8 +34,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-# Every page is framed (sections marked data-frame): it may not jump into its subject.
-FRAMES = ["question", "background", "rationale", "purpose", "summary", "next"]
+# Every page is framed (sections marked data-frame): the shell's six
+# (it may not jump into its subject) and this repository's six parts of
+# the arc of its plan's principle 6 (shared/site: the intuition, the
+# mathematics, the experiment, the run, the analysis, the extension).
+FRAMES = ["question", "background", "rationale", "purpose", "intuition", "mathematics", "experiment", "run", "analysis", "extension", "summary", "next"]
 
 
 def sections(text):
@@ -86,7 +89,11 @@ def check(slug, query, want, live):
         for link in links:
             page, _, anchor = link.partition("#")
             path = doc / page
-            if not path.is_file() or (anchor and f'id="{anchor}"' not in path.read_text()):
+            # A built-in word with an axis subscript (r_/_2, s_elect_2) is the
+            # entry of the word itself: the shell's linker keeps the subscript
+            # in the anchor (docs/xetal-ML-asks.md, GM9), so its base is looked up.
+            base = re.sub(r"_\d+$", "", anchor) if page == "builtins.html" else anchor
+            if not path.is_file() or (anchor and f'id="{base}"' not in path.read_text()):
                 dead.append(link)
         print(f"cross-reference links: {len(links)}, dead: " + (", ".join(dead) if dead else "none"))
         ok &= not dead

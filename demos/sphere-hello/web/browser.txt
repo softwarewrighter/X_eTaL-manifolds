@@ -1,0 +1,10 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+Points 1 and 2
+by the great circle
+plain (coordinate by coordinate)
+0.5706
+0.0978
+6 of 6
+html: class="numbers comparison"
+html: data-aside="mf:s_phereMean"
+# The picked pair follows the link (lesson::link): the page opened at points 3 and 4.

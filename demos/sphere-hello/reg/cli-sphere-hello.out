@@ -34,3 +34,5 @@ ok: the plain mean is off the sphere
 0.319354637144474 0.5787547064568105 0.7503703122381726
 ok: the mean on the sphere is on the sphere
 0.0977624308279049
+ok: the arcs are on the sphere, 13 points each
+ok: the wire lines are on the sphere

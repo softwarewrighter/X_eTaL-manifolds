@@ -692,6 +692,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "lesson"
+version = "0.1.0"
+dependencies = [
+ "gloo-timers 0.3.0",
+ "microscope",
+ "web-sys",
+ "xetal-play",
+ "yew",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.191"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1022,6 +1033,7 @@ checksum = "3a219298ac11a56ea9a6d2120044824d6f01aeb034955e7af7bc16858527deea"
 name = "site"
 version = "0.1.0"
 dependencies = [
+ "lesson",
  "microscope",
  "yew",
 ]

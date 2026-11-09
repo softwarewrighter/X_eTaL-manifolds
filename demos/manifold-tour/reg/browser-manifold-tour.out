@@ -3,6 +3,12 @@ frame: question
 frame: background
 frame: rationale
 frame: purpose
+frame: intuition
+frame: mathematics
+frame: experiment
+frame: run
+frame: analysis
+frame: extension
 frame: summary
 frame: next
 errors: none
@@ -17,4 +23,5 @@ found: 3.8667
 found: turned 308 degrees round and 20 degrees toward you
 found: html: class="wire"
 found: html: class="geo"
-cross-reference links: 0, dead: none
+found: html: class="numbers comparison"
+cross-reference links: 43, dead: none

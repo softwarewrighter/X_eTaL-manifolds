@@ -25,9 +25,47 @@ space, and the one representation experiments use first (the plan's
 step representation-sphere), so its facts are worth seeing plainly
 before anything is trained on it.
 
-This demo measures; it trains nothing. Its page comes with the shared
-teaching shell ([`docs/xetal-ML-asks.md`](../../docs/xetal-ML-asks.md),
-GM1); until then it runs at the command line.
+## The idea
+
+Measure the same six points two ways and see whether the ways
+disagree where it matters: on which points are each other's
+neighbors, and on where the middle of the points is. If the straight
+line and the great circle rank every point's neighbors the same way,
+a method that only ranks neighbors loses nothing by using the
+straight line; if the plain average falls off the sphere, a method
+that averages unit vectors must either accept a point that is not one
+or use the mean that stays on the sphere.
+
+## What this is, and is not
+
+An introduction (`intro = true`): one set of six points, measured
+two ways, and averaged two ways. It trains nothing. Live at
+<https://softwarewrighter.github.io/X_eTaL-manifolds/sphere-hello/>
+on the shared teaching shell: pick a pair and read its two distances,
+see each point's neighbors under each, and the two means.
+
+## The intuition
+
+Two cities on the globe: the string through the earth between them is
+shorter than the flight along the surface, by little for near cities
+and by much for far ones, but the nearest city to any city is the
+same by both. And the average of the cities' positions, as points in
+space, is somewhere under the ground: the "middle" of points on a
+sphere has to be found on the sphere.
+
+## The mathematics
+
+Points p and q on the unit sphere (length 1). The chord is the
+straight-line distance, sqrt(sum (p_i - q_i)^2). The arc is the angle
+between them, 2 atan2(|p - q|, |p + q|), in radians, 0 to pi. The two
+are tied by chord = 2 sin(arc / 2), which is why they rank neighbors
+alike: sin is increasing on [0, pi / 2], so a larger arc is a larger
+chord. The plain mean is the coordinate-wise average, whose length is
+under 1 unless the points coincide; the mean on the sphere is the
+point m on it that makes the sum over the points of arc(m, p_i)^2
+least, found by stepping from the projected plain mean along the
+average of the arrows (logarithmic maps) to the points until they
+cancel.
 
 ## What is compared
 
@@ -37,6 +75,12 @@ the mean on the sphere (the point along the surface closest, in
 summed squared arcs, to the points). What would count against the
 claim "the two distances agree on neighbors" is any point whose
 neighbors come in a different order by the two.
+
+## The run
+
+No model is trained: the run is the program, which measures the six
+points. Its record is the two distance matrices, the two neighbor
+orders and the two means, which the page reads back.
 
 ## The program
 
@@ -75,6 +119,27 @@ points) until the arrows cancel; the result is on the sphere, 0.098
 radians (about 5.6 degrees) from where the plain mean was pushed
 out, so the two are different points.
 
+## Results
+
+From the baseline (`reg/cli-sphere-hello.out`): on the six points the
+chord and the arc give the same neighbor order for every point; the
+widest gap between arc and chord over all pairs is 0.456 (at the
+widest arc, 2.464); the plain mean has length 0.571, so it is 0.429
+inside the sphere; the mean on the sphere is 0.098 radians from the
+plain mean put onto the sphere. Nothing counts against "the two
+distances agree on neighbors" here; it would on a set with ties or
+with points near opposite each other, which the page notes.
+
+## Beyond this page
+
+The mean on the sphere is the Frechet (Karcher) mean of Absil, Mahony
+and Sepulchre's chapter 3 (`docs/papers.md`); that the chord and the
+arc rank alike follows from chord = 2 sin(arc / 2) and holds for any
+points, not only these six. Open: whether using the arc instead of the
+chord changes what a classifier learns on data with a directional
+structure (H1, representation-explorer); the baseline page measures
+the straight line's accuracy there first.
+
 ## Run it
 
 ```bash
@@ -102,6 +167,13 @@ about learning; the representation experiments (the plan's Saga 1,
 steps representation-sphere and after) ask whether these facts change
 what a model learns. Next: a page for this program, when the shared
 shell has landed, and the baseline classifier (step experiment-kit).
+
+## Next
+
+baseline-knn: the three data sets of the kit and nearest neighbors
+under the straight line, the first row of the H1 table; then
+representation-explorer, where the sphere's distance is compared with
+the straight line on the directional data.
 
 ## Workarounds
 

@@ -8,44 +8,72 @@ The question in a newcomer's words, and the worries behind it.
 
 ## Background
 
-What a reader must know to follow it, in plain words; the idea and why
-it is a good answer (the rationale); what this demo is and is not.
+What a reader must know to follow it, in plain words.
 
-Live: [the __TITLE__ page](https://softwarewrighter.github.io/X_eTaL-manifolds/__SLUG__/)
-(once the demo has a web app).
+## The idea
+
+Why this approach could answer the question (the rationale).
+
+## What this is, and is not
+
+The page's purpose: what it shows, what it does not (a trained model
+or not, a comparison or an introduction), where it is live.
+
+## The intuition
+
+The geometric picture in plain words.
+
+## The mathematics
+
+Every variable explained and tied to the picture.
 
 ## What is compared
 
-The geometric choices, on which ML problem, with the same data, split,
-seeds and budget; what would count against the hypothesis.
+The ML problem, the two or more geometric choices compared on it
+(same data, split, seeds, budgets), the hypothesis it bears on, and
+what would count against it, written before the run. An introduction
+(`intro = true`) says what it measures instead.
+
+## The run
+
+What is run (the model trained, or the statement that nothing is):
+the data, the steps, the seeds.
 
 ## The program
 
-```
-'+ r_/ r_ange 10
-```
+What `__SLUG__.xtl` does, part by part.
 
 ## How it works
 
-Read right to left: what each part does, and the shape of each
-intermediate array.
+The idea behind the program, enough to understand the output.
+
+## Results
+
+The measured numbers against what was written before the run: what
+counts for, against, or leaves the hypothesis open; the null result,
+if that is what it is.
+
+## Beyond this page
+
+What this rests on (the papers, read at source: `docs/papers.md`),
+what remains open, which pages take it further.
 
 ## Run it
 
 ```bash
-just run __SLUG__          # run the program
-just show __SLUG__         # as a notebook: each statement, then its output
-just test-demo __SLUG__    # its CLI baseline (reg-rs)
+just run __SLUG__
+just test-demo __SLUG__
 ```
 
 ## Summary
 
-What it showed, set against the question; what it did not show or
-measure; where to go next.
+What the demo showed, against the question; what it did not show.
+
+## Next
+
+The pages that follow from it.
 
 ## Workarounds
 
-None. (When the demo works around something a sibling repository
-lacks, name it here and in the asks file:
-[`docs/xetal-ML-asks.md`](../../docs/xetal-ML-asks.md),
-[`docs/xetal-libraries-asks.md`](../../docs/xetal-libraries-asks.md).)
+What is written out in the program while an ask is open (the ask, the
+file), or "none".

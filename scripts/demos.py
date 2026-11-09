@@ -29,7 +29,10 @@ STATUSES = {"draft", "live", "deferred"}
 TRACKS = {"start", "representation", "optimization", "constraints", "dynamics", "adaptive"}
 HYPOTHESES = {"H1", "H2", "H3", "none"}
 # The sections that frame a demo's README, as its page is framed.
-FRAMING = ("## The question", "## Background", "## Summary")
+# The arc of a page (plan, principle 6; CLAUDE.md rule 9), as a demo's
+# README has it too: the shell's framing parts and this repository's.
+FRAMING = ("## The question", "## Background", "## The idea", "## What this is, and is not", "## The intuition", "## The mathematics",
+           "## What is compared", "## The run", "## Results", "## Beyond this page", "## Summary", "## Next")
 FIELDS = {"slug": str, "title": str, "summary": str, "concepts": list,
           "status": str, "order": int, "needs": list,
           "track": str, "problem": str, "compares": list, "hypothesis": str}
@@ -98,7 +101,7 @@ def load():
 
 
 def self_test():
-    readme = "\n## The question\n\n## Background\n\n## Summary\n"
+    readme = "".join(f"\n{h}\n" for h in FRAMING)
     good = dict(slug="probe", title="Probe", summary="s", concepts=["a"], status="draft", order=1, needs=[],
                 track="representation", problem="classification", compares=["flat", "spherical"], hypothesis="H1")
     assert problems("probe", good, readme) == [], problems("probe", good, readme)
@@ -109,7 +112,7 @@ def self_test():
     assert any("track" in p for p in problems("probe", dict(good, track="lora"), readme))
     assert any("problem" in p for p in problems("probe", dict(good, problem=" "), readme))
     assert any("compares" in p for p in problems("probe", dict(good, compares=["flat", ""]), readme))
-    assert any("Summary" in p for p in problems("probe", good, "\n## The question\n\n## Background\n"))
+    assert any("Summary" in p for p in problems("probe", good, readme.replace("## Summary", "## Summed up")))
     assert any("no README" in p for p in problems("probe", good, None))
     print("demos: self-test ok")
 

@@ -1,0 +1,15 @@
+[package]
+name = "sphere-hello-web"
+description = "Sphere hello: six points on the unit sphere; pick a pair and read the straight line through the sphere and the great circle along it, each point's neighbors under each, and the plain mean beside the mean on the sphere"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

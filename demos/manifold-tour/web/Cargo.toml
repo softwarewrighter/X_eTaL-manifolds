@@ -7,9 +7,11 @@ license = "MIT"
 
 [dependencies]
 site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
 microscope = { path = "../../../work/xetal-ml/shared/microscope" }
 yew = { version = "0.21", features = ["csr"] }
-web-sys = { version = "0.3", features = ["KeyboardEvent", "PointerEvent"] }
 console_error_panic_hook = "0.1"
 
 [workspace]
+
+[dev-dependencies]

@@ -104,8 +104,8 @@ low-rank subspaces.
 | Demo | Track | What it shows | Where |
 | ---- | ----- | ------------- | ----- |
 | [manifold-tour](demos/manifold-tour/) | start | what a manifold is, on five of them: the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each drawn by X_eTaL from its own map and turning in the browser, with its flat view and one measurement each of near and far (the straight line through the space against the distance along it: near pairs agree, far pairs do not); and what each is for in the experiments to come | [live](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/), `just run manifold-tour` |
-| [sphere-hello](demos/sphere-hello/) | start | six points on the unit sphere: the straight line through it and the great circle along it order every point's neighbors the same way (checked on the numbers); the plain average of the points is inside the sphere, and the mean along it is a different direction | `just run sphere-hello` |
-| [baseline-knn](demos/baseline-knn/) | start | k nearest neighbors under the straight-line distance on the kit's three data sets (flat clusters, directions, a tree), the same seeded split, each run's accuracy and cost recorded: the row every comparison of H1 is set against (`docs/experiments.md`); and how badly a plain layout of the tree keeps its distances | `just run baseline-knn` |
+| [sphere-hello](demos/sphere-hello/) | start | six points on the unit sphere: pick a pair and read the straight line through the sphere and the great circle along it; the two order every point's neighbors the same way (checked on the numbers); the plain average of the points is inside the sphere, and the mean along it is a different point | [live](https://softwarewrighter.github.io/X_eTaL-manifolds/sphere-hello/), `just run sphere-hello` |
+| [baseline-knn](demos/baseline-knn/) | start | k nearest neighbors under the straight-line distance on the kit's three data sets (flat clusters, directions turning, a tree), the same seeded split, the held-out points and the guesses drawn, each run's record: the row every comparison of H1 is set against (`docs/experiments.md`); and how badly a plain layout of the tree keeps its distances | [live](https://softwarewrighter.github.io/X_eTaL-manifolds/baseline-knn/), `just run baseline-knn` |
 
 The live site is <https://softwarewrighter.github.io/X_eTaL-manifolds/>:
 the catalog, every page, and the cross-reference of every program and
@@ -122,25 +122,25 @@ each function lives where it belongs:
 | general | [X_eTaL-libraries](https://github.com/softwarewrighter/X_eTaL-libraries), asked for | Sinkhorn's iteration, integrators, field and contour pictures; Matrix, Plot, Graphs, Random, Statistics, Trig and Check are used as they are |
 | machine learning, not about manifolds | [X_eTaL-ML](https://github.com/softwarewrighter/X_eTaL-ML), asked for | a learning task and its record, a preconditioned optimizer step; NN, Net, Optim, Learn, Embed and Flow are used as they are |
 
-Code a sibling already has is shared, not copied. The pages' teaching
-shell (frames, glossary, stepper, heat maps) was written for
-X_eTaL-fine-tuning; the refactoring that lets both repositories use
-one copy is asked for in
-[`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) and
-[`docs/xetal-fine-tuning-asks.md`](docs/xetal-fine-tuning-asks.md).
-Until it lands the pages are built on X_eTaL-ML's page shell alone,
-by path from the pinned clone, with this repository's own
-[`shared/site`](shared/site/) (its name, its footer with the pins,
-its plain framed sections). Rust appears only as the pages'
-presentation: every algorithm and every number shown is X_eTaL's.
+Code a sibling already has is shared, not copied. The pages are built
+on X_eTaL-ML's shared shells by path from the pinned clone: `lesson`,
+the teaching shell (frames, a glossary opened from the words, library
+functions explained from their own source, linked code; asked for as
+GM1 and landed), and `microscope` (running X_eTaL in the browser, the
+turning view of GM3). This repository adds its own parts in
+[`shared/site`](shared/site/) (six frames of the page arc, the marks
+measured and analytical, the comparison table) and its glossary rows
+in `shared/glossary.tsv`, made from [`docs/glossary.md`](docs/glossary.md)
+by `just glossary`. Rust appears only as the pages' presentation:
+every algorithm and every number shown is X_eTaL's.
 
 ## Status
 
 | | |
 | - | - |
-| Now | the experiment kit (step experiment-kit of the first saga, `geometry-lab`, fourteen steps): the Kit library's three seeded data sets, the run's record, `baseline-knn` and the first row of the H1 table; the first live page, [manifold-tour](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/); the research foundation (`docs/glossary.md`, `docs/papers.md`, `docs/research-questions.md`); the machinery and `sphere-hello` |
-| Next | step shell-adoption moves the X_eTaL-ML pin and takes the shared teaching shell and turning view (both landed there); sphere-hello and baseline-knn go live on the shell; then the explorers |
-| Asks | the shared teaching shell (GM1, GF1) and the turning view (GM3) have landed in X_eTaL-ML (501ab15, 2026-11-07) and are taken when the pin moves; the function asks are filed ([`docs/xetal-libraries-asks.md`](docs/xetal-libraries-asks.md) GL1 to GL7, [`docs/xetal-ML-asks.md`](docs/xetal-ML-asks.md) GM4 to GM6), none a blocker |
+| Now | three live pages on the shared teaching shell (step shell-adoption of the first saga, `geometry-lab`, fourteen steps): [manifold-tour](https://softwarewrighter.github.io/X_eTaL-manifolds/manifold-tour/), [sphere-hello](https://softwarewrighter.github.io/X_eTaL-manifolds/sphere-hello/) and [baseline-knn](https://softwarewrighter.github.io/X_eTaL-manifolds/baseline-knn/), each in the twelve-part arc with every term a glossary entry; the experiment kit and the first row of the H1 table; the research foundation |
+| Next | the explorers: representation-explorer, part 1 (step representation-sphere): the sphere's distance against the straight line on the directional and the flat data, distortion measured |
+| Asks | the shared teaching shell (GM1, GF1) and the turning view (GM3) landed in X_eTaL-ML and are at the pin (2d23a96); wiring them filed GM7 (a dependent's own libraries credited to X_eTaL-libraries), GM8 (a comparison table in the shell) and GM9 (subscripted built-ins in the linker), each with a thin workaround here; the function asks GL1 to GL8 and GM4 to GM6 stand, none a blocker |
 
 ## Build
 
@@ -160,6 +160,7 @@ just libs                # the libraries of this repository
 just demo Manifold       # a library's demos
 just test                # every demo and library baseline
 just gate                # the pre-commit gate; just gate --full for everything
+just glossary            # shared/glossary.tsv, the pages' glossary rows, from docs/glossary.md
 just pages               # build the live site into pages/
 just serve-pages         # serve it at http://127.0.0.1:3285/X_eTaL-manifolds/
 just publish             # pages/ as the gh-pages branch (needs a clean work tree)

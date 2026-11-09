@@ -48,13 +48,13 @@ main > section, main > .frame { margin: 14px 0; }
 table.numbers { border-collapse: collapse; width: 100%; font-size: .9rem; }
 table.numbers th { text-align: left; font-weight: 600; padding: 4px 8px 4px 0; }
 table.numbers td { padding: 4px 8px; text-align: right; font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); white-space: nowrap; }
-table.numbers td:first-child, table.numbers th:first-child { text-align: left; padding-left: 0; }
+table.numbers td:first-child, table.numbers th:first-child { text-align: left; padding-left: 0; white-space: normal; }
 table.numbers tr.sum td { border-top: 2px solid var(--fg); }
 table.dims { border-collapse: collapse; font-size: .95rem; margin: 6px 0; }
 table.dims th, table.dims td { padding: 4px 14px 4px 0; text-align: left; }
 table.dims td { border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
-.worked { background: var(--off); border-radius: 8px; padding: 8px 12px; margin: 8px 0; max-width: 46rem; }
-.worked p { margin: 4px 0; font-variant-numeric: tabular-nums; }
-.worked code { font-family: ui-monospace, Menlo, monospace; }
+.worked-out { background: var(--off); border-radius: 8px; padding: 8px 12px; margin: 8px 0; max-width: 46rem; }
+.worked-out p { margin: 4px 0; font-variant-numeric: tabular-nums; }
+.worked-out code { font-family: ui-monospace, Menlo, monospace; }
 pre.err { color: #c92a2a; white-space: pre-wrap; }
 section.code .line { font-size: 1rem; line-height: 1.7; }

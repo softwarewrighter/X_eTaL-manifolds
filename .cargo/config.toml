@@ -2,7 +2,8 @@
 # into the one ./target: cargo finds this file by walking up from where
 # it runs. The pinned X_eTaL CLI is built by X_eTaL-ML's own script
 # into work/xetal-ml/target/xetal/ (scripts/xetal-ml.sh).
-# Adapted from X_eTaL-fine-tuning's .cargo/config.toml (unchanged).
+# Adapted from X_eTaL-fine-tuning's .cargo/config.toml (the lesson
+# settings are this repository's; docs/xetal-ML-asks.md, GM1, GM2).
 [build]
 target-dir = "target"
 
@@ -11,15 +12,30 @@ target-dir = "target"
 [target.wasm32-unknown-unknown]
 rustflags = ["-C", "link-arg=-zstack-size=67108864"]
 
-# The pages run X_eTaL-libraries at this repository's own pin
-# (XETAL_LIBRARIES_COMMIT, cloned into work/xetal-libraries) and this
-# repository's own libraries (libs/): X_eTaL-ML's microscope embeds the
-# library roots named here after its own, a later root replacing an
-# earlier library of the same name, so the browser and the command line
-# (scripts/libpath.sh) agree. Cargo's `relative = true` prefixes only the
-# start of the value with this directory, so the second root is written
+# The pages are built on X_eTaL-ML's shared shells by path from the
+# pinned clone (work/xetal-ml): microscope runs X_eTaL and draws
+# arrays, lesson teaches (ask GM1). Both read this repository at build
+# time from the settings here (`relative = true` makes a path absolute
+# from this file's directory, the repository root).
+#
+# MICROSCOPE_LIBS: the library roots microscope embeds after X_eTaL-ML's
+# own: X_eTaL-libraries at this repository's pin (XETAL_LIBRARIES_COMMIT,
+# cloned into work/xetal-libraries) and this repository's libs/, a later
+# root replacing an earlier library of the same name, so the browser and
+# the command line (scripts/libpath.sh) agree. Cargo's `relative = true`
+# prefixes only the start of the value, so the second root is written
 # from microscope's own directory, work/xetal-ml/shared/microscope/, up
-# to this repository's libs/ (checked by the first page's build, step
-# manifold-tour).
+# to this repository's libs/ (verified by the pages' builds).
+#
+# LESSON_ROOT: this repository (its demos' titles, its libraries, its
+# commit). LESSON_SITE: name|url|the catalog's title. LESSON_GLOSSARY:
+# the glossary rows of this repository, made from docs/glossary.md by
+# scripts/glossary.py (just glossary). LESSON_PINS: the footer's pins,
+# in order. LESSON_LIBRARIES_PIN: the X_eTaL-libraries pin.
 [env]
 MICROSCOPE_LIBS = { value = "work/xetal-libraries/libs:../../../../libs", relative = true }
+LESSON_ROOT = { value = ".", relative = true }
+LESSON_SITE = "X_eTaL-manifolds|https://github.com/softwarewrighter/X_eTaL-manifolds|All demos"
+LESSON_GLOSSARY = "shared/glossary.tsv"
+LESSON_PINS = "X_eTaL-ML=XETAL_ML_COMMIT:X_eTaL-libraries=XETAL_LIBRARIES_COMMIT:X_eTaL=work/xetal-ml/XETAL_COMMIT"
+LESSON_LIBRARIES_PIN = "XETAL_LIBRARIES_COMMIT"
