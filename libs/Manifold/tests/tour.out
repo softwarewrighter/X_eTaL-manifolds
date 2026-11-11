@@ -56,3 +56,13 @@ ok: every distance halved: a half everywhere
 ok: one pair too short: its share of the mean, and the worst
 ok: a pair at distance 0 in the data is left out
 ok: no pairs at all: 0 0
+ok: the pairs' distortion: the squeezed pair, both ways round
+ok: the scale that fits four times the distances is a quarter
+ok: scaled by it, nothing is lost
+ok: the fitted scale forgives a unit, not a shape
+ok: three points of the sphere keep their own angles
+ok: the same three in the flat space lose the far pair
+ok: three points on a line keep their distances flat
+ok: five parallels and twelve meridians of 25 points
+ok: every wire point is on the sphere
+ok: a meridian runs from pole to pole

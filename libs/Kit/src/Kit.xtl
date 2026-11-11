@@ -52,8 +52,12 @@ l:n_ormal := { (seed, n) ->
 }
 
 ## `n_ormals (seed, rows, cols)`: a rows by cols matrix of standard
-## normal numbers of the seed.
-h:n_ormals := { (seed, rows, cols) -> (rows c_at cols) r_eshape l:n_ormal (seed, rows * cols) }
+## normal numbers of the seed (the first rows * cols of n_ormal, as
+## rows): a network's starting weights, say, the same in every run.
+## >> "kt:" u_se< "Kit"
+## >> s_hape kt:n_ormals (42, 3, 2)
+## 3 2
+l:n_ormals := { (seed, rows, cols) -> (rows c_at cols) r_eshape l:n_ormal (seed, rows * cols) }
 
 ### Flat clusters
 
@@ -72,8 +76,8 @@ h:n_ormals := { (seed, rows, cols) -> (rows c_at cols) r_eshape l:n_ormal (seed,
 ## >> s_hape X
 ## 4 2
 l:f_lat := { (seed, k, n, d, spread) ->
-  C := 4.0 * h:n_ormals (seed, k, d)
-  N := h:n_ormals (seed + 1, k * n, d)
+  C := 4.0 * l:n_ormals (seed, k, d)
+  N := l:n_ormals (seed + 1, k * n, d)
   y := n h:e_ach r_ange k
   X := ((f_loat spread) * N) + y s_elect C
   (X, y)
@@ -101,8 +105,8 @@ h:e_ach := { n v -> r_avel o_\ (n c_at t_ally v) r_eshape v }
 ## >> s_hape X
 ## 4 3
 l:d_irections := { (seed, k, n, cone) ->
-  D := mf:s_phereProject h:n_ormals (seed, k, 3)
-  N := h:n_ormals (seed + 1, k * n, 3)
+  D := mf:s_phereProject l:n_ormals (seed, k, 3)
+  N := l:n_ormals (seed + 1, k * n, 3)
   y := n h:e_ach r_ange k
   U := mf:s_phereProject ((f_loat cone) * N) + y s_elect D
   lengths := 0.5 + 1.5 * l:u_niform (seed + 2, k * n)

@@ -1,0 +1,12 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+nearest neighbors, flat clusters, flat
+the network, directions, sphere
+0.9000
+0.7750
+0.7667
+directions kept flat
+Points 1 and 41, worked in full
+of the 30 held out guessed wrong
+html: class="numbers comparison"
+html: data-aside="mf:f_itScale"
+html: data-aside="ml:k_nn"

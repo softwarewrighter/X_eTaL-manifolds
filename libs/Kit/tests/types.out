@@ -1,5 +1,6 @@
 l:u_niform : (Int, Int) -> Float
 l:n_ormal : (Int, Int) -> Float
+l:n_ormals : (Int, Int, Int) -> Float
 l:f_lat : Num a => (Int, Int, Int, Int, a) -> (Float, Int)
 l:d_irections : Num a => (Int, Int, Int, a) -> (Float, Int)
 l:t_ree : (Int, Int) -> Int

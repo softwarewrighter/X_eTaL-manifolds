@@ -42,6 +42,7 @@ matrix, one point per row; `y` its labels, 1 to k.
 | -------- | ---- | ---- |
 | `kt:u_niform (seed, n)` | `(Int, Int) -> Float` | n Floats in [0, 1): Park and Miller's (1988) sequence x -> 16807 x mod (2^31 - 1) started from 1 + \|seed\| mod (2^31 - 2), divided by 2^31 - 1 |
 | `kt:n_ormal (seed, n)` | `(Int, Int) -> Float` | n standard normal Floats, by Box and Muller from 2n uniform numbers of the seed |
+| `kt:n_ormals (seed, rows, cols)` | `(Int, Int, Int) -> Float` | a rows by cols matrix of standard normal Floats of the seed (the first rows * cols of `n_ormal`, as rows): a network's starting weights, the same in every run |
 
 A prefix of a longer draw is the shorter draw of the same seed.
 

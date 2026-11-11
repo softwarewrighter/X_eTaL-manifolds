@@ -1,0 +1,15 @@
+[package]
+name = "representation-explorer-web"
+description = "Representation explorer, part 1: the same points kept flat and on the unit sphere, on flat clusters and on directions: three distances, a shortest path and a mean in each space, nearest neighbors and the decision boundary under each, a small classifier trained on each representation, and the distortion of each; the first test of H1"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

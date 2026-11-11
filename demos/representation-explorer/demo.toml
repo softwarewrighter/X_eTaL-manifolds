@@ -1,0 +1,17 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "representation-explorer"            # the directory name, demos/<slug>/
+title = "Representation explorer: flat against the sphere"
+summary = "The same points kept two ways, as they are in a flat space (the straight line) and as directions on the unit sphere (the angle), on the kit's flat clusters and directions: three distances on the same pairs with one worked in full, a shortest path and a mean in each space, nearest neighbors and the decision boundary under each distance, a small classifier trained on each representation with everything else held equal, and the distortion of each representation against its set's own distances; the first test of H1, with the baseline's rows as the row against."
+concepts = ["representation", "great-circle distance", "cosine distance", "decision boundary", "cross-entropy", "distortion"]
+status = "live"              # draft | live | deferred
+order = 30
+track = "representation"     # start | representation | optimization | constraints | dynamics | adaptive (docs/plan.md, Tracks)
+# Every demo compares (docs/plan.md, G5): the ML problem, two or more
+# geometric choices compared on it, and the hypothesis it bears on.
+problem = "classification by nearest neighbors and by a small network on flat clusters and on directions"
+compares = ["flat: the points as they are, the straight line", "the sphere: the points' directions, the angle"]
+hypothesis = "H1"
+needs = ["GM5", "GL1"]       # the split and the record are written out; so are the pairwise distances and neighbor orders
+line = "\"u:s_tepDirUnit Dut Yd lr\" net:t_rain< \"3 8 tanh 4 softmax\""
+why = "Net writes the whole training step, backpropagation and Adam, from the network's spec; the same line on each representation is what makes the two runs the same but for the space."

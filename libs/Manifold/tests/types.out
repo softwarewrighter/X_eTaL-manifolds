@@ -7,6 +7,7 @@ l:s_phereArrow : (Num a, Num b) => a -> b -> Float
 l:s_phereMean : Num a => a -> Float
 l:s_phereOff : Num a => a -> Float
 l:s_pherePoints : Num a => a -> Float
+l:s_phereWires : (Int, Int, Int) -> (Float, Float)
 l:s_phereArc : (Num a, Num b) => (a, b) -> Int -> Float
 l:c_irclePoints : Num a => a -> Float
 l:t_orusPoints : (Num a, Num b) => a -> b -> Float
@@ -17,3 +18,7 @@ l:r_ollDistance : (Num a, Num b) => a -> b -> Float
 l:b_allDistance : (Num a, Num b) => a -> b -> Float
 l:b_allGeodesic : (Num a, Num b) => (a, b) -> Int -> Float
 l:d_istortion : (Num a, Num b) => a -> b -> Float
+l:d_istortionPairs : (Num a, Num b) => a -> b -> Float
+l:f_itScale : (Num a, Num b) => a -> b -> Float
+l:s_phereDistortion : (Num a, Num b) => a -> b -> Float
+l:f_latDistortion : (Num a, Num b) => a -> b -> Float

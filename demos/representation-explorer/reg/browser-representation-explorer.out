@@ -1,0 +1,26 @@
+page: loaded
+frame: question
+frame: background
+frame: rationale
+frame: purpose
+frame: intuition
+frame: mathematics
+frame: experiment
+frame: run
+frame: analysis
+frame: extension
+frame: summary
+frame: next
+errors: none
+found: nearest neighbors, flat clusters, flat
+found: the network, directions, sphere
+found: 0.9000
+found: 0.7750
+found: 0.7667
+found: directions kept flat
+found: Points 1 and 41, worked in full
+found: of the 30 held out guessed wrong
+found: html: class="numbers comparison"
+found: html: data-aside="mf:f_itScale"
+found: html: data-aside="ml:k_nn"
+cross-reference links: 70, dead: none

@@ -1,6 +1,6 @@
 number = 6
 slug = "representation-sphere"
-status = "pending"
+status = "in-progress"
 description = """
 Step representation-sphere (docs/plan.md, Saga 1 row 6: the
 research's milest..."""

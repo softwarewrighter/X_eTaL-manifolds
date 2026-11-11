@@ -1,0 +1,341 @@
+#!/usr/bin/env xetal
+## Representation explorer, part 1: flat against spherical. The same
+## points kept two ways, as they are (a flat space, the straight line
+## between them) and as their directions on the unit sphere (the angle
+## between them), on two data sets of the kit built with a known
+## structure: flat clusters, whose structure is the straight line's,
+## and directions, whose structure is the angle's. For each: three
+## distances between the same pairs, a shortest path in each space, a
+## mean in each space, nearest neighbors and a decision boundary under
+## each distance, a small classifier trained on each representation
+## (the same network, seeds, split and steps), and how badly each
+## representation keeps the data's own distances. The first test of H1.
+"kt:" u_se< "Kit"
+"mf:" u_se< "Manifold"
+"ml:" u_se< "Learn"
+"nn:" u_se< "NN"
+"act:" u_se< "Activations"
+"net:" u_se< "Net"
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+
+# -- the kit
+## The split, the run and its record are machine learning and not
+## about manifolds: X_eTaL-ML's by the plan's G3, asked for as GM5
+## (docs/xetal-ML-asks.md) and written out here, as in baseline-knn,
+## until it lands; the pairwise straight-line distances are GL1's
+## (docs/xetal-libraries-asks.md).
+
+## `u:s_plit (seed, n)`: the held-out quarter of n points, seeded: a
+## seeded order of 1 to n, the first quarter held out and the rest
+## trained on; (train, held), two vectors of row numbers.
+u:s_plit := { (seed, n) -> order := g_rade kt:u_niform (seed, n); h := n d_iv 4; (h d_rop order, h t_ake order) }
+
+## `u:r_un (X, y, k, seed)`: k nearest neighbors on the set (X, y)
+## under the straight-line distance (Learn's k_nn), the held-out
+## quarter guessed from the rest; the record (the held-out accuracy,
+## how many held out, the numbers trained, none, and the operations:
+## one distance per held-out point per training point, d each), then
+## the held-out rows and the guesses. For points on the unit sphere
+## the straight line orders neighbors as the angle does (checked
+## below), so on them this is nearest neighbors under the angle.
+u:r_un := { (X, y, k, seed) ->
+  (train, held) := u:s_plit (seed, f_irst s_hape X)
+  guess := (k, train s_elect X, train s_elect y) ml:k_nn held s_elect X
+  accuracy := (f_loat '+ r_/ guess = held s_elect y) / f_loat t_ally held
+  (accuracy c_at (f_loat t_ally held) c_at 0.0 c_at f_loat (t_ally train) * (t_ally held) * 2 s_elect s_hape X, held, guess)
+}
+
+## `u:c_hords Q`: the straight-line distance between every pair of
+## rows of Q (GL1; written out as in sphere-hello).
+u:c_hords := { Q -> n := f_irst s_hape Q; (D, _) := (2 s_elect s_hape Q) '{ (d, k) -> c := k s_elect_2 Q; (d + (c '- t_able c) ^ 2.0, k + 1) } p_ower ((n c_at n) r_eshape 0.0, 1); s_qrt D }
+
+## `u:o_rders D`: each point's neighbors nearest first, from the
+## distance matrix D: one row per point, the points' numbers in order.
+u:o_rders := { D -> n := f_irst s_hape D; (R, _) := n '{ (acc, i) -> (acc c_at (1 c_at n) r_eshape g_rade i s_elect D, i + 1) } p_ower ((0 c_at n) r_eshape 0, 1); R }
+
+# -- the data, two ways
+## The flat clusters of the baseline (seed 1: three clusters of 40 in
+## the plane, spread 1.6) and its directions (seed 5: four classes of
+## 40 in three dimensions, cone 0.6, lengths 0.5 to 2 that carry
+## nothing). Each kept two ways: as it is (F, D: the flat
+## representation, measured by the straight line) and as directions
+## on the unit sphere (Fu, Du: the spherical representation, measured
+## by the angle). The same ambient dimension; the sphere has one less
+## intrinsic dimension, since every length is 1.
+(F, fy) := kt:f_lat (1, 3, 40, 2, 1.6)
+(D, dy) := kt:d_irections (5, 4, 40, 0.6)
+Fu := mf:s_phereProject F
+Du := mf:s_phereProject D
+
+# -- three distances, the same pairs
+## Three pairs of the directions set: points 1 and 2 (one class), 1
+## and 41 (the next class), 1 and 121 (the last). For each: the
+## straight line |p - q|; the cosine distance, 1 less the cosine of
+## the angle (p . q over the two lengths); and the great circle, the
+## angle itself in radians, between the unit points (Manifold's). One
+## row per pair.
+I := 1 1 1
+J := 2 41 121
+u:s_traight := { p q -> s_qrt '+ r_/ (p - q) ^ 2.0 }
+u:c_osine := { p q -> 1.0 - ('+ r_/ p * q) / s_qrt ('+ r_/ p * p) * '+ r_/ q * q }
+(T, _) := 3 '{ (M, k) -> p := (k s_elect I) s_elect D; q := (k s_elect J) s_elect D; (M c_at (p u:s_traight q) c_at (p u:c_osine q) c_at ((k s_elect I) s_elect Du) mf:s_phereDistance (k s_elect J) s_elect Du, k + 1) } p_ower (0 r_eshape 0.0, 1)
+distances := 3 3 r_eshape T
+
+## One pair worked in full, points 1 and 41: the difference coordinate
+## by coordinate, its squares, their sum and its square root (the
+## straight line); the products summed (p . q), the two lengths, the
+## cosine of the angle (p . q over their product), the cosine
+## distance, and the angle by the arc cosine, which Manifold's atan2
+## form agrees with (checked below).
+p := 1 s_elect D
+q := 41 s_elect D
+workedDiff := p - q
+workedSq := workedDiff ^ 2.0
+workedSum := '+ r_/ workedSq
+workedStraight := s_qrt workedSum
+workedDot := '+ r_/ p * q
+workedLengths := (s_qrt '+ r_/ p * p) c_at s_qrt '+ r_/ q * q
+workedCos := workedDot / '* r_/ workedLengths
+workedCosine := 1.0 - workedCos
+workedAngle := tr:a_cos workedCos
+
+# -- a shortest path in each space
+## Between points 1 and 41: in the flat space the segment, 13 points
+## from p to q (p plus t times the difference, t from 0 to 1); on the
+## sphere the arc of the great circle between the unit points, 13
+## points (Manifold's), with the chord between them (the straight
+## line through the inside) beside it, and the two lengths.
+u:s_egment := { (a, b) n -> t := ((f_loat r_ange n + 1) - 1.0) / f_loat n; (((n + 1) c_at t_ally a) r_eshape a) + t '* t_able b - a }
+segment := (p, q) u:s_egment 12
+arc := (1 s_elect Du, 41 s_elect Du) mf:s_phereArc 12
+chord := (1 s_elect Du, 41 s_elect Du) u:s_egment 12
+arcLength := (1 s_elect Du) mf:s_phereDistance 41 s_elect Du
+chordLength := (1 s_elect Du) u:s_traight 41 s_elect Du
+
+# -- a mean in each space
+## For each class of the directions set, one row per class: the plain
+## mean of its points (coordinate by coordinate, in the flat space);
+## the plain mean of its unit points, which falls inside the sphere;
+## and the mean on the sphere (Manifold's: the point of the sphere
+## nearest all of them along it). Then the lengths of the two plain
+## means per class, and the angle between the mean on the sphere and
+## the plain mean put onto it.
+(plainMeans, unitMeans, sphereMeans, _) := 4 '{ (P, U, S, c) ->
+  rows := w_here dy = c
+  (P c_at ('+ r_/ rows s_elect D) / 40.0, U c_at ('+ r_/ rows s_elect Du) / 40.0, S c_at mf:s_phereMean rows s_elect Du, c + 1)
+} p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+plainMean := 4 3 r_eshape plainMeans
+unitMean := 4 3 r_eshape unitMeans
+sphereMean := 4 3 r_eshape sphereMeans
+meanLengths := o_\ 2 4 r_eshape (s_qrt '+ r_/_2 plainMean * plainMean) c_at s_qrt '+ r_/_2 unitMean * unitMean
+meanApart := '{ c -> (c s_elect sphereMean) mf:s_phereDistance mf:s_phereProject c s_elect plainMean } e_ach r_ange 4
+
+# -- nearest neighbors under each distance
+## k = 5 and the split by seed 11, as the baseline: on each set,
+## nearest neighbors in the flat representation (the straight line)
+## and in the spherical one (the angle). The flat set's flat row and
+## the directions' two rows are the baseline's own, computed again.
+k := 5
+splitSeed := 11
+(flatRaw, fHeld, fRawGuess) := u:r_un (F, fy, k, splitSeed)
+(flatUnit, _, fUnitGuess) := u:r_un (Fu, fy, k, splitSeed)
+(dirRaw, dHeld, dRawGuess) := u:r_un (D, dy, k, splitSeed)
+(dirUnit, _, dUnitGuess) := u:r_un (Du, dy, k, splitSeed)
+(fTrain, _) := u:s_plit (splitSeed, 120)
+(dTrain, _) := u:s_plit (splitSeed, 160)
+
+## The decision boundary: what nearest neighbors says at every point
+## of a grid, from the training points alone. The plane: a 21 by 21
+## grid over the flat set's extent, classified by the training points
+## as they are (the straight line) and by their directions (the
+## angle: the grid point's direction against theirs). The sphere's
+## map: 24 longitudes by 12 latitudes, each a unit point (the middle
+## of its cell), classified by the angle, and by the straight line
+## for a point in that direction at length 0.5, 1 and 2, since the
+## straight line's answer depends on the length and the angle's does
+## not.
+lo := 'm_in r_/ F
+hi := 'm_ax r_/ F
+xs := (1 s_elect lo) + ((1 s_elect hi) - 1 s_elect lo) * ((f_loat r_ange 21) - 1.0) / 20.0
+ys := (2 s_elect lo) + ((2 s_elect hi) - 2 s_elect lo) * ((f_loat r_ange 21) - 1.0) / 20.0
+gridF := o_\ 2 441 r_eshape (r_avel xs '+ t_able 0.0 * ys) c_at r_avel (0.0 * xs) '+ t_able ys
+flatBoundary := (k, fTrain s_elect F, fTrain s_elect fy) ml:k_nn gridF
+angleBoundary := (k, fTrain s_elect Fu, fTrain s_elect fy) ml:k_nn mf:s_phereProject gridF
+deg := (p_i @) / 180.0
+lons := deg * -172.5 + 15.0 * (f_loat r_ange 24) - 1.0
+lats := deg * -82.5 + 15.0 * (f_loat r_ange 12) - 1.0
+gridLL := o_\ 2 288 r_eshape (r_avel lons '+ t_able 0.0 * lats) c_at r_avel (0.0 * lons) '+ t_able lats
+gridS := mf:s_pherePoints gridLL
+mapAngle := (k, dTrain s_elect Du, dTrain s_elect dy) ml:k_nn gridS
+mapHalf := (k, dTrain s_elect D, dTrain s_elect dy) ml:k_nn 0.5 * gridS
+mapOne := (k, dTrain s_elect D, dTrain s_elect dy) ml:k_nn gridS
+mapTwo := (k, dTrain s_elect D, dTrain s_elect dy) ml:k_nn 2.0 * gridS
+
+# -- the run: a small classifier on each representation
+## The same network on both representations of a set: one hidden
+## layer of 8 tanh units, then a softmax over the classes ("2 8 tanh
+## 3 softmax" on the flat set, 51 numbers; "3 8 tanh 4 softmax" on
+## the directions, 68), trained by Adam at rate 0.02 for 300 steps on
+## the training rows, from the same seeded starting weights (0.3
+## times normal numbers, seeds 21 and 22). Net writes each training
+## step, backpropagation and Adam, from the spec; a test below checks
+## its gradient against central differences.
+steps := 300
+lr := 0.02
+Ft := fTrain s_elect F
+Fut := fTrain s_elect Fu
+Yf := 3 nn:o_neHot fTrain s_elect fy
+Dt := dTrain s_elect D
+Dut := dTrain s_elect Du
+Yd := 4 nn:o_neHot dTrain s_elect dy
+f1 := 0.3 * kt:n_ormals (21, 3, 8)
+f2 := 0.3 * kt:n_ormals (22, 9, 3)
+d1 := 0.3 * kt:n_ormals (21, 4, 8)
+d2 := 0.3 * kt:n_ormals (22, 9, 4)
+"u:s_tepFlatRaw Ft Yf lr" net:t_rain< "2 8 tanh 3 softmax"
+"u:s_tepFlatUnit Fut Yf lr" net:t_rain< "2 8 tanh 3 softmax"
+"u:s_tepDirRaw Dt Yd lr" net:t_rain< "3 8 tanh 4 softmax"
+"u:s_tepDirUnit Dut Yd lr" net:t_rain< "3 8 tanh 4 softmax"
+
+## `(W1, W2) u:n_et X`: the network's answer for each row of X, a
+## probability per class; `(W1, W2) u:l_oss (X, Y)`: its cross-entropy
+## against the one-hot labels Y; `u:l_og (t, X, Y, L)`: the state t
+## after a step, with its training loss added to the losses L.
+u:n_et := { (W1, W2) X -> nn:s_oftmax (act:t_anh X nn:d_ense W1) nn:d_ense W2 }
+u:l_oss := { (W1, W2) (X, Y) -> Y nn:c_rossEntropy (W1, W2) u:n_et X }
+u:l_og := { (t, X, Y, L) -> (W1, W2, _, _, _, _, _) := t; (t, L c_at (W1, W2) u:l_oss (X, Y)) }
+
+## Each run: the state (the weights, Adam's two averages, the step
+## count) stepped `steps` times, the training loss kept at every step
+## (the loss before the first step first: 301 numbers); then the
+## trained weights, the held-out accuracy and the guesses.
+(sFR, lossFlatRaw) := steps '{ (s, L) -> u:l_og (u:s_tepFlatRaw s, Ft, Yf, L) } p_ower (@ net:s_tate< "f1 f2", (f1, f2) u:l_oss (Ft, Yf))
+(sFU, lossFlatUnit) := steps '{ (s, L) -> u:l_og (u:s_tepFlatUnit s, Fut, Yf, L) } p_ower (@ net:s_tate< "f1 f2", (f1, f2) u:l_oss (Fut, Yf))
+(sDR, lossDirRaw) := steps '{ (s, L) -> u:l_og (u:s_tepDirRaw s, Dt, Yd, L) } p_ower (@ net:s_tate< "d1 d2", (d1, d2) u:l_oss (Dt, Yd))
+(sDU, lossDirUnit) := steps '{ (s, L) -> u:l_og (u:s_tepDirUnit s, Dut, Yd, L) } p_ower (@ net:s_tate< "d1 d2", (d1, d2) u:l_oss (Dut, Yd))
+(wFR1, wFR2, _, _, _, _, _) := sFR
+(wFU1, wFU2, _, _, _, _, _) := sFU
+(wDR1, wDR2, _, _, _, _, _) := sDR
+(wDU1, wDU2, _, _, _, _, _) := sDU
+netFlatRawGuess := nn:a_rgmax (wFR1, wFR2) u:n_et fHeld s_elect F
+netFlatUnitGuess := nn:a_rgmax (wFU1, wFU2) u:n_et fHeld s_elect Fu
+netDirRawGuess := nn:a_rgmax (wDR1, wDR2) u:n_et dHeld s_elect D
+netDirUnitGuess := nn:a_rgmax (wDU1, wDU2) u:n_et dHeld s_elect Du
+## `u:a_ccuracy (guess, held, y)`: the share of the held-out rows
+## guessed right.
+u:a_ccuracy := { (guess, held, y) -> (f_loat '+ r_/ guess = held s_elect y) / f_loat t_ally held }
+## `u:u_nder (L, target)`: the first step at which the loss L is under
+## the target (the step count, from 0), or -1 if it never is.
+u:u_nder := { (L, target) -> hits := w_here L < target; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+
+## The network's record per run: the held-out accuracy, how many held
+## out, the numbers trained (the spec's), and the operations: each
+## step a forward and a backward pass over the training rows, counted
+## as two multiply-adds per trained number per row, times the steps.
+u:n_etRecord := { (guess, held, y, trained, rows) -> (u:a_ccuracy (guess, held, y)) c_at (f_loat t_ally held) c_at (f_loat trained) c_at f_loat 2 * steps * rows * trained }
+netFlatRaw := u:n_etRecord (netFlatRawGuess, fHeld, fy, "2 8 tanh 3 softmax" net:p_arams< @, 90)
+netFlatUnit := u:n_etRecord (netFlatUnitGuess, fHeld, fy, "2 8 tanh 3 softmax" net:p_arams< @, 90)
+netDirRaw := u:n_etRecord (netDirRawGuess, dHeld, dy, "3 8 tanh 4 softmax" net:p_arams< @, 120)
+netDirUnit := u:n_etRecord (netDirUnitGuess, dHeld, dy, "3 8 tanh 4 softmax" net:p_arams< @, 120)
+
+## Convergence, one row per run: the training loss before the first
+## step and after the last, and the steps to a loss under 0.5.
+target := 0.5
+u:c_onvergence := { L -> (f_irst L) c_at ((t_ally L) s_elect L) c_at f_loat u:u_nder (L, target) }
+convergence := 4 3 r_eshape (u:c_onvergence lossFlatRaw) c_at (u:c_onvergence lossFlatUnit) c_at (u:c_onvergence lossDirRaw) c_at u:c_onvergence lossDirUnit
+
+# -- distortion: each representation against the data's own distances
+## Each set's own distances are the structure it was built with: for
+## the flat set the straight line in the plane, for the directions
+## the angle between them (their lengths carry nothing). A
+## representation's distances are fitted to them by one scale
+## (Manifold's f_itScale: an angle and a length are in different
+## units, and the scale is not what is being tested), then the
+## distortion, the mean and the worst pair; and the scale itself. One
+## row per set and representation: flat on flat, sphere on flat, flat
+## on directions, sphere on directions. The two matching rows are 0 by
+## construction; the two crossed rows measure what the wrong space
+## loses.
+Fd := u:c_hords F
+Fa := mf:s_phereDistances Fu
+Dd := mf:s_phereDistances Du
+Dc := u:c_hords D
+sFa := Fd mf:f_itScale Fa
+sDc := Dd mf:f_itScale Dc
+distortion := 4 3 r_eshape 1.0 c_at (Fd mf:f_latDistortion F) c_at sFa c_at (Fd mf:d_istortion sFa * Fa) c_at sDc c_at (Dd mf:d_istortion sDc * Dc) c_at 1.0 c_at Dd mf:s_phereDistortion Du
+## The pair of directions the flat representation keeps worst (its
+## distortion pair by pair, Manifold's): the two points' numbers.
+pairs := Dd mf:d_istortionPairs sDc * Dc
+worstAt := f_irst w_here (r_avel pairs) = 'm_ax r_/ r_avel pairs
+worstPair := (1 + (worstAt - 1) d_iv 160) c_at 1 + (worstAt - 1) m_od 160
+
+## The record of every run, one row per run: nearest neighbors on the
+## flat set flat and spherical, on the directions flat and spherical;
+## then the network on the same four. The columns: accuracy, held out,
+## numbers trained, operations. All measured.
+record := 8 4 r_eshape flatRaw c_at flatUnit c_at dirRaw c_at dirUnit c_at netFlatRaw c_at netFlatUnit c_at netDirRaw c_at netDirUnit
+
+## For the page: the sphere's wire lines, five parallels and twelve
+## meridians of 25 points each (Manifold's), and the directions on the
+## sphere's map (longitude and latitude, degrees).
+(parallels, meridians) := mf:s_phereWires (5, 12, 24)
+dMap := o_\ 2 160 r_eshape (((2 s_elect_2 Du) tr:a_tan2 1 s_elect_2 Du) / deg) c_at (tr:a_sin 3 s_elect_2 Du) / deg
+# -- end of the core
+
+### Three distances
+distances
+"the worked straight line is the table's" ch:t_est (1 s_elect 2 s_elect distances) ch:n_ear workedStraight
+"the worked cosine distance is the table's" ch:t_est (2 s_elect 2 s_elect distances) ch:n_ear workedCosine
+"the worked angle, by the arc cosine, is Manifold's" ch:t_est (3 s_elect 2 s_elect distances) ch:n_ear workedAngle
+"the cosine distance and the angle order the three pairs alike" ch:t_est (g_rade 2 s_elect_2 distances) ch:i_s g_rade 3 s_elect_2 distances
+## The three pairs nearest first, by the straight line and by the
+## angle: the two need not agree, since the straight line mixes the
+## lengths in.
+(g_rade 1 s_elect_2 distances) c_at g_rade 3 s_elect_2 distances
+## For points on the sphere, the straight line and the angle order
+## every point's neighbors the same way: the angle is 2 asin of half
+## the chord, which only grows. Checked on all 160 unit points.
+"on the sphere, the chord and the angle order every point's neighbors alike" ch:t_est (u:o_rders u:c_hords Du) ch:i_s u:o_rders Dd
+
+### A shortest path in each space
+"the segment runs from p to q" ch:t_est (p c_at q) ch:n_ear (1 s_elect segment) c_at 13 s_elect segment
+"the arc stays on the sphere" ch:t_est (13 r_eshape 0.0) ch:n_ear mf:s_phereOff arc
+"the chord's middle is inside the sphere" ch:t_est 1 ch:i_s 0.0 < mf:s_phereOff 7 s_elect chord
+arcLength c_at chordLength
+"the arc is the longer" ch:t_est 1 ch:i_s arcLength > chordLength
+
+### A mean in each space
+plainMean
+sphereMean
+meanLengths
+"every plain mean of unit points is inside the sphere" ch:t_est 1 ch:i_s '& r_/ (2 s_elect meanLengths) < 1.0
+"every mean on the sphere is on it" ch:t_est (4 r_eshape 0.0) ch:n_ear mf:s_phereOff sphereMean
+meanApart
+
+### Nearest neighbors under each distance
+record
+"the baseline's rows come out the same: flat 0.9, directions 0.75 and 0.775" ch:t_est 0.9 0.75 0.775 ch:n_ear (1 s_elect flatRaw) c_at (1 s_elect dirRaw) c_at 1 s_elect dirUnit
+"the boundaries name a class at every grid point" ch:t_est 1 ch:i_s ('& r_/ flatBoundary m_ember? 1 2 3) & '& r_/ mapAngle m_ember? 1 2 3 4
+
+### The run
+convergence
+"every run's loss fell" ch:t_est 1 ch:i_s '& r_/ (2 s_elect_2 convergence) < 1 s_elect_2 convergence
+"both representations of a set train the same number of numbers" ch:t_est (51.0 51.0 68.0 68.0) ch:n_ear 3 s_elect_2 4 d_rop record
+## The gradient Net wrote, against central differences at five
+## weights of the flat network (three of the first layer, two of the
+## second), at h = 0.00001: the largest gap.
+"u:g_radFlat Ft Yf" net:g_radient< "2 8 tanh 3 softmax"
+u:b_ump := { (W, i, h) -> W + h * f_loat (s_hape W) r_eshape (r_ange '* r_/ s_hape W) = i }
+h := 0.00001
+(G1, G2) := u:g_radFlat (f1, f2)
+central1 := '{ i -> ((((u:b_ump (f1, i, h)), f2) u:l_oss (Ft, Yf)) - ((u:b_ump (f1, i, 0.0 - h)), f2) u:l_oss (Ft, Yf)) / 2.0 * h } e_ach 1 5 20
+central2 := '{ i -> (((f1, u:b_ump (f2, i, h)) u:l_oss (Ft, Yf)) - (f1, u:b_ump (f2, i, 0.0 - h)) u:l_oss (Ft, Yf)) / 2.0 * h } e_ach 2 27
+gap := 'm_ax r_/ a_bs (central1 c_at central2) - (1 5 20 s_elect r_avel G1) c_at 2 27 s_elect r_avel G2
+"the written gradient agrees with central differences" ch:t_est 1 ch:i_s gap < 0.000001
+
+### Distortion
+distortion
+"the matching representation keeps its set's distances exactly" ch:t_est (0.0 0.0 0.0 0.0) ch:n_ear (2 3 s_elect 1 s_elect distortion) c_at 2 3 s_elect 4 s_elect distortion
+"the crossed representations lose something" ch:t_est 1 ch:i_s (0.1 < 2 s_elect 2 s_elect distortion) & 0.1 < 2 s_elect 3 s_elect distortion
+worstPair

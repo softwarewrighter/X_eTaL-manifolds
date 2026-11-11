@@ -220,6 +220,26 @@ l:s_pherePoints := { LL ->
   3 h:c_olumns ((c_os lat) * c_os lon) c_at ((c_os lat) * s_in lon) c_at s_in lat
 }
 
+## `s_phereWires (p, m, n)`: the wire lines that show where the sphere
+## is in a picture: p parallels (circles of latitude, evenly spaced
+## between the poles, the poles left out) and m meridians (half
+## circles of longitude from pole to pole, evenly spaced round), each
+## as n + 1 points along it; (parallels, meridians), two matrices of
+## points, one line after another, p (n + 1) and m (n + 1) rows.
+## >> "mf:" u_se< "Manifold"
+## >> (P, M) := mf:s_phereWires (5, 12, 24)
+## >> (s_hape P) c_at s_hape M
+## 125 3 300 3
+l:s_phereWires := { (p, m, n) ->
+  plats := ((p_i @) / f_loat p + 1) * (f_loat r_ange p) - (f_loat p + 1) / 2.0
+  plons := ((2.0 * p_i @) / f_loat n) * (f_loat r_ange n + 1) - 1.0
+  mlons := ((2.0 * p_i @) / f_loat m) * (f_loat r_ange m) - 1.0
+  mlats := ((p_i @) / f_loat n) * (f_loat r_ange n + 1) - (f_loat n + 2) / 2.0
+  parallels := l:s_pherePoints o_\ (2 c_at p * n + 1) r_eshape (r_avel (0.0 * plats) '+ t_able plons) c_at r_avel plats '+ t_able 0.0 * plons
+  meridians := l:s_pherePoints o_\ (2 c_at m * n + 1) r_eshape (r_avel mlons '+ t_able 0.0 * mlats) c_at r_avel (0.0 * mlons) '+ t_able mlats
+  (parallels, meridians)
+}
+
 ## `(p, q) s_phereArc n`: n + 1 points along the great circle from p
 ## to q (both on the sphere), p first and q last, evenly spaced along
 ## it: the points s_phereStep reaches from p along 0, 1/n, ..., 1 of
@@ -409,3 +429,54 @@ l:d_istortion := { D E ->
   off := r_avel (f_loat pair) * a_bs ((f_loat E) / (f_loat D) m_ax 1e-300) - 1.0
   (('+ r_/ off) / f_loat k) c_at 'm_ax r_/ off
 }
+
+## `D d_istortionPairs E`: the distortion of every pair, |E / D - 1|,
+## as a matrix the shape of D: which pairs an embedding stretches and
+## which it squeezes; 0 on the diagonal and wherever D is 0 (the pairs
+## d_istortion leaves out).
+## >> "mf:" u_se< "Manifold"
+## >> (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:d_istortionPairs 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
+## 0.0 0.0 0.5
+## 0.0 0.0 0.0
+## 0.5 0.0 0.0
+l:d_istortionPairs := { D E ->
+  keep := (f_loat D) > 0.0
+  (f_loat keep) * a_bs ((f_loat E) / (f_loat D) m_ax 1e-300) - 1.0
+}
+
+## `D f_itScale E`: the one factor that fits the distances E to the
+## distances D: the number s that makes the mean of s E over the pairs
+## (those with D > 0) equal the mean of D over them, the sum of D
+## divided by the sum of E. For distances in different units (an
+## angle against a length), measure the distortion of s E, which says
+## what the shape of the distances loses once their scale is forgiven.
+## >> "mf:" u_se< "Manifold"
+## >> D := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0
+## >> D mf:f_itScale 4.0 * D
+## 0.25
+## >> D mf:d_istortion (D mf:f_itScale 4.0 * D) * 4.0 * D
+## 0.0 0.0
+l:f_itScale := { D E ->
+  keep := f_loat (f_loat D) > 0.0
+  ('+ r_/ r_avel keep * f_loat D) / ('+ r_/ r_avel keep * f_loat E) m_ax 1e-300
+}
+
+## `D s_phereDistortion P`: the distortion of a set P on the sphere
+## (one point per row), its great-circle distances against the
+## distances D it should keep: the mean and the worst pair, as
+## d_istortion gives them.
+## >> "mf:" u_se< "Manifold"
+## >> Q := mf:s_phereProject 3 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0
+## >> (3 3 r_eshape 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0) mf:s_phereDistortion Q
+## 0.0 0.0
+l:s_phereDistortion := { D P -> D l:d_istortion l:s_phereDistances P }
+
+## `D f_latDistortion P`: the distortion of a set P in a flat space
+## (one point per row), its straight-line distances against the
+## distances D it should keep: the mean and the worst pair.
+## >> "mf:" u_se< "Manifold"
+## >> (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:f_latDistortion 3 1 r_eshape 0.0 1.0 2.0
+## 0.0 0.0
+## >> (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:f_latDistortion 3 2 r_eshape 0.0 0.0 1.0 0.0 1.0 1.0
+## 0.09763107293781748 0.2928932188134524
+l:f_latDistortion := { D P -> (M, _) := h:a_partPairs P; D l:d_istortion M }

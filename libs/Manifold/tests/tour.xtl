@@ -105,3 +105,21 @@ D3 := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0
 "one pair too short: its share of the mean, and the worst" ch:t_est ((0.5 / 3.0) c_at 0.5) ch:n_ear D3 mf:d_istortion 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
 "a pair at distance 0 in the data is left out" ch:t_est 0.0 0.0 ch:n_ear (3 3 r_eshape 0.0 0.0 1.0 0.0 0.0 1.0 1.0 1.0 0.0) mf:d_istortion 3 3 r_eshape 0.0 5.0 1.0 5.0 0.0 1.0 1.0 1.0 0.0
 "no pairs at all: 0 0" ch:t_est 0.0 0.0 ch:n_ear (1 1 r_eshape 0.0) mf:d_istortion 1 1 r_eshape 0.0
+
+# Distortion by pair, the fitted scale, and the two embeddings' distortions.
+"the pairs' distortion: the squeezed pair, both ways round" ch:t_est (3 3 r_eshape 0.0 0.0 0.5 0.0 0.0 0.0 0.5 0.0 0.0) ch:n_ear D3 mf:d_istortionPairs 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
+"the scale that fits four times the distances is a quarter" ch:t_est 0.25 ch:n_ear D3 mf:f_itScale 4.0 * D3
+"scaled by it, nothing is lost" ch:t_est 0.0 0.0 ch:n_ear D3 mf:d_istortion (D3 mf:f_itScale 4.0 * D3) * 4.0 * D3
+E3 := 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0
+"the fitted scale forgives a unit, not a shape" ch:t_est 1 ch:i_s 0.0 < 1 s_elect D3 mf:d_istortion (D3 mf:f_itScale E3) * E3
+Q3 := mf:s_phereProject 3 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0
+A3 := 3 3 r_eshape 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0
+"three points of the sphere keep their own angles" ch:t_est 0.0 0.0 ch:n_ear A3 mf:s_phereDistortion Q3
+"the same three in the flat space lose the far pair" ch:t_est 1 ch:i_s 0.0 < 2 s_elect A3 mf:f_latDistortion Q3
+"three points on a line keep their distances flat" ch:t_est 0.0 0.0 ch:n_ear D3 mf:f_latDistortion 3 1 r_eshape 0.0 1.0 2.0
+
+# The sphere's wire lines: on the sphere, the counts as asked.
+(P5, M12) := mf:s_phereWires (5, 12, 24)
+"five parallels and twelve meridians of 25 points" ch:t_est 125 3 300 3 ch:i_s (s_hape P5) c_at s_hape M12
+"every wire point is on the sphere" ch:t_est 0.0 ch:n_ear 'm_ax r_/ (mf:s_phereOff P5) c_at mf:s_phereOff M12
+"a meridian runs from pole to pole" ch:t_est -1.0 1.0 ch:n_ear (3 s_elect 1 s_elect M12) c_at 3 s_elect 25 s_elect M12

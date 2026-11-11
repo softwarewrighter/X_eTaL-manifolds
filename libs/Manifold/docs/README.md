@@ -71,6 +71,7 @@ have one mean, which the steps reach.
 | -------- | ---- | ---- |
 | `mf:s_pherePoints LL` | `Num a => a -> Float` | the point of the unit sphere at each (longitude, latitude) row of LL, radians: one row (x, y, z) per row; the sphere's map |
 | `(p, q) mf:s_phereArc n` | `(Num a, Num b) => (a, b) -> Int -> Float` | n + 1 points along the great circle from p to q, p first, evenly spaced; all p when q is p or its opposite |
+| `mf:s_phereWires (p, m, n)` | `(Int, Int, Int) -> (Float, Float)` | the wire lines of a picture of the sphere: p parallels (the poles left out) and m meridians, each n + 1 points; (parallels, meridians), one line after another |
 | `mf:c_irclePoints A` | `Num a => a -> Float` | the point of the unit circle at each angle of A, radians from the x axis: one row (x, y) per angle |
 
 Longitude goes round the z axis from the x axis, latitude up from the
@@ -123,6 +124,10 @@ step representation-hyperbolic's.
 | Function | Type | What |
 | -------- | ---- | ---- |
 | `D mf:d_istortion E` | `(Num a, Num b) => a -> b -> Float` | how badly the distances E of an embedding (every pair, a matrix) keep the distances D they should have: over the pairs of different points with D > 0, the mean and the worst of the fraction by which each pair is too long or too short, as a pair of Floats; 0 0 when every distance is kept |
+| `D mf:d_istortionPairs E` | `(Num a, Num b) => a -> b -> Float` | the distortion of every pair, \|E / D - 1\|, as a matrix the shape of D: which pairs are stretched and which squeezed; 0 on the diagonal and where D is 0 |
+| `D mf:f_itScale E` | `(Num a, Num b) => a -> b -> Float` | the one factor s that makes the mean of s E over the pairs (D > 0) equal the mean of D: for distances in different units (an angle against a length), measure the distortion of s E |
+| `D mf:s_phereDistortion P` | `(Num a, Num b) => a -> b -> Float` | the distortion of a set P on the sphere (one point per row): its great-circle distances against D, the mean and the worst pair |
+| `D mf:f_latDistortion P` | `(Num a, Num b) => a -> b -> Float` | the distortion of a set P in a flat space: its straight-line distances against D, the mean and the worst pair |
 
 The measure of H1 (`docs/research-questions.md`), the same whatever
 space E was measured along: a tree's distances against the

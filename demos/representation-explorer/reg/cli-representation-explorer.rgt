@@ -1,0 +1,3 @@
+command = '"$XETAL" run --seed 1 --draw "$XETAL_DRAW" representation-explorer.xtl'
+exit_code = 0
+desc = "representation-explorer: representation-explorer.xtl run by the pinned xetal CLI"
