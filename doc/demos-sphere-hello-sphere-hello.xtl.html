@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/sphere-hello/sphere-hello.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#P">P</a></li>
+<li class="item"><a href="#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a></li>
+<li class="item"><a href="#chord">chord</a></li>
+<li class="item"><a href="#arc">arc</a></li>
+<li class="item"><a href="#u.o_rders"><span class="c-userfunc">ᵘo̲rders</span></a></li>
+<li class="item"><a href="#byChord">byChord</a></li>
+<li class="item"><a href="#byArc">byArc</a></li>
+<li class="item"><a href="#plain">plain</a></li>
+<li class="item"><a href="#plainLength">plainLength</a></li>
+<li class="item"><a href="#onSphere">onSphere</a></li>
+<li class="item"><a href="#apart">apart</a></li>
+<li class="item"><a href="#I">I</a></li>
+<li class="item"><a href="#J">J</a></li>
+<li class="item"><a href="#arcs">arcs</a></li>
+<li class="item"><a href="#deg">deg</a></li>
+<li class="item"><a href="#map">map</a></li>
+<li class="item"><a href="#round">round</a></li>
+<li class="item"><a href="#parallels">parallels</a></li>
+<li class="item"><a href="#pole">pole</a></li>
+<li class="item"><a href="#meridians">meridians</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/sphere-hello/sphere-hello.xtl</h1>
+<div class="doc">
+<p>Sphere hello: a handful of points on the unit sphere. Two ways to
+measure how far apart two of them are, the straight line through
+the sphere and the great circle along it, order every point's
+neighbors the same way; and the plain average of the points is not
+on the sphere, where the mean along it is.</p>
+</div>
+<p class="meta"><a href="demos-sphere-hello-sphere-hello.xtl.src.html">source</a> &middot; imports <code><span class="c-error">mf:</span></code> <a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a>; <code><span class="c-error">tr:</span></code> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">work/xetal-libraries/libs/Trig/src/Trig.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="P">
+<h3><a href="#P">P</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L14">line 14</a></div>
+<div class="doc">
+<p>Six directions in three dimensions, chosen by hand (nothing is
+random), each put onto the unit sphere: one point per row.</p>
+</div>
+<pre class="code">P ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <span class="c-number">6</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.2</span> <span class="c-number">0.1</span> <span class="c-number">0.9</span> <span class="c-number">0.5</span> <span class="c-number">0.0</span> <span class="c-number">0.3</span> <span class="c-number">1.0</span> <span class="c-number">0.2</span> <span class="c-number">-0.4</span> <span class="c-number">0.8</span> <span class="c-number">0.5</span> <span class="c-number">0.1</span> <span class="c-number">0.3</span> <span class="c-number">1.0</span> <span class="c-number">-0.6</span> <span class="c-number">-0.5</span> <span class="c-number">0.6</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#chord">chord</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#arc">arc</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#plain">plain</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#onSphere">onSphere</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#map">map</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L67">demos/sphere-hello/sphere-hello.xtl:67</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L68">demos/sphere-hello/sphere-hello.xtl:68</a></div>
+</div>
+<div class="item" id="u.c_hords">
+<h3><a href="#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L20">line 20</a></div>
+<div class="doc">
+<p><code><a href="demos-sphere-hello-sphere-hello.xtl.html#u.c_hords" class="c-userfunc">ᵘc̲hords</a> Q</code>: the straight line through the sphere (the chord)
+between every pair of rows: the length of the difference, summed
+one coordinate at a time. A general function, for X_eTaL-libraries
+(docs/xetal-libraries-asks.md, GL1), written out here meanwhile.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘc̲hords</span> ← { Q →
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Q
+  (D, _) ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Q) <span class="c-quote">'</span>{ (d, k) → c ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> Q◆ (d <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> D
+}</pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#chord">chord</a></div>
+</div>
+<div class="item" id="chord">
+<h3><a href="#chord">chord</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L25">line 25</a></div>
+<pre class="code">chord ← <a href="demos-sphere-hello-sphere-hello.xtl.html#u.c_hords" class="c-userfunc">ᵘc̲hords</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#byChord">byChord</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L71">demos/sphere-hello/sphere-hello.xtl:71</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L75">demos/sphere-hello/sphere-hello.xtl:75</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L78">demos/sphere-hello/sphere-hello.xtl:78</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L80">demos/sphere-hello/sphere-hello.xtl:80</a></div>
+</div>
+<div class="item" id="arc">
+<h3><a href="#arc">arc</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L29">line 29</a></div>
+<div class="doc">
+<p>The great circle along the sphere between every pair: the angle,
+in radians (Manifold).</p>
+</div>
+<pre class="code">arc ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#byArc">byArc</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L72">demos/sphere-hello/sphere-hello.xtl:72</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L75">demos/sphere-hello/sphere-hello.xtl:75</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L78">demos/sphere-hello/sphere-hello.xtl:78</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L80">demos/sphere-hello/sphere-hello.xtl:80</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L81">demos/sphere-hello/sphere-hello.xtl:81</a></div>
+</div>
+<div class="item" id="u.o_rders">
+<h3><a href="#u.o_rders"><span class="c-userfunc">ᵘo̲rders</span></a> <span class="type">: Ord a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L34">line 34</a></div>
+<div class="doc">
+<p><code><a href="demos-sphere-hello-sphere-hello.xtl.html#u.o_rders" class="c-userfunc">ᵘo̲rders</a> D</code>: each point's neighbors, nearest first (itself first
+of all, at distance 0): one row per point, the points' numbers in
+order of that row of the distance matrix D.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘo̲rders</span> ← { D →
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> D
+  (R, _) ← n <span class="c-quote">'</span>{ (acc, i) → (acc <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> D, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((<span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, <span class="c-number">1</span>)
+  R
+}</pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#byChord">byChord</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#byArc">byArc</a></div>
+</div>
+<div class="item" id="byChord">
+<h3><a href="#byChord">byChord</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L39">line 39</a></div>
+<pre class="code">byChord ← <a href="demos-sphere-hello-sphere-hello.xtl.html#u.o_rders" class="c-userfunc">ᵘo̲rders</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#chord">chord</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L84">demos/sphere-hello/sphere-hello.xtl:84</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L85">demos/sphere-hello/sphere-hello.xtl:85</a></div>
+</div>
+<div class="item" id="byArc">
+<h3><a href="#byArc">byArc</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L40">line 40</a></div>
+<pre class="code">byArc ← <a href="demos-sphere-hello-sphere-hello.xtl.html#u.o_rders" class="c-userfunc">ᵘo̲rders</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#arc">arc</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L85">demos/sphere-hello/sphere-hello.xtl:85</a></div>
+</div>
+<div class="item" id="plain">
+<h3><a href="#plain">plain</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L46">line 46</a></div>
+<div class="doc">
+<p>The plain mean of the points, coordinate by coordinate, and its
+length (how far inside the sphere it is); the mean on the sphere
+(Manifold); and the distance along the sphere between the mean on
+the sphere and the plain mean put onto it.</p>
+</div>
+<pre class="code">plain ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">6.0</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#plainLength">plainLength</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#apart">apart</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L88">demos/sphere-hello/sphere-hello.xtl:88</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L90">demos/sphere-hello/sphere-hello.xtl:90</a></div>
+</div>
+<div class="item" id="plainLength">
+<h3><a href="#plainLength">plainLength</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L47">line 47</a></div>
+<pre class="code">plainLength ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#plain">plain</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#plain">plain</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L89">demos/sphere-hello/sphere-hello.xtl:89</a></div>
+</div>
+<div class="item" id="onSphere">
+<h3><a href="#onSphere">onSphere</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L48">line 48</a></div>
+<pre class="code">onSphere ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean" class="c-libfunc">ᵐᶠs̲phereMean</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#apart">apart</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L91">demos/sphere-hello/sphere-hello.xtl:91</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L92">demos/sphere-hello/sphere-hello.xtl:92</a></div>
+</div>
+<div class="item" id="apart">
+<h3><a href="#apart">apart</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L49">line 49</a></div>
+<pre class="code">apart ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#plain">plain</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#onSphere">onSphere</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L93">demos/sphere-hello/sphere-hello.xtl:93</a></div>
+</div>
+<div class="item" id="I">
+<h3><a href="#I">I</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L55">line 55</a></div>
+<div class="doc">
+<p>For the page: the great-circle arc between every pair (13 points
+each, the 15 pairs in order 1-2, 1-3, ... 5-6), the points on the
+sphere's map (longitude and latitude, degrees), and the map's wire
+lines (five parallels, twelve meridians), all by Manifold.</p>
+</div>
+<pre class="code">I ← <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">2</span> <span class="c-number">2</span> <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">3</span> <span class="c-number">3</span> <span class="c-number">4</span> <span class="c-number">4</span> <span class="c-number">5</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a></div>
+</div>
+<div class="item" id="J">
+<h3><a href="#J">J</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L56">line 56</a></div>
+<pre class="code">J ← <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">3</span> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">6</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a></div>
+</div>
+<div class="item" id="arcs">
+<h3><a href="#arcs">arcs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L57">line 57</a></div>
+<pre class="code">(<a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a>, _) ← <span class="c-number">15</span> <span class="c-quote">'</span>{ (M, k) → (M <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#I">I</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>, (k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#J">J</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc" class="c-libfunc">ᵐᶠs̲phereArc</a> <span class="c-number">12</span>, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L94">demos/sphere-hello/sphere-hello.xtl:94</a></div>
+</div>
+<div class="item" id="deg">
+<h3><a href="#deg">deg</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L58">line 58</a></div>
+<pre class="code">deg ← (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">180.0</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#map">map</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#round">round</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#parallels">parallels</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#pole">pole</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#meridians">meridians</a></div>
+</div>
+<div class="item" id="map">
+<h3><a href="#map">map</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L59">line 59</a></div>
+<pre class="code">map ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>) <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tan2" class="c-libfunc">ᵗʳa̲tan2</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sin" class="c-libfunc">ᵗʳa̲sin</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a></pre>
+</div>
+<div class="item" id="round">
+<h3><a href="#round">round</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L60">line 60</a></div>
+<pre class="code">round ← (<span class="c-number">15.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">25</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="parallels">
+<h3><a href="#parallels">parallels</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L61">line 61</a></div>
+<pre class="code">parallels ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">125</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">5</span> <span class="c-number">25</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#round">round</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">25</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">30.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">-2.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L95">demos/sphere-hello/sphere-hello.xtl:95</a></div>
+</div>
+<div class="item" id="pole">
+<h3><a href="#pole">pole</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L62">line 62</a></div>
+<pre class="code">pole ← (<span class="c-number">15.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">13</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">7.0</span></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.html#meridians">meridians</a></div>
+</div>
+<div class="item" id="meridians">
+<h3><a href="#meridians">meridians</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L63">line 63</a></div>
+<pre class="code">meridians ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">156</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">13</span> <span class="c-number">12</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">30.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">12</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">12</span> <span class="c-number">13</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-sphere-hello-sphere-hello.xtl.html#pole">pole</a></pre>
+<div class="uses">Used in: <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L95">demos/sphere-hello/sphere-hello.xtl:95</a></div>
+</div>
+</main>
+</body>
+</html>

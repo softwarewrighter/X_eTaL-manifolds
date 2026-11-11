@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baseline: nearest neighbors</title>
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-manifolds/baseline-knn/baseline-knn-web-3ffceb04cffd5175.js';
+const wasm = await init({ module_or_path: '/X_eTaL-manifolds/baseline-knn/baseline-knn-web-3ffceb04cffd5175_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  <link rel="icon" href="/X_eTaL-manifolds/baseline-knn/favicon-a11bc0a2bcd81290.ico" integrity="sha384-xOjSLs9ZRBKy2hF6zlqNv+0U86E4BqZOJy7H7a4GXSVwDQMNie0D851/sRBSYI9a"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/baseline-knn/microscope-22257fd62318e7bf.css" integrity="sha384-HhCElH/+Dn/dCD6BMktfya0hcEUbJTzOz+U+aDZwhSMfcwqIb3L1cSWYSUVqWKI9"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/baseline-knn/lesson-34dbb6604bad61b6.css" integrity="sha384-32SC5tV26l0GhJMT87oR5gbnsMRFCC06TJaqmsZHp85+UZcym11aTJ1QM8DDyxW+"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/baseline-knn/site-ddd98f9cf651962e.css" integrity="sha384-N2tC05JEkGNmZNrlxfmRhTKjb5wZPBlI5uCGIJHOab/+rIm8qKpBXDStI62oCCrS"/>
+<link rel="modulepreload" href="/X_eTaL-manifolds/baseline-knn/baseline-knn-web-3ffceb04cffd5175.js" crossorigin="anonymous" integrity="sha384-oleINWv8r2RVF2n8yx2C39vm8CwM0m1yDq3X3n30eGK3/SsnBgBJHSS+L6vMCpzl"><link rel="preload" href="/X_eTaL-manifolds/baseline-knn/baseline-knn-web-3ffceb04cffd5175_bg.wasm" crossorigin="anonymous" integrity="sha384-Jw4f8XAQAF+avKQf5d3h+WBxeGNDBZf02M7Sfhs/HTB3KgYgJY5z9EHg58QFe+TP" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sphere hello</title>
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-manifolds/sphere-hello/sphere-hello-web-22dd0729ee149447.js';
+const wasm = await init({ module_or_path: '/X_eTaL-manifolds/sphere-hello/sphere-hello-web-22dd0729ee149447_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  <link rel="icon" href="/X_eTaL-manifolds/sphere-hello/favicon-a11bc0a2bcd81290.ico" integrity="sha384-xOjSLs9ZRBKy2hF6zlqNv+0U86E4BqZOJy7H7a4GXSVwDQMNie0D851/sRBSYI9a"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/sphere-hello/microscope-22257fd62318e7bf.css" integrity="sha384-HhCElH/+Dn/dCD6BMktfya0hcEUbJTzOz+U+aDZwhSMfcwqIb3L1cSWYSUVqWKI9"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/sphere-hello/lesson-34dbb6604bad61b6.css" integrity="sha384-32SC5tV26l0GhJMT87oR5gbnsMRFCC06TJaqmsZHp85+UZcym11aTJ1QM8DDyxW+"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/sphere-hello/site-ddd98f9cf651962e.css" integrity="sha384-N2tC05JEkGNmZNrlxfmRhTKjb5wZPBlI5uCGIJHOab/+rIm8qKpBXDStI62oCCrS"/>
+<link rel="modulepreload" href="/X_eTaL-manifolds/sphere-hello/sphere-hello-web-22dd0729ee149447.js" crossorigin="anonymous" integrity="sha384-1WcmIemgyy3R3nh0X+fqXLnNqcPx86Lor/5SCcr1+oAWztJXstLZjvv5Lt2xlHQC"><link rel="preload" href="/X_eTaL-manifolds/sphere-hello/sphere-hello-web-22dd0729ee149447_bg.wasm" crossorigin="anonymous" integrity="sha384-qPoxpEy6b2w/6PrEV1l7oRitUWeAb45AqSU7E23o/nPU/o3xHZ5C2JHvToja8Pvk" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>

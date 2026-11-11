@@ -1,0 +1,60 @@
+/* X_eTaL-manifolds' pages, on top of microscope.css (X_eTaL-ML's, linked
+   by path): the framed sections of a page's arc, the figure rows (a
+   turning view, a flat view, the numbers), the marks measured and
+   analytical, and the tables of numbers. The teaching shell's styles
+   are not here (ask GM1). */
+
+main { padding-bottom: 24px; }
+main > section, main > .frame { margin: 14px 0; }
+.prose, .frame p, .frame li { max-width: 46rem; line-height: 1.55; }
+.frame h2, .space h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.frame.question h2 { font-size: 1.3rem; }
+.hint { color: var(--muted); font-size: .9rem; max-width: 46rem; }
+.space { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.space .dims { color: var(--muted); font-size: .9rem; margin: -4px 0 8px; }
+.space h3 { font-size: .95rem; margin: 14px 0 4px; }
+
+/* A figure row: the turning view, the flat view, the numbers. */
+.figure { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr) minmax(220px, .8fr); gap: 14px; align-items: start; margin: 10px 0; }
+@media (max-width: 900px) { .figure { grid-template-columns: 1fr; } }
+.figure figure { margin: 0; min-width: 0; }
+.figure figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+.figure svg { width: 100%; height: auto; display: block; background: var(--off); border-radius: 10px; }
+.turning svg { touch-action: none; cursor: grab; outline: none; }
+.turning svg:focus { box-shadow: 0 0 0 2px var(--accent); }
+.turning svg:active { cursor: grabbing; }
+.turning .state { font-variant-numeric: tabular-nums; }
+.wire { stroke: var(--fg); fill: none; stroke-width: 1; }
+.flat .wire { stroke: var(--muted); opacity: .5; }
+.chord { stroke: #868e96; stroke-dasharray: 5 4; stroke-width: 1.5; fill: none; }
+.near { stroke: #2b8a3e; stroke-width: 2.5; fill: none; }
+.far { stroke: #e8590c; stroke-width: 2.5; fill: none; }
+.geo { stroke: var(--accent); stroke-width: 2; fill: none; }
+.pt { fill: var(--fg); }
+.pt.near { fill: #2b8a3e; stroke: none; }
+.pt.far { fill: #e8590c; stroke: none; }
+.lbl { font-size: 13px; fill: var(--fg); font-family: ui-sans-serif, system-ui, sans-serif; }
+.axis { stroke: var(--muted); stroke-width: 1; fill: none; }
+.axis-lbl { font-size: 11px; fill: var(--muted); font-family: ui-sans-serif, system-ui, sans-serif; }
+.rim { stroke: var(--fg); stroke-width: 1.5; fill: none; stroke-dasharray: 3 3; }
+.ruler { stroke: #9c6500; stroke-width: 1.5; }
+
+/* Measured or analytical, on every figure. */
+.mark { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; padding: 1px 7px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); margin-left: 6px; vertical-align: middle; cursor: help; }
+.mark.measured { border-color: #2b8a3e; color: #2b8a3e; }
+.mark.analytical { border-color: #9c6500; color: #9c6500; }
+
+/* Numbers. */
+table.numbers { border-collapse: collapse; width: 100%; font-size: .9rem; }
+table.numbers th { text-align: left; font-weight: 600; padding: 4px 8px 4px 0; }
+table.numbers td { padding: 4px 8px; text-align: right; font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); white-space: nowrap; }
+table.numbers td:first-child, table.numbers th:first-child { text-align: left; padding-left: 0; white-space: normal; }
+table.numbers tr.sum td { border-top: 2px solid var(--fg); }
+table.dims { border-collapse: collapse; font-size: .95rem; margin: 6px 0; }
+table.dims th, table.dims td { padding: 4px 14px 4px 0; text-align: left; }
+table.dims td { border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.worked-out { background: var(--off); border-radius: 8px; padding: 8px 12px; margin: 8px 0; max-width: 46rem; }
+.worked-out p { margin: 4px 0; font-variant-numeric: tabular-nums; }
+.worked-out code { font-family: ui-monospace, Menlo, monospace; }
+pre.err { color: #c92a2a; white-space: pre-wrap; }
+section.code .line { font-size: 1rem; line-height: 1.7; }

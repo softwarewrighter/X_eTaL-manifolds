@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manifold tour</title>
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-manifolds/manifold-tour/manifold-tour-web-252b6751e80ff203.js';
+const wasm = await init({ module_or_path: '/X_eTaL-manifolds/manifold-tour/manifold-tour-web-252b6751e80ff203_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  <link rel="icon" href="/X_eTaL-manifolds/manifold-tour/favicon-a11bc0a2bcd81290.ico" integrity="sha384-xOjSLs9ZRBKy2hF6zlqNv+0U86E4BqZOJy7H7a4GXSVwDQMNie0D851/sRBSYI9a"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/manifold-tour/microscope-22257fd62318e7bf.css" integrity="sha384-HhCElH/+Dn/dCD6BMktfya0hcEUbJTzOz+U+aDZwhSMfcwqIb3L1cSWYSUVqWKI9"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/manifold-tour/lesson-34dbb6604bad61b6.css" integrity="sha384-32SC5tV26l0GhJMT87oR5gbnsMRFCC06TJaqmsZHp85+UZcym11aTJ1QM8DDyxW+"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/manifold-tour/site-ddd98f9cf651962e.css" integrity="sha384-N2tC05JEkGNmZNrlxfmRhTKjb5wZPBlI5uCGIJHOab/+rIm8qKpBXDStI62oCCrS"/>
+<link rel="modulepreload" href="/X_eTaL-manifolds/manifold-tour/manifold-tour-web-252b6751e80ff203.js" crossorigin="anonymous" integrity="sha384-fOLcLILzFd2aKhmr9LXDzgWiv3x5jun3GexP/xI7L7kTiGsbQzRKjA+wvqdIcgY4"><link rel="preload" href="/X_eTaL-manifolds/manifold-tour/manifold-tour-web-252b6751e80ff203_bg.wasm" crossorigin="anonymous" integrity="sha384-9b7o8ukP9DF6kGWha4jRe1Zv4Jl+UH2lp3gfJiM9l3rK8xtRZ3BIf8XDrr0Yof9e" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>

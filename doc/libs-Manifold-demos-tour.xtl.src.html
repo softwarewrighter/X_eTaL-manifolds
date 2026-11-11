@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Manifold/demos/tour.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L7">Pi</a></li>
+<li class="item"><a href="#L12">near</a></li>
+<li class="item"><a href="#L13">far</a></li>
+<li class="item"><a href="#L27">a</a></li>
+<li class="item"><a href="#L28">b</a></li>
+<li class="item"><a href="#L29">W</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Manifold-demos-tour.xtl.html">libs/Manifold/demos/tour.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-comment">⍝</span><span class="c-comment">!/usr/bin/env xetal</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-comment">⍝</span><span class="c-comment"> Manifold, the spaces drawn: a point of each kind from its map, and</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-comment">⍝</span><span class="c-comment"> one distance measured along each space against the straight line</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-comment">⍝</span><span class="c-comment"> through it. Run with &quot;just demo Manifold tour&quot;.</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a>Pi ← <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @</span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-comment">⍝</span><span class="c-comment"> Two points of the sphere a tenth of a radian apart along the</span></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a><span class="c-comment">⍝</span><span class="c-comment"> equator, and two a quarter turn apart: the straight line and the</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><span class="c-comment">⍝</span><span class="c-comment"> great circle, nearly equal near, not far.</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a>near ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.1</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a>far ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> (<a href="libs-Manifold-demos-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a>(<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#near">near</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#near">near</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#near">near</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#near">near</a></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a>(<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-comment">⍝</span><span class="c-comment"> Five points along the great circle between the two far points.</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a>(<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc" class="c-libfunc">ᵐᶠs̲phereArc</a> <span class="c-number">4</span></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-comment">⍝</span><span class="c-comment"> The torus of radii 3 and 1: its outer rim, its inner rim, and how</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-comment">⍝</span><span class="c-comment"> far off it the middle of the hole is.</span></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a><span class="c-number">3.0</span> <span class="c-number">1.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints" class="c-libfunc">ᵐᶠt̲orusPoints</a> <a href="libs-Manifold-demos-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><span class="c-number">3.0</span> <span class="c-number">1.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusOff" class="c-libfunc">ᵐᶠt̲orusOff</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a><span class="c-comment">⍝</span><span class="c-comment"> Two points of the Swiss roll one turn apart at the same height: 2 pi</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-comment">⍝</span><span class="c-comment"> apart through the air, and along the sheet much farther.</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a>a ← <span class="c-number">6.0</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a>b ← (<span class="c-number">6.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-demos-tour.xtl.html#Pi">Pi</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a>W ← <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints" class="c-libfunc">ᵐᶠr̲ollPoints</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Manifold-demos-tour.xtl.html#a">a</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Manifold-demos-tour.xtl.html#b">b</a></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><a href="libs-Manifold-demos-tour.xtl.html#W">W</a></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a>(<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#W">W</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-tour.xtl.html#W">W</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Manifold-demos-tour.xtl.html#a">a</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollDistance" class="c-libfunc">ᵐᶠr̲ollDistance</a> <a href="libs-Manifold-demos-tour.xtl.html#b">b</a></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a><span class="c-comment">⍝</span><span class="c-comment"> Two points of the Poincare disk 0.2 apart in the plane, near the</span></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a><span class="c-comment">⍝</span><span class="c-comment"> middle and near the rim: the disk's distance between them.</span></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a>(<span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">0.2</span> <span class="c-number">0.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.78</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">0.98</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>(<span class="c-number">0.78</span> <span class="c-number">0.0</span>, <span class="c-number">0.98</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">2</span></span>
+</div>
+</main>
+</body>
+</html>

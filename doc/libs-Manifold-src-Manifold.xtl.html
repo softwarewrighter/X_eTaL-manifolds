@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Manifold/src/Manifold.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li><a href="#section-1">Vectors</a></li>
+<li class="item"><a href="#h.d_ot"><span class="c-libfunc">ʰd̲ot</span></a></li>
+<li class="item"><a href="#h.n_orm"><span class="c-libfunc">ʰn̲orm</span></a></li>
+<li class="item"><a href="#h.s_caleRows"><span class="c-libfunc">ʰs̲caleRows</span></a></li>
+<li class="item"><a href="#h.a_ngle"><span class="c-libfunc">ʰa̲ngle</span></a></li>
+<li class="item"><a href="#h.a_part"><span class="c-libfunc">ʰa̲part</span></a></li>
+<li class="item"><a href="#h.a_partRows"><span class="c-libfunc">ʰa̲partRows</span></a></li>
+<li class="item"><a href="#h.a_partPairs"><span class="c-libfunc">ʰa̲partPairs</span></a></li>
+<li><a href="#section-2">The unit sphere</a></li>
+<li class="item"><a href="#l.s_phereProject"><span class="c-libfunc">ˡs̲phereProject</span></a></li>
+<li class="item"><a href="#h.p_rojectRows"><span class="c-libfunc">ʰp̲rojectRows</span></a></li>
+<li class="item"><a href="#l.s_phereDistance"><span class="c-libfunc">ˡs̲phereDistance</span></a></li>
+<li class="item"><a href="#l.s_phereDistances"><span class="c-libfunc">ˡs̲phereDistances</span></a></li>
+<li class="item"><a href="#l.s_phereTangent"><span class="c-libfunc">ˡs̲phereTangent</span></a></li>
+<li class="item"><a href="#l.s_phereStep"><span class="c-libfunc">ˡs̲phereStep</span></a></li>
+<li class="item"><a href="#l.s_phereArrow"><span class="c-libfunc">ˡs̲phereArrow</span></a></li>
+<li class="item"><a href="#h.a_rrows"><span class="c-libfunc">ʰa̲rrows</span></a></li>
+<li class="item"><a href="#l.s_phereMean"><span class="c-libfunc">ˡs̲phereMean</span></a></li>
+<li class="item"><a href="#l.s_phereOff"><span class="c-libfunc">ˡs̲phereOff</span></a></li>
+<li class="item"><a href="#h.c_oordinate"><span class="c-libfunc">ʰc̲oordinate</span></a></li>
+<li class="item"><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a></li>
+<li><a href="#section-3">The sphere, drawn</a></li>
+<li class="item"><a href="#l.s_pherePoints"><span class="c-libfunc">ˡs̲pherePoints</span></a></li>
+<li class="item"><a href="#l.s_phereWires"><span class="c-libfunc">ˡs̲phereWires</span></a></li>
+<li class="item"><a href="#l.s_phereArc"><span class="c-libfunc">ˡs̲phereArc</span></a></li>
+<li><a href="#section-4">The circle</a></li>
+<li class="item"><a href="#l.c_irclePoints"><span class="c-libfunc">ˡc̲irclePoints</span></a></li>
+<li><a href="#section-5">The torus</a></li>
+<li class="item"><a href="#l.t_orusPoints"><span class="c-libfunc">ˡt̲orusPoints</span></a></li>
+<li class="item"><a href="#l.t_orusOff"><span class="c-libfunc">ˡt̲orusOff</span></a></li>
+<li><a href="#section-6">The Swiss roll</a></li>
+<li class="item"><a href="#l.r_ollPoints"><span class="c-libfunc">ˡr̲ollPoints</span></a></li>
+<li class="item"><a href="#l.r_ollAlong"><span class="c-libfunc">ˡr̲ollAlong</span></a></li>
+<li class="item"><a href="#l.r_ollDistance"><span class="c-libfunc">ˡr̲ollDistance</span></a></li>
+<li><a href="#section-7">The Poincare ball</a></li>
+<li class="item"><a href="#h.m_obius"><span class="c-libfunc">ʰm̲obius</span></a></li>
+<li class="item"><a href="#l.b_allDistance"><span class="c-libfunc">ˡb̲allDistance</span></a></li>
+<li class="item"><a href="#l.b_allGeodesic"><span class="c-libfunc">ˡb̲allGeodesic</span></a></li>
+<li><a href="#section-8">Distortion</a></li>
+<li class="item"><a href="#l.d_istortion"><span class="c-libfunc">ˡd̲istortion</span></a></li>
+<li class="item"><a href="#l.d_istortionPairs"><span class="c-libfunc">ˡd̲istortionPairs</span></a></li>
+<li class="item"><a href="#l.f_itScale"><span class="c-libfunc">ˡf̲itScale</span></a></li>
+<li class="item"><a href="#l.s_phereDistortion"><span class="c-libfunc">ˡs̲phereDistortion</span></a></li>
+<li class="item"><a href="#l.f_latDistortion"><span class="c-libfunc">ˡf̲latDistortion</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Manifold/src/Manifold.xtl</h1>
+<div class="doc">
+<p>Manifold: the unit sphere, the Poincare ball, and the pictures of
+the circle, the sphere, the torus and the Swiss roll: the distance
+measured along the space, putting a point onto it, the tangent part
+of a vector at a point, a step from a point along a tangent vector
+that stays on the space and the arrow that undoes it, a mean that
+stays on the space, how far off it a point is; the points of each
+space at given coordinates of its map, for drawing it; and the
+distortion of an embedding's distances against those it should keep.
+Import it with an alias of your choice: &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;.
+Put libs/Manifold/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Manifold/docs.
+Names with l: are exported; those under h: are private to this file.</p>
+<p>A point is a vector of Floats, in any number of dimensions; a set
+of points is a matrix, one point per row. Each space has a name
+that starts its functions (s_phere, b_all the Poincare ball,
+c_ircle, t_orus, r_oll the Swiss roll), and the word after it is
+the same verb for every space: Project (onto it), Distance (along
+it), Tangent (the part of a vector along it at a point), Step (from
+a point, along a tangent vector, staying on it), Arrow (the tangent
+vector a Step would take from one point to another), Mean (of a
+set, on it), Off (how far a point is from it); and for drawing,
+Points (the points at rows of coordinates of the space's map), Arc
+or Geodesic (points along the shortest path between two points).
+So a program written for the sphere reads the same on the ball.
+Every result is a Float.</p>
+</div>
+<p class="meta"><a href="libs-Manifold-src-Manifold.xtl.src.html">source</a> &middot; imports <code><span class="c-error">tr:</span></code> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">work/xetal-libraries/libs/Trig/src/Trig.xtl</a></p>
+<h2 class="section" id="section-1">Vectors</h2>
+<div class="item" id="h.d_ot">
+<h3><a href="#h.d_ot"><span class="c-libfunc">ʰd̲ot</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L32">line 32</a></div>
+<div class="doc">
+<p><code>u <span class="c-builtin">d̲ot</span> v</code>: the sum of the products, as a Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰd̲ot</span> ← { u v → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> u) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm"><span class="c-libfunc">ʰn̲orm</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent"><span class="c-libfunc">ˡs̲phereTangent</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius"><span class="c-libfunc">ʰm̲obius</span></a></div>
+</div>
+<div class="item" id="h.n_orm">
+<h3><a href="#h.n_orm"><span class="c-libfunc">ʰn̲orm</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L35">line 35</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">n̲orm</span> v</code>: the length of v, straight through the space it sits in.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲orm</span> ← { v → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> v <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> v }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#h.a_part"><span class="c-libfunc">ʰa̲part</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject"><span class="c-libfunc">ˡs̲phereProject</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep"><span class="c-libfunc">ˡs̲phereStep</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow"><span class="c-libfunc">ˡs̲phereArrow</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff"><span class="c-libfunc">ˡs̲phereOff</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc"><span class="c-libfunc">ˡs̲phereArc</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance"><span class="c-libfunc">ˡb̲allDistance</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic"><span class="c-libfunc">ˡb̲allGeodesic</span></a></div>
+</div>
+<div class="item" id="h.s_caleRows">
+<h3><a href="#h.s_caleRows"><span class="c-libfunc">ʰs̲caleRows</span></a> <span class="type">: Num a =&gt; a -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L38">line 38</a></div>
+<div class="doc">
+<p><code>s v <span class="c-builtin">s̲caleRows</span> M</code>: each row of M scaled by the matching item of s.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲caleRows</span> ← { s M → M <a href="builtins.html#-2a" class="c-symbol">×</a> s <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#h.a_rrows"><span class="c-libfunc">ʰa̲rrows</span></a></div>
+</div>
+<div class="item" id="h.a_ngle">
+<h3><a href="#h.a_ngle"><span class="c-libfunc">ʰa̲ngle</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L45">line 45</a></div>
+<div class="doc">
+<p><code>m <span class="c-builtin">a̲ngle</span> s</code>: the angle, 0 to pi, between two unit vectors p and
+q, from the lengths m = |p - q| and s = |p + q|: 2 atan2(m, s).
+Accurate near 0 and near pi alike, where a_cos of the product
+p.q is not (near 0 it loses half the digits), because neither
+length is a difference of nearly equal numbers.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲ngle</span> ← { m s → <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tan2" class="c-libfunc">ᵗʳa̲tan2</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> s }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance"><span class="c-libfunc">ˡs̲phereDistance</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances"><span class="c-libfunc">ˡs̲phereDistances</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#h.a_rrows"><span class="c-libfunc">ʰa̲rrows</span></a></div>
+</div>
+<div class="item" id="h.a_part">
+<h3><a href="#h.a_part"><span class="c-libfunc">ʰa̲part</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; (Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L48">line 48</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">a̲part</span> q</code>: |p - q| and |p + q|, as a tuple.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲part</span> ← { p q → (<a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q, <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q) }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance"><span class="c-libfunc">ˡs̲phereDistance</span></a></div>
+</div>
+<div class="item" id="h.a_partRows">
+<h3><a href="#h.a_partRows"><span class="c-libfunc">ʰa̲partRows</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; (Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L51">line 51</a></div>
+<div class="doc">
+<p><code>P <span class="c-builtin">a̲partRows</span> p</code>: |r - p| and |r + p| for every row r of P.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲partRows</span> ← { P p →
+  Q ← ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p         <span class="c-comment">⍝</span><span class="c-comment"> p in every row</span>
+  D ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> Q
+  S ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2b" class="c-symbol">+</a> Q
+  (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> D <a href="builtins.html#-2a" class="c-symbol">×</a> D, <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> S <a href="builtins.html#-2a" class="c-symbol">×</a> S)
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#h.a_rrows"><span class="c-libfunc">ʰa̲rrows</span></a></div>
+</div>
+<div class="item" id="h.a_partPairs">
+<h3><a href="#h.a_partPairs"><span class="c-libfunc">ʰa̲partPairs</span></a> <span class="type">: Num a =&gt; a -&gt; (Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L61">line 61</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">a̲partPairs</span> P</code>: |r - r'| and |r + r'| for every pair of rows of
+P, two matrices, summed one coordinate at a time (so no number is
+a difference of nearly equal ones).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲partPairs</span> ← { P →
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P
+  zero ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  (D, S, _) ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <span class="c-quote">'</span>{ (d, s, k) →
+    c ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P
+    (d <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, s <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+  } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (zero, zero, <span class="c-number">1</span>)
+  (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> D, <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> S)
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances"><span class="c-libfunc">ˡs̲phereDistances</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistortion"><span class="c-libfunc">ˡf̲latDistortion</span></a></div>
+</div>
+<h2 class="section" id="section-2">The unit sphere</h2>
+<div class="item" id="l.s_phereProject">
+<h3><a href="#l.s_phereProject"><span class="c-libfunc">ˡs̲phereProject</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L82">line 82</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲phereProject</span> v</code>: v put onto the unit sphere, scaled to length 1;
+the direction of v, kept. Given a set (a matrix), every row. The
+zero vector has no direction and is refused.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <span class="c-number">3.0</span> <span class="c-number">4.0</span> <span class="c-number">0.0</span>
+0.6 0.8 0.0</pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3.0</span> <span class="c-number">4.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">2.0</span>
+0.6 0.8 0.0
+0.0 0.0 1.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereProject</span> ← { v →
+  <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v ? <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> v
+  n ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> v
+  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the zero vector has no direction: it cannot be put onto the sphere&quot;</span>
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> n
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the zero vector has no direction: it cannot be put onto the sphere&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Kit-src-Kit.xtl.html#l.d_irections"><span class="c-libfunc">ˡd̲irections</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep"><span class="c-libfunc">ˡs̲phereStep</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean"><span class="c-libfunc">ˡs̲phereMean</span></a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#U">U</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#Fu">Fu</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#Du">Du</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#meanApart">meanApart</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#angleBoundary">angleBoundary</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#P">P</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#apart">apart</a></div>
+</div>
+<div class="item" id="h.p_rojectRows">
+<h3><a href="#h.p_rojectRows"><span class="c-libfunc">ʰp̲rojectRows</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L90">line 90</a></div>
+<div class="doc">
+<p>Every row of P put onto the sphere.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰp̲rojectRows</span> ← { P →
+  n ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;a zero row has no direction: it cannot be put onto the sphere&quot;</span>
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;a zero row has no direction: it cannot be put onto the sphere&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject"><span class="c-libfunc">ˡs̲phereProject</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc"><span class="c-libfunc">ˡs̲phereArc</span></a></div>
+</div>
+<div class="item" id="l.s_phereDistance">
+<h3><a href="#l.s_phereDistance"><span class="c-libfunc">ˡs̲phereDistance</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L104">line 104</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">s̲phereDistance</span> q</code>: the great-circle distance between two points
+of the sphere, the angle between them in radians (0 to pi): the
+shortest path along the sphere, as against the straight line
+through it, which is shorter (its length is 2 sin of half the
+angle). p and q must be on the sphere (s_phereProject).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+1.5707963267948966</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereDistance</span> ← { p q → (m, s) ← p <a href="libs-Manifold-src-Manifold.xtl.html#h.a_part" class="c-libfunc">ʰa̲part</a> q◆ m <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> s }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow"><span class="c-libfunc">ˡs̲phereArrow</span></a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L11">libs/Manifold/demos/sphere.xtl:11</a>, <a href="libs-Manifold-demos-tour.xtl.src.html#L14">libs/Manifold/demos/tour.xtl:14</a>, <a href="libs-Manifold-demos-tour.xtl.src.html#L15">libs/Manifold/demos/tour.xtl:15</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo"><span class="c-userfunc">ᵘt̲wo</span></a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#T">T</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#arcLength">arcLength</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#meanApart">meanApart</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#apart">apart</a></div>
+</div>
+<div class="item" id="l.s_phereDistances">
+<h3><a href="#l.s_phereDistances"><span class="c-libfunc">ˡs̲phereDistances</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L112">line 112</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲phereDistances</span> P</code>: the great-circle distance between every pair
+of rows of P (points on the sphere): a matrix, 0 on its diagonal.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+               0.0 1.5707963267948966
+1.5707963267948966                0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereDistances</span> ← { P → (M, S) ← <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partPairs" class="c-libfunc">ʰa̲partPairs</a> P◆ M <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> S }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistortion"><span class="c-libfunc">ˡs̲phereDistortion</span></a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L12">libs/Manifold/demos/sphere.xtl:12</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#Fa">Fa</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#Dd">Dd</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#arc">arc</a></div>
+</div>
+<div class="item" id="l.s_phereTangent">
+<h3><a href="#l.s_phereTangent"><span class="c-libfunc">ˡs̲phereTangent</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L120">line 120</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">s̲phereTangent</span> v</code>: the part of v that lies along the sphere at
+p (in the tangent plane there): v less its part along p, the
+normal. A tangent vector at p is one with no part along p.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent" class="c-libfunc">ᵐᶠs̲phereTangent</a> <span class="c-number">2.0</span> <span class="c-number">3.0</span> <span class="c-number">0.0</span>
+0.0 3.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereTangent</span> ← { p v → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2d" class="c-symbol">−</a> (p <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> v) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow"><span class="c-libfunc">ˡs̲phereArrow</span></a></div>
+</div>
+<div class="item" id="l.s_phereStep">
+<h3><a href="#l.s_phereStep"><span class="c-libfunc">ˡs̲phereStep</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L132">line 132</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">s̲phereStep</span> v</code>: the point reached from p by going along the
+sphere in the direction of the tangent vector v, for a distance
+equal to v's length (the exponential map): cos t p + sin t v / t
+with t = |v|, put back onto the sphere so no rounding takes it
+off. A zero v goes nowhere. (A quarter turn from the x axis along
+y lands on the y axis; the x left over is cos of a quarter turn,
+0 up to the machine's rounding.)</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> <span class="c-number">0.0</span> <span class="c-number">1.5707963267948966</span> <span class="c-number">0.0</span>
+0.00000000000000006123233995736766 1.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereStep</span> ← { p v →
+  t ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> v
+  t <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ˡs̲phereProject</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> t) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> t) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> t
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean"><span class="c-libfunc">ˡs̲phereMean</span></a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L16">libs/Manifold/demos/sphere.xtl:16</a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L17">libs/Manifold/demos/sphere.xtl:17</a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L18">libs/Manifold/demos/sphere.xtl:18</a></div>
+</div>
+<div class="item" id="l.s_phereArrow">
+<h3><a href="#l.s_phereArrow"><span class="c-libfunc">ˡs̲phereArrow</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L146">line 146</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">s̲phereArrow</span> q</code>: the tangent vector at p that s_phereStep
+carries to q (the logarithmic map): it points along the sphere
+toward q and is as long as the distance between them. For q = p
+it is zero; for q the opposite point, which every direction
+reaches at distance pi, it is zero too (there is no one arrow).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow" class="c-libfunc">ᵐᶠs̲phereArrow</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+0.0 1.5707963267948966 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereArrow</span> ← { p q →
+  u ← p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent" class="c-libfunc">ˡs̲phereTangent</a> q
+  n ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> u
+  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? u
+  (p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ˡs̲phereDistance</a> q) <a href="builtins.html#-2a" class="c-symbol">×</a> u <a href="builtins.html#-2f" class="c-symbol">÷</a> n
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc"><span class="c-libfunc">ˡs̲phereArc</span></a>, <a href="libs-Manifold-demos-sphere.xtl.html#v">v</a></div>
+</div>
+<div class="item" id="h.a_rrows">
+<h3><a href="#h.a_rrows"><span class="c-libfunc">ʰa̲rrows</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L155">line 155</a></div>
+<div class="doc">
+<p>The arrows at p to every row of P, one per row (s_phereArrow, over
+a set at once): the mean's one step.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲rrows</span> ← { p P →
+  c ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  U ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> c <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  n ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> U <a href="builtins.html#-2a" class="c-symbol">×</a> U
+  (m, s) ← P <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partRows" class="c-libfunc">ʰa̲partRows</a> p
+  ((m <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> s) <a href="builtins.html#-2f" class="c-symbol">÷</a> n <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> U
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean"><span class="c-libfunc">ˡs̲phereMean</span></a></div>
+</div>
+<div class="item" id="l.s_phereMean">
+<h3><a href="#l.s_phereMean"><span class="c-libfunc">ˡs̲phereMean</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L175">line 175</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲phereMean</span> P</code>: the mean of the rows of P on the sphere (the
+Frechet or Karcher mean): the point whose summed squared distances
+along the sphere to the rows is least. The plain mean of the rows
+lies inside the sphere; this starts from that mean put onto the
+sphere and takes 30 steps, each along the average of the arrows
+to the rows, which is a fixed point when the arrows cancel. Points
+spread over less than a hemisphere have one mean, and the steps
+reach it; rows whose plain mean is the zero vector (say, two
+opposite points) are refused.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean" class="c-libfunc">ᵐᶠs̲phereMean</a> <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+0.7071067811865476 0.7071067811865476 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereMean</span> ← { P →
+  n ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P
+  start ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ˡs̲phereProject</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n
+  <span class="c-number">30</span> <span class="c-quote">'</span>{ p → p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ˡs̲phereStep</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> p <a href="libs-Manifold-src-Manifold.xtl.html#h.a_rrows" class="c-libfunc">ʰa̲rrows</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> start
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-sphere.xtl.src.html#L23">libs/Manifold/demos/sphere.xtl:23</a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L24">libs/Manifold/demos/sphere.xtl:24</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#plainMeans">plainMeans</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#onSphere">onSphere</a></div>
+</div>
+<div class="item" id="l.s_phereOff">
+<h3><a href="#l.s_phereOff"><span class="c-libfunc">ˡs̲phereOff</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L189">line 189</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲phereOff</span> p</code>: how far p is from the sphere: the difference
+between its length and 1, as a size. 0 for a point on it; what a
+test of a constraint reports. Given a set (a matrix), one per row.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> <span class="c-number">0.0</span> <span class="c-number">0.5</span> <span class="c-number">0.0</span>
+0.5</pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.5</span> <span class="c-number">3.0</span> <span class="c-number">4.0</span>
+0.5 4.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereOff</span> ← { p →
+  <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-sphere.xtl.src.html#L18">libs/Manifold/demos/sphere.xtl:18</a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L22">libs/Manifold/demos/sphere.xtl:22</a>, <a href="libs-Manifold-demos-sphere.xtl.src.html#L24">libs/Manifold/demos/sphere.xtl:24</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L159">demos/manifold-tour/manifold-tour.xtl:159</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L170">demos/manifold-tour/manifold-tour.xtl:170</a>, <a href="demos-representation-explorer-representation-explorer.xtl.src.html#L303">demos/representation-explorer/representation-explorer.xtl:303</a>, <a href="demos-representation-explorer-representation-explorer.xtl.src.html#L304">demos/representation-explorer/representation-explorer.xtl:304</a>, <a href="demos-representation-explorer-representation-explorer.xtl.src.html#L313">demos/representation-explorer/representation-explorer.xtl:313</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L68">demos/sphere-hello/sphere-hello.xtl:68</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L90">demos/sphere-hello/sphere-hello.xtl:90</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L92">demos/sphere-hello/sphere-hello.xtl:92</a>, <a href="demos-sphere-hello-sphere-hello.xtl.src.html#L95">demos/sphere-hello/sphere-hello.xtl:95</a></div>
+</div>
+<div class="item" id="h.c_oordinate">
+<h3><a href="#h.c_oordinate"><span class="c-libfunc">ʰc̲oordinate</span></a> <span class="type">: Num a =&gt; Int -&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L196">line 196</a></div>
+<div class="doc">
+<p><code>k <span class="c-builtin">c̲oordinate</span> p</code>: the k-th coordinate of a point, or the k-th
+column of a set of points (a matrix), as Floats.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲oordinate</span> ← { k p → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> p◆ <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints"><span class="c-libfunc">ˡs̲pherePoints</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints"><span class="c-libfunc">ˡt̲orusPoints</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusOff"><span class="c-libfunc">ˡt̲orusOff</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints"><span class="c-libfunc">ˡr̲ollPoints</span></a></div>
+</div>
+<div class="item" id="h.c_olumns">
+<h3><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a> <span class="type">: Int -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L202">line 202</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">c̲olumns</span> M</code>: the columns of a (rows x n) matrix given as one vector
+of n columns laid end to end, back as the matrix: the transpose of
+the n x rows reshape. For writing a set of points coordinate by
+coordinate.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲olumns</span> ← { n v → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> v }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints"><span class="c-libfunc">ˡs̲pherePoints</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints"><span class="c-libfunc">ˡc̲irclePoints</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints"><span class="c-libfunc">ˡt̲orusPoints</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints"><span class="c-libfunc">ˡr̲ollPoints</span></a></div>
+</div>
+<h2 class="section" id="section-3">The sphere, drawn</h2>
+<div class="item" id="l.s_pherePoints">
+<h3><a href="#l.s_pherePoints"><span class="c-libfunc">ˡs̲pherePoints</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L217">line 217</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲pherePoints</span> LL</code>: the point of the unit sphere at each
+(longitude, latitude) row of LL, in radians (longitude round the
+z axis from the x axis, latitude up from the equator): one row
+(x, y, z) per row of LL. These are the sphere's map: a parallel is
+rows of one latitude and many longitudes, a meridian rows of one
+longitude. (A quarter turn of latitude is the pole: its x is cos
+of a quarter turn, 0 up to the machine's rounding.)</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.5707963267948966</span>
+                               1.0 0.0 0.0
+0.00000000000000006123233995736766 0.0 1.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲pherePoints</span> ← { LL →
+  lon ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> LL
+  lat ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> LL
+  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> lat) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> lon) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> lat) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> lon) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> lat
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires"><span class="c-libfunc">ˡs̲phereWires</span></a>, <a href="libs-Manifold-demos-tour.xtl.html#near">near</a>, <a href="libs-Manifold-demos-tour.xtl.html#far">far</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#parallels">parallels</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#meridians">meridians</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#gridS">gridS</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#parallels">parallels</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#meridians">meridians</a></div>
+</div>
+<div class="item" id="l.s_phereWires">
+<h3><a href="#l.s_phereWires"><span class="c-libfunc">ˡs̲phereWires</span></a> <span class="type">: (Int, Int, Int) -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L233">line 233</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲phereWires</span> (p, m, n)</code>: the wire lines that show where the sphere
+is in a picture: p parallels (circles of latitude, evenly spaced
+between the poles, the poles left out) and m meridians (half
+circles of longitude from pole to pole, evenly spaced round), each
+as n + 1 points along it; (parallels, meridians), two matrices of
+points, one line after another, p (n + 1) and m (n + 1) rows.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(P, M) ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires" class="c-libfunc">ᵐᶠs̲phereWires</a> (<span class="c-number">5</span>, <span class="c-number">12</span>, <span class="c-number">24</span>)</pre>
+<pre class="example"><span class="prompt">      </span>(<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M
+125 3 300 3</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereWires</span> ← { (p, m, n) →
+  plats ← ((<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>
+  plons ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  mlons ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> m) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  mlats ← ((<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>
+  parallels ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ˡs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> p <a href="builtins.html#-2a" class="c-symbol">×</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> plats) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> plons) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> plats <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> plons
+  meridians ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ˡs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#-2a" class="c-symbol">×</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> mlons <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> mlats) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> mlons) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> mlats
+  (parallels, meridians)
+}</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-explorer.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="l.s_phereArc">
+<h3><a href="#l.s_phereArc"><span class="c-libfunc">ˡs̲phereArc</span></a> <span class="type">: (Num a, Num b) =&gt; (a, b) -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L253">line 253</a></div>
+<div class="doc">
+<p><code>(p, q) <span class="c-builtin">s̲phereArc</span> n</code>: n + 1 points along the great circle from p
+to q (both on the sphere), p first and q last, evenly spaced along
+it: the points s_phereStep reaches from p along 0, 1/n, ..., 1 of
+the arrow to q. For q = p, or q the opposite point (no one arc),
+every point is p.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>, <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc" class="c-libfunc">ᵐᶠs̲phereArc</a> <span class="c-number">2</span>
+                               1.0                0.0 0.0
+                0.7071067811865476 0.7071067811865475 0.0
+0.00000000000000006123233995736766                1.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereArc</span> ← { (p, q) n →
+  v ← p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow" class="c-libfunc">ˡs̲phereArrow</a> q
+  t ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> v
+  rows ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>
+  t <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? rows <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  T ← (t <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> T) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> T) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> v <a href="builtins.html#-2f" class="c-symbol">÷</a> t
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L18">libs/Manifold/demos/tour.xtl:18</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearArc">sphereNearArc</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarArc">sphereFarArc</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#arc">arc</a>, <a href="demos-sphere-hello-sphere-hello.xtl.html#arcs">arcs</a></div>
+</div>
+<h2 class="section" id="section-4">The circle</h2>
+<div class="item" id="l.c_irclePoints">
+<h3><a href="#l.c_irclePoints"><span class="c-libfunc">ˡc̲irclePoints</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L274">line 274</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">c̲irclePoints</span> A</code>: the point of the unit circle at each angle of A
+(radians from the x axis, counterclockwise): one row (x, y) per
+angle. The circle is the sphere of one dimension, the unit sphere
+in two: s_phereProject puts a point onto it, s_phereDistance
+measures along it (the angle between two points), s_phereArc draws
+between them.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <span class="c-number">0.0</span> <span class="c-number">3.141592653589793</span>
+ 1.0                                0.0
+-1.0 0.00000000000000012246467991473532</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡc̲irclePoints</span> ← { A → a ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> A◆ <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (<a href="builtins.html#c_os" class="c-builtin">c̲os</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> a }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circle">circle</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNear">circleNear</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFar">circleFar</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rim">rim</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a></div>
+</div>
+<h2 class="section" id="section-5">The torus</h2>
+<div class="item" id="l.t_orusPoints">
+<h3><a href="#l.t_orusPoints"><span class="c-libfunc">ˡt̲orusPoints</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L288">line 288</a></div>
+<div class="doc">
+<p><code>radii <span class="c-builtin">t̲orusPoints</span> UV</code>: the point of the torus of radii R r (R
+from the middle of the hole to the middle of the tube, r the
+tube's) at each (u, v) row of UV, in radians (u round the hole, v
+round the tube): ((R + r cos v) cos u, (R + r cos v) sin u,
+r sin v), one row per row of UV. The torus's map is the (u, v)
+rectangle, 0 to 2 pi each way, each pair of opposite edges joined.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">3.0</span> <span class="c-number">1.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints" class="c-libfunc">ᵐᶠt̲orusPoints</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">3.141592653589793</span>
+4.0 0.0                                0.0
+2.0 0.0 0.00000000000000012246467991473532</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲orusPoints</span> ← { radii UV →
+  R ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii
+  r ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii
+  u ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> UV
+  v ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> UV
+  w ← R <a href="builtins.html#-2b" class="c-symbol">+</a> r <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> v
+  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (w <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> u) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (w <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> u) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> r <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> v
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L22">libs/Manifold/demos/tour.xtl:22</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubes">torusTubes</a></div>
+</div>
+<div class="item" id="l.t_orusOff">
+<h3><a href="#l.t_orusOff"><span class="c-libfunc">ˡt̲orusOff</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L306">line 306</a></div>
+<div class="doc">
+<p><code>radii <span class="c-builtin">t̲orusOff</span> p</code>: how far p is from the torus of radii R r: the
+distance from p to the circle through the middle of the tube, less
+r, as a size. 0 for a point on it. Given a set (a matrix), one per
+row.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">3.0</span> <span class="c-number">1.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusOff" class="c-libfunc">ᵐᶠt̲orusOff</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+2.0</pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">3.0</span> <span class="c-number">1.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusOff" class="c-libfunc">ᵐᶠt̲orusOff</a> <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">3.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+0.0 1.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲orusOff</span> ← { radii p →
+  R ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii
+  r ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii
+  x ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p
+  y ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p
+  z ← <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p
+  rho ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (x <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#-2b" class="c-symbol">+</a> y <a href="builtins.html#-2a" class="c-symbol">×</a> y
+  <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> ((rho <a href="builtins.html#-2d" class="c-symbol">−</a> R) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> z <a href="builtins.html#-2a" class="c-symbol">×</a> z) <a href="builtins.html#-2d" class="c-symbol">−</a> r
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L23">libs/Manifold/demos/tour.xtl:23</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L190">demos/manifold-tour/manifold-tour.xtl:190</a></div>
+</div>
+<h2 class="section" id="section-6">The Swiss roll</h2>
+<div class="item" id="l.r_ollPoints">
+<h3><a href="#l.r_ollPoints"><span class="c-libfunc">ˡr̲ollPoints</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L327">line 327</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">r̲ollPoints</span> TH</code>: the point of the Swiss roll at each (t, h) row of
+TH: (t cos t, h, t sin t). The roll is a flat sheet rolled up:
+along t it winds round the y axis, farther out with every turn (a
+spiral whose radius is t); along h it runs straight up the axis.
+Its map is the sheet itself, the rectangle of (r_ollAlong t, h).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints" class="c-libfunc">ᵐᶠr̲ollPoints</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">3.141592653589793</span> <span class="c-number">1.0</span>
+               0.0 0.0                                0.0
+-3.141592653589793 1.0 0.00000000000000038473413874435795</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ollPoints</span> ← { TH →
+  t ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> TH
+  h ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> TH
+  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (t <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> t) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> h <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> t
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.html#W">W</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlong">rollAlong</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcross">rollAcross</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a></div>
+</div>
+<div class="item" id="l.r_ollAlong">
+<h3><a href="#l.r_ollAlong"><span class="c-libfunc">ˡr̲ollAlong</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L339">line 339</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">r̲ollAlong</span> t</code>: the length of the roll's spiral from its middle
+(t = 0) out to t, (t sqrt(1 + t^2) + asinh t) / 2: how far along
+the unrolled sheet the points at t lie. Its map's first coordinate.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ᵐᶠr̲ollAlong</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+0.0 1.147793574696319</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ollAlong</span> ← { t → x ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> t◆ ((x <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> x <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sinh" class="c-libfunc">ᵗʳa̲sinh</a> x) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollDistance"><span class="c-libfunc">ˡr̲ollDistance</span></a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongMap">rollAlongMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossMap">rollAcrossMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollMap">rollMap</a></div>
+</div>
+<div class="item" id="l.r_ollDistance">
+<h3><a href="#l.r_ollDistance"><span class="c-libfunc">ˡr̲ollDistance</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L349">line 349</a></div>
+<div class="doc">
+<p><code>a <span class="c-builtin">r̲ollDistance</span> b</code>: the distance along the sheet between the
+points of the roll at (t, h) a and b. The sheet is flat, so it is
+the plain distance between the two unrolled,
+sqrt((along a - along b)^2 + (h_a - h_b)^2): two points a turn
+apart are near in three dimensions and far along the sheet.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollDistance" class="c-libfunc">ᵐᶠr̲ollDistance</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+1.147793574696319</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ollDistance</span> ← { a b →
+  da ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ˡr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ˡr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> b
+  dh ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> b
+  <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (da <a href="builtins.html#-2a" class="c-symbol">×</a> da) <a href="builtins.html#-2b" class="c-symbol">+</a> dh <a href="builtins.html#-2a" class="c-symbol">×</a> dh
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L31">libs/Manifold/demos/tour.xtl:31</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollNearD">rollNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollFarD">rollFarD</a></div>
+</div>
+<h2 class="section" id="section-7">The Poincare ball</h2>
+<div class="item" id="h.m_obius">
+<h3><a href="#h.m_obius"><span class="c-libfunc">ʰm̲obius</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L362">line 362</a></div>
+<div class="doc">
+<p><code>u <span class="c-builtin">m̲obius</span> v</code>: Mobius addition, the ball's own way of adding (u
+then v, each inside the unit ball): ((1 + 2 u.v + |v|^2) u +
+(1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2). The result stays in
+the ball; (-u) m_obius v is v seen from u, as a vector at the
+middle.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲obius</span> ← { u v →
+  uv ← u <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> v
+  uu ← u <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> u
+  vv ← v <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> v
+  (((<span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> uv) <a href="builtins.html#-2b" class="c-symbol">+</a> vv) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> u) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> uu) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> uv) <a href="builtins.html#-2b" class="c-symbol">+</a> uu <a href="builtins.html#-2a" class="c-symbol">×</a> vv)
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance"><span class="c-libfunc">ˡb̲allDistance</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic"><span class="c-libfunc">ˡb̲allGeodesic</span></a></div>
+</div>
+<div class="item" id="l.b_allDistance">
+<h3><a href="#l.b_allDistance"><span class="c-libfunc">ˡb̲allDistance</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L379">line 379</a></div>
+<div class="doc">
+<p><code>p <span class="c-builtin">b̲allDistance</span> q</code>: the distance between two points of the
+Poincare ball (the inside of the unit sphere with the hyperbolic
+metric; in two dimensions the Poincare disk), 2 atanh of the
+length of q seen from p, (-p) m_obius q. Near the middle it is
+twice the plain distance; toward the rim it grows without bound,
+so points near the rim a little apart in the plane are far apart
+along the ball. p and q must be inside the ball (length under 1).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">0.5</span> <span class="c-number">0.0</span>
+1.0986122886681098</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡb̲allDistance</span> ← { p q → <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tanh" class="c-libfunc">ᵗʳa̲tanh</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> p) <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> q }</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L35">libs/Manifold/demos/tour.xtl:35</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rulerD">rulerD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFarD">diskFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNearD">diskNearD</a></div>
+</div>
+<div class="item" id="l.b_allGeodesic">
+<h3><a href="#l.b_allGeodesic"><span class="c-libfunc">ˡb̲allGeodesic</span></a> <span class="type">: (Num a, Num b) =&gt; (a, b) -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L392">line 392</a></div>
+<div class="doc">
+<p><code>(p, q) <span class="c-builtin">b̲allGeodesic</span> n</code>: n + 1 points along the geodesic (the
+shortest path, by the ball's distance) from p to q, p first and q
+last, evenly spaced along it: p m_obius the arrow to q scaled by
+0, 1/n, ..., 1 in the ball's way (tanh of that fraction of atanh
+its length). Drawn flat, a geodesic is an arc of a circle that
+meets the rim at right angles, or a diameter.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">0.0</span> <span class="c-number">0.0</span>, <span class="c-number">0.6</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">2</span>
+               0.0 0.0
+0.3333333333333333 0.0
+               0.6 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡb̲allGeodesic</span> ← { (p, q) n →
+  w ← (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> p) <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> q
+  r ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> w
+  rows ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>
+  r <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? rows <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  S ← (<a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> (<a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tanh" class="c-libfunc">ᵗʳa̲tanh</a> r) <a href="builtins.html#-2a" class="c-symbol">×</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2f" class="c-symbol">÷</a> r
+  d ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p
+  (M, _) ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <span class="c-quote">'</span>{ (M, k) → (M <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> p <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> (k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> S) <a href="builtins.html#-2a" class="c-symbol">×</a> w, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((<span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  M
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-demos-tour.xtl.src.html#L36">libs/Manifold/demos/tour.xtl:36</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFarGeo">diskFarGeo</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNearGeo">diskNearGeo</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#geo1">geo1</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#geo2">geo2</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#geo3">geo3</a></div>
+</div>
+<h2 class="section" id="section-8">Distortion</h2>
+<div class="item" id="l.d_istortion">
+<h3><a href="#l.d_istortion"><span class="c-libfunc">ˡd̲istortion</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L424">line 424</a></div>
+<div class="doc">
+<p><code>D <span class="c-builtin">d̲istortion</span> E</code>: how badly the distances E (between every pair of
+points of an embedding, a matrix as s_phereDistances gives) keep
+the distances D they should have (the same shape: the data's own
+distances, say along a tree): for every pair of different points,
+|E / D - 1|, the fraction by which the pair's distance is too long
+or too short; the mean over the pairs and the worst pair, as a
+pair of Floats. 0 0 when every distance is kept; 1 for a pair twice
+or half as far as it should be (half: 0.5). Pairs at D = 0 (the
+same point twice) are left out; the diagonal always is. The measure
+of H1 (docs/research-questions.md), the same whatever space E was
+measured along.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>D ← <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span></pre>
+<pre class="example"><span class="prompt">      </span>D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> D
+0.0 0.0</pre>
+<pre class="example"><span class="prompt">      </span>D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> D
+1.0 1.0</pre>
+<pre class="example"><span class="prompt">      </span>D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+0.16666666666666666 0.5</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲istortion</span> ← { D E →
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> D
+  pair ← ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>        <span class="c-comment">⍝</span><span class="c-comment"> each pair once, where there is a distance to keep</span>
+  k ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> pair
+  k <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+  off ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> pair) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> off) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> off
+}</pre>
+<div class="uses">Used in: <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistortion"><span class="c-libfunc">ˡs̲phereDistortion</span></a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistortion"><span class="c-libfunc">ˡf̲latDistortion</span></a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#distortion">distortion</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#distortion">distortion</a></div>
+</div>
+<div class="item" id="l.d_istortionPairs">
+<h3><a href="#l.d_istortionPairs"><span class="c-libfunc">ˡd̲istortionPairs</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L442">line 442</a></div>
+<div class="doc">
+<p><code>D <span class="c-builtin">d̲istortionPairs</span> E</code>: the distortion of every pair, |E / D - 1|,
+as a matrix the shape of D: which pairs an embedding stretches and
+which it squeezes; 0 on the diagonal and wherever D is 0 (the pairs
+d_istortion leaves out).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortionPairs" class="c-libfunc">ᵐᶠd̲istortionPairs</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+0.0 0.0 0.5
+0.0 0.0 0.0
+0.5 0.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲istortionPairs</span> ← { D E →
+  keep ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> keep) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+}</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-explorer.xtl.html#pairs">pairs</a></div>
+</div>
+<div class="item" id="l.f_itScale">
+<h3><a href="#l.f_itScale"><span class="c-libfunc">ˡf̲itScale</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L459">line 459</a></div>
+<div class="doc">
+<p><code>D <span class="c-builtin">f̲itScale</span> E</code>: the one factor that fits the distances E to the
+distances D: the number s that makes the mean of s E over the pairs
+(those with D &gt; 0) equal the mean of D over them, the sum of D
+divided by the sum of E. For distances in different units (an
+angle against a length), measure the distortion of s E, which says
+what the shape of the distances loses once their scale is forgiven.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>D ← <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span></pre>
+<pre class="example"><span class="prompt">      </span>D <a href="libs-Manifold-src-Manifold.xtl.html#l.f_itScale" class="c-libfunc">ᵐᶠf̲itScale</a> <span class="c-number">4.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> D
+0.25</pre>
+<pre class="example"><span class="prompt">      </span>D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> (D <a href="libs-Manifold-src-Manifold.xtl.html#l.f_itScale" class="c-libfunc">ᵐᶠf̲itScale</a> <span class="c-number">4.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> D) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">4.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> D
+0.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡf̲itScale</span> ← { D E →
+  keep ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>
+  (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> keep <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> keep <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>
+}</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-explorer.xtl.html#sFa">sFa</a>, <a href="demos-representation-explorer-representation-explorer.xtl.html#sDc">sDc</a></div>
+</div>
+<div class="item" id="l.s_phereDistortion">
+<h3><a href="#l.s_phereDistortion"><span class="c-libfunc">ˡs̲phereDistortion</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L472">line 472</a></div>
+<div class="doc">
+<p><code>D <span class="c-builtin">s̲phereDistortion</span> P</code>: the distortion of a set P on the sphere
+(one point per row), its great-circle distances against the
+distances D it should keep: the mean and the worst pair, as
+d_istortion gives them.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>Q ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.5707963267948966</span> <span class="c-number">3.141592653589793</span> <span class="c-number">1.5707963267948966</span> <span class="c-number">0.0</span> <span class="c-number">1.5707963267948966</span> <span class="c-number">3.141592653589793</span> <span class="c-number">1.5707963267948966</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistortion" class="c-libfunc">ᵐᶠs̲phereDistortion</a> Q
+0.0 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereDistortion</span> ← { D P → D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ˡd̲istortion</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ˡs̲phereDistances</a> P }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-explorer.xtl.html#distortion">distortion</a></div>
+</div>
+<div class="item" id="l.f_latDistortion">
+<h3><a href="#l.f_latDistortion"><span class="c-libfunc">ˡf̲latDistortion</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Manifold-src-Manifold.xtl.src.html#L482">line 482</a></div>
+<div class="doc">
+<p><code>D <span class="c-builtin">f̲latDistortion</span> P</code>: the distortion of a set P in a flat space
+(one point per row), its straight-line distances against the
+distances D it should keep: the mean and the worst pair.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistortion" class="c-libfunc">ᵐᶠf̲latDistortion</a> <span class="c-number">3</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span>
+0.0 0.0</pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistortion" class="c-libfunc">ᵐᶠf̲latDistortion</a> <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span>
+0.09763107293781748 0.2928932188134524</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡf̲latDistortion</span> ← { D P → (M, _) ← <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partPairs" class="c-libfunc">ʰa̲partPairs</a> P◆ D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ˡd̲istortion</a> M }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-explorer.xtl.html#distortion">distortion</a></div>
+</div>
+</main>
+</body>
+</html>

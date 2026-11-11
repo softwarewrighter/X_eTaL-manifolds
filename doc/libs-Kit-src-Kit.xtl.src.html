@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Kit/src/Kit.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L34"><span class="c-libfunc">ˡu̲niform</span></a></li>
+<li class="item"><a href="#L47"><span class="c-libfunc">ˡn̲ormal</span></a></li>
+<li class="item"><a href="#L60"><span class="c-libfunc">ˡn̲ormals</span></a></li>
+<li class="item"><a href="#L78"><span class="c-libfunc">ˡf̲lat</span></a></li>
+<li class="item"><a href="#L88"><span class="c-libfunc">ʰe̲ach</span></a></li>
+<li class="item"><a href="#L107"><span class="c-libfunc">ˡd̲irections</span></a></li>
+<li class="item"><a href="#L117"><span class="c-libfunc">ʰs̲caleRows</span></a></li>
+<li class="item"><a href="#L132"><span class="c-libfunc">ˡt̲ree</span></a></li>
+<li class="item"><a href="#L140"><span class="c-libfunc">ʰn̲odes</span></a></li>
+<li class="item"><a href="#L152"><span class="c-libfunc">ˡt̲reeDistances</span></a></li>
+<li class="item"><a href="#L167"><span class="c-libfunc">ˡt̲reeClasses</span></a></li>
+<li class="item"><a href="#L176"><span class="c-libfunc">ʰu̲p</span></a></li>
+<li class="item"><a href="#L194"><span class="c-libfunc">ˡt̲reeLayout</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Kit-src-Kit.xtl.html">libs/Kit/src/Kit.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-doc">⍝│</span><span class="c-doc"> Kit: the experiment kit's data sets, each with a known structure and</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> made from its own seed: flat (Gaussian clusters), directional</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> (classes that differ by direction, not length) and hierarchical (a</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> tree, its distances along the tree, a class per branch, and a plain</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-doc">⍝│</span><span class="c-doc"> layout of it in the plane); and the seeded numbers they are made of.</span></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-doc">⍝│</span><span class="c-doc"> Import it with an alias of your choice: &quot;kt:&quot; u_se&lt; &quot;Kit&quot;.</span></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-doc">⍝│</span><span class="c-doc"> Put libs/Kit/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Kit/docs.</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a><span class="c-doc">⍝│</span><span class="c-doc"> Names with l: are exported; those under h: are private to this file.</span></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-doc">⍝│</span></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a><span class="c-doc">⍝│</span><span class="c-doc"> A data set is (X, y): X a matrix, one point per row; y its labels,</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 to k. Every set is a function of its seed and its sizes alone (not</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a><span class="c-doc">⍝│</span><span class="c-doc"> of the run's seed, nor of what was drawn before it), so two demos</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a><span class="c-doc">⍝│</span><span class="c-doc"> asking for the same set get the same numbers: the seed is a whole</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a><span class="c-doc">⍝│</span><span class="c-doc"> number, and the generator is Park and Miller's (1988) multiplier</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-doc">⍝│</span><span class="c-doc"> 16807 modulo 2^31 - 1, written out here until X_eTaL-libraries'</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a><span class="c-doc">⍝│</span><span class="c-doc"> Random takes a seed of its own (docs/xetal-libraries-asks.md, GL8).</span></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-doc">⍝│</span><span class="c-doc"> The comparisons this repository makes are between geometries on the</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a><span class="c-doc">⍝│</span><span class="c-doc"> same data: what these functions give is held equal across them.</span></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-string">&quot;gr:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html" class="c-string">&quot;Graphs&quot;</a></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><span class="c-heading">⍝━━</span><span class="c-heading"> Seeded numbers</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">u̲niform</span> (seed, n)<span class="c-doc"></span><span class="c-doc">: n Floats in [0, 1), each a function of the</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-doc">⍝│</span><span class="c-doc"> seed and its place: the Park-Miller sequence x -&gt; 16807 x mod</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-doc">⍝│</span><span class="c-doc"> (2^31 - 1) started from 1 + |seed| mod (2^31 - 2) (so seed 0 is a</span></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a><span class="c-doc">⍝│</span><span class="c-doc"> seed like any other and no seed is the sequence's fixed point 0),</span></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-doc">⍝│</span><span class="c-doc"> divided by 2^31 - 1. The same seed gives the same numbers in any</span></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><span class="c-doc">⍝│</span><span class="c-doc"> run.</span></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:u_niform (42, 3)</span></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.00033653387815530127 0.6561248901561484 0.4910288543864288</span></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a><span class="c-libfunc">ˡu̲niform</span> ← { (seed, n) →</span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a>  m ← <span class="c-number">2147483647</span></span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>  start ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> seed) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> m <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a>  (v, _) ← n <span class="c-quote">'</span>{ (v, x) → y ← (<span class="c-number">16807</span> <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> m◆ (v <a href="builtins.html#c_at" class="c-builtin">c̲at</a> y, y) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, start)</span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a>  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m</span>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a>}</span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a></span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">n̲ormal</span> (seed, n)<span class="c-doc"></span><span class="c-doc">: n Floats from the standard normal distribution</span></span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a><span class="c-doc">⍝│</span><span class="c-doc"> (mean 0, standard deviation 1), by Box and Muller from 2n uniform</span></span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a><span class="c-doc">⍝│</span><span class="c-doc"> numbers of the seed.</span></span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:n_ormal (42, 2)</span></span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a><span class="c-doc">⍝│</span><span class="c-doc"> -0.025904525013204074 -0.2561352551643429</span></span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a><span class="c-libfunc">ˡn̲ormal</span> ← { (seed, n) →</span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a>  u ← <a href="libs-Kit-src-Kit.xtl.html#l.u_niform" class="c-libfunc">ˡu̲niform</a> (seed, <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> n)</span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a>  a ← n <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> u</span>
+<span class="line" id="L50"><a class="ln" href="#L50">50</a>  b ← n <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> u</span>
+<span class="line" id="L51"><a class="ln" href="#L51">51</a>  (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">-2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#l_og" class="c-builtin">l̲og</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> <span class="c-number">6.283185307179586</span> <a href="builtins.html#-2a" class="c-symbol">×</a> b</span>
+<span class="line" id="L52"><a class="ln" href="#L52">52</a>}</span>
+<span class="line" id="L53"><a class="ln" href="#L53">53</a></span>
+<span class="line" id="L54"><a class="ln" href="#L54">54</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">n̲ormals</span> (seed, rows, cols)<span class="c-doc"></span><span class="c-doc">: a rows by cols matrix of standard</span></span>
+<span class="line" id="L55"><a class="ln" href="#L55">55</a><span class="c-doc">⍝│</span><span class="c-doc"> normal numbers of the seed (the first rows * cols of n_ormal, as</span></span>
+<span class="line" id="L56"><a class="ln" href="#L56">56</a><span class="c-doc">⍝│</span><span class="c-doc"> rows): a network's starting weights, say, the same in every run.</span></span>
+<span class="line" id="L57"><a class="ln" href="#L57">57</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L58"><a class="ln" href="#L58">58</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; s_hape kt:n_ormals (42, 3, 2)</span></span>
+<span class="line" id="L59"><a class="ln" href="#L59">59</a><span class="c-doc">⍝│</span><span class="c-doc"> 3 2</span></span>
+<span class="line" id="L60"><a class="ln" href="#L60">60</a><span class="c-libfunc">ˡn̲ormals</span> ← { (seed, rows, cols) → (rows <a href="builtins.html#c_at" class="c-builtin">c̲at</a> cols) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormal" class="c-libfunc">ˡn̲ormal</a> (seed, rows <a href="builtins.html#-2a" class="c-symbol">×</a> cols) }</span>
+<span class="line" id="L61"><a class="ln" href="#L61">61</a></span>
+<span class="line" id="L62"><a class="ln" href="#L62">62</a><span class="c-heading">⍝━━</span><span class="c-heading"> Flat clusters</span></span>
+<span class="line" id="L63"><a class="ln" href="#L63">63</a></span>
+<span class="line" id="L64"><a class="ln" href="#L64">64</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">f̲lat</span> (seed, k, n, d, spread)<span class="c-doc"></span><span class="c-doc">: k Gaussian clusters of n points</span></span>
+<span class="line" id="L65"><a class="ln" href="#L65">65</a><span class="c-doc">⍝│</span><span class="c-doc"> each in d dimensions: the k centers are standard normal numbers of</span></span>
+<span class="line" id="L66"><a class="ln" href="#L66">66</a><span class="c-doc">⍝│</span><span class="c-doc"> the seed scaled by 4 (so clusters sit a few units apart), and each</span></span>
+<span class="line" id="L67"><a class="ln" href="#L67">67</a><span class="c-doc">⍝│</span><span class="c-doc"> point is its center plus </span><span class="c-doc"></span>spread<span class="c-doc"></span><span class="c-doc"> times a standard normal vector;</span></span>
+<span class="line" id="L68"><a class="ln" href="#L68">68</a><span class="c-doc">⍝│</span><span class="c-doc"> (X, y), X of k n rows and y the cluster of each row, 1 to k, in</span></span>
+<span class="line" id="L69"><a class="ln" href="#L69">69</a><span class="c-doc">⍝│</span><span class="c-doc"> order. The structure is flat: straight-line distance is the right</span></span>
+<span class="line" id="L70"><a class="ln" href="#L70">70</a><span class="c-doc">⍝│</span><span class="c-doc"> one, and a point's nearest neighbors are mostly its own cluster</span></span>
+<span class="line" id="L71"><a class="ln" href="#L71">71</a><span class="c-doc">⍝│</span><span class="c-doc"> when spread is well under the centers' spacing.</span></span>
+<span class="line" id="L72"><a class="ln" href="#L72">72</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L73"><a class="ln" href="#L73">73</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (X, y) := kt:f_lat (1, 2, 2, 2, 0.1)</span></span>
+<span class="line" id="L74"><a class="ln" href="#L74">74</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; y</span></span>
+<span class="line" id="L75"><a class="ln" href="#L75">75</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 1 2 2</span></span>
+<span class="line" id="L76"><a class="ln" href="#L76">76</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; s_hape X</span></span>
+<span class="line" id="L77"><a class="ln" href="#L77">77</a><span class="c-doc">⍝│</span><span class="c-doc"> 4 2</span></span>
+<span class="line" id="L78"><a class="ln" href="#L78">78</a><span class="c-libfunc">ˡf̲lat</span> ← { (seed, k, n, d, spread) →</span>
+<span class="line" id="L79"><a class="ln" href="#L79">79</a>  C ← <span class="c-number">4.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> (seed, k, d)</span>
+<span class="line" id="L80"><a class="ln" href="#L80">80</a>  N ← <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> (seed <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, k <a href="builtins.html#-2a" class="c-symbol">×</a> n, d)</span>
+<span class="line" id="L81"><a class="ln" href="#L81">81</a>  y ← n <a href="libs-Kit-src-Kit.xtl.html#h.e_ach" class="c-libfunc">ʰe̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> k</span>
+<span class="line" id="L82"><a class="ln" href="#L82">82</a>  X ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> spread) <a href="builtins.html#-2a" class="c-symbol">×</a> N) <a href="builtins.html#-2b" class="c-symbol">+</a> y <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> C</span>
+<span class="line" id="L83"><a class="ln" href="#L83">83</a>  (X, y)</span>
+<span class="line" id="L84"><a class="ln" href="#L84">84</a>}</span>
+<span class="line" id="L85"><a class="ln" href="#L85">85</a></span>
+<span class="line" id="L86"><a class="ln" href="#L86">86</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>n <span class="c-builtin">e̲ach</span> v<span class="c-doc"></span><span class="c-doc">: every item of v repeated n times, in order (a general</span></span>
+<span class="line" id="L87"><a class="ln" href="#L87">87</a><span class="c-doc">⍝│</span><span class="c-doc"> word, written out until GL2 lands).</span></span>
+<span class="line" id="L88"><a class="ln" href="#L88">88</a><span class="c-libfunc">ʰe̲ach</span> ← { n v → <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> v }</span>
+<span class="line" id="L89"><a class="ln" href="#L89">89</a></span>
+<span class="line" id="L90"><a class="ln" href="#L90">90</a><span class="c-heading">⍝━━</span><span class="c-heading"> Directions</span></span>
+<span class="line" id="L91"><a class="ln" href="#L91">91</a></span>
+<span class="line" id="L92"><a class="ln" href="#L92">92</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">d̲irections</span> (seed, k, n, cone)<span class="c-doc"></span><span class="c-doc">: k classes of n points in three</span></span>
+<span class="line" id="L93"><a class="ln" href="#L93">93</a><span class="c-doc">⍝│</span><span class="c-doc"> dimensions that differ by direction and not by length: each class</span></span>
+<span class="line" id="L94"><a class="ln" href="#L94">94</a><span class="c-doc">⍝│</span><span class="c-doc"> has a direction (a seeded standard normal vector put onto the unit</span></span>
+<span class="line" id="L95"><a class="ln" href="#L95">95</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere) and each point is that direction plus </span><span class="c-doc"></span>cone<span class="c-doc"></span><span class="c-doc"> times a</span></span>
+<span class="line" id="L96"><a class="ln" href="#L96">96</a><span class="c-doc">⍝│</span><span class="c-doc"> standard normal vector, put back onto the sphere, then scaled by a</span></span>
+<span class="line" id="L97"><a class="ln" href="#L97">97</a><span class="c-doc">⍝│</span><span class="c-doc"> length drawn between 0.5 and 2 (uniform), so the lengths carry</span></span>
+<span class="line" id="L98"><a class="ln" href="#L98">98</a><span class="c-doc">⍝│</span><span class="c-doc"> nothing about the class; (X, y). The structure is directional: the</span></span>
+<span class="line" id="L99"><a class="ln" href="#L99">99</a><span class="c-doc">⍝│</span><span class="c-doc"> angle between points is the right distance, and their straight-line</span></span>
+<span class="line" id="L100"><a class="ln" href="#L100">100</a><span class="c-doc">⍝│</span><span class="c-doc"> distance mixes in the lengths.</span></span>
+<span class="line" id="L101"><a class="ln" href="#L101">101</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L102"><a class="ln" href="#L102">102</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (X, y) := kt:d_irections (7, 2, 2, 0.1)</span></span>
+<span class="line" id="L103"><a class="ln" href="#L103">103</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; y</span></span>
+<span class="line" id="L104"><a class="ln" href="#L104">104</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 1 2 2</span></span>
+<span class="line" id="L105"><a class="ln" href="#L105">105</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; s_hape X</span></span>
+<span class="line" id="L106"><a class="ln" href="#L106">106</a><span class="c-doc">⍝│</span><span class="c-doc"> 4 3</span></span>
+<span class="line" id="L107"><a class="ln" href="#L107">107</a><span class="c-libfunc">ˡd̲irections</span> ← { (seed, k, n, cone) →</span>
+<span class="line" id="L108"><a class="ln" href="#L108">108</a>  D ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> (seed, k, <span class="c-number">3</span>)</span>
+<span class="line" id="L109"><a class="ln" href="#L109">109</a>  N ← <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> (seed <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, k <a href="builtins.html#-2a" class="c-symbol">×</a> n, <span class="c-number">3</span>)</span>
+<span class="line" id="L110"><a class="ln" href="#L110">110</a>  y ← n <a href="libs-Kit-src-Kit.xtl.html#h.e_ach" class="c-libfunc">ʰe̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> k</span>
+<span class="line" id="L111"><a class="ln" href="#L111">111</a>  U ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> cone) <a href="builtins.html#-2a" class="c-symbol">×</a> N) <a href="builtins.html#-2b" class="c-symbol">+</a> y <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> D</span>
+<span class="line" id="L112"><a class="ln" href="#L112">112</a>  lengths ← <span class="c-number">0.5</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.u_niform" class="c-libfunc">ˡu̲niform</a> (seed <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>, k <a href="builtins.html#-2a" class="c-symbol">×</a> n)</span>
+<span class="line" id="L113"><a class="ln" href="#L113">113</a>  (lengths <a href="libs-Kit-src-Kit.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> U, y)</span>
+<span class="line" id="L114"><a class="ln" href="#L114">114</a>}</span>
+<span class="line" id="L115"><a class="ln" href="#L115">115</a></span>
+<span class="line" id="L116"><a class="ln" href="#L116">116</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>s v <span class="c-builtin">s̲caleRows</span> M<span class="c-doc"></span><span class="c-doc">: each row of M scaled by the matching item of s.</span></span>
+<span class="line" id="L117"><a class="ln" href="#L117">117</a><span class="c-libfunc">ʰs̲caleRows</span> ← { s M → M <a href="builtins.html#-2a" class="c-symbol">×</a> s <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M }</span>
+<span class="line" id="L118"><a class="ln" href="#L118">118</a></span>
+<span class="line" id="L119"><a class="ln" href="#L119">119</a><span class="c-heading">⍝━━</span><span class="c-heading"> A tree</span></span>
+<span class="line" id="L120"><a class="ln" href="#L120">120</a></span>
+<span class="line" id="L121"><a class="ln" href="#L121">121</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">t̲ree</span> (depth, branching)<span class="c-doc"></span><span class="c-doc">: the edges of a rooted tree in which</span></span>
+<span class="line" id="L122"><a class="ln" href="#L122">122</a><span class="c-doc">⍝│</span><span class="c-doc"> every node but the leaves has </span><span class="c-doc"></span>branching<span class="c-doc"></span><span class="c-doc"> children and every leaf</span></span>
+<span class="line" id="L123"><a class="ln" href="#L123">123</a><span class="c-doc">⍝│</span><span class="c-doc"> is </span><span class="c-doc"></span>depth<span class="c-doc"></span><span class="c-doc"> edges from the root: node 1 is the root and the nodes</span></span>
+<span class="line" id="L124"><a class="ln" href="#L124">124</a><span class="c-doc">⍝│</span><span class="c-doc"> are numbered level by level, so node i's children are the nodes</span></span>
+<span class="line" id="L125"><a class="ln" href="#L125">125</a><span class="c-doc">⍝│</span><span class="c-doc"> branching (i - 1) + 2 up to branching i + 1. The edges as Graphs</span></span>
+<span class="line" id="L126"><a class="ln" href="#L126">126</a><span class="c-doc">⍝│</span><span class="c-doc"> takes them: two rows, from (the parent) over to (the child). Depth</span></span>
+<span class="line" id="L127"><a class="ln" href="#L127">127</a><span class="c-doc">⍝│</span><span class="c-doc"> 4 and branching 2 give 31 nodes and 30 edges.</span></span>
+<span class="line" id="L128"><a class="ln" href="#L128">128</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L129"><a class="ln" href="#L129">129</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:t_ree (2, 2)</span></span>
+<span class="line" id="L130"><a class="ln" href="#L130">130</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 1 2 2 3 3</span></span>
+<span class="line" id="L131"><a class="ln" href="#L131">131</a><span class="c-doc">⍝│</span><span class="c-doc"> 2 3 4 5 6 7</span></span>
+<span class="line" id="L132"><a class="ln" href="#L132">132</a><span class="c-libfunc">ˡt̲ree</span> ← { (depth, branching) →</span>
+<span class="line" id="L133"><a class="ln" href="#L133">133</a>  n ← <a href="libs-Kit-src-Kit.xtl.html#h.n_odes" class="c-libfunc">ʰn̲odes</a> (depth, branching)</span>
+<span class="line" id="L134"><a class="ln" href="#L134">134</a>  child ← <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n</span>
+<span class="line" id="L135"><a class="ln" href="#L135">135</a>  parent ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (child <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> branching</span>
+<span class="line" id="L136"><a class="ln" href="#L136">136</a>  (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> parent <a href="builtins.html#c_at" class="c-builtin">c̲at</a> child</span>
+<span class="line" id="L137"><a class="ln" href="#L137">137</a>}</span>
+<span class="line" id="L138"><a class="ln" href="#L138">138</a></span>
+<span class="line" id="L139"><a class="ln" href="#L139">139</a><span class="c-doc">⍝│</span><span class="c-doc"> The number of nodes of the tree: 1 + b + b^2 + ... + b^depth.</span></span>
+<span class="line" id="L140"><a class="ln" href="#L140">140</a><span class="c-libfunc">ʰn̲odes</span> ← { (depth, branching) → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> branching <a href="builtins.html#-5e" class="c-symbol">^</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> depth <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> }</span>
+<span class="line" id="L141"><a class="ln" href="#L141">141</a></span>
+<span class="line" id="L142"><a class="ln" href="#L142">142</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">t̲reeDistances</span> (depth, branching)<span class="c-doc"></span><span class="c-doc">: the distance between every two</span></span>
+<span class="line" id="L143"><a class="ln" href="#L143">143</a><span class="c-doc">⍝│</span><span class="c-doc"> nodes of the tree along it (the number of edges on the one path</span></span>
+<span class="line" id="L144"><a class="ln" href="#L144">144</a><span class="c-doc">⍝│</span><span class="c-doc"> between them), by Graphs' shortest paths over the tree's edges</span></span>
+<span class="line" id="L145"><a class="ln" href="#L145">145</a><span class="c-doc">⍝│</span><span class="c-doc"> taken both ways: an n by n matrix of Floats, 0 on the diagonal,</span></span>
+<span class="line" id="L146"><a class="ln" href="#L146">146</a><span class="c-doc">⍝│</span><span class="c-doc"> 2 depth at most (leaf to leaf through the root).</span></span>
+<span class="line" id="L147"><a class="ln" href="#L147">147</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L148"><a class="ln" href="#L148">148</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:t_reeDistances (1, 2)</span></span>
+<span class="line" id="L149"><a class="ln" href="#L149">149</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 1.0 1.0</span></span>
+<span class="line" id="L150"><a class="ln" href="#L150">150</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0 0.0 2.0</span></span>
+<span class="line" id="L151"><a class="ln" href="#L151">151</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0 2.0 0.0</span></span>
+<span class="line" id="L152"><a class="ln" href="#L152">152</a><span class="c-libfunc">ˡt̲reeDistances</span> ← { (depth, branching) →</span>
+<span class="line" id="L153"><a class="ln" href="#L153">153</a>  n ← <a href="libs-Kit-src-Kit.xtl.html#h.n_odes" class="c-libfunc">ʰn̲odes</a> (depth, branching)</span>
+<span class="line" id="L154"><a class="ln" href="#L154">154</a>  e ← <a href="libs-Kit-src-Kit.xtl.html#l.t_ree" class="c-libfunc">ˡt̲ree</a> (depth, branching)</span>
+<span class="line" id="L155"><a class="ln" href="#L155">155</a>  w ← n <a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html#l.w_eighted" class="c-libfunc">ᵍʳw̲eighted</a> e <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (n <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span></span>
+<span class="line" id="L156"><a class="ln" href="#L156">156</a>  <a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html#l.s_hortest" class="c-libfunc">ᵍʳs̲hortest</a> <a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html#l.u_ndirected" class="c-libfunc">ᵍʳu̲ndirected</a> w</span>
+<span class="line" id="L157"><a class="ln" href="#L157">157</a>}</span>
+<span class="line" id="L158"><a class="ln" href="#L158">158</a></span>
+<span class="line" id="L159"><a class="ln" href="#L159">159</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">t̲reeClasses</span> (depth, branching)<span class="c-doc"></span><span class="c-doc">: the class of each node, its</span></span>
+<span class="line" id="L160"><a class="ln" href="#L160">160</a><span class="c-doc">⍝│</span><span class="c-doc"> branch: the child of the root it descends from, 1 to branching;</span></span>
+<span class="line" id="L161"><a class="ln" href="#L161">161</a><span class="c-doc">⍝│</span><span class="c-doc"> the root itself, which is under no branch, is given class 1 (and</span></span>
+<span class="line" id="L162"><a class="ln" href="#L162">162</a><span class="c-doc">⍝│</span><span class="c-doc"> a classifier is excused it: it is alone). So the hierarchical</span></span>
+<span class="line" id="L163"><a class="ln" href="#L163">163</a><span class="c-doc">⍝│</span><span class="c-doc"> set's labels, one per node.</span></span>
+<span class="line" id="L164"><a class="ln" href="#L164">164</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L165"><a class="ln" href="#L165">165</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:t_reeClasses (2, 2)</span></span>
+<span class="line" id="L166"><a class="ln" href="#L166">166</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 1 2 1 1 2 2</span></span>
+<span class="line" id="L167"><a class="ln" href="#L167">167</a><span class="c-libfunc">ˡt̲reeClasses</span> ← { (depth, branching) →</span>
+<span class="line" id="L168"><a class="ln" href="#L168">168</a>  n ← <a href="libs-Kit-src-Kit.xtl.html#h.n_odes" class="c-libfunc">ʰn̲odes</a> (depth, branching)</span>
+<span class="line" id="L169"><a class="ln" href="#L169">169</a>  parent ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="libs-Kit-src-Kit.xtl.html#l.t_ree" class="c-libfunc">ˡt̲ree</a> (depth, branching)</span>
+<span class="line" id="L170"><a class="ln" href="#L170">170</a>  up ← depth <span class="c-quote">'</span>{ v → <span class="c-quote">'</span>{ c → parent <a href="libs-Kit-src-Kit.xtl.html#h.u_p" class="c-libfunc">ʰu̲p</a> c } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> v } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n           <span class="c-comment">⍝</span><span class="c-comment"> each node's ancestor just under the root (the root stays)</span></span>
+<span class="line" id="L171"><a class="ln" href="#L171">171</a>  <span class="c-number">1</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> up <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L172"><a class="ln" href="#L172">172</a>}</span>
+<span class="line" id="L173"><a class="ln" href="#L173">173</a></span>
+<span class="line" id="L174"><a class="ln" href="#L174">174</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>parent <span class="c-builtin">u̲p</span> c<span class="c-doc"></span><span class="c-doc">: the parent of node c, unless that is the root (or c</span></span>
+<span class="line" id="L175"><a class="ln" href="#L175">175</a><span class="c-doc">⍝│</span><span class="c-doc"> is), in which case c: one step up the tree that stops under the root.</span></span>
+<span class="line" id="L176"><a class="ln" href="#L176">176</a><span class="c-libfunc">ʰu̲p</span> ← { parent c → c <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <span class="c-number">1</span>◆ p ← (c <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> parent◆ p <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? c◆ p }</span>
+<span class="line" id="L177"><a class="ln" href="#L177">177</a></span>
+<span class="line" id="L178"><a class="ln" href="#L178">178</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">t̲reeLayout</span> (depth, branching)<span class="c-doc"></span><span class="c-doc">: a plain picture of the tree in</span></span>
+<span class="line" id="L179"><a class="ln" href="#L179">179</a><span class="c-doc">⍝│</span><span class="c-doc"> the plane, one row (x, y) per node: the root at the origin, each</span></span>
+<span class="line" id="L180"><a class="ln" href="#L180">180</a><span class="c-doc">⍝│</span><span class="c-doc"> level a circle of radius its depth, the nodes of a level spread</span></span>
+<span class="line" id="L181"><a class="ln" href="#L181">181</a><span class="c-doc">⍝│</span><span class="c-doc"> evenly round it in their order, so that each subtree is a wedge</span></span>
+<span class="line" id="L182"><a class="ln" href="#L182">182</a><span class="c-doc">⍝│</span><span class="c-doc"> (the two children of the root at the top and the bottom, their x</span></span>
+<span class="line" id="L183"><a class="ln" href="#L183">183</a><span class="c-doc">⍝│</span><span class="c-doc"> cos of a quarter turn, 0 up to the machine's rounding). It is a</span></span>
+<span class="line" id="L184"><a class="ln" href="#L184">184</a><span class="c-doc">⍝│</span><span class="c-doc"> layout, not an embedding that keeps the tree's distances:</span></span>
+<span class="line" id="L185"><a class="ln" href="#L185">185</a><span class="c-doc">⍝│</span><span class="c-doc"> the straight-line distance between two nodes of this picture is a</span></span>
+<span class="line" id="L186"><a class="ln" href="#L186">186</a><span class="c-doc">⍝│</span><span class="c-doc"> poor copy of their distance along the tree (two leaves of</span></span>
+<span class="line" id="L187"><a class="ln" href="#L187">187</a><span class="c-doc">⍝│</span><span class="c-doc"> neighboring branches are near in the picture and 2 depth apart</span></span>
+<span class="line" id="L188"><a class="ln" href="#L188">188</a><span class="c-doc">⍝│</span><span class="c-doc"> in the tree), which is what the baseline measures.</span></span>
+<span class="line" id="L189"><a class="ln" href="#L189">189</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;kt:&quot; u_se&lt; &quot;Kit&quot;</span></span>
+<span class="line" id="L190"><a class="ln" href="#L190">190</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; kt:t_reeLayout (1, 2)</span></span>
+<span class="line" id="L191"><a class="ln" href="#L191">191</a><span class="c-doc">⍝│</span><span class="c-doc">                                 0.0  0.0</span></span>
+<span class="line" id="L192"><a class="ln" href="#L192">192</a><span class="c-doc">⍝│</span><span class="c-doc">  0.00000000000000006123233995736766  1.0</span></span>
+<span class="line" id="L193"><a class="ln" href="#L193">193</a><span class="c-doc">⍝│</span><span class="c-doc"> -0.00000000000000018369701987210297 -1.0</span></span>
+<span class="line" id="L194"><a class="ln" href="#L194">194</a><span class="c-libfunc">ˡt̲reeLayout</span> ← { (depth, branching) →</span>
+<span class="line" id="L195"><a class="ln" href="#L195">195</a>  n ← <a href="libs-Kit-src-Kit.xtl.html#h.n_odes" class="c-libfunc">ʰn̲odes</a> (depth, branching)</span>
+<span class="line" id="L196"><a class="ln" href="#L196">196</a>  level ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Kit-src-Kit.xtl.html#l.t_reeDistances" class="c-libfunc">ˡt̲reeDistances</a> (depth, branching)              <span class="c-comment">⍝</span><span class="c-comment"> each node's distance from the root</span></span>
+<span class="line" id="L197"><a class="ln" href="#L197">197</a>  before ← <span class="c-quote">'</span>{ L → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> branching <a href="builtins.html#-5e" class="c-symbol">^</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> L) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> level          <span class="c-comment">⍝</span><span class="c-comment"> nodes on the levels above</span></span>
+<span class="line" id="L198"><a class="ln" href="#L198">198</a>  on ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> branching <a href="builtins.html#-5e" class="c-symbol">^</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> level                                 <span class="c-comment">⍝</span><span class="c-comment"> nodes on the node's level</span></span>
+<span class="line" id="L199"><a class="ln" href="#L199">199</a>  pos ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-2d" class="c-symbol">−</a> before) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">0.5</span>                             <span class="c-comment">⍝</span><span class="c-comment"> its place round the circle, from 0.5</span></span>
+<span class="line" id="L200"><a class="ln" href="#L200">200</a>  angle ← <span class="c-number">6.283185307179586</span> <a href="builtins.html#-2a" class="c-symbol">×</a> pos <a href="builtins.html#-2f" class="c-symbol">÷</a> on</span>
+<span class="line" id="L201"><a class="ln" href="#L201">201</a>  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> level <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> angle) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> level <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> angle</span>
+<span class="line" id="L202"><a class="ln" href="#L202">202</a>}</span>
+</div>
+</main>
+</body>
+</html>

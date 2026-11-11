@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/manifold-tour/manifold-tour.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#Pi">Pi</a></li>
+<li class="item"><a href="#deg">deg</a></li>
+<li class="item"><a href="#u.p_airs"><span class="c-userfunc">ᵘp̲airs</span></a></li>
+<li class="item"><a href="#u.r_ound"><span class="c-userfunc">ᵘr̲ound</span></a></li>
+<li class="item"><a href="#u.e_ach"><span class="c-userfunc">ᵘe̲ach</span></a></li>
+<li class="item"><a href="#u.t_imes"><span class="c-userfunc">ᵘt̲imes</span></a></li>
+<li class="item"><a href="#u.l_ength"><span class="c-userfunc">ᵘl̲ength</span></a></li>
+<li class="item"><a href="#u.s_traight"><span class="c-userfunc">ᵘs̲traight</span></a></li>
+<li class="item"><a href="#u.t_wo"><span class="c-userfunc">ᵘt̲wo</span></a></li>
+<li class="item"><a href="#u.l_onLat"><span class="c-userfunc">ᵘl̲onLat</span></a></li>
+<li><a href="#section-1">The circle: one dimension, drawn in two</a></li>
+<li class="item"><a href="#circleAngles">circleAngles</a></li>
+<li class="item"><a href="#circle">circle</a></li>
+<li class="item"><a href="#circleNearA">circleNearA</a></li>
+<li class="item"><a href="#circleFarA">circleFarA</a></li>
+<li class="item"><a href="#circleNear">circleNear</a></li>
+<li class="item"><a href="#circleFar">circleFar</a></li>
+<li class="item"><a href="#circleNearD">circleNearD</a></li>
+<li class="item"><a href="#circleFarD">circleFarD</a></li>
+<li><a href="#section-2">The sphere: two dimensions, drawn in three</a></li>
+<li class="item"><a href="#parallelLL">parallelLL</a></li>
+<li class="item"><a href="#meridianLL">meridianLL</a></li>
+<li class="item"><a href="#parallels">parallels</a></li>
+<li class="item"><a href="#meridians">meridians</a></li>
+<li class="item"><a href="#sphereDeg">sphereDeg</a></li>
+<li class="item"><a href="#sphereLL">sphereLL</a></li>
+<li class="item"><a href="#spherePts">spherePts</a></li>
+<li class="item"><a href="#sphereNearD">sphereNearD</a></li>
+<li class="item"><a href="#sphereFarD">sphereFarD</a></li>
+<li class="item"><a href="#sphereNearArc">sphereNearArc</a></li>
+<li class="item"><a href="#sphereFarArc">sphereFarArc</a></li>
+<li class="item"><a href="#sphereNearArcLL">sphereNearArcLL</a></li>
+<li class="item"><a href="#sphereFarArcLL">sphereFarArcLL</a></li>
+<li class="item"><a href="#workedDiff">workedDiff</a></li>
+<li class="item"><a href="#workedSq">workedSq</a></li>
+<li class="item"><a href="#workedSum">workedSum</a></li>
+<li class="item"><a href="#workedPlus">workedPlus</a></li>
+<li><a href="#section-3">The torus: two dimensions, drawn in three, with a hole</a></li>
+<li class="item"><a href="#radii">radii</a></li>
+<li class="item"><a href="#torusRingsUV">torusRingsUV</a></li>
+<li class="item"><a href="#torusTubesUV">torusTubesUV</a></li>
+<li class="item"><a href="#torusRings">torusRings</a></li>
+<li class="item"><a href="#torusTubes">torusTubes</a></li>
+<li class="item"><a href="#torusRimLengths">torusRimLengths</a></li>
+<li><a href="#section-4">The Swiss roll: a flat sheet rolled up, in three dimensions</a></li>
+<li class="item"><a href="#rollT">rollT</a></li>
+<li class="item"><a href="#rollAlongTH">rollAlongTH</a></li>
+<li class="item"><a href="#rollAcrossTH">rollAcrossTH</a></li>
+<li class="item"><a href="#rollAlong">rollAlong</a></li>
+<li class="item"><a href="#rollAcross">rollAcross</a></li>
+<li class="item"><a href="#rollAlongMap">rollAlongMap</a></li>
+<li class="item"><a href="#rollAcrossMap">rollAcrossMap</a></li>
+<li class="item"><a href="#rollTH">rollTH</a></li>
+<li class="item"><a href="#rollPts">rollPts</a></li>
+<li class="item"><a href="#rollMap">rollMap</a></li>
+<li class="item"><a href="#rollNearD">rollNearD</a></li>
+<li class="item"><a href="#rollFarD">rollFarD</a></li>
+<li><a href="#section-5">The Poincare disk: two dimensions, flat on the page, with its own ruler</a></li>
+<li class="item"><a href="#rim">rim</a></li>
+<li class="item"><a href="#ruler">ruler</a></li>
+<li class="item"><a href="#rulerD">rulerD</a></li>
+<li class="item"><a href="#diskFar">diskFar</a></li>
+<li class="item"><a href="#diskNear">diskNear</a></li>
+<li class="item"><a href="#diskFarD">diskFarD</a></li>
+<li class="item"><a href="#diskNearD">diskNearD</a></li>
+<li class="item"><a href="#diskFarGeo">diskFarGeo</a></li>
+<li class="item"><a href="#diskNearGeo">diskNearGeo</a></li>
+<li class="item"><a href="#geo1">geo1</a></li>
+<li class="item"><a href="#geo2">geo2</a></li>
+<li class="item"><a href="#geo3">geo3</a></li>
+<li><a href="#section-6">The dimensions</a></li>
+<li class="item"><a href="#dims">dims</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/manifold-tour/manifold-tour.xtl</h1>
+<div class="doc">
+<p>Manifold tour: five spaces this repository's experiments live on,
+the circle, the sphere, the torus, the Swiss roll and the Poincare
+disk, each drawn from its map (its own coordinates) into the space
+around it, and on each one measurement of what a manifold is: two
+points near each other are nearly as far apart along the space as
+through it (locally flat), two points far apart are not; on the
+roll, near through the air can be far along the sheet; on the disk,
+near the rim a small step on paper is a long way. Nothing is trained.</p>
+</div>
+<p class="meta"><a href="demos-manifold-tour-manifold-tour.xtl.src.html">source</a> &middot; imports <code><span class="c-error">mf:</span></code> <a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a>; <code><span class="c-error">tr:</span></code> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">work/xetal-libraries/libs/Trig/src/Trig.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="Pi">
+<h3><a href="#Pi">Pi</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L15">line 15</a></div>
+<pre class="code">Pi ← <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound"><span class="c-userfunc">ᵘr̲ound</span></a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollT">rollT</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L195">demos/manifold-tour/manifold-tour.xtl:195</a></div>
+</div>
+<div class="item" id="deg">
+<h3><a href="#deg">deg</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L16">line 16</a></div>
+<pre class="code">deg ← <a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">180.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_onLat"><span class="c-userfunc">ᵘl̲onLat</span></a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#meridianLL">meridianLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereLL">sphereLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a></div>
+</div>
+<div class="item" id="u.p_airs">
+<h3><a href="#u.p_airs"><span class="c-userfunc">ᵘp̲airs</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L21">line 21</a></div>
+<div class="doc">
+<p><code>a <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> b</code>: a and b side by side, one (a, b) row per item (the
+rows of a map). A general pairing belongs in X_eTaL-libraries: a
+workaround here until it is asked for (docs/plan.md, G3b).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘp̲airs</span> ← { a b → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_onLat"><span class="c-userfunc">ᵘl̲onLat</span></a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#meridianLL">meridianLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongMap">rollAlongMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossMap">rollAcrossMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollMap">rollMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#ruler">ruler</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="u.r_ound">
+<h3><a href="#u.r_ound"><span class="c-userfunc">ᵘr̲ound</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L24">line 24</a></div>
+<div class="doc">
+<p><code><a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> m</code>: m + 1 angles evenly round a full turn, 0 to 2 pi, the
+first repeated last: a closed wire line.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ound</span> ← { m → (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleAngles">circleAngles</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rim">rim</a></div>
+</div>
+<div class="item" id="u.e_ach">
+<h3><a href="#u.e_ach"><span class="c-userfunc">ᵘe̲ach</span></a> <span class="type">: Int -&gt; a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L26">line 26</a></div>
+<div class="doc">
+<p><code>n <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> v</code>: every item of v repeated n times, in v's order.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘe̲ach</span> ← { n v → <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> v }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#meridianLL">meridianLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a></div>
+</div>
+<div class="item" id="u.t_imes">
+<h3><a href="#u.t_imes"><span class="c-userfunc">ᵘt̲imes</span></a> <span class="type">: Int -&gt; a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L28">line 28</a></div>
+<div class="doc">
+<p><code>n <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> v</code>: v whole, n times over.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘt̲imes</span> ← { n v → <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> v }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#meridianLL">meridianLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a></div>
+</div>
+<div class="item" id="u.l_ength">
+<h3><a href="#u.l_ength"><span class="c-userfunc">ᵘl̲ength</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L31">line 31</a></div>
+<div class="doc">
+<p><code><a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_ength" class="c-userfunc">ᵘl̲ength</a> M</code>: the length of the wire line through the rows of M,
+segment by segment (measured along the wire, not the curve).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘl̲ength</span> ← { M → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> ((<span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> M) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">-1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> M) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRimLengths">torusRimLengths</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L185">demos/manifold-tour/manifold-tour.xtl:185</a></div>
+</div>
+<div class="item" id="u.s_traight">
+<h3><a href="#u.s_traight"><span class="c-userfunc">ᵘs̲traight</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L34">line 34</a></div>
+<div class="doc">
+<p><code>p <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> q</code>: the straight-line distance, through whatever
+surrounds the space.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲traight</span> ← { p q → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo"><span class="c-userfunc">ᵘt̲wo</span></a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollNearD">rollNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollFarD">rollFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFarD">diskFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNearD">diskNearD</a></div>
+</div>
+<div class="item" id="u.t_wo">
+<h3><a href="#u.t_wo"><span class="c-userfunc">ᵘt̲wo</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L37">line 37</a></div>
+<div class="doc">
+<p><code><a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo" class="c-userfunc">ᵘt̲wo</a> M</code>: for the two points (rows) of M on the sphere or the
+circle, the straight line through it and the distance along it.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘt̲wo</span> ← { M → ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNearD">circleNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFarD">circleFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearD">sphereNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarD">sphereFarD</a></div>
+</div>
+<div class="item" id="u.l_onLat">
+<h3><a href="#u.l_onLat"><span class="c-userfunc">ᵘl̲onLat</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L40">line 40</a></div>
+<div class="doc">
+<p><code><a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_onLat" class="c-userfunc">ᵘl̲onLat</a> P</code>: points of the sphere back onto its map, (longitude,
+latitude) in degrees: where a drawn arc runs on the flat view.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘl̲onLat</span> ← { P → (((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P) <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tan2" class="c-libfunc">ᵗʳa̲tan2</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sin" class="c-libfunc">ᵗʳa̲sin</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a> }</pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearArcLL">sphereNearArcLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarArcLL">sphereFarArcLL</a></div>
+</div>
+<h2 class="section" id="section-1">The circle: one dimension, drawn in two</h2>
+<div class="item" id="circleAngles">
+<h3><a href="#circleAngles">circleAngles</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L44">line 44</a></div>
+<pre class="code">circleAngles ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> <span class="c-number">72</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circle">circle</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="circle">
+<h3><a href="#circle">circle</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L45">line 45</a></div>
+<pre class="code">circle ← <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleAngles">circleAngles</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L159">demos/manifold-tour/manifold-tour.xtl:159</a></div>
+</div>
+<div class="item" id="circleNearA">
+<h3><a href="#circleNearA">circleNearA</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L48">line 48</a></div>
+<div class="doc">
+<p>Two points a tenth of a radian apart, and two 2.5 radians apart:
+the chord through the disk and the arc along the circle, for each.</p>
+</div>
+<pre class="code">circleNearA ← <span class="c-number">0.0</span> <span class="c-number">0.1</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNear">circleNear</a></div>
+</div>
+<div class="item" id="circleFarA">
+<h3><a href="#circleFarA">circleFarA</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L49">line 49</a></div>
+<pre class="code">circleFarA ← <span class="c-number">0.0</span> <span class="c-number">2.5</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFar">circleFar</a></div>
+</div>
+<div class="item" id="circleNear">
+<h3><a href="#circleNear">circleNear</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L50">line 50</a></div>
+<pre class="code">circleNear ← <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNearA">circleNearA</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNearD">circleNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L160">demos/manifold-tour/manifold-tour.xtl:160</a></div>
+</div>
+<div class="item" id="circleFar">
+<h3><a href="#circleFar">circleFar</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L51">line 51</a></div>
+<pre class="code">circleFar ← <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFarA">circleFarA</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFarD">circleFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L163">demos/manifold-tour/manifold-tour.xtl:163</a></div>
+</div>
+<div class="item" id="circleNearD">
+<h3><a href="#circleNearD">circleNearD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L52">line 52</a></div>
+<pre class="code">circleNearD ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo" class="c-userfunc">ᵘt̲wo</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleNear">circleNear</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L161">demos/manifold-tour/manifold-tour.xtl:161</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L162">demos/manifold-tour/manifold-tour.xtl:162</a></div>
+</div>
+<div class="item" id="circleFarD">
+<h3><a href="#circleFarD">circleFarD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L53">line 53</a></div>
+<pre class="code">circleFarD ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo" class="c-userfunc">ᵘt̲wo</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleFar">circleFar</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L164">demos/manifold-tour/manifold-tour.xtl:164</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L165">demos/manifold-tour/manifold-tour.xtl:165</a></div>
+</div>
+<h2 class="section" id="section-2">The sphere: two dimensions, drawn in three</h2>
+<div class="item" id="parallelLL">
+<h3><a href="#parallelLL">parallelLL</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L60">line 60</a></div>
+<div class="doc">
+<p>The map's wire lines: five parallels (latitudes -60 to 60 degrees,
+48 segments round) and twelve half meridians (every 30 degrees of
+longitude, pole to pole in 24 segments), as (longitude, latitude).</p>
+</div>
+<pre class="code">parallelLL ← (<span class="c-number">5</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> <span class="c-number">48</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">49</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> (<span class="c-number">30.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">-2.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#parallels">parallels</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="meridianLL">
+<h3><a href="#meridianLL">meridianLL</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L61">line 61</a></div>
+<pre class="code">meridianLL ← (<span class="c-number">25</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> (<span class="c-number">30.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">12</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">12</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> (<span class="c-number">7.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">25</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">13.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#meridians">meridians</a></div>
+</div>
+<div class="item" id="parallels">
+<h3><a href="#parallels">parallels</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L62">line 62</a></div>
+<pre class="code">parallels ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L170">demos/manifold-tour/manifold-tour.xtl:170</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L171">demos/manifold-tour/manifold-tour.xtl:171</a></div>
+</div>
+<div class="item" id="meridians">
+<h3><a href="#meridians">meridians</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L63">line 63</a></div>
+<pre class="code">meridians ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#meridianLL">meridianLL</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L170">demos/manifold-tour/manifold-tour.xtl:170</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L172">demos/manifold-tour/manifold-tour.xtl:172</a></div>
+</div>
+<div class="item" id="sphereDeg">
+<h3><a href="#sphereDeg">sphereDeg</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L67">line 67</a></div>
+<div class="doc">
+<p>Three points by longitude and latitude in degrees: p, q near it
+(6 degrees east, 3 north), r far from it; the chord through the
+sphere and the great circle along it, p to q and p to r; the arcs.</p>
+</div>
+<pre class="code">sphereDeg ← <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">20.0</span> <span class="c-number">30.0</span> <span class="c-number">26.0</span> <span class="c-number">33.0</span> <span class="c-number">110.0</span> <span class="c-number">-35.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereLL">sphereLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L173">demos/manifold-tour/manifold-tour.xtl:173</a></div>
+</div>
+<div class="item" id="sphereLL">
+<h3><a href="#sphereLL">sphereLL</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L68">line 68</a></div>
+<pre class="code">sphereLL ← <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereDeg">sphereDeg</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a></div>
+</div>
+<div class="item" id="spherePts">
+<h3><a href="#spherePts">spherePts</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L69">line 69</a></div>
+<pre class="code">spherePts ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ᵐᶠs̲pherePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereLL">sphereLL</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearD">sphereNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarD">sphereFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearArc">sphereNearArc</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarArc">sphereFarArc</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#workedDiff">workedDiff</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#workedPlus">workedPlus</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L174">demos/manifold-tour/manifold-tour.xtl:174</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L184">demos/manifold-tour/manifold-tour.xtl:184</a></div>
+</div>
+<div class="item" id="sphereNearD">
+<h3><a href="#sphereNearD">sphereNearD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L70">line 70</a></div>
+<pre class="code">sphereNearD ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo" class="c-userfunc">ᵘt̲wo</a> <span class="c-number">2</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L175">demos/manifold-tour/manifold-tour.xtl:175</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L176">demos/manifold-tour/manifold-tour.xtl:176</a></div>
+</div>
+<div class="item" id="sphereFarD">
+<h3><a href="#sphereFarD">sphereFarD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L71">line 71</a></div>
+<pre class="code">sphereFarD ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_wo" class="c-userfunc">ᵘt̲wo</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L182">demos/manifold-tour/manifold-tour.xtl:182</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L183">demos/manifold-tour/manifold-tour.xtl:183</a></div>
+</div>
+<div class="item" id="sphereNearArc">
+<h3><a href="#sphereNearArc">sphereNearArc</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L72">line 72</a></div>
+<pre class="code">sphereNearArc ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc" class="c-libfunc">ᵐᶠs̲phereArc</a> <span class="c-number">12</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearArcLL">sphereNearArcLL</a></div>
+</div>
+<div class="item" id="sphereFarArc">
+<h3><a href="#sphereFarArc">sphereFarArc</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L73">line 73</a></div>
+<pre class="code">sphereFarArc ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>, <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArc" class="c-libfunc">ᵐᶠs̲phereArc</a> <span class="c-number">48</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarArcLL">sphereFarArcLL</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L184">demos/manifold-tour/manifold-tour.xtl:184</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L185">demos/manifold-tour/manifold-tour.xtl:185</a></div>
+</div>
+<div class="item" id="sphereNearArcLL">
+<h3><a href="#sphereNearArcLL">sphereNearArcLL</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L74">line 74</a></div>
+<pre class="code">sphereNearArcLL ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_onLat" class="c-userfunc">ᵘl̲onLat</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereNearArc">sphereNearArc</a></pre>
+</div>
+<div class="item" id="sphereFarArcLL">
+<h3><a href="#sphereFarArcLL">sphereFarArcLL</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L75">line 75</a></div>
+<pre class="code">sphereFarArcLL ← <a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_onLat" class="c-userfunc">ᵘl̲onLat</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#sphereFarArc">sphereFarArc</a></pre>
+</div>
+<div class="item" id="workedDiff">
+<h3><a href="#workedDiff">workedDiff</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L80">line 80</a></div>
+<div class="doc">
+<p>The chord from p to q worked in full: the differences coordinate
+by coordinate, their squares, the sum (the chord is its square
+root); and the length of p + q, from which the great circle is
+2 atan2(|p - q|, |p + q|).</p>
+</div>
+<pre class="code">workedDiff ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#workedSq">workedSq</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L177">demos/manifold-tour/manifold-tour.xtl:177</a></div>
+</div>
+<div class="item" id="workedSq">
+<h3><a href="#workedSq">workedSq</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L81">line 81</a></div>
+<pre class="code">workedSq ← <a href="demos-manifold-tour-manifold-tour.xtl.html#workedDiff">workedDiff</a> <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#workedSum">workedSum</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L178">demos/manifold-tour/manifold-tour.xtl:178</a></div>
+</div>
+<div class="item" id="workedSum">
+<h3><a href="#workedSum">workedSum</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L82">line 82</a></div>
+<pre class="code">workedSum ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#workedSq">workedSq</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L179">demos/manifold-tour/manifold-tour.xtl:179</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L180">demos/manifold-tour/manifold-tour.xtl:180</a></div>
+</div>
+<div class="item" id="workedPlus">
+<h3><a href="#workedPlus">workedPlus</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L83">line 83</a></div>
+<pre class="code">workedPlus ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#spherePts">spherePts</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L181">demos/manifold-tour/manifold-tour.xtl:181</a></div>
+</div>
+<h2 class="section" id="section-3">The torus: two dimensions, drawn in three, with a hole</h2>
+<div class="item" id="radii">
+<h3><a href="#radii">radii</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L87">line 87</a></div>
+<pre class="code">radii ← <span class="c-number">3.0</span> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubes">torusTubes</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L190">demos/manifold-tour/manifold-tour.xtl:190</a></div>
+</div>
+<div class="item" id="torusRingsUV">
+<h3><a href="#torusRingsUV">torusRingsUV</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L90">line 90</a></div>
+<div class="doc">
+<p>Six rings round the hole (v every 60 degrees, 48 segments) and
+twelve round the tube (u every 30 degrees, 24 segments), as (u, v).</p>
+</div>
+<pre class="code">torusRingsUV ← (<span class="c-number">6</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> <span class="c-number">48</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">49</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> (<span class="c-number">60.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">6</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="torusTubesUV">
+<h3><a href="#torusTubesUV">torusTubesUV</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L91">line 91</a></div>
+<pre class="code">torusTubesUV ← (<span class="c-number">25</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> (<span class="c-number">30.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">12</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">12</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubes">torusTubes</a></div>
+</div>
+<div class="item" id="torusRings">
+<h3><a href="#torusRings">torusRings</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L92">line 92</a></div>
+<pre class="code">torusRings ← <a href="demos-manifold-tour-manifold-tour.xtl.html#radii">radii</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints" class="c-libfunc">ᵐᶠt̲orusPoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRimLengths">torusRimLengths</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L190">demos/manifold-tour/manifold-tour.xtl:190</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L191">demos/manifold-tour/manifold-tour.xtl:191</a></div>
+</div>
+<div class="item" id="torusTubes">
+<h3><a href="#torusTubes">torusTubes</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L93">line 93</a></div>
+<pre class="code">torusTubes ← <a href="demos-manifold-tour-manifold-tour.xtl.html#radii">radii</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.t_orusPoints" class="c-libfunc">ᵐᶠt̲orusPoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusTubesUV">torusTubesUV</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L190">demos/manifold-tour/manifold-tour.xtl:190</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L192">demos/manifold-tour/manifold-tour.xtl:192</a></div>
+</div>
+<div class="item" id="torusRimLengths">
+<h3><a href="#torusRimLengths">torusRimLengths</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L96">line 96</a></div>
+<div class="doc">
+<p>The outer ring (v = 0) and the inner ring (v = 180 degrees): the
+same line of the map, measured along the wire.</p>
+</div>
+<pre class="code">torusRimLengths ← (<a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_ength" class="c-userfunc">ᵘl̲ength</a> <span class="c-number">49</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.l_ength" class="c-userfunc">ᵘl̲ength</a> <span class="c-number">49</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">147</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L193">demos/manifold-tour/manifold-tour.xtl:193</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L194">demos/manifold-tour/manifold-tour.xtl:194</a></div>
+</div>
+<h2 class="section" id="section-4">The Swiss roll: a flat sheet rolled up, in three dimensions</h2>
+<div class="item" id="rollT">
+<h3><a href="#rollT">rollT</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L104">line 104</a></div>
+<div class="doc">
+<p>The sheet: t from 1.5 pi to 4.5 pi (a turn and a half), h from -6
+to 6. Five lines along the roll (60 segments) and thirteen across
+it (straight, 2 points), as (t, h); and the map they unroll to,
+(the length along the sheet, h).</p>
+</div>
+<pre class="code">rollT ← (<span class="c-number">1.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">20.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">61</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a></div>
+</div>
+<div class="item" id="rollAlongTH">
+<h3><a href="#rollAlongTH">rollAlongTH</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L105">line 105</a></div>
+<pre class="code">rollAlongTH ← (<span class="c-number">5</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollT">rollT</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">61</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> <span class="c-number">-6.0</span> <span class="c-number">-3.0</span> <span class="c-number">0.0</span> <span class="c-number">3.0</span> <span class="c-number">6.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlong">rollAlong</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongMap">rollAlongMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L200">demos/manifold-tour/manifold-tour.xtl:200</a></div>
+</div>
+<div class="item" id="rollAcrossTH">
+<h3><a href="#rollAcrossTH">rollAcrossTH</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L106">line 106</a></div>
+<pre class="code">rollAcrossTH ← (<span class="c-number">2</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.e_ach" class="c-userfunc">ᵘe̲ach</a> (<span class="c-number">1.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">4.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">13</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">13</span> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.t_imes" class="c-userfunc">ᵘt̲imes</a> <span class="c-number">-6.0</span> <span class="c-number">6.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcross">rollAcross</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossMap">rollAcrossMap</a></div>
+</div>
+<div class="item" id="rollAlong">
+<h3><a href="#rollAlong">rollAlong</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L107">line 107</a></div>
+<pre class="code">rollAlong ← <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints" class="c-libfunc">ᵐᶠr̲ollPoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L200">demos/manifold-tour/manifold-tour.xtl:200</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L201">demos/manifold-tour/manifold-tour.xtl:201</a></div>
+</div>
+<div class="item" id="rollAcross">
+<h3><a href="#rollAcross">rollAcross</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L108">line 108</a></div>
+<pre class="code">rollAcross ← <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints" class="c-libfunc">ᵐᶠr̲ollPoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L202">demos/manifold-tour/manifold-tour.xtl:202</a></div>
+</div>
+<div class="item" id="rollAlongMap">
+<h3><a href="#rollAlongMap">rollAlongMap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L109">line 109</a></div>
+<pre class="code">rollAlongMap ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ᵐᶠr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongTH">rollAlongTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="rollAcrossMap">
+<h3><a href="#rollAcrossMap">rollAcrossMap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L110">line 110</a></div>
+<pre class="code">rollAcrossMap ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ᵐᶠr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAcrossTH">rollAcrossTH</a></pre>
+</div>
+<div class="item" id="rollTH">
+<h3><a href="#rollTH">rollTH</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L114">line 114</a></div>
+<div class="doc">
+<p>Three points of the sheet: a, b a little farther round, c one full
+turn farther round at the same height, so that it sits right above
+a's turn: through the air and along the sheet, a to b and a to c.</p>
+</div>
+<pre class="code">rollTH ← <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">5.2</span> <span class="c-number">0.0</span> <span class="c-number">5.5</span> <span class="c-number">0.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">5.2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#Pi">Pi</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollMap">rollMap</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollNearD">rollNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollFarD">rollFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L203">demos/manifold-tour/manifold-tour.xtl:203</a></div>
+</div>
+<div class="item" id="rollPts">
+<h3><a href="#rollPts">rollPts</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L115">line 115</a></div>
+<pre class="code">rollPts ← <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollPoints" class="c-libfunc">ᵐᶠr̲ollPoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rollNearD">rollNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#rollFarD">rollFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L204">demos/manifold-tour/manifold-tour.xtl:204</a></div>
+</div>
+<div class="item" id="rollMap">
+<h3><a href="#rollMap">rollMap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L116">line 116</a></div>
+<pre class="code">rollMap ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ᵐᶠr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L205">demos/manifold-tour/manifold-tour.xtl:205</a></div>
+</div>
+<div class="item" id="rollNearD">
+<h3><a href="#rollNearD">rollNearD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L117">line 117</a></div>
+<pre class="code">rollNearD ← ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollDistance" class="c-libfunc">ᵐᶠr̲ollDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L206">demos/manifold-tour/manifold-tour.xtl:206</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L207">demos/manifold-tour/manifold-tour.xtl:207</a></div>
+</div>
+<div class="item" id="rollFarD">
+<h3><a href="#rollFarD">rollFarD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L118">line 118</a></div>
+<pre class="code">rollFarD ← ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollPts">rollPts</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollDistance" class="c-libfunc">ᵐᶠr̲ollDistance</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollTH">rollTH</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L208">demos/manifold-tour/manifold-tour.xtl:208</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L209">demos/manifold-tour/manifold-tour.xtl:209</a></div>
+</div>
+<h2 class="section" id="section-5">The Poincare disk: two dimensions, flat on the page, with its own ruler</h2>
+<div class="item" id="rim">
+<h3><a href="#rim">rim</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L125">line 125</a></div>
+<div class="doc">
+<p>The rim (not part of the disk: points of the disk never reach it),
+and the disk's ruler laid along a diameter: the points 0, 1, 2, 3,
+4 and 5 apart from the middle by the disk's distance.</p>
+</div>
+<pre class="code">rim ← <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#u.r_ound" class="c-userfunc">ᵘr̲ound</a> <span class="c-number">90</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#dims">dims</a></div>
+</div>
+<div class="item" id="ruler">
+<h3><a href="#ruler">ruler</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L126">line 126</a></div>
+<pre class="code">ruler ← (<a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> (<span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span> <span class="c-number">4.0</span> <span class="c-number">5.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#rulerD">rulerD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L214">demos/manifold-tour/manifold-tour.xtl:214</a></div>
+</div>
+<div class="item" id="rulerD">
+<h3><a href="#rulerD">rulerD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L127">line 127</a></div>
+<pre class="code">rulerD ← <span class="c-quote">'</span>{ k → <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#ruler">ruler</a> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">6</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L215">demos/manifold-tour/manifold-tour.xtl:215</a></div>
+</div>
+<div class="item" id="diskFar">
+<h3><a href="#diskFar">diskFar</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L131">line 131</a></div>
+<div class="doc">
+<p>Two points near the rim, 20 degrees apart round it (at the top,
+off the ruler), and the same two drawn in toward the middle: on paper and by the disk's
+distance, for each; and the geodesics between them.</p>
+</div>
+<pre class="code">diskFar ← <span class="c-number">0.95</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">80.0</span> <span class="c-number">100.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFarD">diskFarD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFarGeo">diskFarGeo</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L216">demos/manifold-tour/manifold-tour.xtl:216</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L224">demos/manifold-tour/manifold-tour.xtl:224</a></div>
+</div>
+<div class="item" id="diskNear">
+<h3><a href="#diskNear">diskNear</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L132">line 132</a></div>
+<pre class="code">diskNear ← <span class="c-number">0.1</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#deg">deg</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">80.0</span> <span class="c-number">100.0</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNearD">diskNearD</a>, <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNearGeo">diskNearGeo</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L219">demos/manifold-tour/manifold-tour.xtl:219</a></div>
+</div>
+<div class="item" id="diskFarD">
+<h3><a href="#diskFarD">diskFarD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L133">line 133</a></div>
+<pre class="code">diskFarD ← ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L217">demos/manifold-tour/manifold-tour.xtl:217</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L218">demos/manifold-tour/manifold-tour.xtl:218</a></div>
+</div>
+<div class="item" id="diskNearD">
+<h3><a href="#diskNearD">diskNearD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L134">line 134</a></div>
+<pre class="code">diskNearD ← ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.s_traight" class="c-userfunc">ᵘs̲traight</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L220">demos/manifold-tour/manifold-tour.xtl:220</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L221">demos/manifold-tour/manifold-tour.xtl:221</a></div>
+</div>
+<div class="item" id="diskFarGeo">
+<h3><a href="#diskFarGeo">diskFarGeo</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L135">line 135</a></div>
+<pre class="code">diskFarGeo ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskFar">diskFar</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L222">demos/manifold-tour/manifold-tour.xtl:222</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L224">demos/manifold-tour/manifold-tour.xtl:224</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L225">demos/manifold-tour/manifold-tour.xtl:225</a></div>
+</div>
+<div class="item" id="diskNearGeo">
+<h3><a href="#diskNearGeo">diskNearGeo</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L136">line 136</a></div>
+<pre class="code">diskNearGeo ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#diskNear">diskNear</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L222">demos/manifold-tour/manifold-tour.xtl:222</a></div>
+</div>
+<div class="item" id="geo1">
+<h3><a href="#geo1">geo1</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L138">line 138</a></div>
+<div class="doc">
+<p>Three more geodesics, to see their shape: a diameter, and two arcs.</p>
+</div>
+<pre class="code">geo1 ← (<span class="c-number">-0.9</span> <span class="c-number">0.0</span>, <span class="c-number">0.9</span> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L222">demos/manifold-tour/manifold-tour.xtl:222</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L223">demos/manifold-tour/manifold-tour.xtl:223</a></div>
+</div>
+<div class="item" id="geo2">
+<h3><a href="#geo2">geo2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L139">line 139</a></div>
+<pre class="code">geo2 ← (<span class="c-number">-0.5</span> <span class="c-number">0.6</span>, <span class="c-number">0.7</span> <span class="c-number">0.2</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L222">demos/manifold-tour/manifold-tour.xtl:222</a></div>
+</div>
+<div class="item" id="geo3">
+<h3><a href="#geo3">geo3</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L140">line 140</a></div>
+<pre class="code">geo3 ← (<span class="c-number">0.0</span> <span class="c-number">-0.9</span>, <span class="c-number">0.6</span> <span class="c-number">-0.6</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">24</span></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L222">demos/manifold-tour/manifold-tour.xtl:222</a></div>
+</div>
+<h2 class="section" id="section-6">The dimensions</h2>
+<div class="item" id="dims">
+<h3><a href="#dims">dims</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L149">line 149</a></div>
+<div class="doc">
+<p>Each space's intrinsic dimension (how many coordinates its map
+has: the circle's map is a list of angles, the others' are pairs)
+and its ambient dimension (how many coordinates the space it is
+drawn in has), read off the arrays' shapes: one row per space, the
+circle, the sphere, the torus, the roll, the disk.</p>
+</div>
+<pre class="code">dims ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circleAngles">circleAngles</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#parallelLL">parallelLL</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRingsUV">torusRingsUV</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlongMap">rollAlongMap</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rim">rim</a>) <a href="demos-manifold-tour-manifold-tour.xtl.html#u.p_airs" class="c-userfunc">ᵘp̲airs</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#circle">circle</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#parallels">parallels</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#torusRings">torusRings</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rollAlong">rollAlong</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-manifold-tour-manifold-tour.xtl.html#rim">rim</a></pre>
+<div class="uses">Used in: <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L154">demos/manifold-tour/manifold-tour.xtl:154</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L158">demos/manifold-tour/manifold-tour.xtl:158</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L169">demos/manifold-tour/manifold-tour.xtl:169</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L189">demos/manifold-tour/manifold-tour.xtl:189</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L199">demos/manifold-tour/manifold-tour.xtl:199</a>, <a href="demos-manifold-tour-manifold-tour.xtl.src.html#L213">demos/manifold-tour/manifold-tour.xtl:213</a></div>
+</div>
+</main>
+</body>
+</html>

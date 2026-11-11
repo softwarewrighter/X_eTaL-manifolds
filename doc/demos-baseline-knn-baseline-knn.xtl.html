@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/baseline-knn/baseline-knn.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a></li>
+<li class="item"><a href="#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></li>
+<li class="item"><a href="#u.c_ompare"><span class="c-userfunc">ᵘc̲ompare</span></a></li>
+<li class="item"><a href="#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a></li>
+<li class="item"><a href="#k">k</a></li>
+<li class="item"><a href="#splitSeed">splitSeed</a></li>
+<li class="item"><a href="#F">F</a></li>
+<li class="item"><a href="#fy">fy</a></li>
+<li class="item"><a href="#flat">flat</a></li>
+<li class="item"><a href="#flatHeld">flatHeld</a></li>
+<li class="item"><a href="#flatGuess">flatGuess</a></li>
+<li class="item"><a href="#F5">F5</a></li>
+<li class="item"><a href="#f5y">f5y</a></li>
+<li class="item"><a href="#flat5">flat5</a></li>
+<li class="item"><a href="#D">D</a></li>
+<li class="item"><a href="#dy">dy</a></li>
+<li class="item"><a href="#directions">directions</a></li>
+<li class="item"><a href="#dirHeld">dirHeld</a></li>
+<li class="item"><a href="#dirGuess">dirGuess</a></li>
+<li class="item"><a href="#U">U</a></li>
+<li class="item"><a href="#unit">unit</a></li>
+<li class="item"><a href="#unitGuess">unitGuess</a></li>
+<li class="item"><a href="#T">T</a></li>
+<li class="item"><a href="#L">L</a></li>
+<li class="item"><a href="#ty">ty</a></li>
+<li class="item"><a href="#edges">edges</a></li>
+<li class="item"><a href="#tree">tree</a></li>
+<li class="item"><a href="#treeHeld">treeHeld</a></li>
+<li class="item"><a href="#treeGuess">treeGuess</a></li>
+<li class="item"><a href="#distortion">distortion</a></li>
+<li class="item"><a href="#record">record</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/baseline-knn/baseline-knn.xtl</h1>
+<div class="doc">
+<p>Baseline, nearest neighbors: k nearest neighbors under the
+straight-line distance on the three data sets of the kit (flat
+clusters, directions, a tree), each split the same seeded way, the
+held-out accuracy and the cost of each run recorded as the
+experiment schema says; and for the tree, how badly a plain layout
+of it keeps its distances. The row every comparison of H1 is set
+against: no geometry chosen yet.</p>
+</div>
+<p class="meta"><a href="demos-baseline-knn-baseline-knn.xtl.src.html">source</a> &middot; imports <code><span class="c-error">kt:</span></code> <a href="libs-Kit-src-Kit.xtl.html">libs/Kit/src/Kit.xtl</a>; <code><span class="c-error">ml:</span></code> <a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">work/xetal-ml/libs/Learn/src/Learn.xtl</a>; <code><span class="c-error">mf:</span></code> <a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="u.s_plit">
+<h3><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a> <span class="type">: (Int, Int) -&gt; (Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L24">line 24</a></div>
+<div class="doc">
+<p><code><a href="demos-baseline-knn-baseline-knn.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (seed, n)</code>: the held-out quarter of n points, seeded: a
+seeded order of 1 to n (the grade of seeded uniform numbers), the
+first quarter held out and the rest trained on; (train, held), two
+vectors of row numbers.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲plit</span> ← { (seed, n) → order ← <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="libs-Kit-src-Kit.xtl.html#l.u_niform" class="c-libfunc">ᵏᵗu̲niform</a> (seed, n)◆ h ← n <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">4</span>◆ (h <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> order, h <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> order) }</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="u.r_un">
+<h3><a href="#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a> <span class="type">: (Float, Int, Int, Int) -&gt; (Float, Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L34">line 34</a></div>
+<div class="doc">
+<p><code><a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (X, y, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, seed)</code>: one run of k nearest neighbors on the set
+(X, y) under the straight-line distance (Learn's k_nn), the
+held-out quarter guessed from the rest; the record, as the schema
+says: the held-out accuracy (measured), how many were held out,
+the numbers trained (none: nearest neighbors learns no number) and
+the operations counted (one distance per held-out point per
+training point, each of d coordinates); then the held-out rows and
+the guesses, for a picture. Runtime is never recorded.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘr̲un</span> ← { (X, y, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, seed) →
+  (train, held) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (seed, <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X)
+  guess ← (<a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, train <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> X, train <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> y) <a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html#l.k_nn" class="c-libfunc">ᵐˡk̲nn</a> held <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> X
+  right ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> guess <a href="builtins.html#-3d" class="c-symbol">=</a> held <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> y
+  accuracy ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> right) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> held
+  (accuracy <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> held) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> train) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> held) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X, held, guess)
+}</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></div>
+</div>
+<div class="item" id="u.c_ompare">
+<h3><a href="#u.c_ompare"><span class="c-userfunc">ᵘc̲ompare</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L44">line 44</a></div>
+<div class="doc">
+<p><code>a <a href="demos-baseline-knn-baseline-knn.xtl.html#u.c_ompare" class="c-userfunc">ᵘc̲ompare</a> b</code>: two records side by side and their difference,
+measure by measure (the second less the first), as three rows.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘc̲ompare</span> ← { a b → (<span class="c-number">3</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a }</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L107">demos/baseline-knn/baseline-knn.xtl:107</a></div>
+</div>
+<div class="item" id="u.c_hords">
+<h3><a href="#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L49">line 49</a></div>
+<div class="doc">
+<p><code><a href="demos-baseline-knn-baseline-knn.xtl.html#u.c_hords" class="c-userfunc">ᵘc̲hords</a> Q</code>: the straight-line distance between every pair of
+rows (a general function, for X_eTaL-libraries: GL1; written out
+here as in sphere-hello).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘc̲hords</span> ← { Q → n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Q◆ (<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, _) ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Q) <span class="c-quote">'</span>{ (d, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>) → c ← <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> Q◆ (d <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)◆ <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a> }</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#distortion">distortion</a></div>
+</div>
+<div class="item" id="k">
+<h3><a href="#k">k</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L52">line 52</a></div>
+<pre class="code">k ← <span class="c-number">5</span></pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a></div>
+</div>
+<div class="item" id="splitSeed">
+<h3><a href="#splitSeed">splitSeed</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L53">line 53</a></div>
+<pre class="code">splitSeed ← <span class="c-number">11</span></pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></div>
+</div>
+<div class="item" id="F">
+<h3><a href="#F">F</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L58">line 58</a></div>
+<div class="doc">
+<p>Flat clusters: three clusters of 40 points in the plane, spread 1.6
+about centers a few units apart (seed 1), so the clusters touch;
+and four clusters of 30 in five dimensions, spread 1.6 (seed 2).</p>
+</div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#fy">fy</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<span class="c-number">1</span>, <span class="c-number">3</span>, <span class="c-number">40</span>, <span class="c-number">2</span>, <span class="c-number">1.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a></div>
+</div>
+<div class="item" id="fy">
+<h3><a href="#fy">fy</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L58">line 58</a></div>
+<div class="doc">
+<p>Flat clusters: three clusters of 40 points in the plane, spread 1.6
+about centers a few units apart (seed 1), so the clusters touch;
+and four clusters of 30 in five dimensions, spread 1.6 (seed 2).</p>
+</div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#fy">fy</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<span class="c-number">1</span>, <span class="c-number">3</span>, <span class="c-number">40</span>, <span class="c-number">2</span>, <span class="c-number">1.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a></div>
+</div>
+<div class="item" id="flat">
+<h3><a href="#flat">flat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L59">line 59</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatHeld">flatHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatGuess">flatGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#fy">fy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#record">record</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L98">demos/baseline-knn/baseline-knn.xtl:98</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L99">demos/baseline-knn/baseline-knn.xtl:99</a></div>
+</div>
+<div class="item" id="flatHeld">
+<h3><a href="#flatHeld">flatHeld</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L59">line 59</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatHeld">flatHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatGuess">flatGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#fy">fy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a></div>
+</div>
+<div class="item" id="flatGuess">
+<h3><a href="#flatGuess">flatGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L59">line 59</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatHeld">flatHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flatGuess">flatGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#F">F</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#fy">fy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a></div>
+</div>
+<div class="item" id="F5">
+<h3><a href="#F5">F5</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L60">line 60</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#F5">F5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#f5y">f5y</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<span class="c-number">2</span>, <span class="c-number">4</span>, <span class="c-number">30</span>, <span class="c-number">5</span>, <span class="c-number">1.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#F5">F5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a></div>
+</div>
+<div class="item" id="f5y">
+<h3><a href="#f5y">f5y</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L60">line 60</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#F5">F5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#f5y">f5y</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<span class="c-number">2</span>, <span class="c-number">4</span>, <span class="c-number">30</span>, <span class="c-number">5</span>, <span class="c-number">1.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#F5">F5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a></div>
+</div>
+<div class="item" id="flat5">
+<h3><a href="#flat5">flat5</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L61">line 61</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a>, _, _) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#F5">F5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#f5y">f5y</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#record">record</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L100">demos/baseline-knn/baseline-knn.xtl:100</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L101">demos/baseline-knn/baseline-knn.xtl:101</a></div>
+</div>
+<div class="item" id="D">
+<h3><a href="#D">D</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L71">line 71</a></div>
+<div class="doc">
+<p>Directions: four classes of 40 points that differ by direction
+(cone 0.6 about each class direction, so the classes overlap at
+their edges) and not by length (lengths from 0.5 to 2; seed 5). The
+straight-line distance mixes the lengths in, which carry nothing
+about the class: the row the sphere is compared against
+(representation-explorer). Then the same set with every point put
+onto the unit sphere (lengths dropped), still under the straight
+line between the unit points: what the lengths were costing.</p>
+</div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.d_irections" class="c-libfunc">ᵏᵗd̲irections</a> (<span class="c-number">5</span>, <span class="c-number">4</span>, <span class="c-number">40</span>, <span class="c-number">0.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#u.c_hords"><span class="c-userfunc">ᵘc̲hords</span></a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#U">U</a></div>
+</div>
+<div class="item" id="dy">
+<h3><a href="#dy">dy</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L71">line 71</a></div>
+<div class="doc">
+<p>Directions: four classes of 40 points that differ by direction
+(cone 0.6 about each class direction, so the classes overlap at
+their edges) and not by length (lengths from 0.5 to 2; seed 5). The
+straight-line distance mixes the lengths in, which carry nothing
+about the class: the row the sphere is compared against
+(representation-explorer). Then the same set with every point put
+onto the unit sphere (lengths dropped), still under the straight
+line between the unit points: what the lengths were costing.</p>
+</div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.d_irections" class="c-libfunc">ᵏᵗd̲irections</a> (<span class="c-number">5</span>, <span class="c-number">4</span>, <span class="c-number">40</span>, <span class="c-number">0.6</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a></div>
+</div>
+<div class="item" id="directions">
+<h3><a href="#directions">directions</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L72">line 72</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirHeld">dirHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirGuess">dirGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#record">record</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L104">demos/baseline-knn/baseline-knn.xtl:104</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L105">demos/baseline-knn/baseline-knn.xtl:105</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L107">demos/baseline-knn/baseline-knn.xtl:107</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L108">demos/baseline-knn/baseline-knn.xtl:108</a></div>
+</div>
+<div class="item" id="dirHeld">
+<h3><a href="#dirHeld">dirHeld</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L72">line 72</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirHeld">dirHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirGuess">dirGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a></div>
+</div>
+<div class="item" id="dirGuess">
+<h3><a href="#dirGuess">dirGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L72">line 72</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirHeld">dirHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dirGuess">dirGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a></div>
+</div>
+<div class="item" id="U">
+<h3><a href="#U">U</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L73">line 73</a></div>
+<pre class="code">U ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#D">D</a></pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a></div>
+</div>
+<div class="item" id="unit">
+<h3><a href="#unit">unit</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L74">line 74</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a>, _, <a href="demos-baseline-knn-baseline-knn.xtl.html#unitGuess">unitGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#U">U</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#record">record</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L107">demos/baseline-knn/baseline-knn.xtl:107</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L108">demos/baseline-knn/baseline-knn.xtl:108</a></div>
+</div>
+<div class="item" id="unitGuess">
+<h3><a href="#unitGuess">unitGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L74">line 74</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a>, _, <a href="demos-baseline-knn-baseline-knn.xtl.html#unitGuess">unitGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#U">U</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#dy">dy</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#k">k</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a></div>
+</div>
+<div class="item" id="T">
+<h3><a href="#T">T</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L82">line 82</a></div>
+<div class="doc">
+<p>A tree: depth 4 and branching 2 (31 nodes), each node's class its
+branch, and the plain layout of it in the plane: nearest neighbors
+on the layout's coordinates (k = 3, the held-out quarter is 7
+nodes), and the distortion of the layout's straight-line distances
+against the distances along the tree (Manifold's: the mean and the
+worst pair), what the hyperbolic disk is compared against.</p>
+</div>
+<pre class="code">T ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeDistances" class="c-libfunc">ᵏᵗt̲reeDistances</a> (<span class="c-number">4</span>, <span class="c-number">2</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#distortion">distortion</a></div>
+</div>
+<div class="item" id="L">
+<h3><a href="#L">L</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L83">line 83</a></div>
+<pre class="code">L ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeLayout" class="c-libfunc">ᵏᵗt̲reeLayout</a> (<span class="c-number">4</span>, <span class="c-number">2</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#distortion">distortion</a></div>
+</div>
+<div class="item" id="ty">
+<h3><a href="#ty">ty</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L84">line 84</a></div>
+<pre class="code">ty ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeClasses" class="c-libfunc">ᵏᵗt̲reeClasses</a> (<span class="c-number">4</span>, <span class="c-number">2</span>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></div>
+</div>
+<div class="item" id="edges">
+<h3><a href="#edges">edges</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L85">line 85</a></div>
+<pre class="code">edges ← <a href="libs-Kit-src-Kit.xtl.html#l.t_ree" class="c-libfunc">ᵏᵗt̲ree</a> (<span class="c-number">4</span>, <span class="c-number">2</span>)</pre>
+</div>
+<div class="item" id="tree">
+<h3><a href="#tree">tree</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L86">line 86</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeHeld">treeHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeGuess">treeGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#L">L</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#ty">ty</a>, <span class="c-number">3</span>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#record">record</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L111">demos/baseline-knn/baseline-knn.xtl:111</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L112">demos/baseline-knn/baseline-knn.xtl:112</a></div>
+</div>
+<div class="item" id="treeHeld">
+<h3><a href="#treeHeld">treeHeld</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L86">line 86</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeHeld">treeHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeGuess">treeGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#L">L</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#ty">ty</a>, <span class="c-number">3</span>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></div>
+</div>
+<div class="item" id="treeGuess">
+<h3><a href="#treeGuess">treeGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L86">line 86</a></div>
+<pre class="code">(<a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeHeld">treeHeld</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#treeGuess">treeGuess</a>) ← <a href="demos-baseline-knn-baseline-knn.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<a href="demos-baseline-knn-baseline-knn.xtl.html#L">L</a>, <a href="demos-baseline-knn-baseline-knn.xtl.html#ty">ty</a>, <span class="c-number">3</span>, <a href="demos-baseline-knn-baseline-knn.xtl.html#splitSeed">splitSeed</a>)</pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></div>
+</div>
+<div class="item" id="distortion">
+<h3><a href="#distortion">distortion</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L87">line 87</a></div>
+<pre class="code">distortion ← <a href="demos-baseline-knn-baseline-knn.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#u.c_hords" class="c-userfunc">ᵘc̲hords</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#L">L</a></pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L113">demos/baseline-knn/baseline-knn.xtl:113</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L114">demos/baseline-knn/baseline-knn.xtl:114</a></div>
+</div>
+<div class="item" id="record">
+<h3><a href="#record">record</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L94">line 94</a></div>
+<div class="doc">
+<p>The record of every run, one row per run: flat (plane), flat (five
+dimensions), directions, directions on the unit sphere, the tree's
+layout; the columns accuracy, held out, numbers trained,
+operations. All measured. The baseline row of the H1 table
+(docs/experiments.md).</p>
+</div>
+<pre class="code">record ← <span class="c-number">5</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#flat">flat</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#flat5">flat5</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#directions">directions</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#unit">unit</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-baseline-knn-baseline-knn.xtl.html#tree">tree</a></pre>
+<div class="uses">Used in: <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L117">demos/baseline-knn/baseline-knn.xtl:117</a>, <a href="demos-baseline-knn-baseline-knn.xtl.src.html#L118">demos/baseline-knn/baseline-knn.xtl:118</a></div>
+</div>
+</main>
+</body>
+</html>

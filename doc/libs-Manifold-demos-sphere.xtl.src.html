@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Manifold/demos/sphere.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L7">P</a></li>
+<li class="item"><a href="#L8">p</a></li>
+<li class="item"><a href="#L9">q</a></li>
+<li class="item"><a href="#L14">v</a></li>
+<li class="item"><a href="#L20">m</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Manifold-demos-sphere.xtl.html">libs/Manifold/demos/sphere.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-comment">⍝</span><span class="c-comment">!/usr/bin/env xetal</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-comment">⍝</span><span class="c-comment"> Manifold in use: three points on the unit sphere, their distances</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-comment">⍝</span><span class="c-comment"> along it, a step and the arrow that undoes it, and their mean on the</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-comment">⍝</span><span class="c-comment"> sphere beside the plain mean, which is not. Run with &quot;just demo Manifold sphere&quot;.</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-string">&quot;mf:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Manifold-src-Manifold.xtl.html" class="c-string">&quot;Manifold&quot;</a></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a>P ← <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>     <span class="c-comment">⍝</span><span class="c-comment"> the three axes, one point per row</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a>p ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a>q ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><a href="libs-Manifold-demos-sphere.xtl.html#p">p</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <a href="libs-Manifold-demos-sphere.xtl.html#q">q</a>              <span class="c-comment">⍝</span><span class="c-comment"> a quarter turn, in radians</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a>               <span class="c-comment">⍝</span><span class="c-comment"> every pair</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a>v ← <a href="libs-Manifold-demos-sphere.xtl.html#p">p</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow" class="c-libfunc">ᵐᶠs̲phereArrow</a> <a href="libs-Manifold-demos-sphere.xtl.html#q">q</a>             <span class="c-comment">⍝</span><span class="c-comment"> the arrow at p that reaches q</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><a href="libs-Manifold-demos-sphere.xtl.html#v">v</a></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a><a href="libs-Manifold-demos-sphere.xtl.html#p">p</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> <a href="libs-Manifold-demos-sphere.xtl.html#v">v</a>                  <span class="c-comment">⍝</span><span class="c-comment"> the step along it: q, up to rounding</span></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><a href="libs-Manifold-demos-sphere.xtl.html#p">p</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-demos-sphere.xtl.html#v">v</a>            <span class="c-comment">⍝</span><span class="c-comment"> halfway there, still on the sphere</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> <a href="libs-Manifold-demos-sphere.xtl.html#p">p</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-demos-sphere.xtl.html#v">v</a></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a>m ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">3.0</span>               <span class="c-comment">⍝</span><span class="c-comment"> the plain mean: inside the sphere</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><a href="libs-Manifold-demos-sphere.xtl.html#m">m</a></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> <a href="libs-Manifold-demos-sphere.xtl.html#m">m</a></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean" class="c-libfunc">ᵐᶠs̲phereMean</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a>                    <span class="c-comment">⍝</span><span class="c-comment"> the mean on the sphere</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a><a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereMean" class="c-libfunc">ᵐᶠs̲phereMean</a> <a href="libs-Manifold-demos-sphere.xtl.html#P">P</a></span>
+</div>
+</main>
+</body>
+</html>
