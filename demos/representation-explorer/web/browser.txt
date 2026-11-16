@@ -10,3 +10,11 @@ of the 30 held out guessed wrong
 html: class="numbers comparison"
 html: data-aside="mf:f_itScale"
 html: data-aside="ml:k_nn"
+u and v, worked in full
+the disk (curvature -1)
+0.1017
+0.5909
+Curvature as a control
+H1: three data sets by three spaces
+html: data-aside="mf:b_allDistances"
+html: data-aside="ml:l_ogistic"

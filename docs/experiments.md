@@ -30,18 +30,26 @@ distances. All measured.
 | directions (seed 5) | flat | network 3-8-4, Adam 0.02, 300 steps | 0.750 | | 4896000 | representation-explorer | loss 1.461 to 0.407; under 0.5 at step 203 |
 | directions (seed 5) | sphere | network 3-8-4, the same | 0.750 | | 4896000 | representation-explorer | loss 1.452 to 0.507, not under 0.5 in 300 steps; **null result**: a tie, which the rule written before the run counts against H1; why the network tied (a hidden layer can represent a rule that ignores the lengths) and why the flat run's loss fell faster are not measured |
 
-What the table says so far (two geometries by two data sets, one run
-per cell: one split, one starting weight set): on the clusters the
-matching space scores higher and the crossed one costs, under both
-methods, which counts for H1; on the directions the sphere gains one
-point of 40 under nearest neighbors (for H1, within one point) and
-ties under the network (against H1, by the rule written before the
-run). The spread over seeds is not yet measured.
+| tree, depth 4 branching 2 | the unit sphere (curvature +1), fitted | k-NN under the angle, k = 3; logistic on the coordinates | 0.429; 0.429 | 0.591 mean, 0.952 worst (fixed scale; 0.602 with the scale forgiven) | 3459600 | representation-explorer, part 2 | 200 steps at rate 50 from seed 31; not under 0.2; the sphere is too small (diameter pi for a tree of diameter 8) and its loss is not fixed by forgiving the scale; three starts 0.591, 0.591, 0.591 |
+| tree, depth 4 branching 2 | the plane (0), fitted | the same | 1.000; 0.857 | 0.151 mean, 0.620 worst | 2306400 | representation-explorer, part 2 | under 0.2 at step 24; three starts 0.151, 0.296, 0.151 (spread 0.145: a local minimum) |
+| tree, depth 4 branching 2 | the Poincare disk (-1), fitted | the same | 1.000; 0.857 | 0.102 mean, 0.287 worst | 2306400 | representation-explorer, part 2 | under 0.2 at step 29; no step past the rim; three starts 0.102, 0.237, 0.142 (spread 0.135); under the plane on every start, by 0.049, 0.059, 0.009 |
+| tree, depth 4 branching 2 | curvature +1/4, +1/16, -1/16, -1/4, -4, fitted | the control | | at step 100: 0.310, 0.175, 0.132, 0.097, 0.337 (the plane's 0.151, the sphere's 0.591, the disk's 0.122 at the same step) | | representation-explorer, part 2 | the lowest row at -1/4 on one start, the rows from -1/16 to -1 within 0.035 (less than the spread over starts); both sides meet at the plane; -4 too much |
 
-Rows to come: the Poincare disk, the sphere and the plane fitted to
-the tree at the same dimension, with their distortion
-(representation-hyperbolic); what counts for and against H1 is in
-`docs/research-questions.md`.
+What the table says (three geometries by three data sets; part 1 one
+run per cell, part 2 three starts): on the clusters the matching space
+scores higher and the crossed one costs, under both methods, which
+counts for H1; on the directions the sphere gains one point of 40
+under nearest neighbors (for H1, within one point) and ties under the
+network (against H1, by the rule written before the run); on the tree
+the disk keeps the distances with the least distortion and the classifiers tie between the
+plane and the disk, which on accuracy is what the rule asks, but on
+distortion the plane is within the spread over three starts of the
+disk (0.049 against 0.135), which the rule counts against H1: a
+**null result** by the letter, with the direction H1 says on every
+start. The spread is the fit's local minima (one start of each stopped
+far above the others), not the geometry's. The disk on the clusters
+and the directions is not run (two cells of nine): a fit of 120 or
+160 points would not run in a page.
 
 ## H2: a constraint on a transformation keeps a deep network stable
 

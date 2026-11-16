@@ -6,5 +6,7 @@
 //! page.
 
 pub mod app;
+pub mod disk;
+pub mod hyper;
 pub mod micro;
 pub mod text;

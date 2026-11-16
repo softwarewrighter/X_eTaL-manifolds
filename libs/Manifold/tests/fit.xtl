@@ -1,0 +1,72 @@
+#!/usr/bin/env xetal
+# Manifold: the gradients a fit of distances uses, each against
+# central differences of the space's own Distances: the flat space's
+# as it is, the sphere's along tangent directions (a bump along a
+# tangent vector, put back onto the sphere), the ball's in the ball's
+# coordinates (the gradient along the ball is the plain one scaled by
+# the metric, so the plain one is checked and the scaling apart), at
+# the middle of the ball and near its rim. The function differenced
+# is sum over pairs of W_ij d(P_i, P_j), W symmetric with a zero
+# diagonal. Run with "just run-lib Manifold fit".
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+
+h := 0.00001
+# Weights, 4 by 4, symmetric, zero on the diagonal.
+W := 4 4 r_eshape 0.0 1.0 2.0 0.5 1.0 0.0 1.5 3.0 2.0 1.5 0.0 1.0 0.5 3.0 1.0 0.0
+# The weighted sum of a distance matrix, each pair once (the upper triangle).
+u:s_um := { M -> '+ r_/ r_avel (f_loat M) * (f_loat W) * f_loat (r_ange 4) '< t_able r_ange 4 }
+# A bump of h at item i of a set, as a matrix the shape of P.
+u:b_ump := { (P, i, e) -> P + e * f_loat (s_hape P) r_eshape (r_ange '* r_/ s_hape P) = i }
+
+# The flat space: four points in the plane.
+F := 4 2 r_eshape 0.0 0.0 1.0 0.5 -0.5 2.0 2.0 -1.0
+Gf := W mf:f_latDistancesGradient F
+cf := '{ i -> ((u:s_um mf:f_latDistances u:b_ump (F, i, h)) - u:s_um mf:f_latDistances u:b_ump (F, i, 0.0 - h)) / 2.0 * h } e_ach r_ange 8
+"the flat gradient has the set's shape" ch:t_est 4 2 ch:i_s s_hape Gf
+"the flat gradient agrees with central differences" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ a_bs cf - r_avel Gf
+"the flat gradient's rows sum to zero: moving every point together changes no distance" ch:t_est 0.0 0.0 ch:n_ear '+ r_/ Gf
+
+# The sphere: four unit points; the bump is along a tangent direction, the bumped set put back onto the sphere.
+S := mf:s_phereProject 4 3 r_eshape 1.0 0.2 0.1 0.1 1.0 0.3 -0.3 0.4 1.0 0.5 -0.6 0.2
+Gs := W mf:s_phereDistancesGradient S
+u:t_angentBump := { (i, k, e) ->
+  p := i s_elect S
+  t := p mf:s_phereTangent f_loat (r_ange 3) = k    # the k-th axis, made tangent at p
+  n := s_qrt '+ r_/ t * t
+  rows := f_loat (r_ange 4) = i
+  mf:s_phereProject S + (e * rows) '* t_able t / n
+}
+# The derivative of the sum along the unit tangent direction t at p, against the gradient's part along t.
+u:a_long := { (i, k) ->
+  p := i s_elect S
+  t := p mf:s_phereTangent f_loat (r_ange 3) = k
+  n := s_qrt '+ r_/ t * t
+  (((u:s_um mf:s_phereDistances u:t_angentBump (i, k, h)) - u:s_um mf:s_phereDistances u:t_angentBump (i, k, 0.0 - h)) / 2.0 * h) c_at ('+ r_/ (i s_elect Gs) * t) / n
+}
+A := 6 2 r_eshape (u:a_long (1, 2)) c_at (u:a_long (1, 3)) c_at (u:a_long (2, 1)) c_at (u:a_long (3, 3)) c_at (u:a_long (4, 1)) c_at u:a_long (4, 2)
+"the sphere gradient has the set's shape" ch:t_est 4 3 ch:i_s s_hape Gs
+"the sphere gradient agrees with central differences along tangent directions" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ a_bs (1 s_elect_2 A) - 2 s_elect_2 A
+"the sphere gradient is tangent: no part along each point" ch:t_est (4 r_eshape 0.0) ch:n_ear '+ r_/_2 Gs * S
+
+# The ball: four points, one at the middle and one near the rim; the plain gradient is the ball's divided by the metric's scaling.
+B := 4 2 r_eshape 0.0 0.0 0.5 0.1 -0.3 0.4 0.0 0.9999
+Gb := W mf:b_allDistancesGradient B
+plain := Gb / ((((1.0 - '+ r_/_2 B * B) ^ 2.0) / 4.0) 'l_eft t_able 0 0)
+cb := '{ i -> ((u:s_um mf:b_allDistances u:b_ump (B, i, h)) - u:s_um mf:b_allDistances u:b_ump (B, i, 0.0 - h)) / 2.0 * h } e_ach r_ange 8
+"the ball gradient has the set's shape" ch:t_est 4 2 ch:i_s s_hape Gb
+"the ball's plain gradient agrees with central differences at the middle and at radius 0.5" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ a_bs (1 2 3 4 5 6 s_elect cb) - 1 2 3 4 5 6 s_elect r_avel plain
+# Near the rim the distances are steep (the plain gradient there is in the tens of thousands) and bend on the scale of 1 - |p|^2, 2e-4 here, so the difference takes a smaller h, 1e-8, and is compared relative to its size.
+hr := 0.00000001
+cr := '{ i -> ((u:s_um mf:b_allDistances u:b_ump (B, i, hr)) - u:s_um mf:b_allDistances u:b_ump (B, i, 0.0 - hr)) / 2.0 * hr } e_ach 7 8
+"and near the rim, relative to its size" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ (a_bs cr - 7 8 s_elect r_avel plain) / a_bs cr
+"the gradient along the ball is that scaled by (1 - |p|^2)^2 / 4" ch:t_est Gb ch:n_ear B mf:b_allTangent plain
+"the gradient along the ball near the rim is small, though the plain one is not" ch:t_est 1 ch:i_s (1.0 > s_qrt '+ r_/ (4 s_elect Gb) ^ 2.0) & 1000.0 < s_qrt '+ r_/ (4 s_elect plain) ^ 2.0
+
+# A step against each gradient lowers the sum: one small step in each space.
+lr := 0.01
+"a flat step lowers the sum" ch:t_est 1 ch:i_s (u:s_um mf:f_latDistances F - lr * Gf) < u:s_um mf:f_latDistances F
+"a sphere step lowers the sum" ch:t_est 1 ch:i_s (u:s_um mf:s_phereDistances S mf:s_phereStep (0.0 - lr) * Gs) < u:s_um mf:s_phereDistances S
+"a ball step lowers the sum" ch:t_est 1 ch:i_s (u:s_um mf:b_allDistances mf:b_allProject B mf:b_allStep (0.0 - lr) * Gb) < u:s_um mf:b_allDistances B
+"the sphere step stays on the sphere" ch:t_est (4 r_eshape 0.0) ch:n_ear mf:s_phereOff S mf:s_phereStep (0.0 - lr) * Gs
+"the ball step stays inside the ball" ch:t_est (4 r_eshape 0.0) ch:n_ear mf:b_allOff B mf:b_allStep (0.0 - lr) * Gb

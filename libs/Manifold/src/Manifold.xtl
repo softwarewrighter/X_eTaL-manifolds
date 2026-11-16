@@ -20,9 +20,13 @@
 ## vector a Step would take from one point to another), Mean (of a
 ## set, on it), Off (how far a point is from it); and for drawing,
 ## Points (the points at rows of coordinates of the space's map), Arc
-## or Geodesic (points along the shortest path between two points).
-## So a program written for the sphere reads the same on the ball.
-## Every result is a Float.
+## or Geodesic (points along the shortest path between two points);
+## and for fitting an embedding, Distances (between every pair of a
+## set) and DistancesGradient (of a weighted sum of them, along the
+## space), with Distortion against the distances a set should keep. So
+## a program written for the sphere reads the same on the ball; the
+## flat space has the last three too (f_lat...), so a fit reads the
+## same in all three. Every result is a Float.
 
 "tr:" u_se< "Trig"
 
@@ -33,6 +37,24 @@ h:d_ot := { u v -> '+ r_/ (f_loat u) * f_loat v }
 
 ## `n_orm v`: the length of v, straight through the space it sits in.
 h:n_orm := { v -> s_qrt v h:d_ot v }
+
+## `n_orms P`: the length of every row of P, a vector.
+h:n_orms := { P -> s_qrt '+ r_/_2 (f_loat P) * f_loat P }
+
+## `d_ots (P, Q)`: the dot product of each row of P with the matching
+## row of Q, a vector.
+h:d_ots := { (P, Q) -> '+ r_/_2 (f_loat P) * f_loat Q }
+
+## `r_ows v`: a vector as a one-row matrix; a matrix as it is. So a
+## function written for a set can take one point.
+h:r_ows := { v -> 2 = t_ally s_hape v ? f_loat v; (1 c_at t_ally v) r_eshape f_loat v }
+
+## `v u_nrows M`: M back to v's rank: its one row when v is a vector.
+h:u_nrows := { v M -> 2 = t_ally s_hape v ? M; r_avel M }
+
+## `v u_nrow x`: a number per row, x, back to v's rank: the one number
+## when v is a vector.
+h:u_nrow := { v x -> 2 = t_ally s_hape v ? x; f_irst x }
 
 ## `s v s_caleRows M`: each row of M scaled by the matching item of s.
 h:s_caleRows := { s M -> M * s 'l_eft t_able o_ffsets 2 s_elect s_hape M }
@@ -53,6 +75,17 @@ h:a_partRows := { P p ->
   D := (f_loat P) - Q
   S := (f_loat P) + Q
   (s_qrt '+ r_/_2 D * D, s_qrt '+ r_/_2 S * S)
+}
+
+## `d_istPairs P`: |r - r'| for every pair of rows of P, a matrix,
+## summed one coordinate at a time.
+h:d_istPairs := { P ->
+  n := f_irst s_hape P
+  (D, _) := (2 s_elect s_hape P) '{ (d, k) ->
+    c := f_loat k s_elect_2 P
+    (d + (c '- t_able c) ^ 2.0, k + 1)
+  } p_ower ((n c_at n) r_eshape 0.0, 1)
+  s_qrt D
 }
 
 ## `a_partPairs P`: |r - r'| and |r + r'| for every pair of rows of
@@ -113,11 +146,16 @@ l:s_phereDistances := { P -> (M, S) := h:a_partPairs P; M h:a_ngle S }
 
 ## `p s_phereTangent v`: the part of v that lies along the sphere at
 ## p (in the tangent plane there): v less its part along p, the
-## normal. A tangent vector at p is one with no part along p.
+## normal. A tangent vector at p is one with no part along p. Given
+## two sets (matrices), row by row.
 ## >> "mf:" u_se< "Manifold"
 ## >> 1.0 0.0 0.0 mf:s_phereTangent 2.0 3.0 0.0
 ## 0.0 3.0 0.0
-l:s_phereTangent := { p v -> (f_loat v) - (p h:d_ot v) * f_loat p }
+l:s_phereTangent := { p v ->
+  P := h:r_ows p
+  V := h:r_ows v
+  v h:u_nrows V - (h:d_ots (P, V)) h:s_caleRows P
+}
 
 ## `p s_phereStep v`: the point reached from p by going along the
 ## sphere in the direction of the tangent vector v, for a distance
@@ -125,14 +163,16 @@ l:s_phereTangent := { p v -> (f_loat v) - (p h:d_ot v) * f_loat p }
 ## with t = |v|, put back onto the sphere so no rounding takes it
 ## off. A zero v goes nowhere. (A quarter turn from the x axis along
 ## y lands on the y axis; the x left over is cos of a quarter turn,
-## 0 up to the machine's rounding.)
+## 0 up to the machine's rounding.) Given two sets (matrices), row by
+## row.
 ## >> "mf:" u_se< "Manifold"
 ## >> 1.0 0.0 0.0 mf:s_phereStep 0.0 1.5707963267948966 0.0
 ## 0.00000000000000006123233995736766 1.0 0.0
 l:s_phereStep := { p v ->
-  t := h:n_orm v
-  t = 0.0 ? f_loat p
-  l:s_phereProject ((c_os t) * f_loat p) + (s_in t) * (f_loat v) / t
+  P := h:r_ows p
+  V := h:r_ows v
+  t := h:n_orms V
+  v h:u_nrows h:p_rojectRows ((c_os t) h:s_caleRows P) + ((s_in t) / t m_ax 1e-300) h:s_caleRows V
 }
 
 ## `p s_phereArrow q`: the tangent vector at p that s_phereStep
@@ -354,29 +394,152 @@ l:r_ollDistance := { a b ->
 
 ### The Poincare ball
 
+## The Poincare ball is the inside of the unit sphere (|p| < 1; in two
+## dimensions the Poincare disk) with the hyperbolic metric: at p a
+## vector is lambda = 2 / (1 - |p|^2) times as long as it looks, so
+## lengths grow without bound toward the rim, and the rim is never
+## reached. Its curvature is -1 everywhere. The formulas are Ganea,
+## Becigneul and Hofmann's (2018), at their c = 1, with Nickel and
+## Kiela's (2017) distance; docs/papers.md has the rows. Points are
+## kept to the radius 1 - 1e-5 (b_allProject), as both papers do: at
+## the rim itself the metric is infinite.
+
 ## `u m_obius v`: Mobius addition, the ball's own way of adding (u
 ## then v, each inside the unit ball): ((1 + 2 u.v + |v|^2) u +
 ## (1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2). The result stays in
 ## the ball; (-u) m_obius v is v seen from u, as a vector at the
-## middle.
+## middle. Given two sets (matrices, the same rows), row by row.
 h:m_obius := { u v ->
-  uv := u h:d_ot v
-  uu := u h:d_ot u
-  vv := v h:d_ot v
-  (((1.0 + (2.0 * uv) + vv) * f_loat u) + (1.0 - uu) * f_loat v) / (1.0 + (2.0 * uv) + uu * vv)
+  U := h:r_ows u
+  V := h:r_ows v
+  uv := h:d_ots (U, V)
+  uu := h:d_ots (U, U)
+  vv := h:d_ots (V, V)
+  u h:u_nrows (1.0 / 1.0 + (2.0 * uv) + uu * vv) h:s_caleRows ((1.0 + (2.0 * uv) + vv) h:s_caleRows U) + (1.0 - uu) h:s_caleRows V
 }
 
+## The rim as the ball's functions take it: the radius 1 - 1e-5 points
+## are kept to.
+h:r_im := { u -> 0.99999 }
+
+## `b_allProject p`: p kept inside the ball: p as it is when its length
+## is under the rim's radius 1 - 1e-5, else scaled to that radius
+## (the clamp of the source papers: Ganea et al. project to 1 - 1e-5,
+## Nickel and Kiela to 1 - 1e-5 as well). A point put at the rim
+## itself would be infinitely far from everything. Given a set (a
+## matrix), every row.
+## >> "mf:" u_se< "Manifold"
+## >> mf:b_allProject 0.3 0.4
+## 0.3 0.4
+## >> mf:b_allProject 2 2 r_eshape 3.0 4.0 0.0 -2.0
+## 0.599994 0.799992
+##      0.0 -0.99999
+l:b_allProject := { p ->
+  P := h:r_ows p
+  n := h:n_orms P
+  s := 1.0 m_in (h:r_im @) / n m_ax 1e-300
+  p h:u_nrows s h:s_caleRows P
+}
+
+## `b_allOff p`: how far p is past the rim (the radius 1 - 1e-5 the
+## ball's points are kept to): its length less that, as a size, 0 for
+## a point inside. What b_allProject repairs, and what a test of the
+## constraint reports: a step along the ball that rounding carried too
+## far. Given a set (a matrix), one per row.
+## >> "mf:" u_se< "Manifold"
+## >> mf:b_allOff 2 2 r_eshape 0.3 0.4 0.0 1.0
+## 0.0 0.00000999999999995449
+l:b_allOff := { p -> P := h:r_ows p; p h:u_nrow 0.0 m_ax (h:n_orms P) - h:r_im @ }
+
 ## `p b_allDistance q`: the distance between two points of the
-## Poincare ball (the inside of the unit sphere with the hyperbolic
-## metric; in two dimensions the Poincare disk), 2 atanh of the
-## length of q seen from p, (-p) m_obius q. Near the middle it is
-## twice the plain distance; toward the rim it grows without bound,
-## so points near the rim a little apart in the plane are far apart
-## along the ball. p and q must be inside the ball (length under 1).
+## Poincare ball, 2 atanh of the length of q seen from p, (-p) m_obius
+## q. Near the middle it is twice the plain distance; toward the rim
+## it grows without bound, so points near the rim a little apart in
+## the plane are far apart along the ball. p and q must be inside the
+## ball (length under 1). Given two sets (matrices), row by row.
 ## >> "mf:" u_se< "Manifold"
 ## >> 0.0 0.0 mf:b_allDistance 0.5 0.0
 ## 1.0986122886681098
-l:b_allDistance := { p q -> 2.0 * tr:a_tanh h:n_orm (n_eg p) h:m_obius q }
+l:b_allDistance := { p q -> p h:u_nrow 2.0 * tr:a_tanh h:n_orms h:r_ows (n_eg p) h:m_obius q }
+
+## `b_allDistances P`: the distance along the ball between every pair
+## of rows of P (points inside the ball): a matrix, 0 on its diagonal.
+## As 2 asinh(|u - v| / sqrt((1 - |u|^2) (1 - |v|^2))), which is
+## Nickel and Kiela's acosh(1 + 2 |u - v|^2 / ((1 - |u|^2) (1 -
+## |v|^2))) written so that nothing near 1 is subtracted from 1 (it
+## agrees with b_allDistance to the last digits; a test checks). The
+## one subtraction left is 1 - |u|^2: at the rim's radius it is 2e-5,
+## with about eleven of sixteen digits kept.
+## >> "mf:" u_se< "Manifold"
+## >> mf:b_allDistances 2 2 r_eshape 0.0 0.0 0.5 0.0
+##                0.0 1.0986122886681098
+## 1.0986122886681098                0.0
+l:b_allDistances := { P ->
+  M := h:d_istPairs P
+  a := 1.0 - h:d_ots (P, P)
+  2.0 * tr:a_sinh M / s_qrt a '* t_able a
+}
+
+## `p b_allTangent v`: the vector along the ball at p that stands for
+## the plain gradient v: v scaled by (1 - |p|^2)^2 / 4. Every
+## direction is along the ball (it is open), but at p each is lambda
+## = 2 / (1 - |p|^2) times longer than it looks, so the gradient
+## under the ball's metric is the plain one divided by lambda^2
+## (Nickel and Kiela's "natural gradient" scaling): what b_allStep
+## takes, as s_phereTangent's projection is what s_phereStep takes.
+## Given two sets (matrices), row by row.
+## >> "mf:" u_se< "Manifold"
+## >> 0.0 0.0 mf:b_allTangent 1.0 2.0
+## 0.25 0.5
+## >> 0.6 0.0 mf:b_allTangent 1.0 2.0
+## 0.1024 0.2048
+l:b_allTangent := { p v ->
+  P := h:r_ows p
+  V := h:r_ows v
+  v h:u_nrows (((1.0 - h:d_ots (P, P)) ^ 2.0) / 4.0) h:s_caleRows V
+}
+
+## `p b_allStep v`: the point reached from p by going along the ball
+## in the direction of v for the length v has under the ball's metric
+## (the exponential map, Ganea et al.'s equation 12 at c = 1): p
+## m_obius tanh(lambda |v| / 2) v / |v|, lambda = 2 / (1 - |p|^2). A
+## zero v goes nowhere; a step from the middle of length t lands at
+## plain radius tanh(t / 2), so no step reaches the rim, but a long
+## one can land on it by rounding (tanh of a large number is 1 to the
+## machine): b_allProject brings such a point back and b_allOff says
+## how far it went. Given two sets (matrices), row by row.
+## >> "mf:" u_se< "Manifold"
+## >> 0.0 0.0 mf:b_allStep 0.5493061443340549 0.0
+## 0.5 0.0
+## >> (0.0 0.0 mf:b_allStep 0.3 0.4) mf:b_allDistance 0.0 0.0
+## 1.0
+l:b_allStep := { p v ->
+  P := h:r_ows p
+  V := h:r_ows v
+  t := h:n_orms V
+  lam := 2.0 / 1.0 - h:d_ots (P, P)
+  s := (t_anh (lam * t) / 2.0) / t m_ax 1e-300
+  v h:u_nrows P h:m_obius s h:s_caleRows V
+}
+
+## `p b_allArrow q`: the vector at p that b_allStep carries to q (the
+## logarithmic map, Ganea et al.'s equation 13): (2 / lambda) atanh
+## |w| w / |w| with w = (-p) m_obius q, q seen from p. Its length
+## under the ball's metric (lambda times its plain length) is the
+## distance from p to q. For q = p it is zero. Given two sets, row by
+## row.
+## >> "mf:" u_se< "Manifold"
+## >> 0.0 0.0 mf:b_allArrow 0.5 0.0
+## 0.5493061443340549 0.0
+## >> 0.3 0.0 mf:b_allStep 0.3 0.0 mf:b_allArrow 0.0 0.6
+## 0.0 0.6000000000000001
+l:b_allArrow := { p q ->
+  P := h:r_ows p
+  W := h:r_ows (n_eg p) h:m_obius q
+  r := h:n_orms W
+  lam := 2.0 / 1.0 - h:d_ots (P, P)
+  q h:u_nrows ((2.0 * tr:a_tanh r) / lam * r m_ax 1e-300) h:s_caleRows W
+}
 
 ## `(p, q) b_allGeodesic n`: n + 1 points along the geodesic (the
 ## shortest path, by the ball's distance) from p to q, p first and q
@@ -479,4 +642,103 @@ l:s_phereDistortion := { D P -> D l:d_istortion l:s_phereDistances P }
 ## 0.0 0.0
 ## >> (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:f_latDistortion 3 2 r_eshape 0.0 0.0 1.0 0.0 1.0 1.0
 ## 0.09763107293781748 0.2928932188134524
-l:f_latDistortion := { D P -> (M, _) := h:a_partPairs P; D l:d_istortion M }
+l:f_latDistortion := { D P -> D l:d_istortion h:d_istPairs P }
+
+## `D b_allDistortion P`: the distortion of a set P inside the ball
+## (one point per row), its distances along the ball against the
+## distances D it should keep: the mean and the worst pair.
+## >> "mf:" u_se< "Manifold"
+## >> (2 2 r_eshape 0.0 1.0986122886681098 1.0986122886681098 0.0) mf:b_allDistortion 2 2 r_eshape 0.0 0.0 0.5 0.0
+## 0.0 0.0
+l:b_allDistortion := { D P -> D l:d_istortion l:b_allDistances P }
+
+### Fitting an embedding
+
+## A fit moves a set of points so that their distances along a space
+## come to the distances they should have: a loss of the pairwise
+## distances, whose gradient with respect to the distances is a
+## matrix W, and then a step along the space against the gradient of
+## the weighted sum of the distances, sum over pairs of W d(P_i, P_j),
+## with respect to every point. The three functions below give that
+## gradient along each space, one row per point, the same shape as P,
+## for the same W: the flat space's as it is (every direction is
+## along it and lengths are what they look), the sphere's the tangent
+## part at each point (s_phereTangent), the ball's scaled by the
+## metric at each point (b_allTangent). A step is then P - lr G in the
+## flat space, P s_phereStep -lr G on the sphere, P b_allStep -lr G
+## in the ball. W is read as symmetric, each pair counted once; its
+## diagonal is ignored (a point's distance to itself has no
+## gradient). Every one is checked against central differences in
+## tests/fit.xtl.
+
+## `f_latDistances P`: the straight-line distance between every pair
+## of rows of P: a matrix, 0 on its diagonal. (General, not the
+## ball's or the sphere's; X_eTaL-libraries' by GL1 of
+## docs/xetal-libraries-asks.md, and here until it lands so that a
+## fit in the flat space reads as one on the sphere or in the ball.)
+## >> "mf:" u_se< "Manifold"
+## >> mf:f_latDistances 2 2 r_eshape 0.0 0.0 3.0 4.0
+## 0.0 5.0
+## 5.0 0.0
+l:f_latDistances := { P -> h:d_istPairs P }
+
+## `W off_Diagonal M`: W with its diagonal zeroed, as Floats, over the
+## shape of M.
+h:o_ffDiagonal := { W -> n := f_irst s_hape W; (f_loat W) * f_loat (r_ange n) '!= t_able r_ange n }
+
+## `W f_latDistancesGradient P`: the gradient with respect to each row
+## of P of the sum over pairs of W_ij |P_i - P_j|: for row i, the sum
+## over j of W_ij (P_i - P_j) / |P_i - P_j|, a matrix the shape of P.
+## >> "mf:" u_se< "Manifold"
+## >> (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:f_latDistancesGradient 2 2 r_eshape 0.0 0.0 3.0 4.0
+## -0.6000000000000001 -0.8
+##  0.6000000000000001  0.8
+l:f_latDistancesGradient := { W P ->
+  M := (h:o_ffDiagonal W) / (l:f_latDistances P) m_ax 1e-300
+  (('+ r_/_2 M) h:s_caleRows f_loat P) - M '+ '* i_nner f_loat P
+}
+
+## `W s_phereDistancesGradient P`: the gradient along the sphere, with
+## respect to each row of P (points on the sphere), of the sum over
+## pairs of W_ij times the angle between P_i and P_j: for row i, the
+## tangent part at P_i of the sum over j of -W_ij P_j / sin(angle), a
+## matrix the shape of P. (The angle is acos of the dot product; its
+## derivative with respect to P_i is -P_j / sin of it, then projected
+## onto the tangent plane; the sine is |P_i - P_j| |P_i + P_j| / 2.)
+## >> "mf:" u_se< "Manifold"
+## >> (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:s_phereDistancesGradient 2 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0
+##                 0.0 -0.9999999999999998 0.0
+## -0.9999999999999998                 0.0 0.0
+l:s_phereDistancesGradient := { W P ->
+  (D, S) := h:a_partPairs P
+  M := (h:o_ffDiagonal W) / (D * S / 2.0) m_ax 1e-300
+  Q := f_loat P
+  A := M '+ '* i_nner Q
+  c := h:d_ots (A, Q)
+  (c h:s_caleRows Q) - A
+}
+
+## `W b_allDistancesGradient P`: the gradient along the ball, with
+## respect to each row of P (points inside the ball), of the sum over
+## pairs of W_ij d(P_i, P_j), d the ball's distance: the plain
+## gradient scaled by (1 - |P_i|^2)^2 / 4 at each row (b_allTangent),
+## a matrix the shape of P. The plain gradient of d = 2 asinh z, z =
+## |u - v| / sqrt(a b) with a = 1 - |u|^2 and b = 1 - |v|^2, with
+## respect to u is (2 / sqrt(1 + z^2)) ((u - v) / |u - v| + |u - v|
+## u / a) / sqrt(a b).
+## >> "mf:" u_se< "Manifold"
+## >> (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:b_allDistancesGradient 2 2 r_eshape 0.0 0.0 0.5 0.0
+##  -0.5 0.0
+## 0.375 0.0
+l:b_allDistancesGradient := { W P ->
+  Q := f_loat P
+  M := h:d_istPairs Q
+  a := 1.0 - h:d_ots (Q, Q)
+  R := s_qrt a '* t_able a                                  # sqrt(a_i a_j)
+  Z := M / R
+  K := (h:o_ffDiagonal W) * 2.0 / R * s_qrt 1.0 + Z * Z   # W_ij 2 / (sqrt(1 + z^2) sqrt(a_i a_j))
+  E := K / M m_ax 1e-300                                   # ... / |u - v|, for the (u - v) part
+  F := '+ r_/_2 K * M                                      # sum over j of ... |u - v|, for the u / a_i part
+  plain := ((('+ r_/_2 E) + F / a) h:s_caleRows Q) - E '+ '* i_nner Q
+  Q l:b_allTangent plain
+}

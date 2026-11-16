@@ -197,7 +197,7 @@ mod tests {
         assert!(d.source.starts_with("l:s_phereDistance := "));
         assert!(lesson::explain::definition("Kit", "f_lat").is_some());
         assert_eq!(OWN_LIBRARIES, ["Kit", "Manifold"]);
-        assert!(source_url(&d).contains("/X_eTaL-manifolds/blob/") && source_url(&d).ends_with("#L104"), "{}", source_url(&d));
+        assert!(source_url(&d).contains("/X_eTaL-manifolds/blob/") && source_url(&d).ends_with("#L137"), "{}", source_url(&d));
         assert_eq!(home("Manifold"), "this repository");
         assert_eq!(home("Trig"), "X_eTaL-libraries");
     }

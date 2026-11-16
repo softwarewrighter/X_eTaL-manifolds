@@ -17,6 +17,10 @@ use lesson::explain::definition;
 use microscope::turning::{Angle, Point, Scene, Segment, Turning};
 use site::{comparison, functions, mark, own_function, Cell, ANALYSIS, EXPERIMENT, EXTENSION, INTUITION, MATHEMATICS, RUN};
 
+use gloo_timers::callback::Timeout;
+
+use crate::disk;
+use crate::hyper::{program as hyper_program, run as hyper_run, Hyper, PRESET};
 use crate::micro::{program, run, Explorer, Set, P2, P3, DISTORTIONS, RUNS};
 use crate::text;
 
@@ -472,22 +476,45 @@ fn library_asides() -> Html {
         { shell("Learn", "ml:", "k_nn", "Nearest neighbors, under the straight line between whatever points it is given: as they are, or their unit points.", "The squared distances to every training point are found at once; the nearest is taken k times, each shifted out of the way once taken; the labels are counted and the largest count wins.") }
         { shell("NN", "nn:", "c_rossEntropy", "The loss the network is trained to lower, kept at every step for the chart.", "Minus the mean over rows of the one-hot labels times the log of the probabilities.") }
         { own("Kit", "kt:", "n_ormals", "The starting weights: the same seeded normal numbers for both representations of a set.", "The first rows times cols normal numbers of the seed, as a matrix.") }
+        { own("Manifold", "mf:", "b_allDistances", "Part 2: the distance along the disk between every pair of embedded nodes, what the fit in the disk lowers the distortion of.", "2 asinh of |u - v| over the root of (1 - |u|^2)(1 - |v|^2), pair by pair; the one subtraction left is 1 - |u|^2.") }
+        { own("Manifold", "mf:", "b_allDistancesGradient", "Part 2: the gradient along the disk of the weighted sum of its distances, what each node is stepped against.", "The plain gradient of 2 asinh z with respect to each point, summed over its partners with the weights, then scaled by (1 - |p|^2)^2 / 4 at each point (b_allTangent).") }
+        { own("Manifold", "mf:", "b_allStep", "Part 2: the step along the disk that keeps every node inside it (the exponential map).", "Mobius addition of p and tanh(lambda |v| / 2) v / |v|, lambda = 2 / (1 - |p|^2); b_allProject then keeps the result under the rim's radius.") }
+        { own("Manifold", "mf:", "s_phereDistancesGradient", "Part 2: the gradient along the sphere of the weighted sum of the angles, for the fit on the sphere.", "Minus each partner over the sine of the angle to it, weighted and summed, then the tangent part at the point.") }
+        { own("Kit", "kt:", "t_reeDistances", "Part 2: the tree's own distances, what every fit tries to keep.", "Graphs' shortest paths over the tree's edges taken both ways: the number of edges between every two nodes.") }
+        { shell("Learn", "ml:", "l_ogistic", "Part 2: the trained classifier on each embedding's coordinates.", "Gradient descent on the cross-entropy of a softmax over the coordinates plus a bias, from zeros, n steps at rate lr.") }
     </> }
 }
 
 #[function_component(App)]
 pub fn app() -> Html {
     let model = use_memo((), |_| run());
+    // Part 2 runs after the first paint, so the reader has part 1 while
+    // the tree's fourteen fits run (some seconds); nothing of part 1
+    // waits on it.
+    let hyper = use_state(|| None::<Result<Hyper, String>>);
+    {
+        let hyper = hyper.clone();
+        use_effect_with((), move |_| {
+            let timer = Timeout::new(60, move || hyper.set(Some(hyper_run())));
+            move || drop(timer)
+        });
+    }
     let space = use_state(|| Space::Flat);
     let rule = use_state(|| MapRule::Angle);
     let angle = use_state(|| Angle { yaw: 0.5, pitch: 0.3 });
     let path_angle = use_state(|| Angle { yaw: -0.6, pitch: 0.4 });
+    let tree_angle = use_state(|| Angle { yaw: 0.4, pitch: 0.35 });
+    let curve = use_state(|| 6usize);
     let pick = { let s = space.clone(); Callback::from(move |n: Space| s.set(n)) };
     let pick_rule = { let r = rule.clone(); Callback::from(move |n: MapRule| r.set(n)) };
+    let pick_curve = { let c = curve.clone(); Callback::from(move |n: usize| c.set(n)) };
     let turned = { let a = angle.clone(); Callback::from(move |n: Angle| a.set(n)) };
     let path_turned = { let a = path_angle.clone(); Callback::from(move |n: Angle| a.set(n)) };
+    let tree_turned = { let a = tree_angle.clone(); Callback::from(move |n: Angle| a.set(n)) };
     let src = program();
+    let src2 = hyper_program();
     let linker = Linker::of(&src);
+    let linker2 = Linker::of(&src2);
     let body = match &*model {
         Err(e) => html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped: {e}") }</p></section> },
         Ok(e) => html! { <>
@@ -497,14 +524,25 @@ pub fn app() -> Html {
             { training(e) }
         </> },
     };
-    let after = match &*model {
-        Ok(e) => analysis(e),
-        Err(_) => html! {},
+    let body2 = match &*hyper {
+        None => html! { <section class="panel"><p class="notice" role="status">{ "Part 2 is running: the tree's fourteen fits in the three spaces, X_eTaL in your browser; some seconds. Everything above is part 1, finished." }</p></section> },
+        Some(Err(e)) => html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped in part 2: {e}") }</p></section> },
+        Some(Ok(h)) => html! { <>
+            { disk::disk(h) }
+            { disk::embeddings(h, *tree_angle, tree_turned.clone()) }
+            { disk::fitting(h) }
+            { disk::control(h, (*curve).min(h.curves.len() - 1), pick_curve, *tree_angle, tree_turned) }
+        </> },
+    };
+    let after = match (&*model, &*hyper) {
+        (Ok(e), Some(Ok(h))) => html! { <>{ analysis(e) }{ disk::analysis(e, h) }</> },
+        (Ok(e), _) => html! { <>{ analysis(e) }<p class="notice" role="status">{ "The tree's record and the H1 table follow when part 2 has run." }</p></> },
+        (Err(_), _) => html! {},
     };
     let texts = text::all();
     html! {
         <ContextProvider<Here> context={Here("representation-explorer".into())}>
-        <header>{ header("Representation explorer: flat against the sphere", text::LEDE) }</header>
+        <header>{ header("Representation explorer: flat, the sphere and the disk", text::LEDE) }</header>
         <main>
             { frame(Frame::Question, "The question", html! { <>
                 <p class="hint">{ prose(text::HINT) }</p>
@@ -514,12 +552,13 @@ pub fn app() -> Html {
             { frame(Frame::Background, "What you need to know first", html! { <>{ for text::BACKGROUND.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Rationale, "The idea: hold everything equal but the space", html! { <>{ for text::RATIONALE.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Purpose, "What this page is, and is not", html! { <>{ for text::PURPOSE.iter().map(|s| p(s)) }</> }) }
-            { frame(INTUITION, "The intuition: a sheet of paper and a globe", html! { <>{ for text::INTUITION.iter().map(|s| p(s)) }</> }) }
-            { frame(MATHEMATICS, "The mathematics: three distances, paths, means, a classifier", html! { <>{ for text::MATHEMATICS.iter().map(|s| p(s)) }</> }) }
-            { frame(EXPERIMENT, "The experiment: two sets by two representations, two methods", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }</> }) }
-            { frame(RUN, "The run: nearest neighbors, and four trainings of one network", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
+            { frame(INTUITION, "The intuition: a sheet of paper, a globe, and a disk with room to spare", html! { <>{ for text::INTUITION.iter().map(|s| p(s)) }</> }) }
+            { frame(MATHEMATICS, "The mathematics: three distances, paths, means, a classifier, a fit", html! { <>{ for text::MATHEMATICS.iter().map(|s| p(s)) }</> }) }
+            { frame(EXPERIMENT, "The experiment: three sets, three spaces", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }</> }) }
+            { frame(RUN, "The run: nearest neighbors, four trainings of one network, fourteen fits of one tree", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
             { body }
-            { frame(ANALYSIS, "The analysis: the record, and the distortions", after) }
+            { body2 }
+            { frame(ANALYSIS, "The analysis: the records, the distortions, the H1 table", after) }
             { frame(EXTENSION, "Beyond this page", html! { <>{ for text::EXTENSION.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Summary, "What this page showed", html! { <>{ for text::SUMMARY.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Next, "What is next", html! { <ul>{ for text::NEXT.iter().map(|s| li(s)) }</ul> }) }
@@ -533,11 +572,16 @@ pub fn app() -> Html {
                 { for text::CODE.iter().map(|s| p(s)) }
                 <h3>{ "The library functions behind the numbers" }</h3>
                 { library_asides() }
-                <h3>{ "Every library function the program calls" }</h3>
-                { functions(&src) }
-                <h3>{ "The program" }</h3>
+                <h3>{ "Every library function the two programs call" }</h3>
+                { functions(&format!("{src}\n{src2}")) }
+                <h3>{ "The program of part 1" }</h3>
                 { linker.block(&src) }
                 <p class="links"><a href="../doc/demos-representation-explorer-representation-explorer.xtl.html">{ "This program in the cross-reference" }</a></p>
+                <h3>{ "The program of part 2" }</h3>
+                { linker2.block(&src2) }
+                <p class="links"><a href="../doc/demos-representation-explorer-representation-hyperbolic.xtl.html">{ "This program in the cross-reference" }</a></p>
+                <h3>{ "The preset of part 2 (presets/tree.txt)" }</h3>
+                <pre class="preset">{ PRESET }</pre>
             </section>
         </main>
         { footer() }

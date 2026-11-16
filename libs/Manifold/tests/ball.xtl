@@ -1,0 +1,76 @@
+#!/usr/bin/env xetal
+# Manifold: the Poincare ball's verbs beside the distance and the
+# geodesic (tests/tour.xtl): Project keeps a point inside, Off says
+# how far one went past the rim, Distances agrees with Distance pair
+# by pair, Tangent scales by the metric, Step and Arrow undo each
+# other, and all of it holds at the middle of the ball and near its
+# rim alike. Run with "just run-lib Manifold ball".
+"mf:" u_se< "Manifold"
+"ch:" u_se< "Check"
+"tr:" u_se< "Trig"
+
+o := 0.0 0.0
+p := 0.5 0.0
+q := 0.3 -0.4
+rim := 0.99999
+e := 0.0 c_at rim                      # a point at the rim's radius
+u:n_orm := { v -> s_qrt '+ r_/ v * v }
+
+# Project: a point inside stays; one outside, or past the rim's radius, is brought to it; a set row by row.
+"a point inside is left alone" ch:t_est q ch:n_ear mf:b_allProject q
+"a point outside is brought to the rim's radius" ch:t_est rim ch:n_ear u:n_orm mf:b_allProject 3.0 4.0
+"a point just past the rim's radius too" ch:t_est rim ch:n_ear u:n_orm mf:b_allProject 0.0 0.999995
+"its direction is kept" ch:t_est 0.6 0.8 ch:n_ear (mf:b_allProject 3.0 4.0) / rim
+P := 3 2 r_eshape 0.5 0.0 3.0 4.0 0.0 -1.0
+"a set is projected row by row" ch:t_est (0.5 c_at rim c_at rim) ch:n_ear s_qrt '+ r_/_2 (mf:b_allProject P) ^ 2.0
+
+# Off: 0 inside, the excess past the rim's radius outside; a set row by row.
+"a point inside is not off" ch:t_est 0.0 ch:n_ear mf:b_allOff q
+"a point at the rim is off by 1e-5" ch:t_est 0.00001 ch:n_ear mf:b_allOff 0.0 1.0
+"a point far outside is off by its excess" ch:t_est (5.0 - rim) ch:n_ear mf:b_allOff 3.0 4.0
+"a projected set is not off" ch:t_est (3 r_eshape 0.0) ch:n_ear mf:b_allOff mf:b_allProject P
+
+# Distances: pair by pair the same as Distance, 0 on the diagonal, symmetric; at the middle and near the rim.
+Q := 4 2 r_eshape 0.0 0.0 0.5 0.0 0.3 -0.4 0.0 0.99999
+M := mf:b_allDistances Q
+"the diagonal is 0" ch:t_est (4 r_eshape 0.0) ch:n_ear '{ i -> i s_elect i s_elect M } e_ach r_ange 4
+"symmetric" ch:t_est M ch:n_ear o_\ M
+"Distances agrees with Distance, pair by pair" ch:t_est ((o mf:b_allDistance p) c_at (o mf:b_allDistance q) c_at p mf:b_allDistance q) ch:n_ear (1 s_elect 2 s_elect M) c_at (1 s_elect 3 s_elect M) c_at 2 s_elect 3 s_elect M
+# Near the rim the two forms part in the twelfth digit: the Mobius form's atanh of a number near 1 loses what the asinh form keeps.
+"near the rim they agree to a billionth" ch:t_est 1 ch:i_s 0.000000001 > a_bs (p mf:b_allDistance e) - 2 s_elect 4 s_elect M
+"a rim point is far from the middle: 2 atanh of its radius" ch:t_est (2.0 * tr:a_tanh rim) ch:n_ear 1 s_elect 4 s_elect M
+"that is about 12.2, the farthest any point can be from the middle" ch:t_est 1 ch:i_s (12.2 < 1 s_elect 4 s_elect M) & 12.3 > 1 s_elect 4 s_elect M
+"near the middle, twice the plain distance, to a millionth" ch:t_est 1 ch:i_s 0.000001 > a_bs 2.0 - (1 s_elect 2 s_elect mf:b_allDistances 2 2 r_eshape 0.0 0.0 0.0001 0.0) / 0.0001
+"Distance takes two sets row by row" ch:t_est ((o mf:b_allDistance p) c_at q mf:b_allDistance e) ch:n_ear (2 2 r_eshape o c_at q) mf:b_allDistance 2 2 r_eshape p c_at e
+
+# Tangent: the plain gradient scaled by (1 - |p|^2)^2 / 4; at the middle a quarter, near the rim almost nothing.
+v := 1.0 2.0
+"at the middle, a quarter" ch:t_est (v / 4.0) ch:n_ear o mf:b_allTangent v
+"at radius 0.5, (3/4)^2 / 4" ch:t_est (v * 0.140625) ch:n_ear p mf:b_allTangent v
+"near the rim, almost nothing" ch:t_est 1 ch:i_s 0.000000001 > u:n_orm e mf:b_allTangent v
+"a set row by row" ch:t_est ((v / 4.0) c_at v * 0.140625) ch:n_ear r_avel (2 2 r_eshape o c_at p) mf:b_allTangent 2 2 r_eshape v c_at v
+
+# Step: along the ball for the metric length of v; a zero step stays; the result is inside; Step and Arrow undo each other.
+"a zero step stays put" ch:t_est p ch:n_ear p mf:b_allStep o
+"a step from the middle of plain length t lands at radius tanh t" ch:t_est (t_anh 0.7) ch:n_ear u:n_orm o mf:b_allStep 0.7 0.0
+"its distance from the middle is 2 t, the metric length of v there" ch:t_est 1.4 ch:n_ear o mf:b_allDistance o mf:b_allStep 0.7 0.0
+"a step lands inside the ball" ch:t_est 1 ch:i_s 1.0 > u:n_orm q mf:b_allStep 3.0 -2.0
+"Arrow then Step reaches q from p" ch:t_est q ch:n_ear p mf:b_allStep p mf:b_allArrow q
+"Arrow then Step reaches the rim point from q" ch:t_est e ch:n_ear q mf:b_allStep q mf:b_allArrow e
+"Step then Arrow gives v back" ch:t_est 0.2 -0.1 ch:n_ear q mf:b_allArrow q mf:b_allStep 0.2 -0.1
+"the arrow's metric length is the distance" ch:t_est (p mf:b_allDistance q) ch:n_ear (2.0 / 1.0 - '+ r_/ p * p) * u:n_orm p mf:b_allArrow q
+"the arrow to the same point is zero" ch:t_est o ch:n_ear q mf:b_allArrow q
+"a set steps row by row" ch:t_est ((o mf:b_allStep 0.7 0.0) c_at p mf:b_allStep 0.2 -0.1) ch:n_ear r_avel (2 2 r_eshape o c_at p) mf:b_allStep 2 2 r_eshape 0.7 0.0 0.2 -0.1
+# A long step from near the rim: tanh of a large number is 1 to the machine, so the point lands on the rim itself (b_allOff says so) and Project brings it back.
+far := e mf:b_allStep 0.0 1000000.0
+"a long step from the rim lands on the rim by rounding" ch:t_est 1 ch:i_s 0.0 < mf:b_allOff far
+"Project brings it back to the rim's radius" ch:t_est 0.0 ch:n_ear mf:b_allOff mf:b_allProject far
+# Along a geodesic, Step by fractions of the arrow lands on the geodesic's points.
+G := (p, q) mf:b_allGeodesic 4
+a := p mf:b_allArrow q
+"half the arrow lands on the geodesic's middle" ch:t_est (3 s_elect G) ch:n_ear p mf:b_allStep a / 2.0
+"a quarter of it on its second point" ch:t_est (2 s_elect G) ch:n_ear p mf:b_allStep a / 4.0
+
+# Distortion in the ball: 0 for a set against its own distances, as for the other spaces.
+"a set keeps its own distances" ch:t_est 0.0 0.0 ch:n_ear M mf:b_allDistortion Q
+"halved distances are off by 1" ch:t_est 1.0 1.0 ch:n_ear (M / 2.0) mf:b_allDistortion Q

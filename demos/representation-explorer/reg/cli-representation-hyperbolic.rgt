@@ -1,0 +1,3 @@
+command = '"$XETAL" run --seed 1 --draw "$XETAL_DRAW" representation-hyperbolic.xtl'
+exit_code = 0
+desc = "representation-explorer: representation-hyperbolic.xtl run by the pinned xetal CLI"

@@ -1,0 +1,347 @@
+#!/usr/bin/env xetal
+## Representation explorer, part 2: the Poincare disk, and the tree.
+## The disk's distance (worked in full, and what it does near the rim),
+## a shortest path in it, why a tree wants such a space (the room
+## round a point grows with its distance as the tree's levels do,
+## counted); then the tree of the kit fitted in each of the three
+## spaces at the same dimension, from the same start, by the same
+## steps: the plane (curvature 0), the unit sphere (+1) and the disk
+## (-1), each at the scale the fit chooses; the distortion by step and
+## at the end, the worst pair, a classifier from each embedding, three
+## starts for the spread; and curvature as a control: the same fit at
+## fixed curvatures from +1 through 0 to -4. The second half of H1.
+"kt:" u_se< "Kit"
+"mf:" u_se< "Manifold"
+"ml:" u_se< "Learn"
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+
+# -- the preset
+## The fit's numbers are data, presets/tree.txt (the schema of
+## docs/research-questions.md): the file's words are dropped and its
+## numbers kept in order: the tree's depth and branching; the three
+## start seeds and the start's spread; the steps, the control's
+## steps and the rate; the distortion target; k for nearest neighbors
+## and the split's seed; then the curvatures of the control.
+text := []N_GET "presets/tree.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+depth := f_loor 1 s_elect preset
+branching := f_loor 2 s_elect preset
+seeds := f_loor 3 4 5 s_elect preset
+spread := 6 s_elect preset
+steps := f_loor 7 s_elect preset
+controlSteps := f_loor 8 s_elect preset
+lr := 9 s_elect preset
+target := 10 s_elect preset
+k := f_loor 11 s_elect preset
+splitSeed := f_loor 12 s_elect preset
+curvatures := 12 d_rop preset
+
+# -- the kit
+## The split as in part 1 (X_eTaL-ML's by GM5, written out).
+u:s_plit := { (seed, n) -> order := g_rade kt:u_niform (seed, n); h := n d_iv 4; (h d_rop order, h t_ake order) }
+
+# -- the tree
+## The hierarchical set: the tree of the preset (depth 4, branching 2:
+## 31 nodes, 30 edges), its distances along itself (the edges on the
+## one path between two nodes, 1 to 8), each node's class (the branch
+## of the root it hangs from; the root is given class 1), its edges,
+## and the kit's plain layout of it, the baseline's.
+T := kt:t_reeDistances (depth, branching)
+ty := kt:t_reeClasses (depth, branching)
+edges := kt:t_ree (depth, branching)
+layout := kt:t_reeLayout (depth, branching)
+n := f_irst s_hape T
+pair := (r_ange n) '< t_able r_ange n
+pairF := f_loat pair
+npairs := f_loat '+ r_/ r_avel pair
+
+# -- the disk
+## The Poincare disk: the inside of the unit circle, where a step of
+## plain length t at plain radius r counts 2 t / (1 - r^2). The
+## distance from the middle to a point at plain radius r is 2 atanh r:
+## at a few radii, up to the rim's radius 1 - 1e-5 the ball's points
+## are kept to (Manifold's), which is as far from the middle as any
+## point can be.
+radii := 0.5 0.9 0.99 0.999 0.99999
+fromMiddle := '{ r -> 0.0 0.0 mf:b_allDistance r c_at 0.0 } e_ach radii
+## One distance worked in full, the points u = (0.6, 0) and v =
+## (0, 0.6): |u - v|^2; 1 - |u|^2 and 1 - |v|^2; z, |u - v| over the
+## root of their product; the distance 2 asinh z, which is the same
+## as acosh(1 + 2 z^2); and the plain distance for comparison.
+wu := 0.6 0.0
+wv := 0.0 0.6
+workedM2 := '+ r_/ (wu - wv) ^ 2.0
+workedA := 1.0 - '+ r_/ wu * wu
+workedB := 1.0 - '+ r_/ wv * wv
+workedZ := (s_qrt workedM2) / s_qrt workedA * workedB
+workedDisk := 2.0 * tr:a_sinh workedZ
+workedAcosh := tr:a_cosh 1.0 + 2.0 * workedZ * workedZ
+workedPlain := s_qrt workedM2
+## A shortest path in the disk between u and v, 13 points (Manifold's
+## geodesic: an arc of a circle that meets the rim at right angles,
+## bowed toward the middle), beside the straight segment between
+## them; the lengths of the two along the disk (the segment's, summed
+## over its 12 pieces).
+geodesic := (wu, wv) mf:b_allGeodesic 12
+u:s_egment := { (a, b) m -> t := ((f_loat r_ange m + 1) - 1.0) / f_loat m; (((m + 1) c_at t_ally a) r_eshape a) + t '* t_able b - a }
+straight := (wu, wv) u:s_egment 12
+u:a_longDisk := { Q -> '+ r_/ (1 d_rop Q) mf:b_allDistance (0 - 1) d_rop Q }
+pathLengths := (u:a_longDisk geodesic) c_at u:a_longDisk straight
+
+## Why a tree wants the disk, counted: level L of a tree of branching
+## b has b^L nodes, every one L edges from the root. Put them evenly
+## round the circle of radius L in the plane (length 2 pi L) and in
+## the disk (2 pi sinh L: its plain radius is tanh(L / 2)); then
+## measure the distance between neighbors along each space (the
+## shortest path between them, which in the disk is far shorter than
+## the arc round the circle). One row per level, 1 to 5: nodes; the
+## two circles' lengths; the spacing of neighbors in the plane and in
+## the disk. In the plane the spacing shrinks with every level and is
+## under an edge's length by level 5; in the disk it grows.
+u:r_ing := { m -> mf:c_irclePoints ((2.0 * p_i @) / f_loat m) * (f_loat r_ange m) - 1.0 }
+u:l_evel := { L ->
+  m := branching ^ L
+  R := u:r_ing m
+  plane := (f_loat L) * s_qrt '+ r_/ ((1 s_elect R) - 2 s_elect R) ^ 2.0
+  disk := (t_anh (f_loat L) / 2.0) * R
+  (f_loat m) c_at (2.0 * (p_i @) * f_loat L) c_at (2.0 * (p_i @) * tr:s_inh f_loat L) c_at plane c_at (1 s_elect disk) mf:b_allDistance 2 s_elect disk
+}
+(roomRows, _) := 5 '{ (R, L) -> (R c_at u:l_evel L, L + 1) } p_ower (0 r_eshape 0.0, 1)
+room := 5 5 r_eshape roomRows
+
+# -- the fit
+## An embedding P of the tree in a space of curvature K is fitted by
+## lowering the mean over pairs of (E / D - 1)^2: D the tree's
+## distances (an edge is 1), E the distances between the embedded
+## nodes along the space. A sphere of curvature K > 0 is the unit
+## sphere with every length times its radius r = 1 / sqrt K; a ball
+## of curvature K < 0 is the unit ball with every length divided by
+## sqrt -K; K = 0 is the plane. So the fit keeps its points in the
+## unit sphere or ball (Manifold's) and scales their distances, and a
+## step at rate lr along the space of curvature K is the unit space's
+## step at rate lr sqrt |K|, with the same W (the loss's gradient
+## with respect to the distances): a length in the space is 1 / sqrt
+## |K| times its unit-space length, which scales the distances up and
+## the coordinates down by the same factor, and only the step's
+## length is left scaled. Each step: W; the gradient along the unit
+## space with respect to every point (Manifold's
+## ...DistancesGradient) for that W; a
+## step against it along the space (P - lr G in the plane, s_phereStep
+## on the sphere, b_allStep in the ball then b_allProject, with how far
+## past the rim the step went kept as the constraint's violation).
+## The scale is not fitted: at a fixed scale the curvature means
+## something (the same tree at the same size in a smaller or larger
+## space); with the scale free, every curvature of one sign is the
+## same space, and a first run with the scale free saw the sphere's
+## fit shrink its embedding without end toward the plane's, which is
+## the sweep's finding below, measured instead of run away with.
+## `u:m_easure (D, E)`: W, and the row (loss, mean distortion, worst
+## pair) at E.
+## (1 / D over the pairs, 0 elsewhere, is the same every step.)
+invD := pairF / T m_ax 1e-300
+u:m_easure := { (D, E) ->
+  R := (E * invD) - pairF
+  Wu := (2.0 / npairs) * R * invD
+  (Wu + o_\ Wu, (('+ r_/ r_avel R * R) / npairs) c_at (('+ r_/ r_avel a_bs R) / npairs) c_at 'm_ax r_/ r_avel a_bs R)
+}
+## One step in each kind of space, on the state (P, L, K, C): L gains
+## the row measured before the step, with how far past the rim it went
+## (0 but in the ball); C is the embedding as it stood at the control's
+## step (P itself until then), so the control can read every fit at
+## that step.
+u:k_eep := { (P, L, C) -> (t_ally L) = 4 * controlSteps ? P; C }
+u:s_tepSphere := { (P, L, K, C) -> r := 1.0 / s_qrt K; (W, m) := u:m_easure (T, r * mf:s_phereDistances P); (P mf:s_phereStep (0.0 - lr * s_qrt K) * W mf:s_phereDistancesGradient P, L c_at m c_at 0.0, K, u:k_eep (P, L, C)) }
+u:s_tepFlat := { (P, L, K, C) -> (W, m) := u:m_easure (T, mf:f_latDistances P); (P - lr * W mf:f_latDistancesGradient P, L c_at m c_at 0.0, K, u:k_eep (P, L, C)) }
+u:s_tepBall := { (P, L, K, C) -> c := 0.0 - K; (W, m) := u:m_easure (T, (mf:b_allDistances P) / s_qrt c); Q := P mf:b_allStep (0.0 - lr * s_qrt c) * W mf:b_allDistancesGradient P; (mf:b_allProject Q, L c_at m c_at 'm_ax r_/ mf:b_allOff Q, K, u:k_eep (P, L, C)) }
+## The same start in every space: seeded normal numbers, `spread`
+## times, as a tangent vector at the origin of each space (the plane's
+## origin, the sphere's north pole, the disk's middle), carried into
+## the space by its own step (s_phereStep, b_allStep), scaled by sqrt
+## |K| into the unit space's coordinates; the plane keeps it. Every
+## embedding is kept as 31 rows of 3, the third 0 but on the sphere
+## (a zero coordinate changes no distance).
+u:s_tart := { seed -> spread * kt:n_ormals (seed, n, 2) }
+u:p_ad := { V -> o_\ (3 c_at n) r_eshape (r_avel o_\ V) c_at n r_eshape 0.0 }
+u:s_tartSphere := { (K, V) -> ((n c_at 3) r_eshape 0.0 0.0 1.0) mf:s_phereStep u:p_ad (s_qrt K) * V }
+u:s_tartBall := { (K, V) -> ((n c_at 2) r_eshape 0.0) mf:b_allStep (s_qrt 0.0 - K) * V }
+## `u:f_it (K, seed, m)`: the fit at curvature K from the seed's start,
+## m steps: the embedding, the log, one row per step and one after the
+## last (loss, mean distortion, worst pair, past the rim), and the
+## embedding at the control's step.
+u:l_og := { (L, m) -> (((t_ally L) d_iv 4) c_at 4) r_eshape L c_at m c_at 0.0 }
+u:f_itSphere := { (K, seed, m) -> S := u:s_tartSphere (K, u:s_tart seed); (P, L, _, C) := m '{ t -> u:s_tepSphere t } p_ower (S, 0 r_eshape 0.0, K, S); (_, e) := u:m_easure (T, (1.0 / s_qrt K) * mf:s_phereDistances P); (P, u:l_og (L c_at e c_at 0.0, 0 r_eshape 0.0), C) }
+u:f_itBall := { (K, seed, m) -> S := u:s_tartBall (K, u:s_tart seed); (P, L, _, C) := m '{ t -> u:s_tepBall t } p_ower (S, 0 r_eshape 0.0, K, S); (_, e) := u:m_easure (T, (mf:b_allDistances P) / s_qrt 0.0 - K); (u:p_ad P, u:l_og (L c_at e c_at 0.0, 0 r_eshape 0.0), u:p_ad C) }
+u:f_itFlat := { (K, seed, m) -> S := u:s_tart seed; (P, L, _, C) := m '{ t -> u:s_tepFlat t } p_ower (S, 0 r_eshape 0.0, K, S); (_, e) := u:m_easure (T, mf:f_latDistances P); (u:p_ad P, u:l_og (L c_at e c_at 0.0, 0 r_eshape 0.0), u:p_ad C) }
+u:f_it := { (K, seed, m) -> K > 0.0 ? u:f_itSphere (K, seed, m); K < 0.0 ? u:f_itBall (K, seed, m); u:f_itFlat (K, seed, m) }
+## The distances of an embedding along its space, scaled to the tree's
+## unit (an edge should come out 1).
+u:d_istances := { (K, P) -> K > 0.0 ? (1.0 / s_qrt K) * mf:s_phereDistances P; K < 0.0 ? (mf:b_allDistances P) / s_qrt 0.0 - K; mf:f_latDistances P }
+
+## The nine fits: the three spaces, the sphere (curvature +1, the unit
+## sphere), the plane (0) and the disk (-1, the unit disk), by the
+## three starts. The first start's embeddings and logs are the page's;
+## every start's end row goes into the spread.
+(sphereP, sphereLog, sphereC) := u:f_it (1.0, 1 s_elect seeds, steps)
+(flatP, flatLog, flatC) := u:f_it (0.0, 1 s_elect seeds, steps)
+(ballP, ballLog, ballC) := u:f_it (-1.0, 1 s_elect seeds, steps)
+(_, sphereLog2, _) := u:f_it (1.0, 2 s_elect seeds, steps)
+(_, flatLog2, _) := u:f_it (0.0, 2 s_elect seeds, steps)
+(_, ballLog2, _) := u:f_it (-1.0, 2 s_elect seeds, steps)
+(_, sphereLog3, _) := u:f_it (1.0, 3 s_elect seeds, steps)
+(_, flatLog3, _) := u:f_it (0.0, 3 s_elect seeds, steps)
+(_, ballLog3, _) := u:f_it (-1.0, 3 s_elect seeds, steps)
+## The other two starts' mean distortion by step, per space, for the
+## chart: one row per start.
+otherMeans := (6 c_at steps + 1) r_eshape (2 s_elect_2 sphereLog2) c_at (2 s_elect_2 sphereLog3) c_at (2 s_elect_2 flatLog2) c_at (2 s_elect_2 flatLog3) c_at (2 s_elect_2 ballLog2) c_at 2 s_elect_2 ballLog3
+## The distances of the first start's three embeddings, and the
+## distortion of every pair (Manifold's d_istortionPairs).
+sphereE := u:d_istances (1.0, sphereP)
+flatE := u:d_istances (0.0, flatP)
+ballE := u:d_istances (-1.0, ballP)
+spherePairs := T mf:d_istortionPairs sphereE
+flatPairs := T mf:d_istortionPairs flatE
+ballPairs := T mf:d_istortionPairs ballE
+## Each edge's distortion (|E / D - 1| for the 30 edges, in the
+## edges' order), one row per space (sphere, plane, disk): what the
+## pictures color.
+u:e_dges := { M -> '{ e -> (e s_elect 2 s_elect edges) s_elect (e s_elect 1 s_elect edges) s_elect M } e_ach r_ange n - 1 }
+edgeDistortion := (3 c_at n - 1) r_eshape (u:e_dges spherePairs) c_at (u:e_dges flatPairs) c_at u:e_dges ballPairs
+## The worst pair in each space (the two nodes' numbers).
+u:w_orst := { M -> at := f_irst w_here (r_avel M) = 'm_ax r_/ r_avel M; (1 + (at - 1) d_iv n) c_at 1 + (at - 1) m_od n }
+worstPairs := 3 2 r_eshape (u:w_orst spherePairs) c_at (u:w_orst flatPairs) c_at u:w_orst ballPairs
+## The spread over the three starts: per space, the end distortion of
+## each start, and the largest less the smallest.
+u:e_nd := { L -> 2 s_elect (steps + 1) s_elect L }
+u:s_pread := { (a, b, c) -> v := a c_at b c_at c; v c_at ('m_ax r_/ v) - 'm_in r_/ v }
+spreadRows := 3 4 r_eshape (u:s_pread (u:e_nd sphereLog, u:e_nd sphereLog2, u:e_nd sphereLog3)) c_at (u:s_pread (u:e_nd flatLog, u:e_nd flatLog2, u:e_nd flatLog3)) c_at u:s_pread (u:e_nd ballLog, u:e_nd ballLog2, u:e_nd ballLog3)
+
+# -- a path and a node's neighbors in the disk
+## In the first start's disk embedding: the geodesic from the root
+## (node 1) to the last leaf (node 31), 13 points, and the three nodes
+## nearest node 2 (the root's first child) along the disk, which in a
+## faithful embedding are its parent and its two children (1, 4, 5).
+treePath := (2 t_ake 1 s_elect ballP, 2 t_ake n s_elect ballP) mf:b_allGeodesic 12
+u:n_earest := { (M, i, m) -> 1 d_rop (m + 1) t_ake g_rade i s_elect M }
+neighbors := u:n_earest (ballE, 2, 3)
+
+# -- a classifier from each embedding
+## The node's branch from its embedded position, the held-out quarter
+## (split seed 11: 7 of the 31 nodes) from the rest. Two classifiers:
+## k nearest neighbors (k = 3) under the space's own distance, from
+## its distance matrix (the training nodes nearest the held-out node,
+## the commonest class among them, the smaller on a tie); and Learn's
+## logistic classifier on the embedded coordinates (3, the third 0
+## but on the sphere), 200 steps at rate 0.5. The held-out accuracy
+## of each, and the guesses, one row per space.
+(train, held) := u:s_plit (splitSeed, n)
+u:v_ote := { (E, i) -> near := k t_ake g_rade (train s_elect i s_elect E); labels := (near s_elect train) s_elect ty; counts := '{ c -> '+ r_/ labels = c } e_ach r_ange branching; f_irst w_here counts = 'm_ax r_/ counts }
+u:k_nn := { E -> '{ i -> u:v_ote (E, i) } e_ach held }
+u:a_ccuracy := { guess -> (f_loat '+ r_/ guess = held s_elect ty) / f_loat t_ally held }
+u:l_ogistic := { P -> ((200, 0.5) ml:l_ogistic (train s_elect P, train s_elect ty)) ml:p_redict held s_elect P }
+knnGuess := (3 c_at t_ally held) r_eshape (u:k_nn sphereE) c_at (u:k_nn flatE) c_at u:k_nn ballE
+logisticGuess := (3 c_at t_ally held) r_eshape (u:l_ogistic sphereP) c_at (u:l_ogistic flatP) c_at u:l_ogistic ballP
+accuracy := 3 2 r_eshape (u:a_ccuracy 1 s_elect knnGuess) c_at (u:a_ccuracy 1 s_elect logisticGuess) c_at (u:a_ccuracy 2 s_elect knnGuess) c_at (u:a_ccuracy 2 s_elect logisticGuess) c_at (u:a_ccuracy 3 s_elect knnGuess) c_at u:a_ccuracy 3 s_elect logisticGuess
+
+# -- the record
+## One row per space (sphere, plane, disk): the end distortion (mean
+## over pairs), the worst pair, the steps to a mean distortion under
+## the target (-1 if never), the distortion with the scale forgiven
+## (after Manifold's f_itScale, as part 1 measured its
+## representations: how much of a space's loss is its size), the
+## numbers trained (the embedding's coordinates: 2 per node, 3 on the
+## sphere) and the operations (6 per pair per coordinate per step: the
+## distances and their gradient), the constraint's violation (the
+## farthest any step went past the rim, over the run), and the two
+## accuracies.
+u:u_nder := { L -> hits := w_here (2 s_elect_2 L) < target; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+u:r_ecord := { (K, L, E, a) -> end := (steps + 1) s_elect L; d := 2 + K > 0.0; (2 s_elect end) c_at (3 s_elect end) c_at (f_loat u:u_nder L) c_at (1 s_elect T mf:d_istortion (T mf:f_itScale E) * E) c_at (f_loat n * d) c_at (f_loat 6 * steps * d * n * n) c_at ('m_ax r_/ 4 s_elect_2 L) c_at a }
+record := 3 9 r_eshape (u:r_ecord (1.0, sphereLog, sphereE, 1 s_elect accuracy)) c_at (u:r_ecord (0.0, flatLog, flatE, 2 s_elect accuracy)) c_at u:r_ecord (-1.0, ballLog, ballE, 3 s_elect accuracy)
+## The baseline's row again: the plain layout's distortion against the
+## tree (mean, worst), and nearest neighbors on it, for the row
+## against.
+layoutE := mf:f_latDistances layout
+baseline := (T mf:f_latDistortion layout) c_at u:a_ccuracy u:k_nn layoutE
+
+# -- curvature as a control
+## The same fit, from the first start, at each curvature of the preset,
+## +1 through 0 to -4, for the control's 100 steps (the three fits
+## above stand for +1, 0 and -1, read at their step 100, the embedding
+## they kept there: the same start, rate and steps give the same
+## numbers): as K goes to 0 from either side the fit goes to the
+## plane's. One row per curvature: K, the mean distortion at step 100,
+## the worst pair, the steps to the target, how far past the rim any
+## step went; and the embedding at step 100 (31 rows of 3 each).
+u:f_itAt := { K -> K = 1.0 ? (sphereC, sphereLog); K = 0.0 ? (flatC, flatLog); K = -1.0 ? (ballC, ballLog); (P, L, _) := u:f_it (K, 1 s_elect seeds, controlSteps); (P, L) }
+(curveRows, curveFlat, _) := (t_ally curvatures) '{ (rows, pts, i) ->
+  K := i s_elect curvatures
+  (P, L) := u:f_itAt K
+  end := (controlSteps + 1) s_elect L
+  (rows c_at K c_at (2 s_elect end) c_at (3 s_elect end) c_at (f_loat u:u_nder L) c_at ('m_ax r_/ 4 s_elect_2 L), pts c_at r_avel P, i + 1)
+} p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+curvature := ((t_ally curvatures) c_at 5) r_eshape curveRows
+curvePoints := (((t_ally curvatures) * n) c_at 3) r_eshape curveFlat
+
+## For the page: the sphere's wire lines and the sphere embedding's
+## map (longitude and latitude, degrees).
+(parallels, meridians) := mf:s_phereWires (5, 12, 24)
+deg := (p_i @) / 180.0
+sphereMap := o_\ (2 c_at n) r_eshape (((2 s_elect_2 sphereP) tr:a_tan2 1 s_elect_2 sphereP) / deg) c_at (tr:a_sin 3 s_elect_2 sphereP) / deg
+# -- end of the core
+
+### The preset
+preset
+
+### The disk
+fromMiddle
+"the farthest point of the ball, at the rim's radius, is about 12.2 from the middle" ch:t_est 1 ch:i_s (12.2 < 5 s_elect fromMiddle) & 12.3 > 5 s_elect fromMiddle
+workedDisk c_at workedAcosh c_at workedPlain
+"the worked distance is Manifold's" ch:t_est workedDisk ch:n_ear wu mf:b_allDistance wv
+"the asinh and acosh forms agree" ch:t_est 1 ch:i_s 0.000000001 > a_bs workedDisk - workedAcosh
+"the disk's distance is more than twice the plain one here" ch:t_est 1 ch:i_s workedDisk > 2.0 * workedPlain
+pathLengths
+"the geodesic is the shorter path along the disk" ch:t_est 1 ch:i_s (1 s_elect pathLengths) < 2 s_elect pathLengths
+"the geodesic bows toward the middle" ch:t_est 1 ch:i_s (s_qrt '+ r_/ (7 s_elect geodesic) ^ 2.0) < s_qrt '+ r_/ (7 s_elect straight) ^ 2.0
+room
+"in the plane, neighbors on level 5 are nearer than an edge; in the disk, farther" ch:t_est 1 ch:i_s (1.0 > 4 s_elect 5 s_elect room) & 1.0 < 5 s_elect 5 s_elect room
+"from level 2 on the plane's spacing shrinks level by level; the disk's grows at every level" ch:t_est 1 ch:i_s ('& r_/ (2 d_rop 4 s_elect_2 room) < (0 - 1) d_rop 1 d_rop 4 s_elect_2 room) & '& r_/ (1 d_rop 5 s_elect_2 room) > (0 - 1) d_rop 5 s_elect_2 room
+"the disk's circle of radius L has length 2 pi sinh L" ch:t_est (3 s_elect_2 room) ch:n_ear 2.0 * (p_i @) * tr:s_inh f_loat r_ange 5
+
+### The fit
+record
+"every fit's distortion fell" ch:t_est 1 1 1 ch:i_s ((2 s_elect 1 s_elect sphereLog) > 1 s_elect 1 s_elect record) c_at ((2 s_elect 1 s_elect flatLog) > 1 s_elect 2 s_elect record) c_at (2 s_elect 1 s_elect ballLog) > 1 s_elect 3 s_elect record
+"the sphere embedding stayed on the sphere" ch:t_est (n r_eshape 0.0) ch:n_ear mf:s_phereOff sphereP
+"the disk embedding stayed inside the disk" ch:t_est (n r_eshape 0.0) ch:n_ear mf:b_allOff ballP
+"the edges' distortions are the pairs' (edge 1 is nodes 1 and 2, edge 3 nodes 2 and 4)" ch:t_est ((1 s_elect 3 s_elect edgeDistortion) c_at 3 s_elect 3 s_elect edgeDistortion) ch:n_ear (2 s_elect 1 s_elect ballPairs) c_at 4 s_elect 2 s_elect ballPairs
+spreadRows
+worstPairs
+neighbors
+accuracy
+baseline
+## The loss's gradient with respect to the points against central
+## differences at h = 0.00001, in the plane and in the disk, at four
+## coordinates of the first start: the largest gap in each.
+u:l_ossFlat := { P -> (_, m) := u:m_easure (T, mf:f_latDistances P); 1 s_elect m }
+u:l_ossBall := { P -> (_, m) := u:m_easure (T, mf:b_allDistances P); 1 s_elect m }
+u:b_ump := { (P, i, e) -> P + e * f_loat (s_hape P) r_eshape (r_ange '* r_/ s_hape P) = i }
+h := 0.00001
+at := 1 7 30 62
+P0 := u:s_tart 1 s_elect seeds
+(W0, _) := u:m_easure (T, mf:f_latDistances P0)
+G0 := W0 mf:f_latDistancesGradient P0
+centralFlat := '{ i -> ((u:l_ossFlat u:b_ump (P0, i, h)) - u:l_ossFlat u:b_ump (P0, i, 0.0 - h)) / 2.0 * h } e_ach at
+B0 := u:s_tartBall (-1.0, P0)
+(Wb, _) := u:m_easure (T, mf:b_allDistances B0)
+Gb := Wb mf:b_allDistancesGradient B0                          # along the ball: the plain gradient scaled by (1 - |p|^2)^2 / 4
+plainB := Gb / ((((1.0 - '+ r_/_2 B0 * B0) ^ 2.0) / 4.0) 'l_eft t_able 0 0)
+centralBall := '{ i -> ((u:l_ossBall u:b_ump (B0, i, h)) - u:l_ossBall u:b_ump (B0, i, 0.0 - h)) / 2.0 * h } e_ach at
+gaps := ('m_ax r_/ a_bs centralFlat - at s_elect r_avel G0) c_at 'm_ax r_/ a_bs centralBall - at s_elect r_avel plainB
+"the loss's gradient agrees with central differences, in the plane and in the disk" ch:t_est 1 1 ch:i_s gaps < 0.000001
+
+### Curvature as a control
+curvature
+"a sphere of curvature 1 (diameter pi) cannot hold a tree of diameter 8" ch:t_est 1 ch:i_s 0.3 < 2 s_elect 1 s_elect curvature
+(flatShort, _, _) := u:f_it (0.0, 1 s_elect seeds, controlSteps)
+"the embedding kept at the control's step is where a fit of that many steps ends" ch:t_est flatC ch:n_ear flatShort
+"the control's rows at +1, 0 and -1 are the three fits at step 100" ch:t_est ((2 s_elect 1 s_elect curvature) c_at (2 s_elect 4 s_elect curvature) c_at 2 s_elect 7 s_elect curvature) ch:n_ear (2 s_elect (controlSteps + 1) s_elect sphereLog) c_at (2 s_elect (controlSteps + 1) s_elect flatLog) c_at 2 s_elect (controlSteps + 1) s_elect ballLog
+"from either side, the fit near curvature 0 is near the plane's" ch:t_est 1 ch:i_s 0.05 > 'm_ax r_/ a_bs (2 s_elect 4 s_elect curvature) - (2 s_elect 3 s_elect curvature) c_at 2 s_elect 5 s_elect curvature

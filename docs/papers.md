@@ -389,8 +389,12 @@ what this repository plans to build from it.
   and in H^2 a circle's length 2 pi sinh r grows exponentially, so
   trees embed in two dimensions; hierarchy read from the norm, similarity
   from distance.
-- Here: the tree data set and its embedding in the disk (H1); the
-  distortion measure is this repository's addition, after Gu et al.
+- Here: the tree data set and its embedding in the disk (H1,
+  representation-explorer part 2, step representation-hyperbolic: the
+  fit keeps points under radius 1 - 1e-5 as the paper does, by
+  Manifold's `b_allProject`, and its distance is the paper's, in the
+  asinh form, `b_allDistances`); the distortion measure is this
+  repository's addition, after Gu et al.
 
 ### Hyperbolic Neural Networks
 
@@ -410,8 +414,11 @@ what this repository plans to build from it.
   tanh arguments clipped. The gyrovector sources cited are Ungar's
   2008 book and lectures, not the 2005 book.
 - Here: Manifold's `b_allDistance` and `b_allGeodesic` are these
-  formulas at c = 1 (step manifold-tour); the ball's Project, Tangent,
-  Step, Arrow and Mean follow them (step representation-hyperbolic).
+  formulas at c = 1 (step manifold-tour); the ball's `b_allStep`
+  (equation 12), `b_allArrow` (13) and `b_allTangent` (the metric's
+  scaling of a gradient) follow them, at c = 1, with curvature as a
+  scaling of lengths in the demo (step representation-hyperbolic); no
+  Mean yet.
 
 ### Natural Gradient Works Efficiently in Learning
 

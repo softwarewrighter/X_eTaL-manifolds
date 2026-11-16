@@ -25,8 +25,7 @@ points is a matrix, one point per row. Each space has a name that
 starts its functions (`s_phere`, `b_all` the Poincare ball, `c_ircle`,
 `t_orus`, `r_oll` the Swiss roll), and the word after it is the same
 verb for every space, so a program written for the sphere reads the
-same on the ball (the plan's step representation-hyperbolic completes
-`b_all...` with the sphere's verbs):
+same on the ball:
 
 | Verb | What it does |
 | ---- | ------------ |
@@ -38,6 +37,11 @@ same on the ball (the plan's step representation-hyperbolic completes
 | Arrow | the tangent vector a Step would take from one point to another (the logarithmic map) |
 | Mean | the mean of a set, on the space (the Frechet or Karcher mean) |
 | Off | how far a point is from the space, as a size: 0 when it is on it |
+| DistancesGradient | the gradient along the space, with respect to every point of a set, of a weighted sum of the distances between its pairs: what a fit of distances steps against |
+| Distortion | how badly a set on the space keeps given distances (the mean and the worst pair) |
+
+The flat space has Distances, DistancesGradient and Distortion too
+(`f_lat...`), so a fit reads the same in all three.
 | Points | the points of the space at rows of coordinates of its map (for drawing it) |
 | Arc, Geodesic | points along the shortest path between two points of the space (Arc on the sphere, Geodesic on the ball) |
 
@@ -50,8 +54,8 @@ Every result is a Float.
 | `mf:s_phereProject v` | `Num a => a -> Float` | v scaled to length 1; the zero vector is refused |
 | `p mf:s_phereDistance q` | `(Num a, Num b) => a -> b -> Float` | the great-circle distance, the angle between p and q in radians (0 to pi) |
 | `mf:s_phereDistances P` | `Num a => a -> Float` | the great-circle distance between every pair of rows, a matrix |
-| `p mf:s_phereTangent v` | `(Num a, Num b) => a -> b -> Float` | v less its part along p |
-| `p mf:s_phereStep v` | `(Num a, Num b) => a -> b -> Float` | the point reached from p along the tangent vector v, for v's length |
+| `p mf:s_phereTangent v` | `(Num a, Num b) => a -> b -> Float` | v less its part along p; two sets row by row |
+| `p mf:s_phereStep v` | `(Num a, Num b) => a -> b -> Float` | the point reached from p along the tangent vector v, for v's length; two sets row by row |
 | `p mf:s_phereArrow q` | `(Num a, Num b) => a -> b -> Float` | the tangent vector at p that steps to q; zero for q = p and for the opposite point |
 | `mf:s_phereMean P` | `Num a => a -> Float` | the mean of the rows on the sphere; rows whose plain mean is zero are refused |
 | `mf:s_phereOff p` | `Num a => a -> Float` | the difference between the length of p and 1, as a size |
@@ -107,17 +111,33 @@ point through the air is the wrong neighbor.
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `p mf:b_allDistance q` | `(Num a, Num b) => a -> b -> Float` | the hyperbolic distance between two points inside the unit ball (the disk in two dimensions), 2 atanh of the length of q seen from p |
+| `mf:b_allProject p` | `Num a => a -> Float` | p kept inside the ball: as it is under the rim's radius 1 - 1e-5, else scaled to that radius (the source papers' clamp); a set row by row |
+| `mf:b_allOff p` | `Num a => a -> Float` | how far p is past the rim's radius, 0 inside: what Project repairs and a test of the constraint reports; a set row by row |
+| `p mf:b_allDistance q` | `(Num a, Num b) => a -> b -> Float` | the hyperbolic distance between two points inside the unit ball (the disk in two dimensions), 2 atanh of the length of q seen from p; two sets row by row |
+| `mf:b_allDistances P` | `Num a => a -> Float` | the distance along the ball between every pair of rows of P, a matrix, 0 on the diagonal: 2 asinh(\|u - v\| / sqrt((1 - \|u\|^2) (1 - \|v\|^2))) |
+| `p mf:b_allTangent v` | `(Num a, Num b) => a -> b -> Float` | the vector along the ball at p that stands for the plain gradient v: v (1 - \|p\|^2)^2 / 4, the gradient under the ball's metric; two sets row by row |
+| `p mf:b_allStep v` | `(Num a, Num b) => a -> b -> Float` | the point reached from p along the ball in the direction of v for v's length under the ball's metric (the exponential map, Ganea et al.'s equation 12): p (+) tanh(lambda \|v\| / 2) v / \|v\|; two sets row by row; not clamped (a long step can land on the rim by rounding: Project brings it back) |
+| `p mf:b_allArrow q` | `(Num a, Num b) => a -> b -> Float` | the vector at p that Step carries to q (the logarithmic map, equation 13): (2 / lambda) atanh \|w\| w / \|w\|, w = (-p) (+) q; two sets row by row |
 | `(p, q) mf:b_allGeodesic n` | `(Num a, Num b) => (a, b) -> Int -> Float` | n + 1 points along the geodesic from p to q, p first, evenly spaced by the ball's distance; all p when q is p |
+| `W mf:b_allDistancesGradient P` | `(Num a, Num b) => a -> b -> Float` | the gradient along the ball, with respect to each row of P, of the sum over pairs of W_ij d(P_i, P_j), a matrix the shape of P |
+| `D mf:b_allDistortion P` | `(Num a, Num b) => a -> b -> Float` | the distortion of a set P inside the ball, its distances along the ball against D: the mean and the worst pair |
 
-q seen from p is Mobius addition, (-p) (+) q = ((1 + 2 u.v + |v|^2) u
-+ (1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2) with u = -p and v = q;
-the geodesic is p (+) (the fraction s of that arrow, scaled the ball's
-way: tanh(s atanh |w|) w / |w|). Near the middle the distance is twice
-the plain one; toward the rim it grows without bound. Drawn flat, a
-geodesic is an arc of a circle meeting the rim at right angles, or a
-diameter. Project, Tangent, Step, Arrow, Mean and Off for the ball are
-step representation-hyperbolic's.
+The ball is the inside of the unit sphere with the hyperbolic metric:
+at p a vector is lambda = 2 / (1 - \|p\|^2) times as long as it looks,
+so lengths grow without bound toward the rim, which is never reached;
+its curvature is -1 everywhere. The formulas are Ganea, Becigneul and
+Hofmann's (2018) at c = 1 with Nickel and Kiela's (2017) distance
+(`docs/papers.md`). q seen from p is Mobius addition, (-p) (+) q =
+((1 + 2 u.v + |v|^2) u + (1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2)
+with u = -p and v = q; the geodesic is p (+) (the fraction s of that
+arrow, scaled the ball's way: tanh(s atanh |w|) w / |w|). Near the
+middle the distance is twice the plain one; toward the rim it grows
+without bound: a point at the rim's radius is about 12.2 from the
+middle, as far as any can be. Drawn flat, a geodesic is an arc of a
+circle meeting the rim at right angles, or a diameter. Points are kept
+to the radius 1 - 1e-5 as both papers do (Project); at that radius
+1 - |p|^2 is 2e-5 and keeps about eleven of sixteen digits. The ball
+has no Mean yet: nothing has needed one.
 
 ## Distortion
 
@@ -128,6 +148,25 @@ step representation-hyperbolic's.
 | `D mf:f_itScale E` | `(Num a, Num b) => a -> b -> Float` | the one factor s that makes the mean of s E over the pairs (D > 0) equal the mean of D: for distances in different units (an angle against a length), measure the distortion of s E |
 | `D mf:s_phereDistortion P` | `(Num a, Num b) => a -> b -> Float` | the distortion of a set P on the sphere (one point per row): its great-circle distances against D, the mean and the worst pair |
 | `D mf:f_latDistortion P` | `(Num a, Num b) => a -> b -> Float` | the distortion of a set P in a flat space: its straight-line distances against D, the mean and the worst pair |
+
+## Fitting an embedding
+
+| Function | Type | What |
+| -------- | ---- | ---- |
+| `mf:f_latDistances P` | `Num a => a -> Float` | the straight-line distance between every pair of rows of P, a matrix, 0 on the diagonal (general: X_eTaL-libraries' by GL1, here until it lands so a fit reads the same in every space) |
+| `W mf:f_latDistancesGradient P` | `(Num a, Num b) => a -> b -> Float` | the gradient with respect to each row of P of the sum over pairs of W_ij \|P_i - P_j\|: a matrix the shape of P |
+| `W mf:s_phereDistancesGradient P` | `(Num a, Num b) => a -> b -> Float` | the gradient along the sphere (the tangent part at each point) of the sum over pairs of W_ij times the angle between P_i and P_j |
+| `W mf:b_allDistancesGradient P` | `(Num a, Num b) => a -> b -> Float` | the gradient along the ball (the plain gradient scaled by the metric at each point) of the sum over pairs of W_ij d(P_i, P_j) |
+
+A fit moves a set of points so that their distances along a space come
+to the distances they should have: a loss of the pairwise distances,
+its gradient with respect to the distances a matrix W (read as
+symmetric, each pair once, the diagonal ignored), then a step along
+the space against the gradient of the weighted sum of the distances:
+P - lr G in the flat space, `P mf:s_phereStep -lr G` on the sphere,
+`P mf:b_allStep -lr G` in the ball (then `b_allProject`). Each gradient
+is checked against central differences in `tests/fit.xtl`, the ball's
+at the middle and near the rim.
 
 The measure of H1 (`docs/research-questions.md`), the same whatever
 space E was measured along: a tree's distances against the

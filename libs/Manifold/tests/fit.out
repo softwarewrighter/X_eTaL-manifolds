@@ -1,0 +1,16 @@
+ok: the flat gradient has the set's shape
+ok: the flat gradient agrees with central differences
+ok: the flat gradient's rows sum to zero: moving every point together changes no distance
+ok: the sphere gradient has the set's shape
+ok: the sphere gradient agrees with central differences along tangent directions
+ok: the sphere gradient is tangent: no part along each point
+ok: the ball gradient has the set's shape
+ok: the ball's plain gradient agrees with central differences at the middle and at radius 0.5
+ok: and near the rim, relative to its size
+ok: the gradient along the ball is that scaled by (1 - |p|^2)^2 / 4
+ok: the gradient along the ball near the rim is small, though the plain one is not
+ok: a flat step lowers the sum
+ok: a sphere step lowers the sum
+ok: a ball step lowers the sum
+ok: the sphere step stays on the sphere
+ok: the ball step stays inside the ball

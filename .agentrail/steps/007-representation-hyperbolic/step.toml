@@ -1,6 +1,6 @@
 number = 7
 slug = "representation-hyperbolic"
-status = "pending"
+status = "in-progress"
 description = """
 Step representation-hyperbolic (docs/plan.md, Saga 1 row 7:
 milestone M1, sec..."""

@@ -1,0 +1,37 @@
+ok: a point inside is left alone
+ok: a point outside is brought to the rim's radius
+ok: a point just past the rim's radius too
+ok: its direction is kept
+ok: a set is projected row by row
+ok: a point inside is not off
+ok: a point at the rim is off by 1e-5
+ok: a point far outside is off by its excess
+ok: a projected set is not off
+ok: the diagonal is 0
+ok: symmetric
+ok: Distances agrees with Distance, pair by pair
+ok: near the rim they agree to a billionth
+ok: a rim point is far from the middle: 2 atanh of its radius
+ok: that is about 12.2, the farthest any point can be from the middle
+ok: near the middle, twice the plain distance, to a millionth
+ok: Distance takes two sets row by row
+ok: at the middle, a quarter
+ok: at radius 0.5, (3/4)^2 / 4
+ok: near the rim, almost nothing
+ok: a set row by row
+ok: a zero step stays put
+ok: a step from the middle of plain length t lands at radius tanh t
+ok: its distance from the middle is 2 t, the metric length of v there
+ok: a step lands inside the ball
+ok: Arrow then Step reaches q from p
+ok: Arrow then Step reaches the rim point from q
+ok: Step then Arrow gives v back
+ok: the arrow's metric length is the distance
+ok: the arrow to the same point is zero
+ok: a set steps row by row
+ok: a long step from the rim lands on the rim by rounding
+ok: Project brings it back to the rim's radius
+ok: half the arrow lands on the geodesic's middle
+ok: a quarter of it on its second point
+ok: a set keeps its own distances
+ok: halved distances are off by 1

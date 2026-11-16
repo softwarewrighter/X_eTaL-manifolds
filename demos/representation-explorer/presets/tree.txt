@@ -1,0 +1,14 @@
+tree preset: the hierarchical set and the fit of it in each space
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+depth 4
+branching 2
+start seeds 31 32 33
+start spread 0.5
+steps 200
+control steps 100
+rate 50
+distortion target 0.2
+neighbors 3
+split seed 11
+curvatures 1 0.25 0.0625 0 -0.0625 -0.25 -1 -4
