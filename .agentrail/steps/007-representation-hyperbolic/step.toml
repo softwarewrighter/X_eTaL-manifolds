@@ -1,10 +1,11 @@
 number = 7
 slug = "representation-hyperbolic"
-status = "in-progress"
+status = "completed"
 description = """
 Step representation-hyperbolic (docs/plan.md, Saga 1 row 7:
 milestone M1, sec..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T10:53:57"
-commits = []
+completed_at = "2026-11-16T13:53:15"
+commits = ["26d3d7c9eb2be90bfa770f6b3f3371fd8d8420cc"]
