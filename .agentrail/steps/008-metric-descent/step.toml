@@ -1,6 +1,6 @@
 number = 8
 slug = "metric-descent"
-status = "pending"
+status = "in-progress"
 description = """
 Step metric-descent (docs/plan.md, Saga 1 row 8: the research's
 milestone M2,..."""
