@@ -164,12 +164,14 @@ work/                    the clones (gitignored)
 pages/                   the built site (not tracked; just publish)
 ```
 
-As of step shell-adoption (2026-11-08) the machinery, `libs/Manifold`
-(the sphere, the drawn spaces, the ball's distance and geodesic,
-distortion), `libs/Kit` (the three data sets), `shared/site` and
-`shared/glossary.tsv`, and three live pages on the shared teaching
-shell (`demos/manifold-tour`, `demos/sphere-hello`,
-`demos/baseline-knn`) exist, with `docs/glossary.md`,
+As of step metric-descent (2026-11-17) the machinery, `libs/Manifold`
+(the sphere with its gradient step and retraction, the drawn spaces,
+the ball, the fitting of an embedding, distortion), `libs/Kit` (the
+three data sets), `shared/site` and `shared/glossary.tsv`, and five
+live pages on the shared teaching shell (`demos/manifold-tour`,
+`demos/sphere-hello`, `demos/baseline-knn`,
+`demos/representation-explorer`, `demos/optimization-explorer` part 1)
+exist, with `docs/glossary.md`,
 `docs/papers.md`, `docs/research-questions.md` and
 `docs/experiments.md`; the other demos are made by the steps of Saga 1
 that name them.
@@ -267,7 +269,7 @@ use):
 
 | Library | What | Built by |
 | ------- | ---- | -------- |
-| Manifold (`mf:`) | the sphere (`s_phereProject`, `s_phereDistance`, `s_phereDistances`, `s_phereTangent`, `s_phereStep`, `s_phereArrow`, `s_phereMean`, `s_phereOff`: built, step foundation) and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps with the ball's `b_allDistance` and `b_allGeodesic` (built, step manifold-tour); then the ball's `b_allProject`, `b_allOff`, `b_allDistances`, `b_allTangent`, `b_allStep`, `b_allArrow` by the same verbs, no Mean yet (nothing has needed one), and `b_allDistortion` (built, step representation-hyperbolic); `d_istortionPairs`, `f_itScale`, `s_phereDistortion` and `f_latDistortion` of a set of points against given distances, and `s_phereWires` for the pictures (built, step representation-sphere); for fitting an embedding, `f_latDistances` (GL1's, here until it lands) and the gradient along each space of a weighted sum of pairwise distances, `f_latDistancesGradient`, `s_phereDistancesGradient`, `b_allDistancesGradient`, each checked against central differences, with `s_phereTangent` and `s_phereStep` taking a set row by row (built, step representation-hyperbolic); the cheap retraction `s_phereRetract` beside the step, and a gradient step that stays on the space, `(lr) s_phereDescend (p, g)` (metric-descent); the tangent part of a field at a set of points and a flow held to the sphere, `s_phereFlow` (manifold-flows). The flat torus when a demo needs it | foundation, manifold-tour, representation-sphere, representation-hyperbolic, metric-descent, manifold-flows |
+| Manifold (`mf:`) | the sphere (`s_phereProject`, `s_phereDistance`, `s_phereDistances`, `s_phereTangent`, `s_phereStep`, `s_phereArrow`, `s_phereMean`, `s_phereOff`: built, step foundation) and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps with the ball's `b_allDistance` and `b_allGeodesic` (built, step manifold-tour); then the ball's `b_allProject`, `b_allOff`, `b_allDistances`, `b_allTangent`, `b_allStep`, `b_allArrow` by the same verbs, no Mean yet (nothing has needed one), and `b_allDistortion` (built, step representation-hyperbolic); `d_istortionPairs`, `f_itScale`, `s_phereDistortion` and `f_latDistortion` of a set of points against given distances, and `s_phereWires` for the pictures (built, step representation-sphere); for fitting an embedding, `f_latDistances` (GL1's, here until it lands) and the gradient along each space of a weighted sum of pairwise distances, `f_latDistancesGradient`, `s_phereDistancesGradient`, `b_allDistancesGradient`, each checked against central differences, with `s_phereTangent` and `s_phereStep` taking a set row by row (built, step representation-hyperbolic); the cheap retraction `s_phereRetract` beside the step, and a gradient step that stays on the space, `lr s_phereDescend (p, g)`, the retraction checked against the step to |v|^3 and the descent against Matrix's eigenvector (built, step metric-descent); the tangent part of a field at a set of points and a flow held to the sphere, `s_phereFlow` (manifold-flows). The flat torus when a demo needs it | foundation, manifold-tour, representation-sphere, representation-hyperbolic, metric-descent, manifold-flows |
 | Mixing (`hc:`) | residual streams and their mixing: `(n, w) hc:s_treams x` (n copies), `hc:b_lock` (a layer over n streams with a mixing matrix), the mixing `hc:f_ree M`, `k hc:s_tochastic L` (Sinkhorn's k sweeps on exp of the logits L, private until GL3 lands), `hc:p_ermutations w` (an exact convex combination of the permutations, after KromHC), `hc:o_rthogonal M` (the polar factor by `mx:s_vd`); `hc:s_tack` of blocks; `hc:g_ain` (the composite's largest absolute row and column sums, as mHC measures them), `hc:c_hannels` (the mean of the streams and their differences, after the Birkhoff-geometry paper), `hc:v_iolation` (row and column sum errors, distance from orthogonal); the sizes of the signal forward and of the gradient backward by depth | mhc-matrices, mhc-depth |
 | Kit (`kt:`) | the three data sets, each a function of its own seed and sizes: `f_lat` (Gaussian clusters), `d_irections` (classes by direction, lengths varied, on Manifold's sphere), `t_ree`, `t_reeDistances` (Graphs' shortest paths), `t_reeClasses`, `t_reeLayout`; and the seeded numbers they are made of (`u_niform`, `n_ormal`, Park-Miller, until GL8). Functions, not files, because the explorers vary the sizes, the spread and the seed; here, because what they make is a geometric structure (built, step experiment-kit) | experiment-kit |
 

@@ -1,0 +1,15 @@
+[package]
+name = "optimization-explorer-web"
+description = "Optimization explorer: one fixed loss and gradient descent on it under different metrics, the plain step, a step under diag(a, 1) with a as the control, and Newton's direction, the same start and step size policy; the steepest direction under two metrics worked; a step that stays on the sphere against a flat step repaired"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

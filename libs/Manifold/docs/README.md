@@ -57,6 +57,8 @@ Every result is a Float.
 | `p mf:s_phereTangent v` | `(Num a, Num b) => a -> b -> Float` | v less its part along p; two sets row by row |
 | `p mf:s_phereStep v` | `(Num a, Num b) => a -> b -> Float` | the point reached from p along the tangent vector v, for v's length; two sets row by row |
 | `p mf:s_phereArrow q` | `(Num a, Num b) => a -> b -> Float` | the tangent vector at p that steps to q; zero for q = p and for the opposite point |
+| `p mf:s_phereRetract v` | `(Num a, Num b) => a -> b -> Float` | the cheap step (a retraction): p + v scaled back to length 1, within \|v\|^3 / 3 of Step for a small v; two sets row by row |
+| `lr mf:s_phereDescend (p, g)` | `(Num a, Num b, Num c) => a -> (b, c) -> Float` | one gradient step that stays on the sphere: from p, against the plain gradient g's part along the sphere (the Riemannian gradient on the unit sphere), by Step at the rate lr; nothing repaired afterward; sets row by row |
 | `mf:s_phereMean P` | `Num a => a -> Float` | the mean of the rows on the sphere; rows whose plain mean is zero are refused |
 | `mf:s_phereOff p` | `Num a => a -> Float` | the difference between the length of p and 1, as a size |
 
@@ -68,6 +70,17 @@ onto the sphere so rounding never leaves it. The mean starts from the
 plain mean put onto the sphere and takes 30 steps along the average
 of the arrows to the rows; points spread over less than a hemisphere
 have one mean, which the steps reach.
+
+A gradient step on the sphere, `lr mf:s_phereDescend (p, g)`, is
+`p mf:s_phereStep -lr (p mf:s_phereTangent g)`: the gradient's part
+along the sphere is the Riemannian gradient (the unit sphere's metric
+is the room's, restricted), and the step along it is the exponential
+map, so the point never leaves the sphere. The retraction is the
+cheaper step a large program might use instead; `tests/descent.xtl`
+checks it agrees with Step to |v|^3 / 3, that Descend goes nowhere
+along the normal and lands on the sphere, and that descent on a
+Rayleigh quotient reaches the leading eigenvector Matrix finds, the
+gradient checked against central differences.
 
 ## The sphere, drawn, and the circle
 

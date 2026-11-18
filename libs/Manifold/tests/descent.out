@@ -1,0 +1,15 @@
+ok: a retraction along y lands between x and y
+ok: the retraction stays on the sphere
+ok: a zero retraction goes nowhere
+ok: the retraction is within |v|^3 of the step for a small v
+ok: and the gap is about |v|^3 / 3
+ok: rowwise: two points, two vectors
+ok: a gradient along p goes nowhere
+ok: a step against y from x goes toward -y
+ok: the step lands on the sphere
+ok: the step is the tangent part's, at the rate
+ok: rowwise: two points, two gradients
+ok: the gradient of -f agrees with central differences
+ok: 200 steps on the sphere reach the leading eigenvector
+ok: and the quotient there is the largest eigenvalue
+ok: every step stayed on the sphere

@@ -1,0 +1,11 @@
+metrics preset: descent on one fixed loss under different metrics
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+start 2.3 1.0
+steps 30
+loss target 0.000001
+contour levels 0.125 0.5 1 2 4
+sphere rate 0.1
+sphere steps 60
+sphere tolerance 0.0001
+anisotropies as ninths 1 1.5 3 4.5 9 18 27 81

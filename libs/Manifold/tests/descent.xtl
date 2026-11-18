@@ -1,0 +1,49 @@
+#!/usr/bin/env xetal
+# Manifold: a gradient step that stays on the sphere (s_phereDescend)
+# and the cheap step beside the exact one (s_phereRetract): the step
+# lands on the sphere, goes against the gradient's part along it and
+# nowhere along the normal; the retraction agrees with the step to
+# |v|^3; descent on a Rayleigh quotient reaches the leading eigenvector
+# Matrix finds, with the gradient checked against central differences.
+# Run with "just run-lib Manifold descent".
+"mf:" u_se< "Manifold"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+x := 1.0 0.0 0.0
+y := 0.0 1.0 0.0
+d := mf:s_phereProject 1.0 1.0 1.0
+
+# Retract: p + v scaled back; the same as the step to third order.
+"a retraction along y lands between x and y" ch:t_est (mf:s_phereProject 1.0 1.0 0.0) ch:n_ear x mf:s_phereRetract y
+"the retraction stays on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff d mf:s_phereRetract d mf:s_phereTangent 0.3 -0.7 0.2
+"a zero retraction goes nowhere" ch:t_est d ch:n_ear d mf:s_phereRetract 0.0 0.0 0.0
+small := 0.01 * x mf:s_phereTangent 0.0 1.0 0.0
+gap := 'm_ax r_/ a_bs (x mf:s_phereRetract small) - x mf:s_phereStep small
+"the retraction is within |v|^3 of the step for a small v" ch:t_est 1 ch:i_s gap < 0.000001
+"and the gap is about |v|^3 / 3" ch:t_est 1 ch:i_s (gap > 0.0000003) & gap < 0.00000034
+"rowwise: two points, two vectors" ch:t_est ((x mf:s_phereRetract y) c_at y mf:s_phereRetract x) ch:n_ear r_avel (2 3 r_eshape x c_at y) mf:s_phereRetract 2 3 r_eshape y c_at x
+
+# Descend: against the gradient's part along the sphere, by the step.
+"a gradient along p goes nowhere" ch:t_est x ch:n_ear 0.5 mf:s_phereDescend (x, 3.0 0.0 0.0)
+"a step against y from x goes toward -y" ch:t_est (x mf:s_phereStep -0.5 * y) ch:n_ear 0.5 mf:s_phereDescend (x, y)
+"the step lands on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff 0.3 mf:s_phereDescend (d, 2.0 -1.0 0.5)
+"the step is the tangent part's, at the rate" ch:t_est (d mf:s_phereStep -0.3 * d mf:s_phereTangent 2.0 -1.0 0.5) ch:n_ear 0.3 mf:s_phereDescend (d, 2.0 -1.0 0.5)
+"rowwise: two points, two gradients" ch:t_est ((0.5 mf:s_phereDescend (x, y)) c_at 0.5 mf:s_phereDescend (d, 2.0 -1.0 0.5)) ch:n_ear r_avel 0.5 mf:s_phereDescend (2 3 r_eshape x c_at d, 2 3 r_eshape y c_at 2.0 -1.0 0.5)
+
+# The Rayleigh quotient f(p) = p' A p on the sphere is largest at A's
+# leading eigenvector: descent on -f from a point off the axes reaches
+# the eigenvector Matrix finds (its sign fixed by Matrix: the largest
+# item positive).
+A := 3 3 r_eshape 4.0 1.0 0.0 1.0 3.0 1.0 0.0 1.0 2.0
+u:q_uotient := { p -> '+ r_/ p * A mx:m_ul p }
+u:g_radient := { p -> (0.0 - 2.0) * A mx:m_ul p }                      # the gradient of -f
+# The gradient against central differences at d, h = 1e-5.
+h := 0.00001
+central := '{ i -> e := h * f_loat (r_ange 3) = i; ((u:q_uotient d - e) - u:q_uotient d + e) / 2.0 * h } e_ach r_ange 3
+"the gradient of -f agrees with central differences" ch:t_est 1 ch:i_s 0.00000001 > 'm_ax r_/ a_bs central - u:g_radient d
+v := 1 s_elect mx:e_igenvectors A
+p := 200 '{ q -> 0.1 mf:s_phereDescend (q, u:g_radient q) } p_ower d
+"200 steps on the sphere reach the leading eigenvector" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ a_bs p - v
+"and the quotient there is the largest eigenvalue" ch:t_est (f_irst mx:e_igenvalues A) ch:n_ear u:q_uotient p
+"every step stayed on the sphere" ch:t_est 0.0 ch:n_ear mf:s_phereOff p

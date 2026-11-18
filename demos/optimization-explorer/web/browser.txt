@@ -1,0 +1,9 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+The first step under each ruler
+the plain ruler, G = I
+0.4426
+Worked in full
+the leading eigenvector
+diag(a, 1) at a = 1/6
+html: class="numbers comparison"
+html: data-aside="mf:s_phereDescend"

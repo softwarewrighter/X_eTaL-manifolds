@@ -467,9 +467,13 @@ what this repository plans to build from it.
   optimization. Boumal follows Absil's conventions and cites it as
   2008.
 - Here: Manifold's sphere (already: the formulas of step foundation
-  cite Absil chapter 3), its step as the exponential map and the
-  cheap retraction compared (step metric-descent); the Stiefel and
-  Grassmann rows of the glossary (Saga 4).
+  cite Absil chapter 3); its step as the exponential map and the
+  cheap retraction (Absil Example 4.1.1) compared, `s_phereDescend`
+  and `s_phereRetract`, on the Rayleigh quotient (Absil section 4.6's
+  example) in optimization-explorer part 1 (step metric-descent: the
+  two take the same number of steps to 1e-4 and the flat step
+  repaired twice as many); the Stiefel and Grassmann rows of the
+  glossary (Saga 4).
 
 ### Sinkhorn 1964; Sinkhorn and Knopp 1967; Cuturi 2013
 

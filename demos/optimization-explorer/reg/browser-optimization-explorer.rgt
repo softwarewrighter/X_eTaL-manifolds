@@ -1,0 +1,3 @@
+command = "scripts/browser-check.sh optimization-explorer"
+exit_code = 0
+desc = "optimization-explorer: the built page run in headless Chrome shows X_eTaL's results"

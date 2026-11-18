@@ -1,0 +1,51 @@
+2.3 1.0 30.0 0.000001 0.125 0.5 1.0 2.0 4.0 0.1 60.0 0.0001 1.0 1.5 3.0 4.5 9.0 18.0 27.0 81.0
+ok: the gradient agrees with central differences at three points
+ok: every contour point is at its level
+ok: the field is the gradient
+ok: the gradient field comes from a potential: its curl is zero (d gy / dx - d gx / dy at the grid)
+11.0 0.9829668628058221 0.0031088247978539006 0.00000000000000000073782745295997895 0.0 0.0
+ 1.0                0.0                   0.0                                   0.0 3.0 4.0
+2.3 3.0 0.44255187364509135 1.2821306906162897 -0.3276556209352741 14.29 32.29
+2.3 1.0 1.0 0.0 0.0 8.29 8.29
+ok: the plain first step is the hand arithmetic
+ok: Newton's first step reaches the floor
+5.289999999999999 3.0
+0.8220261235975242 0.6535898384862249
+ok: the counts on the sphere are near what the contraction factors say (the steps to shrink the start's distance to the tolerance)
+ok: Newton's direction reaches the target in one step; the plain step takes more
+ok: the loss never rises along either path
+ok: the plain path zigzags: each step is at right angles to the last (an exact line search)
+ 0.1111111111111111  3.0  9.0     0.0003286660050751732                    0.000000000000000000000001030163223387785
+0.16666666666666666  2.0  7.0   0.000012946484811542147           0.000000000000000000000000000000003848473696106714
+ 0.3333333333333333  1.0  1.0                       0.0                                                          0.0
+                0.5  1.5  5.0 0.00000041134301281537286 0.0000000000000000000000000000000000000000039591510701257424
+                1.0  3.0 11.0     0.0031088247978539006                        0.00000000000000000073782745295997895
+                2.0  6.0 18.0       0.05576717889222743                                0.000000000024583820559707476
+                3.0  9.0 22.0        0.1212663325414678                                  0.0000000025990748449292096
+                9.0 27.0 29.0       0.29708449158726635                                     0.0000005618976472294782
+ok: the control at a = 1 is the plain path, at a = 1/3 Newton's
+ok: a = 1/9 and a = 1 leave the bowl the same shape
+ok: and take about as many steps (within three)
+ok: the steps to the target fall toward a = 1/3 from either side and rise away from it
+2.3 3.0
+3.7802116342871597
+2.3 1.0
+2.8792360097775935
+-0.6084315436571356 -0.7936063612919161
+-0.7988230183942661 -0.347314355823594
+-3.78021163428716 -2.8792360097775935
+ok: each direction has length 1 under its own metric
+ok: the sampled best of 360 directions agrees with the formula
+ok: Newton's unit ball is the ellipse x^2 + 3 y^2 = 1
+ok: the two directions differ
+4.732050807568874 2.9999999999999987 1.2679491924311224
+0.7886751345948125 0.5773502691896256 0.2113248654051872
+ok: the gradient of the quotient agrees with central differences
+4.732050807568878  0.00000000002086827952072899 24.0 0.00000000000000011102230246251565 0.0000000000000000018503717077085942
+4.732050807568877 0.000000000021721369865790475 24.0               0.044616488923599595                 0.002657648467796762
+4.732050807371293       0.000010680607161151452 49.0                 0.9464101614604987                   0.9058438956941622
+ok: every way reaches the leading eigenvector within the tolerance
+ok: the quotient at the end is the largest eigenvalue
+ok: the step that stays on the sphere never leaves it; the flat step does
+ok: every path ends on the sphere
+ok: the quotient never falls along the exact step's path (but by rounding once it has converged)

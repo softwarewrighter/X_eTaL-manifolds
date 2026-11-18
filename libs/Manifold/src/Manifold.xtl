@@ -190,6 +190,29 @@ l:s_phereArrow := { p q ->
   (p l:s_phereDistance q) * u / n
 }
 
+## `p s_phereRetract v`: the point reached from p by adding the tangent
+## vector v and scaling back to length 1: the cheap step (a
+## retraction), which agrees with s_phereStep for small v (the two
+## differ by about |v|^3 / 3) and costs no sine or cosine. A zero v
+## goes nowhere. Given two sets (matrices), row by row.
+## >> "mf:" u_se< "Manifold"
+## >> 1.0 0.0 0.0 mf:s_phereRetract 0.0 1.0 0.0
+## 0.7071067811865475 0.7071067811865475 0.0
+l:s_phereRetract := { p v -> v h:u_nrows h:p_rojectRows (h:r_ows p) + h:r_ows v }
+
+## `lr s_phereDescend (p, g)`: one gradient step that stays on the
+## sphere: from the point p, against the gradient g of a loss (the
+## plain gradient in the room), at the rate lr: g's part along the
+## sphere at p (s_phereTangent, the Riemannian gradient on the unit
+## sphere), then s_phereStep from p along -lr times it. Nothing is
+## repaired afterward: the step lands on the sphere. A gradient with
+## no part along the sphere (one along p) goes nowhere. Given sets
+## (matrices), row by row.
+## >> "mf:" u_se< "Manifold"
+## >> 0.5 mf:s_phereDescend (1.0 0.0 0.0, 2.0 -2.0 0.0)
+## 0.5403023058681398 0.8414709848078965 0.0
+l:s_phereDescend := { lr (p, g) -> p l:s_phereStep (0.0 - f_loat lr) * p l:s_phereTangent g }
+
 ## The arrows at p to every row of P, one per row (s_phereArrow, over
 ## a set at once): the mean's one step.
 h:a_rrows := { p P ->

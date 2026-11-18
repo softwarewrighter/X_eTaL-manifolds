@@ -1,0 +1,261 @@
+#!/usr/bin/env xetal
+## Optimization explorer, part 1: is downhill one direction? One fixed
+## loss, L(x, y) = (x^2 + 3 y^2) / 2, its contours and its gradient
+## field (a field that comes from a potential); gradient descent on it
+## under different metrics, the same start and the same step size
+## policy: the plain step (the metric is the identity), a step under
+## the metric diag(a, 1) with a as the control, and Newton's direction
+## (the loss's own curvature as the metric). The objective never
+## changes; the path and the number of steps do. The steepest
+## direction at one point under two metrics, worked in full: the unit
+## ball of each and the direction that lowers the loss most within it.
+## Then the same question on a curved space: the unit vector that
+## makes x' A x largest (the leading eigenvector) found by a step that
+## stays on the sphere (Manifold's) against a flat step repaired
+## afterward.
+"mf:" u_se< "Manifold"
+"mx:" u_se< "Matrix"
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+
+# -- the preset
+## The run's numbers are data, presets/metrics.txt (the schema of
+## docs/research-questions.md): the file's words are dropped and its
+## numbers kept in order: the start; the steps and the loss target;
+## five contour levels; the sphere's rate, steps and tolerance; then
+## the control's anisotropies a, as ninths so that a third is exact.
+text := []N_GET "presets/metrics.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+start := 1 2 s_elect preset
+steps := f_loor 3 s_elect preset
+target := 4 s_elect preset
+levels := 5 6 7 8 9 s_elect preset
+sphereRate := 10 s_elect preset
+sphereSteps := f_loor 11 s_elect preset
+tolerance := 12 s_elect preset
+anis := (12 d_rop preset) / 9.0
+
+# -- the loss, fixed
+## L(x, y) = (x^2 + 3 y^2) / 2: a bowl whose floor is the origin, three
+## times as steep along y as along x, so its contours are ellipses
+## squeezed along y. Its gradient is (x, 3 y) and its curvature (the
+## Hessian) the constant matrix H = diag(1, 3). Nothing below changes
+## the loss: only the ruler a step is measured by.
+u:l_oss := { p -> (((1 s_elect p) ^ 2.0) + 3.0 * (2 s_elect p) ^ 2.0) / 2.0 }
+u:g_rad := { p -> p * 1.0 3.0 }
+H := 2 2 r_eshape 1.0 0.0 0.0 3.0
+## The gradient against central differences, h = 1e-5, at the start and
+## two more points: the largest gap over the six numbers.
+h := 0.00001
+u:c_entral := { p -> (((u:l_oss p + h * 1.0 0.0) - u:l_oss p - h * 1.0 0.0) / 2.0 * h) c_at ((u:l_oss p + h * 0.0 1.0) - u:l_oss p - h * 0.0 1.0) / 2.0 * h }
+checkAt := 3 2 r_eshape start c_at -1.5 0.5 0.7 -2.0
+gradientGap := 'm_ax r_/ '{ i -> 'm_ax r_/ a_bs (u:c_entral i s_elect checkAt) - u:g_rad i s_elect checkAt } e_ach r_ange 3
+## The contours, as data for the page: the level set L = c is the
+## ellipse x = sqrt(2 c) cos t, y = sqrt(2 c / 3) sin t (analytical:
+## drawn from the formula, not found by search), 49 points round, the
+## five levels of the preset one after another. A general contour
+## finder is X_eTaL-libraries' by GL6; this loss needs none.
+turn := ((2.0 * p_i @) / 48.0) * (f_loat r_ange 49) - 1.0
+u:c_ontour := { c -> o_\ 2 49 r_eshape ((s_qrt 2.0 * c) * c_os turn) c_at (s_qrt (2.0 * c) / 3.0) * s_in turn }
+(contours, _) := 5 '{ (M, i) -> (M c_at u:c_ontour i s_elect levels, i + 1) } p_ower (0 2 r_eshape 0.0, 1)
+## The gradient field: the gradient at a grid of 7 by 5 points, one row
+## per point (x, y, the gradient's x and y). It comes from a potential,
+## the loss: following the arrows backward is gradient descent.
+xs := -3.0 -2.0 -1.0 0.0 1.0 2.0 3.0
+ys := -2.0 -1.0 0.0 1.0 2.0
+grid := o_\ 2 35 r_eshape (r_avel 5 7 r_eshape xs) c_at r_avel o_\ 7 5 r_eshape ys
+u:g_rads := { P -> P * ((f_irst s_hape P) r_eshape 1.0) '* t_able 1.0 3.0 }
+field := grid c_at_2 u:g_rads grid
+
+# -- descent under a metric
+## A positive-definite matrix G is the metric: the length of a step v
+## is sqrt(v' G v). The update is p <- p - eta P g, P the inverse of G
+## (a step under a metric: X_eTaL-ML's by GM4, written out). The step
+## size policy, the same for every metric: eta is the exact line
+## search along the direction d = P g, the one number that makes the
+## loss least along that line, which for this loss is (g . d) /
+## (d . H d); so the metric chooses the direction and nothing else, and
+## a metric and twice the metric give the same path. A direction of
+## zero length (the floor reached) stays put.
+u:e_ta := { (g, d) -> den := '+ r_/ d * H mx:m_ul d; den = 0.0 ? 0.0; ('+ r_/ g * d) / den }
+u:s_tep := { P (p, path, L) -> g := u:g_rad p; d := P mx:m_ul g; q := p - (u:e_ta (g, d)) * d; (q, path c_at 1 2 r_eshape q, L c_at u:l_oss q) }
+## `u:d_escend G`: the path from the start under the metric G, `steps`
+## steps, one point per row (the start first), and the loss at each.
+u:d_escend := { G -> P := mx:i_nverse G; (_, path, L) := steps '{ s -> P u:s_tep s } p_ower (start, 1 2 r_eshape start, 1 r_eshape u:l_oss start); (path, L) }
+## The three metrics: the identity (the plain step), diag(a, 1) with a
+## the control, and the loss's own curvature H (Newton's direction,
+## under which the bowl is round and the floor one step away).
+I := f_loat mx:i_dentity 2
+u:d_iagMetric := { a -> 2 2 r_eshape a c_at 0.0 0.0 1.0 }
+(plainPath, plainLoss) := u:d_escend I
+(newtonPath, newtonLoss) := u:d_escend H
+## The first step of each worked: the direction d = P g at the start,
+## eta, the point reached, and eta's two parts, g . d and d . H d. And
+## the loss at the start in its two parts, x^2 and 3 y^2.
+g0 := u:g_rad start
+u:f_irst := { G -> P := mx:i_nverse G; d := P mx:m_ul g0; eta := u:e_ta (g0, d); d c_at eta c_at (start - eta * d) c_at ('+ r_/ g0 * d) c_at '+ r_/ d * H mx:m_ul d }
+startParts := ((1 s_elect start) ^ 2.0) c_at 3.0 * (2 s_elect start) ^ 2.0
+plainFirst := u:f_irst I
+newtonFirst := u:f_irst H
+## The record, one row per metric (plain, Newton): the steps to a loss
+## under the target (-1 if never), the loss after one step and after
+## five, the loss at the end, the numbers that make the metric (none;
+## the three of a symmetric 2 by 2), and the multiplies a step spends
+## on P g (none; four).
+u:u_nder := { L -> hits := w_here L < target; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+u:r_ecord := { (L, m, ops) -> (f_loat u:u_nder L) c_at (2 s_elect L) c_at (6 s_elect L) c_at ((steps + 1) s_elect L) c_at m c_at ops }
+record := 2 6 r_eshape (u:r_ecord (plainLoss, 0.0, 0.0)) c_at u:r_ecord (newtonLoss, 3.0, 4.0)
+## The control: the same descent under diag(a, 1) at each a of the
+## preset. One row per a: a; the condition number the metric leaves
+## the bowl with, the larger of 3 a and 1 / (3 a) (1 at a = 1/3, where
+## diag(a, 1) is H / 3 and the direction Newton's); the steps to the
+## target; the loss after five steps; the loss at the end. And every
+## path, one after another ((steps + 1) rows each), and every loss
+## by step, one row per a.
+u:c_ontrolRow := { a -> (path, L) := u:d_escend u:d_iagMetric a; kappa := (3.0 * a) m_ax 1.0 / 3.0 * a; (a c_at kappa c_at (f_loat u:u_nder L) c_at (6 s_elect L) c_at (steps + 1) s_elect L, path, L) }
+(controlRows, controlFlat, controlLossFlat, _) := (t_ally anis) '{ (R, F, G, i) -> (r, path, L) := u:c_ontrolRow i s_elect anis; (R c_at r, F c_at r_avel path, G c_at L, i + 1) } p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+control := ((t_ally anis) c_at 5) r_eshape controlRows
+## The first step under each a, worked as above (d, eta, the point).
+(controlFirstFlat, _) := (t_ally anis) '{ (F, i) -> (F c_at u:f_irst u:d_iagMetric i s_elect anis, i + 1) } p_ower (0 r_eshape 0.0, 1)
+controlFirst := ((t_ally anis) c_at 7) r_eshape controlFirstFlat
+controlPaths := (((t_ally anis) * steps + 1) c_at 2) r_eshape controlFlat
+controlLosses := ((t_ally anis) c_at steps + 1) r_eshape controlLossFlat
+
+# -- the steepest direction under two metrics, worked in full
+## At the start, the direction that lowers the loss most among those
+## of length 1 under the metric G: v = -P g / sqrt(g . P g), the one
+## point of G's unit ball where the loss falls fastest. Under the
+## identity the ball is the unit circle and v is -g / |g|; under H it
+## is the ellipse x^2 + 3 y^2 = 1 and v points more along x. The rate
+## of fall along each, g . v, is a slope per unit of that metric's
+## length, so the two rates are in different units and are not
+## compared. Checked by sampling: of 360 directions round each ball,
+## the one with the smallest g . v agrees with the formula to the
+## sampling's half a degree.
+u:s_teepest := { G -> P := mx:i_nverse G; d := P mx:m_ul g0; (0.0 - d) / s_qrt '+ r_/ g0 * d }
+plainDir := u:s_teepest I
+newtonDir := u:s_teepest H
+newtonPg := (mx:i_nverse H) mx:m_ul g0
+newtonNorm := s_qrt '+ r_/ g0 * newtonPg
+plainNorm := s_qrt '+ r_/ g0 * g0
+rates := ('+ r_/ g0 * plainDir) c_at '+ r_/ g0 * newtonDir
+## Each metric's unit ball, 49 points round, for the picture: the
+## direction at each angle scaled to length 1 under G.
+circle := o_\ 2 49 r_eshape (c_os turn) c_at s_in turn
+u:u_nitBall := { (G, U) -> lens := s_qrt '+ r_/_2 U * U mx:m_ul G; U / lens 'l_eft t_able 0.0 0.0 }
+plainBall := u:u_nitBall (I, circle)
+newtonBall := u:u_nitBall (H, circle)
+fine := ((2.0 * p_i @) / 360.0) * (f_loat r_ange 360) - 1.0
+fineCircle := o_\ 2 360 r_eshape (c_os fine) c_at s_in fine
+u:b_est := { G -> B := u:u_nitBall (G, fineCircle); slopes := '+ r_/_2 B * (360 r_eshape 1.0) '* t_able g0; (f_irst w_here slopes = 'm_in r_/ slopes) s_elect B }
+sampledPlain := u:b_est I
+sampledNewton := u:b_est H
+
+# -- a step on the sphere against a flat step repaired
+## The unit vector p that makes the quotient f(p) = p' A p largest, for
+## a small symmetric A, is A's leading eigenvector, which Matrix finds
+## (Jacobi's sweeps) for the check. The gradient of f in the room is
+## 2 A p; the constraint is the unit sphere. Two ways up from the same
+## start, the same rate, the same number of steps: (a) a step that
+## stays on the sphere, Manifold's s_phereDescend against -2 A p (the
+## gradient's part along the sphere, then the exponential map); (b) a
+## flat step p + rate 2 A p, which leaves the sphere, repaired by
+## scaling back to length 1. And (a) with the cheap retraction in
+## place of the exact step. For each step: the quotient, how far the
+## point is from the eigenvector along the sphere (either sign, since
+## -p is the same line), and how far off the sphere the step went
+## before any repair.
+A := 3 3 r_eshape 4.0 1.0 0.0 1.0 3.0 1.0 0.0 1.0 2.0
+eigenvalues := mx:e_igenvalues A
+top := 1 s_elect mx:e_igenvectors A
+p0 := mf:s_phereProject 1.0 -1.0 1.0
+u:q_uotient := { p -> '+ r_/ p * A mx:m_ul p }
+u:a_scent := { p -> 2.0 * A mx:m_ul p }
+u:a_part := { p -> (p mf:s_phereDistance top) m_in p mf:s_phereDistance 0.0 - top }
+u:r_ow := { (q, off) -> (u:q_uotient q) c_at (u:a_part q) c_at off }
+u:s_tepExp := { (p, path, L) -> q := sphereRate mf:s_phereDescend (p, 0.0 - u:a_scent p); (q, path c_at 1 3 r_eshape q, L c_at u:r_ow (q, mf:s_phereOff q)) }
+u:s_tepRetract := { (p, path, L) -> v := sphereRate * p mf:s_phereTangent u:a_scent p; q := p mf:s_phereRetract v; (q, path c_at 1 3 r_eshape q, L c_at u:r_ow (q, mf:s_phereOff p + v)) }
+u:s_tepFlat := { (p, path, L) -> r := p + sphereRate * u:a_scent p; q := mf:s_phereProject r; (q, path c_at 1 3 r_eshape q, L c_at u:r_ow (q, mf:s_phereOff r)) }
+u:f_inish := { (p, path, L) -> (path, ((sphereSteps + 1) c_at 3) r_eshape L) }
+(expPath, expLog) := u:f_inish sphereSteps '{ s -> u:s_tepExp s } p_ower (p0, 1 3 r_eshape p0, u:r_ow (p0, 0.0))
+(retractPath, retractLog) := u:f_inish sphereSteps '{ s -> u:s_tepRetract s } p_ower (p0, 1 3 r_eshape p0, u:r_ow (p0, 0.0))
+(flatPath, flatLog) := u:f_inish sphereSteps '{ s -> u:s_tepFlat s } p_ower (p0, 1 3 r_eshape p0, u:r_ow (p0, 0.0))
+## The gradient of f against central differences at the start, h = 1e-5.
+quotientCentral := '{ i -> e := h * f_loat (r_ange 3) = i; ((u:q_uotient p0 + e) - u:q_uotient p0 - e) / 2.0 * h } e_ach r_ange 3
+quotientGap := 'm_ax r_/ a_bs quotientCentral - u:a_scent p0
+## The record, one row per way (exact step, retraction, flat repaired):
+## the quotient at the end, the distance to the eigenvector at the
+## end, the steps to a distance under the tolerance (-1 if never), the
+## farthest and the mean distance off the sphere before repair.
+u:t_ol := { L -> hits := w_here (2 s_elect_2 L) < tolerance; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+u:s_phereRow := { L -> end := (sphereSteps + 1) s_elect L; (1 s_elect end) c_at (2 s_elect end) c_at (f_loat u:t_ol L) c_at ('m_ax r_/ 3 s_elect_2 L) c_at ('+ r_/ 3 s_elect_2 L) / f_loat sphereSteps }
+sphereRecord := 3 5 r_eshape (u:s_phereRow expLog) c_at (u:s_phereRow retractLog) c_at u:s_phereRow flatLog
+## For the page: the sphere's wire lines.
+(parallels, meridians) := mf:s_phereWires (5, 12, 24)
+## Analytical, from the eigenvalues, for reading the counts: the factor
+## by which each way shrinks its distance per step once near the
+## eigenvector: the flat step repaired is the power iteration on
+## I + 2 rate A, whose factor is the ratio of that matrix's top two
+## eigenvalues; the step along the sphere contracts by 1 - 2 rate
+## (lambda1 - lambda2), the slowest direction of the quotient's
+## curvature there.
+contraction := ((1.0 + (2.0 * sphereRate) * 2 s_elect eigenvalues) / 1.0 + (2.0 * sphereRate) * 1 s_elect eigenvalues) c_at 1.0 - (2.0 * sphereRate) * (1 s_elect eigenvalues) - 2 s_elect eigenvalues
+# -- end of the core
+
+### The preset
+preset
+
+### The loss
+"the gradient agrees with central differences at three points" ch:t_est 1 ch:i_s gradientGap < 0.00000001
+"every contour point is at its level" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs ('{ i -> u:l_oss i s_elect contours } e_ach r_ange 245) - r_avel o_\ 49 5 r_eshape levels
+"the field is the gradient" ch:t_est (3 4 s_elect_2 field) ch:n_ear u:g_rads grid
+"the gradient field comes from a potential: its curl is zero (d gy / dx - d gx / dy at the grid)" ch:t_est 0.0 ch:n_ear 'm_ax r_/ a_bs '{ i -> p := i s_elect grid; ((2 s_elect u:g_rad p + h * 1.0 0.0) - 2 s_elect u:g_rad p - h * 1.0 0.0) - (1 s_elect u:g_rad p + h * 0.0 1.0) - 1 s_elect u:g_rad p - h * 0.0 1.0 } e_ach r_ange 35
+
+### Descent under a metric
+record
+plainFirst
+newtonFirst
+## The first steps against hand arithmetic: plain, d = g = (2.3, 3),
+## eta = (2.3^2 + 9) / (2.3^2 + 27), the point start - eta g; Newton,
+## d = (2.3, 1), eta = 1, the floor in one step.
+"the plain first step is the hand arithmetic" ch:t_est (2.3 3.0 c_at (14.29 / 32.29) c_at (2.3 1.0 - (14.29 / 32.29) * 2.3 3.0) c_at 14.29 32.29) ch:n_ear plainFirst
+"Newton's first step reaches the floor" ch:t_est 2.3 1.0 1.0 0.0 0.0 8.29 8.29 ch:n_ear newtonFirst
+startParts
+contraction
+"the counts on the sphere are near what the contraction factors say (the steps to shrink the start's distance to the tolerance)" ch:t_est 1 1 ch:i_s 3.0 > a_bs ((3 s_elect 1 s_elect sphereRecord) c_at 3 s_elect 3 s_elect sphereRecord) - (l_og tolerance / 2 s_elect 1 s_elect expLog) / l_og 2 1 s_elect contraction
+"Newton's direction reaches the target in one step; the plain step takes more" ch:t_est 1 ch:i_s (1.0 = 1 s_elect 2 s_elect record) & 1.0 < 1 s_elect 1 s_elect record
+"the loss never rises along either path" ch:t_est 1 1 ch:i_s ('& r_/ (1 d_rop plainLoss) <= (0 - 1) d_rop plainLoss) c_at '& r_/ (1 d_rop newtonLoss) <= (0 - 1) d_rop newtonLoss
+"the plain path zigzags: each step is at right angles to the last (an exact line search)" ch:t_est 0.0 ch:n_ear 'm_ax r_/ a_bs '{ i -> '+ r_/ (((i + 1) s_elect plainPath) - i s_elect plainPath) * ((i + 2) s_elect plainPath) - (i + 1) s_elect plainPath } e_ach r_ange 10
+control
+"the control at a = 1 is the plain path, at a = 1/3 Newton's" ch:t_est ((3 s_elect 5 s_elect control) c_at 3 s_elect 3 s_elect control) ch:n_ear (1 s_elect 1 s_elect record) c_at 1 s_elect 2 s_elect record
+## a and 1 / (9 a) leave the bowl the same shape (the same condition
+## number) but not the same start relative to it, so their step counts
+## are near and not equal: the condition number bounds the rate, the
+## start sets where within the bound.
+"a = 1/9 and a = 1 leave the bowl the same shape" ch:t_est (2 s_elect 1 s_elect control) ch:n_ear 2 s_elect 5 s_elect control
+"and take about as many steps (within three)" ch:t_est 1 ch:i_s 3.0 >= a_bs (3 s_elect 1 s_elect control) - 3 s_elect 5 s_elect control
+"the steps to the target fall toward a = 1/3 from either side and rise away from it" ch:t_est 1 ch:i_s ('& r_/ (1 d_rop 3 t_ake 3 s_elect_2 control) <= (0 - 1) d_rop 3 t_ake 3 s_elect_2 control) & '& r_/ (1 d_rop 2 d_rop 3 s_elect_2 control) >= (0 - 1) d_rop 2 d_rop 3 s_elect_2 control
+
+### The steepest direction under two metrics
+g0
+plainNorm
+newtonPg
+newtonNorm
+plainDir
+newtonDir
+rates
+"each direction has length 1 under its own metric" ch:t_est 1.0 1.0 ch:n_ear (s_qrt '+ r_/ plainDir * plainDir) c_at s_qrt '+ r_/ newtonDir * H mx:m_ul newtonDir
+"the sampled best of 360 directions agrees with the formula" ch:t_est 1 ch:i_s 0.02 > 'm_ax r_/ a_bs (sampledPlain - plainDir) c_at sampledNewton - newtonDir
+"Newton's unit ball is the ellipse x^2 + 3 y^2 = 1" ch:t_est (49 r_eshape 1.0) ch:n_ear '+ r_/_2 newtonBall * newtonBall mx:m_ul H
+"the two directions differ" ch:t_est 1 ch:i_s 0.1 < s_qrt '+ r_/ (plainDir - newtonDir) ^ 2.0
+
+### A step on the sphere against a flat step repaired
+eigenvalues
+top
+"the gradient of the quotient agrees with central differences" ch:t_est 1 ch:i_s quotientGap < 0.00000001
+sphereRecord
+"every way reaches the leading eigenvector within the tolerance" ch:t_est 1 1 1 ch:i_s (2 s_elect_2 sphereRecord) < tolerance
+"the quotient at the end is the largest eigenvalue" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ a_bs (1 s_elect_2 sphereRecord) - 1 s_elect eigenvalues
+"the step that stays on the sphere never leaves it; the flat step does" ch:t_est 1 ch:i_s (0.000000001 > 4 s_elect 1 s_elect sphereRecord) & 0.1 < 4 s_elect 3 s_elect sphereRecord
+"every path ends on the sphere" ch:t_est 0.0 0.0 0.0 ch:n_ear (mf:s_phereOff (sphereSteps + 1) s_elect expPath) c_at (mf:s_phereOff (sphereSteps + 1) s_elect retractPath) c_at mf:s_phereOff (sphereSteps + 1) s_elect flatPath
+"the quotient never falls along the exact step's path (but by rounding once it has converged)" ch:t_est 1 ch:i_s '& r_/ (1 d_rop 1 s_elect_2 expLog) >= ((0 - 1) d_rop 1 s_elect_2 expLog) - 0.000000000001

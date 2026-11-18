@@ -1,0 +1,23 @@
+page: loaded
+frame: question
+frame: background
+frame: rationale
+frame: purpose
+frame: intuition
+frame: mathematics
+frame: experiment
+frame: run
+frame: analysis
+frame: extension
+frame: summary
+frame: next
+errors: none
+found: The first step under each ruler
+found: the plain ruler, G = I
+found: 0.4426
+found: Worked in full
+found: the leading eigenvector
+found: diag(a, 1) at a = 1/6
+found: html: class="numbers comparison"
+found: html: data-aside="mf:s_phereDescend"
+cross-reference links: 52, dead: none

@@ -51,6 +51,38 @@ far above the others), not the geometry's. The disk on the clusters
 and the directions is not run (two cells of nine): a fit of 120 or
 160 points would not run in a page.
 
+## Optimization geometry (no hypothesis: the area's question)
+
+Does the metric of a step change the path and the cost? Measured on a
+loss whose answer can be seen whole (optimization-explorer, part 1,
+step metric-descent; `demos/optimization-explorer/reg/cli-optimization-explorer.out`):
+L = (x^2 + 3 y^2) / 2 from (2.3, 1) (loss 4.145), 30 steps, the exact
+line search as the step size policy for every ruler.
+
+| ruler G | condition number left | steps to loss under 1e-6 | loss after 1, 5 steps | numbers in G; multiplies per step on P g | note |
+| ------- | --------------------- | ------------------------ | --------------------- | ---------------------------------------- | ---- |
+| the identity (plain) | 3 | 11 | 0.983; 0.0031 | 0; 0 | first step to (1.282, -0.328), eta 0.4426; every step at right angles to the last |
+| diag(a, 1) at a = 1/9, 1/6, 1/3, 1/2, 1, 2, 3, 9 | 3, 2, 1, 1.5, 3, 6, 9, 27 | 9, 7, 1, 5, 11, 18, 22, 29 | after 5: 3.3e-4, 1.3e-5, 0, 4.1e-7, 0.0031, 0.056, 0.121, 0.297 | 1; 2 | the counts fall toward a = 1/3 from both sides; the same condition number (1/9 and 1) does not give the same count (9 and 11) |
+| H = diag(1, 3), the bowl's curvature (Newton's direction) | 1 | 1 | 0; 0 | 3; 4 | eta = 1, the floor exactly |
+
+And on the sphere, the leading eigenvector of A = (4 1 0 / 1 3 1 /
+0 1 2) (eigenvalue 4.732) climbed to from (1, -1, 1) / sqrt 3 at rate
+0.1, 60 steps:
+
+| step | steps to a distance under 1e-4 | distance at the end | off the sphere before repair, farthest; mean | note |
+| ---- | ------------------------------ | ------------------- | -------------------------------------------- | ---- |
+| the gradient's tangent part, the exponential map (`s_phereDescend`) | 24 | 2.1e-11 | 1.1e-16; 1.9e-18 | lands on the sphere |
+| the tangent part, the cheap retraction (`s_phereRetract`) | 24 | 2.2e-11 | 0.045; 0.0027 | the same count and end distance as the exact step: by the rule written before the run, the exact step bought nothing over the cheap one here (a result) |
+| a flat step p + 2 eta A p, scaled back | 49 | 1.1e-5 | 0.946; 0.906 | the power iteration on I + 2 eta A; twice the steps. Analytical contraction per step near the eigenvector: 0.822 (flat) against 0.654 (along the sphere), which predict 48 and 22 steps; one rate measured only |
+
+What the tables say: the ruler changed the path and the count and not
+the loss; nothing here counts against "downhill depends on the
+ruler" (the rule written before the run: the paths coinciding or the
+counts within one). The cost is in the ruler's numbers and multiplies,
+which on a model with many weights is what decides; part 2
+(metric-training) measures that on a model, with a diagonal
+preconditioner and a natural-gradient approximation.
+
 ## H2: a constraint on a transformation keeps a deep network stable
 
 No rows yet (steps mhc-matrices and mhc-depth).
