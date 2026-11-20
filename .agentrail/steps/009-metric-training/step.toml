@@ -1,10 +1,11 @@
 number = 9
 slug = "metric-training"
-status = "in-progress"
+status = "completed"
 description = """
 Step metric-training (docs/plan.md, Saga 1 row 9: milestone M2,
 second half; ..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T10:53:57"
-commits = []
+completed_at = "2026-11-20T11:23:40"
+commits = ["41e72fd0063ebbecba62ba175ebe3e06ee19084f"]
