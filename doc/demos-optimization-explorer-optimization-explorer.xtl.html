@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/optimization-explorer/optimization-explorer.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/optimization-explorer/</h3>
+<ul>
+<li><a href="demos-optimization-explorer-optimization-explorer.xtl.html">optimization-explorer.xtl</a></li>
+<li><a href="demos-optimization-explorer-optimization-training.xtl.html">optimization-training.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+<li><a href="demos-representation-explorer-representation-hyperbolic.xtl.html">representation-hyperbolic.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Matrix/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#text">text</a></li>
+<li class="item"><a href="#preset">preset</a></li>
+<li class="item"><a href="#start">start</a></li>
+<li class="item"><a href="#steps">steps</a></li>
+<li class="item"><a href="#target">target</a></li>
+<li class="item"><a href="#levels">levels</a></li>
+<li class="item"><a href="#sphereRate">sphereRate</a></li>
+<li class="item"><a href="#sphereSteps">sphereSteps</a></li>
+<li class="item"><a href="#tolerance">tolerance</a></li>
+<li class="item"><a href="#anis">anis</a></li>
+<li class="item"><a href="#u.l_oss"><span class="c-userfunc">ᵘl̲oss</span></a></li>
+<li class="item"><a href="#u.g_rad"><span class="c-userfunc">ᵘg̲rad</span></a></li>
+<li class="item"><a href="#H">H</a></li>
+<li class="item"><a href="#h">h</a></li>
+<li class="item"><a href="#u.c_entral"><span class="c-userfunc">ᵘc̲entral</span></a></li>
+<li class="item"><a href="#checkAt">checkAt</a></li>
+<li class="item"><a href="#gradientGap">gradientGap</a></li>
+<li class="item"><a href="#turn">turn</a></li>
+<li class="item"><a href="#u.c_ontour"><span class="c-userfunc">ᵘc̲ontour</span></a></li>
+<li class="item"><a href="#contours">contours</a></li>
+<li class="item"><a href="#xs">xs</a></li>
+<li class="item"><a href="#ys">ys</a></li>
+<li class="item"><a href="#grid">grid</a></li>
+<li class="item"><a href="#u.g_rads"><span class="c-userfunc">ᵘg̲rads</span></a></li>
+<li class="item"><a href="#field">field</a></li>
+<li class="item"><a href="#u.e_ta"><span class="c-userfunc">ᵘe̲ta</span></a></li>
+<li class="item"><a href="#u.s_tep"><span class="c-userfunc">ᵘs̲tep</span></a></li>
+<li class="item"><a href="#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a></li>
+<li class="item"><a href="#I">I</a></li>
+<li class="item"><a href="#u.d_iagMetric"><span class="c-userfunc">ᵘd̲iagMetric</span></a></li>
+<li class="item"><a href="#plainPath">plainPath</a></li>
+<li class="item"><a href="#plainLoss">plainLoss</a></li>
+<li class="item"><a href="#newtonPath">newtonPath</a></li>
+<li class="item"><a href="#newtonLoss">newtonLoss</a></li>
+<li class="item"><a href="#g0">g0</a></li>
+<li class="item"><a href="#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a></li>
+<li class="item"><a href="#startParts">startParts</a></li>
+<li class="item"><a href="#plainFirst">plainFirst</a></li>
+<li class="item"><a href="#newtonFirst">newtonFirst</a></li>
+<li class="item"><a href="#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a></li>
+<li class="item"><a href="#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a></li>
+<li class="item"><a href="#record">record</a></li>
+<li class="item"><a href="#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a></li>
+<li class="item"><a href="#controlRows">controlRows</a></li>
+<li class="item"><a href="#controlFlat">controlFlat</a></li>
+<li class="item"><a href="#controlLossFlat">controlLossFlat</a></li>
+<li class="item"><a href="#control">control</a></li>
+<li class="item"><a href="#controlFirstFlat">controlFirstFlat</a></li>
+<li class="item"><a href="#controlFirst">controlFirst</a></li>
+<li class="item"><a href="#controlPaths">controlPaths</a></li>
+<li class="item"><a href="#controlLosses">controlLosses</a></li>
+<li class="item"><a href="#u.s_teepest"><span class="c-userfunc">ᵘs̲teepest</span></a></li>
+<li class="item"><a href="#plainDir">plainDir</a></li>
+<li class="item"><a href="#newtonDir">newtonDir</a></li>
+<li class="item"><a href="#newtonPg">newtonPg</a></li>
+<li class="item"><a href="#newtonNorm">newtonNorm</a></li>
+<li class="item"><a href="#plainNorm">plainNorm</a></li>
+<li class="item"><a href="#rates">rates</a></li>
+<li class="item"><a href="#circle">circle</a></li>
+<li class="item"><a href="#u.u_nitBall"><span class="c-userfunc">ᵘu̲nitBall</span></a></li>
+<li class="item"><a href="#plainBall">plainBall</a></li>
+<li class="item"><a href="#newtonBall">newtonBall</a></li>
+<li class="item"><a href="#fine">fine</a></li>
+<li class="item"><a href="#fineCircle">fineCircle</a></li>
+<li class="item"><a href="#u.b_est"><span class="c-userfunc">ᵘb̲est</span></a></li>
+<li class="item"><a href="#sampledPlain">sampledPlain</a></li>
+<li class="item"><a href="#sampledNewton">sampledNewton</a></li>
+<li class="item"><a href="#A">A</a></li>
+<li class="item"><a href="#eigenvalues">eigenvalues</a></li>
+<li class="item"><a href="#top">top</a></li>
+<li class="item"><a href="#p0">p0</a></li>
+<li class="item"><a href="#u.q_uotient"><span class="c-userfunc">ᵘq̲uotient</span></a></li>
+<li class="item"><a href="#u.a_scent"><span class="c-userfunc">ᵘa̲scent</span></a></li>
+<li class="item"><a href="#u.a_part"><span class="c-userfunc">ᵘa̲part</span></a></li>
+<li class="item"><a href="#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a></li>
+<li class="item"><a href="#u.s_tepExp"><span class="c-userfunc">ᵘs̲tepExp</span></a></li>
+<li class="item"><a href="#u.s_tepRetract"><span class="c-userfunc">ᵘs̲tepRetract</span></a></li>
+<li class="item"><a href="#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a></li>
+<li class="item"><a href="#u.f_inish"><span class="c-userfunc">ᵘf̲inish</span></a></li>
+<li class="item"><a href="#expPath">expPath</a></li>
+<li class="item"><a href="#expLog">expLog</a></li>
+<li class="item"><a href="#retractPath">retractPath</a></li>
+<li class="item"><a href="#retractLog">retractLog</a></li>
+<li class="item"><a href="#flatPath">flatPath</a></li>
+<li class="item"><a href="#flatLog">flatLog</a></li>
+<li class="item"><a href="#quotientCentral">quotientCentral</a></li>
+<li class="item"><a href="#quotientGap">quotientGap</a></li>
+<li class="item"><a href="#u.t_ol"><span class="c-userfunc">ᵘt̲ol</span></a></li>
+<li class="item"><a href="#u.s_phereRow"><span class="c-userfunc">ᵘs̲phereRow</span></a></li>
+<li class="item"><a href="#sphereRecord">sphereRecord</a></li>
+<li class="item"><a href="#parallels">parallels</a></li>
+<li class="item"><a href="#meridians">meridians</a></li>
+<li class="item"><a href="#contraction">contraction</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/optimization-explorer/optimization-explorer.xtl</h1>
+<div class="doc">
+<p>Optimization explorer, part 1: is downhill one direction? One fixed
+loss, L(x, y) = (x^2 + 3 y^2) / 2, its contours and its gradient
+field (a field that comes from a potential); gradient descent on it
+under different metrics, the same start and the same step size
+policy: the plain step (the metric is the identity), a step under
+the metric diag(a, 1) with a as the control, and Newton's direction
+(the loss's own curvature as the metric). The objective never
+changes; the path and the number of steps do. The steepest
+direction at one point under two metrics, worked in full: the unit
+ball of each and the direction that lowers the loss most within it.
+Then the same question on a curved space: the unit vector that
+makes x' A x largest (the leading eigenvector) found by a step that
+stays on the sphere (Manifold's) against a flat step repaired
+afterward.</p>
+</div>
+<p class="meta"><a href="demos-optimization-explorer-optimization-explorer.xtl.src.html">source</a> &middot; imports <code><span class="c-error">mf:</span></code> <a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a>; <code><span class="c-error">mx:</span></code> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">work/xetal-libraries/libs/Matrix/src/Matrix.xtl</a>; <code><span class="c-error">tr:</span></code> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">work/xetal-libraries/libs/Trig/src/Trig.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="text">
+<h3><a href="#text">text</a> <span class="type">: Char</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L27">line 27</a></div>
+<div class="doc">
+<p>The run's numbers are data, presets/metrics.txt (the schema of
+docs/research-questions.md): the file's words are dropped and its
+numbers kept in order: the start; the steps and the loss target;
+five contour levels; the sphere's rate, steps and tolerance; then
+the control's anisotropies a, as ninths so that a third is exact.</p>
+</div>
+<pre class="code">text ← <a href="builtins.html#-5b-5dN_GET" class="c-builtin">⎕N̲GET</a> <span class="c-string">&quot;presets/metrics.txt&quot;</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></div>
+</div>
+<div class="item" id="preset">
+<h3><a href="#preset">preset</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L28">line 28</a></div>
+<pre class="code">preset ← <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> (<a href="builtins.html#w_here" class="c-builtin">w̲here</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#text">text</a> <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;0123456789.- \n&quot;</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#text">text</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#target">target</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#levels">levels</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#tolerance">tolerance</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L206">demos/optimization-explorer/optimization-explorer.xtl:206</a></div>
+</div>
+<div class="item" id="start">
+<h3><a href="#start">start</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L29">line 29</a></div>
+<pre class="code">start ← <span class="c-number">1</span> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#checkAt">checkAt</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#startParts">startParts</a></div>
+</div>
+<div class="item" id="steps">
+<h3><a href="#steps">steps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L30">line 30</a></div>
+<pre class="code">steps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlPaths">controlPaths</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLosses">controlLosses</a></div>
+</div>
+<div class="item" id="target">
+<h3><a href="#target">target</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L31">line 31</a></div>
+<pre class="code">target ← <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a></div>
+</div>
+<div class="item" id="levels">
+<h3><a href="#levels">levels</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L32">line 32</a></div>
+<pre class="code">levels ← <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">7</span> <span class="c-number">8</span> <span class="c-number">9</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#contours">contours</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L210">demos/optimization-explorer/optimization-explorer.xtl:210</a></div>
+</div>
+<div class="item" id="sphereRate">
+<h3><a href="#sphereRate">sphereRate</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L33">line 33</a></div>
+<pre class="code">sphereRate ← <span class="c-number">10</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepExp"><span class="c-userfunc">ᵘs̲tepExp</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepRetract"><span class="c-userfunc">ᵘs̲tepRetract</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#contraction">contraction</a></div>
+</div>
+<div class="item" id="sphereSteps">
+<h3><a href="#sphereSteps">sphereSteps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L34">line 34</a></div>
+<pre class="code">sphereSteps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">11</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish"><span class="c-userfunc">ᵘf̲inish</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_phereRow"><span class="c-userfunc">ᵘs̲phereRow</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L260">demos/optimization-explorer/optimization-explorer.xtl:260</a></div>
+</div>
+<div class="item" id="tolerance">
+<h3><a href="#tolerance">tolerance</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L35">line 35</a></div>
+<pre class="code">tolerance ← <span class="c-number">12</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.t_ol"><span class="c-userfunc">ᵘt̲ol</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L225">demos/optimization-explorer/optimization-explorer.xtl:225</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L257">demos/optimization-explorer/optimization-explorer.xtl:257</a></div>
+</div>
+<div class="item" id="anis">
+<h3><a href="#anis">anis</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L36">line 36</a></div>
+<pre class="code">anis ← (<span class="c-number">12</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#preset">preset</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">9.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#control">control</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirst">controlFirst</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlPaths">controlPaths</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLosses">controlLosses</a></div>
+</div>
+<div class="item" id="u.l_oss">
+<h3><a href="#u.l_oss"><span class="c-userfunc">ᵘl̲oss</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L44">line 44</a></div>
+<div class="doc">
+<p>L(x, y) = (x^2 + 3 y^2) / 2: a bowl whose floor is the origin, three
+times as steep along y as along x, so its contours are ellipses
+squeezed along y. Its gradient is (x, 3 y) and its curvature (the
+Hessian) the constant matrix H = diag(1, 3). Nothing below changes
+the loss: only the ruler a step is measured by.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘl̲oss</span> ← { p → (((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">3.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_entral"><span class="c-userfunc">ᵘc̲entral</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tep"><span class="c-userfunc">ᵘs̲tep</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L210">demos/optimization-explorer/optimization-explorer.xtl:210</a></div>
+</div>
+<div class="item" id="u.g_rad">
+<h3><a href="#u.g_rad"><span class="c-userfunc">ᵘg̲rad</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L45">line 45</a></div>
+<pre class="code"><span class="c-userfunc">ᵘg̲rad</span> ← { p → p <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <span class="c-number">3.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#gradientGap">gradientGap</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tep"><span class="c-userfunc">ᵘs̲tep</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L212">demos/optimization-explorer/optimization-explorer.xtl:212</a></div>
+</div>
+<div class="item" id="H">
+<h3><a href="#H">H</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L46">line 46</a></div>
+<pre class="code">H ← <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">3.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.e_ta"><span class="c-userfunc">ᵘe̲ta</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonFirst">newtonFirst</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonDir">newtonDir</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPg">newtonPg</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonBall">newtonBall</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sampledNewton">sampledNewton</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L247">demos/optimization-explorer/optimization-explorer.xtl:247</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L249">demos/optimization-explorer/optimization-explorer.xtl:249</a></div>
+</div>
+<div class="item" id="h">
+<h3><a href="#h">h</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L49">line 49</a></div>
+<div class="doc">
+<p>The gradient against central differences, h = 1e-5, at the start and
+two more points: the largest gap over the six numbers.</p>
+</div>
+<pre class="code">h ← <span class="c-number">0.00001</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_entral"><span class="c-userfunc">ᵘc̲entral</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientCentral">quotientCentral</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L212">demos/optimization-explorer/optimization-explorer.xtl:212</a></div>
+</div>
+<div class="item" id="u.c_entral">
+<h3><a href="#u.c_entral"><span class="c-userfunc">ᵘc̲entral</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L50">line 50</a></div>
+<pre class="code"><span class="c-userfunc">ᵘc̲entral</span> ← { p → (((<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> p <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> p <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#gradientGap">gradientGap</a></div>
+</div>
+<div class="item" id="checkAt">
+<h3><a href="#checkAt">checkAt</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L51">line 51</a></div>
+<pre class="code">checkAt ← <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">-1.5</span> <span class="c-number">0.5</span> <span class="c-number">0.7</span> <span class="c-number">-2.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#gradientGap">gradientGap</a></div>
+</div>
+<div class="item" id="gradientGap">
+<h3><a href="#gradientGap">gradientGap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L52">line 52</a></div>
+<pre class="code">gradientGap ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-quote">'</span>{ i → <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_entral" class="c-userfunc">ᵘc̲entral</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#checkAt">checkAt</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.g_rad" class="c-userfunc">ᵘg̲rad</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#checkAt">checkAt</a> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">3</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L209">demos/optimization-explorer/optimization-explorer.xtl:209</a></div>
+</div>
+<div class="item" id="turn">
+<h3><a href="#turn">turn</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L58">line 58</a></div>
+<div class="doc">
+<p>The contours, as data for the page: the level set L = c is the
+ellipse x = sqrt(2 c) cos t, y = sqrt(2 c / 3) sin t (analytical:
+drawn from the formula, not found by search), 49 points round, the
+five levels of the preset one after another. A general contour
+finder is X_eTaL-libraries' by GL6; this loss needs none.</p>
+</div>
+<pre class="code">turn ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">48.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">49</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontour"><span class="c-userfunc">ᵘc̲ontour</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#circle">circle</a></div>
+</div>
+<div class="item" id="u.c_ontour">
+<h3><a href="#u.c_ontour"><span class="c-userfunc">ᵘc̲ontour</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L59">line 59</a></div>
+<pre class="code"><span class="c-userfunc">ᵘc̲ontour</span> ← { c → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">49</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> ((<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> c) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#turn">turn</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> c) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">3.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#turn">turn</a> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#contours">contours</a></div>
+</div>
+<div class="item" id="contours">
+<h3><a href="#contours">contours</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L60">line 60</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#contours">contours</a>, _) ← <span class="c-number">5</span> <span class="c-quote">'</span>{ (M, i) → (M <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontour" class="c-userfunc">ᵘc̲ontour</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#levels">levels</a>, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#contours">contours</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L210">demos/optimization-explorer/optimization-explorer.xtl:210</a></div>
+</div>
+<div class="item" id="xs">
+<h3><a href="#xs">xs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L64">line 64</a></div>
+<div class="doc">
+<p>The gradient field: the gradient at a grid of 7 by 5 points, one row
+per point (x, y, the gradient's x and y). It comes from a potential,
+the loss: following the arrows backward is gradient descent.</p>
+</div>
+<pre class="code">xs ← <span class="c-number">-3.0</span> <span class="c-number">-2.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#grid">grid</a></div>
+</div>
+<div class="item" id="ys">
+<h3><a href="#ys">ys</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L65">line 65</a></div>
+<pre class="code">ys ← <span class="c-number">-2.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#grid">grid</a></div>
+</div>
+<div class="item" id="grid">
+<h3><a href="#grid">grid</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L66">line 66</a></div>
+<pre class="code">grid ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">35</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">5</span> <span class="c-number">7</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#xs">xs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">7</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#ys">ys</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#field">field</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L211">demos/optimization-explorer/optimization-explorer.xtl:211</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L212">demos/optimization-explorer/optimization-explorer.xtl:212</a></div>
+</div>
+<div class="item" id="u.g_rads">
+<h3><a href="#u.g_rads"><span class="c-userfunc">ᵘg̲rads</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L67">line 67</a></div>
+<pre class="code"><span class="c-userfunc">ᵘg̲rads</span> ← { P → P <a href="builtins.html#-2a" class="c-symbol">×</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">3.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#field">field</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L211">demos/optimization-explorer/optimization-explorer.xtl:211</a></div>
+</div>
+<div class="item" id="field">
+<h3><a href="#field">field</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L68">line 68</a></div>
+<pre class="code">field ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#grid">grid</a> <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.g_rads" class="c-userfunc">ᵘg̲rads</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#grid">grid</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L211">demos/optimization-explorer/optimization-explorer.xtl:211</a></div>
+</div>
+<div class="item" id="u.e_ta">
+<h3><a href="#u.e_ta"><span class="c-userfunc">ᵘe̲ta</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L80">line 80</a></div>
+<div class="doc">
+<p>A positive-definite matrix G is the metric: the length of a step v
+is sqrt(v' G v). The update is p &lt;- p - eta P g, P the inverse of G
+(a step under a metric: X_eTaL-ML's by GM4, written out). The step
+size policy, the same for every metric: eta is the exact line
+search along the direction d = P g, the one number that makes the
+loss least along that line, which for this loss is (g . d) /
+(d . H d); so the metric chooses the direction and nothing else, and
+a metric and twice the metric give the same path. A direction of
+zero length (the floor reached) stays put.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘe̲ta</span> ← { (g, d) → den ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> d <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> d◆ den <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? <span class="c-number">0.0</span>◆ (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> g <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="builtins.html#-2f" class="c-symbol">÷</a> den }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tep"><span class="c-userfunc">ᵘs̲tep</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a></div>
+</div>
+<div class="item" id="u.s_tep">
+<h3><a href="#u.s_tep"><span class="c-userfunc">ᵘs̲tep</span></a> <span class="type">: Float -&gt; (Float, Float, Float) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L81">line 81</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tep</span> ← { P (p, path, L) → g ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.g_rad" class="c-userfunc">ᵘg̲rad</a> p◆ d ← P <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> g◆ q ← p <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.e_ta" class="c-userfunc">ᵘe̲ta</a> (g, d)) <a href="builtins.html#-2a" class="c-symbol">×</a> d◆ (q, path <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> q, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> q) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a></div>
+</div>
+<div class="item" id="u.d_escend">
+<h3><a href="#u.d_escend"><span class="c-userfunc">ᵘd̲escend</span></a> <span class="type">: Num a =&gt; a -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L84">line 84</a></div>
+<div class="doc">
+<p><code><a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> G</code>: the path from the start under the metric G, <code><a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a></code>
+steps, one point per row (the start first), and the loss at each.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘd̲escend</span> ← { G → P ← <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_nverse" class="c-libfunc">ᵐˣi̲nverse</a> G◆ (_, path, L) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a> <span class="c-quote">'</span>{ s → P <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tep" class="c-userfunc">ᵘs̲tep</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>, <span class="c-number">1</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.l_oss" class="c-userfunc">ᵘl̲oss</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>)◆ (path, L) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a></div>
+</div>
+<div class="item" id="I">
+<h3><a href="#I">I</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L88">line 88</a></div>
+<div class="doc">
+<p>The three metrics: the identity (the plain step), diag(a, 1) with a
+the control, and the loss's own curvature H (Newton's direction,
+under which the bowl is round and the floor one step away).</p>
+</div>
+<pre class="code">I ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ᵐˣi̲dentity</a> <span class="c-number">2</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainFirst">plainFirst</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainDir">plainDir</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainBall">plainBall</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sampledPlain">sampledPlain</a></div>
+</div>
+<div class="item" id="u.d_iagMetric">
+<h3><a href="#u.d_iagMetric"><span class="c-userfunc">ᵘd̲iagMetric</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L89">line 89</a></div>
+<pre class="code"><span class="c-userfunc">ᵘd̲iagMetric</span> ← { a → <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> a <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a></div>
+</div>
+<div class="item" id="plainPath">
+<h3><a href="#plainPath">plainPath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L90">line 90</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainLoss">plainLoss</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L228">demos/optimization-explorer/optimization-explorer.xtl:228</a></div>
+</div>
+<div class="item" id="plainLoss">
+<h3><a href="#plainLoss">plainLoss</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L90">line 90</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainLoss">plainLoss</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainPath">plainPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#record">record</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L227">demos/optimization-explorer/optimization-explorer.xtl:227</a></div>
+</div>
+<div class="item" id="newtonPath">
+<h3><a href="#newtonPath">newtonPath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L91">line 91</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonLoss">newtonLoss</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a></div>
+</div>
+<div class="item" id="newtonLoss">
+<h3><a href="#newtonLoss">newtonLoss</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L91">line 91</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonLoss">newtonLoss</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPath">newtonPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#record">record</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L227">demos/optimization-explorer/optimization-explorer.xtl:227</a></div>
+</div>
+<div class="item" id="g0">
+<h3><a href="#g0">g0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L95">line 95</a></div>
+<div class="doc">
+<p>The first step of each worked: the direction d = P g at the start,
+eta, the point reached, and eta's two parts, g . d and d . H d. And
+the loss at the start in its two parts, x^2 and 3 y^2.</p>
+</div>
+<pre class="code">g0 ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.g_rad" class="c-userfunc">ᵘg̲rad</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_teepest"><span class="c-userfunc">ᵘs̲teepest</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPg">newtonPg</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonNorm">newtonNorm</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainNorm">plainNorm</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#rates">rates</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.b_est"><span class="c-userfunc">ᵘb̲est</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L240">demos/optimization-explorer/optimization-explorer.xtl:240</a></div>
+</div>
+<div class="item" id="u.f_irst">
+<h3><a href="#u.f_irst"><span class="c-userfunc">ᵘf̲irst</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L96">line 96</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲irst</span> ← { G → P ← <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_nverse" class="c-libfunc">ᵐˣi̲nverse</a> G◆ d ← P <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>◆ eta ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.e_ta" class="c-userfunc">ᵘe̲ta</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>, d)◆ d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> eta <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a> <a href="builtins.html#-2d" class="c-symbol">−</a> eta <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> d <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> d }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainFirst">plainFirst</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonFirst">newtonFirst</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a></div>
+</div>
+<div class="item" id="startParts">
+<h3><a href="#startParts">startParts</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L97">line 97</a></div>
+<pre class="code">startParts ← ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#start">start</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L223">demos/optimization-explorer/optimization-explorer.xtl:223</a></div>
+</div>
+<div class="item" id="plainFirst">
+<h3><a href="#plainFirst">plainFirst</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L98">line 98</a></div>
+<pre class="code">plainFirst ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst" class="c-userfunc">ᵘf̲irst</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L216">demos/optimization-explorer/optimization-explorer.xtl:216</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L221">demos/optimization-explorer/optimization-explorer.xtl:221</a></div>
+</div>
+<div class="item" id="newtonFirst">
+<h3><a href="#newtonFirst">newtonFirst</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L99">line 99</a></div>
+<pre class="code">newtonFirst ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst" class="c-userfunc">ᵘf̲irst</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L217">demos/optimization-explorer/optimization-explorer.xtl:217</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L222">demos/optimization-explorer/optimization-explorer.xtl:222</a></div>
+</div>
+<div class="item" id="u.u_nder">
+<h3><a href="#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a> <span class="type">: Float -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L105">line 105</a></div>
+<div class="doc">
+<p>The record, one row per metric (plain, Newton): the steps to a loss
+under the target (-1 if never), the loss after one step and after
+five, the loss at the end, the numbers that make the metric (none;
+the three of a symmetric 2 by 2), and the multiplies a step spends
+on P g (none; four).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘu̲nder</span> ← { L → hits ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> L <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#target">target</a>◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> hits ? <span class="c-number">-1</span>◆ (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> hits) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a></div>
+</div>
+<div class="item" id="u.r_ecord">
+<h3><a href="#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a> <span class="type">: (Float, Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L106">line 106</a></div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ecord</span> ← { (L, m, ops) → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nder" class="c-userfunc">ᵘu̲nder</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">6</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ops }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#record">record</a></div>
+</div>
+<div class="item" id="record">
+<h3><a href="#record">record</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L107">line 107</a></div>
+<pre class="code">record ← <span class="c-number">2</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ecord" class="c-userfunc">ᵘr̲ecord</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainLoss">plainLoss</a>, <span class="c-number">0.0</span>, <span class="c-number">0.0</span>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ecord" class="c-userfunc">ᵘr̲ecord</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonLoss">newtonLoss</a>, <span class="c-number">3.0</span>, <span class="c-number">4.0</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L215">demos/optimization-explorer/optimization-explorer.xtl:215</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L226">demos/optimization-explorer/optimization-explorer.xtl:226</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L230">demos/optimization-explorer/optimization-explorer.xtl:230</a></div>
+</div>
+<div class="item" id="u.c_ontrolRow">
+<h3><a href="#u.c_ontrolRow"><span class="c-userfunc">ᵘc̲ontrolRow</span></a> <span class="type">: Float -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L115">line 115</a></div>
+<div class="doc">
+<p>The control: the same descent under diag(a, 1) at each a of the
+preset. One row per a: a; the condition number the metric leaves
+the bowl with, the larger of 3 a and 1 / (3 a) (1 at a = 1/3, where
+diag(a, 1) is H / 3 and the direction Newton's); the steps to the
+target; the loss after five steps; the loss at the end. And every
+path, one after another ((steps + 1) rows each), and every loss
+by step, one row per a.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘc̲ontrolRow</span> ← { a → (path, L) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_escend" class="c-userfunc">ᵘd̲escend</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_iagMetric" class="c-userfunc">ᵘd̲iagMetric</a> a◆ kappa ← (<span class="c-number">3.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> a) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">3.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> a◆ (a <a href="builtins.html#c_at" class="c-builtin">c̲at</a> kappa <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nder" class="c-userfunc">ᵘu̲nder</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">6</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L, path, L) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a></div>
+</div>
+<div class="item" id="controlRows">
+<h3><a href="#controlRows">controlRows</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L116">line 116</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFlat">controlFlat</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLossFlat">controlLossFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <span class="c-quote">'</span>{ (R, F, G, i) → (r, path, L) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow" class="c-userfunc">ᵘc̲ontrolRow</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>◆ (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> r, F <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> path, G <a href="builtins.html#c_at" class="c-builtin">c̲at</a> L, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#control">control</a></div>
+</div>
+<div class="item" id="controlFlat">
+<h3><a href="#controlFlat">controlFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L116">line 116</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFlat">controlFlat</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLossFlat">controlLossFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <span class="c-quote">'</span>{ (R, F, G, i) → (r, path, L) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow" class="c-userfunc">ᵘc̲ontrolRow</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>◆ (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> r, F <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> path, G <a href="builtins.html#c_at" class="c-builtin">c̲at</a> L, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlPaths">controlPaths</a></div>
+</div>
+<div class="item" id="controlLossFlat">
+<h3><a href="#controlLossFlat">controlLossFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L116">line 116</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFlat">controlFlat</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLossFlat">controlLossFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <span class="c-quote">'</span>{ (R, F, G, i) → (r, path, L) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.c_ontrolRow" class="c-userfunc">ᵘc̲ontrolRow</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>◆ (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> r, F <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> path, G <a href="builtins.html#c_at" class="c-builtin">c̲at</a> L, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLosses">controlLosses</a></div>
+</div>
+<div class="item" id="control">
+<h3><a href="#control">control</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L117">line 117</a></div>
+<pre class="code">control ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">5</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlRows">controlRows</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L229">demos/optimization-explorer/optimization-explorer.xtl:229</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L230">demos/optimization-explorer/optimization-explorer.xtl:230</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L235">demos/optimization-explorer/optimization-explorer.xtl:235</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L236">demos/optimization-explorer/optimization-explorer.xtl:236</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L237">demos/optimization-explorer/optimization-explorer.xtl:237</a></div>
+</div>
+<div class="item" id="controlFirstFlat">
+<h3><a href="#controlFirstFlat">controlFirstFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L119">line 119</a></div>
+<div class="doc">
+<p>The first step under each a, worked as above (d, eta, the point).</p>
+</div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <span class="c-quote">'</span>{ (F, i) → (F <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_irst" class="c-userfunc">ᵘf̲irst</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.d_iagMetric" class="c-userfunc">ᵘd̲iagMetric</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirst">controlFirst</a></div>
+</div>
+<div class="item" id="controlFirst">
+<h3><a href="#controlFirst">controlFirst</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L120">line 120</a></div>
+<pre class="code">controlFirst ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">7</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFirstFlat">controlFirstFlat</a></pre>
+</div>
+<div class="item" id="controlPaths">
+<h3><a href="#controlPaths">controlPaths</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L121">line 121</a></div>
+<pre class="code">controlPaths ← (((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlFlat">controlFlat</a></pre>
+</div>
+<div class="item" id="controlLosses">
+<h3><a href="#controlLosses">controlLosses</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L122">line 122</a></div>
+<pre class="code">controlLosses ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#anis">anis</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#controlLossFlat">controlLossFlat</a></pre>
+</div>
+<div class="item" id="u.s_teepest">
+<h3><a href="#u.s_teepest"><span class="c-userfunc">ᵘs̲teepest</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L135">line 135</a></div>
+<div class="doc">
+<p>At the start, the direction that lowers the loss most among those
+of length 1 under the metric G: v = -P g / sqrt(g . P g), the one
+point of G's unit ball where the loss falls fastest. Under the
+identity the ball is the unit circle and v is -g / |g|; under H it
+is the ellipse x^2 + 3 y^2 = 1 and v points more along x. The rate
+of fall along each, g . v, is a slope per unit of that metric's
+length, so the two rates are in different units and are not
+compared. Checked by sampling: of 360 directions round each ball,
+the one with the smallest g . v agrees with the formula to the
+sampling's half a degree.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲teepest</span> ← { G → P ← <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_nverse" class="c-libfunc">ᵐˣi̲nverse</a> G◆ d ← P <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>◆ (<span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> d) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> d }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainDir">plainDir</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonDir">newtonDir</a></div>
+</div>
+<div class="item" id="plainDir">
+<h3><a href="#plainDir">plainDir</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L136">line 136</a></div>
+<pre class="code">plainDir ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_teepest" class="c-userfunc">ᵘs̲teepest</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#rates">rates</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L244">demos/optimization-explorer/optimization-explorer.xtl:244</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L247">demos/optimization-explorer/optimization-explorer.xtl:247</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L248">demos/optimization-explorer/optimization-explorer.xtl:248</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L250">demos/optimization-explorer/optimization-explorer.xtl:250</a></div>
+</div>
+<div class="item" id="newtonDir">
+<h3><a href="#newtonDir">newtonDir</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L137">line 137</a></div>
+<pre class="code">newtonDir ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_teepest" class="c-userfunc">ᵘs̲teepest</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#rates">rates</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L245">demos/optimization-explorer/optimization-explorer.xtl:245</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L247">demos/optimization-explorer/optimization-explorer.xtl:247</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L248">demos/optimization-explorer/optimization-explorer.xtl:248</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L250">demos/optimization-explorer/optimization-explorer.xtl:250</a></div>
+</div>
+<div class="item" id="newtonPg">
+<h3><a href="#newtonPg">newtonPg</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L138">line 138</a></div>
+<pre class="code">newtonPg ← (<a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_nverse" class="c-libfunc">ᵐˣi̲nverse</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a>) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonNorm">newtonNorm</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L242">demos/optimization-explorer/optimization-explorer.xtl:242</a></div>
+</div>
+<div class="item" id="newtonNorm">
+<h3><a href="#newtonNorm">newtonNorm</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L139">line 139</a></div>
+<pre class="code">newtonNorm ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonPg">newtonPg</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L243">demos/optimization-explorer/optimization-explorer.xtl:243</a></div>
+</div>
+<div class="item" id="plainNorm">
+<h3><a href="#plainNorm">plainNorm</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L140">line 140</a></div>
+<pre class="code">plainNorm ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L241">demos/optimization-explorer/optimization-explorer.xtl:241</a></div>
+</div>
+<div class="item" id="rates">
+<h3><a href="#rates">rates</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L141">line 141</a></div>
+<pre class="code">rates ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainDir">plainDir</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonDir">newtonDir</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L246">demos/optimization-explorer/optimization-explorer.xtl:246</a></div>
+</div>
+<div class="item" id="circle">
+<h3><a href="#circle">circle</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L144">line 144</a></div>
+<div class="doc">
+<p>Each metric's unit ball, 49 points round, for the picture: the
+direction at each angle scaled to length 1 under G.</p>
+</div>
+<pre class="code">circle ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">49</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#c_os" class="c-builtin">c̲os</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#turn">turn</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#turn">turn</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainBall">plainBall</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonBall">newtonBall</a></div>
+</div>
+<div class="item" id="u.u_nitBall">
+<h3><a href="#u.u_nitBall"><span class="c-userfunc">ᵘu̲nitBall</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L145">line 145</a></div>
+<pre class="code"><span class="c-userfunc">ᵘu̲nitBall</span> ← { (G, U) → lens ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> U <a href="builtins.html#-2a" class="c-symbol">×</a> U <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> G◆ U <a href="builtins.html#-2f" class="c-symbol">÷</a> lens <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#plainBall">plainBall</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#newtonBall">newtonBall</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.b_est"><span class="c-userfunc">ᵘb̲est</span></a></div>
+</div>
+<div class="item" id="plainBall">
+<h3><a href="#plainBall">plainBall</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L146">line 146</a></div>
+<pre class="code">plainBall ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nitBall" class="c-userfunc">ᵘu̲nitBall</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#circle">circle</a>)</pre>
+</div>
+<div class="item" id="newtonBall">
+<h3><a href="#newtonBall">newtonBall</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L147">line 147</a></div>
+<pre class="code">newtonBall ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nitBall" class="c-userfunc">ᵘu̲nitBall</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#circle">circle</a>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L249">demos/optimization-explorer/optimization-explorer.xtl:249</a></div>
+</div>
+<div class="item" id="fine">
+<h3><a href="#fine">fine</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L148">line 148</a></div>
+<pre class="code">fine ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">360.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">360</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#fineCircle">fineCircle</a></div>
+</div>
+<div class="item" id="fineCircle">
+<h3><a href="#fineCircle">fineCircle</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L149">line 149</a></div>
+<pre class="code">fineCircle ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">2</span> <span class="c-number">360</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#c_os" class="c-builtin">c̲os</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#fine">fine</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#fine">fine</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.b_est"><span class="c-userfunc">ᵘb̲est</span></a></div>
+</div>
+<div class="item" id="u.b_est">
+<h3><a href="#u.b_est"><span class="c-userfunc">ᵘb̲est</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L150">line 150</a></div>
+<pre class="code"><span class="c-userfunc">ᵘb̲est</span> ← { G → B ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.u_nitBall" class="c-userfunc">ᵘu̲nitBall</a> (G, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#fineCircle">fineCircle</a>)◆ slopes ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> B <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">360</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#g0">g0</a>◆ (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> slopes <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> slopes) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> B }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sampledPlain">sampledPlain</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sampledNewton">sampledNewton</a></div>
+</div>
+<div class="item" id="sampledPlain">
+<h3><a href="#sampledPlain">sampledPlain</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L151">line 151</a></div>
+<pre class="code">sampledPlain ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.b_est" class="c-userfunc">ᵘb̲est</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#I">I</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L248">demos/optimization-explorer/optimization-explorer.xtl:248</a></div>
+</div>
+<div class="item" id="sampledNewton">
+<h3><a href="#sampledNewton">sampledNewton</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L152">line 152</a></div>
+<pre class="code">sampledNewton ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.b_est" class="c-userfunc">ᵘb̲est</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#H">H</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L248">demos/optimization-explorer/optimization-explorer.xtl:248</a></div>
+</div>
+<div class="item" id="A">
+<h3><a href="#A">A</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L168">line 168</a></div>
+<div class="doc">
+<p>The unit vector p that makes the quotient f(p) = p' A p largest, for
+a small symmetric A, is A's leading eigenvector, which Matrix finds
+(Jacobi's sweeps) for the check. The gradient of f in the room is
+2 A p; the constraint is the unit sphere. Two ways up from the same
+start, the same rate, the same number of steps: (a) a step that
+stays on the sphere, Manifold's s_phereDescend against -2 A p (the
+gradient's part along the sphere, then the exponential map); (b) a
+flat step p + rate 2 A p, which leaves the sphere, repaired by
+scaling back to length 1. And (a) with the cheap retraction in
+place of the exact step. For each step: the quotient, how far the
+point is from the eigenvector along the sphere (either sign, since
+-p is the same line), and how far off the sphere the step went
+before any repair.</p>
+</div>
+<pre class="code">A ← <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">3.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#eigenvalues">eigenvalues</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#top">top</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.q_uotient"><span class="c-userfunc">ᵘq̲uotient</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_scent"><span class="c-userfunc">ᵘa̲scent</span></a></div>
+</div>
+<div class="item" id="eigenvalues">
+<h3><a href="#eigenvalues">eigenvalues</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L169">line 169</a></div>
+<pre class="code">eigenvalues ← <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.e_igenvalues" class="c-libfunc">ᵐˣe̲igenvalues</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#A">A</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#contraction">contraction</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L253">demos/optimization-explorer/optimization-explorer.xtl:253</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L258">demos/optimization-explorer/optimization-explorer.xtl:258</a></div>
+</div>
+<div class="item" id="top">
+<h3><a href="#top">top</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L170">line 170</a></div>
+<pre class="code">top ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.e_igenvectors" class="c-libfunc">ᵐˣe̲igenvectors</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#A">A</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_part"><span class="c-userfunc">ᵘa̲part</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L254">demos/optimization-explorer/optimization-explorer.xtl:254</a></div>
+</div>
+<div class="item" id="p0">
+<h3><a href="#p0">p0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L171">line 171</a></div>
+<pre class="code">p0 ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> <span class="c-number">1.0</span> <span class="c-number">-1.0</span> <span class="c-number">1.0</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientCentral">quotientCentral</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientGap">quotientGap</a></div>
+</div>
+<div class="item" id="u.q_uotient">
+<h3><a href="#u.q_uotient"><span class="c-userfunc">ᵘq̲uotient</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L172">line 172</a></div>
+<pre class="code"><span class="c-userfunc">ᵘq̲uotient</span> ← { p → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> p <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#A">A</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> p }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientCentral">quotientCentral</a></div>
+</div>
+<div class="item" id="u.a_scent">
+<h3><a href="#u.a_scent"><span class="c-userfunc">ᵘa̲scent</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L173">line 173</a></div>
+<pre class="code"><span class="c-userfunc">ᵘa̲scent</span> ← { p → <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#A">A</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> p }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepExp"><span class="c-userfunc">ᵘs̲tepExp</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepRetract"><span class="c-userfunc">ᵘs̲tepRetract</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientGap">quotientGap</a></div>
+</div>
+<div class="item" id="u.a_part">
+<h3><a href="#u.a_part"><span class="c-userfunc">ᵘa̲part</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L174">line 174</a></div>
+<pre class="code"><span class="c-userfunc">ᵘa̲part</span> ← { p → (p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#top">top</a>) <a href="builtins.html#m_in" class="c-builtin">m̲in</a> p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ᵐᶠs̲phereDistance</a> <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#top">top</a> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a></div>
+</div>
+<div class="item" id="u.r_ow">
+<h3><a href="#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L175">line 175</a></div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ow</span> ← { (q, off) → (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.q_uotient" class="c-userfunc">ᵘq̲uotient</a> q) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_part" class="c-userfunc">ᵘa̲part</a> q) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> off }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepExp"><span class="c-userfunc">ᵘs̲tepExp</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepRetract"><span class="c-userfunc">ᵘs̲tepRetract</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a></div>
+</div>
+<div class="item" id="u.s_tepExp">
+<h3><a href="#u.s_tepExp"><span class="c-userfunc">ᵘs̲tepExp</span></a> <span class="type">: (Float, Float, Float) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L176">line 176</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepExp</span> ← { (p, path, L) → q ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDescend" class="c-libfunc">ᵐᶠs̲phereDescend</a> (p, <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_scent" class="c-userfunc">ᵘa̲scent</a> p)◆ (q, path <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> q, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (q, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> q)) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a></div>
+</div>
+<div class="item" id="u.s_tepRetract">
+<h3><a href="#u.s_tepRetract"><span class="c-userfunc">ᵘs̲tepRetract</span></a> <span class="type">: (Float, Float, Float) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L177">line 177</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepRetract</span> ← { (p, path, L) → v ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a> <a href="builtins.html#-2a" class="c-symbol">×</a> p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent" class="c-libfunc">ᵐᶠs̲phereTangent</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_scent" class="c-userfunc">ᵘa̲scent</a> p◆ q ← p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereRetract" class="c-libfunc">ᵐᶠs̲phereRetract</a> v◆ (q, path <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> q, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (q, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> v)) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a></div>
+</div>
+<div class="item" id="u.s_tepFlat">
+<h3><a href="#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a> <span class="type">: (Float, Float, Float) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L178">line 178</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepFlat</span> ← { (p, path, L) → r ← p <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_scent" class="c-userfunc">ᵘa̲scent</a> p◆ q ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ᵐᶠs̲phereProject</a> r◆ (q, path <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> q, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (q, <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereOff" class="c-libfunc">ᵐᶠs̲phereOff</a> r)) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a></div>
+</div>
+<div class="item" id="u.f_inish">
+<h3><a href="#u.f_inish"><span class="c-userfunc">ᵘf̲inish</span></a> <span class="type">: (Any a, Any b) =&gt; (a, b, c) -&gt; (b, c)</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L179">line 179</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲inish</span> ← { (p, path, L) → (path, ((<a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> L) }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a></div>
+</div>
+<div class="item" id="expPath">
+<h3><a href="#expPath">expPath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L180">line 180</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expLog">expLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepExp" class="c-userfunc">ᵘs̲tepExp</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L260">demos/optimization-explorer/optimization-explorer.xtl:260</a></div>
+</div>
+<div class="item" id="expLog">
+<h3><a href="#expLog">expLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L180">line 180</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expLog">expLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepExp" class="c-userfunc">ᵘs̲tepExp</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expPath">expPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRecord">sphereRecord</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L225">demos/optimization-explorer/optimization-explorer.xtl:225</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L261">demos/optimization-explorer/optimization-explorer.xtl:261</a></div>
+</div>
+<div class="item" id="retractPath">
+<h3><a href="#retractPath">retractPath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L181">line 181</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractLog">retractLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepRetract" class="c-userfunc">ᵘs̲tepRetract</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L260">demos/optimization-explorer/optimization-explorer.xtl:260</a></div>
+</div>
+<div class="item" id="retractLog">
+<h3><a href="#retractLog">retractLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L181">line 181</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractLog">retractLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepRetract" class="c-userfunc">ᵘs̲tepRetract</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractPath">retractPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRecord">sphereRecord</a></div>
+</div>
+<div class="item" id="flatPath">
+<h3><a href="#flatPath">flatPath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L182">line 182</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatLog">flatLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepFlat" class="c-userfunc">ᵘs̲tepFlat</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L260">demos/optimization-explorer/optimization-explorer.xtl:260</a></div>
+</div>
+<div class="item" id="flatLog">
+<h3><a href="#flatLog">flatLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L182">line 182</a></div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatLog">flatLog</a>) ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.f_inish" class="c-userfunc">ᵘf̲inish</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <span class="c-quote">'</span>{ s → <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_tepFlat" class="c-userfunc">ᵘs̲tepFlat</a> s } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.r_ow" class="c-userfunc">ᵘr̲ow</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a>, <span class="c-number">0.0</span>))</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatPath">flatPath</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRecord">sphereRecord</a></div>
+</div>
+<div class="item" id="quotientCentral">
+<h3><a href="#quotientCentral">quotientCentral</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L184">line 184</a></div>
+<div class="doc">
+<p>The gradient of f against central differences at the start, h = 1e-5.</p>
+</div>
+<pre class="code">quotientCentral ← <span class="c-quote">'</span>{ i → e ← <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">3</span>) <a href="builtins.html#-3d" class="c-symbol">=</a> i◆ ((<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.q_uotient" class="c-userfunc">ᵘq̲uotient</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a> <a href="builtins.html#-2b" class="c-symbol">+</a> e) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.q_uotient" class="c-userfunc">ᵘq̲uotient</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a> <a href="builtins.html#-2d" class="c-symbol">−</a> e) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#h">h</a> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">3</span></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientGap">quotientGap</a></div>
+</div>
+<div class="item" id="quotientGap">
+<h3><a href="#quotientGap">quotientGap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L185">line 185</a></div>
+<pre class="code">quotientGap ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#quotientCentral">quotientCentral</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.a_scent" class="c-userfunc">ᵘa̲scent</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#p0">p0</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L255">demos/optimization-explorer/optimization-explorer.xtl:255</a></div>
+</div>
+<div class="item" id="u.t_ol">
+<h3><a href="#u.t_ol"><span class="c-userfunc">ᵘt̲ol</span></a> <span class="type">: Float -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L190">line 190</a></div>
+<div class="doc">
+<p>The record, one row per way (exact step, retraction, flat repaired):
+the quotient at the end, the distance to the eigenvector at the
+end, the steps to a distance under the tolerance (-1 if never), the
+farthest and the mean distance off the sphere before repair.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘt̲ol</span> ← { L → hits ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#tolerance">tolerance</a>◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> hits ? <span class="c-number">-1</span>◆ (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> hits) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_phereRow"><span class="c-userfunc">ᵘs̲phereRow</span></a></div>
+</div>
+<div class="item" id="u.s_phereRow">
+<h3><a href="#u.s_phereRow"><span class="c-userfunc">ᵘs̲phereRow</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L191">line 191</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲phereRow</span> ← { L → end ← (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L◆ (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.t_ol" class="c-userfunc">ᵘt̲ol</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereSteps">sphereSteps</a> }</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRecord">sphereRecord</a></div>
+</div>
+<div class="item" id="sphereRecord">
+<h3><a href="#sphereRecord">sphereRecord</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L192">line 192</a></div>
+<pre class="code">sphereRecord ← <span class="c-number">3</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_phereRow" class="c-userfunc">ᵘs̲phereRow</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#expLog">expLog</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_phereRow" class="c-userfunc">ᵘs̲phereRow</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#retractLog">retractLog</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#u.s_phereRow" class="c-userfunc">ᵘs̲phereRow</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#flatLog">flatLog</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L225">demos/optimization-explorer/optimization-explorer.xtl:225</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L256">demos/optimization-explorer/optimization-explorer.xtl:256</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L257">demos/optimization-explorer/optimization-explorer.xtl:257</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L258">demos/optimization-explorer/optimization-explorer.xtl:258</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L259">demos/optimization-explorer/optimization-explorer.xtl:259</a></div>
+</div>
+<div class="item" id="parallels">
+<h3><a href="#parallels">parallels</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L194">line 194</a></div>
+<div class="doc">
+<p>For the page: the sphere's wire lines.</p>
+</div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#parallels">parallels</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#meridians">meridians</a>) ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires" class="c-libfunc">ᵐᶠs̲phereWires</a> (<span class="c-number">5</span>, <span class="c-number">12</span>, <span class="c-number">24</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="meridians">
+<h3><a href="#meridians">meridians</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L194">line 194</a></div>
+<div class="doc">
+<p>For the page: the sphere's wire lines.</p>
+</div>
+<pre class="code">(<a href="demos-optimization-explorer-optimization-explorer.xtl.html#parallels">parallels</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.html#meridians">meridians</a>) ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires" class="c-libfunc">ᵐᶠs̲phereWires</a> (<span class="c-number">5</span>, <span class="c-number">12</span>, <span class="c-number">24</span>)</pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="contraction">
+<h3><a href="#contraction">contraction</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L202">line 202</a></div>
+<div class="doc">
+<p>Analytical, from the eigenvalues, for reading the counts: the factor
+by which each way shrinks its distance per step once near the
+eigenvector: the flat step repaired is the power iteration on
+I + 2 rate A, whose factor is the ratio of that matrix's top two
+eigenvalues; the step along the sphere contracts by 1 - 2 rate
+(lambda1 - lambda2), the slowest direction of the quotient's
+curvature there.</p>
+</div>
+<pre class="code">contraction ← ((<span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#eigenvalues">eigenvalues</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#eigenvalues">eigenvalues</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#sphereRate">sphereRate</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#eigenvalues">eigenvalues</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-optimization-explorer-optimization-explorer.xtl.html#eigenvalues">eigenvalues</a></pre>
+<div class="uses">Used in: <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L224">demos/optimization-explorer/optimization-explorer.xtl:224</a>, <a href="demos-optimization-explorer-optimization-explorer.xtl.src.html#L225">demos/optimization-explorer/optimization-explorer.xtl:225</a></div>
+</div>
+</main>
+</body>
+</html>
