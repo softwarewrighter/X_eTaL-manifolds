@@ -1,0 +1,275 @@
+#!/usr/bin/env xetal
+## Optimization explorer, part 2: from a bowl to a model. A softmax
+## model small enough that its Fisher matrix can be formed and solved
+## exactly (two inputs, three classes, six weights) is trained on the
+## flat clusters of the kit three ways from the same start on the same
+## split: plain gradient descent, a diagonal preconditioner (the
+## Fisher's diagonal) and the natural-gradient step (the Fisher as the
+## metric, solved with Matrix, damped); once with one input badly
+## scaled on purpose, so the metric has something to fix, and once
+## with the inputs as they are, where it should buy little. Loss by
+## step, held-out accuracy, steps to a target, the size of each
+## update, and the cost of a step counted. Then the Fisher metric as
+## a geometry: one small change of the weights measured by the flat
+## ruler and by the Fisher, and the natural step's indifference to
+## how an input is scaled, run undamped.
+"kt:" u_se< "Kit"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+# -- the preset
+## The run's numbers are data, presets/training.txt: the data's seed,
+## clusters, points per cluster and spread; the split's seed; the
+## steps and the loss target; the rate of each method (plain,
+## diagonal, natural); the damping; the bad scale; the start's seed
+## and spread (0: every weight 0, every class 1/3, the usual start,
+## and the same predictions whatever an input's scale, since 0 scaled
+## is 0); then the plain rates tried on the badly scaled data.
+text := []N_GET "presets/training.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+dataSeed := f_loor 1 s_elect preset
+k := f_loor 2 s_elect preset
+per := f_loor 3 s_elect preset
+spread := 4 s_elect preset
+splitSeed := f_loor 5 s_elect preset
+steps := f_loor 6 s_elect preset
+target := 7 s_elect preset
+rates := 8 9 10 s_elect preset
+damping := 11 s_elect preset
+badScale := 12 s_elect preset
+startSeed := f_loor 13 s_elect preset
+startSpread := 14 s_elect preset
+sweep := 14 d_rop preset
+
+# -- the data
+## The kit's flat clusters (three Gaussian blobs in the plane), the
+## split (X_eTaL-ML's by GM5, written out: a seeded held-out quarter),
+## and the badly scaled copy: the first input times badScale, as if
+## one input were in different units. Each input row gets a 1 in
+## front for the bias.
+(X, y) := kt:f_lat (dataSeed, k, per, 2, spread)
+n := f_irst s_hape X
+u:s_plit := { (seed, m) -> order := g_rade kt:u_niform (seed, m); h := m d_iv 4; (h d_rop order, h t_ake order) }
+(train, held) := u:s_plit (splitSeed, n)
+nt := t_ally train
+u:s_cale := { (s, M) -> M * ((f_irst s_hape M) r_eshape 1.0) '* t_able s c_at 1.0 }
+Xbad := u:s_cale (badScale, X)
+u:w_ithOne := { M -> (((f_irst s_hape M) c_at 1) r_eshape 1.0) c_at_2 M }
+Xt := u:w_ithOne train s_elect X
+Xh := u:w_ithOne held s_elect X
+XtBad := u:w_ithOne train s_elect Xbad
+XhBad := u:w_ithOne held s_elect Xbad
+yt := train s_elect y
+yh := held s_elect y
+## The targets for the two free classes: a row (1 0) for class 1,
+## (0 1) for class 2, (0 0) for class 3.
+Y := o_\ (2 c_at nt) r_eshape (f_loat yt = 1) c_at f_loat yt = 2
+
+# -- the model
+## Softmax regression with the third class's score fixed at 0, so the
+## weights are 2 rows (classes 1 and 2) by 3 (bias, x1, x2), six
+## numbers, and the Fisher matrix is 6 by 6 and not singular (with a
+## row per class the scores could all shift together and the Fisher
+## would have a zero direction). The score of class c is its row dot
+## (1, x1, x2); the probabilities are exp of the scores over their sum
+## with 1 for class 3 (computed from the largest score, so nothing
+## overflows). The loss is the mean cross-entropy over the rows; its
+## gradient with respect to W is (P - Y)' Xb / n, a 2 by 3 matrix.
+u:s_cores := { (W, Xb) -> Xb mx:m_ul o_\ W }
+u:p_robs := { (W, Xb) -> Z := u:s_cores (W, Xb); m := 0.0 m_ax 'm_ax r_/_2 Z; E := e_xp Z - m 'l_eft t_able 0 0; E / ((e_xp 0.0 - m) + '+ r_/_2 E) 'l_eft t_able 0 0 }
+u:l_oss := { (W, Xb, Yb) -> P := u:p_robs (W, Xb); pt := ('+ r_/_2 P * Yb) + (1.0 - '+ r_/_2 Yb) * 1.0 - '+ r_/_2 P; (0.0 - '+ r_/ l_og pt m_ax 1e-300) / f_loat f_irst s_hape Xb }
+u:g_rad := { (W, Xb, Yb) -> P := u:p_robs (W, Xb); (o_\ (o_\ Xb) mx:m_ul P - Yb) / f_loat f_irst s_hape Xb }
+## The guess for each row (the class with the largest probability, the
+## third's being 1 less the other two) and the share right on the
+## held-out rows.
+u:g_uess := { (W, Xb) -> P := u:p_robs (W, Xb); p1 := 1 s_elect_2 P; p2 := 2 s_elect_2 P; p3 := 1.0 - p1 + p2; c1 := (p1 >= p2) & p1 >= p3; c2 := (p2 > p1) & p2 >= p3; (c1 * 1) + (c2 * 2) + 3 * 1 - c1 | c2 }
+u:a_ccuracy := { (W, Xb) -> (f_loat '+ r_/ (u:g_uess (W, Xb)) = yh) / f_loat t_ally yh }
+
+# -- the Fisher matrix
+## The Fisher information of the model at W, the mean over the rows of
+## the expected outer product of the score of the log-likelihood: for
+## softmax regression, the mean over rows of kron(M_i, x_i x_i') with
+## M_i = diag(p_i) - p_i p_i' over the two free classes (Amari 1998;
+## X_eTaL-ML's by GM4, written out here). Written by blocks: the
+## (c, c') block is Xb' diag(M_i[c, c']) Xb / n, three distinct
+## blocks for the 2 by 2 of classes, assembled 6 by 6 in the weights'
+## order (class 1: bias, x1, x2; class 2: the same). For this model the
+## Fisher is also the loss's own curvature (its Hessian), which the
+## checks confirm against central differences of the gradient: so the
+## natural step here is Newton's step on the cross-entropy, a fact
+## of softmax regression and not of networks in general.
+u:b_lock := { (v, Xb) -> ((o_\ Xb) mx:m_ul Xb * v 'l_eft t_able 0 0 0) / f_loat t_ally v }
+u:f_isher := { (W, Xb) -> P := u:p_robs (W, Xb); p1 := 1 s_elect_2 P; p2 := 2 s_elect_2 P; B11 := u:b_lock (p1 * 1.0 - p1, Xb); B12 := u:b_lock (0.0 - p1 * p2, Xb); B22 := u:b_lock (p2 * 1.0 - p2, Xb); (B11 c_at_2 B12) c_at B12 c_at_2 B22 }
+I6 := f_loat mx:i_dentity 6
+## The Fisher's diagonal alone, without forming the rest: for each of
+## the two classes, the mean over rows of p (1 - p) times each input
+## squared; six numbers in the weights' order. What the diagonal
+## preconditioner needs, and all it pays for.
+u:f_isherDiag := { (W, Xb) -> P := u:p_robs (W, Xb); n := f_loat f_irst s_hape Xb; S := Xb * Xb; q1 := (1 s_elect_2 P) * 1.0 - 1 s_elect_2 P; q2 := (2 s_elect_2 P) * 1.0 - 2 s_elect_2 P; (('+ r_/ S * q1 'l_eft t_able 0 0 0) / n) c_at ('+ r_/ S * q2 'l_eft t_able 0 0 0) / n }
+
+# -- three ways to train
+## The same start (seeded normal numbers, startSpread times: the preset
+## gives 0, so every weight starts at 0 and every class at 1/3), the same
+## data and split, the same number of steps; each method at its own
+## rate from the preset (a rate is in the units of its own metric, as
+## part 1 said, so one rate for all would favor none fairly): plain,
+## W - lr G; the diagonal preconditioner, each weight's gradient over
+## the Fisher's diagonal entry plus the damping; the natural step, the
+## gradient solved against the Fisher plus damping times the identity
+## (Matrix's s_olve; a Cholesky solve is X_eTaL-libraries' by GL7).
+## A run keeps, per step, the loss on the training rows after it, the
+## held-out accuracy and the size of the update (the flat length of
+## the change of W), one row per step after the start's.
+W0 := startSpread * kt:n_ormals (startSeed, 2, 3)
+u:s_tepPlain := { (W, Xb, Yb, lr) -> W - lr * u:g_rad (W, Xb, Yb) }
+u:s_tepDiag := { (W, Xb, Yb, lr) -> G := u:g_rad (W, Xb, Yb); W - lr * 2 3 r_eshape (r_avel G) / (u:f_isherDiag (W, Xb)) + damping }
+u:s_tepNatural := { (W, Xb, Yb, lr, lam) -> G := u:g_rad (W, Xb, Yb); F := u:f_isher (W, Xb); W - lr * 2 3 r_eshape (r_avel G) mx:s_olve F + lam * I6 }
+u:s_tepBy := { (m, W, Xb, Yb, lr) -> m = 1 ? u:s_tepPlain (W, Xb, Yb, lr); m = 2 ? u:s_tepDiag (W, Xb, Yb, lr); u:s_tepNatural (W, Xb, Yb, lr, damping) }
+u:r_ow := { (W, Xb, Yb, Xheld, size) -> (u:l_oss (W, Xb, Yb)) c_at (u:a_ccuracy (W, Xheld)) c_at size }
+u:t_rain := { (m, Xb, Yb, Xheld, start) ->
+  lr := m s_elect rates
+  (W, L) := steps '{ (W, L) -> W2 := u:s_tepBy (m, W, Xb, Yb, lr); (W2, L c_at u:r_ow (W2, Xb, Yb, Xheld, s_qrt '+ r_/ r_avel (W2 - W) ^ 2.0)) } p_ower (start, u:r_ow (start, Xb, Yb, Xheld, 0.0))
+  (W, ((steps + 1) c_at 3) r_eshape L)
+}
+(plainBadW, plainBadLog) := u:t_rain (1, XtBad, Y, XhBad, W0)
+(diagBadW, diagBadLog) := u:t_rain (2, XtBad, Y, XhBad, W0)
+(naturalBadW, naturalBadLog) := u:t_rain (3, XtBad, Y, XhBad, W0)
+(plainW, plainLog) := u:t_rain (1, Xt, Y, Xh, W0)
+(diagW, diagLog) := u:t_rain (2, Xt, Y, Xh, W0)
+(naturalW, naturalLog) := u:t_rain (3, Xt, Y, Xh, W0)
+## The cost of a step, counted (analytical): the numbers a step keeps
+## beyond the weights (the gradient's 6; plus the Fisher's diagonal, 6;
+## plus the whole Fisher, 36) and the multiplies: the probabilities
+## and the gradient, 12 per training row for every method (6 for the
+## two scores, 6 for the gradient's outer product); the diagonal adds 12
+## per row (u:f_isherDiag: the three squared inputs, then each times
+## the two classes' p (1 - p), 3 + 6, and the two p (1 - p), rounded up
+## to 12); the whole Fisher adds 36 per row (u:f_isher: three blocks,
+## (1,1), (1,2) and (2,2), of 3 by 3 = 9 products of an input pair, each
+## times the row's weight, 3 x 9 + 9) and the solve of a 6 by 6 system
+## by elimination, about 6^3 / 3 + 6^2 = 108. Exponentials, divisions
+## and additions are not counted: the exponentials are the same per row
+## for every method. A model with w weights keeps w^2 numbers and solves
+## in w^3 / 3: the numbers of this model hide that, which the page says.
+u:c_ost := { m -> m = 1 ? 6.0 c_at 12.0 * f_loat nt; m = 2 ? 12.0 c_at 24.0 * f_loat nt; 42.0 c_at (48.0 * f_loat nt) + 108.0 }
+## The record, one row per method and data (plain, diagonal, natural;
+## badly scaled first, then as they are): the loss at the end, the
+## held-out accuracy at the end, the steps to a loss under the target
+## (-1 if never), the step from which it stays under (-1 if not), the
+## mean update size, the largest update, the
+## numbers kept, the multiplies per step.
+u:u_nder := { L -> hits := w_here (1 s_elect_2 L) < target; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+## The step from which the loss stays under the target to the end (-1
+## if it is not under at the end): a dip under the target and back out
+## is not convergence.
+u:s_tays := { L -> v := 1 s_elect_2 L; target <= (steps + 1) s_elect v ? -1; above := w_here v >= target; 0 = t_ally above ? 0; (0 - 1) + 1 + (t_ally above) s_elect above }
+u:r_ecord := { (m, L) -> end := (steps + 1) s_elect L; (1 s_elect end) c_at (2 s_elect end) c_at (f_loat u:u_nder L) c_at (f_loat u:s_tays L) c_at (('+ r_/ 3 s_elect_2 L) / f_loat steps) c_at ('m_ax r_/ 3 s_elect_2 L) c_at u:c_ost m }
+record := 6 8 r_eshape (u:r_ecord (1, plainBadLog)) c_at (u:r_ecord (2, diagBadLog)) c_at (u:r_ecord (3, naturalBadLog)) c_at (u:r_ecord (1, plainLog)) c_at (u:r_ecord (2, diagLog)) c_at u:r_ecord (3, naturalLog)
+## The plain step's rate swept on the badly scaled data, as a reader
+## would try first: each rate of the preset, the same start and steps;
+## one row per rate: the rate, the loss at the end, the steps to the
+## target, the step it stays under from, the largest update.
+(sweepRows, _) := (t_ally sweep) '{ (R, i) -> lr := i s_elect sweep; (W, L) := steps '{ (W, L) -> W2 := u:s_tepPlain (W, XtBad, Y, lr); (W2, L c_at u:r_ow (W2, XtBad, Y, XhBad, s_qrt '+ r_/ r_avel (W2 - W) ^ 2.0)) } p_ower (W0, u:r_ow (W0, XtBad, Y, XhBad, 0.0)); M := ((steps + 1) c_at 3) r_eshape L; (R c_at lr c_at (1 s_elect (steps + 1) s_elect M) c_at (f_loat u:u_nder M) c_at (f_loat u:s_tays M) c_at 'm_ax r_/ 3 s_elect_2 M, i + 1) } p_ower (0 r_eshape 0.0, 1)
+plainSweep := ((t_ally sweep) c_at 5) r_eshape sweepRows
+## The Fisher's eigenvalues at the start on each data (largest first),
+## and the condition number each leaves: what the bad scaling does to
+## the bowl the model sits in.
+u:e_igen := { Xb -> e := mx:e_igenvalues u:f_isher (W0, Xb); e c_at (f_irst e) / 6 s_elect e }
+fisherEigen := 2 7 r_eshape (u:e_igen XtBad) c_at u:e_igen Xt
+
+# -- the Fisher metric as a geometry
+## The same small change of the weights measured two ways at the start
+## on the badly scaled data: its flat length sqrt(d . d) and its
+## Fisher length sqrt(d' F d). Four changes, each a row (flat, Fisher):
+## 0.1 on class 1's bias weight; 0.1 on class 1's x1 weight (the badly
+## scaled input: the Fisher counts it far longer); the plain method's
+## first step; the natural method's first step.
+Fbad0 := u:f_isher (W0, XtBad)
+u:t_woWays := { d -> (s_qrt '+ r_/ d * d) c_at s_qrt '+ r_/ d * Fbad0 mx:m_ul d }
+plainStep0 := r_avel (u:s_tepPlain (W0, XtBad, Y, 1 s_elect rates)) - W0
+naturalStep0 := r_avel (u:s_tepNatural (W0, XtBad, Y, 3 s_elect rates, damping)) - W0
+changes := 4 2 r_eshape (u:t_woWays 0.1 0.0 0.0 0.0 0.0 0.0) c_at (u:t_woWays 0.0 0.1 0.0 0.0 0.0 0.0) c_at (u:t_woWays plainStep0) c_at u:t_woWays naturalStep0
+## The natural step does not depend on how the inputs are written:
+## train ten steps undamped on the data as they are and on a rewritten
+## copy, from the start (all weights 0, the same predictions whatever
+## the inputs), and compare the predicted probabilities on the
+## training rows; the largest gap in any of them. Two rewritings: x1
+## times the scale (a rescaling of one input), and x1 replaced by
+## x1 + x2 (a mixing of two). A diagonal ruler undoes the first
+## exactly (it gives each weight its own length) and not the second;
+## the Fisher undoes both, being defined by the predictions alone. One
+## row per method (plain, diagonal, natural), one column per
+## rewriting. Undamped: the damping adds a flat ruler, which gives the
+## property up.
+u:s_tepDiagD := { (W, Xb, Yb, lr, lam) -> G := u:g_rad (W, Xb, Yb); W - lr * 2 3 r_eshape (r_avel G) / (u:f_isherDiag (W, Xb)) + lam }
+u:s_tepUndamped := { (m, W, Xb, lr) -> m = 1 ? u:s_tepPlain (W, Xb, Y, lr); m = 2 ? u:s_tepDiagD (W, Xb, Y, lr, 0.0); u:s_tepNatural (W, Xb, Y, lr, 0.0) }
+u:t_en := { (m, Xb) -> 10 '{ W -> u:s_tepUndamped (m, W, Xb, m s_elect rates) } p_ower W0 }
+Xmix := o_\ (2 c_at n) r_eshape ((1 s_elect_2 X) + 2 s_elect_2 X) c_at 2 s_elect_2 X
+XtMix := u:w_ithOne train s_elect Xmix
+u:g_ap := { (m, Xa) -> 'm_ax r_/ r_avel a_bs (u:p_robs (u:t_en (m, Xa), Xa)) - u:p_robs (u:t_en (m, Xt), Xt) }
+invariance := 3 2 r_eshape (u:g_ap (1, XtBad)) c_at (u:g_ap (1, XtMix)) c_at (u:g_ap (2, XtBad)) c_at (u:g_ap (2, XtMix)) c_at (u:g_ap (3, XtBad)) c_at u:g_ap (3, XtMix)
+## For the page, computed here and not by it: the factor by which the
+## bad scaling raised the Fisher's condition number, and the multiplies
+## each run spent to stay under the target (the step it stays under
+## from times the multiplies per step; -1 if it never did).
+conditionRatio := (7 s_elect 1 s_elect fisherEigen) / 7 s_elect 2 s_elect fisherEigen
+spent := '{ i -> r := i s_elect record; (4 s_elect r) < 0.0 ? -1.0; (4 s_elect r) * 8 s_elect r } e_ach r_ange 6
+# -- the checks' numbers, for the page too
+## The gradient against central differences at the start, over the six weights, h = 1e-5.
+h := 0.00001
+u:b_ump := { i -> 2 3 r_eshape h * f_loat (r_ange 6) = i }
+central := '{ i -> ((u:l_oss (W0 + u:b_ump i, Xt, Y)) - u:l_oss (W0 - u:b_ump i, Xt, Y)) / 2.0 * h } e_ach r_ange 6
+## Against its definition on one row: with x = (1, 2, -1) and the
+## probabilities p at the weights W1, the Fisher is kron(M, x x') with
+## M = diag(p) - p p', written out entry by entry.
+W1 := 2 3 r_eshape 0.3 -0.2 0.5 0.1 0.4 -0.6
+x1 := 1.0 2.0 -1.0
+P1 := u:p_robs (W1, 1 3 r_eshape x1)
+pa := 1 s_elect 1 s_elect P1
+pb := 2 s_elect 1 s_elect P1
+M1 := 2 2 r_eshape (pa * 1.0 - pa) c_at (0.0 - pa * pb) c_at (0.0 - pa * pb) c_at pb * 1.0 - pb
+kron := 6 6 r_eshape '{ e -> r := (e - 1) d_iv 6; c := (e - 1) m_od 6; ((1 + c d_iv 3) s_elect (1 + r d_iv 3) s_elect M1) * ((1 + r m_od 3) s_elect x1) * (1 + c m_od 3) s_elect x1 } e_ach r_ange 36
+(hessRows, _) := 6 '{ (R, i) -> (R c_at ((r_avel u:g_rad (W0 + u:b_ump i, Xt, Y)) - r_avel u:g_rad (W0 - u:b_ump i, Xt, Y)) / 2.0 * h, i + 1) } p_ower (0 r_eshape 0.0, 1)
+## The three gaps, each the largest difference over its entries: the
+## gradient against central differences; the Fisher of one row against
+## kron(M, x x') written out; the Fisher against central differences of
+## the gradient (its curvature).
+gaps := ('m_ax r_/ a_bs central - r_avel u:g_rad (W0, Xt, Y)) c_at ('m_ax r_/ r_avel a_bs kron - u:f_isher (W1, 1 3 r_eshape x1)) c_at 'm_ax r_/ r_avel a_bs (u:f_isher (W0, Xt)) - 6 6 r_eshape hessRows
+## For the page: the data as the page draws them (the inputs as they
+## are; the badly scaled copy is the first column times the scale).
+# -- end of the core
+
+### The preset
+preset
+
+### The data and the model
+"the split is a quarter held out" ch:t_est (90 c_at 30) ch:i_s nt c_at t_ally held
+"the badly scaled copy is the data with x1 times the scale" ch:t_est (badScale * 1 s_elect_2 X) ch:n_ear 1 s_elect_2 Xbad
+"the probabilities of each row sum to at most 1, the third class taking the rest" ch:t_est 1 ch:i_s '& r_/ ('+ r_/_2 u:p_robs (W0, Xt)) <= 1.0
+"the gradient agrees with central differences" ch:t_est 1 ch:i_s 0.00000001 > 1 s_elect gaps
+
+### The Fisher matrix
+"the Fisher of one row is kron(M, x x')" ch:t_est 1 ch:i_s 0.000000000001 > 2 s_elect gaps
+"the Fisher is symmetric" ch:t_est Fbad0 ch:n_ear o_\ Fbad0
+"the diagonal formed alone is the Fisher's diagonal" ch:t_est (mx:d_iag Fbad0) ch:n_ear u:f_isherDiag (W0, XtBad)
+"the Fisher is the loss's curvature here: it agrees with central differences of the gradient" ch:t_est 1 ch:i_s 0.000001 > 3 s_elect gaps
+fisherEigen
+"the bad scaling raises the Fisher's condition number more than fiftyfold" ch:t_est 1 ch:i_s (7 s_elect 1 s_elect fisherEigen) > 50.0 * 7 s_elect 2 s_elect fisherEigen
+
+### Three ways to train
+record
+"on the badly scaled data the natural step stays under the target; the plain step at its rate does not" ch:t_est 1 ch:i_s (0.0 < 4 s_elect 3 s_elect record) & 0.0 > 4 s_elect 1 s_elect record
+"the diagonal and natural steps take the same steps on both data: the metric undoes the scaling" ch:t_est ((3 s_elect 2 s_elect record) c_at 3 s_elect 3 s_elect record) ch:n_ear (3 s_elect 5 s_elect record) c_at 3 s_elect 6 s_elect record
+plainSweep
+"on the data as they are every method reaches the target" ch:t_est 1 1 1 ch:i_s 0.0 < 3 s_elect_2 3 d_rop record
+"no loss rises under the natural step" ch:t_est 1 1 ch:i_s ('& r_/ (1 d_rop 1 s_elect_2 naturalBadLog) <= (0 - 1) d_rop 1 s_elect_2 naturalBadLog) c_at '& r_/ (1 d_rop 1 s_elect_2 naturalLog) <= (0 - 1) d_rop 1 s_elect_2 naturalLog
+"the natural step costs the most numbers and multiplies" ch:t_est 1 1 ch:i_s ((7 s_elect 3 s_elect record) > 7 s_elect 2 s_elect record) c_at (8 s_elect 3 s_elect record) > 8 s_elect 2 s_elect record
+
+### The Fisher metric as a geometry
+changes
+"a change of x1's weight is far longer by the Fisher than the same change of the bias" ch:t_est 1 ch:i_s (2 s_elect 2 s_elect changes) > 10.0 * 2 s_elect 1 s_elect changes
+invariance
+"undamped, the natural step's predictions do not depend on how the inputs are written; the plain step's do" ch:t_est 1 1 1 ch:i_s (0.000000001 > 'm_ax r_/ 3 s_elect invariance) c_at (0.01 < 1 s_elect 1 s_elect invariance) c_at 0.01 < 2 s_elect 1 s_elect invariance
+"the diagonal undoes the rescaling of one input and not the mixing of two" ch:t_est 1 1 ch:i_s (0.000000001 > 1 s_elect 2 s_elect invariance) c_at 0.001 < 2 s_elect 2 s_elect invariance
+conditionRatio
+spent

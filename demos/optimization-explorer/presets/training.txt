@@ -1,0 +1,18 @@
+training preset: a small softmax model trained three ways
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+data seed 1
+clusters 3
+points per cluster 40
+spread 1.6
+split seed 11
+steps 60
+loss target 0.35
+rate plain 0.5
+rate diagonal 0.5
+rate natural 1
+damping 0.001
+bad scale 20
+start seed 7
+start spread 0
+plain rates tried on the bad scale 0.5 0.05 0.005 0.0005

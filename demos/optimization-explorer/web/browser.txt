@@ -7,3 +7,9 @@ the leading eigenvector
 diag(a, 1) at a = 1/6
 html: class="numbers comparison"
 html: data-aside="mf:s_phereDescend"
+# Part 2, after its trainings have run.
+Part 2: from the bowl to a model
+Is the plain step only mistuned?
+The natural step does not care how the inputs are written
+x1 mixed with x2
+html: data-aside="mf:s_phereDescend"

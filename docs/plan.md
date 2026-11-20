@@ -164,13 +164,14 @@ work/                    the clones (gitignored)
 pages/                   the built site (not tracked; just publish)
 ```
 
-As of step metric-descent (2026-11-17) the machinery, `libs/Manifold`
+As of step metric-training (2026-11-20) the machinery, `libs/Manifold`
 (the sphere with its gradient step and retraction, the drawn spaces,
 the ball, the fitting of an embedding, distortion), `libs/Kit` (the
 three data sets), `shared/site` and `shared/glossary.tsv`, and five
 live pages on the shared teaching shell (`demos/manifold-tour`,
 `demos/sphere-hello`, `demos/baseline-knn`,
-`demos/representation-explorer`, `demos/optimization-explorer` part 1)
+`demos/representation-explorer`, `demos/optimization-explorer`, both
+parts)
 exist, with `docs/glossary.md`,
 `docs/papers.md`, `docs/research-questions.md` and
 `docs/experiments.md`; the other demos are made by the steps of Saga 1
@@ -286,7 +287,7 @@ Asked of the siblings:
 | matrix scaling | X_eTaL-libraries (GL3) | Sinkhorn's alternating row and column normalization, its sweep count and the row and column sum errors; the polar factor (one line on `mx:s_vd`, which is at the pin) | mhc-explorer |
 | integrators and field measures | X_eTaL-libraries (GL4, GL5) | Euler and Runge-Kutta steps of dx/dt = v(x, t); the divergence and curl of a plane field by differences | dynamics-explorer |
 | field and contour pictures | X_eTaL-libraries (GL6) | a vector field drawn as arrows, trajectories over it, the contours of a function of two variables; the pages draw from printed numbers meanwhile | optimization-explorer; dynamics-explorer |
-| a Cholesky solve | X_eTaL-libraries (GL7) | for the Fisher matrix; `mx:s_olve` meanwhile | optimization-explorer |
+| a Cholesky solve | X_eTaL-libraries (GL7) | for the Fisher matrix; `mx:s_olve` meanwhile (step metric-training: a 6 by 6 system, cost not a concern at this size) | optimization-explorer |
 | a step under a metric | X_eTaL-ML (GM4) | a gradient step preconditioned by a diagonal or a matrix (Optim); the empirical Fisher matrix of a small softmax model | optimization-explorer |
 | a learning task and its record | X_eTaL-ML (GM5) | the split, the run's record and the comparison; X_eTaL-fine-tuning asked the same (its FM7, which X_eTaL-ML marked not planned), so one answer serves both | step experiment-kit; written here meanwhile |
 | a network as a flow | X_eTaL-ML (GM6) | a small network as a vector field, unrolled for a fixed number of steps, its gradient through the steps (Net's) | dynamics-explorer |

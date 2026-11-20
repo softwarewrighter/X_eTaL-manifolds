@@ -1,0 +1,39 @@
+1.0 3.0 40.0 1.6 11.0 60.0 0.35 0.5 0.5 1.0 0.001 20.0 7.0 0.0 0.5 0.05 0.005 0.0005
+ok: the split is a quarter held out
+ok: the badly scaled copy is the data with x1 times the scale
+ok: the probabilities of each row sum to at most 1, the third class taking the rest
+ok: the gradient agrees with central differences
+ok: the Fisher of one row is kron(M, x x')
+ok: the Fisher is symmetric
+ok: the diagonal formed alone is the Fisher's diagonal
+ok: the Fisher is the loss's curvature here: it agrees with central differences of the gradient
+907.4433660283328 302.48112200944496  5.162698122780487 1.7208993742601648  0.1957728795811999 0.06525762652706664  13905.55271960368
+8.096434426033511 2.6988114753445074 1.4472799431848336 0.4824266477282785 0.19567820350322865 0.06522606783440969 124.12881375262478
+ok: the bad scaling raises the Fisher's condition number more than fiftyfold
+  59.56686826657647 0.5333333333333333 54.0 -1.0   5.279307314585048 21.811876231187398  6.0 1080.0
+ 0.1637870323365782 0.8666666666666667  4.0  4.0 0.17632232118712207  0.613331347368614 12.0 2160.0
+ 0.1626420122546014                0.9  2.0  2.0 0.22739744459002792  1.247242036220276 42.0 4428.0
+0.21056799014279232 0.7666666666666667  5.0  5.0 0.06287524870484117 1.0741613779764245  6.0 1080.0
+0.16378747320741585 0.8666666666666667  4.0  4.0  0.1822681521239901 0.6362601153846646 12.0 2160.0
+0.16264204403227045                0.9  2.0  2.0 0.23487230969340167  1.554470592193581 42.0 4428.0
+ok: on the badly scaled data the natural step stays under the target; the plain step at its rate does not
+ok: the diagonal and natural steps take the same steps on both data: the metric undoes the scaling
+   0.5  59.56686826657647 54.0 -1.0   21.811876231187398
+  0.05 0.7313851739818034 38.0 -1.0   1.7775620380408381
+ 0.005 0.5872548522400941 -1.0 -1.0  0.09093335375907285
+0.0005 0.7597785091441865 -1.0 -1.0 0.009093335375907285
+ok: on the data as they are every method reaches the target
+ok: no loss rises under the natural step
+ok: the natural step costs the most numbers and multiplies
+              0.1 0.047140452079103126
+              0.1   2.4567264925168364
+9.093335375907285   253.93768067768735
+1.247242036220276   1.1327786967805142
+ok: a change of x1's weight is far longer by the Fisher than the same change of the bias
+               0.9621108311218801                0.6126909122584429
+0.0000000000000002220446049250313               0.29341794435559243
+0.0000000000000002220446049250313 0.0000000000000004996003610813204
+ok: undamped, the natural step's predictions do not depend on how the inputs are written; the plain step's do
+ok: the diagonal undoes the rescaling of one input and not the mixing of two
+112.02518012712127
+-1.0 8640.0 8856.0 5400.0 8640.0 8856.0

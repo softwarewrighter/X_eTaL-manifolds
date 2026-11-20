@@ -1,6 +1,6 @@
 number = 9
 slug = "metric-training"
-status = "pending"
+status = "in-progress"
 description = """
 Step metric-training (docs/plan.md, Saga 1 row 9: milestone M2,
 second half; ..."""

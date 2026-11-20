@@ -439,8 +439,16 @@ what this repository plans to build from it.
   efficient (attains the Cramer-Rao bound); the 1998 abstract suggests
   the plateaus of backpropagation might disappear.
 - Here: the natural-gradient arm of optimization-explorer (step
-  metric-training), with the empirical Fisher of a small softmax model
-  (xetal-ML-asks GM4).
+  metric-training): the exact Fisher of a softmax model of six weights
+  (the expected one under the model's own predictions, not the
+  empirical one, so it is the 1996 paper's Fisher metric), damped by
+  0.001 times the identity; written out as xetal-ML-asks GM4 says.
+  Reproduced at toy scale: the natural step's predictions do not
+  depend on an invertible linear rewriting of the inputs (undamped,
+  to 5e-16), which is the coordinate independence the paper's
+  definition implies; for softmax regression the Fisher is also the
+  loss's Hessian, so this arm is Newton's method there. The paper's
+  efficiency claim (online learning at rate 1/t) is not tested.
 
 ### Optimization Algorithms on Matrix Manifolds; An Introduction to Optimization on Smooth Manifolds
 

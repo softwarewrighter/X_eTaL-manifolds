@@ -79,9 +79,59 @@ What the tables say: the ruler changed the path and the count and not
 the loss; nothing here counts against "downhill depends on the
 ruler" (the rule written before the run: the paths coinciding or the
 counts within one). The cost is in the ruler's numbers and multiplies,
-which on a model with many weights is what decides; part 2
-(metric-training) measures that on a model, with a diagonal
-preconditioner and a natural-gradient approximation.
+which on a model with many weights is what decides; part 2 measures
+that on a model.
+
+On a model (optimization-explorer, part 2, step metric-training;
+`demos/optimization-explorer/reg/cli-optimization-training.out`, 17
+checks): a softmax classifier of six weights on the kit's flat
+clusters (seed 1, three clusters of 40, spread 1.6; split seed 11, 90
+trained on, 30 held out), from all weights 0, 60 steps, each method at
+its own rate set before the run (plain 0.5, diagonal 0.5, natural 1,
+damping 0.001), target a training loss of 0.35; once with x1 times 20,
+once as it is. The cost is counted for what each step forms
+(exponentials, divisions and additions not counted, the same per row
+for every method).
+
+| data | method | stays under 0.35 from | first under | loss at the end | held-out accuracy | multiplies per step | multiplies to stay under | note |
+| ---- | ------ | --------------------- | ----------- | --------------- | ----------------- | ------------------- | ------------------------ | ---- |
+| x1 times 20 | plain | not at the end | 54 | 59.6 | 0.533 | 1,080 | | thrashes: updates up to 21.8; at rates 0.05, 0.005, 0.0005 the end losses are 0.731, 0.587, 0.760, none under the target |
+| x1 times 20 | diagonal (the Fisher's diagonal) | 4 | 4 | 0.164 | 0.867 | 2,160 | 8,640 | the same as on the data as they are |
+| x1 times 20 | natural (the Fisher, solved) | 2 | 2 | 0.163 | 0.900 | 4,428 | 8,856 | the same as on the data as they are |
+| as they are | plain | 5 | 5 | 0.211 | 0.767 | 1,080 | 5,400 | |
+| as they are | diagonal | 4 | 4 | 0.164 | 0.867 | 2,160 | 8,640 | |
+| as they are | natural | 2 | 2 | 0.163 | 0.900 | 4,428 | 8,856 | **null result for the metric**: fewer steps, more multiplies in all |
+
+The Fisher's condition number at the start: 13,906 with x1 times 20,
+124 as it is (112 times). Undamped, ten steps from all weights 0, the
+largest gap in a predicted probability against the data as they are:
+plain 0.96 with x1 rescaled and 0.61 with x1 replaced by x1 + x2;
+diagonal 2e-16 and 0.29; natural 2e-16 and 5e-16 (the natural step
+ignores any invertible linear rewriting of the inputs, the diagonal
+only a rescaling, as the theory says).
+
+What these say, against the rule written before the run (the metric
+pays where it stays under the target in fewer multiplies in all than
+the plain step): with one input badly scaled the metric paid, since the
+plain step did not settle at any of four rates in 60 steps (a rate
+between those tried, or more steps, was not run); with the inputs as
+they are it did not (8,856 against 5,400 multiplies, under a factor of
+two), a null result for it, recorded as one. The accuracies differ by
+one or two of 30 held-out points. For softmax regression the Fisher
+equals the loss's curvature, so the natural step here is Newton's; in
+a network the two differ. A model this small hides the real cost: the
+Fisher grows with the square of the weights and its solve with the
+cube.
+
+For a metric learned with the model (H3, Saga 2; the research's
+G_phi, not built here): the metric that paid here paid by undoing how
+the inputs were written, and the cheap fix of writing them to one
+scale is the "as they are" rows, where plain gradient descent is the
+cheapest in multiplies. A learned metric would have to beat that fix
+on a problem where no rescaling of the inputs suffices (a network's
+hidden layers, a curvature that changes from point to point), and pay
+for its own numbers; that it would start behind is a conjecture, not a
+measurement.
 
 ## H2: a constraint on a transformation keeps a deep network stable
 

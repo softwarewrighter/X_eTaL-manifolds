@@ -8,4 +8,6 @@
 
 pub mod app;
 pub mod micro;
+pub mod model;
 pub mod text;
+pub mod training;

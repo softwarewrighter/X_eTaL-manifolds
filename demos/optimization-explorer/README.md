@@ -1,6 +1,6 @@
-# Optimization explorer: is downhill one direction?
+# Optimization explorer: is downhill one direction, and does a ruler pay?
 
-Part 1 (step metric-descent, milestone M2): one bowl-shaped loss that
+Part 1: one bowl-shaped loss that
 does not change, L(x, y) = (x^2 + 3 y^2) / 2, and gradient descent on
 it under three rulers (metrics) from the same start with the same
 step size policy; the steepest direction at one point under two
@@ -8,8 +8,9 @@ rulers, worked in full; and the same question on a curved space, a
 step that stays on the sphere against a flat step repaired afterward.
 Live at
 [softwarewrighter.github.io/X_eTaL-manifolds/optimization-explorer](https://softwarewrighter.github.io/X_eTaL-manifolds/optimization-explorer/).
-Part 2 (step metric-training) trains a small model under the same
-three kinds of ruler.
+Part 2 trains a small softmax model three ways,
+plain, a diagonal preconditioner and the natural-gradient step, with
+one input badly scaled and as it is, and counts what each step costs.
 
 ## The question
 
@@ -33,6 +34,16 @@ preconditioner). The step size policy here is the exact line search
 along the direction, so the ruler chooses the direction and nothing
 else (a ruler and twice that ruler give the same path).
 
+Part 2's model is a softmax classifier (softmax regression) with six
+weights: two classes' scores, each a bias plus a weight per input, the
+third class's score fixed at 0 so the Fisher matrix is not singular.
+Its loss is the cross-entropy. The Fisher matrix F (6 by 6) measures a
+change of the weights by how much it changes the predictions; the
+natural-gradient step solves (F + lambda I) d = g with damping
+lambda; the diagonal preconditioner divides each weight's gradient by
+F's diagonal entry plus lambda. Training runs at a fixed rate per
+method, not a line search.
+
 ## The idea
 
 Keep the loss fixed, change only the ruler, and measure what changes:
@@ -41,6 +52,14 @@ target loss, and what the ruler costs (numbers, multiplies per step).
 The bowl's own curvature H = diag(1, 3) as the ruler makes the bowl
 round and the floor one step away (Newton's direction); diag(a, 1)
 dialed from 1/9 to 9 passes through that choice at a = 1/3.
+
+On a model the bowl is the loss over the data, and its shape depends on
+how the inputs are written: an input recorded as numbers twenty times
+larger changes nothing about the classes and stretches the bowl along
+its weight. A ruler that measures by predictions should not notice; a
+plain step should. So part 2 trains on the data as they are and with
+one input badly scaled, expecting the metric to matter in the second
+case and to buy little in the first.
 
 ## What this is, and is not
 
@@ -53,6 +72,10 @@ H2 or H3: it answers the optimization area's question of
 path and the cost?) on a loss whose answer can be seen whole; whether a
 metric pays on a model is part 2's.
 
+Part 2 is a measurement on a real, if tiny, model: it forms the Fisher
+exactly, which a model of a million weights could not (the matrix
+grows with the square of the weights, its solve with the cube).
+
 ## The intuition
 
 A long narrow valley: the steepest step from its side goes across the
@@ -62,6 +85,11 @@ the steepest direction by that ruler points down the valley. On the
 sphere there is a further catch: the gradient's arrow is straight and
 the surface is not, so a step either follows the surface (the
 exponential map) or goes straight and is pushed back (a retraction).
+
+On a model the ruler is about units: a plain step treats one unit of
+every weight as equal, though one may move the predictions far more
+than another. The Fisher ruler measures by the predictions, which do
+not care how the inputs are written.
 
 ## The mathematics
 
@@ -85,6 +113,17 @@ exponential map (Manifold's `s_phereDescend`: tangent part, then
 about the arrow's length, and is scaled back (`s_phereProject`). The
 flat step is the power iteration on I + 2 eta A.
 
+Part 2: the gradient is g = (Q - Y)' X / n (Q the predicted
+probabilities of the two free classes, Y the answers, X the inputs
+with a 1 for the bias); the Fisher is the mean over rows of
+kron(M_i, x_i x_i'), M_i = diag(q_i) - q_i q_i', checked against
+that definition on one row written out and against central
+differences of the gradient (for softmax regression it equals the
+loss's curvature, so the natural step at rate 1 is Newton's). The cost
+counted for what each step forms: 12 multiplies per training row for
+the probabilities and gradient, 12 more for the diagonal alone, 36 more
+for the whole Fisher and about 108 for the 6 by 6 solve.
+
 ## What is compared
 
 Three rulers on the bowl, the same start (2.3, 1), the same 30 steps,
@@ -105,12 +144,27 @@ ruler"; the flat step arriving at the same place in the same number of
 steps would count against the step that stays on the sphere (the
 repair then costs nothing visible here).
 
+Part 2: plain gradient descent (rate 0.5), the diagonal preconditioner
+(0.5) and the natural-gradient step (1, damping 0.001), from all
+weights 0, for 60 steps, on the kit's flat clusters (120 points, 90
+trained on, 30 held out), with x1 times 20 and as they are; the plain
+rate swept (0.5, 0.05, 0.005, 0.0005) on the badly scaled version.
+Written before the run: the metric pays where it stays under a loss of
+0.35 in fewer multiplies in all than the plain step; with the bad
+scaling it should, on clean data it should buy little (a null result
+for it), and undamped its predictions should not depend on how the
+inputs are written.
+
 ## The run
 
 No model is trained: each descent is 30 steps of p <- p - eta P g with
 eta from the line search, from the preset's start; each climb 60 steps
 at the preset's rate. The preset is `presets/metrics.txt` (data, read
 by keeping its digits and dropping its words).
+
+Part 2 trains for real: ten runs of 60 steps (three methods on two
+versions of the data, and four plain rates) and nine undamped runs of
+ten steps for the invariance check, from `presets/training.txt`.
 
 ## The program
 
@@ -131,6 +185,17 @@ a = 1 and a = 1/3 equal to the plain and Newton records, the step
 counts falling toward a = 1/3 from both sides, the unit balls, the
 sampled directions, the eigenvector reached by every climb, the flat
 step off the sphere and the exact one not.
+
+Part 2 is [`optimization-training.xtl`](optimization-training.xtl):
+the preset; the data and split; the model (`u:p_robs`, `u:l_oss`,
+`u:g_rad`); the Fisher (`u:f_isher` by blocks, `u:f_isherDiag` the
+diagonal alone); the three steps and `u:t_rain`; the record with
+"first under" and "stays under from"; the sweep; the Fisher's
+eigenvalues; four changes of the weights measured by both rulers; the
+invariance check. 17 checks: the gradient against central
+differences, the Fisher against its definition and against the
+gradient's central differences, its diagonal formed alone, the
+metric's effect and the invariance.
 
 ## How it works
 
@@ -184,6 +249,22 @@ at step 1 and agree to 1e-11 at the end). Results for the
 record, not a hypothesis table: `docs/experiments.md`, "Optimization
 geometry".
 
+
+Part 2, from `reg/cli-optimization-training.out` (17 checks):
+
+| method | x1 times 20: stays under 0.35 from | end loss | as they are: from | end loss | held out | multiplies per step | multiplies to stay under (as they are) |
+| ------ | ---------------------------------- | -------- | ----------------- | -------- | -------- | ------------------- | -------------------------------------- |
+| plain, rate 0.5 | not under at the end (dips under at 54) | 59.6 | 5 | 0.211 | 0.767 | 1,080 | 5,400 |
+| diagonal, 0.5 | 4 | 0.164 | 4 | 0.164 | 0.867 | 2,160 | 8,640 |
+| natural, 1 | 2 | 0.163 | 2 | 0.163 | 0.900 | 4,428 | 8,856 |
+
+The plain rate sweep on x1 times 20 (0.5, 0.05, 0.005, 0.0005): end
+losses 59.6, 0.731, 0.587, 0.760, none under the target at the end. The
+Fisher at the start has condition number 13,906 with the bad scaling
+and 124 without (112 times). Undamped, ten steps, largest gap in a
+probability against the data as they are: plain 0.96 (rescaled) and
+0.61 (mixed); diagonal 2e-16 and 0.29; natural 2e-16 and 5e-16.
+
 ## Beyond this page
 
 The research's own picture of a change of metric (same loss, metric
@@ -197,10 +278,19 @@ a full H is out of reach (part 2); a fixed step size instead of a line
 search, under which the ruler's size and the step size are one choice;
 a ruler that changes from point to point (the Fisher metric).
 
+Part 2 forms Amari's natural gradient (1998) exactly because the model
+is tiny; practical methods approximate the Fisher. Adam's per-weight
+scaling is a cousin of the diagonal preconditioner, not the natural
+gradient. For a metric learned with the model (H3): the cheap fix of
+writing the inputs to one scale is measured here (plain on the data as
+they are stays under the target from step 5), and a learned metric
+would have to beat it.
+
 ## Run it
 
 ```bash
-just run optimization-explorer         # the program, its sections and 24 checks
+just run optimization-explorer         # part 1, its sections and 24 checks
+just run optimization-explorer optimization-training.xtl   # part 2, 17 checks
 just show optimization-explorer        # as a notebook
 just test-demo optimization-explorer   # CLI baseline, web tests, wasm build, browser check
 just serve optimization-explorer       # the page on port 3285
@@ -230,13 +320,21 @@ parameter space: it changes the path and the count, not the loss, and
 it costs numbers and multiplies per step; whether it pays on a model
 is part 2's question.
 
+On the model, with one input twenty times too large, the plain step
+thrashed and none of four rates settled in 60 steps, while the
+diagonal and natural steps took the same 4 and 2 steps as on clean
+data: the metric paid. On the data as they are the natural step took 2
+steps against plain's 5 and spent 8,856 multiplies against 5,400: it
+did not pay, a null result. Undamped, the natural step's predictions
+ignored a rescaling and a mixing of the inputs; the diagonal's only the
+rescaling; the plain step's neither.
+
 ## Next
 
-Part 2, metric-training: a small model trained with plain gradient
-descent, a diagonal preconditioner and a natural-gradient
-approximation on the same data and seeds; loss by step, steps to a
-target, the cost of each step counted, and whether the metric paid
-for itself.
+mhc-explorer: a constraint on a transformation instead of a ruler on a
+step, residual streams mixed by doubly stochastic and orthogonal
+matrices, and whether holding the mix to a set keeps a deep stack
+stable (H2).
 
 ## Workarounds
 
@@ -254,3 +352,8 @@ for itself.
   as ninths, 1 1.5 3 4.5 9 18 27 81, divided by 9 in the program).
 - The eigenvector check uses Matrix's `e_igenvectors` as it stands at
   the pin (no ask).
+- The Fisher matrix of the model and the natural-gradient step are
+  X_eTaL-ML's by GM4: written out in `optimization-training.xtl`
+  (`u:f_isher`, `u:f_isherDiag`, `u:s_tepNatural`), with Matrix's
+  `s_olve` for the system (a Cholesky solve is GL7). The split is
+  GM5's, written out as in representation-explorer.

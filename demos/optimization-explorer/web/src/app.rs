@@ -18,8 +18,12 @@ use lesson::narrate;
 use microscope::turning::{Angle, Point, Scene, Segment, Turning};
 use site::{comparison, functions, mark, own_function, Cell, ANALYSIS, EXPERIMENT, EXTENSION, INTUITION, MATHEMATICS, RUN};
 
+use gloo_timers::callback::Timeout;
+
 use crate::micro::{program, run, Opt, P2, P3, WAYS};
+use crate::model;
 use crate::text;
+use crate::training::{program as training_program, run as training_run, Training, PRESET as TRAINING_PRESET};
 
 fn show(x: f64) -> String {
     format!("{x:.4}")
@@ -459,10 +463,22 @@ fn preset_words(opt: &Result<Opt, String>) -> Html {
 #[function_component(App)]
 pub fn app() -> Html {
     let opt = use_memo((), |_| run());
+    // Part 2 runs after the first paint, so the reader has part 1 while
+    // the model's trainings run; nothing of part 1 waits on it.
+    let trained = use_state(|| None::<Result<Training, String>>);
+    {
+        let trained = trained.clone();
+        use_effect_with((), move |_| {
+            let timer = Timeout::new(60, move || trained.set(Some(training_run())));
+            move || drop(timer)
+        });
+    }
     let chosen = use_state(|| 1usize);
     let angle = use_state(|| Angle { yaw: 2.1, pitch: 0.73 });
     let src = program();
+    let src2 = training_program();
     let linker = Linker::of(&src);
+    let linker2 = Linker::of(&src2);
     let pick = { let c = chosen.clone(); Callback::from(move |k: usize| c.set(k)) };
     let turned = { let a = angle.clone(); Callback::from(move |n: Angle| a.set(n)) };
     let (body, after) = match &*opt {
@@ -474,10 +490,19 @@ pub fn app() -> Html {
             { sphere_section(o, *angle, turned) }
         </> }, analysis(o, *chosen)),
     };
+    let body2 = match &*trained {
+        None => html! { <section class="panel"><p class="notice" role="status">{ "Part 2 is running: a small model trained ten ways and checked nine more, X_eTaL in your browser; a few seconds. Everything above is part 1, finished." }</p></section> },
+        Some(Err(e)) => html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped in part 2: {e}") }</p></section> },
+        Some(Ok(t)) => html! { <>{ model::training(t) }{ model::geometry(t) }</> },
+    };
+    let after2 = match &*trained {
+        Some(Ok(t)) => model::analysis(t),
+        _ => html! { <p class="notice" role="status">{ "Part 2's comparison follows when it has run." }</p> },
+    };
     let texts = text::all();
     html! {
         <ContextProvider<Here> context={Here("optimization-explorer".into())}>
-        <header>{ header("Optimization explorer: is downhill one direction?", text::LEDE) }</header>
+        <header>{ header("Optimization explorer: is downhill one direction, and does a ruler pay?", text::LEDE) }</header>
         <main>
             { frame(Frame::Question, "The question", html! { <>
                 <p class="hint">{ prose(text::HINT) }</p>
@@ -492,7 +517,8 @@ pub fn app() -> Html {
             { frame(EXPERIMENT, "The experiment: three rulers, eight values of a, three climbs", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }{ preset_words(&opt) }</> }) }
             { frame(RUN, "The run: descent on a formula", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
             { body }
-            { frame(ANALYSIS, "The analysis: the rulers compared, the climbs compared", after) }
+            { body2 }
+            { frame(ANALYSIS, "The analysis: the rulers compared, the climbs compared, and whether the metric paid on a model", html! { <>{ after }{ after2 }</> }) }
             { frame(EXTENSION, "Beyond this page", html! { <>{ for text::EXTENSION.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Summary, "What this page showed", html! { <>{ for text::SUMMARY.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Next, "What is next", html! { <ul>{ for text::NEXT.iter().map(|s| li(s)) }</ul> }) }
@@ -508,11 +534,18 @@ pub fn app() -> Html {
                 { library_asides() }
                 <h3>{ "Every library function the program calls" }</h3>
                 { functions(&src) }
-                <h3>{ "The program" }</h3>
+                <h3>{ "Every library function part 2 calls" }</h3>
+                { functions(&src2) }
+                <h3>{ "The program, part 1" }</h3>
                 { linker.block(&src) }
                 <h3>{ "The preset it reads" }</h3>
                 <pre class="preset">{ crate::micro::PRESET }</pre>
                 <p class="links"><a href="../doc/demos-optimization-explorer-optimization-explorer.xtl.html">{ "This program in the cross-reference" }</a></p>
+                <h3>{ "The program, part 2" }</h3>
+                { linker2.block(&src2) }
+                <h3>{ "The preset it reads" }</h3>
+                <pre class="preset">{ TRAINING_PRESET }</pre>
+                <p class="links"><a href="../doc/demos-optimization-explorer-optimization-training.xtl.html">{ "This program in the cross-reference" }</a></p>
             </section>
         </main>
         { footer() }

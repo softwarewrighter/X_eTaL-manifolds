@@ -1,0 +1,3 @@
+command = '"$XETAL" run --seed 1 --draw "$XETAL_DRAW" optimization-training.xtl'
+exit_code = 0
+desc = "optimization-explorer: optimization-training.xtl run by the pinned xetal CLI"
