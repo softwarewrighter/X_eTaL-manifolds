@@ -1,10 +1,11 @@
 number = 10
 slug = "mhc-matrices"
-status = "in-progress"
+status = "completed"
 description = """
 Step mhc-matrices (docs/plan.md, Saga 1 row 10: the research's
 milestone M3, ..."""
 role = "production"
 context_files = []
 created_at = "2026-11-06T10:53:57"
-commits = []
+completed_at = "2026-11-22T22:12:17"
+commits = ["92f1f098e422e23e56ee4c13bb60710830213602"]
