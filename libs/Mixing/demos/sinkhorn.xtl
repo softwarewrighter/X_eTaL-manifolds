@@ -1,0 +1,36 @@
+#!/usr/bin/env xetal
+## Mixing, a small demo: a free positive matrix made doubly stochastic
+## by Sinkhorn's iteration (each row divided by its sum, then each
+## column by its sum, repeated), its row and column sum errors by sweep
+## (hc:s_umErrors), and what the result does to four streams: their mean
+## kept, their differences shrunk, its gain 1. Sinkhorn's iteration is
+## matrix scaling, general mathematics: it is asked of X_eTaL-libraries
+## (docs/xetal-libraries-asks.md, GL3) and written out here meanwhile,
+## as u:s_weep, not made a Mixing function.
+"hc:" u_se< "Mixing"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+## `u:s_weep A`: one sweep of Sinkhorn's iteration: rows to sum 1, then
+## columns. After it the columns sum to 1 exactly and the rows nearly.
+u:s_weep := { A -> R := A / ('+ r_/_2 A) 'l_eft t_able 1.0 1.0 1.0 1.0; R / ((f_irst s_hape R) r_eshape 1.0) '* t_able '+ r_/ R }
+A := e_xp 4 4 r_eshape 0.3 -1.2 0.8 0.0 1.5 0.2 -0.4 0.9 -0.7 0.6 1.1 -0.2 0.4 -0.9 0.1 1.3
+(_, errors) := 15 '{ (M, E) -> M2 := u:s_weep M; (M2, E c_at hc:s_umErrors M2) } p_ower (A, hc:s_umErrors A)
+H := 15 '{ M -> u:s_weep M } p_ower A
+
+### The free matrix: its row and column sum errors and its gain
+hc:s_umErrors A
+hc:g_ain A
+### The errors by sweep (row error, column error), fifteen sweeps
+16 2 r_eshape errors
+"the row error falls at every sweep" ch:t_est 1 ch:i_s '& r_/ (1 d_rop 1 s_elect_2 16 2 r_eshape errors) < (0 - 1) d_rop 1 s_elect_2 16 2 r_eshape errors
+"after fifteen sweeps the matrix is doubly stochastic to 1e-9" ch:t_est 1 ch:i_s 0.000000001 > hc:s_tochasticOff H
+
+### What it does to four streams
+v := 2.0 -1.0 0.5 4.0
+(hc:m_ean v) c_at hc:m_ean H mx:m_ul v
+(hc:s_pread v) c_at hc:s_pread H mx:m_ul v
+"the mean of the streams is kept" ch:t_est (hc:m_ean v) ch:n_ear hc:m_ean H mx:m_ul v
+"the differences shrink" ch:t_est 1 ch:i_s (hc:s_pread H mx:m_ul v) < hc:s_pread v
+"its largest singular value is 1" ch:t_est 1.0 ch:n_ear f_irst mx:s_ingular H
+"its gain is 1 1 to the sweeps' tolerance, 1e-9" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs (hc:g_ain H) - 1.0

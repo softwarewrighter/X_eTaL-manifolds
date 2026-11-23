@@ -1,0 +1,15 @@
+[package]
+name = "mhc-explorer-web"
+description = "mHC explorer: residual streams and the matrices that mix them; the doubly stochastic matrices of size 3 and the path from the identity to uniform mixing; Sinkhorn's iteration worked; what a doubly stochastic, a free and an orthogonal matrix do to a signal mixed again and again; the Birkhoff polytope and its corners"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

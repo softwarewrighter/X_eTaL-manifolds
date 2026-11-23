@@ -1,0 +1,3 @@
+command = "scripts/browser-check.sh mhc-explorer"
+exit_code = 0
+desc = "mhc-explorer: the built page run in headless Chrome shows X_eTaL's results"

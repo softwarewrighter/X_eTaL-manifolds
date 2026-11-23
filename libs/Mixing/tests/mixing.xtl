@@ -1,0 +1,46 @@
+#!/usr/bin/env xetal
+# Mixing: the layer over streams, the path from the identity to uniform
+# mixing, the mean kept and the differences shrunk, the singular values
+# at most 1, and the violation measures on matrices in and out of each
+# set. Run with "just run-lib Mixing mixing".
+"hc:" u_se< "Mixing"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+# The layer: one stream is the residual block x + F(x).
+x := 0.5 -1.0 2.0
+"one stream: H = a = b = 1 is x + F(x)" ch:t_est (x + t_anh x) ch:n_ear r_avel (1 1 r_eshape 1.0, 1 r_eshape 1.0, 1 r_eshape 1.0) '{ v -> t_anh v } hc:l_ayer 1 3 r_eshape x
+# n copies of x, mixed by a doubly stochastic H, read by the mean and written back to every stream, are n copies of x + F(x).
+X := hc:e_xpand (3, x)
+"three copies mixed by a doubly stochastic matrix stay copies of x + F(x)" ch:t_est (hc:e_xpand (3, x + t_anh x)) ch:n_ear (hc:b_lend (0.4, 3), 3 r_eshape 1.0 / 3.0, 3 r_eshape 1.0) '{ v -> t_anh v } hc:l_ayer X
+
+# The path: every matrix on it doubly stochastic, no entry negative.
+ts := 0.1 * f_loat (r_ange 11) - 1
+offs := '{ t -> hc:s_tochasticOff hc:b_lend (t, 3) } e_ach ts
+"every matrix on the path is doubly stochastic" ch:t_est 1 ch:i_s 0.000000000000001 > 'm_ax r_/ offs
+"the ends: the identity and uniform mixing" ch:t_est ((f_loat 3 3 r_eshape 1 0 0 0) c_at (3 3 r_eshape 1.0 / 3.0)) ch:n_ear (hc:b_lend (0.0, 3)) c_at hc:b_lend (1.0, 3)
+
+# The mean kept, the differences shrunk by 1 - t, the singular values 1, 1 - t, 1 - t.
+v := 3.0 -1.0 4.0
+H := hc:b_lend (0.3, 3)
+"the mean of the streams is kept" ch:t_est (hc:m_ean v) ch:n_ear hc:m_ean H mx:m_ul v
+"the differences shrink by 1 - t" ch:t_est (0.7 * hc:s_pread v) ch:n_ear hc:s_pread H mx:m_ul v
+"its singular values are 1, 1 - t, 1 - t: none above 1" ch:t_est 1.0 0.7 0.7 ch:n_ear mx:s_ingular H
+"mixed a hundred times, the streams are nearly their mean" ch:t_est 1 ch:i_s 0.000001 > hc:s_pread 100 '{ w -> H mx:m_ul w } p_ower v
+"and the mean is still kept" ch:t_est (hc:m_ean v) ch:n_ear hc:m_ean 100 '{ w -> H mx:m_ul w } p_ower v
+
+# Streams of several coordinates: the mean and differences coordinate by coordinate.
+S := 3 2 r_eshape 1.0 10.0 2.0 20.0 6.0 60.0
+"the mean of streams is per coordinate" ch:t_est 3.0 30.0 ch:n_ear hc:m_ean S
+"the differences sum to 0 per coordinate" ch:t_est 0.0 0.0 ch:n_ear '+ r_/ hc:d_ifferences S
+
+# The violation measures.
+P := 3 3 r_eshape 0 1 0 0 0 1 1 0 0
+"a permutation is doubly stochastic and orthogonal" ch:t_est 0.0 0.0 ch:n_ear (hc:s_tochasticOff P) c_at hc:o_rthogonalOff P
+"uniform mixing is doubly stochastic and far from orthogonal" ch:t_est 1 ch:i_s ((hc:s_tochasticOff hc:b_lend (1.0, 3)) < 0.000000000000001) & 0.5 < hc:o_rthogonalOff hc:b_lend (1.0, 3)
+R := 2 2 r_eshape 0.6 -0.8 0.8 0.6
+"a rotation is orthogonal and has a negative entry" ch:t_est 0.0 0.8 ch:n_ear (hc:o_rthogonalOff R) c_at hc:n_egativity R
+F := 3 3 r_eshape 2.0 1.0 0.5 0.3 1.0 0.2 0.1 0.4 3.0
+"a free positive matrix's row and column sums are off" ch:t_est 2.5 2.7 ch:n_ear hc:s_umErrors F
+"the gain of a doubly stochastic matrix is 1 1" ch:t_est 1.0 1.0 ch:n_ear hc:g_ain H
+"the gain of a product is at most the product of the gains" ch:t_est 1 1 ch:i_s (hc:g_ain F mx:m_ul F) <= (hc:g_ain F) * hc:g_ain F

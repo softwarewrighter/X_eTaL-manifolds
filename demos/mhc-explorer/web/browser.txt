@@ -1,0 +1,9 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+From one stream to three
+Counting the free entries
+the matrix at t = 0.5
+One sweep, worked in full
+What each kind of matrix does to a signal
+from the identity along D: smallest entry
+html: class="numbers comparison"
+html: data-aside="hc:b_lend"

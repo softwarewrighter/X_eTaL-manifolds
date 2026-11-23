@@ -1,0 +1,17 @@
+ok: one stream: H = a = b = 1 is x + F(x)
+ok: three copies mixed by a doubly stochastic matrix stay copies of x + F(x)
+ok: every matrix on the path is doubly stochastic
+ok: the ends: the identity and uniform mixing
+ok: the mean of the streams is kept
+ok: the differences shrink by 1 - t
+ok: its singular values are 1, 1 - t, 1 - t: none above 1
+ok: mixed a hundred times, the streams are nearly their mean
+ok: and the mean is still kept
+ok: the mean of streams is per coordinate
+ok: the differences sum to 0 per coordinate
+ok: a permutation is doubly stochastic and orthogonal
+ok: uniform mixing is doubly stochastic and far from orthogonal
+ok: a rotation is orthogonal and has a negative entry
+ok: a free positive matrix's row and column sums are off
+ok: the gain of a doubly stochastic matrix is 1 1
+ok: the gain of a product is at most the product of the gains

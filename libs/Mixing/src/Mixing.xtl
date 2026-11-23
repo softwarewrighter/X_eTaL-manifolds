@@ -1,0 +1,135 @@
+## Mixing: residual streams mixed under a constraint. A residual block
+## carries one stream x and adds what a layer computes from it,
+## x + F(x); hyper-connections (Zhu et al., ICLR 2025) carry n streams
+## side by side, a matrix of n rows, and mix them at every layer by an
+## n by n matrix; mHC (Xie et al., 2025) holds that matrix to the doubly
+## stochastic matrices (no entry negative, every row and every column
+## summing to 1). This library: the layer over n streams as mHC writes
+## it, x <- H x + b F(a' x); the streams' mean and differences; the
+## path from the identity to uniform mixing; and how far a matrix is
+## from each kind of mixing (doubly stochastic, orthogonal), with the
+## gain mHC measures. Sinkhorn's iteration, which makes a positive
+## matrix doubly stochastic, is matrix scaling and general: it is asked
+## of X_eTaL-libraries (docs/xetal-libraries-asks.md, GL3), not kept
+## here.
+## Import it with an alias of your choice: "hc:" u_se< "Mixing".
+## Put libs/Mixing/src on XETAL_PATH ("just path"); the reference is libs/Mixing/docs.
+## Names with l: are exported; those under h: are private to this file.
+##
+## Streams are a matrix with one row per stream (n rows) and one
+## column per coordinate (d columns); a vector is n streams of one
+## number each. A mixing matrix is n by n. Every result is a Float.
+
+### Streams
+
+## `h:m_atrix X`: a vector as n streams of one number (an n by 1
+## matrix); a matrix as it is.
+h:m_atrix := { X -> 2 = t_ally s_hape X ? f_loat X; ((t_ally X) c_at 1) r_eshape f_loat X }
+
+## `X h:b_ack M`: M back to X's rank: a vector when X was one.
+h:b_ack := { X M -> 2 = t_ally s_hape X ? M; r_avel M }
+
+## `e_xpand (n, x)`: one stream x copied into n streams, the start of
+## hyper-connections: n rows, each x.
+## >> "hc:" u_se< "Mixing"
+## >> hc:e_xpand (2, 1.0 2.0 3.0)
+## 1.0 2.0 3.0
+## 1.0 2.0 3.0
+l:e_xpand := { (n, x) -> (n c_at t_ally x) r_eshape f_loat x }
+
+## `m_ean X`: the mean of the streams, coordinate by coordinate (a d
+## vector; one number for a vector of streams). mHC's mixing keeps it
+## when every column of the matrix sums to 1.
+## >> "hc:" u_se< "Mixing"
+## >> hc:m_ean 2 2 r_eshape 1.0 2.0 3.0 6.0
+## 2.0 4.0
+l:m_ean := { X -> M := h:m_atrix X; m := ('+ r_/ M) / f_loat f_irst s_hape M; 2 = t_ally s_hape X ? m; f_irst m }
+
+## `d_ifferences X`: each stream less the streams' mean: what is left
+## when the mean is taken out (X's shape).
+## >> "hc:" u_se< "Mixing"
+## >> hc:d_ifferences 1.0 2.0 6.0
+## -2.0 -1.0 3.0
+l:d_ifferences := { X -> M := h:m_atrix X; X h:b_ack M - ((f_irst s_hape M) r_eshape 1.0) '* t_able ('+ r_/ M) / f_loat f_irst s_hape M }
+
+## `s_pread X`: the size of the differences, the square root of the sum
+## of their squares: 0 when every stream is the same.
+## >> "hc:" u_se< "Mixing"
+## >> hc:s_pread 1.0 2.0 6.0
+## 3.7416573867739413
+l:s_pread := { X -> D := l:d_ifferences X; s_qrt '+ r_/ r_avel D * D }
+
+### The layer
+
+## `(H, a, b) 'f l_ayer X`: one layer over the streams X (n by d), as
+## mHC writes it (its equation 3): the streams read into one input for
+## the layer, r = a' X (a weighted sum of the streams, a n numbers);
+## the layer's output F(r), f_ applied to r; the streams mixed by H
+## (n by n) and the output written back to each stream with weight b
+## (n numbers): H X + b F(a' X). With one stream, H = a = b = 1, it is
+## the residual block x + F(x).
+## >> "hc:" u_se< "Mixing"
+## >> (1 1 r_eshape 1.0, 1 r_eshape 1.0, 1 r_eshape 1.0) '{ v -> v * 2.0 } hc:l_ayer 1 2 r_eshape 1.0 3.0
+## 3.0 9.0
+l:l_ayer := { f_ (H, a, b) X ->
+  M := h:m_atrix X
+  r := (f_loat a) '+ '* i_nner M
+  out := f_ r
+  X h:b_ack ((f_loat H) '+ '* i_nner M) + (f_loat b) '* t_able out
+}
+
+### The path from the identity to uniform mixing
+
+## `b_lend (t, n)`: (1 - t) I + t J / n, J the n by n matrix of ones:
+## the identity at t = 0 (each stream kept as it is), uniform mixing at
+## t = 1 (every stream becomes the mean); doubly stochastic for every t
+## from 0 to 1.
+## >> "hc:" u_se< "Mixing"
+## >> hc:b_lend (0.5, 2)
+## 0.75 0.25
+## 0.25 0.75
+l:b_lend := { (t, n) -> I := f_loat (n c_at n) r_eshape 1 c_at n r_eshape 0; ((1.0 - t) * I) + (t / f_loat n) * (n c_at n) r_eshape 1.0 }
+
+### How far a matrix is from each kind
+
+## `s_umErrors H`: the largest error of a row sum and of a column sum,
+## each against 1: (rows, columns), two numbers; 0 0 for a doubly
+## stochastic matrix (Sinkhorn's iteration drives them toward 0).
+## >> "hc:" u_se< "Mixing"
+## >> hc:s_umErrors 2 2 r_eshape 0.5 0.6 0.5 0.4
+## 0.10000000000000009 0.0
+l:s_umErrors := { H -> F := f_loat H; ('m_ax r_/ a_bs ('+ r_/_2 F) - 1.0) c_at 'm_ax r_/ a_bs ('+ r_/ F) - 1.0 }
+
+## `n_egativity H`: how far below 0 the most negative entry is; 0 when
+## no entry is negative.
+## >> "hc:" u_se< "Mixing"
+## >> hc:n_egativity 2 2 r_eshape 0.5 -0.25 1.0 0.0
+## 0.25
+l:n_egativity := { H -> 0.0 m_ax 'm_ax r_/ n_eg r_avel f_loat H }
+
+## `s_tochasticOff H`: how far H is from the doubly stochastic
+## matrices, as the largest of its row sum error, its column sum error
+## and its negativity: 0 on the set; what a test of mHC's constraint
+## reports.
+## >> "hc:" u_se< "Mixing"
+## >> hc:s_tochasticOff hc:b_lend (0.5, 2)
+## 0.0
+l:s_tochasticOff := { H -> 'm_ax r_/ (l:s_umErrors H) c_at l:n_egativity H }
+
+## `o_rthogonalOff H`: how far H is from orthogonal: the largest entry,
+## in size, of H' H less the identity; 0 for an orthogonal matrix
+## (one that keeps every length; its entries may be negative).
+## >> "hc:" u_se< "Mixing"
+## >> hc:o_rthogonalOff 2 2 r_eshape 0.0 1.0 -1.0 0.0
+## 0.0
+l:o_rthogonalOff := { H -> F := f_loat H; n := f_irst s_hape F; 'm_ax r_/ r_avel a_bs ((o_\ F) '+ '* i_nner F) - f_loat (n c_at n) r_eshape 1 c_at n r_eshape 0 }
+
+## `g_ain H`: how much H can enlarge the streams, as mHC measures it:
+## the largest sum of the sizes of a row's entries (forward) and of a
+## column's (backward): (forward, backward). A doubly stochastic
+## matrix's are 1 1; a product's are at most the product of its
+## factors'.
+## >> "hc:" u_se< "Mixing"
+## >> hc:g_ain 2 2 r_eshape 1.0 -2.0 0.5 0.5
+## 3.0 2.5
+l:g_ain := { H -> A := a_bs f_loat H; ('m_ax r_/ '+ r_/_2 A) c_at 'm_ax r_/ '+ r_/ A }

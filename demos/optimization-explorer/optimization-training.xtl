@@ -243,7 +243,7 @@ gaps := ('m_ax r_/ a_bs central - r_avel u:g_rad (W0, Xt, Y)) c_at ('m_ax r_/ r_
 preset
 
 ### The data and the model
-"the split is a quarter held out" ch:t_est (90 c_at 30) ch:i_s nt c_at t_ally held
+"the split is a quarter held out" ch:t_est 90 30 ch:i_s nt c_at t_ally held
 "the badly scaled copy is the data with x1 times the scale" ch:t_est (badScale * 1 s_elect_2 X) ch:n_ear 1 s_elect_2 Xbad
 "the probabilities of each row sum to at most 1, the third class taking the rest" ch:t_est 1 ch:i_s '& r_/ ('+ r_/_2 u:p_robs (W0, Xt)) <= 1.0
 "the gradient agrees with central differences" ch:t_est 1 ch:i_s 0.00000001 > 1 s_elect gaps

@@ -1,0 +1,11 @@
+l:e_xpand : Num a => (Int, a) -> Float
+l:m_ean : Num a => a -> Float
+l:d_ifferences : Num a => a -> Float
+l:s_pread : Num a => a -> Float
+l:l_ayer : (Num a, Num b, Num c, Num d) => (Float -> Float) -> (a, b, c) -> d -> Float
+l:b_lend : (Float, Int) -> Float
+l:s_umErrors : Num a => a -> Float
+l:n_egativity : Num a => a -> Float
+l:s_tochasticOff : Num a => a -> Float
+l:o_rthogonalOff : Num a => a -> Float
+l:g_ain : Num a => a -> Float

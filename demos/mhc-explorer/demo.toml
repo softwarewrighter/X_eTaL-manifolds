@@ -1,0 +1,17 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "mhc-explorer"            # the directory name, demos/<slug>/
+title = "mHC explorer: what may the mixing do?"
+summary = "Part 1, the matrices: from one residual stream x + F(x) to three streams mixed by a 3 by 3 matrix as the mHC paper writes the layer; the doubly stochastic matrices of size 3, nine entries and four free, counted; the path from the identity to uniform mixing, every matrix on it doubly stochastic, its singular values 1 and 1 - t; Sinkhorn's iteration from a free positive matrix, one sweep worked in full, its errors by sweep to a tolerance; what a doubly stochastic, a free and an orthogonal matrix each do to a signal mixed 1, 10 and 100 times (the mean kept and the differences shrunk; the signal blown up or dying away; the length kept); the Birkhoff polytope, its corners the permutation matrices, a polytope and not a smooth manifold."
+concepts = ["residual stream", "hyper-connections", "mHC", "doubly stochastic matrix", "Sinkhorn's iteration", "singular value", "gain", "orthogonal group", "polytope"]
+status = "live"              # draft | live | deferred
+order = 50
+track = "constraints"        # start | representation | optimization | constraints | dynamics | adaptive (docs/plan.md, Tracks)
+# Every demo compares (docs/plan.md, G5): the ML problem, two or more
+# geometric choices compared on it, and the hypothesis it bears on.
+problem = "the mixing of residual streams in a deep network: what one mixing matrix, applied again and again, does to the streams' mean, their differences and their size"
+compares = ["doubly stochastic mixing (mHC's constraint, made by Sinkhorn's iteration)", "free mixing (hyper-connections, no constraint)", "orthogonal mixing (the nearest orthogonal matrix)"]
+hypothesis = "H2"
+needs = ["GL3", "GL9"]  # written out: Sinkhorn's sweep and the polar factor (GL3), the preset reader (GL9)
+line = "u:s_weep := { M -> u:c_olumns u:r_ows M }"
+why = "Sinkhorn's iteration in one line: each row divided by its sum, then each column; p_ower repeats it, and the errors fall at every sweep."

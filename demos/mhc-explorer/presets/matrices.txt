@@ -1,0 +1,14 @@
+matrices preset: residual streams and the matrices that mix them
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+streams 3
+coordinates per stream 4
+stream seed 5
+layer seed 3
+layer weight spread 0.5
+path points 11
+free matrix seed 9
+sinkhorn sweeps 20
+sinkhorn tolerance 0.000001
+mixes 1 10 100
+signal 3 -1 0.5

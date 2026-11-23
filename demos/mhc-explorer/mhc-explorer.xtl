@@ -1,0 +1,237 @@
+#!/usr/bin/env xetal
+## mHC explorer, part 1: the matrices. When a network carries several
+## streams of numbers side by side and mixes them at every layer, what
+## may the mixing be allowed to do? From one residual stream, x + F(x),
+## to n streams mixed by an n by n matrix (hyper-connections, Zhu et
+## al. 2025; mHC, Xie et al. 2025, its equation 3); the doubly
+## stochastic matrices of size 3, nine entries and four free; the path
+## from the identity to uniform mixing; Sinkhorn's iteration from a
+## free positive matrix, one sweep worked in full; what each kind of
+## matrix does to a signal mixed again and again (doubly stochastic,
+## free, orthogonal); and the set itself, the Birkhoff polytope, with
+## its corners. A single matrix per kind here: actual mHC learns
+## matrices that depend on the input.
+"hc:" u_se< "Mixing"
+"mx:" u_se< "Matrix"
+"kt:" u_se< "Kit"
+"ch:" u_se< "Check"
+
+# -- the preset
+## The run's numbers are data, presets/matrices.txt: the streams n and
+## their coordinates d; the seeds of the streams and of the layer and
+## the layer's weight spread; the path's points; the free matrix's
+## seed; Sinkhorn's sweeps and tolerance; the numbers of mixes; the
+## signal (one number per stream).
+text := []N_GET "presets/matrices.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+n := f_loor 1 s_elect preset
+d := f_loor 2 s_elect preset
+streamSeed := f_loor 3 s_elect preset
+layerSeed := f_loor 4 s_elect preset
+layerSpread := 5 s_elect preset
+points := f_loor 6 s_elect preset
+freeSeed := f_loor 7 s_elect preset
+sweeps := f_loor 8 s_elect preset
+tolerance := 9 s_elect preset
+mixes := f_loor 10 11 12 s_elect preset
+signal := 13 14 15 s_elect preset
+
+# -- from one stream to several
+## A residual block keeps a stream x of d numbers and adds what a layer
+## F computes from it: x + F(x). The layer here is F(x) = tanh(W x), W a
+## seeded d by d matrix (a stand-in for a block of a network: nothing
+## is trained in this part).
+W := layerSpread * kt:n_ormals (layerSeed, d, d)
+u:l_ayerF := { v -> t_anh W mx:m_ul v }
+x := 1 s_elect kt:n_ormals (streamSeed, 1, d)
+one := x + u:l_ayerF x
+## Hyper-connections widen the stream into n streams, a matrix of n rows,
+## and at every layer (mHC's equation 3) read one input from them with
+## weights a, mix them by an n by n matrix H, and write the layer's
+## output back with weights b: X <- H X + b F(a' X). Here a reads the
+## mean (each 1/n) and b writes to every stream (each 1); mHC learns a
+## in (0, 1) and b in (0, 2), which these are inside.
+a := n r_eshape 1.0 / f_loat n
+b := n r_eshape 1.0
+Hmid := hc:b_lend (0.5, n)
+## n copies of x, mixed by a doubly stochastic H: still n copies of x + F(x).
+copies := (Hmid, a, b) 'u:l_ayerF hc:l_ayer hc:e_xpand (n, x)
+## n different streams (seeded): the same layer mixes them.
+X := kt:n_ormals (streamSeed + 1, n, d)
+mixedX := (Hmid, a, b) 'u:l_ayerF hc:l_ayer X
+
+# -- the doubly stochastic matrices of size n
+## No entry negative, every row and every column summing to 1. Of the
+## n^2 entries, the 2 n sums fix all but (n - 1)^2: the sums are not
+## independent (the rows' total and the columns' total are both n, so
+## one of the 2 n conditions follows from the others), and 2 n - 1 of
+## them fix as many entries. Counted: entries, independent conditions,
+## free entries.
+## The conditions written as a matrix, one row per sum (n row sums,
+## then n column sums), one column per entry (by rows): its rank is the
+## number of independent conditions, which Matrix computes; the free
+## entries are the rest. The formula (n - 1)^2 is printed beside it.
+u:r_owCondition := { i -> f_loat ((((r_ange n * n) - 1) d_iv n) = i - 1) }
+u:c_olCondition := { j -> f_loat ((((r_ange n * n) - 1) m_od n) = j - 1) }
+u:c_ondition := { i -> i <= n ? u:r_owCondition i; u:c_olCondition i - n }
+(condFlat, _) := (2 * n) '{ (R, i) -> (R c_at u:c_ondition i, i + 1) } p_ower (0 r_eshape 0.0, 1)
+conditions := ((2 * n) c_at n * n) r_eshape condFlat
+rankConditions := mx:r_ank conditions
+counts := (f_loat n * n) c_at (f_loat rankConditions) c_at (f_loat (n * n) - rankConditions) c_at f_loat (n - 1) * n - 1
+## The path from the identity (t = 0, each stream kept) to uniform
+## mixing (t = 1, every stream becomes the mean), points evenly spaced
+## in t: each matrix, its row sums, its column sums, its smallest
+## entry, its singular values (Matrix's), and how far it is from the
+## set (Mixing's: 0 on it).
+ts := (f_loat (r_ange points) - 1) / f_loat points - 1
+(pathFlat, pathRows, _) := points '{ (M, R, i) ->
+  t := i s_elect ts
+  H := hc:b_lend (t, n)
+  (M c_at r_avel H, R c_at t c_at ('+ r_/_2 H) c_at ('+ r_/ H) c_at ('m_in r_/ r_avel H) c_at (mx:s_ingular H) c_at hc:s_tochasticOff H, i + 1)
+} p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+pathMatrices := (points c_at n * n) r_eshape pathFlat
+## One row per point: t; the n row sums; the n column sums; the
+## smallest entry; the n singular values; the distance from the set.
+pathTable := (points c_at 3 + 3 * n) r_eshape pathRows
+
+# -- Sinkhorn's iteration
+## From a free positive matrix (exp of seeded normal numbers, as mHC
+## makes its matrix from logits): divide each row by its sum, then each
+## column by its sum, and repeat (Sinkhorn 1964; mHC stops after 20
+## sweeps). Matrix scaling is X_eTaL-libraries' by ask GL3, written out
+## here as u:s_weep. After a sweep the columns sum to 1 exactly and the
+## rows nearly; the errors by sweep (row, column), the first sweep at
+## which both are under the tolerance (-1 if none).
+A := e_xp kt:n_ormals (freeSeed, n, n)
+u:r_ows := { M -> M / ('+ r_/_2 M) 'l_eft t_able n r_eshape 1.0 }
+u:c_olumns := { M -> M / (n r_eshape 1.0) '* t_able '+ r_/ M }
+u:s_weep := { M -> u:c_olumns u:r_ows M }
+(S, errorsFlat) := sweeps '{ (M, E) -> M2 := u:s_weep M; (M2, E c_at hc:s_umErrors M2) } p_ower (A, hc:s_umErrors A)
+errors := ((sweeps + 1) c_at 2) r_eshape errorsFlat
+u:u_nder := { E -> hits := w_here ('m_ax r_/_2 E) < tolerance; 0 = t_ally hits ? -1; (f_irst hits) - 1 }
+sweepsToTolerance := u:u_nder errors
+## One sweep worked in full: A; its row sums; A with each row divided
+## by its sum; that matrix's column sums; the result.
+rowSums := '+ r_/_2 A
+byRows := u:r_ows A
+colSums := '+ r_/ byRows
+firstSweep := u:c_olumns byRows
+rowSumsAfter := '+ r_/_2 firstSweep
+
+# -- what each kind of matrix does to a signal
+## The signal: n streams of one number each. Four matrices: the
+## doubly stochastic S from Sinkhorn; the free A it came from (rows and
+## columns summing to more than 1: its powers grow); the same A scaled
+## down by twice its largest singular value (its powers die away); and
+## the orthogonal matrix nearest A, its polar factor U' V from Matrix's
+## singular value decomposition (it keeps every length; it has negative
+## entries; the polar factor is X_eTaL-libraries' by GL3, one line
+## here). For each, after each number of mixes: the streams' mean,
+## their spread (Mixing's), their length; and each matrix's singular
+## values, its gain (Mixing's), its distance from doubly stochastic and
+## from orthogonal.
+Ashrink := A / 2.0 * f_irst mx:s_ingular A
+(Up, _, Vp) := mx:s_vd A
+Q := (o_\ Up) mx:m_ul Vp
+kinds := (4 c_at n * n) r_eshape (r_avel S) c_at (r_avel A) c_at (r_avel Ashrink) c_at r_avel Q
+u:k_ind := { k -> (n c_at n) r_eshape k s_elect kinds }
+u:m_ixed := { (H, m) -> m '{ v -> H mx:m_ul v } p_ower signal }
+u:r_ow := { v -> (hc:m_ean v) c_at (hc:s_pread v) c_at s_qrt '+ r_/ v * v }
+(signalFlat, _) := 4 '{ (R, k) -> H := u:k_ind k; (R c_at (u:r_ow signal) c_at (u:r_ow u:m_ixed (H, 1 s_elect mixes)) c_at (u:r_ow u:m_ixed (H, 2 s_elect mixes)) c_at u:r_ow u:m_ixed (H, 3 s_elect mixes), k + 1) } p_ower (0 r_eshape 0.0, 1)
+signalTable := 4 12 r_eshape signalFlat
+(kindFlat, _) := 4 '{ (R, k) -> H := u:k_ind k; (R c_at (mx:s_ingular H) c_at (hc:g_ain H) c_at (hc:s_tochasticOff H) c_at hc:o_rthogonalOff H, k + 1) } p_ower (0 r_eshape 0.0, 1)
+kindTable := (4 c_at n + 4) r_eshape kindFlat
+## The rate per mix each signal's length changed at, measured between
+## the second and third numbers of mixes: (length at the third /
+## length at the second) to the power 1 / (their difference). For a
+## free matrix this tends to the size of its largest eigenvalue, which
+## its largest singular value bounds from above.
+u:r_ate := { k -> r := k s_elect signalTable; ((12 s_elect r) / 9 s_elect r) ^ 1.0 / f_loat (3 s_elect mixes) - 2 s_elect mixes }
+rates := '{ k -> u:r_ate k } e_ach r_ange 4
+
+# -- the set: the Birkhoff polytope
+## Of size 2 the doubly stochastic matrices are (p, 1 - p / 1 - p, p),
+## p from 0 to 1: one number, a segment whose two ends are the two
+## permutation matrices (the swap at p = 0, the identity at p = 1). Of
+## size 3 the corners are the six permutation matrices (Birkhoff's
+## theorem: every doubly stochastic matrix is a mix of them), each on
+## the set and orthogonal. At a corner the set is not smooth: from the
+## identity along D = J / 3 - I (rows and columns summing to 0, so the
+## sums stay 1) a step of +0.1 stays in the set and a step of -0.1
+## does not (an entry goes negative), where from the middle, uniform
+## mixing, along E = P - P' (P a cyclic shift) both directions stay
+## in: the smallest entry at -0.1, 0, +0.1 from each.
+twoByTwo := o_\ (4 c_at points) r_eshape ts c_at (1.0 - ts) c_at (1.0 - ts) c_at ts
+twoByTwoOff := '{ i -> hc:s_tochasticOff 2 2 r_eshape i s_elect twoByTwo } e_ach r_ange points
+perms := 6 9 r_eshape 1 0 0 0 1 0 0 0 1 1 0 0 0 0 1 0 1 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0
+permChecks := '{ k -> M := 3 3 r_eshape k s_elect perms; (hc:s_tochasticOff M) + hc:o_rthogonalOff M } e_ach r_ange 6
+I3 := f_loat 3 3 r_eshape 1 0 0 0
+J3 := 3 3 r_eshape 1.0 / 3.0
+D := J3 - I3
+P3 := f_loat 3 3 r_eshape 0 1 0 0 0 1 1 0 0
+E := P3 - o_\ P3
+steps := -0.1 0.0 0.1
+corner := '{ s -> 'm_in r_/ r_avel I3 + s * D } e_ach steps
+## How many of the inequality conditions (entry >= 0) hold with
+## equality at the identity and at the middle: the set has dimension
+## four, and a point where enough independent conditions are active to
+## pin it down (the identity's six zeros) is a corner; the middle has
+## none, so a small step any way along the set stays in it.
+zeros := ('+ r_/ r_avel I3 = 0.0) c_at '+ r_/ r_avel J3 = 0.0
+middle := '{ s -> 'm_in r_/ r_avel J3 + s * E } e_ach steps
+# -- end of the core
+
+### The preset
+preset
+
+### From one stream to several
+one
+copies
+"n copies of x mixed by a doubly stochastic matrix stay copies of x + F(x)" ch:t_est (hc:e_xpand (n, one)) ch:n_ear copies
+X
+mixedX
+"the layer keeps the streams' mean moving as one stream would" ch:t_est ((hc:m_ean X) + u:l_ayerF hc:m_ean X) ch:n_ear hc:m_ean mixedX
+
+### The doubly stochastic matrices of size 3
+counts
+"nine entries, five independent sums (the rank of the conditions), four free, as (n - 1)^2 says" ch:t_est 9.0 5.0 4.0 4.0 ch:n_ear counts
+pathTable
+"every matrix on the path has rows and columns summing to 1 and no negative entry" ch:t_est 1 ch:i_s 0.000000000000001 > 'm_ax r_/ (3 + 3 * n) s_elect_2 pathTable
+"every singular value along the path is at most 1" ch:t_est 1 ch:i_s '& r_/ r_avel (0.000000000000001 + 1.0) >= n t_ake_2 (2 + 2 * n) d_rop_2 pathTable
+
+### Sinkhorn's iteration
+A
+rowSums
+byRows
+colSums
+firstSweep
+"the worked sweep is the iteration's first" ch:t_est firstSweep ch:n_ear u:s_weep A
+errors
+"after every sweep the columns sum to 1" ch:t_est 1 ch:i_s 0.000000000000001 > 'm_ax r_/ 1 d_rop 2 s_elect_2 errors
+"the row error falls at every sweep" ch:t_est 1 ch:i_s '& r_/ (1 d_rop 1 s_elect_2 errors) <= (0 - 1) d_rop 1 s_elect_2 errors
+sweepsToTolerance
+"the errors reach the tolerance within the sweeps" ch:t_est 1 ch:i_s 0 < sweepsToTolerance
+S
+"the result is doubly stochastic within the tolerance" ch:t_est 1 ch:i_s tolerance > hc:s_tochasticOff S
+
+### What each kind of matrix does to a signal
+signalTable
+kindTable
+rates
+"the free matrix's measured rate is under its largest singular value" ch:t_est 1 ch:i_s (2 s_elect rates) < 1 s_elect 2 s_elect kindTable
+"the doubly stochastic matrix keeps the mean at every number of mixes" ch:t_est (4 r_eshape 1 s_elect 1 s_elect signalTable) ch:n_ear 1 4 7 10 s_elect 1 s_elect signalTable
+"and shrinks the spread" ch:t_est 1 ch:i_s '& r_/ (1 d_rop 2 5 8 11 s_elect 1 s_elect signalTable) < (0 - 1) d_rop 2 5 8 11 s_elect 1 s_elect signalTable
+"the free matrix's powers grow, the scaled one's die away" ch:t_est 1 ch:i_s ((12 s_elect 2 s_elect signalTable) > 1000.0 * 3 s_elect 2 s_elect signalTable) & (12 s_elect 3 s_elect signalTable) < 0.001 * 3 s_elect 3 s_elect signalTable
+"the orthogonal matrix keeps the length and has a negative entry" ch:t_est 1 ch:i_s ((a_bs (12 s_elect 4 s_elect signalTable) - 3 s_elect 4 s_elect signalTable) < 0.000000001) & 0.0 > 'm_in r_/ r_avel Q
+"the doubly stochastic matrix's largest singular value is 1 and its gain 1 1" ch:t_est 1.0 1.0 1.0 ch:n_ear (1 s_elect 1 s_elect kindTable) c_at ((n + 1) c_at n + 2) s_elect 1 s_elect kindTable
+
+### The Birkhoff polytope
+twoByTwo
+"every 2 by 2 matrix along p is doubly stochastic" ch:t_est (points r_eshape 0.0) ch:n_ear twoByTwoOff
+permChecks
+"the six permutation matrices are on the set and orthogonal" ch:t_est (6 r_eshape 0.0) ch:n_ear permChecks
+corner
+middle
+zeros
+"the identity has six entries at 0, the middle none" ch:t_est 6 0 ch:i_s zeros
+"at the identity one direction leaves the set; at the middle, both directions stay" ch:t_est 1 ch:i_s ((1 s_elect corner) < 0.0) & ((3 s_elect corner) >= 0.0) & ('m_in r_/ middle) > 0.0

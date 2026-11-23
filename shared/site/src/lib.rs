@@ -196,7 +196,8 @@ mod tests {
         let d = lesson::explain::definition("Manifold", "s_phereDistance").expect("Manifold embedded");
         assert!(d.source.starts_with("l:s_phereDistance := "));
         assert!(lesson::explain::definition("Kit", "f_lat").is_some());
-        assert_eq!(OWN_LIBRARIES, ["Kit", "Manifold"]);
+        assert_eq!(OWN_LIBRARIES, ["Kit", "Manifold", "Mixing"]);
+        assert!(lesson::explain::definition("Mixing", "b_lend").is_some());
         assert!(source_url(&d).contains("/X_eTaL-manifolds/blob/") && source_url(&d).ends_with("#L137"), "{}", source_url(&d));
         assert_eq!(home("Manifold"), "this repository");
         assert_eq!(home("Trig"), "X_eTaL-libraries");

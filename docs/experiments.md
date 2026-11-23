@@ -135,7 +135,32 @@ measurement.
 
 ## H2: a constraint on a transformation keeps a deep network stable
 
-No rows yet (steps mhc-matrices and mhc-depth).
+Part 1, one matrix at a time (mhc-explorer, step mhc-matrices;
+`demos/mhc-explorer/reg/cli-mhc-explorer.out`, 20 checks): not yet a
+test of H2, which is about a stack and training (step mhc-depth), but
+the measurements its first half rests on. One signal of three streams,
+(3, -1, 0.5), length 3.20, mean 0.833, spread 2.86, mixed 100 times by
+each of four 3 by 3 matrices: Sinkhorn's result from a seeded positive
+matrix A (20 sweeps, error 1.3e-15; under 1e-6 at sweep 9), A itself,
+A divided by twice its largest singular value, and the orthogonal
+matrix nearest A (its polar factor).
+
+| matrix | largest singular value | gain (forward, backward) | after 100 mixes: mean | spread | length | measured rate per mix | note |
+| ------ | ---------------------- | ------------------------ | --------------------- | ------ | ------ | --------------------- | ---- |
+| doubly stochastic (Sinkhorn) | 1.000 | 1.00, 1.00 | 0.833 | 2.4e-15 | 1.44 | 1.000 | the mean kept, the differences gone: second singular value 0.425 |
+| free A (positive) | 5.34 | 6.19, 6.89 | 3.2e71 | 3.6e71 | 6.6e71 | 5.23 | blows up, and turns every signal toward one direction |
+| A scaled down | 0.500 | 0.58, 0.65 | 4.4e-32 | 4.9e-32 | 9.1e-32 | 0.490 | dies away |
+| orthogonal (polar factor of A) | 1.000 | 1.24, 1.24 | 0.284 | 3.16 | 3.20 | 1.000 | length kept; mean and spread changed; negative entries |
+
+What it says: nothing counts against the doubly stochastic matrix
+doing what its definition says (the rule written before the run: a
+change of the mean, a larger spread or a singular value above 1); its
+cost, the differences between streams forgotten, is the collapse the
+Birkhoff-geometry paper's Proposition 3.4 names, and is what H2's
+"counts against" watches for in a trained stack. The free matrices were
+chosen so that their outcomes follow from their singular values: they
+illustrate, they do not test. Rows for the stack and for training come
+with step mhc-depth.
 
 ## H3: geometry learned with the model
 

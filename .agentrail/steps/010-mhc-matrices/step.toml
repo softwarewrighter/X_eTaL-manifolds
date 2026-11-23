@@ -1,6 +1,6 @@
 number = 10
 slug = "mhc-matrices"
-status = "pending"
+status = "in-progress"
 description = """
 Step mhc-matrices (docs/plan.md, Saga 1 row 10: the research's
 milestone M3, ..."""
