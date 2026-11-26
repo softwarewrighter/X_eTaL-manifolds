@@ -1,0 +1,25 @@
+# The offline runs of mhc-explorer, part 2: train/train.sh, from mhc-depth.xtl.
+steps = 200
+seeds = 3
+xetal_ml = 2d23a96519f8eeb34eeb95578eccffe490bdc02f
+xetal_libraries = 3465af308b0794fd54768912b43efe53935292fe
+model = d1d912a4b5e06875a089cabedd5ff7181d2092dc  # mhc-depth.xtl up to the end of the model
+mixing = dd2e292ebcbb65292c6b1e63b8d27f0bbcd6a371
+preset = e73705d77c5ddd68c569ba8d40b3940005ab390c
+# seconds per run on the machine that made them (not a result: four ran at once)
+# free-16 24
+# free-32 52
+# free-4 10
+# free-8 15
+# orthogonal-16 30
+# orthogonal-32 58
+# orthogonal-4 12
+# orthogonal-8 17
+# plain-16 25
+# plain-32 52
+# plain-4 10
+# plain-8 15
+# stochastic-16 47
+# stochastic-32 88
+# stochastic-4 17
+# stochastic-8 26

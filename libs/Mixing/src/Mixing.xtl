@@ -20,6 +20,9 @@
 ## column per coordinate (d columns); a vector is n streams of one
 ## number each. A mixing matrix is n by n. Every result is a Float.
 
+"mx:" u_se< "Matrix"
+"nn:" u_se< "NN"
+
 ### Streams
 
 ## `h:m_atrix X`: a vector as n streams of one number (an n by 1
@@ -133,3 +136,205 @@ l:o_rthogonalOff := { H -> F := f_loat H; n := f_irst s_hape F; 'm_ax r_/ r_avel
 ## >> hc:g_ain 2 2 r_eshape 1.0 -2.0 0.5 0.5
 ## 3.0 2.5
 l:g_ain := { H -> A := a_bs f_loat H; ('m_ax r_/ '+ r_/_2 A) c_at 'm_ax r_/ '+ r_/ A }
+
+### Four kinds of mixing, made from trained numbers
+
+## `(kind, k, c) m_ix T`: the mixing matrix a layer uses, made from its
+## n by n trained numbers T, so that T = 0 is the identity or as near
+## it as the kind allows:
+## kind 1, plain residual: the identity, T unused;
+## kind 2, free (hyper-connections): I + T;
+## kind 3, doubly stochastic (mHC): k sweeps of Sinkhorn's iteration
+## (each row divided by its sum, then each column) on exp(c I + T),
+## whose every entry is positive; c pulls it toward the identity, which
+## no positive matrix reaches (at T = 0 each diagonal entry is
+## e^c / (e^c + n - 1));
+## kind 4, orthogonal: the Cayley transform (I - S)^-1 (I + S) of the
+## skew-symmetric S = (T - T') / 2 (Matrix's s_olve), orthogonal for
+## every T; it reaches every orthogonal matrix with no eigenvalue -1.
+## >> "hc:" u_se< "Mixing"
+## >> (2, 20, 0.0) hc:m_ix 2 2 r_eshape 0.5 0.0 0.0 0.0
+## 1.5 0.0
+## 0.0 1.0
+## >> (3, 20, 0.0) hc:m_ix 2 2 r_eshape 0.0
+## 0.5 0.5
+## 0.5 0.5
+l:m_ix := { (kind, k, c) T ->
+  F := f_loat T
+  I := h:e_ye f_irst s_hape F
+  kind = 1 ? I
+  kind = 2 ? I + F
+  kind = 3 ? k '{ M -> h:c_olumns h:r_ows M } p_ower e_xp (c * I) + F
+  S := 0.5 * F - o_\ F
+  (I + S) mx:s_olve I - S
+}
+
+## The identity of size n, as Floats.
+h:e_ye := { n -> f_loat (n c_at n) r_eshape 1 c_at n r_eshape 0 }
+
+## Each row of M divided by its sum; each column divided by its sum.
+h:r_ows := { M -> M / ('+ r_/_2 M) 'l_eft t_able (f_irst s_hape M) r_eshape 1.0 }
+h:c_olumns := { M -> M / ((f_irst s_hape M) r_eshape 1.0) '* t_able '+ r_/ M }
+
+## `(kind, k, c) m_ixBack (T, G)`: the gradient with respect to T of a
+## loss whose gradient with respect to the mixing matrix (kind, k, c)
+## m_ix T is G: 0 for the plain residual, G for free mixing, G carried
+## back through every sweep and through exp for doubly stochastic
+## mixing, and A^-T G (Q + I)' made skew for the Cayley transform Q
+## (A = I - S). Checked against central differences in tests/stack.xtl.
+## >> "hc:" u_se< "Mixing"
+## >> (3, 20, 0.0) hc:m_ixBack (2 2 r_eshape 0.0, 2 2 r_eshape 1.0 0.0 0.0 0.0)
+##  0.125 -0.125
+## -0.125  0.125
+l:m_ixBack := { (kind, k, c) (T, G) ->
+  F := f_loat T
+  D := f_loat G
+  n := f_irst s_hape F
+  I := h:e_ye n
+  kind = 1 ? 0.0 * F
+  kind = 2 ? D
+  kind = 3 ? h:s_inkhornBack (k, e_xp (c * I) + F, D)
+  S := 0.5 * F - o_\ F
+  A := I - S
+  Q := (I + S) mx:s_olve A
+  dS := (D mx:m_ul o_\ Q + I) mx:s_olve o_\ A
+  0.5 * dS - o_\ dS
+}
+
+## Sinkhorn's k sweeps on M0 carried back: the matrix before each half
+## sweep kept going forward (odd: rows, even: columns), then the
+## gradient D taken back through each, last first, and through exp
+## (whose derivative is M0 itself).
+h:h_alf := { (j, M) -> 1 = j m_od 2 ? h:r_ows M; h:c_olumns M }
+h:r_owsBack := { (X, D) -> o := (f_irst s_hape X) r_eshape 1.0; s := ('+ r_/_2 X) 'l_eft t_able o; (D - ('+ r_/_2 D * X / s) 'l_eft t_able o) / s }
+h:c_olumnsBack := { (X, D) -> o := (f_irst s_hape X) r_eshape 1.0; s := o '* t_able '+ r_/ X; (D - o '* t_able '+ r_/ D * X / s) / s }
+h:h_alfBack := { (j, X, D) -> 1 = j m_od 2 ? h:r_owsBack (X, D); h:c_olumnsBack (X, D) }
+h:s_inkhornBack := { (k, M0, G) ->
+  n := f_irst s_hape M0
+  (_, kept, _) := (2 * k) '{ (M, K, j) -> (h:h_alf (j, M), K c_at r_avel M, j + 1) } p_ower (M0, 0 r_eshape 0.0, 1)
+  Ins := ((2 * k) c_at n * n) r_eshape kept
+  (D, _) := (2 * k) '{ (D, j) -> (h:h_alfBack (j, (n c_at n) r_eshape j s_elect Ins, D), j - 1) } p_ower (G, 2 * k)
+  D * M0
+}
+
+### A stack of layers
+
+## A layer's trained numbers are one row: T (n by n, the mixing's), W
+## (d by d) and c (d) of the dense layer, a (n, the read) and b (n,
+## the write), n^2 + d^2 + d + 2 n numbers.
+## `(n, d) p_arts p`: the row p as (T, Wb, a, b), Wb the dense layer's
+## weights with c as one more row at the bottom (X_eTaL-ML's NN's
+## layout).
+## >> "hc:" u_se< "Mixing"
+## >> (T, Wb, a, b) := (1, 1) hc:p_arts 1.0 2.0 3.0 4.0 5.0
+## >> Wb
+## 2.0
+## 3.0
+l:p_arts := { (n, d) p ->
+  v := f_loat p
+  o1 := n * n
+  o2 := o1 + d * (d + 1)
+  ((n c_at n) r_eshape o1 t_ake v, ((d + 1) c_at d) r_eshape (o2 - o1) t_ake o1 d_rop v, n t_ake o2 d_rop v, n t_ake (o2 + n) d_rop v)
+}
+
+## `(H, Wb, a, b) b_lock X`: one layer over the streams X of a batch, as
+## mHC writes it (its equation 3), with a small dense layer and tanh for
+## the layer F: the read r = a' X, the output F = tanh(r W + c) (NN's
+## d_ense), the streams H X + b F. X has n rows, one per stream, and d
+## times B columns: coordinate j of example e in column (j - 1) B + e.
+## (the next streams, F as d by B).
+## >> "hc:" u_se< "Mixing"
+## >> (Y, F) := (1 1 r_eshape 1.0, 2 1 r_eshape 1.0 0.0, 1 r_eshape 1.0, 1 r_eshape 1.0) hc:b_lock 1 1 r_eshape 2.0
+## >> Y
+## 2.964027580075817
+l:b_lock := { (H, Wb, a, b) X ->
+  d := 2 s_elect s_hape Wb
+  B := (2 s_elect s_hape X) d_iv d
+  R := o_\ (d c_at B) r_eshape (f_loat a) '+ '* i_nner X
+  Ft := o_\ t_anh R nn:d_ense Wb
+  (((f_loat H) '+ '* i_nner X) + (f_loat b) '* t_able r_avel Ft, Ft)
+}
+
+## `(H, Wb, a, b) b_lockBack (X, Ft, G)`: one layer carried back: from
+## the gradient G of its output streams, the gradients of its input
+## streams, of H, of Wb, of a and of b.
+## >> "hc:" u_se< "Mixing"
+## >> (Y, F) := (1 1 r_eshape 1.0, 2 1 r_eshape 1.0 0.0, 1 r_eshape 1.0, 1 r_eshape 1.0) hc:b_lock 1 1 r_eshape 2.0
+## >> (dX, dH, dWb, da, db) := (1 1 r_eshape 1.0, 2 1 r_eshape 1.0 0.0, 1 r_eshape 1.0, 1 r_eshape 1.0) hc:b_lockBack (1 1 r_eshape 2.0, F, 1 1 r_eshape 1.0)
+## >> dX
+## 1.0706508248531645
+l:b_lockBack := { (H, Wb, a, b) (X, Ft, G) ->
+  d := 2 s_elect s_hape Wb
+  B := (2 s_elect s_hape X) d_iv d
+  Rt := (d c_at B) r_eshape (f_loat a) '+ '* i_nner X
+  dZ := o_\ ((d c_at B) r_eshape (f_loat b) '+ '* i_nner G) * 1.0 - Ft * Ft
+  dWb := (o_\ (o_\ Rt) c_at_2 (B c_at 1) r_eshape 1.0) '+ '* i_nner dZ
+  dr := r_avel (-1 d_rop Wb) '+ '* i_nner o_\ dZ
+  (((o_\ f_loat H) '+ '* i_nner G) + (f_loat a) '* t_able dr, G '+ '* i_nner o_\ X, dWb, X '+ '* i_nner dr, G '+ '* i_nner r_avel Ft)
+}
+
+## `(kind, k, c, n, d) s_tack (P, X0)`: the streams X0 through one layer
+## per row of P (each (n, d) p_arts, its mixing (kind, k, c) m_ix T):
+## (every state from X0 to the top, one raveled row each; every layer's
+## F, one raveled row each).
+## >> "hc:" u_se< "Mixing"
+## >> (Xs, Fs) := (1, 20, 0.0, 1, 1) hc:s_tack (2 5 r_eshape 0.0 1.0 0.0 1.0 1.0, 1 1 r_eshape 2.0)
+## >> r_avel Xs
+## 2.0 2.964027580075817 3.958714417836484
+l:s_tack := { (kind, k, c, n, d) (P, X0) ->
+  L := f_irst s_hape P
+  m := 2 s_elect s_hape X0
+  (_, Xs, Fs, _) := L '{ (X, Xs, Fs, i) ->
+    (T, Wb, a, b) := (n, d) l:p_arts i s_elect P
+    H := (kind, k, c) l:m_ix T
+    (X2, Ft) := (H, Wb, a, b) l:b_lock X
+    (X2, Xs c_at r_avel X2, Fs c_at r_avel Ft, i + 1)
+  } p_ower (f_loat X0, r_avel f_loat X0, 0 r_eshape 0.0, 1)
+  (((L + 1) c_at n * m) r_eshape Xs, (L c_at d * m d_iv d) r_eshape Fs)
+}
+
+## `(kind, k, c, n, d) s_tackBack (P, Xs, Fs, G)`: the gradient G of
+## the top streams carried down the stack (P, Xs, Fs as s_tack gave
+## them): (the gradient of P, one row per layer as P; of X0; the size
+## of the gradient of the streams at each state, bottom to top, the
+## square root of the sum of its squares).
+## >> "hc:" u_se< "Mixing"
+## >> (Xs, Fs) := (1, 20, 0.0, 1, 1) hc:s_tack (2 5 r_eshape 0.0 1.0 0.0 1.0 1.0, 1 1 r_eshape 2.0)
+## >> (dP, dX0, sizes) := (1, 20, 0.0, 1, 1) hc:s_tackBack (2 5 r_eshape 0.0 1.0 0.0 1.0 1.0, Xs, Fs, 1 1 r_eshape 1.0)
+## >> sizes
+## 1.0819976837773295 1.0105980947856845 1.0
+l:s_tackBack := { (kind, k, c, n, d) (P, Xs, Fs, G) ->
+  L := f_irst s_hape P
+  m := (2 s_elect s_hape Xs) d_iv n
+  (D, dP, sz, _) := L '{ (D, dP, sz, i) ->
+    (T, Wb, a, b) := (n, d) l:p_arts i s_elect P
+    H := (kind, k, c) l:m_ix T
+    (dX, dH, dWb, da, db) := (H, Wb, a, b) l:b_lockBack ((n c_at m) r_eshape i s_elect Xs, (d c_at m d_iv d) r_eshape i s_elect Fs, D)
+    dT := (kind, k, c) l:m_ixBack (T, dH)
+    (dX, (r_avel dT) c_at (r_avel dWb) c_at da c_at db c_at dP, (s_qrt '+ r_/ r_avel dX * dX) c_at sz, i - 1)
+  } p_ower (f_loat G, 0 r_eshape 0.0, s_qrt '+ r_/ r_avel (f_loat G) ^ 2.0, L)
+  ((s_hape P) r_eshape dP, D, sz)
+}
+
+## `B s_izes Xs`: the size of the streams at each state (a row of Xs)
+## per example: the square root of the sum of the squares of all its
+## numbers over B, the root mean square of an example's length.
+## >> "hc:" u_se< "Mixing"
+## >> 4 hc:s_izes 2 4 r_eshape 1.0 1.0 1.0 1.0 2.0 2.0 2.0 2.0
+## 1.0 2.0
+l:s_izes := { B Xs -> s_qrt ('+ r_/_2 (f_loat Xs) ^ 2.0) / f_loat B }
+
+## `(n, B) s_preads Xs`: the spread of the streams at each state per
+## example: s_pread of the state as n streams (here as the sum of the
+## squares less n times the squared mean, whole array at once), over
+## the square root of
+## B; 0 when every stream carries the same numbers.
+## >> "hc:" u_se< "Mixing"
+## >> (2, 1) hc:s_preads 1 2 r_eshape 1.0 3.0
+## 1.4142135623730951
+l:s_preads := { (n, B) Xs ->
+  F := f_loat Xs
+  m := (2 s_elect s_hape F) d_iv n
+  sums := '+ r_/_2 ((f_irst s_hape F) c_at n c_at m) r_eshape F
+  s_qrt (0.0 m_ax ('+ r_/_2 F * F) - ('+ r_/_2 sums * sums) / f_loat n) / f_loat B
+}

@@ -1,0 +1,306 @@
+#!/usr/bin/env xetal
+## mHC explorer, part 2: from matrices to networks. A stack of small
+## residual layers over n streams (mHC's layer, Mixing's s_tack) with
+## four kinds of mixing made from the same trained numbers: the plain
+## residual (the identity), free mixing (hyper-connections), doubly
+## stochastic mixing (Sinkhorn's iteration on exp, mHC's) and
+## orthogonal mixing (the Cayley transform). First at the start of
+## training, depth by depth: the size of the signal going up, of the
+## gradient coming down, the streams' spread, the composite gain and
+## the constraint's violation, over several seeds. Then trained on the
+## kit's flat clusters at four depths: loss by step, held-out
+## accuracy, whether the run stayed finite, the cost of a step. The
+## full training is done offline by this program (train/train.sh) and
+## its records read back from data/; the page trains the first steps
+## at the smallest depth again, and they must equal the records.
+"hc:" u_se< "Mixing"
+"kt:" u_se< "Kit"
+"nn:" u_se< "NN"
+"op:" u_se< "Optim"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+# -- the preset
+## presets/depth.txt: the streams and their width; the data's seed,
+## clusters, points per cluster and spread; the split's seed; the
+## Sinkhorn sweeps and the pull toward the identity; the spread of the
+## starting mixing numbers and the scale of the layers' weights; the
+## rate and the steps of training; the seeds; the depths; the steps the
+## page trains again.
+text := []N_GET "presets/depth.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+n := f_loor 1 s_elect preset
+d := f_loor 2 s_elect preset
+dataSeed := f_loor 3 s_elect preset
+k := f_loor 4 s_elect preset
+per := f_loor 5 s_elect preset
+spread := 6 s_elect preset
+splitSeed := f_loor 7 s_elect preset
+sweeps := f_loor 8 s_elect preset
+pull := 9 s_elect preset
+mixSpread := 10 s_elect preset
+weightScale := 11 s_elect preset
+rate := 12 s_elect preset
+steps := f_loor 13 s_elect preset
+seeds := f_loor 14 s_elect preset
+depths := f_loor 15 16 17 18 s_elect preset
+pageSteps := f_loor 19 s_elect preset
+top := 'm_ax r_/ depths
+
+# -- the data
+## The kit's flat clusters in the plane, the split (X_eTaL-ML's by GM5,
+## written out: a seeded held-out quarter), each input standardized by
+## the training rows' mean and spread.
+(X, y) := kt:f_lat (dataSeed, k, per, 2, spread)
+u:s_plit := { (seed, m) -> order := g_rade kt:u_niform (seed, m); h := m d_iv 4; (h d_rop order, h t_ake order) }
+(train, held) := u:s_plit (splitSeed, f_irst s_hape X)
+mu := ('+ r_/ train s_elect X) / f_loat t_ally train
+sd := s_qrt ('+ r_/ ((train s_elect X) - ((t_ally train) r_eshape 1.0) 'r_ight t_able mu) ^ 2.0) / f_loat t_ally train
+u:s_tandard := { M -> (M - ((f_irst s_hape M) r_eshape 1.0) 'r_ight t_able mu) / ((f_irst s_hape M) r_eshape 1.0) 'r_ight t_able sd }
+Xt := u:s_tandard train s_elect X
+Xh := u:s_tandard held s_elect X
+yt := train s_elect y
+yh := held s_elect y
+Yt := k nn:o_neHot yt
+B := t_ally yt
+
+# -- the model
+## The input (two numbers) goes into the n streams by a seeded matrix
+## E, each stream its own d numbers; L layers of Mixing's stack (each
+## the read a' X, F = tanh(r W + c), the streams H X + b F); the top
+## read by aout and a dense layer to k scores, softmax, cross-entropy
+## (NN's). Every trained number is in one vector: E (2 n d), aout (n),
+## the read-out's weights with its bias ((d + 1) k), then each layer's
+## row (Mixing's p_arts: T, W with c, a, b).
+p := (n * n) + (d * d + 1) + 2 * n
+g := (2 * n * d) + n + k * d + 1
+## The start for a seed: E and the read-out seeded, aout = 1/n; each
+## layer's mixing numbers T seeded with spread mixSpread (the same T
+## for every kind, so the kinds start from the same numbers), W seeded
+## at weightScale / sqrt d, c = 0, a = 1/n, b = 1. The layers of a
+## shallow stack are the first layers of the deepest.
+u:s_tart := { (seed, L) ->
+  s := 100 * seed
+  E := (1.0 / s_qrt 2.0) * kt:n_ormal (s, 2 * n * d)
+  Vb := ((1.0 / s_qrt f_loat d) * kt:n_ormal (s + 1, d * k)) c_at k r_eshape 0.0
+  T := mixSpread * kt:n_ormals (s + 2, top, n * n)
+  W := (weightScale / s_qrt f_loat d) * kt:n_ormals (s + 3, top, d * d)
+  rest := (top c_at d + 2 * n) r_eshape (d r_eshape 0.0) c_at (n r_eshape 1.0 / f_loat n) c_at n r_eshape 1.0
+  E c_at (n r_eshape 1.0 / f_loat n) c_at Vb c_at r_avel L t_ake T c_at_2 W c_at_2 rest
+}
+## The streams of a batch from the inputs: n rows, the coordinates of
+## each example in Mixing's order.
+u:e_mbed := { (E, Xin) -> (n c_at d * f_irst s_hape Xin) r_eshape r_avel o_\ Xin mx:m_ul (2 c_at n * d) r_eshape E }
+## The trained numbers of a stack of L layers as (E, aout, the
+## read-out's weights with their bias, the layers' rows).
+u:u_npack := { (L, w) ->
+  v := f_loat w
+  o1 := 2 * n * d
+  o2 := o1 + n
+  (o1 t_ake v, n t_ake o1 d_rop v, ((d + 1) c_at k) r_eshape (g - o2) t_ake o2 d_rop v, (L c_at p) r_eshape g d_rop v)
+}
+## One pass over a batch (inputs Xin, one-hot targets Y): forward
+## through the stack and the read-out, then the gradient of the mean
+## cross-entropy carried back through the read-out (written out), the
+## stack (Mixing's s_tackBack) and E. (the loss, the gradient of every
+## trained number in w's order, every state, the gradient's size at
+## every state from the bottom up, the probabilities.)
+u:p_ass := { (kind, L, w, Xin, Y) ->
+  m := f_irst s_hape Xin
+  (E, aout, Vb, P) := u:u_npack (L, w)
+  (Xs, Fs) := (kind, sweeps, pull, n, d) hc:s_tack (P, u:e_mbed (E, Xin))
+  XL := (n c_at d * m) r_eshape r_avel -1 t_ake Xs
+  R := o_\ (d c_at m) r_eshape aout mx:m_ul XL
+  Pr := nn:s_oftmax R nn:d_ense Vb
+  dZ := (Pr - Y) / f_loat m
+  dVb := (o_\ R c_at_2 (m c_at 1) r_eshape 1.0) mx:m_ul dZ
+  dr := r_avel (-1 d_rop Vb) mx:m_ul o_\ dZ
+  (dP, dX0, sizes) := (kind, sweeps, pull, n, d) hc:s_tackBack (P, Xs, Fs, aout '* t_able dr)
+  dE := (o_\ Xin) mx:m_ul o_\ ((n * d) c_at m) r_eshape r_avel dX0
+  (Y nn:c_rossEntropy Pr, (r_avel dE) c_at (XL mx:m_ul dr) c_at (r_avel dVb) c_at r_avel dP, Xs, sizes, Pr)
+}
+## Every layer's mixing matrix for a stack: their product (the
+## composite, the last layer's on the left), the largest distance of
+## any of them from the doubly stochastic matrices and from the
+## orthogonal ones (Mixing's s_tochasticOff, o_rthogonalOff).
+u:m_ixes := { (kind, L, w) ->
+  (_, _, _, P) := u:u_npack (L, w)
+  (C, ds, oo, _) := L '{ (C, ds, oo, i) -> (T, _, _, _) := (n, d) hc:p_arts i s_elect P; H := (kind, sweeps, pull) hc:m_ix T; (H mx:m_ul C, ds m_ax hc:s_tochasticOff H, oo m_ax hc:o_rthogonalOff H, i + 1) } p_ower (f_loat mx:i_dentity n, 0.0, 0.0, 1)
+  (C, ds, oo)
+}
+## Whether every number is finite: 1 or 0 (a NaN fails every comparison;
+## a largest-of reduction would pass over it).
+u:f_inite := { v -> 'm_in r_/ f_loat 1e300 > a_bs r_avel v }
+## One training run: steps of plain gradient descent at the rate
+## (Optim's s_gd) on all the training rows from the seed's start. The
+## record, one line: the loss before each step and after the last
+## (steps + 1), the gradient's size at each step (steps), then the
+## training and held-out accuracy at the end, 1 if every number stayed
+## finite, the largest distance of a mixing matrix from the doubly
+## stochastic ones and from the orthogonal ones at the end, the
+## composite's gain (forward, backward), and at the end the size and
+## the spread of the streams at the top over those at the bottom (on
+## the training rows).
+u:r_un := { (kind, L, seed, S) ->
+  (w, losses, sizes) := S '{ (w, ls, gs) -> (loss, gr, _, _, _) := u:p_ass (kind, L, w, Xt, Yt); (rate op:s_gd (w, gr), ls c_at loss, gs c_at s_qrt '+ r_/ gr * gr) } p_ower (u:s_tart (seed, L), 0 r_eshape 0.0, 0 r_eshape 0.0)
+  (lossEnd, _, XsEnd, _, Pt) := u:p_ass (kind, L, w, Xt, Yt)
+  sz := B hc:s_izes XsEnd
+  sp := (n, B) hc:s_preads XsEnd
+  (_, _, _, _, Ph) := u:p_ass (kind, L, w, Xh, k nn:o_neHot yh)
+  (C, ds, oo) := u:m_ixes (kind, L, w)
+  losses c_at lossEnd c_at sizes c_at (yt nn:a_ccuracy Pt) c_at (yh nn:a_ccuracy Ph) c_at (u:f_inite w c_at lossEnd) c_at ds c_at oo c_at (hc:g_ain C) c_at ((-1 t_ake sz) / 1 t_ake sz) c_at (-1 t_ake sp) / 1 t_ake sp
+}
+# -- end of the model
+
+# -- the gradient checked
+## Every gradient the program trains with, against central
+## differences (h = 1e-6), for each kind on a stack of the smallest
+## depth and the first six training rows: ten numbers of w, one from
+## each part (E, aout, the read-out, then of the first layer its T, W,
+## c, a and b, and of the last layer its T and W); the largest gap
+## over the largest gradient, one number per kind.
+L0 := f_irst depths
+Xc := 6 t_ake Xt
+Yc := 6 t_ake Yt
+q := g + p * L0 - 1
+picks := 1 c_at (1 + 2 * n * d) c_at (2 + n + 2 * n * d) c_at (g + 2) c_at (g + 1 + n * n) c_at (g + 1 + (n * n) + d * d) c_at (g + 1 + (n * n) + d * d + 1) c_at (g + 1 + (n * n) + (d * d + 1) + n) c_at (q + 1) c_at q + 2 + n * n
+u:c_heck := { kind ->
+  w := u:s_tart (1, L0)
+  (_, gr, _, _, _) := u:p_ass (kind, L0, w, Xc, Yc)
+  (num, _) := (t_ally picks) '{ (o, i) -> e := 0.000001 * f_loat (i s_elect picks) = r_ange t_ally w; (lu, _, _, _, _) := u:p_ass (kind, L0, w + e, Xc, Yc); (ld, _, _, _, _) := u:p_ass (kind, L0, w - e, Xc, Yc); (o c_at (lu - ld) / 0.000002, i + 1) } p_ower (0 r_eshape 0.0, 1)
+  an := picks s_elect gr
+  ('m_ax r_/ a_bs an - num) / 'm_ax r_/ a_bs an
+}
+gradientGaps := (u:c_heck 1) c_at (u:c_heck 2) c_at (u:c_heck 3) c_at u:c_heck 4
+
+# -- at the start of training, depth by depth
+## For each kind, depth and seed, one pass at the start over the
+## training rows: the size of the streams at every state (Mixing's
+## s_izes), the size of the loss's gradient at every state, the
+## streams' spread at every state (s_preads), the composite's gain and
+## the largest distance of a mixing matrix from each set. A row: those
+## three profiles (L + 1 numbers each, bottom to top), then the gain
+## (forward, backward) and the two distances.
+u:p_rofile := { (kind, L, seed) ->
+  w := u:s_tart (seed, L)
+  (_, _, Xs, gs, _) := u:p_ass (kind, L, w, Xt, Yt)
+  (C, ds, oo) := u:m_ixes (kind, L, w)
+  (B hc:s_izes Xs) c_at gs c_at ((n, B) hc:s_preads Xs) c_at (hc:g_ain C) c_at ds c_at oo
+}
+u:s_eeds := { (kind, L) -> (rows, _) := seeds '{ (R, s) -> (R c_at u:p_rofile (kind, L, s), s + 1) } p_ower (0 r_eshape 0.0, 1); (seeds c_at 4 + 3 * L + 1) r_eshape rows }
+## The mean, the smallest and the largest of a few numbers.
+u:t_hree := { v -> (('+ r_/ v) / f_loat t_ally v) c_at ('m_in r_/ v) c_at 'm_ax r_/ v }
+## Over the seeds: the signal's growth from bottom to top (top size
+## over bottom size), the gradient's growth from top to bottom (bottom
+## over top), the spread's change (top over bottom), each as mean,
+## smallest, largest; the composite's gain, mean forward and backward;
+## the largest distance from each set. 13 numbers.
+u:s_ummary := { (L, M) ->
+  e := L + 1
+  up := (e s_elect_2 M) / 1 s_elect_2 M
+  down := ((e + 1) s_elect_2 M) / (2 * e) s_elect_2 M
+  sp := ((3 * e) s_elect_2 M) / ((2 * e) + 1) s_elect_2 M
+  (u:t_hree up) c_at (u:t_hree down) c_at (u:t_hree sp) c_at (f_irst u:t_hree ((3 * e) + 1) s_elect_2 M) c_at (f_irst u:t_hree ((3 * e) + 2) s_elect_2 M) c_at ('m_ax r_/ ((3 * e) + 3) s_elect_2 M) c_at 'm_ax r_/ ((3 * e) + 4) s_elect_2 M
+}
+nd := t_ally depths
+## Kinds by depths, kind first: a summary row each, and the first
+## seed's three profiles each (raveled, every depth's in turn).
+(startTable, profiles, _) := (4 * nd) '{ (S, Pf, j) ->
+  kind := 1 + (j - 1) d_iv nd
+  L := (1 + (j - 1) m_od nd) s_elect depths
+  M := u:s_eeds (kind, L)
+  (S c_at u:s_ummary (L, M), Pf c_at (3 * L + 1) t_ake 1 s_elect M, j + 1)
+} p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+start := ((4 * nd) c_at 13) r_eshape startTable
+
+# -- the cost of a step, counted
+## Multiplications and divisions per training step on all the training
+## rows (analytical; exponentials and additions not counted; a
+## product's backward counted as two of its forward, as for any
+## layer): every layer reads the streams (n m, m = d B), runs its dense
+## layer (B d^2) and writes back (n m), forward and back, 3 (2 n m +
+## B d^2); the mixing's product H X adds 3 n^2 m for every kind but
+## the plain residual, which needs none; making H adds nothing for free
+## mixing, 2 n^2 per sweep and three times that back for doubly
+## stochastic mixing (8 k n^2), and about n^3 for the solve and three
+## times that back for orthogonal mixing (4 n^3). The read-in and the
+## read-out are the same for every kind and left out. One row per
+## kind, a number per depth.
+u:p_roduct := { kind -> kind = 1 ? 0; 3 * n * n * d * B }
+u:m_aking := { kind -> kind = 3 ? 8 * sweeps * n * n; kind = 4 ? 4 * n * n * n; 0 }
+u:c_ost := { (kind, L) -> L * (3 * (2 * n * d * B) + B * d * d) + (u:p_roduct kind) + u:m_aking kind }
+cost := (4 c_at nd) r_eshape '{ j -> u:c_ost (1 + (j - 1) d_iv nd, (1 + (j - 1) m_od nd) s_elect depths) } e_ach r_ange 4 * nd
+
+# -- the page trains again
+## The first pageSteps steps of every kind at the smallest depth with
+## the first seed, trained here as the offline runs were.
+pageRuns := (4 c_at (2 * pageSteps) + 10) r_eshape (u:r_un (1, L0, 1, pageSteps)) c_at (u:r_un (2, L0, 1, pageSteps)) c_at (u:r_un (3, L0, 1, pageSteps)) c_at u:r_un (4, L0, 1, pageSteps)
+
+# -- the offline runs read back
+## data/KIND-L.txt, written by train/train.sh from this program: a
+## line per seed, each u:r_un's record at the preset's steps.
+recLen := (2 * steps) + 10
+u:n_ame := { kind -> kind = 1 ? "plain"; kind = 2 ? "free"; kind = 3 ? "stochastic"; "orthogonal" }
+u:r_ecords := { (kind, L) -> (seeds c_at recLen) r_eshape n_umbers []N_GET "data/" c_at (u:n_ame kind) c_at "-" c_at (f_ormat L) c_at ".txt" }
+(recordsFlat, _) := (4 * nd) '{ (R, j) -> (R c_at r_avel u:r_ecords (1 + (j - 1) d_iv nd, (1 + (j - 1) m_od nd) s_elect depths), j + 1) } p_ower (0 r_eshape 0.0, 1)
+records := ((4 * nd * seeds) c_at recLen) r_eshape recordsFlat
+## Each kind at each depth over its seeds, from the records: the
+## seeds trained (every number finite and the loss at the end below
+## the loss at the start), the seeds that stayed finite, then over the
+## finite seeds the loss at the end and the held-out accuracy (mean,
+## smallest, largest), the largest gradient size met, the training
+## accuracy (mean); over every seed the largest distance of a mixing
+## matrix from each set at the end and the composite's gain (mean,
+## forward); then at the end the size and the spread at the top over
+## the bottom (mean over the finite seeds). -1 where no seed stayed
+## finite. 15 numbers.
+u:a_fter := { R ->
+  e := steps + 1
+  fin := (2 * steps) + 4
+  ok := w_here 1 = f_loor fin s_elect_2 R
+  trained := '+ r_/ (1 = f_loor fin s_elect_2 R) & (e s_elect_2 R) < 1 s_elect_2 R
+  0 = t_ally ok ? (f_loat trained) c_at 0.0 c_at 13 r_eshape -1.0
+  G := ok s_elect R
+  (f_loat trained) c_at (f_loat t_ally ok) c_at (u:t_hree e s_elect_2 G) c_at (u:t_hree ((2 * steps) + 3) s_elect_2 G) c_at ('m_ax r_/ r_avel (e + r_ange steps) s_elect_2 G) c_at (f_irst u:t_hree ((2 * steps) + 2) s_elect_2 G) c_at ('m_ax r_/ ((2 * steps) + 5) s_elect_2 R) c_at ('m_ax r_/ ((2 * steps) + 6) s_elect_2 R) c_at (f_irst u:t_hree ((2 * steps) + 7) s_elect_2 G) c_at (f_irst u:t_hree ((2 * steps) + 9) s_elect_2 G) c_at f_irst u:t_hree ((2 * steps) + 10) s_elect_2 G
+}
+(afterFlat, _) := (4 * nd) '{ (A, j) -> (A c_at u:a_fter seeds t_ake (seeds * j - 1) d_rop records, j + 1) } p_ower (0 r_eshape 0.0, 1)
+after := ((4 * nd) c_at 15) r_eshape afterFlat
+
+# -- the H2 table
+## Kind by depth (kind first): at the start, the signal's growth up
+## the stack, the gradient's growth down it and the spread kept (means
+## over the seeds) and the composite's forward gain; after training,
+## the seeds trained, the seeds that stayed finite, the loss at the end
+## and the held-out accuracy (mean, smallest, largest; -1 when none
+## stayed finite) and the spread kept at the end; the cost of a step.
+h2 := (1 4 7 10 s_elect_2 start) c_at_2 (1 2 3 6 7 8 15 s_elect_2 after) c_at_2 ((4 * nd) c_at 1) r_eshape f_loat r_avel cost
+
+# -- the page's run against the records
+## The page's run against the first seed's record at the smallest
+## depth: the loss before each step and after the last, and the
+## gradient's size at each step.
+pageLosses := (r_ange pageSteps + 1) s_elect_2 pageRuns
+recordLosses := (r_ange pageSteps + 1) s_elect_2 (1 + nd * seeds * (r_ange 4) - 1) s_elect records
+pageGap := 'm_ax r_/ r_avel a_bs pageLosses - recordLosses
+# -- end of the core
+
+# -- checks
+"every gradient matches central differences to 1e-7, each kind" ch:t_est 1 ch:i_s 0.0000001 > 'm_ax r_/ gradientGaps
+"the page's run equals the first steps of the records it reads" ch:t_est 1 ch:i_s 0.000000000001 > pageGap
+"at the start the plain residual mixes by the identity exactly" ch:t_est 0.0 ch:n_ear 'm_ax r_/ r_avel 12 13 s_elect_2 (r_ange nd) s_elect start
+"at the start every doubly stochastic mixing matrix is within 1e-2 of the set (20 sweeps from near the identity)" ch:t_est 1 ch:i_s 0.01 > 'm_ax r_/ 12 s_elect_2 ((2 * nd) + r_ange nd) s_elect start
+"every orthogonal mixing matrix is orthogonal to 1e-12, at the start and after training" ch:t_est 1 ch:i_s 0.000000000001 > 'm_ax r_/ (13 s_elect_2 ((3 * nd) + r_ange nd) s_elect start) c_at 12 s_elect_2 ((3 * nd) + r_ange nd) s_elect after
+
+# The command line prints the tables the page draws, each under a line saying what it is.
+"the gradient against central differences, the largest gap over the largest gradient: plain, free, doubly stochastic, orthogonal"
+gradientGaps
+"at the start, kind by depth (plain, free, doubly stochastic, orthogonal; each depth of the preset): the signal's growth up (mean, smallest, largest over the seeds), the gradient's growth down (the same), the spread kept (the same), the composite's gain forward and backward, the largest distance from doubly stochastic and from orthogonal"
+start
+"the cost of a step, multiplications and divisions (analytical): a row per kind, a number per depth"
+cost
+"the page's run against the records: the largest gap"
+pageGap
+"after training, kind by depth: seeds trained, seeds finite, end loss (mean, smallest, largest), held-out accuracy (the same), the largest gradient size, training accuracy, the largest distance from doubly stochastic and from orthogonal, the composite's gain, the size and the spread kept"
+after
+"the H2 table, kind by depth: signal growth, gradient growth, spread kept, gain (at the start); seeds trained, seeds finite, end loss, held-out accuracy (mean, smallest, largest), spread kept at the end; cost"
+h2

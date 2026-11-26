@@ -272,7 +272,7 @@ use):
 | Library | What | Built by |
 | ------- | ---- | -------- |
 | Manifold (`mf:`) | the sphere (`s_phereProject`, `s_phereDistance`, `s_phereDistances`, `s_phereTangent`, `s_phereStep`, `s_phereArrow`, `s_phereMean`, `s_phereOff`: built, step foundation) and the pictures of the circle, the sphere, the torus and the Swiss roll from their maps with the ball's `b_allDistance` and `b_allGeodesic` (built, step manifold-tour); then the ball's `b_allProject`, `b_allOff`, `b_allDistances`, `b_allTangent`, `b_allStep`, `b_allArrow` by the same verbs, no Mean yet (nothing has needed one), and `b_allDistortion` (built, step representation-hyperbolic); `d_istortionPairs`, `f_itScale`, `s_phereDistortion` and `f_latDistortion` of a set of points against given distances, and `s_phereWires` for the pictures (built, step representation-sphere); for fitting an embedding, `f_latDistances` (GL1's, here until it lands) and the gradient along each space of a weighted sum of pairwise distances, `f_latDistancesGradient`, `s_phereDistancesGradient`, `b_allDistancesGradient`, each checked against central differences, with `s_phereTangent` and `s_phereStep` taking a set row by row (built, step representation-hyperbolic); the cheap retraction `s_phereRetract` beside the step, and a gradient step that stays on the space, `lr s_phereDescend (p, g)`, the retraction checked against the step to |v|^3 and the descent against Matrix's eigenvector (built, step metric-descent); the tangent part of a field at a set of points and a flow held to the sphere, `s_phereFlow` (manifold-flows). The flat torus when a demo needs it | foundation, manifold-tour, representation-sphere, representation-hyperbolic, metric-descent, manifold-flows |
-| Mixing (`hc:`) | residual streams and their mixing: `hc:e_xpand (n, x)` (n copies), `(H, a, b) 'f hc:l_ayer X` (one layer over n streams as mHC's equation 3 writes it), `hc:m_ean`, `hc:d_ifferences`, `hc:s_pread` (the two channels of the Birkhoff-geometry paper), `hc:b_lend (t, n)` (the path from the identity to uniform mixing), `hc:s_umErrors`, `hc:n_egativity`, `hc:s_tochasticOff`, `hc:o_rthogonalOff` (the constraint's violation), `hc:g_ain` (mHC's gain) (built, step mhc-matrices; Sinkhorn's iteration and the polar factor written out in the demos while GL3 is open, not made Mixing functions); then `hc:s_tack` of blocks, `hc:p_ermutations w` (an exact convex combination of the permutations, after KromHC), and the sizes of the signal forward and of the gradient backward by depth (mhc-depth) | mhc-matrices, mhc-depth |
+| Mixing (`hc:`) | residual streams and their mixing: `hc:e_xpand (n, x)` (n copies), `(H, a, b) 'f hc:l_ayer X` (one layer over n streams as mHC's equation 3 writes it), `hc:m_ean`, `hc:d_ifferences`, `hc:s_pread` (the two channels of the Birkhoff-geometry paper), `hc:b_lend (t, n)` (the path from the identity to uniform mixing), `hc:s_umErrors`, `hc:n_egativity`, `hc:s_tochasticOff`, `hc:o_rthogonalOff` (the constraint's violation), `hc:g_ain` (mHC's gain) (built, step mhc-matrices; Sinkhorn's iteration and the polar factor written out in the demos while GL3 is open, not made Mixing functions); then (built, step mhc-depth) four kinds of mixing made from trained numbers with their gradients, `(kind, k, c) hc:m_ix T` and `hc:m_ixBack` (plain residual, free I + T, doubly stochastic by Sinkhorn on exp(c I + T), orthogonal by the Cayley transform; the sweep and its gradient private while GL3 is open), a layer and a stack carried forward and back (`hc:p_arts`, `hc:b_lock`, `hc:b_lockBack`, `hc:s_tack`, `hc:s_tackBack`), and the sizes and spreads by state (`hc:s_izes`, `hc:s_preads`), every gradient checked against central differences; overlapping X_eTaL-fine-tuning's ask FM13 of X_eTaL-ML (GM11); `hc:p_ermutations w` (an exact convex combination of the permutations, after KromHC) left to Saga 3 | mhc-matrices, mhc-depth |
 | Kit (`kt:`) | the three data sets, each a function of its own seed and sizes: `f_lat` (Gaussian clusters), `d_irections` (classes by direction, lengths varied, on Manifold's sphere), `t_ree`, `t_reeDistances` (Graphs' shortest paths), `t_reeClasses`, `t_reeLayout`; and the seeded numbers they are made of (`u_niform`, `n_ormal`, Park-Miller, until GL8). Functions, not files, because the explorers vary the sizes, the spread and the seed; here, because what they make is a geometric structure (built, step experiment-kit) | experiment-kit |
 
 Asked of the siblings:
@@ -320,7 +320,7 @@ to get around it.
 | 11 | mhc-depth | mhc-explorer, part 2: Mixing's stack; the size of the signal forward and of the gradient backward through a growing stack, with plain residual, free, doubly stochastic and orthogonal mixing; then the same four trained on one small task at several depths; the H2 table, with what each constraint cost and where it did not help |
 | 12 | vector-fields | dynamics-explorer, live, part 1 (M4): a field as a direction at every point; attractor, rotation, spiral, saddle, expanding spiral; Euler and Runge-Kutta paths and their error; divergence and curl; a gradient field against one with no potential, as ML meets it: gradient descent on a loss beside simultaneous descent and ascent on a two-player objective, which circles |
 | 13 | manifold-flows | dynamics-explorer, part 2: a small learned field carrying one set of points to another, in flat space and held to a sphere (Manifold's tangent field and a step that stays on it), on the directional data: where the points end, how far they leave the sphere, the cost; what a flow that can be run backward cannot do (it cannot tear one piece into two) |
-| 14 | lab-review | the release's acceptance pass: `docs/experiments.md` with the H1 and H2 results and their null results; every page read cold against the new-eyes checklist; every visible symbol and control explained (a test lists them against the glossary); a replay test for each preset; the libraries' docs and tests complete, and what in them has turned out general offered to X_eTaL-libraries; the catalog, the README and the paper catalog true; Saga 2 planned with the user |
+| 14 | lab-review | the release's acceptance pass: `docs/experiments.md` with the H1 and H2 results and their null results; every page read cold against the new-eyes checklist; every visible symbol and control explained (a test lists them against the glossary); a replay test for each preset; the libraries' docs and tests complete, and what in them has turned out general offered to X_eTaL-libraries; the catalog, the README and the paper catalog true; the next saga planned with the user (Saga 4 considered before 2 and 3, the user, 2026-11-24) |
 
 Acceptance for the saga: four explorers live, each comparing at
 least two geometric choices on the same problem with measured
@@ -352,8 +352,20 @@ the user and writes `docs/adaptive-plan.md`.
 
 mHC as a research track of its own, after mhc-explorer has a
 baseline: a laboratory of constraint sets for residual mixing. Opens
-with a planning step (`docs/constraints-plan.md`). Candidates, each
-known so far only through the research text: Kronecker products of
+with a planning step (`docs/constraints-plan.md`). What mhc-explorer's
+part 2 (step mhc-depth) changes for it: the flat clusters are solved
+at 4 layers, so a task that needs its depth comes first, or no
+constraint can show it helps; the doubly stochastic stack equals the
+plain residual at the start when the read, the write and the read-out
+all take the mean, so the reads and writes should start unequal (as
+mHC's H_pre and H_post do) or be input-dependent; free mixing's
+failure is set by its starting spread and the rate, which a fair lab
+sweeps; twenty Sinkhorn sweeps near the identity leave the rows off by
+about 6e-3, so the number of sweeps is a control; orthogonal mixing
+(Cayley) trained at every depth and kept the streams' differences, a
+candidate in its own right; and the mixing that depends on the input,
+mHC's own, was not afforded and is the first candidate. Candidates,
+each known so far only through the research text: Kronecker products of
 small doubly stochastic matrices (KromHC), expanded streams with
 sparse updates (xHC), residual routing as a fine-tuning method beside
 LoRA (reported there as not consistently better alone), the Birkhoff
@@ -364,6 +376,14 @@ interchangeable: an orthogonal matrix may have negative entries, a
 doubly stochastic one may not.
 
 ## Saga 4 -- topology-and-subspaces  [PLANNED, to be planned]
+
+Order (the user, 2026-11-24): consider this saga before Sagas 2 and
+3; step lab-review plans the next saga with that in view. Its smallest
+first demo would be PCA as descent on the Grassmann manifold of
+subspaces (the leading eigenvector's climb of optimization-explorer,
+part 1, from one vector to r), a step that stays on the manifold
+against a flat step repaired by orthonormalizing, measured by the
+principal angles to the true subspace.
 
 The research's P2 demos, the most exploratory. Opens with a planning
 step (`docs/topology-plan.md`).

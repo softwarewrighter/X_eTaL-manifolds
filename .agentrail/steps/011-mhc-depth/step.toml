@@ -1,6 +1,6 @@
 number = 11
 slug = "mhc-depth"
-status = "pending"
+status = "in-progress"
 description = """
 Step mhc-depth (docs/plan.md, Saga 1 row 11: milestone M3, second
 half; hypot..."""

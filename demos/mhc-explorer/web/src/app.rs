@@ -18,7 +18,11 @@ use lesson::heat::{Heat, Matrix};
 use lesson::narrate;
 use site::{comparison, functions, mark, own_function, Cell, ANALYSIS, EXPERIMENT, EXTENSION, INTUITION, MATHEMATICS, RUN};
 
+use gloo_timers::callback::Timeout;
+
+use crate::depth::{program as depth_program, run as depth_run, Depth, PRESET as DEPTH_PRESET, RUNS};
 use crate::micro::{program, run, Mhc, M3, KINDS, PRESET};
+use crate::stack;
 use crate::text;
 
 fn show(x: f64) -> String {
@@ -326,9 +330,25 @@ fn library_asides() -> Html {
 #[function_component(App)]
 pub fn app() -> Html {
     let model = use_memo((), |_| run());
+    // Part 2 runs after the first paint, so the reader has part 1 while
+    // the stacks are measured and the page trains again; nothing of part
+    // 1 waits on it.
+    let deep = use_state(|| None::<Result<Depth, String>>);
+    {
+        let deep = deep.clone();
+        use_effect_with((), move |_| {
+            let timer = Timeout::new(60, move || deep.set(Some(depth_run())));
+            move || drop(timer)
+        });
+    }
     let chosen = use_state(|| 5usize);
+    // The depth shown and the one shown before it, so a change is narrated from both.
+    let depth = use_state(|| (3usize, 3usize));
     let src = program();
+    let src2 = depth_program();
     let linker = Linker::of(&src);
+    let linker2 = Linker::of(&src2);
+    let pick_depth = { let d = depth.clone(); Callback::from(move |k: usize| { let (now, _) = *d; d.set((k, now)); }) };
     let pick = { let c = chosen.clone(); Callback::from(move |k: usize| c.set(k)) };
     let (body, after) = match &*model {
         Err(e) => (html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped: {e}") }</p></section> }, html! {}),
@@ -339,6 +359,20 @@ pub fn app() -> Html {
             { kinds_section(m) }
             { polytope_section(m) }
         </> }, analysis(m)),
+    };
+    let (di, before) = *depth;
+    let body2 = match &*deep {
+        None => html! { <section class="panel"><p class="notice" role="status">{ "Part 2 is running: four stacks measured at four depths from three seeds, every gradient checked, and the first steps of training done again, X_eTaL in your browser; several seconds. Everything above is part 1, finished." }</p></section> },
+        Some(Err(e)) => html! { <section class="panel"><p class="notice" role="status">{ format!("X_eTaL stopped in part 2: {e}") }</p></section> },
+        Some(Ok(t)) => html! { <>
+            { stack::network(t) }
+            { stack::start_section(t, di, before, pick_depth.clone()) }
+            { stack::training_section(t, di, before, pick_depth.clone()) }
+        </> },
+    };
+    let after2 = match &*deep {
+        Some(Ok(t)) => stack::analysis(t),
+        _ => html! { <p class="notice" role="status">{ "Part 2's comparison follows when it has run." }</p> },
     };
     let texts = text::all();
     html! {
@@ -351,14 +385,15 @@ pub fn app() -> Html {
                 { for text::QUESTION[1..].iter().map(|s| p(s)) }
             </> }) }
             { frame(Frame::Background, "What you need to know first", html! { <>{ for text::BACKGROUND.iter().map(|s| p(s)) }</> }) }
-            { frame(Frame::Rationale, "The idea: one matrix at a time, before the stack", html! { <>{ for text::RATIONALE.iter().map(|s| p(s)) }</> }) }
+            { frame(Frame::Rationale, "The idea: one matrix at a time, then the stack", html! { <>{ for text::RATIONALE.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Purpose, "What this page is, and is not", html! { <>{ for text::PURPOSE.iter().map(|s| p(s)) }</> }) }
             { frame(INTUITION, "The intuition: pouring water between cups", html! { <>{ for text::INTUITION.iter().map(|s| p(s)) }</> }) }
-            { frame(MATHEMATICS, "The mathematics: the layer, the count, the path, Sinkhorn, the powers", html! { <>{ for text::MATHEMATICS.iter().map(|s| p(s)) }</> }) }
-            { frame(EXPERIMENT, "The experiment: the matrices, one at a time", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }</> }) }
-            { frame(RUN, "The run: nothing is trained", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
+            { frame(MATHEMATICS, "The mathematics: the layer, the count, the path, Sinkhorn, the powers, the kinds and their gradients", html! { <>{ for text::MATHEMATICS.iter().map(|s| p(s)) }</> }) }
+            { frame(EXPERIMENT, "The experiment: the matrices one at a time, then four kinds in a stack", html! { <>{ for text::EXPERIMENT.iter().map(|s| p(s)) }</> }) }
+            { frame(RUN, "The run: nothing trained in part 1; 48 trainings in part 2", html! { <>{ for text::RUN.iter().map(|s| p(s)) }</> }) }
             { body }
-            { frame(ANALYSIS, "The analysis: four matrices, one signal", after) }
+            { body2 }
+            { frame(ANALYSIS, "The analysis: four matrices and one signal, then four kinds of mixing in a stack", html! { <>{ after }{ after2 }</> }) }
             { frame(EXTENSION, "Beyond this page", html! { <>{ for text::EXTENSION.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Summary, "What this page showed", html! { <>{ for text::SUMMARY.iter().map(|s| p(s)) }</> }) }
             { frame(Frame::Next, "What is next", html! { <ul>{ for text::NEXT.iter().map(|s| li(s)) }</ul> }) }
@@ -374,11 +409,21 @@ pub fn app() -> Html {
                 { library_asides() }
                 <h3>{ "Every library function the program calls" }</h3>
                 { functions(&src) }
-                <h3>{ "The program" }</h3>
+                <h3>{ "Every library function part 2 calls" }</h3>
+                { functions(&src2) }
+                <h3>{ "The program, part 1" }</h3>
                 { linker.block(&src) }
                 <h3>{ "The preset it reads" }</h3>
                 <pre class="preset">{ PRESET }</pre>
                 <p class="links"><a href="../doc/demos-mhc-explorer-mhc-explorer.xtl.html">{ "This program in the cross-reference" }</a></p>
+                <h3>{ "The program, part 2" }</h3>
+                { linker2.block(&src2) }
+                <h3>{ "The preset it reads" }</h3>
+                <pre class="preset">{ DEPTH_PRESET }</pre>
+                <h3>{ "The records it reads, and what made them" }</h3>
+                <p class="note">{ "The records are 16 files, data/KIND-L.txt, a line per seed of 410 numbers (the loss before each step and after the last, the gradient's size at each step, then the end of the run), written by train/train.sh: mhc-depth.xtl up to the end of its model, followed by one u:r_un line per seed. They are passed to the program where it reads them and are not printed here, being numbers only. Beside them, data/runs.txt says what made them: the steps and seeds, the pins, and the hashes of the program's model, of Mixing and of the preset." }</p>
+                <pre class="preset">{ RUNS }</pre>
+                <p class="links"><a href="../doc/demos-mhc-explorer-mhc-depth.xtl.html">{ "This program in the cross-reference" }</a></p>
             </section>
         </main>
         { footer() }

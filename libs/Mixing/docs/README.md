@@ -17,7 +17,8 @@ a matrix is from each kind of mixing, with the gain mHC measures.
 Put each library's `src/` directory on `XETAL_PATH` (`just path`
 prints them; see the [README](../../../README.md)); `hc:` is the
 recommended alias. The tests use Matrix (X_eTaL-libraries) for
-products and singular values; the library itself needs nothing.
+products and singular values. The library uses Matrix's `s_olve` (the
+Cayley transform) and X_eTaL-ML's NN `d_ense` (the stack's dense layer).
 
 Streams are a matrix with one row per stream (n rows) and one column
 per coordinate (d columns); a vector is n streams of one number each.
@@ -68,13 +69,53 @@ polytope with flat faces and the permutation matrices as its corners,
 not a smooth manifold everywhere (`docs/glossary.md`, polytope); mHC's
 name, "manifold-constrained", is the paper's.
 
+## Four kinds of mixing, made from trained numbers
+
+| Function | Type | What |
+| -------- | ---- | ---- |
+| `(kind, k, c) hc:m_ix T` | `(Num a, Num b) => (a, Int, Float) -> b -> Float` | the mixing matrix made from the n by n trained numbers T: kind 1, the plain residual (the identity); 2, free (I + T); 3, doubly stochastic (k sweeps of Sinkhorn's iteration on exp(c I + T); c pulls it toward the identity, which no positive matrix reaches); 4, orthogonal (the Cayley transform (I - S)^-1 (I + S) of S = (T - T') / 2). T = 0 is the identity or as near it as the kind allows |
+| `(kind, k, c) hc:m_ixBack (T, G)` | `(Num a, Num b, Num c) => (a, Int, Float) -> (b, c) -> Float` | the gradient with respect to T, given G, the gradient with respect to the mixing matrix: 0, G, G carried back through every sweep and exp, or through the Cayley transform |
+
+The kinds hold different numbers of free directions for the same n^2
+trained numbers: free mixing n^2, doubly stochastic (n - 1)^2 (the
+logits' row and column shifts change nothing), orthogonal n (n - 1) / 2
+(only T's skew part counts), the plain residual none. Near the
+identity Sinkhorn's iteration converges slowly: with c = 4 and n = 3,
+20 sweeps leave the row sums off by about 2e-3 (`tests/stack.xtl`).
+
+## A stack of layers
+
+A layer's trained numbers are one row: T (n by n), W (d by d) with c
+(d) as one more row (NN's layout), a (n, the read) and b (n, the
+write), n^2 + d^2 + d + 2 n numbers. The streams of a batch of B
+examples are n rows of d B numbers, coordinate j of example e in column
+(j - 1) B + e.
+
+| Function | Type | What |
+| -------- | ---- | ---- |
+| `(n, d) hc:p_arts p` | `Num a => (Int, Int) -> a -> (Float, Float, Float, Float)` | a layer's row as (T, Wb, a, b) |
+| `(H, Wb, a, b) hc:b_lock X` | `(Num a, Num b, Num c) => (a, Float, b, c) -> Float -> (Float, Float)` | one layer as mHC writes it with a small dense layer for F: r = a' X, F = tanh(r W + c), H X + b F; (the next streams, F as d by B) |
+| `(H, Wb, a, b) hc:b_lockBack (X, Ft, G)` | `(Num a, Num b, Num c) => (a, Float, b, c) -> (Float, Float, Float) -> (Float, Float, Float, Float, Float)` | the layer carried back from G, the gradient of its output: the gradients of X, H, Wb, a and b |
+| `(kind, k, c, n, d) hc:s_tack (P, X0)` | `(Num a, Num b, Num c) => (a, Int, Float, Int, Int) -> (b, c) -> (Float, Float)` | X0 through one layer per row of P: (every state, a raveled row each from X0 to the top; every layer's F) |
+| `(kind, k, c, n, d) hc:s_tackBack (P, Xs, Fs, G)` | `(Num a, Num b, Num c) => (a, Int, Float, Int, Int) -> (b, Float, Float, c) -> (Float, Float, Float)` | G, the gradient of the top streams, carried down: (the gradient of P, a row per layer; of X0; the size of the streams' gradient at every state, bottom to top) |
+| `B hc:s_izes Xs` | `(Num a, Num b) => a -> b -> Float` | the size of the streams at each state per example: sqrt(sum of squares / B) |
+| `(n, B) hc:s_preads Xs` | `(Num a, Num b) => (Int, a) -> b -> Float` | the streams' spread at each state per example: `s_pread` over sqrt(B) |
+
+`tests/stack.xtl` checks each kind in its set, one stream against x +
+tanh x, and every gradient of a stack of three layers over three
+streams (each layer's numbers and the starting streams, 75 numbers)
+against central differences for each kind, to 1e-7 (they agree to
+about 1e-9). The stack is what `demos/mhc-explorer/mhc-depth.xtl`
+trains.
+
 ## Not here
 
 Sinkhorn's iteration (each row divided by its sum, then each column,
 repeated), which makes a positive matrix doubly stochastic, is matrix
 scaling, general mathematics: it is asked of X_eTaL-libraries (GL3,
 `docs/xetal-libraries-asks.md`) with the polar factor (the nearest
-orthogonal matrix). Meanwhile it is written out where it is used:
+orthogonal matrix). Meanwhile it is written out where it is used: privately in `m_ix` and
+`m_ixBack` (with its gradient),
 [`demos/sinkhorn.xtl`](../demos/sinkhorn.xtl) and
 `demos/mhc-explorer/mhc-explorer.xtl` (`u:s_weep`), and the polar factor
 by Matrix's `s_vd`.

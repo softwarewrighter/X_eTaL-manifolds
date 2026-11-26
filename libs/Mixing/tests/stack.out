@@ -1,0 +1,17 @@
+ok: plain residual: the identity whatever T
+ok: free: the identity plus T
+ok: doubly stochastic: after the last sweep, by columns, the columns sum to 1
+ok: near the identity (c = 4) 20 sweeps leave the rows off by under 1e-2, 50 by under 1e-3
+ok: far from it (c = 0) 20 sweeps leave nothing to 1e-12
+ok: orthogonal for any T, to 1e-12
+ok: at T = 0 the orthogonal kind is the identity
+ok: at T = 0 the doubly stochastic kind has e^c / (e^c + n - 1) on its diagonal
+ok: one stream: two layers are x + tanh x twice
+ok: plain residual: every gradient matches central differences to 1e-7
+ok: free: every gradient matches central differences to 1e-7
+ok: doubly stochastic: every gradient, through 5 sweeps, matches to 1e-7
+ok: orthogonal: every gradient, through the Cayley transform, matches to 1e-7
+ok: plain residual: its mixing numbers get no gradient
+ok: the size at the bottom is X0's length over sqrt(B)
+ok: one size and one spread per state
+ok: the spread of copies is 0

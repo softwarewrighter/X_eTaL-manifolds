@@ -3,7 +3,9 @@
 Residual streams mixed under a constraint: the layer over n streams as
 mHC writes it, the streams' mean and differences, the path from the
 identity to uniform mixing, and how far a matrix is from doubly
-stochastic or orthogonal, with mHC's gain. The reference is
+stochastic or orthogonal, with mHC's gain; four kinds of mixing made
+from trained numbers (plain residual, free, doubly stochastic, orthogonal)
+and a stack of layers over the streams with its gradient. The reference is
 [`docs/README.md`](docs/README.md).
 
 ```

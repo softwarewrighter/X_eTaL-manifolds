@@ -1,0 +1,52 @@
+#!/usr/bin/env xetal
+# Mixing's stack: the four kinds of mixing each in its set, a stack of
+# layers, and every gradient the stack gives back (of every layer's
+# numbers and of the streams it starts from) against central
+# differences, for each kind. Run with "just run-lib Mixing stack".
+"hc:" u_se< "Mixing"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+
+# The kinds: each made from the same trained numbers T, each in its set.
+T := 3 3 r_eshape 0.4 * s_in 1.3 * f_loat r_ange 9
+"plain residual: the identity whatever T" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear (1, 20, 4.0) hc:m_ix T
+"free: the identity plus T" ch:t_est ((f_loat mx:i_dentity 3) + T) ch:n_ear (2, 20, 4.0) hc:m_ix T
+"doubly stochastic: after the last sweep, by columns, the columns sum to 1" ch:t_est 1 ch:i_s 0.000000000001 > 2 s_elect hc:s_umErrors (3, 20, 4.0) hc:m_ix T
+"near the identity (c = 4) 20 sweeps leave the rows off by under 1e-2, 50 by under 1e-3" ch:t_est 1 1 ch:i_s (0.01 > hc:s_tochasticOff (3, 20, 4.0) hc:m_ix T) c_at 0.001 > hc:s_tochasticOff (3, 50, 4.0) hc:m_ix T
+"far from it (c = 0) 20 sweeps leave nothing to 1e-12" ch:t_est 1 ch:i_s 0.000000000001 > hc:s_tochasticOff (3, 20, 0.0) hc:m_ix T
+"orthogonal for any T, to 1e-12" ch:t_est 1 ch:i_s 0.000000000001 > hc:o_rthogonalOff (4, 20, 4.0) hc:m_ix T
+"at T = 0 the orthogonal kind is the identity" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear (4, 20, 4.0) hc:m_ix 3 3 r_eshape 0.0
+"at T = 0 the doubly stochastic kind has e^c / (e^c + n - 1) on its diagonal" ch:t_est (3 r_eshape (e_xp 4.0) / 2.0 + e_xp 4.0) ch:n_ear mx:d_iag (3, 20, 4.0) hc:m_ix 3 3 r_eshape 0.0
+
+# One stream with H = a = b = 1 and the dense layer the identity: each layer is x + tanh(x).
+(Xs1, _) := (1, 20, 0.0, 1, 1) hc:s_tack (2 5 r_eshape 0.0 1.0 0.0 1.0 1.0, 1 1 r_eshape 0.5)
+"one stream: two layers are x + tanh x twice" ch:t_est ((0.5 + t_anh 0.5) + t_anh 0.5 + t_anh 0.5) ch:n_ear f_irst -1 t_ake r_avel Xs1
+
+# A stack of 3 layers over 3 streams of 2 coordinates, a batch of 2.
+n := 3
+d := 2
+B := 2
+L := 3
+p := (n * n) + (d * d + 1) + 2 * n
+P := (L c_at p) r_eshape 0.3 * s_in 1.7 * f_loat r_ange L * p
+X0 := (n c_at d * B) r_eshape s_in 2.3 * f_loat r_ange n * d * B
+C := (n c_at d * B) r_eshape c_os 0.9 * f_loat r_ange n * d * B
+np := t_ally r_avel P
+## A loss of the top streams, sum(X_L * C), as a function of every number at once.
+u:l_oss := { (kind, w) -> (Xs, _) := (kind, 5, 2.0, n, d) hc:s_tack ((s_hape P) r_eshape np t_ake w, (s_hape X0) r_eshape np d_rop w); '+ r_/ (r_avel -1 t_ake Xs) * r_avel C }
+## Its gradient by central differences, one number at a time (h = 1e-6).
+u:c_entral := { (kind, w) -> (g, _) := (t_ally w) '{ (g, i) -> e := 0.000001 * f_loat i = r_ange t_ally w; (g c_at ((u:l_oss (kind, w + e)) - u:l_oss (kind, w - e)) / 0.000002, i + 1) } p_ower (0 r_eshape 0.0, 1); g }
+## Its gradient from the stack carried back.
+u:b_ack := { kind -> (Xs, Fs) := (kind, 5, 2.0, n, d) hc:s_tack (P, X0); (dP, dX0, _) := (kind, 5, 2.0, n, d) hc:s_tackBack (P, Xs, Fs, C); (r_avel dP) c_at r_avel dX0 }
+u:g_ap := { kind -> a := u:b_ack kind; c := u:c_entral (kind, (r_avel P) c_at r_avel X0); ('m_ax r_/ a_bs a - c) / 1.0 m_ax 'm_ax r_/ a_bs c }
+"plain residual: every gradient matches central differences to 1e-7" ch:t_est 1 ch:i_s 0.0000001 > u:g_ap 1
+"free: every gradient matches central differences to 1e-7" ch:t_est 1 ch:i_s 0.0000001 > u:g_ap 2
+"doubly stochastic: every gradient, through 5 sweeps, matches to 1e-7" ch:t_est 1 ch:i_s 0.0000001 > u:g_ap 3
+"orthogonal: every gradient, through the Cayley transform, matches to 1e-7" ch:t_est 1 ch:i_s 0.0000001 > u:g_ap 4
+"plain residual: its mixing numbers get no gradient" ch:t_est 0.0 ch:n_ear 'm_ax r_/ a_bs (n * n) t_ake u:b_ack 1
+
+# The sizes by state.
+(Xs, Fs) := (2, 5, 2.0, n, d) hc:s_tack (P, X0)
+"the size at the bottom is X0's length over sqrt(B)" ch:t_est ((s_qrt '+ r_/ r_avel X0 * X0) / s_qrt 2.0) ch:n_ear f_irst B hc:s_izes Xs
+"one size and one spread per state" ch:t_est ((L + 1) c_at L + 1) ch:i_s (t_ally B hc:s_izes Xs) c_at t_ally (n, B) hc:s_preads Xs
+"the spread of copies is 0" ch:t_est 0.0 ch:n_ear f_irst (3, 1) hc:s_preads 1 6 r_eshape 1.0 2.0 1.0 2.0 1.0 2.0

@@ -11,5 +11,11 @@ lesson = { path = "../../../work/xetal-ml/shared/lesson" }
 microscope = { path = "../../../work/xetal-ml/shared/microscope" }
 yew = { version = "0.21", features = ["csr"] }
 console_error_panic_hook = "0.1"
+gloo-timers = "0.3"
+
+# The X_eTaL interpreter optimized even in tests: part 2 trains a stack
+# (about 8 s optimized, minutes not).
+[profile.dev.package."*"]
+opt-level = 3
 
 [workspace]

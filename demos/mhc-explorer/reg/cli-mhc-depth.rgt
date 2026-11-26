@@ -1,0 +1,3 @@
+command = '"$XETAL" run --seed 1 --draw "$XETAL_DRAW" mhc-depth.xtl'
+exit_code = 0
+desc = "mhc-explorer: mhc-depth.xtl run by the pinned xetal CLI"

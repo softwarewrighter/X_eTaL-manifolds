@@ -159,8 +159,109 @@ cost, the differences between streams forgotten, is the collapse the
 Birkhoff-geometry paper's Proposition 3.4 names, and is what H2's
 "counts against" watches for in a trained stack. The free matrices were
 chosen so that their outcomes follow from their singular values: they
-illustrate, they do not test. Rows for the stack and for training come
-with step mhc-depth.
+illustrate, they do not test.
+
+Part 2, a stack trained (mhc-explorer, step mhc-depth;
+`demos/mhc-explorer/reg/cli-mhc-depth.out`, 5 checks; the 48 offline
+runs in `demos/mhc-explorer/data/`, made by `just train mhc-explorer`).
+The network: a point of the plane into 4 streams of 4 numbers, L
+layers of Mixing's stack (mHC's layer with a 4 by 4 dense layer and
+tanh for F, a = 1/4, b = 1 at the start), a read-out to 3 classes;
+the kit's flat clusters, 72 points, 54 trained on, 18 held out. Four
+kinds of mixing made from each layer's 16 trained numbers T: the plain
+residual (the identity), free (I + T), doubly stochastic (20 Sinkhorn
+sweeps on exp(4 I + T)), orthogonal (the Cayley transform of T's skew
+part). The same seeded start for every kind (T with spread 0.3), 3
+seeds, plain gradient descent at rate 0.05, 200 steps, depths 4, 8,
+16, 32. Every gradient checked against central differences (largest
+relative gap 6e-10). The mixing does not depend on the input.
+
+| kind, depth | signal growth up (start) | gradient growth down (start) | spread kept (start) | composite gain (start) | seeds trained | loss at the end, mean (range) | held-out accuracy, mean (range) | spread kept (end) | multiplications per step |
+| ----------- | ------------------------ | ---------------------------- | ------------------- | ---------------------- | ------------- | ----------------------------- | ------------------------------- | ----------------- | ------------------------ |
+| plain, 4 | 1.83 | 2.69 | 1.00 | 1.00 | 3 of 3 | 0.175 (0.158 to 0.185) | 0.963 (0.889 to 1.000) | 1.01 | 31,104 |
+| plain, 8 | 2.75 | 5.65 | 1.00 | 1.00 | 3 of 3 | 0.114 (0.074 to 0.163) | 0.870 (0.833 to 0.889) | 1.00 | 62,208 |
+| plain, 16 | 3.73 | 9.25 | 1.00 | 1.00 | 3 of 3 | 0.111 (0.075 to 0.161) | 0.833 (0.778 to 0.889) | 1.02 | 124,416 |
+| plain, 32 | 5.77 | 26.5 | 1.00 | 1.00 | 3 of 3 | 0.206 (0.098 to 0.374) | 0.852 (0.722 to 0.944) | 1.04 | 248,832 |
+| free, 4 | 3.14 | 2.85 | 3.12 | 3.78 | 3 of 3 | 0.171 (0.141 to 0.188) | 0.981 (0.944 to 1.000) | 3.78 | 72,576 |
+| free, 8 | 8.81 | 6.78 | 10.7 | 11.8 | 3 of 3 | 0.118 (0.075 to 0.161) | 0.889 (0.889 to 0.889) | 8.41 | 145,152 |
+| free, 16 | 54.2 | 25.7 | 66.6 | 82.3 | 1 of 3 | 0.142 (one seed) | 0.833 (one seed) | 14.0 | 290,304 |
+| free, 32 | 180 | 128 | 238 | 272 | 0 of 3 | no seed finite | no seed finite | no seed finite | 580,608 |
+| doubly stochastic, 4 | 1.75 | 2.69 | 0.739 | 1.002 | 3 of 3 | 0.175 (0.157 to 0.185) | 0.963 (0.889 to 1.000) | 0.745 | 82,816 |
+| doubly stochastic, 8 | 2.66 | 5.65 | 0.556 | 1.003 | 3 of 3 | 0.114 (0.074 to 0.163) | 0.870 (0.833 to 0.889) | 0.557 | 165,632 |
+| doubly stochastic, 16 | 3.64 | 9.25 | 0.310 | 1.006 | 3 of 3 | 0.099 (0.035 to 0.169) | 0.852 (0.833 to 0.889) | 0.313 | 331,264 |
+| doubly stochastic, 32 | 5.71 | 26.5 | 0.088 | 1.004 | 3 of 3 | 0.307 (0.095 to 0.723) | 0.833 (0.833 to 0.833) | 0.090 | 662,528 |
+| orthogonal, 4 | 1.76 | 1.98 | 1.77 | 1.82 | 3 of 3 | 0.179 (0.164 to 0.188) | 0.963 (0.889 to 1.000) | 1.59 | 73,600 |
+| orthogonal, 8 | 2.65 | 3.50 | 2.27 | 1.92 | 3 of 3 | 0.167 (0.132 to 0.192) | 0.944 (0.944 to 0.944) | 2.27 | 147,200 |
+| orthogonal, 16 | 3.26 | 5.06 | 2.88 | 1.74 | 3 of 3 | 0.115 (0.079 to 0.141) | 0.889 (0.833 to 0.944) | 3.20 | 294,400 |
+| orthogonal, 32 | 4.92 | 10.9 | 5.30 | 1.79 | 3 of 3 | 0.084 (0.072 to 0.101) | 0.907 (0.833 to 0.944) | 6.73 | 588,800 |
+
+Growth and spread are top over bottom (the gradient's bottom over top),
+means over the 3 seeds at the start; the gain is the product of the
+layers' H, as mHC measures it (largest absolute row sum); a seed is
+trained when every number stayed finite and its end loss is below its
+start; the cost is counted (analytical), not timed.
+
+Against what was written before the run (`docs/research-questions.md`, H2):
+
+- Counts for, first half: free mixing's composite gain (forward, of
+  the product of the layers' H) grew with depth (3.8, 11.8, 82, 272),
+  past 10 at 32 layers; doubly stochastic stayed at 1.00 to 1.01 and
+  orthogonal at 1.74 to 1.92, inside 0.5 to 2. The free growth is set
+  by the start chosen before the run (T with standard deviation 0.3);
+  a smaller start would grow less, and was not tried.
+- Second half, against free mixing: at 16 layers two of three free
+  seeds stopped being finite, at 32 all three (the loss rose to its
+  saturation value, 27.6, within three steps, then the numbers
+  overflowed); every doubly stochastic and orthogonal seed trained, at
+  a cost per step 1.14 and 1.01 times the free one's. The criterion
+  written before the run compared losses and accuracies and did not
+  foresee runs that are not finite; counting a non-finite run as not
+  trained is a reading made after the run, said here as one. One rate
+  (0.05) served every kind; a smaller rate for the free stack was not
+  tried.
+- Against the plain residual, which has no mixing to hold: at 8 layers
+  the orthogonal stack's held-out accuracy (0.944 for every seed) lies
+  above the plain residual's range (0.833 to 0.889), by one held-out
+  point (1/18) over plain's best seed; at 4, 16 and 32 layers the
+  ranges overlap, and at 32 the orthogonal end loss (0.072 to 0.101)
+  lies inside the plain residual's range (0.098 to 0.374) at its low
+  end. The doubly stochastic stack at 32 layers ended with the highest
+  mean loss of the finite stacks (0.307, one seed at 0.723), its
+  ranges overlapping the plain residual's. Held-out accuracy fell with
+  depth for the plain residual (0.963 at 4 layers, 0.852 at 32), not
+  explained here. The second half of H2 is open at this scale against
+  the baseline that matters: the task is solved at 4 layers.
+- The doubly stochastic stack and the plain residual are the same
+  network at the start, exactly: with columns summing to 1 the mixing
+  keeps the streams' mean, and with a and the read-out reading the
+  mean and b writing to every stream, the loss sees only the mean,
+  which then follows the plain residual's path (both start at loss
+  0.8297; the gradient's growth is the same to rounding, 15
+  digits). Training
+  makes a, b and the read-out unequal across streams and the two part,
+  slightly (end losses 0.1751 and 0.1753 at 4 layers). This limits
+  what the comparison of the two can show.
+- The count against, on collapse: the doubly stochastic stack's spread
+  fell with depth (0.74, 0.56, 0.31, 0.088 of the start at 4 to 32
+  layers), the difference channel fading as the Birkhoff-geometry
+  paper predicts, and stayed there after training (0.090); its held-out
+  accuracy at 32 layers, 0.833 for every seed, lies inside the plain
+  residual's range. The collapse is measured; a loss of accuracy beyond
+  the seeds' range is not.
+- The research's caution, measured: the mixing in its set did not keep
+  the network's size. The plain residual's signal grew 5.8 times up a
+  32-layer stack and its gradient 26 times down it, and the doubly
+  stochastic stack's by about the same (the gradient to rounding, as
+  above). The orthogonal stack's gradient grew less (11 times).
+- Found on the way: from the random start, 20 Sinkhorn sweeps leave
+  the doubly stochastic constraint approximate (row sums off by up to
+  0.0064, at the start and after training; the columns exact), where
+  part 1's matrix converged to 1e-15. At T = 0, exp(4 I) is already
+  doubly stochastic; the error comes from T's random part on a matrix
+  this near the identity, where the sweeps converge slowly.
+- Changed from what was written: the mixing starts from the identity
+  plus the same seeded numbers for every kind, not from the identity
+  (from the identity the four stacks are the same at the start).
 
 ## H3: geometry learned with the model
 

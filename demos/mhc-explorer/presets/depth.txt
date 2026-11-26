@@ -1,0 +1,19 @@
+depth preset: streams mixed in a stack of layers, at the start and in training
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+streams 4
+coordinates per stream 4
+data seed 1
+clusters 3
+points per cluster 24
+spread 1.6
+split seed 11
+sinkhorn sweeps 20
+pull toward the identity 4
+mixing spread 0.3
+layer weight scale 1
+rate 0.05
+steps 200
+seeds 3
+depths 4 8 16 32
+steps on the page 20

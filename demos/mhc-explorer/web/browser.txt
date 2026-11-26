@@ -7,3 +7,10 @@ What each kind of matrix does to a signal
 from the identity along D: smallest entry
 html: class="numbers comparison"
 html: data-aside="hc:b_lend"
+# Part 2, after its stacks are measured and the first steps trained again.
+Part 2: from one matrix to a stack of layers
+The gradient, checked
+At the start of training: what the stack does to a signal, layer by layer
+Trained: the same task at four depths
+The page trained again
+Part 2: the H2 table, every kind at every depth
