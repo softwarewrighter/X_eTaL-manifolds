@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/representation-explorer/representation-hyperbolic.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/dynamics-explorer/</h3>
+<ul>
+<li><a href="demos-dynamics-explorer-dynamics-explorer.xtl.html">dynamics-explorer.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/mhc-explorer/</h3>
+<ul>
+<li><a href="demos-mhc-explorer-mhc-depth.xtl.html">mhc-depth.xtl</a></li>
+<li><a href="demos-mhc-explorer-mhc-explorer.xtl.html">mhc-explorer.xtl</a></li>
+</ul>
+<h3>demos/optimization-explorer/</h3>
+<ul>
+<li><a href="demos-optimization-explorer-optimization-explorer.xtl.html">optimization-explorer.xtl</a></li>
+<li><a href="demos-optimization-explorer-optimization-training.xtl.html">optimization-training.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+<li><a href="demos-representation-explorer-representation-hyperbolic.xtl.html">representation-hyperbolic.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>libs/Mixing/demos/</h3>
+<ul>
+<li><a href="libs-Mixing-demos-sinkhorn.xtl.html">sinkhorn.xtl</a></li>
+</ul>
+<h3>libs/Mixing/src/</h3>
+<ul>
+<li><a href="libs-Mixing-src-Mixing.xtl.html">Mixing.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Matrix/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Optim/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html">Optim.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#text">text</a></li>
+<li class="item"><a href="#preset">preset</a></li>
+<li class="item"><a href="#depth">depth</a></li>
+<li class="item"><a href="#branching">branching</a></li>
+<li class="item"><a href="#seeds">seeds</a></li>
+<li class="item"><a href="#spread">spread</a></li>
+<li class="item"><a href="#steps">steps</a></li>
+<li class="item"><a href="#controlSteps">controlSteps</a></li>
+<li class="item"><a href="#lr">lr</a></li>
+<li class="item"><a href="#target">target</a></li>
+<li class="item"><a href="#k">k</a></li>
+<li class="item"><a href="#splitSeed">splitSeed</a></li>
+<li class="item"><a href="#curvatures">curvatures</a></li>
+<li class="item"><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a></li>
+<li class="item"><a href="#T">T</a></li>
+<li class="item"><a href="#ty">ty</a></li>
+<li class="item"><a href="#edges">edges</a></li>
+<li class="item"><a href="#layout">layout</a></li>
+<li class="item"><a href="#n">n</a></li>
+<li class="item"><a href="#pair">pair</a></li>
+<li class="item"><a href="#pairF">pairF</a></li>
+<li class="item"><a href="#npairs">npairs</a></li>
+<li class="item"><a href="#radii">radii</a></li>
+<li class="item"><a href="#fromMiddle">fromMiddle</a></li>
+<li class="item"><a href="#wu">wu</a></li>
+<li class="item"><a href="#wv">wv</a></li>
+<li class="item"><a href="#workedM2">workedM2</a></li>
+<li class="item"><a href="#workedA">workedA</a></li>
+<li class="item"><a href="#workedB">workedB</a></li>
+<li class="item"><a href="#workedZ">workedZ</a></li>
+<li class="item"><a href="#workedDisk">workedDisk</a></li>
+<li class="item"><a href="#workedAcosh">workedAcosh</a></li>
+<li class="item"><a href="#workedPlain">workedPlain</a></li>
+<li class="item"><a href="#geodesic">geodesic</a></li>
+<li class="item"><a href="#u.s_egment"><span class="c-userfunc">ᵘs̲egment</span></a></li>
+<li class="item"><a href="#straight">straight</a></li>
+<li class="item"><a href="#u.a_longDisk"><span class="c-userfunc">ᵘa̲longDisk</span></a></li>
+<li class="item"><a href="#pathLengths">pathLengths</a></li>
+<li class="item"><a href="#u.r_ing"><span class="c-userfunc">ᵘr̲ing</span></a></li>
+<li class="item"><a href="#u.l_evel"><span class="c-userfunc">ᵘl̲evel</span></a></li>
+<li class="item"><a href="#roomRows">roomRows</a></li>
+<li class="item"><a href="#room">room</a></li>
+<li class="item"><a href="#invD">invD</a></li>
+<li class="item"><a href="#u.m_easure"><span class="c-userfunc">ᵘm̲easure</span></a></li>
+<li class="item"><a href="#u.k_eep"><span class="c-userfunc">ᵘk̲eep</span></a></li>
+<li class="item"><a href="#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a></li>
+<li class="item"><a href="#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a></li>
+<li class="item"><a href="#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a></li>
+<li class="item"><a href="#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></li>
+<li class="item"><a href="#u.p_ad"><span class="c-userfunc">ᵘp̲ad</span></a></li>
+<li class="item"><a href="#u.s_tartSphere"><span class="c-userfunc">ᵘs̲tartSphere</span></a></li>
+<li class="item"><a href="#u.s_tartBall"><span class="c-userfunc">ᵘs̲tartBall</span></a></li>
+<li class="item"><a href="#u.l_og"><span class="c-userfunc">ᵘl̲og</span></a></li>
+<li class="item"><a href="#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a></li>
+<li class="item"><a href="#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a></li>
+<li class="item"><a href="#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a></li>
+<li class="item"><a href="#u.f_it"><span class="c-userfunc">ᵘf̲it</span></a></li>
+<li class="item"><a href="#u.d_istances"><span class="c-userfunc">ᵘd̲istances</span></a></li>
+<li class="item"><a href="#sphereP">sphereP</a></li>
+<li class="item"><a href="#sphereLog">sphereLog</a></li>
+<li class="item"><a href="#sphereC">sphereC</a></li>
+<li class="item"><a href="#flatP">flatP</a></li>
+<li class="item"><a href="#flatLog">flatLog</a></li>
+<li class="item"><a href="#flatC">flatC</a></li>
+<li class="item"><a href="#ballP">ballP</a></li>
+<li class="item"><a href="#ballLog">ballLog</a></li>
+<li class="item"><a href="#ballC">ballC</a></li>
+<li class="item"><a href="#sphereLog2">sphereLog2</a></li>
+<li class="item"><a href="#flatLog2">flatLog2</a></li>
+<li class="item"><a href="#ballLog2">ballLog2</a></li>
+<li class="item"><a href="#sphereLog3">sphereLog3</a></li>
+<li class="item"><a href="#flatLog3">flatLog3</a></li>
+<li class="item"><a href="#ballLog3">ballLog3</a></li>
+<li class="item"><a href="#otherMeans">otherMeans</a></li>
+<li class="item"><a href="#sphereE">sphereE</a></li>
+<li class="item"><a href="#flatE">flatE</a></li>
+<li class="item"><a href="#ballE">ballE</a></li>
+<li class="item"><a href="#spherePairs">spherePairs</a></li>
+<li class="item"><a href="#flatPairs">flatPairs</a></li>
+<li class="item"><a href="#ballPairs">ballPairs</a></li>
+<li class="item"><a href="#u.e_dges"><span class="c-userfunc">ᵘe̲dges</span></a></li>
+<li class="item"><a href="#edgeDistortion">edgeDistortion</a></li>
+<li class="item"><a href="#u.w_orst"><span class="c-userfunc">ᵘw̲orst</span></a></li>
+<li class="item"><a href="#worstPairs">worstPairs</a></li>
+<li class="item"><a href="#u.e_nd"><span class="c-userfunc">ᵘe̲nd</span></a></li>
+<li class="item"><a href="#u.s_pread"><span class="c-userfunc">ᵘs̲pread</span></a></li>
+<li class="item"><a href="#spreadRows">spreadRows</a></li>
+<li class="item"><a href="#treePath">treePath</a></li>
+<li class="item"><a href="#u.n_earest"><span class="c-userfunc">ᵘn̲earest</span></a></li>
+<li class="item"><a href="#neighbors">neighbors</a></li>
+<li class="item"><a href="#train">train</a></li>
+<li class="item"><a href="#held">held</a></li>
+<li class="item"><a href="#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a></li>
+<li class="item"><a href="#u.k_nn"><span class="c-userfunc">ᵘk̲nn</span></a></li>
+<li class="item"><a href="#u.a_ccuracy"><span class="c-userfunc">ᵘa̲ccuracy</span></a></li>
+<li class="item"><a href="#u.l_ogistic"><span class="c-userfunc">ᵘl̲ogistic</span></a></li>
+<li class="item"><a href="#knnGuess">knnGuess</a></li>
+<li class="item"><a href="#logisticGuess">logisticGuess</a></li>
+<li class="item"><a href="#accuracy">accuracy</a></li>
+<li class="item"><a href="#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a></li>
+<li class="item"><a href="#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a></li>
+<li class="item"><a href="#record">record</a></li>
+<li class="item"><a href="#layoutE">layoutE</a></li>
+<li class="item"><a href="#baseline">baseline</a></li>
+<li class="item"><a href="#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a></li>
+<li class="item"><a href="#curveRows">curveRows</a></li>
+<li class="item"><a href="#curveFlat">curveFlat</a></li>
+<li class="item"><a href="#curvature">curvature</a></li>
+<li class="item"><a href="#curvePoints">curvePoints</a></li>
+<li class="item"><a href="#parallels">parallels</a></li>
+<li class="item"><a href="#meridians">meridians</a></li>
+<li class="item"><a href="#deg">deg</a></li>
+<li class="item"><a href="#sphereMap">sphereMap</a></li>
+<li><a href="#section-1">The fit</a></li>
+<li class="item"><a href="#u.l_ossFlat"><span class="c-userfunc">ᵘl̲ossFlat</span></a></li>
+<li class="item"><a href="#u.l_ossBall"><span class="c-userfunc">ᵘl̲ossBall</span></a></li>
+<li class="item"><a href="#u.b_ump"><span class="c-userfunc">ᵘb̲ump</span></a></li>
+<li class="item"><a href="#h">h</a></li>
+<li class="item"><a href="#at">at</a></li>
+<li class="item"><a href="#P0">P0</a></li>
+<li class="item"><a href="#W0">W0</a></li>
+<li class="item"><a href="#G0">G0</a></li>
+<li class="item"><a href="#centralFlat">centralFlat</a></li>
+<li class="item"><a href="#B0">B0</a></li>
+<li class="item"><a href="#Wb">Wb</a></li>
+<li class="item"><a href="#Gb">Gb</a></li>
+<li class="item"><a href="#plainB">plainB</a></li>
+<li class="item"><a href="#centralBall">centralBall</a></li>
+<li class="item"><a href="#gaps">gaps</a></li>
+<li><a href="#section-2">Curvature as a control</a></li>
+<li class="item"><a href="#flatShort">flatShort</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/representation-explorer/representation-hyperbolic.xtl</h1>
+<div class="doc">
+<p>Representation explorer, part 2: the Poincare disk, and the tree.
+The disk's distance (worked in full, and what it does near the rim),
+a shortest path in it, why a tree wants such a space (the room
+round a point grows with its distance as the tree's levels do,
+counted); then the tree of the kit fitted in each of the three
+spaces at the same dimension, from the same start, by the same
+steps: the plane (curvature 0), the unit sphere (+1) and the disk
+(-1), each at the scale the fit chooses; the distortion by step and
+at the end, the worst pair, a classifier from each embedding, three
+starts for the spread; and curvature as a control: the same fit at
+fixed curvatures from +1 through 0 to -4. The second half of H1.</p>
+</div>
+<p class="meta"><a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html">source</a> &middot; imports <code><span class="c-error">kt:</span></code> <a href="libs-Kit-src-Kit.xtl.html">libs/Kit/src/Kit.xtl</a>; <code><span class="c-error">mf:</span></code> <a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a>; <code><span class="c-error">ml:</span></code> <a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">work/xetal-ml/libs/Learn/src/Learn.xtl</a>; <code><span class="c-error">tr:</span></code> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">work/xetal-libraries/libs/Trig/src/Trig.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="text">
+<h3><a href="#text">text</a> <span class="type">: Char</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L26">line 26</a></div>
+<div class="doc">
+<p>The fit's numbers are data, presets/tree.txt (the schema of
+docs/research-questions.md): the file's words are dropped and its
+numbers kept in order: the tree's depth and branching; the three
+start seeds and the start's spread; the steps, the control's
+steps and the rate; the distortion target; k for nearest neighbors
+and the split's seed; then the curvatures of the control.</p>
+</div>
+<pre class="code">text ← <a href="builtins.html#-5b-5dN_GET" class="c-builtin">⎕N̲GET</a> <span class="c-string">&quot;presets/tree.txt&quot;</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></div>
+</div>
+<div class="item" id="preset">
+<h3><a href="#preset">preset</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L27">line 27</a></div>
+<pre class="code">preset ← <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> (<a href="builtins.html#w_here" class="c-builtin">w̲here</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#text">text</a> <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;0123456789.- \n&quot;</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#text">text</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#depth">depth</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spread">spread</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#lr">lr</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#target">target</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#k">k</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#splitSeed">splitSeed</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L293">demos/representation-explorer/representation-hyperbolic.xtl:293</a></div>
+</div>
+<div class="item" id="depth">
+<h3><a href="#depth">depth</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L28">line 28</a></div>
+<pre class="code">depth ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ty">ty</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edges">edges</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layout">layout</a></div>
+</div>
+<div class="item" id="branching">
+<h3><a href="#branching">branching</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L29">line 29</a></div>
+<pre class="code">branching ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ty">ty</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edges">edges</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layout">layout</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_evel"><span class="c-userfunc">ᵘl̲evel</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a></div>
+</div>
+<div class="item" id="seeds">
+<h3><a href="#seeds">seeds</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L30">line 30</a></div>
+<pre class="code">seeds ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">3</span> <span class="c-number">4</span> <span class="c-number">5</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatShort">flatShort</a></div>
+</div>
+<div class="item" id="spread">
+<h3><a href="#spread">spread</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L31">line 31</a></div>
+<pre class="code">spread ← <span class="c-number">6</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></div>
+</div>
+<div class="item" id="steps">
+<h3><a href="#steps">steps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L32">line 32</a></div>
+<pre class="code">steps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">7</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd"><span class="c-userfunc">ᵘe̲nd</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a></div>
+</div>
+<div class="item" id="controlSteps">
+<h3><a href="#controlSteps">controlSteps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L33">line 33</a></div>
+<pre class="code">controlSteps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">8</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_eep"><span class="c-userfunc">ᵘk̲eep</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatShort">flatShort</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L346">demos/representation-explorer/representation-hyperbolic.xtl:346</a></div>
+</div>
+<div class="item" id="lr">
+<h3><a href="#lr">lr</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L34">line 34</a></div>
+<pre class="code">lr ← <span class="c-number">9</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a></div>
+</div>
+<div class="item" id="target">
+<h3><a href="#target">target</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L35">line 35</a></div>
+<pre class="code">target ← <span class="c-number">10</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a></div>
+</div>
+<div class="item" id="k">
+<h3><a href="#k">k</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L36">line 36</a></div>
+<pre class="code">k ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">11</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a></div>
+</div>
+<div class="item" id="splitSeed">
+<h3><a href="#splitSeed">splitSeed</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L37">line 37</a></div>
+<pre class="code">splitSeed ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">12</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a></div>
+</div>
+<div class="item" id="curvatures">
+<h3><a href="#curvatures">curvatures</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L38">line 38</a></div>
+<pre class="code">curvatures ← <span class="c-number">12</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvature">curvature</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvePoints">curvePoints</a></div>
+</div>
+<div class="item" id="u.s_plit">
+<h3><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a> <span class="type">: (Int, Int) -&gt; (Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L42">line 42</a></div>
+<div class="doc">
+<p>The split as in part 1 (X_eTaL-ML's by GM5, written out).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲plit</span> ← { (seed, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) → order ← <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="libs-Kit-src-Kit.xtl.html#l.u_niform" class="c-libfunc">ᵏᵗu̲niform</a> (seed, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>)◆ h ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">4</span>◆ (h <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> order, h <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> order) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a></div>
+</div>
+<div class="item" id="T">
+<h3><a href="#T">T</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L50">line 50</a></div>
+<div class="doc">
+<p>The hierarchical set: the tree of the preset (depth 4, branching 2:
+31 nodes, 30 edges), its distances along itself (the edges on the
+one path between two nodes, 1 to 8), each node's class (the branch
+of the root it hangs from; the root is given class 1), its edges,
+and the kit's plain layout of it, the baseline's.</p>
+</div>
+<pre class="code">T ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeDistances" class="c-libfunc">ᵏᵗt̲reeDistances</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#depth">depth</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#invD">invD</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spherePairs">spherePairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatPairs">flatPairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballPairs">ballPairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#baseline">baseline</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossFlat"><span class="c-userfunc">ᵘl̲ossFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossBall"><span class="c-userfunc">ᵘl̲ossBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a></div>
+</div>
+<div class="item" id="ty">
+<h3><a href="#ty">ty</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L51">line 51</a></div>
+<pre class="code">ty ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeClasses" class="c-libfunc">ᵏᵗt̲reeClasses</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#depth">depth</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy"><span class="c-userfunc">ᵘa̲ccuracy</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic"><span class="c-userfunc">ᵘl̲ogistic</span></a></div>
+</div>
+<div class="item" id="edges">
+<h3><a href="#edges">edges</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L52">line 52</a></div>
+<pre class="code">edges ← <a href="libs-Kit-src-Kit.xtl.html#l.t_ree" class="c-libfunc">ᵏᵗt̲ree</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#depth">depth</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_dges"><span class="c-userfunc">ᵘe̲dges</span></a></div>
+</div>
+<div class="item" id="layout">
+<h3><a href="#layout">layout</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L53">line 53</a></div>
+<pre class="code">layout ← <a href="libs-Kit-src-Kit.xtl.html#l.t_reeLayout" class="c-libfunc">ᵏᵗt̲reeLayout</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#depth">depth</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layoutE">layoutE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#baseline">baseline</a></div>
+</div>
+<div class="item" id="n">
+<h3><a href="#n">n</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L54">line 54</a></div>
+<pre class="code">n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pair">pair</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad"><span class="c-userfunc">ᵘp̲ad</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartSphere"><span class="c-userfunc">ᵘs̲tartSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartBall"><span class="c-userfunc">ᵘs̲tartBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_dges"><span class="c-userfunc">ᵘe̲dges</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edgeDistortion">edgeDistortion</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.w_orst"><span class="c-userfunc">ᵘw̲orst</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#treePath">treePath</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvePoints">curvePoints</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereMap">sphereMap</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L313">demos/representation-explorer/representation-hyperbolic.xtl:313</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L314">demos/representation-explorer/representation-hyperbolic.xtl:314</a></div>
+</div>
+<div class="item" id="pair">
+<h3><a href="#pair">pair</a> <span class="type">: Bool</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L55">line 55</a></div>
+<pre class="code">pair ← (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <span class="c-symbol">'</span><a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pairF">pairF</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#npairs">npairs</a></div>
+</div>
+<div class="item" id="pairF">
+<h3><a href="#pairF">pairF</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L56">line 56</a></div>
+<pre class="code">pairF ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pair">pair</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#invD">invD</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure"><span class="c-userfunc">ᵘm̲easure</span></a></div>
+</div>
+<div class="item" id="npairs">
+<h3><a href="#npairs">npairs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L57">line 57</a></div>
+<pre class="code">npairs ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pair">pair</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure"><span class="c-userfunc">ᵘm̲easure</span></a></div>
+</div>
+<div class="item" id="radii">
+<h3><a href="#radii">radii</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L66">line 66</a></div>
+<div class="doc">
+<p>The Poincare disk: the inside of the unit circle, where a step of
+plain length t at plain radius r counts 2 t / (1 - r^2). The
+distance from the middle to a point at plain radius r is 2 atanh r:
+at a few radii, up to the rim's radius 1 - 1e-5 the ball's points
+are kept to (Manifold's), which is as far from the middle as any
+point can be.</p>
+</div>
+<pre class="code">radii ← <span class="c-number">0.5</span> <span class="c-number">0.9</span> <span class="c-number">0.99</span> <span class="c-number">0.999</span> <span class="c-number">0.99999</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#fromMiddle">fromMiddle</a></div>
+</div>
+<div class="item" id="fromMiddle">
+<h3><a href="#fromMiddle">fromMiddle</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L67">line 67</a></div>
+<pre class="code">fromMiddle ← <span class="c-quote">'</span>{ r → <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> r <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#radii">radii</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L296">demos/representation-explorer/representation-hyperbolic.xtl:296</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L297">demos/representation-explorer/representation-hyperbolic.xtl:297</a></div>
+</div>
+<div class="item" id="wu">
+<h3><a href="#wu">wu</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L72">line 72</a></div>
+<div class="doc">
+<p>One distance worked in full, the points u = (0.6, 0) and v =
+(0, 0.6): |u - v|^2; 1 - |u|^2 and 1 - |v|^2; z, |u - v| over the
+root of their product; the distance 2 asinh z, which is the same
+as acosh(1 + 2 z^2); and the plain distance for comparison.</p>
+</div>
+<pre class="code">wu ← <span class="c-number">0.6</span> <span class="c-number">0.0</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedM2">workedM2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedA">workedA</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#geodesic">geodesic</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#straight">straight</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L299">demos/representation-explorer/representation-hyperbolic.xtl:299</a></div>
+</div>
+<div class="item" id="wv">
+<h3><a href="#wv">wv</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L73">line 73</a></div>
+<pre class="code">wv ← <span class="c-number">0.0</span> <span class="c-number">0.6</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedM2">workedM2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedB">workedB</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#geodesic">geodesic</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#straight">straight</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L299">demos/representation-explorer/representation-hyperbolic.xtl:299</a></div>
+</div>
+<div class="item" id="workedM2">
+<h3><a href="#workedM2">workedM2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L74">line 74</a></div>
+<pre class="code">workedM2 ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wu">wu</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wv">wv</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedPlain">workedPlain</a></div>
+</div>
+<div class="item" id="workedA">
+<h3><a href="#workedA">workedA</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L75">line 75</a></div>
+<pre class="code">workedA ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wu">wu</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wu">wu</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a></div>
+</div>
+<div class="item" id="workedB">
+<h3><a href="#workedB">workedB</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L76">line 76</a></div>
+<pre class="code">workedB ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wv">wv</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wv">wv</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a></div>
+</div>
+<div class="item" id="workedZ">
+<h3><a href="#workedZ">workedZ</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L77">line 77</a></div>
+<pre class="code">workedZ ← (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedM2">workedM2</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedA">workedA</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedB">workedB</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedDisk">workedDisk</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedAcosh">workedAcosh</a></div>
+</div>
+<div class="item" id="workedDisk">
+<h3><a href="#workedDisk">workedDisk</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L78">line 78</a></div>
+<pre class="code">workedDisk ← <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sinh" class="c-libfunc">ᵗʳa̲sinh</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L298">demos/representation-explorer/representation-hyperbolic.xtl:298</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L299">demos/representation-explorer/representation-hyperbolic.xtl:299</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L300">demos/representation-explorer/representation-hyperbolic.xtl:300</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L301">demos/representation-explorer/representation-hyperbolic.xtl:301</a></div>
+</div>
+<div class="item" id="workedAcosh">
+<h3><a href="#workedAcosh">workedAcosh</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L79">line 79</a></div>
+<pre class="code">workedAcosh ← <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_cosh" class="c-libfunc">ᵗʳa̲cosh</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedZ">workedZ</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L298">demos/representation-explorer/representation-hyperbolic.xtl:298</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L300">demos/representation-explorer/representation-hyperbolic.xtl:300</a></div>
+</div>
+<div class="item" id="workedPlain">
+<h3><a href="#workedPlain">workedPlain</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L80">line 80</a></div>
+<pre class="code">workedPlain ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#workedM2">workedM2</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L298">demos/representation-explorer/representation-hyperbolic.xtl:298</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L301">demos/representation-explorer/representation-hyperbolic.xtl:301</a></div>
+</div>
+<div class="item" id="geodesic">
+<h3><a href="#geodesic">geodesic</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L86">line 86</a></div>
+<div class="doc">
+<p>A shortest path in the disk between u and v, 13 points (Manifold's
+geodesic: an arc of a circle that meets the rim at right angles,
+bowed toward the middle), beside the straight segment between
+them; the lengths of the two along the disk (the segment's, summed
+over its 12 pieces).</p>
+</div>
+<pre class="code">geodesic ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wu">wu</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wv">wv</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">12</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pathLengths">pathLengths</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L304">demos/representation-explorer/representation-hyperbolic.xtl:304</a></div>
+</div>
+<div class="item" id="u.s_egment">
+<h3><a href="#u.s_egment"><span class="c-userfunc">ᵘs̲egment</span></a> <span class="type">: (Float, Float) -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L87">line 87</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲egment</span> ← { (a, b) m → t ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m◆ (((m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> a) <a href="builtins.html#-2b" class="c-symbol">+</a> t <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> b <a href="builtins.html#-2d" class="c-symbol">−</a> a }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#straight">straight</a></div>
+</div>
+<div class="item" id="straight">
+<h3><a href="#straight">straight</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L88">line 88</a></div>
+<pre class="code">straight ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wu">wu</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#wv">wv</a>) <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_egment" class="c-userfunc">ᵘs̲egment</a> <span class="c-number">12</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pathLengths">pathLengths</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L304">demos/representation-explorer/representation-hyperbolic.xtl:304</a></div>
+</div>
+<div class="item" id="u.a_longDisk">
+<h3><a href="#u.a_longDisk"><span class="c-userfunc">ᵘa̲longDisk</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L89">line 89</a></div>
+<pre class="code"><span class="c-userfunc">ᵘa̲longDisk</span> ← { Q → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> Q) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> (<span class="c-number">0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> Q }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pathLengths">pathLengths</a></div>
+</div>
+<div class="item" id="pathLengths">
+<h3><a href="#pathLengths">pathLengths</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L90">line 90</a></div>
+<pre class="code">pathLengths ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_longDisk" class="c-userfunc">ᵘa̲longDisk</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#geodesic">geodesic</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_longDisk" class="c-userfunc">ᵘa̲longDisk</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#straight">straight</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L302">demos/representation-explorer/representation-hyperbolic.xtl:302</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L303">demos/representation-explorer/representation-hyperbolic.xtl:303</a></div>
+</div>
+<div class="item" id="u.r_ing">
+<h3><a href="#u.r_ing"><span class="c-userfunc">ᵘr̲ing</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L102">line 102</a></div>
+<div class="doc">
+<p>Why a tree wants the disk, counted: level L of a tree of branching
+b has b^L nodes, every one L edges from the root. Put them evenly
+round the circle of radius L in the plane (length 2 pi L) and in
+the disk (2 pi sinh L: its plain radius is tanh(L / 2)); then
+measure the distance between neighbors along each space (the
+shortest path between them, which in the disk is far shorter than
+the arc round the circle). One row per level, 1 to 5: nodes; the
+two circles' lengths; the spacing of neighbors in the plane and in
+the disk. In the plane the spacing shrinks with every level and is
+under an edge's length by level 5; in the disk it grows.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ing</span> ← { m → <a href="libs-Manifold-src-Manifold.xtl.html#l.c_irclePoints" class="c-libfunc">ᵐᶠc̲irclePoints</a> ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> m) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_evel"><span class="c-userfunc">ᵘl̲evel</span></a></div>
+</div>
+<div class="item" id="u.l_evel">
+<h3><a href="#u.l_evel"><span class="c-userfunc">ᵘl̲evel</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L103">line 103</a></div>
+<pre class="code"><span class="c-userfunc">ᵘl̲evel</span> ← { L →
+  m ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a> <a href="builtins.html#-5e" class="c-symbol">^</a> L
+  R ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ing" class="c-userfunc">ᵘr̲ing</a> m
+  plane ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> L) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> R) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> R) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>
+  disk ← (<a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> L) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> R
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.s_inh" class="c-libfunc">ᵗʳs̲inh</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> plane <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> disk) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistance" class="c-libfunc">ᵐᶠb̲allDistance</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> disk
+}</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#roomRows">roomRows</a></div>
+</div>
+<div class="item" id="roomRows">
+<h3><a href="#roomRows">roomRows</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L110">line 110</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#roomRows">roomRows</a>, _) ← <span class="c-number">5</span> <span class="c-quote">'</span>{ (R, L) → (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_evel" class="c-userfunc">ᵘl̲evel</a> L, L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#roomRows">roomRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#room">room</a></div>
+</div>
+<div class="item" id="room">
+<h3><a href="#room">room</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L111">line 111</a></div>
+<pre class="code">room ← <span class="c-number">5</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#roomRows">roomRows</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L305">demos/representation-explorer/representation-hyperbolic.xtl:305</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L306">demos/representation-explorer/representation-hyperbolic.xtl:306</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L307">demos/representation-explorer/representation-hyperbolic.xtl:307</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L308">demos/representation-explorer/representation-hyperbolic.xtl:308</a></div>
+</div>
+<div class="item" id="invD">
+<h3><a href="#invD">invD</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L142">line 142</a></div>
+<div class="doc">
+<p>An embedding P of the tree in a space of curvature K is fitted by
+lowering the mean over pairs of (E / D - 1)^2: D the tree's
+distances (an edge is 1), E the distances between the embedded
+nodes along the space. A sphere of curvature K &gt; 0 is the unit
+sphere with every length times its radius r = 1 / sqrt K; a ball
+of curvature K &lt; 0 is the unit ball with every length divided by
+sqrt -K; K = 0 is the plane. So the fit keeps its points in the
+unit sphere or ball (Manifold's) and scales their distances, and a
+step at rate lr along the space of curvature K is the unit space's
+step at rate lr sqrt |K|, with the same W (the loss's gradient
+with respect to the distances): a length in the space is 1 / sqrt
+|K| times its unit-space length, which scales the distances up and
+the coordinates down by the same factor, and only the step's
+length is left scaled. Each step: W; the gradient along the unit
+space with respect to every point (Manifold's
+...DistancesGradient) for that W; a
+step against it along the space (P - lr G in the plane, s_phereStep
+on the sphere, b_allStep in the ball then b_allProject, with how far
+past the rim the step went kept as the constraint's violation).
+The scale is not fitted: at a fixed scale the curvature means
+something (the same tree at the same size in a smaller or larger
+space); with the scale free, every curvature of one sign is the
+same space, and a first run with the scale free saw the sphere's
+fit shrink its embedding without end toward the plane's, which is
+the sweep's finding below, measured instead of run away with.
+<code><a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (D, E)</code>: W, and the row (loss, mean distortion, worst
+pair) at E.
+(1 / D over the pairs, 0 elsewhere, is the same every step.)</p>
+</div>
+<pre class="code">invD ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pairF">pairF</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure"><span class="c-userfunc">ᵘm̲easure</span></a></div>
+</div>
+<div class="item" id="u.m_easure">
+<h3><a href="#u.m_easure"><span class="c-userfunc">ᵘm̲easure</span></a> <span class="type">: Any a =&gt; (a, Float) -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L143">line 143</a></div>
+<pre class="code"><span class="c-userfunc">ᵘm̲easure</span> ← { (D, E) →
+  R ← (E <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#invD">invD</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#pairF">pairF</a>
+  Wu ← (<span class="c-number">2.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#npairs">npairs</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> R <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#invD">invD</a>
+  (Wu <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> Wu, ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> R <a href="builtins.html#-2a" class="c-symbol">×</a> R) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#npairs">npairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> R) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#npairs">npairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> R)
+}</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossFlat"><span class="c-userfunc">ᵘl̲ossFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossBall"><span class="c-userfunc">ᵘl̲ossBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a></div>
+</div>
+<div class="item" id="u.k_eep">
+<h3><a href="#u.k_eep"><span class="c-userfunc">ᵘk̲eep</span></a> <span class="type">: Any a =&gt; (a, b, a) -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L153">line 153</a></div>
+<div class="doc">
+<p>One step in each kind of space, on the state (P, L, K, C): L gains
+the row measured before the step, with how far past the rim it went
+(0 but in the ball); C is the embedding as it stood at the control's
+step (P itself until then), so the control can read every fit at
+that step.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘk̲eep</span> ← { (P, L, C) → (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> L) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a> ? P◆ C }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a></div>
+</div>
+<div class="item" id="u.s_tepSphere">
+<h3><a href="#u.s_tepSphere"><span class="c-userfunc">ᵘs̲tepSphere</span></a> <span class="type">: (Num a, Num b) =&gt; (a, Float, b, a) -&gt; (Float, Float, b, a)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L154">line 154</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepSphere</span> ← { (P, L, K, C) → r ← <span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> K◆ (W, m) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, r <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> P)◆ (P <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#lr">lr</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> K) <a href="builtins.html#-2a" class="c-symbol">×</a> W <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistancesGradient" class="c-libfunc">ᵐᶠs̲phereDistancesGradient</a> P, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>, K, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_eep" class="c-userfunc">ᵘk̲eep</a> (P, L, C)) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a></div>
+</div>
+<div class="item" id="u.s_tepFlat">
+<h3><a href="#u.s_tepFlat"><span class="c-userfunc">ᵘs̲tepFlat</span></a> <span class="type">: Any a =&gt; (Float, Float, a, Float) -&gt; (Float, Float, a, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L155">line 155</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepFlat</span> ← { (P, L, K, C) → (W, m) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> P)◆ (P <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#lr">lr</a> <a href="builtins.html#-2a" class="c-symbol">×</a> W <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistancesGradient" class="c-libfunc">ᵐᶠf̲latDistancesGradient</a> P, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>, K, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_eep" class="c-userfunc">ᵘk̲eep</a> (P, L, C)) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a></div>
+</div>
+<div class="item" id="u.s_tepBall">
+<h3><a href="#u.s_tepBall"><span class="c-userfunc">ᵘs̲tepBall</span></a> <span class="type">: Num a =&gt; (a, Float, Float, a) -&gt; (Float, Float, Float, a)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L156">line 156</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tepBall</span> ← { (P, L, K, C) → c ← <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> K◆ (W, m) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, (<a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ᵐᶠb̲allDistances</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> c)◆ Q ← P <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allStep" class="c-libfunc">ᵐᶠb̲allStep</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#lr">lr</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> c) <a href="builtins.html#-2a" class="c-symbol">×</a> W <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistancesGradient" class="c-libfunc">ᵐᶠb̲allDistancesGradient</a> P◆ (<a href="libs-Manifold-src-Manifold.xtl.html#l.b_allProject" class="c-libfunc">ᵐᶠb̲allProject</a> Q, L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allOff" class="c-libfunc">ᵐᶠb̲allOff</a> Q, K, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_eep" class="c-userfunc">ᵘk̲eep</a> (P, L, C)) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a></div>
+</div>
+<div class="item" id="u.s_tart">
+<h3><a href="#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L164">line 164</a></div>
+<div class="doc">
+<p>The same start in every space: seeded normal numbers, <code><a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spread">spread</a></code>
+times, as a tangent vector at the origin of each space (the plane's
+origin, the sphere's north pole, the disk's middle), carried into
+the space by its own step (s_phereStep, b_allStep), scaled by sqrt
+|K| into the unit space's coordinates; the plane keeps it. Every
+embedding is kept as 31 rows of 3, the third 0 but on the sphere
+(a zero coordinate changes no distance).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tart</span> ← { seed → <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spread">spread</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ᵏᵗn̲ormals</a> (seed, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>, <span class="c-number">2</span>) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a></div>
+</div>
+<div class="item" id="u.p_ad">
+<h3><a href="#u.p_ad"><span class="c-userfunc">ᵘp̲ad</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L165">line 165</a></div>
+<pre class="code"><span class="c-userfunc">ᵘp̲ad</span> ← { V → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">3</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> V) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartSphere"><span class="c-userfunc">ᵘs̲tartSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a></div>
+</div>
+<div class="item" id="u.s_tartSphere">
+<h3><a href="#u.s_tartSphere"><span class="c-userfunc">ᵘs̲tartSphere</span></a> <span class="type">: Num a =&gt; (a, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L166">line 166</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tartSphere</span> ← { (K, V) → ((<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ᵐᶠs̲phereStep</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad" class="c-userfunc">ᵘp̲ad</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> K) <a href="builtins.html#-2a" class="c-symbol">×</a> V }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a></div>
+</div>
+<div class="item" id="u.s_tartBall">
+<h3><a href="#u.s_tartBall"><span class="c-userfunc">ᵘs̲tartBall</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L167">line 167</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tartBall</span> ← { (K, V) → ((<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allStep" class="c-libfunc">ᵐᶠb̲allStep</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> K) <a href="builtins.html#-2a" class="c-symbol">×</a> V }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a></div>
+</div>
+<div class="item" id="u.l_og">
+<h3><a href="#u.l_og"><span class="c-userfunc">ᵘl̲og</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L172">line 172</a></div>
+<div class="doc">
+<p><code><a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (K, seed, m)</code>: the fit at curvature K from the seed's start,
+m steps: the embedding, the log, one row per step and one after the
+last (loss, mean distortion, worst pair, past the rim), and the
+embedding at the control's step.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘl̲og</span> ← { (L, m) → (((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> L) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">4</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a></div>
+</div>
+<div class="item" id="u.f_itSphere">
+<h3><a href="#u.f_itSphere"><span class="c-userfunc">ᵘf̲itSphere</span></a> <span class="type">: Num a =&gt; (a, Int, Int) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L173">line 173</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲itSphere</span> ← { (K, seed, m) → S ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartSphere" class="c-userfunc">ᵘs̲tartSphere</a> (K, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> seed)◆ (P, L, _, C) ← m <span class="c-quote">'</span>{ t → <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepSphere" class="c-userfunc">ᵘs̲tepSphere</a> t } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (S, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, K, S)◆ (_, e) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, (<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> K) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> P)◆ (P, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_og" class="c-userfunc">ᵘl̲og</a> (L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> e <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>), C) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it"><span class="c-userfunc">ᵘf̲it</span></a></div>
+</div>
+<div class="item" id="u.f_itBall">
+<h3><a href="#u.f_itBall"><span class="c-userfunc">ᵘf̲itBall</span></a> <span class="type">: (Float, Int, Int) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L174">line 174</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲itBall</span> ← { (K, seed, m) → S ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartBall" class="c-userfunc">ᵘs̲tartBall</a> (K, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> seed)◆ (P, L, _, C) ← m <span class="c-quote">'</span>{ t → <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepBall" class="c-userfunc">ᵘs̲tepBall</a> t } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (S, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, K, S)◆ (_, e) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, (<a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ᵐᶠb̲allDistances</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> K)◆ (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad" class="c-userfunc">ᵘp̲ad</a> P, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_og" class="c-userfunc">ᵘl̲og</a> (L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> e <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>), <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad" class="c-userfunc">ᵘp̲ad</a> C) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it"><span class="c-userfunc">ᵘf̲it</span></a></div>
+</div>
+<div class="item" id="u.f_itFlat">
+<h3><a href="#u.f_itFlat"><span class="c-userfunc">ᵘf̲itFlat</span></a> <span class="type">: Any a =&gt; (a, Int, Int) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L175">line 175</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲itFlat</span> ← { (K, seed, m) → S ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> seed◆ (P, L, _, C) ← m <span class="c-quote">'</span>{ t → <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tepFlat" class="c-userfunc">ᵘs̲tepFlat</a> t } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (S, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, K, S)◆ (_, e) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> P)◆ (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad" class="c-userfunc">ᵘp̲ad</a> P, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_og" class="c-userfunc">ᵘl̲og</a> (L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> e <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>), <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.p_ad" class="c-userfunc">ᵘp̲ad</a> C) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it"><span class="c-userfunc">ᵘf̲it</span></a></div>
+</div>
+<div class="item" id="u.f_it">
+<h3><a href="#u.f_it"><span class="c-userfunc">ᵘf̲it</span></a> <span class="type">: (Float, Int, Int) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L176">line 176</a></div>
+<pre class="code"><span class="c-userfunc">ᵘf̲it</span> ← { (K, seed, m) → K <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itSphere" class="c-userfunc">ᵘf̲itSphere</a> (K, seed, m)◆ K <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span> ? <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itBall" class="c-userfunc">ᵘf̲itBall</a> (K, seed, m)◆ <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itFlat" class="c-userfunc">ᵘf̲itFlat</a> (K, seed, m) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatShort">flatShort</a></div>
+</div>
+<div class="item" id="u.d_istances">
+<h3><a href="#u.d_istances"><span class="c-userfunc">ᵘd̲istances</span></a> <span class="type">: Num a =&gt; (Float, a) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L179">line 179</a></div>
+<div class="doc">
+<p>The distances of an embedding along its space, scaled to the tree's
+unit (an edge should come out 1).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘd̲istances</span> ← { (K, P) → K <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? (<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> K) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ᵐᶠs̲phereDistances</a> P◆ K <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span> ? (<a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ᵐᶠb̲allDistances</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> K◆ <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> P }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereE">sphereE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatE">flatE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a></div>
+</div>
+<div class="item" id="sphereP">
+<h3><a href="#sphereP">sphereP</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L185">line 185</a></div>
+<div class="doc">
+<p>The nine fits: the three spaces, the sphere (curvature +1, the unit
+sphere), the plane (0) and the disk (-1, the unit disk), by the
+three starts. The first start's embeddings and logs are the page's;
+every start's end row goes into the spread.</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereC">sphereC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereE">sphereE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereMap">sphereMap</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L313">demos/representation-explorer/representation-hyperbolic.xtl:313</a></div>
+</div>
+<div class="item" id="sphereLog">
+<h3><a href="#sphereLog">sphereLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L185">line 185</a></div>
+<div class="doc">
+<p>The nine fits: the three spaces, the sphere (curvature +1, the unit
+sphere), the plane (0) and the disk (-1, the unit disk), by the
+three starts. The first start's embeddings and logs are the page's;
+every start's end row goes into the spread.</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereC">sphereC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L312">demos/representation-explorer/representation-hyperbolic.xtl:312</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L346">demos/representation-explorer/representation-hyperbolic.xtl:346</a></div>
+</div>
+<div class="item" id="sphereC">
+<h3><a href="#sphereC">sphereC</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L185">line 185</a></div>
+<div class="doc">
+<p>The nine fits: the three spaces, the sphere (curvature +1, the unit
+sphere), the plane (0) and the disk (-1, the unit disk), by the
+three starts. The first start's embeddings and logs are the page's;
+every start's end row goes into the spread.</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereC">sphereC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a></div>
+</div>
+<div class="item" id="flatP">
+<h3><a href="#flatP">flatP</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L186">line 186</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatC">flatC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatE">flatE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a></div>
+</div>
+<div class="item" id="flatLog">
+<h3><a href="#flatLog">flatLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L186">line 186</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatC">flatC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L312">demos/representation-explorer/representation-hyperbolic.xtl:312</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L346">demos/representation-explorer/representation-hyperbolic.xtl:346</a></div>
+</div>
+<div class="item" id="flatC">
+<h3><a href="#flatC">flatC</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L186">line 186</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatC">flatC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L345">demos/representation-explorer/representation-hyperbolic.xtl:345</a></div>
+</div>
+<div class="item" id="ballP">
+<h3><a href="#ballP">ballP</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L187">line 187</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballC">ballC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">-1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#treePath">treePath</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L314">demos/representation-explorer/representation-hyperbolic.xtl:314</a></div>
+</div>
+<div class="item" id="ballLog">
+<h3><a href="#ballLog">ballLog</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L187">line 187</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballC">ballC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">-1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L312">demos/representation-explorer/representation-hyperbolic.xtl:312</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L346">demos/representation-explorer/representation-hyperbolic.xtl:346</a></div>
+</div>
+<div class="item" id="ballC">
+<h3><a href="#ballC">ballC</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L187">line 187</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballC">ballC</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">-1.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a></div>
+</div>
+<div class="item" id="sphereLog2">
+<h3><a href="#sphereLog2">sphereLog2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L188">line 188</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">1.0</span>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="flatLog2">
+<h3><a href="#flatLog2">flatLog2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L189">line 189</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="ballLog2">
+<h3><a href="#ballLog2">ballLog2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L190">line 190</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">-1.0</span>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="sphereLog3">
+<h3><a href="#sphereLog3">sphereLog3</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L191">line 191</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">1.0</span>, <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="flatLog3">
+<h3><a href="#flatLog3">flatLog3</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L192">line 192</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="ballLog3">
+<h3><a href="#ballLog3">ballLog3</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L193">line 193</a></div>
+<pre class="code">(_, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">-1.0</span>, <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#otherMeans">otherMeans</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="otherMeans">
+<h3><a href="#otherMeans">otherMeans</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L196">line 196</a></div>
+<div class="doc">
+<p>The other two starts' mean distortion by step, per space, for the
+chart: one row per start.</p>
+</div>
+<pre class="code">otherMeans ← (<span class="c-number">6</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a></pre>
+</div>
+<div class="item" id="sphereE">
+<h3><a href="#sphereE">sphereE</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L199">line 199</a></div>
+<div class="doc">
+<p>The distances of the first start's three embeddings, and the
+distortion of every pair (Manifold's d_istortionPairs).</p>
+</div>
+<pre class="code">sphereE ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.d_istances" class="c-userfunc">ᵘd̲istances</a> (<span class="c-number">1.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spherePairs">spherePairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a></div>
+</div>
+<div class="item" id="flatE">
+<h3><a href="#flatE">flatE</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L200">line 200</a></div>
+<pre class="code">flatE ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.d_istances" class="c-userfunc">ᵘd̲istances</a> (<span class="c-number">0.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatPairs">flatPairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a></div>
+</div>
+<div class="item" id="ballE">
+<h3><a href="#ballE">ballE</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L201">line 201</a></div>
+<pre class="code">ballE ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.d_istances" class="c-userfunc">ᵘd̲istances</a> (<span class="c-number">-1.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballPairs">ballPairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#neighbors">neighbors</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a></div>
+</div>
+<div class="item" id="spherePairs">
+<h3><a href="#spherePairs">spherePairs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L202">line 202</a></div>
+<pre class="code">spherePairs ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortionPairs" class="c-libfunc">ᵐᶠd̲istortionPairs</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereE">sphereE</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edgeDistortion">edgeDistortion</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#worstPairs">worstPairs</a></div>
+</div>
+<div class="item" id="flatPairs">
+<h3><a href="#flatPairs">flatPairs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L203">line 203</a></div>
+<pre class="code">flatPairs ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortionPairs" class="c-libfunc">ᵐᶠd̲istortionPairs</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatE">flatE</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edgeDistortion">edgeDistortion</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#worstPairs">worstPairs</a></div>
+</div>
+<div class="item" id="ballPairs">
+<h3><a href="#ballPairs">ballPairs</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L204">line 204</a></div>
+<pre class="code">ballPairs ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortionPairs" class="c-libfunc">ᵐᶠd̲istortionPairs</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edgeDistortion">edgeDistortion</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#worstPairs">worstPairs</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L315">demos/representation-explorer/representation-hyperbolic.xtl:315</a></div>
+</div>
+<div class="item" id="u.e_dges">
+<h3><a href="#u.e_dges"><span class="c-userfunc">ᵘe̲dges</span></a> <span class="type">: a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L208">line 208</a></div>
+<div class="doc">
+<p>Each edge's distortion (|E / D - 1| for the 30 edges, in the
+edges' order), one row per space (sphere, plane, disk): what the
+pictures color.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘe̲dges</span> ← { M → <span class="c-quote">'</span>{ e → (e <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edges">edges</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> (e <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edges">edges</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#edgeDistortion">edgeDistortion</a></div>
+</div>
+<div class="item" id="edgeDistortion">
+<h3><a href="#edgeDistortion">edgeDistortion</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L209">line 209</a></div>
+<pre class="code">edgeDistortion ← (<span class="c-number">3</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_dges" class="c-userfunc">ᵘe̲dges</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spherePairs">spherePairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_dges" class="c-userfunc">ᵘe̲dges</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatPairs">flatPairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_dges" class="c-userfunc">ᵘe̲dges</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballPairs">ballPairs</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L315">demos/representation-explorer/representation-hyperbolic.xtl:315</a></div>
+</div>
+<div class="item" id="u.w_orst">
+<h3><a href="#u.w_orst"><span class="c-userfunc">ᵘw̲orst</span></a> <span class="type">: Num a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L211">line 211</a></div>
+<div class="doc">
+<p>The worst pair in each space (the two nodes' numbers).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘw̲orst</span> ← { M → at ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> M) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> M◆ (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (at <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (at <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#worstPairs">worstPairs</a></div>
+</div>
+<div class="item" id="worstPairs">
+<h3><a href="#worstPairs">worstPairs</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L212">line 212</a></div>
+<pre class="code">worstPairs ← <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.w_orst" class="c-userfunc">ᵘw̲orst</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spherePairs">spherePairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.w_orst" class="c-userfunc">ᵘw̲orst</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatPairs">flatPairs</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.w_orst" class="c-userfunc">ᵘw̲orst</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballPairs">ballPairs</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L317">demos/representation-explorer/representation-hyperbolic.xtl:317</a></div>
+</div>
+<div class="item" id="u.e_nd">
+<h3><a href="#u.e_nd"><span class="c-userfunc">ᵘe̲nd</span></a> <span class="type">: a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L215">line 215</a></div>
+<div class="doc">
+<p>The spread over the three starts: per space, the end distortion of
+each start, and the largest less the smallest.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘe̲nd</span> ← { L → <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="u.s_pread">
+<h3><a href="#u.s_pread"><span class="c-userfunc">ᵘs̲pread</span></a> <span class="type">: Num a =&gt; (a, a, a) -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L216">line 216</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲pread</span> ← { (a, b, c) → v ← a <a href="builtins.html#c_at" class="c-builtin">c̲at</a> b <a href="builtins.html#c_at" class="c-builtin">c̲at</a> c◆ v <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#spreadRows">spreadRows</a></div>
+</div>
+<div class="item" id="spreadRows">
+<h3><a href="#spreadRows">spreadRows</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L217">line 217</a></div>
+<pre class="code">spreadRows ← <span class="c-number">3</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_pread" class="c-userfunc">ᵘs̲pread</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog2">sphereLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog3">sphereLog3</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_pread" class="c-userfunc">ᵘs̲pread</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog2">flatLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog3">flatLog3</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_pread" class="c-userfunc">ᵘs̲pread</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog2">ballLog2</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.e_nd" class="c-userfunc">ᵘe̲nd</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog3">ballLog3</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L316">demos/representation-explorer/representation-hyperbolic.xtl:316</a></div>
+</div>
+<div class="item" id="treePath">
+<h3><a href="#treePath">treePath</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L224">line 224</a></div>
+<div class="doc">
+<p>In the first start's disk embedding: the geodesic from the root
+(node 1) to the last leaf (node 31), 13 points, and the three nodes
+nearest node 2 (the root's first child) along the disk, which in a
+faithful embedding are its parent and its two children (1, 4, 5).</p>
+</div>
+<pre class="code">treePath ← (<span class="c-number">2</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>, <span class="c-number">2</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a>) <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allGeodesic" class="c-libfunc">ᵐᶠb̲allGeodesic</a> <span class="c-number">12</span></pre>
+</div>
+<div class="item" id="u.n_earest">
+<h3><a href="#u.n_earest"><span class="c-userfunc">ᵘn̲earest</span></a> <span class="type">: Ord a =&gt; (a, Int, Int) -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L225">line 225</a></div>
+<pre class="code"><span class="c-userfunc">ᵘn̲earest</span> ← { (M, i, m) → <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> (m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#neighbors">neighbors</a></div>
+</div>
+<div class="item" id="neighbors">
+<h3><a href="#neighbors">neighbors</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L226">line 226</a></div>
+<pre class="code">neighbors ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.n_earest" class="c-userfunc">ᵘn̲earest</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a>, <span class="c-number">2</span>, <span class="c-number">3</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L318">demos/representation-explorer/representation-hyperbolic.xtl:318</a></div>
+</div>
+<div class="item" id="train">
+<h3><a href="#train">train</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L237">line 237</a></div>
+<div class="doc">
+<p>The node's branch from its embedded position, the held-out quarter
+(split seed 11: 7 of the 31 nodes) from the rest. Two classifiers:
+k nearest neighbors (k = 3) under the space's own distance, from
+its distance matrix (the training nodes nearest the held-out node,
+the commonest class among them, the smaller on a tie); and Learn's
+logistic classifier on the embedded coordinates (3, the third 0
+but on the sphere), 200 steps at rate 0.5. The held-out accuracy
+of each, and the guesses, one row per space.</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#splitSeed">splitSeed</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic"><span class="c-userfunc">ᵘl̲ogistic</span></a></div>
+</div>
+<div class="item" id="held">
+<h3><a href="#held">held</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L237">line 237</a></div>
+<div class="doc">
+<p>The node's branch from its embedded position, the held-out quarter
+(split seed 11: 7 of the 31 nodes) from the rest. Two classifiers:
+k nearest neighbors (k = 3) under the space's own distance, from
+its distance matrix (the training nodes nearest the held-out node,
+the commonest class among them, the smaller on a tie); and Learn's
+logistic classifier on the embedded coordinates (3, the third 0
+but on the sphere), 200 steps at rate 0.5. The held-out accuracy
+of each, and the guesses, one row per space.</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a>) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#splitSeed">splitSeed</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn"><span class="c-userfunc">ᵘk̲nn</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy"><span class="c-userfunc">ᵘa̲ccuracy</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic"><span class="c-userfunc">ᵘl̲ogistic</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a></div>
+</div>
+<div class="item" id="u.v_ote">
+<h3><a href="#u.v_ote"><span class="c-userfunc">ᵘv̲ote</span></a> <span class="type">: Ord a =&gt; (a, Int) -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L238">line 238</a></div>
+<pre class="code"><span class="c-userfunc">ᵘv̲ote</span> ← { (E, i) → near ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#k">k</a> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> E)◆ labels ← (near <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ty">ty</a>◆ counts ← <span class="c-quote">'</span>{ c → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> labels <a href="builtins.html#-3d" class="c-symbol">=</a> c } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#branching">branching</a>◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> counts <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> counts }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn"><span class="c-userfunc">ᵘk̲nn</span></a></div>
+</div>
+<div class="item" id="u.k_nn">
+<h3><a href="#u.k_nn"><span class="c-userfunc">ᵘk̲nn</span></a> <span class="type">: Ord a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L239">line 239</a></div>
+<pre class="code"><span class="c-userfunc">ᵘk̲nn</span> ← { E → <span class="c-quote">'</span>{ i → <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.v_ote" class="c-userfunc">ᵘv̲ote</a> (E, i) } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#baseline">baseline</a></div>
+</div>
+<div class="item" id="u.a_ccuracy">
+<h3><a href="#u.a_ccuracy"><span class="c-userfunc">ᵘa̲ccuracy</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L240">line 240</a></div>
+<pre class="code"><span class="c-userfunc">ᵘa̲ccuracy</span> ← { guess → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> guess <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ty">ty</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#baseline">baseline</a></div>
+</div>
+<div class="item" id="u.l_ogistic">
+<h3><a href="#u.l_ogistic"><span class="c-userfunc">ᵘl̲ogistic</span></a> <span class="type">: Float -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L241">line 241</a></div>
+<pre class="code"><span class="c-userfunc">ᵘl̲ogistic</span> ← { P → ((<span class="c-number">200</span>, <span class="c-number">0.5</span>) <a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html#l.l_ogistic" class="c-libfunc">ᵐˡl̲ogistic</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> P, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ty">ty</a>)) <a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html#l.p_redict" class="c-libfunc">ᵐˡp̲redict</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> P }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a></div>
+</div>
+<div class="item" id="knnGuess">
+<h3><a href="#knnGuess">knnGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L242">line 242</a></div>
+<pre class="code">knnGuess ← (<span class="c-number">3</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn" class="c-userfunc">ᵘk̲nn</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereE">sphereE</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn" class="c-userfunc">ᵘk̲nn</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatE">flatE</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn" class="c-userfunc">ᵘk̲nn</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a></div>
+</div>
+<div class="item" id="logisticGuess">
+<h3><a href="#logisticGuess">logisticGuess</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L243">line 243</a></div>
+<pre class="code">logisticGuess ← (<span class="c-number">3</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#held">held</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic" class="c-userfunc">ᵘl̲ogistic</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic" class="c-userfunc">ᵘl̲ogistic</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatP">flatP</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ogistic" class="c-userfunc">ᵘl̲ogistic</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballP">ballP</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a></div>
+</div>
+<div class="item" id="accuracy">
+<h3><a href="#accuracy">accuracy</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L244">line 244</a></div>
+<pre class="code">accuracy ← <span class="c-number">3</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#knnGuess">knnGuess</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#logisticGuess">logisticGuess</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L319">demos/representation-explorer/representation-hyperbolic.xtl:319</a></div>
+</div>
+<div class="item" id="u.u_nder">
+<h3><a href="#u.u_nder"><span class="c-userfunc">ᵘu̲nder</span></a> <span class="type">: Float -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L257">line 257</a></div>
+<div class="doc">
+<p>One row per space (sphere, plane, disk): the end distortion (mean
+over pairs), the worst pair, the steps to a mean distortion under
+the target (-1 if never), the distortion with the scale forgiven
+(after Manifold's f_itScale, as part 1 measured its
+representations: how much of a space's loss is its size), the
+numbers trained (the embedding's coordinates: 2 per node, 3 on the
+sphere) and the operations (6 per pair per coordinate per step: the
+distances and their gradient), the constraint's violation (the
+farthest any step went past the rim, over the run), and the two
+accuracies.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘu̲nder</span> ← { L → hits ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#target">target</a>◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> hits ? <span class="c-number">-1</span>◆ (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> hits) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a></div>
+</div>
+<div class="item" id="u.r_ecord">
+<h3><a href="#u.r_ecord"><span class="c-userfunc">ᵘr̲ecord</span></a> <span class="type">: (Float, Float, Float, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L258">line 258</a></div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ecord</span> ← { (K, L, E, a) → end ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L◆ d ← <span class="c-number">2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> K <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>◆ (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.u_nder" class="c-userfunc">ᵘu̲nder</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ᵐᶠd̲istortion</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.f_itScale" class="c-libfunc">ᵐᶠf̲itScale</a> E) <a href="builtins.html#-2a" class="c-symbol">×</a> E) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">6</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#steps">steps</a> <a href="builtins.html#-2a" class="c-symbol">×</a> d <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> a }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#record">record</a></div>
+</div>
+<div class="item" id="record">
+<h3><a href="#record">record</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L259">line 259</a></div>
+<pre class="code">record ← <span class="c-number">3</span> <span class="c-number">9</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord" class="c-userfunc">ᵘr̲ecord</a> (<span class="c-number">1.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereE">sphereE</a>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord" class="c-userfunc">ᵘr̲ecord</a> (<span class="c-number">0.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatE">flatE</a>, <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.r_ecord" class="c-userfunc">ᵘr̲ecord</a> (<span class="c-number">-1.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballE">ballE</a>, <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#accuracy">accuracy</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L311">demos/representation-explorer/representation-hyperbolic.xtl:311</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L312">demos/representation-explorer/representation-hyperbolic.xtl:312</a></div>
+</div>
+<div class="item" id="layoutE">
+<h3><a href="#layoutE">layoutE</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L263">line 263</a></div>
+<div class="doc">
+<p>The baseline's row again: the plain layout's distortion against the
+tree (mean, worst), and nearest neighbors on it, for the row
+against.</p>
+</div>
+<pre class="code">layoutE ← <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layout">layout</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#baseline">baseline</a></div>
+</div>
+<div class="item" id="baseline">
+<h3><a href="#baseline">baseline</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L264">line 264</a></div>
+<pre class="code">baseline ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistortion" class="c-libfunc">ᵐᶠf̲latDistortion</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layout">layout</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.a_ccuracy" class="c-userfunc">ᵘa̲ccuracy</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.k_nn" class="c-userfunc">ᵘk̲nn</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#layoutE">layoutE</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L320">demos/representation-explorer/representation-hyperbolic.xtl:320</a></div>
+</div>
+<div class="item" id="u.f_itAt">
+<h3><a href="#u.f_itAt"><span class="c-userfunc">ᵘf̲itAt</span></a> <span class="type">: Float -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L275">line 275</a></div>
+<div class="doc">
+<p>The same fit, from the first start, at each curvature of the preset,
++1 through 0 to -4, for the control's 100 steps (the three fits
+above stand for +1, 0 and -1, read at their step 100, the embedding
+they kept there: the same start, rate and steps give the same
+numbers): as K goes to 0 from either side the fit goes to the
+plane's. One row per curvature: K, the mean distortion at step 100,
+the worst pair, the steps to the target, how far past the rim any
+step went; and the embedding at step 100 (31 rows of 3 each).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘf̲itAt</span> ← { K → K <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1.0</span> ? (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereC">sphereC</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereLog">sphereLog</a>)◆ K <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatC">flatC</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatLog">flatLog</a>)◆ K <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">-1.0</span> ? (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballC">ballC</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#ballLog">ballLog</a>)◆ (P, L, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (K, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a>)◆ (P, L) }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a></div>
+</div>
+<div class="item" id="curveRows">
+<h3><a href="#curveRows">curveRows</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L276">line 276</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveFlat">curveFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>) <span class="c-quote">'</span>{ (rows, pts, i) →
+  K ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>
+  (P, L) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt" class="c-userfunc">ᵘf̲itAt</a> K
+  end ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L
+  (rows <a href="builtins.html#c_at" class="c-builtin">c̲at</a> K <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.u_nder" class="c-userfunc">ᵘu̲nder</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L), pts <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> P, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+} <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvature">curvature</a></div>
+</div>
+<div class="item" id="curveFlat">
+<h3><a href="#curveFlat">curveFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L276">line 276</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveFlat">curveFlat</a>, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>) <span class="c-quote">'</span>{ (rows, pts, i) →
+  K ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>
+  (P, L) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_itAt" class="c-userfunc">ᵘf̲itAt</a> K
+  end ← (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> L
+  (rows <a href="builtins.html#c_at" class="c-builtin">c̲at</a> K <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.u_nder" class="c-userfunc">ᵘu̲nder</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> L), pts <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> P, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+} <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvePoints">curvePoints</a></div>
+</div>
+<div class="item" id="curvature">
+<h3><a href="#curvature">curvature</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L282">line 282</a></div>
+<pre class="code">curvature ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">5</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveRows">curveRows</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L342">demos/representation-explorer/representation-hyperbolic.xtl:342</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L343">demos/representation-explorer/representation-hyperbolic.xtl:343</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L346">demos/representation-explorer/representation-hyperbolic.xtl:346</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L347">demos/representation-explorer/representation-hyperbolic.xtl:347</a></div>
+</div>
+<div class="item" id="curvePoints">
+<h3><a href="#curvePoints">curvePoints</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L283">line 283</a></div>
+<pre class="code">curvePoints ← (((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curvatures">curvatures</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#curveFlat">curveFlat</a></pre>
+</div>
+<div class="item" id="parallels">
+<h3><a href="#parallels">parallels</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L287">line 287</a></div>
+<div class="doc">
+<p>For the page: the sphere's wire lines and the sphere embedding's
+map (longitude and latitude, degrees).</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#parallels">parallels</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#meridians">meridians</a>) ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires" class="c-libfunc">ᵐᶠs̲phereWires</a> (<span class="c-number">5</span>, <span class="c-number">12</span>, <span class="c-number">24</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="meridians">
+<h3><a href="#meridians">meridians</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L287">line 287</a></div>
+<div class="doc">
+<p>For the page: the sphere's wire lines and the sphere embedding's
+map (longitude and latitude, degrees).</p>
+</div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#parallels">parallels</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#meridians">meridians</a>) ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereWires" class="c-libfunc">ᵐᶠs̲phereWires</a> (<span class="c-number">5</span>, <span class="c-number">12</span>, <span class="c-number">24</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#parallels">parallels</a></div>
+</div>
+<div class="item" id="deg">
+<h3><a href="#deg">deg</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L288">line 288</a></div>
+<pre class="code">deg ← (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">180.0</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereMap">sphereMap</a></div>
+</div>
+<div class="item" id="sphereMap">
+<h3><a href="#sphereMap">sphereMap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L289">line 289</a></div>
+<pre class="code">sphereMap ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>) <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tan2" class="c-libfunc">ᵗʳa̲tan2</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#deg">deg</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sin" class="c-libfunc">ᵗʳa̲sin</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#sphereP">sphereP</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#deg">deg</a></pre>
+</div>
+<h2 class="section" id="section-1">The fit</h2>
+<div class="item" id="u.l_ossFlat">
+<h3><a href="#u.l_ossFlat"><span class="c-userfunc">ᵘl̲ossFlat</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L324">line 324</a></div>
+<div class="doc">
+<p>The loss's gradient with respect to the points against central
+differences at h = 0.00001, in the plane and in the disk, at four
+coordinates of the first start: the largest gap in each.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘl̲ossFlat</span> ← { P → (_, m) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> P)◆ <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> m }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a></div>
+</div>
+<div class="item" id="u.l_ossBall">
+<h3><a href="#u.l_ossBall"><span class="c-userfunc">ᵘl̲ossBall</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L325">line 325</a></div>
+<pre class="code"><span class="c-userfunc">ᵘl̲ossBall</span> ← { P → (_, m) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ᵐᶠb̲allDistances</a> P)◆ <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> m }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a></div>
+</div>
+<div class="item" id="u.b_ump">
+<h3><a href="#u.b_ump"><span class="c-userfunc">ᵘb̲ump</span></a> <span class="type">: (Float, Int, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L326">line 326</a></div>
+<pre class="code"><span class="c-userfunc">ᵘb̲ump</span> ← { (P, i, e) → P <a href="builtins.html#-2b" class="c-symbol">+</a> e <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#-3d" class="c-symbol">=</a> i }</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a></div>
+</div>
+<div class="item" id="h">
+<h3><a href="#h">h</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L327">line 327</a></div>
+<pre class="code">h ← <span class="c-number">0.00001</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a></div>
+</div>
+<div class="item" id="at">
+<h3><a href="#at">at</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L328">line 328</a></div>
+<pre class="code">at ← <span class="c-number">1</span> <span class="c-number">7</span> <span class="c-number">30</span> <span class="c-number">62</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#gaps">gaps</a></div>
+</div>
+<div class="item" id="P0">
+<h3><a href="#P0">P0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L329">line 329</a></div>
+<pre class="code">P0 ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#G0">G0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a></div>
+</div>
+<div class="item" id="W0">
+<h3><a href="#W0">W0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L330">line 330</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ᵐᶠf̲latDistances</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#G0">G0</a></div>
+</div>
+<div class="item" id="G0">
+<h3><a href="#G0">G0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L331">line 331</a></div>
+<pre class="code">G0 ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#W0">W0</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistancesGradient" class="c-libfunc">ᵐᶠf̲latDistancesGradient</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#gaps">gaps</a></div>
+</div>
+<div class="item" id="centralFlat">
+<h3><a href="#centralFlat">centralFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L332">line 332</a></div>
+<pre class="code">centralFlat ← <span class="c-quote">'</span>{ i → ((<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossFlat" class="c-userfunc">ᵘl̲ossFlat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.b_ump" class="c-userfunc">ᵘb̲ump</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a>, i, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a>)) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossFlat" class="c-userfunc">ᵘl̲ossFlat</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.b_ump" class="c-userfunc">ᵘb̲ump</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a>, i, <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a>)) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#at">at</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#gaps">gaps</a></div>
+</div>
+<div class="item" id="B0">
+<h3><a href="#B0">B0</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L333">line 333</a></div>
+<pre class="code">B0 ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.s_tartBall" class="c-userfunc">ᵘs̲tartBall</a> (<span class="c-number">-1.0</span>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#P0">P0</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Gb">Gb</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#plainB">plainB</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a></div>
+</div>
+<div class="item" id="Wb">
+<h3><a href="#Wb">Wb</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L334">line 334</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a>, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.m_easure" class="c-userfunc">ᵘm̲easure</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#T">T</a>, <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ᵐᶠb̲allDistances</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Gb">Gb</a></div>
+</div>
+<div class="item" id="Gb">
+<h3><a href="#Gb">Gb</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L335">line 335</a></div>
+<pre class="code">Gb ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Wb">Wb</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistancesGradient" class="c-libfunc">ᵐᶠb̲allDistancesGradient</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a>                             <span class="c-comment">⍝</span><span class="c-comment"> along the ball: the plain gradient scaled by (1 - |p|^2)^2 / 4</span></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#plainB">plainB</a></div>
+</div>
+<div class="item" id="plainB">
+<h3><a href="#plainB">plainB</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L336">line 336</a></div>
+<pre class="code">plainB ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#Gb">Gb</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> ((((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">4.0</span>) <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0</span> <span class="c-number">0</span>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#gaps">gaps</a></div>
+</div>
+<div class="item" id="centralBall">
+<h3><a href="#centralBall">centralBall</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L337">line 337</a></div>
+<pre class="code">centralBall ← <span class="c-quote">'</span>{ i → ((<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossBall" class="c-userfunc">ᵘl̲ossBall</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.b_ump" class="c-userfunc">ᵘb̲ump</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a>, i, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a>)) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.l_ossBall" class="c-userfunc">ᵘl̲ossBall</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.b_ump" class="c-userfunc">ᵘb̲ump</a> (<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#B0">B0</a>, i, <span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a>)) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#h">h</a> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#at">at</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#gaps">gaps</a></div>
+</div>
+<div class="item" id="gaps">
+<h3><a href="#gaps">gaps</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L338">line 338</a></div>
+<pre class="code">gaps ← (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralFlat">centralFlat</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#at">at</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#G0">G0</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#centralBall">centralBall</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#at">at</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#plainB">plainB</a></pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L339">demos/representation-explorer/representation-hyperbolic.xtl:339</a></div>
+</div>
+<h2 class="section" id="section-2">Curvature as a control</h2>
+<div class="item" id="flatShort">
+<h3><a href="#flatShort">flatShort</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L344">line 344</a></div>
+<pre class="code">(<a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatShort">flatShort</a>, _, _) ← <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#u.f_it" class="c-userfunc">ᵘf̲it</a> (<span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#seeds">seeds</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#controlSteps">controlSteps</a>)</pre>
+<div class="uses">Used in: <a href="demos-representation-explorer-representation-hyperbolic.xtl.html#flatShort">flatShort</a>, <a href="demos-representation-explorer-representation-hyperbolic.xtl.src.html#L345">demos/representation-explorer/representation-hyperbolic.xtl:345</a></div>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Manifold/src/Manifold.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/dynamics-explorer/</h3>
+<ul>
+<li><a href="demos-dynamics-explorer-dynamics-explorer.xtl.html">dynamics-explorer.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/mhc-explorer/</h3>
+<ul>
+<li><a href="demos-mhc-explorer-mhc-depth.xtl.html">mhc-depth.xtl</a></li>
+<li><a href="demos-mhc-explorer-mhc-explorer.xtl.html">mhc-explorer.xtl</a></li>
+</ul>
+<h3>demos/optimization-explorer/</h3>
+<ul>
+<li><a href="demos-optimization-explorer-optimization-explorer.xtl.html">optimization-explorer.xtl</a></li>
+<li><a href="demos-optimization-explorer-optimization-training.xtl.html">optimization-training.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+<li><a href="demos-representation-explorer-representation-hyperbolic.xtl.html">representation-hyperbolic.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>libs/Mixing/demos/</h3>
+<ul>
+<li><a href="libs-Mixing-demos-sinkhorn.xtl.html">sinkhorn.xtl</a></li>
+</ul>
+<h3>libs/Mixing/src/</h3>
+<ul>
+<li><a href="libs-Mixing-src-Mixing.xtl.html">Mixing.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Matrix/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Optim/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html">Optim.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L36"><span class="c-libfunc">ʰd̲ot</span></a></li>
+<li class="item"><a href="#L39"><span class="c-libfunc">ʰn̲orm</span></a></li>
+<li class="item"><a href="#L42"><span class="c-libfunc">ʰn̲orms</span></a></li>
+<li class="item"><a href="#L46"><span class="c-libfunc">ʰd̲ots</span></a></li>
+<li class="item"><a href="#L50"><span class="c-libfunc">ʰr̲ows</span></a></li>
+<li class="item"><a href="#L53"><span class="c-libfunc">ʰu̲nrows</span></a></li>
+<li class="item"><a href="#L57"><span class="c-libfunc">ʰu̲nrow</span></a></li>
+<li class="item"><a href="#L60"><span class="c-libfunc">ʰs̲caleRows</span></a></li>
+<li class="item"><a href="#L67"><span class="c-libfunc">ʰa̲ngle</span></a></li>
+<li class="item"><a href="#L70"><span class="c-libfunc">ʰa̲part</span></a></li>
+<li class="item"><a href="#L73"><span class="c-libfunc">ʰa̲partRows</span></a></li>
+<li class="item"><a href="#L82"><span class="c-libfunc">ʰd̲istPairs</span></a></li>
+<li class="item"><a href="#L94"><span class="c-libfunc">ʰa̲partPairs</span></a></li>
+<li class="item"><a href="#L115"><span class="c-libfunc">ˡs̲phereProject</span></a></li>
+<li class="item"><a href="#L123"><span class="c-libfunc">ʰp̲rojectRows</span></a></li>
+<li class="item"><a href="#L137"><span class="c-libfunc">ˡs̲phereDistance</span></a></li>
+<li class="item"><a href="#L145"><span class="c-libfunc">ˡs̲phereDistances</span></a></li>
+<li class="item"><a href="#L154"><span class="c-libfunc">ˡs̲phereTangent</span></a></li>
+<li class="item"><a href="#L171"><span class="c-libfunc">ˡs̲phereStep</span></a></li>
+<li class="item"><a href="#L186"><span class="c-libfunc">ˡs̲phereArrow</span></a></li>
+<li class="item"><a href="#L201"><span class="c-libfunc">ˡs̲phereRetract</span></a></li>
+<li class="item"><a href="#L214"><span class="c-libfunc">ˡs̲phereDescend</span></a></li>
+<li class="item"><a href="#L218"><span class="c-libfunc">ʰa̲rrows</span></a></li>
+<li class="item"><a href="#L238"><span class="c-libfunc">ˡs̲phereMean</span></a></li>
+<li class="item"><a href="#L252"><span class="c-libfunc">ˡs̲phereOff</span></a></li>
+<li class="item"><a href="#L259"><span class="c-libfunc">ʰc̲oordinate</span></a></li>
+<li class="item"><a href="#L265"><span class="c-libfunc">ʰc̲olumns</span></a></li>
+<li class="item"><a href="#L280"><span class="c-libfunc">ˡs̲pherePoints</span></a></li>
+<li class="item"><a href="#L296"><span class="c-libfunc">ˡs̲phereWires</span></a></li>
+<li class="item"><a href="#L316"><span class="c-libfunc">ˡs̲phereArc</span></a></li>
+<li class="item"><a href="#L337"><span class="c-libfunc">ˡc̲irclePoints</span></a></li>
+<li class="item"><a href="#L351"><span class="c-libfunc">ˡt̲orusPoints</span></a></li>
+<li class="item"><a href="#L369"><span class="c-libfunc">ˡt̲orusOff</span></a></li>
+<li class="item"><a href="#L390"><span class="c-libfunc">ˡr̲ollPoints</span></a></li>
+<li class="item"><a href="#L402"><span class="c-libfunc">ˡr̲ollAlong</span></a></li>
+<li class="item"><a href="#L412"><span class="c-libfunc">ˡr̲ollDistance</span></a></li>
+<li class="item"><a href="#L435"><span class="c-libfunc">ʰm̲obius</span></a></li>
+<li class="item"><a href="#L446"><span class="c-libfunc">ʰr̲im</span></a></li>
+<li class="item"><a href="#L460"><span class="c-libfunc">ˡb̲allProject</span></a></li>
+<li class="item"><a href="#L475"><span class="c-libfunc">ˡb̲allOff</span></a></li>
+<li class="item"><a href="#L486"><span class="c-libfunc">ˡb̲allDistance</span></a></li>
+<li class="item"><a href="#L500"><span class="c-libfunc">ˡb̲allDistances</span></a></li>
+<li class="item"><a href="#L519"><span class="c-libfunc">ˡb̲allTangent</span></a></li>
+<li class="item"><a href="#L539"><span class="c-libfunc">ˡb̲allStep</span></a></li>
+<li class="item"><a href="#L559"><span class="c-libfunc">ˡb̲allArrow</span></a></li>
+<li class="item"><a href="#L578"><span class="c-libfunc">ˡb̲allGeodesic</span></a></li>
+<li class="item"><a href="#L610"><span class="c-libfunc">ˡd̲istortion</span></a></li>
+<li class="item"><a href="#L628"><span class="c-libfunc">ˡd̲istortionPairs</span></a></li>
+<li class="item"><a href="#L645"><span class="c-libfunc">ˡf̲itScale</span></a></li>
+<li class="item"><a href="#L658"><span class="c-libfunc">ˡs̲phereDistortion</span></a></li>
+<li class="item"><a href="#L668"><span class="c-libfunc">ˡf̲latDistortion</span></a></li>
+<li class="item"><a href="#L676"><span class="c-libfunc">ˡb̲allDistortion</span></a></li>
+<li class="item"><a href="#L706"><span class="c-libfunc">ˡf̲latDistances</span></a></li>
+<li class="item"><a href="#L710"><span class="c-libfunc">ʰo̲ffDiagonal</span></a></li>
+<li class="item"><a href="#L719"><span class="c-libfunc">ˡf̲latDistancesGradient</span></a></li>
+<li class="item"><a href="#L735"><span class="c-libfunc">ˡs̲phereDistancesGradient</span></a></li>
+<li class="item"><a href="#L756"><span class="c-libfunc">ˡb̲allDistancesGradient</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Manifold-src-Manifold.xtl.html">libs/Manifold/src/Manifold.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-doc">⍝│</span><span class="c-doc"> Manifold: the unit sphere, the Poincare ball, and the pictures of</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> the circle, the sphere, the torus and the Swiss roll: the distance</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> measured along the space, putting a point onto it, the tangent part</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> of a vector at a point, a step from a point along a tangent vector</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-doc">⍝│</span><span class="c-doc"> that stays on the space and the arrow that undoes it, a mean that</span></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-doc">⍝│</span><span class="c-doc"> stays on the space, how far off it a point is; the points of each</span></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-doc">⍝│</span><span class="c-doc"> space at given coordinates of its map, for drawing it; and the</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a><span class="c-doc">⍝│</span><span class="c-doc"> distortion of an embedding's distances against those it should keep.</span></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-doc">⍝│</span><span class="c-doc"> Import it with an alias of your choice: &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;.</span></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a><span class="c-doc">⍝│</span><span class="c-doc"> Put libs/Manifold/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Manifold/docs.</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><span class="c-doc">⍝│</span><span class="c-doc"> Names with l: are exported; those under h: are private to this file.</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a><span class="c-doc">⍝│</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a><span class="c-doc">⍝│</span><span class="c-doc"> A point is a vector of Floats, in any number of dimensions; a set</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a><span class="c-doc">⍝│</span><span class="c-doc"> of points is a matrix, one point per row. Each space has a name</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-doc">⍝│</span><span class="c-doc"> that starts its functions (s_phere, b_all the Poincare ball,</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a><span class="c-doc">⍝│</span><span class="c-doc"> c_ircle, t_orus, r_oll the Swiss roll), and the word after it is</span></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-doc">⍝│</span><span class="c-doc"> the same verb for every space: Project (onto it), Distance (along</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a><span class="c-doc">⍝│</span><span class="c-doc"> it), Tangent (the part of a vector along it at a point), Step (from</span></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a><span class="c-doc">⍝│</span><span class="c-doc"> a point, along a tangent vector, staying on it), Arrow (the tangent</span></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-doc">⍝│</span><span class="c-doc"> vector a Step would take from one point to another), Mean (of a</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-doc">⍝│</span><span class="c-doc"> set, on it), Off (how far a point is from it); and for drawing,</span></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a><span class="c-doc">⍝│</span><span class="c-doc"> Points (the points at rows of coordinates of the space's map), Arc</span></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><span class="c-doc">⍝│</span><span class="c-doc"> or Geodesic (points along the shortest path between two points);</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a><span class="c-doc">⍝│</span><span class="c-doc"> and for fitting an embedding, Distances (between every pair of a</span></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a><span class="c-doc">⍝│</span><span class="c-doc"> set) and DistancesGradient (of a weighted sum of them, along the</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-doc">⍝│</span><span class="c-doc"> space), with Distortion against the distances a set should keep. So</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-doc">⍝│</span><span class="c-doc"> a program written for the sphere reads the same on the ball; the</span></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a><span class="c-doc">⍝│</span><span class="c-doc"> flat space has the last three too (f_lat...), so a fit reads the</span></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-doc">⍝│</span><span class="c-doc"> same in all three. Every result is a Float.</span></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a><span class="c-string">&quot;tr:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html" class="c-string">&quot;Trig&quot;</a></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a><span class="c-heading">⍝━━</span><span class="c-heading"> Vectors</span></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>u <span class="c-builtin">d̲ot</span> v<span class="c-doc"></span><span class="c-doc">: the sum of the products, as a Float.</span></span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a><span class="c-libfunc">ʰd̲ot</span> ← { u v → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> u) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v }</span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a></span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">n̲orm</span> v<span class="c-doc"></span><span class="c-doc">: the length of v, straight through the space it sits in.</span></span>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a><span class="c-libfunc">ʰn̲orm</span> ← { v → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> v <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ot" class="c-libfunc">ʰd̲ot</a> v }</span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a></span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">n̲orms</span> P<span class="c-doc"></span><span class="c-doc">: the length of every row of P, a vector.</span></span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a><span class="c-libfunc">ʰn̲orms</span> ← { P → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P }</span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a></span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">d̲ots</span> (P, Q)<span class="c-doc"></span><span class="c-doc">: the dot product of each row of P with the matching</span></span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a><span class="c-doc">⍝│</span><span class="c-doc"> row of Q, a vector.</span></span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a><span class="c-libfunc">ʰd̲ots</span> ← { (P, Q) → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> Q }</span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a></span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">r̲ows</span> v<span class="c-doc"></span><span class="c-doc">: a vector as a one-row matrix; a matrix as it is. So a</span></span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a><span class="c-doc">⍝│</span><span class="c-doc"> function written for a set can take one point.</span></span>
+<span class="line" id="L50"><a class="ln" href="#L50">50</a><span class="c-libfunc">ʰr̲ows</span> ← { v → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v ? <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v◆ (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v }</span>
+<span class="line" id="L51"><a class="ln" href="#L51">51</a></span>
+<span class="line" id="L52"><a class="ln" href="#L52">52</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>v <span class="c-builtin">u̲nrows</span> M<span class="c-doc"></span><span class="c-doc">: M back to v's rank: its one row when v is a vector.</span></span>
+<span class="line" id="L53"><a class="ln" href="#L53">53</a><span class="c-libfunc">ʰu̲nrows</span> ← { v M → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v ? M◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> M }</span>
+<span class="line" id="L54"><a class="ln" href="#L54">54</a></span>
+<span class="line" id="L55"><a class="ln" href="#L55">55</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>v <span class="c-builtin">u̲nrow</span> x<span class="c-doc"></span><span class="c-doc">: a number per row, x, back to v's rank: the one number</span></span>
+<span class="line" id="L56"><a class="ln" href="#L56">56</a><span class="c-doc">⍝│</span><span class="c-doc"> when v is a vector.</span></span>
+<span class="line" id="L57"><a class="ln" href="#L57">57</a><span class="c-libfunc">ʰu̲nrow</span> ← { v x → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v ? x◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> x }</span>
+<span class="line" id="L58"><a class="ln" href="#L58">58</a></span>
+<span class="line" id="L59"><a class="ln" href="#L59">59</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>s v <span class="c-builtin">s̲caleRows</span> M<span class="c-doc"></span><span class="c-doc">: each row of M scaled by the matching item of s.</span></span>
+<span class="line" id="L60"><a class="ln" href="#L60">60</a><span class="c-libfunc">ʰs̲caleRows</span> ← { s M → M <a href="builtins.html#-2a" class="c-symbol">×</a> s <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M }</span>
+<span class="line" id="L61"><a class="ln" href="#L61">61</a></span>
+<span class="line" id="L62"><a class="ln" href="#L62">62</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>m <span class="c-builtin">a̲ngle</span> s<span class="c-doc"></span><span class="c-doc">: the angle, 0 to pi, between two unit vectors p and</span></span>
+<span class="line" id="L63"><a class="ln" href="#L63">63</a><span class="c-doc">⍝│</span><span class="c-doc"> q, from the lengths m = |p - q| and s = |p + q|: 2 atan2(m, s).</span></span>
+<span class="line" id="L64"><a class="ln" href="#L64">64</a><span class="c-doc">⍝│</span><span class="c-doc"> Accurate near 0 and near pi alike, where a_cos of the product</span></span>
+<span class="line" id="L65"><a class="ln" href="#L65">65</a><span class="c-doc">⍝│</span><span class="c-doc"> p.q is not (near 0 it loses half the digits), because neither</span></span>
+<span class="line" id="L66"><a class="ln" href="#L66">66</a><span class="c-doc">⍝│</span><span class="c-doc"> length is a difference of nearly equal numbers.</span></span>
+<span class="line" id="L67"><a class="ln" href="#L67">67</a><span class="c-libfunc">ʰa̲ngle</span> ← { m s → <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tan2" class="c-libfunc">ᵗʳa̲tan2</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> s }</span>
+<span class="line" id="L68"><a class="ln" href="#L68">68</a></span>
+<span class="line" id="L69"><a class="ln" href="#L69">69</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">a̲part</span> q<span class="c-doc"></span><span class="c-doc">: |p - q| and |p + q|, as a tuple.</span></span>
+<span class="line" id="L70"><a class="ln" href="#L70">70</a><span class="c-libfunc">ʰa̲part</span> ← { p q → (<a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q, <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q) }</span>
+<span class="line" id="L71"><a class="ln" href="#L71">71</a></span>
+<span class="line" id="L72"><a class="ln" href="#L72">72</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>P <span class="c-builtin">a̲partRows</span> p<span class="c-doc"></span><span class="c-doc">: |r - p| and |r + p| for every row r of P.</span></span>
+<span class="line" id="L73"><a class="ln" href="#L73">73</a><span class="c-libfunc">ʰa̲partRows</span> ← { P p →</span>
+<span class="line" id="L74"><a class="ln" href="#L74">74</a>  Q ← ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p         <span class="c-comment">⍝</span><span class="c-comment"> p in every row</span></span>
+<span class="line" id="L75"><a class="ln" href="#L75">75</a>  D ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> Q</span>
+<span class="line" id="L76"><a class="ln" href="#L76">76</a>  S ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2b" class="c-symbol">+</a> Q</span>
+<span class="line" id="L77"><a class="ln" href="#L77">77</a>  (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> D <a href="builtins.html#-2a" class="c-symbol">×</a> D, <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> S <a href="builtins.html#-2a" class="c-symbol">×</a> S)</span>
+<span class="line" id="L78"><a class="ln" href="#L78">78</a>}</span>
+<span class="line" id="L79"><a class="ln" href="#L79">79</a></span>
+<span class="line" id="L80"><a class="ln" href="#L80">80</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">d̲istPairs</span> P<span class="c-doc"></span><span class="c-doc">: |r - r'| for every pair of rows of P, a matrix,</span></span>
+<span class="line" id="L81"><a class="ln" href="#L81">81</a><span class="c-doc">⍝│</span><span class="c-doc"> summed one coordinate at a time.</span></span>
+<span class="line" id="L82"><a class="ln" href="#L82">82</a><span class="c-libfunc">ʰd̲istPairs</span> ← { P →</span>
+<span class="line" id="L83"><a class="ln" href="#L83">83</a>  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P</span>
+<span class="line" id="L84"><a class="ln" href="#L84">84</a>  (D, _) ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <span class="c-quote">'</span>{ (d, k) →</span>
+<span class="line" id="L85"><a class="ln" href="#L85">85</a>    c ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P</span>
+<span class="line" id="L86"><a class="ln" href="#L86">86</a>    (d <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)</span>
+<span class="line" id="L87"><a class="ln" href="#L87">87</a>  } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</span>
+<span class="line" id="L88"><a class="ln" href="#L88">88</a>  <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> D</span>
+<span class="line" id="L89"><a class="ln" href="#L89">89</a>}</span>
+<span class="line" id="L90"><a class="ln" href="#L90">90</a></span>
+<span class="line" id="L91"><a class="ln" href="#L91">91</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">a̲partPairs</span> P<span class="c-doc"></span><span class="c-doc">: |r - r'| and |r + r'| for every pair of rows of</span></span>
+<span class="line" id="L92"><a class="ln" href="#L92">92</a><span class="c-doc">⍝│</span><span class="c-doc"> P, two matrices, summed one coordinate at a time (so no number is</span></span>
+<span class="line" id="L93"><a class="ln" href="#L93">93</a><span class="c-doc">⍝│</span><span class="c-doc"> a difference of nearly equal ones).</span></span>
+<span class="line" id="L94"><a class="ln" href="#L94">94</a><span class="c-libfunc">ʰa̲partPairs</span> ← { P →</span>
+<span class="line" id="L95"><a class="ln" href="#L95">95</a>  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P</span>
+<span class="line" id="L96"><a class="ln" href="#L96">96</a>  zero ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L97"><a class="ln" href="#L97">97</a>  (D, S, _) ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <span class="c-quote">'</span>{ (d, s, k) →</span>
+<span class="line" id="L98"><a class="ln" href="#L98">98</a>    c ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> P</span>
+<span class="line" id="L99"><a class="ln" href="#L99">99</a>    (d <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, s <a href="builtins.html#-2b" class="c-symbol">+</a> (c <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> c) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)</span>
+<span class="line" id="L100"><a class="ln" href="#L100">100</a>  } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (zero, zero, <span class="c-number">1</span>)</span>
+<span class="line" id="L101"><a class="ln" href="#L101">101</a>  (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> D, <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> S)</span>
+<span class="line" id="L102"><a class="ln" href="#L102">102</a>}</span>
+<span class="line" id="L103"><a class="ln" href="#L103">103</a></span>
+<span class="line" id="L104"><a class="ln" href="#L104">104</a><span class="c-heading">⍝━━</span><span class="c-heading"> The unit sphere</span></span>
+<span class="line" id="L105"><a class="ln" href="#L105">105</a></span>
+<span class="line" id="L106"><a class="ln" href="#L106">106</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲phereProject</span> v<span class="c-doc"></span><span class="c-doc">: v put onto the unit sphere, scaled to length 1;</span></span>
+<span class="line" id="L107"><a class="ln" href="#L107">107</a><span class="c-doc">⍝│</span><span class="c-doc"> the direction of v, kept. Given a set (a matrix), every row. The</span></span>
+<span class="line" id="L108"><a class="ln" href="#L108">108</a><span class="c-doc">⍝│</span><span class="c-doc"> zero vector has no direction and is refused.</span></span>
+<span class="line" id="L109"><a class="ln" href="#L109">109</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L110"><a class="ln" href="#L110">110</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereProject 3.0 4.0 0.0</span></span>
+<span class="line" id="L111"><a class="ln" href="#L111">111</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.6 0.8 0.0</span></span>
+<span class="line" id="L112"><a class="ln" href="#L112">112</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereProject 2 3 r_eshape 3.0 4.0 0.0 0.0 0.0 2.0</span></span>
+<span class="line" id="L113"><a class="ln" href="#L113">113</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.6 0.8 0.0</span></span>
+<span class="line" id="L114"><a class="ln" href="#L114">114</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0 1.0</span></span>
+<span class="line" id="L115"><a class="ln" href="#L115">115</a><span class="c-libfunc">ˡs̲phereProject</span> ← { v →</span>
+<span class="line" id="L116"><a class="ln" href="#L116">116</a>  <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v ? <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> v</span>
+<span class="line" id="L117"><a class="ln" href="#L117">117</a>  n ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> v</span>
+<span class="line" id="L118"><a class="ln" href="#L118">118</a>  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the zero vector has no direction: it cannot be put onto the sphere&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the zero vector has no direction: it cannot be put onto the sphere&quot;</span>))</pre></details>
+<span class="line" id="L119"><a class="ln" href="#L119">119</a>  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> n</span>
+<span class="line" id="L120"><a class="ln" href="#L120">120</a>}</span>
+<span class="line" id="L121"><a class="ln" href="#L121">121</a></span>
+<span class="line" id="L122"><a class="ln" href="#L122">122</a><span class="c-doc">⍝│</span><span class="c-doc"> Every row of P put onto the sphere.</span></span>
+<span class="line" id="L123"><a class="ln" href="#L123">123</a><span class="c-libfunc">ʰp̲rojectRows</span> ← { P →</span>
+<span class="line" id="L124"><a class="ln" href="#L124">124</a>  n ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P</span>
+<span class="line" id="L125"><a class="ln" href="#L125">125</a>  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;a zero row has no direction: it cannot be put onto the sphere&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;a zero row has no direction: it cannot be put onto the sphere&quot;</span>))</pre></details>
+<span class="line" id="L126"><a class="ln" href="#L126">126</a>  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P</span>
+<span class="line" id="L127"><a class="ln" href="#L127">127</a>}</span>
+<span class="line" id="L128"><a class="ln" href="#L128">128</a></span>
+<span class="line" id="L129"><a class="ln" href="#L129">129</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">s̲phereDistance</span> q<span class="c-doc"></span><span class="c-doc">: the great-circle distance between two points</span></span>
+<span class="line" id="L130"><a class="ln" href="#L130">130</a><span class="c-doc">⍝│</span><span class="c-doc"> of the sphere, the angle between them in radians (0 to pi): the</span></span>
+<span class="line" id="L131"><a class="ln" href="#L131">131</a><span class="c-doc">⍝│</span><span class="c-doc"> shortest path along the sphere, as against the straight line</span></span>
+<span class="line" id="L132"><a class="ln" href="#L132">132</a><span class="c-doc">⍝│</span><span class="c-doc"> through it, which is shorter (its length is 2 sin of half the</span></span>
+<span class="line" id="L133"><a class="ln" href="#L133">133</a><span class="c-doc">⍝│</span><span class="c-doc"> angle). p and q must be on the sphere (s_phereProject).</span></span>
+<span class="line" id="L134"><a class="ln" href="#L134">134</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L135"><a class="ln" href="#L135">135</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 1.0 0.0 0.0 mf:s_phereDistance 0.0 1.0 0.0</span></span>
+<span class="line" id="L136"><a class="ln" href="#L136">136</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.5707963267948966</span></span>
+<span class="line" id="L137"><a class="ln" href="#L137">137</a><span class="c-libfunc">ˡs̲phereDistance</span> ← { p q → (m, s) ← p <a href="libs-Manifold-src-Manifold.xtl.html#h.a_part" class="c-libfunc">ʰa̲part</a> q◆ m <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> s }</span>
+<span class="line" id="L138"><a class="ln" href="#L138">138</a></span>
+<span class="line" id="L139"><a class="ln" href="#L139">139</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲phereDistances</span> P<span class="c-doc"></span><span class="c-doc">: the great-circle distance between every pair</span></span>
+<span class="line" id="L140"><a class="ln" href="#L140">140</a><span class="c-doc">⍝│</span><span class="c-doc"> of rows of P (points on the sphere): a matrix, 0 on its diagonal.</span></span>
+<span class="line" id="L141"><a class="ln" href="#L141">141</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L142"><a class="ln" href="#L142">142</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereDistances 2 2 r_eshape 1.0 0.0 0.0 1.0</span></span>
+<span class="line" id="L143"><a class="ln" href="#L143">143</a><span class="c-doc">⍝│</span><span class="c-doc">                0.0 1.5707963267948966</span></span>
+<span class="line" id="L144"><a class="ln" href="#L144">144</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.5707963267948966                0.0</span></span>
+<span class="line" id="L145"><a class="ln" href="#L145">145</a><span class="c-libfunc">ˡs̲phereDistances</span> ← { P → (M, S) ← <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partPairs" class="c-libfunc">ʰa̲partPairs</a> P◆ M <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> S }</span>
+<span class="line" id="L146"><a class="ln" href="#L146">146</a></span>
+<span class="line" id="L147"><a class="ln" href="#L147">147</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">s̲phereTangent</span> v<span class="c-doc"></span><span class="c-doc">: the part of v that lies along the sphere at</span></span>
+<span class="line" id="L148"><a class="ln" href="#L148">148</a><span class="c-doc">⍝│</span><span class="c-doc"> p (in the tangent plane there): v less its part along p, the</span></span>
+<span class="line" id="L149"><a class="ln" href="#L149">149</a><span class="c-doc">⍝│</span><span class="c-doc"> normal. A tangent vector at p is one with no part along p. Given</span></span>
+<span class="line" id="L150"><a class="ln" href="#L150">150</a><span class="c-doc">⍝│</span><span class="c-doc"> two sets (matrices), row by row.</span></span>
+<span class="line" id="L151"><a class="ln" href="#L151">151</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L152"><a class="ln" href="#L152">152</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 1.0 0.0 0.0 mf:s_phereTangent 2.0 3.0 0.0</span></span>
+<span class="line" id="L153"><a class="ln" href="#L153">153</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 3.0 0.0</span></span>
+<span class="line" id="L154"><a class="ln" href="#L154">154</a><span class="c-libfunc">ˡs̲phereTangent</span> ← { p v →</span>
+<span class="line" id="L155"><a class="ln" href="#L155">155</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L156"><a class="ln" href="#L156">156</a>  V ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v</span>
+<span class="line" id="L157"><a class="ln" href="#L157">157</a>  v <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> V <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (P, V)) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> P</span>
+<span class="line" id="L158"><a class="ln" href="#L158">158</a>}</span>
+<span class="line" id="L159"><a class="ln" href="#L159">159</a></span>
+<span class="line" id="L160"><a class="ln" href="#L160">160</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">s̲phereStep</span> v<span class="c-doc"></span><span class="c-doc">: the point reached from p by going along the</span></span>
+<span class="line" id="L161"><a class="ln" href="#L161">161</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere in the direction of the tangent vector v, for a distance</span></span>
+<span class="line" id="L162"><a class="ln" href="#L162">162</a><span class="c-doc">⍝│</span><span class="c-doc"> equal to v's length (the exponential map): cos t p + sin t v / t</span></span>
+<span class="line" id="L163"><a class="ln" href="#L163">163</a><span class="c-doc">⍝│</span><span class="c-doc"> with t = |v|, put back onto the sphere so no rounding takes it</span></span>
+<span class="line" id="L164"><a class="ln" href="#L164">164</a><span class="c-doc">⍝│</span><span class="c-doc"> off. A zero v goes nowhere. (A quarter turn from the x axis along</span></span>
+<span class="line" id="L165"><a class="ln" href="#L165">165</a><span class="c-doc">⍝│</span><span class="c-doc"> y lands on the y axis; the x left over is cos of a quarter turn,</span></span>
+<span class="line" id="L166"><a class="ln" href="#L166">166</a><span class="c-doc">⍝│</span><span class="c-doc"> 0 up to the machine's rounding.) Given two sets (matrices), row by</span></span>
+<span class="line" id="L167"><a class="ln" href="#L167">167</a><span class="c-doc">⍝│</span><span class="c-doc"> row.</span></span>
+<span class="line" id="L168"><a class="ln" href="#L168">168</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L169"><a class="ln" href="#L169">169</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 1.0 0.0 0.0 mf:s_phereStep 0.0 1.5707963267948966 0.0</span></span>
+<span class="line" id="L170"><a class="ln" href="#L170">170</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.00000000000000006123233995736766 1.0 0.0</span></span>
+<span class="line" id="L171"><a class="ln" href="#L171">171</a><span class="c-libfunc">ˡs̲phereStep</span> ← { p v →</span>
+<span class="line" id="L172"><a class="ln" href="#L172">172</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L173"><a class="ln" href="#L173">173</a>  V ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v</span>
+<span class="line" id="L174"><a class="ln" href="#L174">174</a>  t ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> V</span>
+<span class="line" id="L175"><a class="ln" href="#L175">175</a>  v <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> t) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> P) <a href="builtins.html#-2b" class="c-symbol">+</a> ((<a href="builtins.html#s_in" class="c-builtin">s̲in</a> t) <a href="builtins.html#-2f" class="c-symbol">÷</a> t <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> V</span>
+<span class="line" id="L176"><a class="ln" href="#L176">176</a>}</span>
+<span class="line" id="L177"><a class="ln" href="#L177">177</a></span>
+<span class="line" id="L178"><a class="ln" href="#L178">178</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">s̲phereArrow</span> q<span class="c-doc"></span><span class="c-doc">: the tangent vector at p that s_phereStep</span></span>
+<span class="line" id="L179"><a class="ln" href="#L179">179</a><span class="c-doc">⍝│</span><span class="c-doc"> carries to q (the logarithmic map): it points along the sphere</span></span>
+<span class="line" id="L180"><a class="ln" href="#L180">180</a><span class="c-doc">⍝│</span><span class="c-doc"> toward q and is as long as the distance between them. For q = p</span></span>
+<span class="line" id="L181"><a class="ln" href="#L181">181</a><span class="c-doc">⍝│</span><span class="c-doc"> it is zero; for q the opposite point, which every direction</span></span>
+<span class="line" id="L182"><a class="ln" href="#L182">182</a><span class="c-doc">⍝│</span><span class="c-doc"> reaches at distance pi, it is zero too (there is no one arrow).</span></span>
+<span class="line" id="L183"><a class="ln" href="#L183">183</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L184"><a class="ln" href="#L184">184</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 1.0 0.0 0.0 mf:s_phereArrow 0.0 1.0 0.0</span></span>
+<span class="line" id="L185"><a class="ln" href="#L185">185</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 1.5707963267948966 0.0</span></span>
+<span class="line" id="L186"><a class="ln" href="#L186">186</a><span class="c-libfunc">ˡs̲phereArrow</span> ← { p q →</span>
+<span class="line" id="L187"><a class="ln" href="#L187">187</a>  u ← p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent" class="c-libfunc">ˡs̲phereTangent</a> q</span>
+<span class="line" id="L188"><a class="ln" href="#L188">188</a>  n ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> u</span>
+<span class="line" id="L189"><a class="ln" href="#L189">189</a>  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? u</span>
+<span class="line" id="L190"><a class="ln" href="#L190">190</a>  (p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistance" class="c-libfunc">ˡs̲phereDistance</a> q) <a href="builtins.html#-2a" class="c-symbol">×</a> u <a href="builtins.html#-2f" class="c-symbol">÷</a> n</span>
+<span class="line" id="L191"><a class="ln" href="#L191">191</a>}</span>
+<span class="line" id="L192"><a class="ln" href="#L192">192</a></span>
+<span class="line" id="L193"><a class="ln" href="#L193">193</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">s̲phereRetract</span> v<span class="c-doc"></span><span class="c-doc">: the point reached from p by adding the tangent</span></span>
+<span class="line" id="L194"><a class="ln" href="#L194">194</a><span class="c-doc">⍝│</span><span class="c-doc"> vector v and scaling back to length 1: the cheap step (a</span></span>
+<span class="line" id="L195"><a class="ln" href="#L195">195</a><span class="c-doc">⍝│</span><span class="c-doc"> retraction), which agrees with s_phereStep for small v (the two</span></span>
+<span class="line" id="L196"><a class="ln" href="#L196">196</a><span class="c-doc">⍝│</span><span class="c-doc"> differ by about |v|^3 / 3) and costs no sine or cosine. A zero v</span></span>
+<span class="line" id="L197"><a class="ln" href="#L197">197</a><span class="c-doc">⍝│</span><span class="c-doc"> goes nowhere. Given two sets (matrices), row by row.</span></span>
+<span class="line" id="L198"><a class="ln" href="#L198">198</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L199"><a class="ln" href="#L199">199</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 1.0 0.0 0.0 mf:s_phereRetract 0.0 1.0 0.0</span></span>
+<span class="line" id="L200"><a class="ln" href="#L200">200</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.7071067811865475 0.7071067811865475 0.0</span></span>
+<span class="line" id="L201"><a class="ln" href="#L201">201</a><span class="c-libfunc">ˡs̲phereRetract</span> ← { p v → v <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v }</span>
+<span class="line" id="L202"><a class="ln" href="#L202">202</a></span>
+<span class="line" id="L203"><a class="ln" href="#L203">203</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>lr <span class="c-builtin">s̲phereDescend</span> (p, g)<span class="c-doc"></span><span class="c-doc">: one gradient step that stays on the</span></span>
+<span class="line" id="L204"><a class="ln" href="#L204">204</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere: from the point p, against the gradient g of a loss (the</span></span>
+<span class="line" id="L205"><a class="ln" href="#L205">205</a><span class="c-doc">⍝│</span><span class="c-doc"> plain gradient in the room), at the rate lr: g's part along the</span></span>
+<span class="line" id="L206"><a class="ln" href="#L206">206</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere at p (s_phereTangent, the Riemannian gradient on the unit</span></span>
+<span class="line" id="L207"><a class="ln" href="#L207">207</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere), then s_phereStep from p along -lr times it. Nothing is</span></span>
+<span class="line" id="L208"><a class="ln" href="#L208">208</a><span class="c-doc">⍝│</span><span class="c-doc"> repaired afterward: the step lands on the sphere. A gradient with</span></span>
+<span class="line" id="L209"><a class="ln" href="#L209">209</a><span class="c-doc">⍝│</span><span class="c-doc"> no part along the sphere (one along p) goes nowhere. Given sets</span></span>
+<span class="line" id="L210"><a class="ln" href="#L210">210</a><span class="c-doc">⍝│</span><span class="c-doc"> (matrices), row by row.</span></span>
+<span class="line" id="L211"><a class="ln" href="#L211">211</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L212"><a class="ln" href="#L212">212</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.5 mf:s_phereDescend (1.0 0.0 0.0, 2.0 -2.0 0.0)</span></span>
+<span class="line" id="L213"><a class="ln" href="#L213">213</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5403023058681398 0.8414709848078965 0.0</span></span>
+<span class="line" id="L214"><a class="ln" href="#L214">214</a><span class="c-libfunc">ˡs̲phereDescend</span> ← { lr (p, g) → p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ˡs̲phereStep</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> lr) <a href="builtins.html#-2a" class="c-symbol">×</a> p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereTangent" class="c-libfunc">ˡs̲phereTangent</a> g }</span>
+<span class="line" id="L215"><a class="ln" href="#L215">215</a></span>
+<span class="line" id="L216"><a class="ln" href="#L216">216</a><span class="c-doc">⍝│</span><span class="c-doc"> The arrows at p to every row of P, one per row (s_phereArrow, over</span></span>
+<span class="line" id="L217"><a class="ln" href="#L217">217</a><span class="c-doc">⍝│</span><span class="c-doc"> a set at once): the mean's one step.</span></span>
+<span class="line" id="L218"><a class="ln" href="#L218">218</a><span class="c-libfunc">ʰa̲rrows</span> ← { p P →</span>
+<span class="line" id="L219"><a class="ln" href="#L219">219</a>  c ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L220"><a class="ln" href="#L220">220</a>  U ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> c <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L221"><a class="ln" href="#L221">221</a>  n ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> U <a href="builtins.html#-2a" class="c-symbol">×</a> U</span>
+<span class="line" id="L222"><a class="ln" href="#L222">222</a>  (m, s) ← P <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partRows" class="c-libfunc">ʰa̲partRows</a> p</span>
+<span class="line" id="L223"><a class="ln" href="#L223">223</a>  ((m <a href="libs-Manifold-src-Manifold.xtl.html#h.a_ngle" class="c-libfunc">ʰa̲ngle</a> s) <a href="builtins.html#-2f" class="c-symbol">÷</a> n <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> U</span>
+<span class="line" id="L224"><a class="ln" href="#L224">224</a>}</span>
+<span class="line" id="L225"><a class="ln" href="#L225">225</a></span>
+<span class="line" id="L226"><a class="ln" href="#L226">226</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲phereMean</span> P<span class="c-doc"></span><span class="c-doc">: the mean of the rows of P on the sphere (the</span></span>
+<span class="line" id="L227"><a class="ln" href="#L227">227</a><span class="c-doc">⍝│</span><span class="c-doc"> Frechet or Karcher mean): the point whose summed squared distances</span></span>
+<span class="line" id="L228"><a class="ln" href="#L228">228</a><span class="c-doc">⍝│</span><span class="c-doc"> along the sphere to the rows is least. The plain mean of the rows</span></span>
+<span class="line" id="L229"><a class="ln" href="#L229">229</a><span class="c-doc">⍝│</span><span class="c-doc"> lies inside the sphere; this starts from that mean put onto the</span></span>
+<span class="line" id="L230"><a class="ln" href="#L230">230</a><span class="c-doc">⍝│</span><span class="c-doc"> sphere and takes 30 steps, each along the average of the arrows</span></span>
+<span class="line" id="L231"><a class="ln" href="#L231">231</a><span class="c-doc">⍝│</span><span class="c-doc"> to the rows, which is a fixed point when the arrows cancel. Points</span></span>
+<span class="line" id="L232"><a class="ln" href="#L232">232</a><span class="c-doc">⍝│</span><span class="c-doc"> spread over less than a hemisphere have one mean, and the steps</span></span>
+<span class="line" id="L233"><a class="ln" href="#L233">233</a><span class="c-doc">⍝│</span><span class="c-doc"> reach it; rows whose plain mean is the zero vector (say, two</span></span>
+<span class="line" id="L234"><a class="ln" href="#L234">234</a><span class="c-doc">⍝│</span><span class="c-doc"> opposite points) are refused.</span></span>
+<span class="line" id="L235"><a class="ln" href="#L235">235</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L236"><a class="ln" href="#L236">236</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereMean 2 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0</span></span>
+<span class="line" id="L237"><a class="ln" href="#L237">237</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.7071067811865476 0.7071067811865476 0.0</span></span>
+<span class="line" id="L238"><a class="ln" href="#L238">238</a><span class="c-libfunc">ˡs̲phereMean</span> ← { P →</span>
+<span class="line" id="L239"><a class="ln" href="#L239">239</a>  n ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P</span>
+<span class="line" id="L240"><a class="ln" href="#L240">240</a>  start ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereProject" class="c-libfunc">ˡs̲phereProject</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n</span>
+<span class="line" id="L241"><a class="ln" href="#L241">241</a>  <span class="c-number">30</span> <span class="c-quote">'</span>{ p → p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereStep" class="c-libfunc">ˡs̲phereStep</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> p <a href="libs-Manifold-src-Manifold.xtl.html#h.a_rrows" class="c-libfunc">ʰa̲rrows</a> P) <a href="builtins.html#-2f" class="c-symbol">÷</a> n } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> start</span>
+<span class="line" id="L242"><a class="ln" href="#L242">242</a>}</span>
+<span class="line" id="L243"><a class="ln" href="#L243">243</a></span>
+<span class="line" id="L244"><a class="ln" href="#L244">244</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲phereOff</span> p<span class="c-doc"></span><span class="c-doc">: how far p is from the sphere: the difference</span></span>
+<span class="line" id="L245"><a class="ln" href="#L245">245</a><span class="c-doc">⍝│</span><span class="c-doc"> between its length and 1, as a size. 0 for a point on it; what a</span></span>
+<span class="line" id="L246"><a class="ln" href="#L246">246</a><span class="c-doc">⍝│</span><span class="c-doc"> test of a constraint reports. Given a set (a matrix), one per row.</span></span>
+<span class="line" id="L247"><a class="ln" href="#L247">247</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L248"><a class="ln" href="#L248">248</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereOff 0.0 0.5 0.0</span></span>
+<span class="line" id="L249"><a class="ln" href="#L249">249</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5</span></span>
+<span class="line" id="L250"><a class="ln" href="#L250">250</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_phereOff 2 2 r_eshape 0.0 0.5 3.0 4.0</span></span>
+<span class="line" id="L251"><a class="ln" href="#L251">251</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5 4.0</span></span>
+<span class="line" id="L252"><a class="ln" href="#L252">252</a><span class="c-libfunc">ˡs̲phereOff</span> ← { p →</span>
+<span class="line" id="L253"><a class="ln" href="#L253">253</a>  <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L254"><a class="ln" href="#L254">254</a>  <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L255"><a class="ln" href="#L255">255</a>}</span>
+<span class="line" id="L256"><a class="ln" href="#L256">256</a></span>
+<span class="line" id="L257"><a class="ln" href="#L257">257</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>k <span class="c-builtin">c̲oordinate</span> p<span class="c-doc"></span><span class="c-doc">: the k-th coordinate of a point, or the k-th</span></span>
+<span class="line" id="L258"><a class="ln" href="#L258">258</a><span class="c-doc">⍝│</span><span class="c-doc"> column of a set of points (a matrix), as Floats.</span></span>
+<span class="line" id="L259"><a class="ln" href="#L259">259</a><span class="c-libfunc">ʰc̲oordinate</span> ← { k p → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> p◆ <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p }</span>
+<span class="line" id="L260"><a class="ln" href="#L260">260</a></span>
+<span class="line" id="L261"><a class="ln" href="#L261">261</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">c̲olumns</span> M<span class="c-doc"></span><span class="c-doc">: the columns of a (rows x n) matrix given as one vector</span></span>
+<span class="line" id="L262"><a class="ln" href="#L262">262</a><span class="c-doc">⍝│</span><span class="c-doc"> of n columns laid end to end, back as the matrix: the transpose of</span></span>
+<span class="line" id="L263"><a class="ln" href="#L263">263</a><span class="c-doc">⍝│</span><span class="c-doc"> the n x rows reshape. For writing a set of points coordinate by</span></span>
+<span class="line" id="L264"><a class="ln" href="#L264">264</a><span class="c-doc">⍝│</span><span class="c-doc"> coordinate.</span></span>
+<span class="line" id="L265"><a class="ln" href="#L265">265</a><span class="c-libfunc">ʰc̲olumns</span> ← { n v → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> v }</span>
+<span class="line" id="L266"><a class="ln" href="#L266">266</a></span>
+<span class="line" id="L267"><a class="ln" href="#L267">267</a><span class="c-heading">⍝━━</span><span class="c-heading"> The sphere, drawn</span></span>
+<span class="line" id="L268"><a class="ln" href="#L268">268</a></span>
+<span class="line" id="L269"><a class="ln" href="#L269">269</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲pherePoints</span> LL<span class="c-doc"></span><span class="c-doc">: the point of the unit sphere at each</span></span>
+<span class="line" id="L270"><a class="ln" href="#L270">270</a><span class="c-doc">⍝│</span><span class="c-doc"> (longitude, latitude) row of LL, in radians (longitude round the</span></span>
+<span class="line" id="L271"><a class="ln" href="#L271">271</a><span class="c-doc">⍝│</span><span class="c-doc"> z axis from the x axis, latitude up from the equator): one row</span></span>
+<span class="line" id="L272"><a class="ln" href="#L272">272</a><span class="c-doc">⍝│</span><span class="c-doc"> (x, y, z) per row of LL. These are the sphere's map: a parallel is</span></span>
+<span class="line" id="L273"><a class="ln" href="#L273">273</a><span class="c-doc">⍝│</span><span class="c-doc"> rows of one latitude and many longitudes, a meridian rows of one</span></span>
+<span class="line" id="L274"><a class="ln" href="#L274">274</a><span class="c-doc">⍝│</span><span class="c-doc"> longitude. (A quarter turn of latitude is the pole: its x is cos</span></span>
+<span class="line" id="L275"><a class="ln" href="#L275">275</a><span class="c-doc">⍝│</span><span class="c-doc"> of a quarter turn, 0 up to the machine's rounding.)</span></span>
+<span class="line" id="L276"><a class="ln" href="#L276">276</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L277"><a class="ln" href="#L277">277</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:s_pherePoints 2 2 r_eshape 0.0 0.0 0.0 1.5707963267948966</span></span>
+<span class="line" id="L278"><a class="ln" href="#L278">278</a><span class="c-doc">⍝│</span><span class="c-doc">                                1.0 0.0 0.0</span></span>
+<span class="line" id="L279"><a class="ln" href="#L279">279</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.00000000000000006123233995736766 0.0 1.0</span></span>
+<span class="line" id="L280"><a class="ln" href="#L280">280</a><span class="c-libfunc">ˡs̲pherePoints</span> ← { LL →</span>
+<span class="line" id="L281"><a class="ln" href="#L281">281</a>  lon ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> LL</span>
+<span class="line" id="L282"><a class="ln" href="#L282">282</a>  lat ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> LL</span>
+<span class="line" id="L283"><a class="ln" href="#L283">283</a>  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> lat) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> lon) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> lat) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> lon) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> lat</span>
+<span class="line" id="L284"><a class="ln" href="#L284">284</a>}</span>
+<span class="line" id="L285"><a class="ln" href="#L285">285</a></span>
+<span class="line" id="L286"><a class="ln" href="#L286">286</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">s̲phereWires</span> (p, m, n)<span class="c-doc"></span><span class="c-doc">: the wire lines that show where the sphere</span></span>
+<span class="line" id="L287"><a class="ln" href="#L287">287</a><span class="c-doc">⍝│</span><span class="c-doc"> is in a picture: p parallels (circles of latitude, evenly spaced</span></span>
+<span class="line" id="L288"><a class="ln" href="#L288">288</a><span class="c-doc">⍝│</span><span class="c-doc"> between the poles, the poles left out) and m meridians (half</span></span>
+<span class="line" id="L289"><a class="ln" href="#L289">289</a><span class="c-doc">⍝│</span><span class="c-doc"> circles of longitude from pole to pole, evenly spaced round), each</span></span>
+<span class="line" id="L290"><a class="ln" href="#L290">290</a><span class="c-doc">⍝│</span><span class="c-doc"> as n + 1 points along it; (parallels, meridians), two matrices of</span></span>
+<span class="line" id="L291"><a class="ln" href="#L291">291</a><span class="c-doc">⍝│</span><span class="c-doc"> points, one line after another, p (n + 1) and m (n + 1) rows.</span></span>
+<span class="line" id="L292"><a class="ln" href="#L292">292</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L293"><a class="ln" href="#L293">293</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (P, M) := mf:s_phereWires (5, 12, 24)</span></span>
+<span class="line" id="L294"><a class="ln" href="#L294">294</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (s_hape P) c_at s_hape M</span></span>
+<span class="line" id="L295"><a class="ln" href="#L295">295</a><span class="c-doc">⍝│</span><span class="c-doc"> 125 3 300 3</span></span>
+<span class="line" id="L296"><a class="ln" href="#L296">296</a><span class="c-libfunc">ˡs̲phereWires</span> ← { (p, m, n) →</span>
+<span class="line" id="L297"><a class="ln" href="#L297">297</a>  plats ← ((<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span></span>
+<span class="line" id="L298"><a class="ln" href="#L298">298</a>  plons ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L299"><a class="ln" href="#L299">299</a>  mlons ← ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> m) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L300"><a class="ln" href="#L300">300</a>  mlats ← ((<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span></span>
+<span class="line" id="L301"><a class="ln" href="#L301">301</a>  parallels ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ˡs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> p <a href="builtins.html#-2a" class="c-symbol">×</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> plats) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> plons) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> plats <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> plons</span>
+<span class="line" id="L302"><a class="ln" href="#L302">302</a>  meridians ← <a href="libs-Manifold-src-Manifold.xtl.html#l.s_pherePoints" class="c-libfunc">ˡs̲pherePoints</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#-2a" class="c-symbol">×</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> mlons <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> mlats) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> mlons) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> mlats</span>
+<span class="line" id="L303"><a class="ln" href="#L303">303</a>  (parallels, meridians)</span>
+<span class="line" id="L304"><a class="ln" href="#L304">304</a>}</span>
+<span class="line" id="L305"><a class="ln" href="#L305">305</a></span>
+<span class="line" id="L306"><a class="ln" href="#L306">306</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>(p, q) <span class="c-builtin">s̲phereArc</span> n<span class="c-doc"></span><span class="c-doc">: n + 1 points along the great circle from p</span></span>
+<span class="line" id="L307"><a class="ln" href="#L307">307</a><span class="c-doc">⍝│</span><span class="c-doc"> to q (both on the sphere), p first and q last, evenly spaced along</span></span>
+<span class="line" id="L308"><a class="ln" href="#L308">308</a><span class="c-doc">⍝│</span><span class="c-doc"> it: the points s_phereStep reaches from p along 0, 1/n, ..., 1 of</span></span>
+<span class="line" id="L309"><a class="ln" href="#L309">309</a><span class="c-doc">⍝│</span><span class="c-doc"> the arrow to q. For q = p, or q the opposite point (no one arc),</span></span>
+<span class="line" id="L310"><a class="ln" href="#L310">310</a><span class="c-doc">⍝│</span><span class="c-doc"> every point is p.</span></span>
+<span class="line" id="L311"><a class="ln" href="#L311">311</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L312"><a class="ln" href="#L312">312</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (1.0 0.0 0.0, 0.0 1.0 0.0) mf:s_phereArc 2</span></span>
+<span class="line" id="L313"><a class="ln" href="#L313">313</a><span class="c-doc">⍝│</span><span class="c-doc">                                1.0                0.0 0.0</span></span>
+<span class="line" id="L314"><a class="ln" href="#L314">314</a><span class="c-doc">⍝│</span><span class="c-doc">                 0.7071067811865476 0.7071067811865475 0.0</span></span>
+<span class="line" id="L315"><a class="ln" href="#L315">315</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.00000000000000006123233995736766                1.0 0.0</span></span>
+<span class="line" id="L316"><a class="ln" href="#L316">316</a><span class="c-libfunc">ˡs̲phereArc</span> ← { (p, q) n →</span>
+<span class="line" id="L317"><a class="ln" href="#L317">317</a>  v ← p <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereArrow" class="c-libfunc">ˡs̲phereArrow</a> q</span>
+<span class="line" id="L318"><a class="ln" href="#L318">318</a>  t ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> v</span>
+<span class="line" id="L319"><a class="ln" href="#L319">319</a>  rows ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L320"><a class="ln" href="#L320">320</a>  t <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? rows <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L321"><a class="ln" href="#L321">321</a>  T ← (t <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L322"><a class="ln" href="#L322">322</a>  <a href="libs-Manifold-src-Manifold.xtl.html#h.p_rojectRows" class="c-libfunc">ʰp̲rojectRows</a> ((<a href="builtins.html#c_os" class="c-builtin">c̲os</a> T) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> T) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> v <a href="builtins.html#-2f" class="c-symbol">÷</a> t</span>
+<span class="line" id="L323"><a class="ln" href="#L323">323</a>}</span>
+<span class="line" id="L324"><a class="ln" href="#L324">324</a></span>
+<span class="line" id="L325"><a class="ln" href="#L325">325</a><span class="c-heading">⍝━━</span><span class="c-heading"> The circle</span></span>
+<span class="line" id="L326"><a class="ln" href="#L326">326</a></span>
+<span class="line" id="L327"><a class="ln" href="#L327">327</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">c̲irclePoints</span> A<span class="c-doc"></span><span class="c-doc">: the point of the unit circle at each angle of A</span></span>
+<span class="line" id="L328"><a class="ln" href="#L328">328</a><span class="c-doc">⍝│</span><span class="c-doc"> (radians from the x axis, counterclockwise): one row (x, y) per</span></span>
+<span class="line" id="L329"><a class="ln" href="#L329">329</a><span class="c-doc">⍝│</span><span class="c-doc"> angle. The circle is the sphere of one dimension, the unit sphere</span></span>
+<span class="line" id="L330"><a class="ln" href="#L330">330</a><span class="c-doc">⍝│</span><span class="c-doc"> in two: s_phereProject puts a point onto it, s_phereDistance</span></span>
+<span class="line" id="L331"><a class="ln" href="#L331">331</a><span class="c-doc">⍝│</span><span class="c-doc"> measures along it (the angle between two points), s_phereArc draws</span></span>
+<span class="line" id="L332"><a class="ln" href="#L332">332</a><span class="c-doc">⍝│</span><span class="c-doc"> between them.</span></span>
+<span class="line" id="L333"><a class="ln" href="#L333">333</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L334"><a class="ln" href="#L334">334</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:c_irclePoints 0.0 3.141592653589793</span></span>
+<span class="line" id="L335"><a class="ln" href="#L335">335</a><span class="c-doc">⍝│</span><span class="c-doc">  1.0                                0.0</span></span>
+<span class="line" id="L336"><a class="ln" href="#L336">336</a><span class="c-doc">⍝│</span><span class="c-doc"> -1.0 0.00000000000000012246467991473532</span></span>
+<span class="line" id="L337"><a class="ln" href="#L337">337</a><span class="c-libfunc">ˡc̲irclePoints</span> ← { A → a ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> A◆ <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (<a href="builtins.html#c_os" class="c-builtin">c̲os</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> a }</span>
+<span class="line" id="L338"><a class="ln" href="#L338">338</a></span>
+<span class="line" id="L339"><a class="ln" href="#L339">339</a><span class="c-heading">⍝━━</span><span class="c-heading"> The torus</span></span>
+<span class="line" id="L340"><a class="ln" href="#L340">340</a></span>
+<span class="line" id="L341"><a class="ln" href="#L341">341</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>radii <span class="c-builtin">t̲orusPoints</span> UV<span class="c-doc"></span><span class="c-doc">: the point of the torus of radii R r (R</span></span>
+<span class="line" id="L342"><a class="ln" href="#L342">342</a><span class="c-doc">⍝│</span><span class="c-doc"> from the middle of the hole to the middle of the tube, r the</span></span>
+<span class="line" id="L343"><a class="ln" href="#L343">343</a><span class="c-doc">⍝│</span><span class="c-doc"> tube's) at each (u, v) row of UV, in radians (u round the hole, v</span></span>
+<span class="line" id="L344"><a class="ln" href="#L344">344</a><span class="c-doc">⍝│</span><span class="c-doc"> round the tube): ((R + r cos v) cos u, (R + r cos v) sin u,</span></span>
+<span class="line" id="L345"><a class="ln" href="#L345">345</a><span class="c-doc">⍝│</span><span class="c-doc"> r sin v), one row per row of UV. The torus's map is the (u, v)</span></span>
+<span class="line" id="L346"><a class="ln" href="#L346">346</a><span class="c-doc">⍝│</span><span class="c-doc"> rectangle, 0 to 2 pi each way, each pair of opposite edges joined.</span></span>
+<span class="line" id="L347"><a class="ln" href="#L347">347</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L348"><a class="ln" href="#L348">348</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 3.0 1.0 mf:t_orusPoints 2 2 r_eshape 0.0 0.0 0.0 3.141592653589793</span></span>
+<span class="line" id="L349"><a class="ln" href="#L349">349</a><span class="c-doc">⍝│</span><span class="c-doc"> 4.0 0.0                                0.0</span></span>
+<span class="line" id="L350"><a class="ln" href="#L350">350</a><span class="c-doc">⍝│</span><span class="c-doc"> 2.0 0.0 0.00000000000000012246467991473532</span></span>
+<span class="line" id="L351"><a class="ln" href="#L351">351</a><span class="c-libfunc">ˡt̲orusPoints</span> ← { radii UV →</span>
+<span class="line" id="L352"><a class="ln" href="#L352">352</a>  R ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii</span>
+<span class="line" id="L353"><a class="ln" href="#L353">353</a>  r ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii</span>
+<span class="line" id="L354"><a class="ln" href="#L354">354</a>  u ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> UV</span>
+<span class="line" id="L355"><a class="ln" href="#L355">355</a>  v ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> UV</span>
+<span class="line" id="L356"><a class="ln" href="#L356">356</a>  w ← R <a href="builtins.html#-2b" class="c-symbol">+</a> r <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> v</span>
+<span class="line" id="L357"><a class="ln" href="#L357">357</a>  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (w <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> u) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (w <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> u) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> r <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> v</span>
+<span class="line" id="L358"><a class="ln" href="#L358">358</a>}</span>
+<span class="line" id="L359"><a class="ln" href="#L359">359</a></span>
+<span class="line" id="L360"><a class="ln" href="#L360">360</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>radii <span class="c-builtin">t̲orusOff</span> p<span class="c-doc"></span><span class="c-doc">: how far p is from the torus of radii R r: the</span></span>
+<span class="line" id="L361"><a class="ln" href="#L361">361</a><span class="c-doc">⍝│</span><span class="c-doc"> distance from p to the circle through the middle of the tube, less</span></span>
+<span class="line" id="L362"><a class="ln" href="#L362">362</a><span class="c-doc">⍝│</span><span class="c-doc"> r, as a size. 0 for a point on it. Given a set (a matrix), one per</span></span>
+<span class="line" id="L363"><a class="ln" href="#L363">363</a><span class="c-doc">⍝│</span><span class="c-doc"> row.</span></span>
+<span class="line" id="L364"><a class="ln" href="#L364">364</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L365"><a class="ln" href="#L365">365</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 3.0 1.0 mf:t_orusOff 0.0 0.0 0.0</span></span>
+<span class="line" id="L366"><a class="ln" href="#L366">366</a><span class="c-doc">⍝│</span><span class="c-doc"> 2.0</span></span>
+<span class="line" id="L367"><a class="ln" href="#L367">367</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 3.0 1.0 mf:t_orusOff 2 3 r_eshape 4.0 0.0 0.0 3.0 0.0 0.0</span></span>
+<span class="line" id="L368"><a class="ln" href="#L368">368</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 1.0</span></span>
+<span class="line" id="L369"><a class="ln" href="#L369">369</a><span class="c-libfunc">ˡt̲orusOff</span> ← { radii p →</span>
+<span class="line" id="L370"><a class="ln" href="#L370">370</a>  R ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii</span>
+<span class="line" id="L371"><a class="ln" href="#L371">371</a>  r ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radii</span>
+<span class="line" id="L372"><a class="ln" href="#L372">372</a>  x ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p</span>
+<span class="line" id="L373"><a class="ln" href="#L373">373</a>  y ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p</span>
+<span class="line" id="L374"><a class="ln" href="#L374">374</a>  z ← <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> p</span>
+<span class="line" id="L375"><a class="ln" href="#L375">375</a>  rho ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (x <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#-2b" class="c-symbol">+</a> y <a href="builtins.html#-2a" class="c-symbol">×</a> y</span>
+<span class="line" id="L376"><a class="ln" href="#L376">376</a>  <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> ((rho <a href="builtins.html#-2d" class="c-symbol">−</a> R) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> z <a href="builtins.html#-2a" class="c-symbol">×</a> z) <a href="builtins.html#-2d" class="c-symbol">−</a> r</span>
+<span class="line" id="L377"><a class="ln" href="#L377">377</a>}</span>
+<span class="line" id="L378"><a class="ln" href="#L378">378</a></span>
+<span class="line" id="L379"><a class="ln" href="#L379">379</a><span class="c-heading">⍝━━</span><span class="c-heading"> The Swiss roll</span></span>
+<span class="line" id="L380"><a class="ln" href="#L380">380</a></span>
+<span class="line" id="L381"><a class="ln" href="#L381">381</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">r̲ollPoints</span> TH<span class="c-doc"></span><span class="c-doc">: the point of the Swiss roll at each (t, h) row of</span></span>
+<span class="line" id="L382"><a class="ln" href="#L382">382</a><span class="c-doc">⍝│</span><span class="c-doc"> TH: (t cos t, h, t sin t). The roll is a flat sheet rolled up:</span></span>
+<span class="line" id="L383"><a class="ln" href="#L383">383</a><span class="c-doc">⍝│</span><span class="c-doc"> along t it winds round the y axis, farther out with every turn (a</span></span>
+<span class="line" id="L384"><a class="ln" href="#L384">384</a><span class="c-doc">⍝│</span><span class="c-doc"> spiral whose radius is t); along h it runs straight up the axis.</span></span>
+<span class="line" id="L385"><a class="ln" href="#L385">385</a><span class="c-doc">⍝│</span><span class="c-doc"> Its map is the sheet itself, the rectangle of (r_ollAlong t, h).</span></span>
+<span class="line" id="L386"><a class="ln" href="#L386">386</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L387"><a class="ln" href="#L387">387</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:r_ollPoints 2 2 r_eshape 0.0 0.0 3.141592653589793 1.0</span></span>
+<span class="line" id="L388"><a class="ln" href="#L388">388</a><span class="c-doc">⍝│</span><span class="c-doc">                0.0 0.0                                0.0</span></span>
+<span class="line" id="L389"><a class="ln" href="#L389">389</a><span class="c-doc">⍝│</span><span class="c-doc"> -3.141592653589793 1.0 0.00000000000000038473413874435795</span></span>
+<span class="line" id="L390"><a class="ln" href="#L390">390</a><span class="c-libfunc">ˡr̲ollPoints</span> ← { TH →</span>
+<span class="line" id="L391"><a class="ln" href="#L391">391</a>  t ← <span class="c-number">1</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> TH</span>
+<span class="line" id="L392"><a class="ln" href="#L392">392</a>  h ← <span class="c-number">2</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_oordinate" class="c-libfunc">ʰc̲oordinate</a> TH</span>
+<span class="line" id="L393"><a class="ln" href="#L393">393</a>  <span class="c-number">3</span> <a href="libs-Manifold-src-Manifold.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> (t <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> t) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> h <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> t</span>
+<span class="line" id="L394"><a class="ln" href="#L394">394</a>}</span>
+<span class="line" id="L395"><a class="ln" href="#L395">395</a></span>
+<span class="line" id="L396"><a class="ln" href="#L396">396</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">r̲ollAlong</span> t<span class="c-doc"></span><span class="c-doc">: the length of the roll's spiral from its middle</span></span>
+<span class="line" id="L397"><a class="ln" href="#L397">397</a><span class="c-doc">⍝│</span><span class="c-doc"> (t = 0) out to t, (t sqrt(1 + t^2) + asinh t) / 2: how far along</span></span>
+<span class="line" id="L398"><a class="ln" href="#L398">398</a><span class="c-doc">⍝│</span><span class="c-doc"> the unrolled sheet the points at t lie. Its map's first coordinate.</span></span>
+<span class="line" id="L399"><a class="ln" href="#L399">399</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L400"><a class="ln" href="#L400">400</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:r_ollAlong 0.0 1.0</span></span>
+<span class="line" id="L401"><a class="ln" href="#L401">401</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 1.147793574696319</span></span>
+<span class="line" id="L402"><a class="ln" href="#L402">402</a><span class="c-libfunc">ˡr̲ollAlong</span> ← { t → x ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> t◆ ((x <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> x <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sinh" class="c-libfunc">ᵗʳa̲sinh</a> x) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> }</span>
+<span class="line" id="L403"><a class="ln" href="#L403">403</a></span>
+<span class="line" id="L404"><a class="ln" href="#L404">404</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>a <span class="c-builtin">r̲ollDistance</span> b<span class="c-doc"></span><span class="c-doc">: the distance along the sheet between the</span></span>
+<span class="line" id="L405"><a class="ln" href="#L405">405</a><span class="c-doc">⍝│</span><span class="c-doc"> points of the roll at (t, h) a and b. The sheet is flat, so it is</span></span>
+<span class="line" id="L406"><a class="ln" href="#L406">406</a><span class="c-doc">⍝│</span><span class="c-doc"> the plain distance between the two unrolled,</span></span>
+<span class="line" id="L407"><a class="ln" href="#L407">407</a><span class="c-doc">⍝│</span><span class="c-doc"> sqrt((along a - along b)^2 + (h_a - h_b)^2): two points a turn</span></span>
+<span class="line" id="L408"><a class="ln" href="#L408">408</a><span class="c-doc">⍝│</span><span class="c-doc"> apart are near in three dimensions and far along the sheet.</span></span>
+<span class="line" id="L409"><a class="ln" href="#L409">409</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L410"><a class="ln" href="#L410">410</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.0 0.0 mf:r_ollDistance 1.0 0.0</span></span>
+<span class="line" id="L411"><a class="ln" href="#L411">411</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.147793574696319</span></span>
+<span class="line" id="L412"><a class="ln" href="#L412">412</a><span class="c-libfunc">ˡr̲ollDistance</span> ← { a b →</span>
+<span class="line" id="L413"><a class="ln" href="#L413">413</a>  da ← (<a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ˡr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.r_ollAlong" class="c-libfunc">ˡr̲ollAlong</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> b</span>
+<span class="line" id="L414"><a class="ln" href="#L414">414</a>  dh ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> b</span>
+<span class="line" id="L415"><a class="ln" href="#L415">415</a>  <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (da <a href="builtins.html#-2a" class="c-symbol">×</a> da) <a href="builtins.html#-2b" class="c-symbol">+</a> dh <a href="builtins.html#-2a" class="c-symbol">×</a> dh</span>
+<span class="line" id="L416"><a class="ln" href="#L416">416</a>}</span>
+<span class="line" id="L417"><a class="ln" href="#L417">417</a></span>
+<span class="line" id="L418"><a class="ln" href="#L418">418</a><span class="c-heading">⍝━━</span><span class="c-heading"> The Poincare ball</span></span>
+<span class="line" id="L419"><a class="ln" href="#L419">419</a></span>
+<span class="line" id="L420"><a class="ln" href="#L420">420</a><span class="c-doc">⍝│</span><span class="c-doc"> The Poincare ball is the inside of the unit sphere (|p| &lt; 1; in two</span></span>
+<span class="line" id="L421"><a class="ln" href="#L421">421</a><span class="c-doc">⍝│</span><span class="c-doc"> dimensions the Poincare disk) with the hyperbolic metric: at p a</span></span>
+<span class="line" id="L422"><a class="ln" href="#L422">422</a><span class="c-doc">⍝│</span><span class="c-doc"> vector is lambda = 2 / (1 - |p|^2) times as long as it looks, so</span></span>
+<span class="line" id="L423"><a class="ln" href="#L423">423</a><span class="c-doc">⍝│</span><span class="c-doc"> lengths grow without bound toward the rim, and the rim is never</span></span>
+<span class="line" id="L424"><a class="ln" href="#L424">424</a><span class="c-doc">⍝│</span><span class="c-doc"> reached. Its curvature is -1 everywhere. The formulas are Ganea,</span></span>
+<span class="line" id="L425"><a class="ln" href="#L425">425</a><span class="c-doc">⍝│</span><span class="c-doc"> Becigneul and Hofmann's (2018), at their c = 1, with Nickel and</span></span>
+<span class="line" id="L426"><a class="ln" href="#L426">426</a><span class="c-doc">⍝│</span><span class="c-doc"> Kiela's (2017) distance; docs/papers.md has the rows. Points are</span></span>
+<span class="line" id="L427"><a class="ln" href="#L427">427</a><span class="c-doc">⍝│</span><span class="c-doc"> kept to the radius 1 - 1e-5 (b_allProject), as both papers do: at</span></span>
+<span class="line" id="L428"><a class="ln" href="#L428">428</a><span class="c-doc">⍝│</span><span class="c-doc"> the rim itself the metric is infinite.</span></span>
+<span class="line" id="L429"><a class="ln" href="#L429">429</a></span>
+<span class="line" id="L430"><a class="ln" href="#L430">430</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>u <span class="c-builtin">m̲obius</span> v<span class="c-doc"></span><span class="c-doc">: Mobius addition, the ball's own way of adding (u</span></span>
+<span class="line" id="L431"><a class="ln" href="#L431">431</a><span class="c-doc">⍝│</span><span class="c-doc"> then v, each inside the unit ball): ((1 + 2 u.v + |v|^2) u +</span></span>
+<span class="line" id="L432"><a class="ln" href="#L432">432</a><span class="c-doc">⍝│</span><span class="c-doc"> (1 - |u|^2) v) / (1 + 2 u.v + |u|^2 |v|^2). The result stays in</span></span>
+<span class="line" id="L433"><a class="ln" href="#L433">433</a><span class="c-doc">⍝│</span><span class="c-doc"> the ball; (-u) m_obius v is v seen from u, as a vector at the</span></span>
+<span class="line" id="L434"><a class="ln" href="#L434">434</a><span class="c-doc">⍝│</span><span class="c-doc"> middle. Given two sets (matrices, the same rows), row by row.</span></span>
+<span class="line" id="L435"><a class="ln" href="#L435">435</a><span class="c-libfunc">ʰm̲obius</span> ← { u v →</span>
+<span class="line" id="L436"><a class="ln" href="#L436">436</a>  U ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> u</span>
+<span class="line" id="L437"><a class="ln" href="#L437">437</a>  V ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v</span>
+<span class="line" id="L438"><a class="ln" href="#L438">438</a>  uv ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (U, V)</span>
+<span class="line" id="L439"><a class="ln" href="#L439">439</a>  uu ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (U, U)</span>
+<span class="line" id="L440"><a class="ln" href="#L440">440</a>  vv ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (V, V)</span>
+<span class="line" id="L441"><a class="ln" href="#L441">441</a>  u <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> uv) <a href="builtins.html#-2b" class="c-symbol">+</a> uu <a href="builtins.html#-2a" class="c-symbol">×</a> vv) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> ((<span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> uv) <a href="builtins.html#-2b" class="c-symbol">+</a> vv) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> U) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> uu) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> V</span>
+<span class="line" id="L442"><a class="ln" href="#L442">442</a>}</span>
+<span class="line" id="L443"><a class="ln" href="#L443">443</a></span>
+<span class="line" id="L444"><a class="ln" href="#L444">444</a><span class="c-doc">⍝│</span><span class="c-doc"> The rim as the ball's functions take it: the radius 1 - 1e-5 points</span></span>
+<span class="line" id="L445"><a class="ln" href="#L445">445</a><span class="c-doc">⍝│</span><span class="c-doc"> are kept to.</span></span>
+<span class="line" id="L446"><a class="ln" href="#L446">446</a><span class="c-libfunc">ʰr̲im</span> ← { u → <span class="c-number">0.99999</span> }</span>
+<span class="line" id="L447"><a class="ln" href="#L447">447</a></span>
+<span class="line" id="L448"><a class="ln" href="#L448">448</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">b̲allProject</span> p<span class="c-doc"></span><span class="c-doc">: p kept inside the ball: p as it is when its length</span></span>
+<span class="line" id="L449"><a class="ln" href="#L449">449</a><span class="c-doc">⍝│</span><span class="c-doc"> is under the rim's radius 1 - 1e-5, else scaled to that radius</span></span>
+<span class="line" id="L450"><a class="ln" href="#L450">450</a><span class="c-doc">⍝│</span><span class="c-doc"> (the clamp of the source papers: Ganea et al. project to 1 - 1e-5,</span></span>
+<span class="line" id="L451"><a class="ln" href="#L451">451</a><span class="c-doc">⍝│</span><span class="c-doc"> Nickel and Kiela to 1 - 1e-5 as well). A point put at the rim</span></span>
+<span class="line" id="L452"><a class="ln" href="#L452">452</a><span class="c-doc">⍝│</span><span class="c-doc"> itself would be infinitely far from everything. Given a set (a</span></span>
+<span class="line" id="L453"><a class="ln" href="#L453">453</a><span class="c-doc">⍝│</span><span class="c-doc"> matrix), every row.</span></span>
+<span class="line" id="L454"><a class="ln" href="#L454">454</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L455"><a class="ln" href="#L455">455</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:b_allProject 0.3 0.4</span></span>
+<span class="line" id="L456"><a class="ln" href="#L456">456</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.3 0.4</span></span>
+<span class="line" id="L457"><a class="ln" href="#L457">457</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:b_allProject 2 2 r_eshape 3.0 4.0 0.0 -2.0</span></span>
+<span class="line" id="L458"><a class="ln" href="#L458">458</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.599994 0.799992</span></span>
+<span class="line" id="L459"><a class="ln" href="#L459">459</a><span class="c-doc">⍝│</span><span class="c-doc">      0.0 -0.99999</span></span>
+<span class="line" id="L460"><a class="ln" href="#L460">460</a><span class="c-libfunc">ˡb̲allProject</span> ← { p →</span>
+<span class="line" id="L461"><a class="ln" href="#L461">461</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L462"><a class="ln" href="#L462">462</a>  n ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> P</span>
+<span class="line" id="L463"><a class="ln" href="#L463">463</a>  s ← <span class="c-number">1.0</span> <a href="builtins.html#m_in" class="c-builtin">m̲in</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.r_im" class="c-libfunc">ʰr̲im</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> n <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></span>
+<span class="line" id="L464"><a class="ln" href="#L464">464</a>  p <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> s <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> P</span>
+<span class="line" id="L465"><a class="ln" href="#L465">465</a>}</span>
+<span class="line" id="L466"><a class="ln" href="#L466">466</a></span>
+<span class="line" id="L467"><a class="ln" href="#L467">467</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">b̲allOff</span> p<span class="c-doc"></span><span class="c-doc">: how far p is past the rim (the radius 1 - 1e-5 the</span></span>
+<span class="line" id="L468"><a class="ln" href="#L468">468</a><span class="c-doc">⍝│</span><span class="c-doc"> ball's points are kept to): its length less that, as a size, 0 for</span></span>
+<span class="line" id="L469"><a class="ln" href="#L469">469</a><span class="c-doc">⍝│</span><span class="c-doc"> a point inside. What b_allProject repairs, and what a test of the</span></span>
+<span class="line" id="L470"><a class="ln" href="#L470">470</a><span class="c-doc">⍝│</span><span class="c-doc"> constraint reports: a step along the ball that rounding carried too</span></span>
+<span class="line" id="L471"><a class="ln" href="#L471">471</a><span class="c-doc">⍝│</span><span class="c-doc"> far. Given a set (a matrix), one per row.</span></span>
+<span class="line" id="L472"><a class="ln" href="#L472">472</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L473"><a class="ln" href="#L473">473</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:b_allOff 2 2 r_eshape 0.3 0.4 0.0 1.0</span></span>
+<span class="line" id="L474"><a class="ln" href="#L474">474</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.00000999999999995449</span></span>
+<span class="line" id="L475"><a class="ln" href="#L475">475</a><span class="c-libfunc">ˡb̲allOff</span> ← { p → P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p◆ p <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrow" class="c-libfunc">ʰu̲nrow</a> <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> (<a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.r_im" class="c-libfunc">ʰr̲im</a> @ }</span>
+<span class="line" id="L476"><a class="ln" href="#L476">476</a></span>
+<span class="line" id="L477"><a class="ln" href="#L477">477</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">b̲allDistance</span> q<span class="c-doc"></span><span class="c-doc">: the distance between two points of the</span></span>
+<span class="line" id="L478"><a class="ln" href="#L478">478</a><span class="c-doc">⍝│</span><span class="c-doc"> Poincare ball, 2 atanh of the length of q seen from p, (-p) m_obius</span></span>
+<span class="line" id="L479"><a class="ln" href="#L479">479</a><span class="c-doc">⍝│</span><span class="c-doc"> q. Near the middle it is twice the plain distance; toward the rim</span></span>
+<span class="line" id="L480"><a class="ln" href="#L480">480</a><span class="c-doc">⍝│</span><span class="c-doc"> it grows without bound, so points near the rim a little apart in</span></span>
+<span class="line" id="L481"><a class="ln" href="#L481">481</a><span class="c-doc">⍝│</span><span class="c-doc"> the plane are far apart along the ball. p and q must be inside the</span></span>
+<span class="line" id="L482"><a class="ln" href="#L482">482</a><span class="c-doc">⍝│</span><span class="c-doc"> ball (length under 1). Given two sets (matrices), row by row.</span></span>
+<span class="line" id="L483"><a class="ln" href="#L483">483</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L484"><a class="ln" href="#L484">484</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.0 0.0 mf:b_allDistance 0.5 0.0</span></span>
+<span class="line" id="L485"><a class="ln" href="#L485">485</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0986122886681098</span></span>
+<span class="line" id="L486"><a class="ln" href="#L486">486</a><span class="c-libfunc">ˡb̲allDistance</span> ← { p q → p <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrow" class="c-libfunc">ʰu̲nrow</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tanh" class="c-libfunc">ᵗʳa̲tanh</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> p) <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> q }</span>
+<span class="line" id="L487"><a class="ln" href="#L487">487</a></span>
+<span class="line" id="L488"><a class="ln" href="#L488">488</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">b̲allDistances</span> P<span class="c-doc"></span><span class="c-doc">: the distance along the ball between every pair</span></span>
+<span class="line" id="L489"><a class="ln" href="#L489">489</a><span class="c-doc">⍝│</span><span class="c-doc"> of rows of P (points inside the ball): a matrix, 0 on its diagonal.</span></span>
+<span class="line" id="L490"><a class="ln" href="#L490">490</a><span class="c-doc">⍝│</span><span class="c-doc"> As 2 asinh(|u - v| / sqrt((1 - |u|^2) (1 - |v|^2))), which is</span></span>
+<span class="line" id="L491"><a class="ln" href="#L491">491</a><span class="c-doc">⍝│</span><span class="c-doc"> Nickel and Kiela's acosh(1 + 2 |u - v|^2 / ((1 - |u|^2) (1 -</span></span>
+<span class="line" id="L492"><a class="ln" href="#L492">492</a><span class="c-doc">⍝│</span><span class="c-doc"> |v|^2))) written so that nothing near 1 is subtracted from 1 (it</span></span>
+<span class="line" id="L493"><a class="ln" href="#L493">493</a><span class="c-doc">⍝│</span><span class="c-doc"> agrees with b_allDistance to the last digits; a test checks). The</span></span>
+<span class="line" id="L494"><a class="ln" href="#L494">494</a><span class="c-doc">⍝│</span><span class="c-doc"> one subtraction left is 1 - |u|^2: at the rim's radius it is 2e-5,</span></span>
+<span class="line" id="L495"><a class="ln" href="#L495">495</a><span class="c-doc">⍝│</span><span class="c-doc"> with about eleven of sixteen digits kept.</span></span>
+<span class="line" id="L496"><a class="ln" href="#L496">496</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L497"><a class="ln" href="#L497">497</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:b_allDistances 2 2 r_eshape 0.0 0.0 0.5 0.0</span></span>
+<span class="line" id="L498"><a class="ln" href="#L498">498</a><span class="c-doc">⍝│</span><span class="c-doc">                0.0 1.0986122886681098</span></span>
+<span class="line" id="L499"><a class="ln" href="#L499">499</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0986122886681098                0.0</span></span>
+<span class="line" id="L500"><a class="ln" href="#L500">500</a><span class="c-libfunc">ˡb̲allDistances</span> ← { P →</span>
+<span class="line" id="L501"><a class="ln" href="#L501">501</a>  M ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_istPairs" class="c-libfunc">ʰd̲istPairs</a> P</span>
+<span class="line" id="L502"><a class="ln" href="#L502">502</a>  a ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (P, P)</span>
+<span class="line" id="L503"><a class="ln" href="#L503">503</a>  <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_sinh" class="c-libfunc">ᵗʳa̲sinh</a> M <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> a <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> a</span>
+<span class="line" id="L504"><a class="ln" href="#L504">504</a>}</span>
+<span class="line" id="L505"><a class="ln" href="#L505">505</a></span>
+<span class="line" id="L506"><a class="ln" href="#L506">506</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">b̲allTangent</span> v<span class="c-doc"></span><span class="c-doc">: the vector along the ball at p that stands for</span></span>
+<span class="line" id="L507"><a class="ln" href="#L507">507</a><span class="c-doc">⍝│</span><span class="c-doc"> the plain gradient v: v scaled by (1 - |p|^2)^2 / 4. Every</span></span>
+<span class="line" id="L508"><a class="ln" href="#L508">508</a><span class="c-doc">⍝│</span><span class="c-doc"> direction is along the ball (it is open), but at p each is lambda</span></span>
+<span class="line" id="L509"><a class="ln" href="#L509">509</a><span class="c-doc">⍝│</span><span class="c-doc"> = 2 / (1 - |p|^2) times longer than it looks, so the gradient</span></span>
+<span class="line" id="L510"><a class="ln" href="#L510">510</a><span class="c-doc">⍝│</span><span class="c-doc"> under the ball's metric is the plain one divided by lambda^2</span></span>
+<span class="line" id="L511"><a class="ln" href="#L511">511</a><span class="c-doc">⍝│</span><span class="c-doc"> (Nickel and Kiela's &quot;natural gradient&quot; scaling): what b_allStep</span></span>
+<span class="line" id="L512"><a class="ln" href="#L512">512</a><span class="c-doc">⍝│</span><span class="c-doc"> takes, as s_phereTangent's projection is what s_phereStep takes.</span></span>
+<span class="line" id="L513"><a class="ln" href="#L513">513</a><span class="c-doc">⍝│</span><span class="c-doc"> Given two sets (matrices), row by row.</span></span>
+<span class="line" id="L514"><a class="ln" href="#L514">514</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L515"><a class="ln" href="#L515">515</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.0 0.0 mf:b_allTangent 1.0 2.0</span></span>
+<span class="line" id="L516"><a class="ln" href="#L516">516</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.25 0.5</span></span>
+<span class="line" id="L517"><a class="ln" href="#L517">517</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.6 0.0 mf:b_allTangent 1.0 2.0</span></span>
+<span class="line" id="L518"><a class="ln" href="#L518">518</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.1024 0.2048</span></span>
+<span class="line" id="L519"><a class="ln" href="#L519">519</a><span class="c-libfunc">ˡb̲allTangent</span> ← { p v →</span>
+<span class="line" id="L520"><a class="ln" href="#L520">520</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L521"><a class="ln" href="#L521">521</a>  V ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v</span>
+<span class="line" id="L522"><a class="ln" href="#L522">522</a>  v <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> (((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (P, P)) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">4.0</span>) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> V</span>
+<span class="line" id="L523"><a class="ln" href="#L523">523</a>}</span>
+<span class="line" id="L524"><a class="ln" href="#L524">524</a></span>
+<span class="line" id="L525"><a class="ln" href="#L525">525</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">b̲allStep</span> v<span class="c-doc"></span><span class="c-doc">: the point reached from p by going along the ball</span></span>
+<span class="line" id="L526"><a class="ln" href="#L526">526</a><span class="c-doc">⍝│</span><span class="c-doc"> in the direction of v for the length v has under the ball's metric</span></span>
+<span class="line" id="L527"><a class="ln" href="#L527">527</a><span class="c-doc">⍝│</span><span class="c-doc"> (the exponential map, Ganea et al.'s equation 12 at c = 1): p</span></span>
+<span class="line" id="L528"><a class="ln" href="#L528">528</a><span class="c-doc">⍝│</span><span class="c-doc"> m_obius tanh(lambda |v| / 2) v / |v|, lambda = 2 / (1 - |p|^2). A</span></span>
+<span class="line" id="L529"><a class="ln" href="#L529">529</a><span class="c-doc">⍝│</span><span class="c-doc"> zero v goes nowhere; a step from the middle of length t lands at</span></span>
+<span class="line" id="L530"><a class="ln" href="#L530">530</a><span class="c-doc">⍝│</span><span class="c-doc"> plain radius tanh(t / 2), so no step reaches the rim, but a long</span></span>
+<span class="line" id="L531"><a class="ln" href="#L531">531</a><span class="c-doc">⍝│</span><span class="c-doc"> one can land on it by rounding (tanh of a large number is 1 to the</span></span>
+<span class="line" id="L532"><a class="ln" href="#L532">532</a><span class="c-doc">⍝│</span><span class="c-doc"> machine): b_allProject brings such a point back and b_allOff says</span></span>
+<span class="line" id="L533"><a class="ln" href="#L533">533</a><span class="c-doc">⍝│</span><span class="c-doc"> how far it went. Given two sets (matrices), row by row.</span></span>
+<span class="line" id="L534"><a class="ln" href="#L534">534</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L535"><a class="ln" href="#L535">535</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.0 0.0 mf:b_allStep 0.5493061443340549 0.0</span></span>
+<span class="line" id="L536"><a class="ln" href="#L536">536</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5 0.0</span></span>
+<span class="line" id="L537"><a class="ln" href="#L537">537</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (0.0 0.0 mf:b_allStep 0.3 0.4) mf:b_allDistance 0.0 0.0</span></span>
+<span class="line" id="L538"><a class="ln" href="#L538">538</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0</span></span>
+<span class="line" id="L539"><a class="ln" href="#L539">539</a><span class="c-libfunc">ˡb̲allStep</span> ← { p v →</span>
+<span class="line" id="L540"><a class="ln" href="#L540">540</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L541"><a class="ln" href="#L541">541</a>  V ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> v</span>
+<span class="line" id="L542"><a class="ln" href="#L542">542</a>  t ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> V</span>
+<span class="line" id="L543"><a class="ln" href="#L543">543</a>  lam ← <span class="c-number">2.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (P, P)</span>
+<span class="line" id="L544"><a class="ln" href="#L544">544</a>  s ← (<a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> (lam <a href="builtins.html#-2a" class="c-symbol">×</a> t) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> t <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></span>
+<span class="line" id="L545"><a class="ln" href="#L545">545</a>  v <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> P <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> s <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> V</span>
+<span class="line" id="L546"><a class="ln" href="#L546">546</a>}</span>
+<span class="line" id="L547"><a class="ln" href="#L547">547</a></span>
+<span class="line" id="L548"><a class="ln" href="#L548">548</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>p <span class="c-builtin">b̲allArrow</span> q<span class="c-doc"></span><span class="c-doc">: the vector at p that b_allStep carries to q (the</span></span>
+<span class="line" id="L549"><a class="ln" href="#L549">549</a><span class="c-doc">⍝│</span><span class="c-doc"> logarithmic map, Ganea et al.'s equation 13): (2 / lambda) atanh</span></span>
+<span class="line" id="L550"><a class="ln" href="#L550">550</a><span class="c-doc">⍝│</span><span class="c-doc"> |w| w / |w| with w = (-p) m_obius q, q seen from p. Its length</span></span>
+<span class="line" id="L551"><a class="ln" href="#L551">551</a><span class="c-doc">⍝│</span><span class="c-doc"> under the ball's metric (lambda times its plain length) is the</span></span>
+<span class="line" id="L552"><a class="ln" href="#L552">552</a><span class="c-doc">⍝│</span><span class="c-doc"> distance from p to q. For q = p it is zero. Given two sets, row by</span></span>
+<span class="line" id="L553"><a class="ln" href="#L553">553</a><span class="c-doc">⍝│</span><span class="c-doc"> row.</span></span>
+<span class="line" id="L554"><a class="ln" href="#L554">554</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L555"><a class="ln" href="#L555">555</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.0 0.0 mf:b_allArrow 0.5 0.0</span></span>
+<span class="line" id="L556"><a class="ln" href="#L556">556</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5493061443340549 0.0</span></span>
+<span class="line" id="L557"><a class="ln" href="#L557">557</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; 0.3 0.0 mf:b_allStep 0.3 0.0 mf:b_allArrow 0.0 0.6</span></span>
+<span class="line" id="L558"><a class="ln" href="#L558">558</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.6000000000000001</span></span>
+<span class="line" id="L559"><a class="ln" href="#L559">559</a><span class="c-libfunc">ˡb̲allArrow</span> ← { p q →</span>
+<span class="line" id="L560"><a class="ln" href="#L560">560</a>  P ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> p</span>
+<span class="line" id="L561"><a class="ln" href="#L561">561</a>  W ← <a href="libs-Manifold-src-Manifold.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> p) <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> q</span>
+<span class="line" id="L562"><a class="ln" href="#L562">562</a>  r ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orms" class="c-libfunc">ʰn̲orms</a> W</span>
+<span class="line" id="L563"><a class="ln" href="#L563">563</a>  lam ← <span class="c-number">2.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (P, P)</span>
+<span class="line" id="L564"><a class="ln" href="#L564">564</a>  q <a href="libs-Manifold-src-Manifold.xtl.html#h.u_nrows" class="c-libfunc">ʰu̲nrows</a> ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tanh" class="c-libfunc">ᵗʳa̲tanh</a> r) <a href="builtins.html#-2f" class="c-symbol">÷</a> lam <a href="builtins.html#-2a" class="c-symbol">×</a> r <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> W</span>
+<span class="line" id="L565"><a class="ln" href="#L565">565</a>}</span>
+<span class="line" id="L566"><a class="ln" href="#L566">566</a></span>
+<span class="line" id="L567"><a class="ln" href="#L567">567</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>(p, q) <span class="c-builtin">b̲allGeodesic</span> n<span class="c-doc"></span><span class="c-doc">: n + 1 points along the geodesic (the</span></span>
+<span class="line" id="L568"><a class="ln" href="#L568">568</a><span class="c-doc">⍝│</span><span class="c-doc"> shortest path, by the ball's distance) from p to q, p first and q</span></span>
+<span class="line" id="L569"><a class="ln" href="#L569">569</a><span class="c-doc">⍝│</span><span class="c-doc"> last, evenly spaced along it: p m_obius the arrow to q scaled by</span></span>
+<span class="line" id="L570"><a class="ln" href="#L570">570</a><span class="c-doc">⍝│</span><span class="c-doc"> 0, 1/n, ..., 1 in the ball's way (tanh of that fraction of atanh</span></span>
+<span class="line" id="L571"><a class="ln" href="#L571">571</a><span class="c-doc">⍝│</span><span class="c-doc"> its length). Drawn flat, a geodesic is an arc of a circle that</span></span>
+<span class="line" id="L572"><a class="ln" href="#L572">572</a><span class="c-doc">⍝│</span><span class="c-doc"> meets the rim at right angles, or a diameter.</span></span>
+<span class="line" id="L573"><a class="ln" href="#L573">573</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L574"><a class="ln" href="#L574">574</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (0.0 0.0, 0.6 0.0) mf:b_allGeodesic 2</span></span>
+<span class="line" id="L575"><a class="ln" href="#L575">575</a><span class="c-doc">⍝│</span><span class="c-doc">                0.0 0.0</span></span>
+<span class="line" id="L576"><a class="ln" href="#L576">576</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.3333333333333333 0.0</span></span>
+<span class="line" id="L577"><a class="ln" href="#L577">577</a><span class="c-doc">⍝│</span><span class="c-doc">                0.6 0.0</span></span>
+<span class="line" id="L578"><a class="ln" href="#L578">578</a><span class="c-libfunc">ˡb̲allGeodesic</span> ← { (p, q) n →</span>
+<span class="line" id="L579"><a class="ln" href="#L579">579</a>  w ← (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> p) <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> q</span>
+<span class="line" id="L580"><a class="ln" href="#L580">580</a>  r ← <a href="libs-Manifold-src-Manifold.xtl.html#h.n_orm" class="c-libfunc">ʰn̲orm</a> w</span>
+<span class="line" id="L581"><a class="ln" href="#L581">581</a>  rows ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L582"><a class="ln" href="#L582">582</a>  r <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? rows <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L583"><a class="ln" href="#L583">583</a>  S ← (<a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> (<a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html#l.a_tanh" class="c-libfunc">ᵗʳa̲tanh</a> r) <a href="builtins.html#-2a" class="c-symbol">×</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2f" class="c-symbol">÷</a> r</span>
+<span class="line" id="L584"><a class="ln" href="#L584">584</a>  d ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p</span>
+<span class="line" id="L585"><a class="ln" href="#L585">585</a>  (M, _) ← (n <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <span class="c-quote">'</span>{ (M, k) → (M <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> p <a href="libs-Manifold-src-Manifold.xtl.html#h.m_obius" class="c-libfunc">ʰm̲obius</a> (k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> S) <a href="builtins.html#-2a" class="c-symbol">×</a> w, k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> ((<span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</span>
+<span class="line" id="L586"><a class="ln" href="#L586">586</a>  M</span>
+<span class="line" id="L587"><a class="ln" href="#L587">587</a>}</span>
+<span class="line" id="L588"><a class="ln" href="#L588">588</a></span>
+<span class="line" id="L589"><a class="ln" href="#L589">589</a><span class="c-heading">⍝━━</span><span class="c-heading"> Distortion</span></span>
+<span class="line" id="L590"><a class="ln" href="#L590">590</a></span>
+<span class="line" id="L591"><a class="ln" href="#L591">591</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">d̲istortion</span> E<span class="c-doc"></span><span class="c-doc">: how badly the distances E (between every pair of</span></span>
+<span class="line" id="L592"><a class="ln" href="#L592">592</a><span class="c-doc">⍝│</span><span class="c-doc"> points of an embedding, a matrix as s_phereDistances gives) keep</span></span>
+<span class="line" id="L593"><a class="ln" href="#L593">593</a><span class="c-doc">⍝│</span><span class="c-doc"> the distances D they should have (the same shape: the data's own</span></span>
+<span class="line" id="L594"><a class="ln" href="#L594">594</a><span class="c-doc">⍝│</span><span class="c-doc"> distances, say along a tree): for every pair of different points,</span></span>
+<span class="line" id="L595"><a class="ln" href="#L595">595</a><span class="c-doc">⍝│</span><span class="c-doc"> |E / D - 1|, the fraction by which the pair's distance is too long</span></span>
+<span class="line" id="L596"><a class="ln" href="#L596">596</a><span class="c-doc">⍝│</span><span class="c-doc"> or too short; the mean over the pairs and the worst pair, as a</span></span>
+<span class="line" id="L597"><a class="ln" href="#L597">597</a><span class="c-doc">⍝│</span><span class="c-doc"> pair of Floats. 0 0 when every distance is kept; 1 for a pair twice</span></span>
+<span class="line" id="L598"><a class="ln" href="#L598">598</a><span class="c-doc">⍝│</span><span class="c-doc"> or half as far as it should be (half: 0.5). Pairs at D = 0 (the</span></span>
+<span class="line" id="L599"><a class="ln" href="#L599">599</a><span class="c-doc">⍝│</span><span class="c-doc"> same point twice) are left out; the diagonal always is. The measure</span></span>
+<span class="line" id="L600"><a class="ln" href="#L600">600</a><span class="c-doc">⍝│</span><span class="c-doc"> of H1 (docs/research-questions.md), the same whatever space E was</span></span>
+<span class="line" id="L601"><a class="ln" href="#L601">601</a><span class="c-doc">⍝│</span><span class="c-doc"> measured along.</span></span>
+<span class="line" id="L602"><a class="ln" href="#L602">602</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L603"><a class="ln" href="#L603">603</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0</span></span>
+<span class="line" id="L604"><a class="ln" href="#L604">604</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D mf:d_istortion D</span></span>
+<span class="line" id="L605"><a class="ln" href="#L605">605</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0</span></span>
+<span class="line" id="L606"><a class="ln" href="#L606">606</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D mf:d_istortion 2.0 * D</span></span>
+<span class="line" id="L607"><a class="ln" href="#L607">607</a><span class="c-doc">⍝│</span><span class="c-doc"> 1.0 1.0</span></span>
+<span class="line" id="L608"><a class="ln" href="#L608">608</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D mf:d_istortion 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0</span></span>
+<span class="line" id="L609"><a class="ln" href="#L609">609</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.16666666666666666 0.5</span></span>
+<span class="line" id="L610"><a class="ln" href="#L610">610</a><span class="c-libfunc">ˡd̲istortion</span> ← { D E →</span>
+<span class="line" id="L611"><a class="ln" href="#L611">611</a>  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> D</span>
+<span class="line" id="L612"><a class="ln" href="#L612">612</a>  pair ← ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>        <span class="c-comment">⍝</span><span class="c-comment"> each pair once, where there is a distance to keep</span></span>
+<span class="line" id="L613"><a class="ln" href="#L613">613</a>  k ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> pair</span>
+<span class="line" id="L614"><a class="ln" href="#L614">614</a>  k <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <span class="c-number">0.0</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L615"><a class="ln" href="#L615">615</a>  off ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> pair) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L616"><a class="ln" href="#L616">616</a>  ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> off) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> k) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> off</span>
+<span class="line" id="L617"><a class="ln" href="#L617">617</a>}</span>
+<span class="line" id="L618"><a class="ln" href="#L618">618</a></span>
+<span class="line" id="L619"><a class="ln" href="#L619">619</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">d̲istortionPairs</span> E<span class="c-doc"></span><span class="c-doc">: the distortion of every pair, |E / D - 1|,</span></span>
+<span class="line" id="L620"><a class="ln" href="#L620">620</a><span class="c-doc">⍝│</span><span class="c-doc"> as a matrix the shape of D: which pairs an embedding stretches and</span></span>
+<span class="line" id="L621"><a class="ln" href="#L621">621</a><span class="c-doc">⍝│</span><span class="c-doc"> which it squeezes; 0 on the diagonal and wherever D is 0 (the pairs</span></span>
+<span class="line" id="L622"><a class="ln" href="#L622">622</a><span class="c-doc">⍝│</span><span class="c-doc"> d_istortion leaves out).</span></span>
+<span class="line" id="L623"><a class="ln" href="#L623">623</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L624"><a class="ln" href="#L624">624</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:d_istortionPairs 3 3 r_eshape 0.0 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0</span></span>
+<span class="line" id="L625"><a class="ln" href="#L625">625</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0 0.5</span></span>
+<span class="line" id="L626"><a class="ln" href="#L626">626</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0 0.0</span></span>
+<span class="line" id="L627"><a class="ln" href="#L627">627</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.5 0.0 0.0</span></span>
+<span class="line" id="L628"><a class="ln" href="#L628">628</a><span class="c-libfunc">ˡd̲istortionPairs</span> ← { D E →</span>
+<span class="line" id="L629"><a class="ln" href="#L629">629</a>  keep ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L630"><a class="ln" href="#L630">630</a>  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> keep) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L631"><a class="ln" href="#L631">631</a>}</span>
+<span class="line" id="L632"><a class="ln" href="#L632">632</a></span>
+<span class="line" id="L633"><a class="ln" href="#L633">633</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">f̲itScale</span> E<span class="c-doc"></span><span class="c-doc">: the one factor that fits the distances E to the</span></span>
+<span class="line" id="L634"><a class="ln" href="#L634">634</a><span class="c-doc">⍝│</span><span class="c-doc"> distances D: the number s that makes the mean of s E over the pairs</span></span>
+<span class="line" id="L635"><a class="ln" href="#L635">635</a><span class="c-doc">⍝│</span><span class="c-doc"> (those with D &gt; 0) equal the mean of D over them, the sum of D</span></span>
+<span class="line" id="L636"><a class="ln" href="#L636">636</a><span class="c-doc">⍝│</span><span class="c-doc"> divided by the sum of E. For distances in different units (an</span></span>
+<span class="line" id="L637"><a class="ln" href="#L637">637</a><span class="c-doc">⍝│</span><span class="c-doc"> angle against a length), measure the distortion of s E, which says</span></span>
+<span class="line" id="L638"><a class="ln" href="#L638">638</a><span class="c-doc">⍝│</span><span class="c-doc"> what the shape of the distances loses once their scale is forgiven.</span></span>
+<span class="line" id="L639"><a class="ln" href="#L639">639</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L640"><a class="ln" href="#L640">640</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D := 3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0</span></span>
+<span class="line" id="L641"><a class="ln" href="#L641">641</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D mf:f_itScale 4.0 * D</span></span>
+<span class="line" id="L642"><a class="ln" href="#L642">642</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.25</span></span>
+<span class="line" id="L643"><a class="ln" href="#L643">643</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; D mf:d_istortion (D mf:f_itScale 4.0 * D) * 4.0 * D</span></span>
+<span class="line" id="L644"><a class="ln" href="#L644">644</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0</span></span>
+<span class="line" id="L645"><a class="ln" href="#L645">645</a><span class="c-libfunc">ˡf̲itScale</span> ← { D E →</span>
+<span class="line" id="L646"><a class="ln" href="#L646">646</a>  keep ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L647"><a class="ln" href="#L647">647</a>  (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> keep <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> D) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> keep <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> E) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></span>
+<span class="line" id="L648"><a class="ln" href="#L648">648</a>}</span>
+<span class="line" id="L649"><a class="ln" href="#L649">649</a></span>
+<span class="line" id="L650"><a class="ln" href="#L650">650</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">s̲phereDistortion</span> P<span class="c-doc"></span><span class="c-doc">: the distortion of a set P on the sphere</span></span>
+<span class="line" id="L651"><a class="ln" href="#L651">651</a><span class="c-doc">⍝│</span><span class="c-doc"> (one point per row), its great-circle distances against the</span></span>
+<span class="line" id="L652"><a class="ln" href="#L652">652</a><span class="c-doc">⍝│</span><span class="c-doc"> distances D it should keep: the mean and the worst pair, as</span></span>
+<span class="line" id="L653"><a class="ln" href="#L653">653</a><span class="c-doc">⍝│</span><span class="c-doc"> d_istortion gives them.</span></span>
+<span class="line" id="L654"><a class="ln" href="#L654">654</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L655"><a class="ln" href="#L655">655</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; Q := mf:s_phereProject 3 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0</span></span>
+<span class="line" id="L656"><a class="ln" href="#L656">656</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (3 3 r_eshape 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0 1.5707963267948966 3.141592653589793 1.5707963267948966 0.0) mf:s_phereDistortion Q</span></span>
+<span class="line" id="L657"><a class="ln" href="#L657">657</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0</span></span>
+<span class="line" id="L658"><a class="ln" href="#L658">658</a><span class="c-libfunc">ˡs̲phereDistortion</span> ← { D P → D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ˡd̲istortion</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.s_phereDistances" class="c-libfunc">ˡs̲phereDistances</a> P }</span>
+<span class="line" id="L659"><a class="ln" href="#L659">659</a></span>
+<span class="line" id="L660"><a class="ln" href="#L660">660</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">f̲latDistortion</span> P<span class="c-doc"></span><span class="c-doc">: the distortion of a set P in a flat space</span></span>
+<span class="line" id="L661"><a class="ln" href="#L661">661</a><span class="c-doc">⍝│</span><span class="c-doc"> (one point per row), its straight-line distances against the</span></span>
+<span class="line" id="L662"><a class="ln" href="#L662">662</a><span class="c-doc">⍝│</span><span class="c-doc"> distances D it should keep: the mean and the worst pair.</span></span>
+<span class="line" id="L663"><a class="ln" href="#L663">663</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L664"><a class="ln" href="#L664">664</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:f_latDistortion 3 1 r_eshape 0.0 1.0 2.0</span></span>
+<span class="line" id="L665"><a class="ln" href="#L665">665</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0</span></span>
+<span class="line" id="L666"><a class="ln" href="#L666">666</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (3 3 r_eshape 0.0 1.0 2.0 1.0 0.0 1.0 2.0 1.0 0.0) mf:f_latDistortion 3 2 r_eshape 0.0 0.0 1.0 0.0 1.0 1.0</span></span>
+<span class="line" id="L667"><a class="ln" href="#L667">667</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.09763107293781748 0.2928932188134524</span></span>
+<span class="line" id="L668"><a class="ln" href="#L668">668</a><span class="c-libfunc">ˡf̲latDistortion</span> ← { D P → D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ˡd̲istortion</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_istPairs" class="c-libfunc">ʰd̲istPairs</a> P }</span>
+<span class="line" id="L669"><a class="ln" href="#L669">669</a></span>
+<span class="line" id="L670"><a class="ln" href="#L670">670</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>D <span class="c-builtin">b̲allDistortion</span> P<span class="c-doc"></span><span class="c-doc">: the distortion of a set P inside the ball</span></span>
+<span class="line" id="L671"><a class="ln" href="#L671">671</a><span class="c-doc">⍝│</span><span class="c-doc"> (one point per row), its distances along the ball against the</span></span>
+<span class="line" id="L672"><a class="ln" href="#L672">672</a><span class="c-doc">⍝│</span><span class="c-doc"> distances D it should keep: the mean and the worst pair.</span></span>
+<span class="line" id="L673"><a class="ln" href="#L673">673</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L674"><a class="ln" href="#L674">674</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (2 2 r_eshape 0.0 1.0986122886681098 1.0986122886681098 0.0) mf:b_allDistortion 2 2 r_eshape 0.0 0.0 0.5 0.0</span></span>
+<span class="line" id="L675"><a class="ln" href="#L675">675</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 0.0</span></span>
+<span class="line" id="L676"><a class="ln" href="#L676">676</a><span class="c-libfunc">ˡb̲allDistortion</span> ← { D P → D <a href="libs-Manifold-src-Manifold.xtl.html#l.d_istortion" class="c-libfunc">ˡd̲istortion</a> <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allDistances" class="c-libfunc">ˡb̲allDistances</a> P }</span>
+<span class="line" id="L677"><a class="ln" href="#L677">677</a></span>
+<span class="line" id="L678"><a class="ln" href="#L678">678</a><span class="c-heading">⍝━━</span><span class="c-heading"> Fitting an embedding</span></span>
+<span class="line" id="L679"><a class="ln" href="#L679">679</a></span>
+<span class="line" id="L680"><a class="ln" href="#L680">680</a><span class="c-doc">⍝│</span><span class="c-doc"> A fit moves a set of points so that their distances along a space</span></span>
+<span class="line" id="L681"><a class="ln" href="#L681">681</a><span class="c-doc">⍝│</span><span class="c-doc"> come to the distances they should have: a loss of the pairwise</span></span>
+<span class="line" id="L682"><a class="ln" href="#L682">682</a><span class="c-doc">⍝│</span><span class="c-doc"> distances, whose gradient with respect to the distances is a</span></span>
+<span class="line" id="L683"><a class="ln" href="#L683">683</a><span class="c-doc">⍝│</span><span class="c-doc"> matrix W, and then a step along the space against the gradient of</span></span>
+<span class="line" id="L684"><a class="ln" href="#L684">684</a><span class="c-doc">⍝│</span><span class="c-doc"> the weighted sum of the distances, sum over pairs of W d(P_i, P_j),</span></span>
+<span class="line" id="L685"><a class="ln" href="#L685">685</a><span class="c-doc">⍝│</span><span class="c-doc"> with respect to every point. The three functions below give that</span></span>
+<span class="line" id="L686"><a class="ln" href="#L686">686</a><span class="c-doc">⍝│</span><span class="c-doc"> gradient along each space, one row per point, the same shape as P,</span></span>
+<span class="line" id="L687"><a class="ln" href="#L687">687</a><span class="c-doc">⍝│</span><span class="c-doc"> for the same W: the flat space's as it is (every direction is</span></span>
+<span class="line" id="L688"><a class="ln" href="#L688">688</a><span class="c-doc">⍝│</span><span class="c-doc"> along it and lengths are what they look), the sphere's the tangent</span></span>
+<span class="line" id="L689"><a class="ln" href="#L689">689</a><span class="c-doc">⍝│</span><span class="c-doc"> part at each point (s_phereTangent), the ball's scaled by the</span></span>
+<span class="line" id="L690"><a class="ln" href="#L690">690</a><span class="c-doc">⍝│</span><span class="c-doc"> metric at each point (b_allTangent). A step is then P - lr G in the</span></span>
+<span class="line" id="L691"><a class="ln" href="#L691">691</a><span class="c-doc">⍝│</span><span class="c-doc"> flat space, P s_phereStep -lr G on the sphere, P b_allStep -lr G</span></span>
+<span class="line" id="L692"><a class="ln" href="#L692">692</a><span class="c-doc">⍝│</span><span class="c-doc"> in the ball. W is read as symmetric, each pair counted once; its</span></span>
+<span class="line" id="L693"><a class="ln" href="#L693">693</a><span class="c-doc">⍝│</span><span class="c-doc"> diagonal is ignored (a point's distance to itself has no</span></span>
+<span class="line" id="L694"><a class="ln" href="#L694">694</a><span class="c-doc">⍝│</span><span class="c-doc"> gradient). Every one is checked against central differences in</span></span>
+<span class="line" id="L695"><a class="ln" href="#L695">695</a><span class="c-doc">⍝│</span><span class="c-doc"> tests/fit.xtl.</span></span>
+<span class="line" id="L696"><a class="ln" href="#L696">696</a></span>
+<span class="line" id="L697"><a class="ln" href="#L697">697</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span><span class="c-builtin">f̲latDistances</span> P<span class="c-doc"></span><span class="c-doc">: the straight-line distance between every pair</span></span>
+<span class="line" id="L698"><a class="ln" href="#L698">698</a><span class="c-doc">⍝│</span><span class="c-doc"> of rows of P: a matrix, 0 on its diagonal. (General, not the</span></span>
+<span class="line" id="L699"><a class="ln" href="#L699">699</a><span class="c-doc">⍝│</span><span class="c-doc"> ball's or the sphere's; X_eTaL-libraries' by GL1 of</span></span>
+<span class="line" id="L700"><a class="ln" href="#L700">700</a><span class="c-doc">⍝│</span><span class="c-doc"> docs/xetal-libraries-asks.md, and here until it lands so that a</span></span>
+<span class="line" id="L701"><a class="ln" href="#L701">701</a><span class="c-doc">⍝│</span><span class="c-doc"> fit in the flat space reads as one on the sphere or in the ball.)</span></span>
+<span class="line" id="L702"><a class="ln" href="#L702">702</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L703"><a class="ln" href="#L703">703</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; mf:f_latDistances 2 2 r_eshape 0.0 0.0 3.0 4.0</span></span>
+<span class="line" id="L704"><a class="ln" href="#L704">704</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.0 5.0</span></span>
+<span class="line" id="L705"><a class="ln" href="#L705">705</a><span class="c-doc">⍝│</span><span class="c-doc"> 5.0 0.0</span></span>
+<span class="line" id="L706"><a class="ln" href="#L706">706</a><span class="c-libfunc">ˡf̲latDistances</span> ← { P → <a href="libs-Manifold-src-Manifold.xtl.html#h.d_istPairs" class="c-libfunc">ʰd̲istPairs</a> P }</span>
+<span class="line" id="L707"><a class="ln" href="#L707">707</a></span>
+<span class="line" id="L708"><a class="ln" href="#L708">708</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>W <span class="c-builtin">off̲Diagonal</span> M<span class="c-doc"></span><span class="c-doc">: W with its diagonal zeroed, as Floats, over the</span></span>
+<span class="line" id="L709"><a class="ln" href="#L709">709</a><span class="c-doc">⍝│</span><span class="c-doc"> shape of M.</span></span>
+<span class="line" id="L710"><a class="ln" href="#L710">710</a><span class="c-libfunc">ʰo̲ffDiagonal</span> ← { W → n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> W◆ (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> W) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-21-3d" class="c-symbol">≠</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n }</span>
+<span class="line" id="L711"><a class="ln" href="#L711">711</a></span>
+<span class="line" id="L712"><a class="ln" href="#L712">712</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>W <span class="c-builtin">f̲latDistancesGradient</span> P<span class="c-doc"></span><span class="c-doc">: the gradient with respect to each row</span></span>
+<span class="line" id="L713"><a class="ln" href="#L713">713</a><span class="c-doc">⍝│</span><span class="c-doc"> of P of the sum over pairs of W_ij |P_i - P_j|: for row i, the sum</span></span>
+<span class="line" id="L714"><a class="ln" href="#L714">714</a><span class="c-doc">⍝│</span><span class="c-doc"> over j of W_ij (P_i - P_j) / |P_i - P_j|, a matrix the shape of P.</span></span>
+<span class="line" id="L715"><a class="ln" href="#L715">715</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L716"><a class="ln" href="#L716">716</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:f_latDistancesGradient 2 2 r_eshape 0.0 0.0 3.0 4.0</span></span>
+<span class="line" id="L717"><a class="ln" href="#L717">717</a><span class="c-doc">⍝│</span><span class="c-doc"> -0.6000000000000001 -0.8</span></span>
+<span class="line" id="L718"><a class="ln" href="#L718">718</a><span class="c-doc">⍝│</span><span class="c-doc">  0.6000000000000001  0.8</span></span>
+<span class="line" id="L719"><a class="ln" href="#L719">719</a><span class="c-libfunc">ˡf̲latDistancesGradient</span> ← { W P →</span>
+<span class="line" id="L720"><a class="ln" href="#L720">720</a>  M ← (<a href="libs-Manifold-src-Manifold.xtl.html#h.o_ffDiagonal" class="c-libfunc">ʰo̲ffDiagonal</a> W) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="libs-Manifold-src-Manifold.xtl.html#l.f_latDistances" class="c-libfunc">ˡf̲latDistances</a> P) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></span>
+<span class="line" id="L721"><a class="ln" href="#L721">721</a>  ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> M) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P) <a href="builtins.html#-2d" class="c-symbol">−</a> M <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P</span>
+<span class="line" id="L722"><a class="ln" href="#L722">722</a>}</span>
+<span class="line" id="L723"><a class="ln" href="#L723">723</a></span>
+<span class="line" id="L724"><a class="ln" href="#L724">724</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>W <span class="c-builtin">s̲phereDistancesGradient</span> P<span class="c-doc"></span><span class="c-doc">: the gradient along the sphere, with</span></span>
+<span class="line" id="L725"><a class="ln" href="#L725">725</a><span class="c-doc">⍝│</span><span class="c-doc"> respect to each row of P (points on the sphere), of the sum over</span></span>
+<span class="line" id="L726"><a class="ln" href="#L726">726</a><span class="c-doc">⍝│</span><span class="c-doc"> pairs of W_ij times the angle between P_i and P_j: for row i, the</span></span>
+<span class="line" id="L727"><a class="ln" href="#L727">727</a><span class="c-doc">⍝│</span><span class="c-doc"> tangent part at P_i of the sum over j of -W_ij P_j / sin(angle), a</span></span>
+<span class="line" id="L728"><a class="ln" href="#L728">728</a><span class="c-doc">⍝│</span><span class="c-doc"> matrix the shape of P. (The angle is acos of the dot product; its</span></span>
+<span class="line" id="L729"><a class="ln" href="#L729">729</a><span class="c-doc">⍝│</span><span class="c-doc"> derivative with respect to P_i is -P_j / sin of it, then projected</span></span>
+<span class="line" id="L730"><a class="ln" href="#L730">730</a><span class="c-doc">⍝│</span><span class="c-doc"> onto the tangent plane; the sine is |P_i - P_j| |P_i + P_j| / 2.)</span></span>
+<span class="line" id="L731"><a class="ln" href="#L731">731</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L732"><a class="ln" href="#L732">732</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:s_phereDistancesGradient 2 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0</span></span>
+<span class="line" id="L733"><a class="ln" href="#L733">733</a><span class="c-doc">⍝│</span><span class="c-doc">                 0.0 -0.9999999999999998 0.0</span></span>
+<span class="line" id="L734"><a class="ln" href="#L734">734</a><span class="c-doc">⍝│</span><span class="c-doc"> -0.9999999999999998                 0.0 0.0</span></span>
+<span class="line" id="L735"><a class="ln" href="#L735">735</a><span class="c-libfunc">ˡs̲phereDistancesGradient</span> ← { W P →</span>
+<span class="line" id="L736"><a class="ln" href="#L736">736</a>  (D, S) ← <a href="libs-Manifold-src-Manifold.xtl.html#h.a_partPairs" class="c-libfunc">ʰa̲partPairs</a> P</span>
+<span class="line" id="L737"><a class="ln" href="#L737">737</a>  M ← (<a href="libs-Manifold-src-Manifold.xtl.html#h.o_ffDiagonal" class="c-libfunc">ʰo̲ffDiagonal</a> W) <a href="builtins.html#-2f" class="c-symbol">÷</a> (D <a href="builtins.html#-2a" class="c-symbol">×</a> S <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span>) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span></span>
+<span class="line" id="L738"><a class="ln" href="#L738">738</a>  Q ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P</span>
+<span class="line" id="L739"><a class="ln" href="#L739">739</a>  A ← M <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> Q</span>
+<span class="line" id="L740"><a class="ln" href="#L740">740</a>  c ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (A, Q)</span>
+<span class="line" id="L741"><a class="ln" href="#L741">741</a>  (c <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> Q) <a href="builtins.html#-2d" class="c-symbol">−</a> A</span>
+<span class="line" id="L742"><a class="ln" href="#L742">742</a>}</span>
+<span class="line" id="L743"><a class="ln" href="#L743">743</a></span>
+<span class="line" id="L744"><a class="ln" href="#L744">744</a><span class="c-doc">⍝│</span><span class="c-doc"> </span><span class="c-doc"></span>W <span class="c-builtin">b̲allDistancesGradient</span> P<span class="c-doc"></span><span class="c-doc">: the gradient along the ball, with</span></span>
+<span class="line" id="L745"><a class="ln" href="#L745">745</a><span class="c-doc">⍝│</span><span class="c-doc"> respect to each row of P (points inside the ball), of the sum over</span></span>
+<span class="line" id="L746"><a class="ln" href="#L746">746</a><span class="c-doc">⍝│</span><span class="c-doc"> pairs of W_ij d(P_i, P_j), d the ball's distance: the plain</span></span>
+<span class="line" id="L747"><a class="ln" href="#L747">747</a><span class="c-doc">⍝│</span><span class="c-doc"> gradient scaled by (1 - |P_i|^2)^2 / 4 at each row (b_allTangent),</span></span>
+<span class="line" id="L748"><a class="ln" href="#L748">748</a><span class="c-doc">⍝│</span><span class="c-doc"> a matrix the shape of P. The plain gradient of d = 2 asinh z, z =</span></span>
+<span class="line" id="L749"><a class="ln" href="#L749">749</a><span class="c-doc">⍝│</span><span class="c-doc"> |u - v| / sqrt(a b) with a = 1 - |u|^2 and b = 1 - |v|^2, with</span></span>
+<span class="line" id="L750"><a class="ln" href="#L750">750</a><span class="c-doc">⍝│</span><span class="c-doc"> respect to u is (2 / sqrt(1 + z^2)) ((u - v) / |u - v| + |u - v|</span></span>
+<span class="line" id="L751"><a class="ln" href="#L751">751</a><span class="c-doc">⍝│</span><span class="c-doc"> u / a) / sqrt(a b).</span></span>
+<span class="line" id="L752"><a class="ln" href="#L752">752</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;mf:&quot; u_se&lt; &quot;Manifold&quot;</span></span>
+<span class="line" id="L753"><a class="ln" href="#L753">753</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (2 2 r_eshape 0.0 1.0 1.0 0.0) mf:b_allDistancesGradient 2 2 r_eshape 0.0 0.0 0.5 0.0</span></span>
+<span class="line" id="L754"><a class="ln" href="#L754">754</a><span class="c-doc">⍝│</span><span class="c-doc">  -0.5 0.0</span></span>
+<span class="line" id="L755"><a class="ln" href="#L755">755</a><span class="c-doc">⍝│</span><span class="c-doc"> 0.375 0.0</span></span>
+<span class="line" id="L756"><a class="ln" href="#L756">756</a><span class="c-libfunc">ˡb̲allDistancesGradient</span> ← { W P →</span>
+<span class="line" id="L757"><a class="ln" href="#L757">757</a>  Q ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> P</span>
+<span class="line" id="L758"><a class="ln" href="#L758">758</a>  M ← <a href="libs-Manifold-src-Manifold.xtl.html#h.d_istPairs" class="c-libfunc">ʰd̲istPairs</a> Q</span>
+<span class="line" id="L759"><a class="ln" href="#L759">759</a>  a ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Manifold-src-Manifold.xtl.html#h.d_ots" class="c-libfunc">ʰd̲ots</a> (Q, Q)</span>
+<span class="line" id="L760"><a class="ln" href="#L760">760</a>  R ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> a <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> a                                     <span class="c-comment">⍝</span><span class="c-comment"> sqrt(a_i a_j)</span></span>
+<span class="line" id="L761"><a class="ln" href="#L761">761</a>  Z ← M <a href="builtins.html#-2f" class="c-symbol">÷</a> R</span>
+<span class="line" id="L762"><a class="ln" href="#L762">762</a>  K ← (<a href="libs-Manifold-src-Manifold.xtl.html#h.o_ffDiagonal" class="c-libfunc">ʰo̲ffDiagonal</a> W) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> R <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> Z <a href="builtins.html#-2a" class="c-symbol">×</a> Z       <span class="c-comment">⍝</span><span class="c-comment"> W_ij 2 / (sqrt(1 + z^2) sqrt(a_i a_j))</span></span>
+<span class="line" id="L763"><a class="ln" href="#L763">763</a>  E ← K <a href="builtins.html#-2f" class="c-symbol">÷</a> M <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1e-300</span>                                     <span class="c-comment">⍝</span><span class="c-comment"> ... / |u - v|, for the (u - v) part</span></span>
+<span class="line" id="L764"><a class="ln" href="#L764">764</a>  F ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> K <a href="builtins.html#-2a" class="c-symbol">×</a> M                                         <span class="c-comment">⍝</span><span class="c-comment"> sum over j of ... |u - v|, for the u / a_i part</span></span>
+<span class="line" id="L765"><a class="ln" href="#L765">765</a>  plain ← (((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> E) <a href="builtins.html#-2b" class="c-symbol">+</a> F <a href="builtins.html#-2f" class="c-symbol">÷</a> a) <a href="libs-Manifold-src-Manifold.xtl.html#h.s_caleRows" class="c-libfunc">ʰs̲caleRows</a> Q) <a href="builtins.html#-2d" class="c-symbol">−</a> E <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> Q</span>
+<span class="line" id="L766"><a class="ln" href="#L766">766</a>  Q <a href="libs-Manifold-src-Manifold.xtl.html#l.b_allTangent" class="c-libfunc">ˡb̲allTangent</a> plain</span>
+<span class="line" id="L767"><a class="ln" href="#L767">767</a>}</span>
+</div>
+</main>
+</body>
+</html>

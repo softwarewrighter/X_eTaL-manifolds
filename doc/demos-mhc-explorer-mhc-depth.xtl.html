@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demos/mhc-explorer/mhc-depth.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/dynamics-explorer/</h3>
+<ul>
+<li><a href="demos-dynamics-explorer-dynamics-explorer.xtl.html">dynamics-explorer.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/mhc-explorer/</h3>
+<ul>
+<li><a href="demos-mhc-explorer-mhc-depth.xtl.html">mhc-depth.xtl</a></li>
+<li><a href="demos-mhc-explorer-mhc-explorer.xtl.html">mhc-explorer.xtl</a></li>
+</ul>
+<h3>demos/optimization-explorer/</h3>
+<ul>
+<li><a href="demos-optimization-explorer-optimization-explorer.xtl.html">optimization-explorer.xtl</a></li>
+<li><a href="demos-optimization-explorer-optimization-training.xtl.html">optimization-training.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+<li><a href="demos-representation-explorer-representation-hyperbolic.xtl.html">representation-hyperbolic.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>libs/Mixing/demos/</h3>
+<ul>
+<li><a href="libs-Mixing-demos-sinkhorn.xtl.html">sinkhorn.xtl</a></li>
+</ul>
+<h3>libs/Mixing/src/</h3>
+<ul>
+<li><a href="libs-Mixing-src-Mixing.xtl.html">Mixing.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Matrix/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Optim/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html">Optim.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#text">text</a></li>
+<li class="item"><a href="#preset">preset</a></li>
+<li class="item"><a href="#n">n</a></li>
+<li class="item"><a href="#d">d</a></li>
+<li class="item"><a href="#dataSeed">dataSeed</a></li>
+<li class="item"><a href="#k">k</a></li>
+<li class="item"><a href="#per">per</a></li>
+<li class="item"><a href="#spread">spread</a></li>
+<li class="item"><a href="#splitSeed">splitSeed</a></li>
+<li class="item"><a href="#sweeps">sweeps</a></li>
+<li class="item"><a href="#pull">pull</a></li>
+<li class="item"><a href="#mixSpread">mixSpread</a></li>
+<li class="item"><a href="#weightScale">weightScale</a></li>
+<li class="item"><a href="#rate">rate</a></li>
+<li class="item"><a href="#steps">steps</a></li>
+<li class="item"><a href="#seeds">seeds</a></li>
+<li class="item"><a href="#depths">depths</a></li>
+<li class="item"><a href="#pageSteps">pageSteps</a></li>
+<li class="item"><a href="#top">top</a></li>
+<li class="item"><a href="#X">X</a></li>
+<li class="item"><a href="#y">y</a></li>
+<li class="item"><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a></li>
+<li class="item"><a href="#train">train</a></li>
+<li class="item"><a href="#held">held</a></li>
+<li class="item"><a href="#mu">mu</a></li>
+<li class="item"><a href="#sd">sd</a></li>
+<li class="item"><a href="#u.s_tandard"><span class="c-userfunc">ᵘs̲tandard</span></a></li>
+<li class="item"><a href="#Xt">Xt</a></li>
+<li class="item"><a href="#Xh">Xh</a></li>
+<li class="item"><a href="#yt">yt</a></li>
+<li class="item"><a href="#yh">yh</a></li>
+<li class="item"><a href="#Yt">Yt</a></li>
+<li class="item"><a href="#B">B</a></li>
+<li class="item"><a href="#p">p</a></li>
+<li class="item"><a href="#g">g</a></li>
+<li class="item"><a href="#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></li>
+<li class="item"><a href="#u.e_mbed"><span class="c-userfunc">ᵘe̲mbed</span></a></li>
+<li class="item"><a href="#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a></li>
+<li class="item"><a href="#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a></li>
+<li class="item"><a href="#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a></li>
+<li class="item"><a href="#u.f_inite"><span class="c-userfunc">ᵘf̲inite</span></a></li>
+<li class="item"><a href="#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></li>
+<li class="item"><a href="#L0">L0</a></li>
+<li class="item"><a href="#Xc">Xc</a></li>
+<li class="item"><a href="#Yc">Yc</a></li>
+<li class="item"><a href="#q">q</a></li>
+<li class="item"><a href="#picks">picks</a></li>
+<li class="item"><a href="#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a></li>
+<li class="item"><a href="#gradientGaps">gradientGaps</a></li>
+<li class="item"><a href="#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></li>
+<li class="item"><a href="#u.s_eeds"><span class="c-userfunc">ᵘs̲eeds</span></a></li>
+<li class="item"><a href="#u.t_hree"><span class="c-userfunc">ᵘt̲hree</span></a></li>
+<li class="item"><a href="#u.s_ummary"><span class="c-userfunc">ᵘs̲ummary</span></a></li>
+<li class="item"><a href="#nd">nd</a></li>
+<li class="item"><a href="#startTable">startTable</a></li>
+<li class="item"><a href="#profiles">profiles</a></li>
+<li class="item"><a href="#start">start</a></li>
+<li class="item"><a href="#u.p_roduct"><span class="c-userfunc">ᵘp̲roduct</span></a></li>
+<li class="item"><a href="#u.m_aking"><span class="c-userfunc">ᵘm̲aking</span></a></li>
+<li class="item"><a href="#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></li>
+<li class="item"><a href="#cost">cost</a></li>
+<li class="item"><a href="#pageRuns">pageRuns</a></li>
+<li class="item"><a href="#recLen">recLen</a></li>
+<li class="item"><a href="#u.n_ame"><span class="c-userfunc">ᵘn̲ame</span></a></li>
+<li class="item"><a href="#u.r_ecords"><span class="c-userfunc">ᵘr̲ecords</span></a></li>
+<li class="item"><a href="#recordsFlat">recordsFlat</a></li>
+<li class="item"><a href="#records">records</a></li>
+<li class="item"><a href="#u.a_fter"><span class="c-userfunc">ᵘa̲fter</span></a></li>
+<li class="item"><a href="#afterFlat">afterFlat</a></li>
+<li class="item"><a href="#after">after</a></li>
+<li class="item"><a href="#h2">h2</a></li>
+<li class="item"><a href="#pageLosses">pageLosses</a></li>
+<li class="item"><a href="#recordLosses">recordLosses</a></li>
+<li class="item"><a href="#pageGap">pageGap</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>demos/mhc-explorer/mhc-depth.xtl</h1>
+<div class="doc">
+<p>mHC explorer, part 2: from matrices to networks. A stack of small
+residual layers over n streams (mHC's layer, Mixing's s_tack) with
+four kinds of mixing made from the same trained numbers: the plain
+residual (the identity), free mixing (hyper-connections), doubly
+stochastic mixing (Sinkhorn's iteration on exp, mHC's) and
+orthogonal mixing (the Cayley transform). First at the start of
+training, depth by depth: the size of the signal going up, of the
+gradient coming down, the streams' spread, the composite gain and
+the constraint's violation, over several seeds. Then trained on the
+kit's flat clusters at four depths: loss by step, held-out
+accuracy, whether the run stayed finite, the cost of a step. The
+full training is done offline by this program (train/train.sh) and
+its records read back from data/; the page trains the first steps
+at the smallest depth again, and they must equal the records.</p>
+</div>
+<p class="meta"><a href="demos-mhc-explorer-mhc-depth.xtl.src.html">source</a> &middot; imports <code><span class="c-error">hc:</span></code> <a href="libs-Mixing-src-Mixing.xtl.html">libs/Mixing/src/Mixing.xtl</a>; <code><span class="c-error">kt:</span></code> <a href="libs-Kit-src-Kit.xtl.html">libs/Kit/src/Kit.xtl</a>; <code><span class="c-error">nn:</span></code> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html">work/xetal-ml/libs/NN/src/NN.xtl</a>; <code><span class="c-error">op:</span></code> <a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html">work/xetal-ml/libs/Optim/src/Optim.xtl</a>; <code><span class="c-error">mx:</span></code> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">work/xetal-libraries/libs/Matrix/src/Matrix.xtl</a>; <code><span class="c-string">ch</span><span class="c-string">:</span></code> <a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">work/xetal-libraries/libs/Check/src/Check.xtl</a> <a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">work/xetal-libraries/libs/Check/src/Check.xtlm</a></p>
+<div class="item" id="text">
+<h3><a href="#text">text</a> <span class="type">: Char</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L30">line 30</a></div>
+<div class="doc">
+<p>presets/depth.txt: the streams and their width; the data's seed,
+clusters, points per cluster and spread; the split's seed; the
+Sinkhorn sweeps and the pull toward the identity; the spread of the
+starting mixing numbers and the scale of the layers' weights; the
+rate and the steps of training; the seeds; the depths; the steps the
+page trains again.</p>
+</div>
+<pre class="code">text ← <a href="builtins.html#-5b-5dN_GET" class="c-builtin">⎕N̲GET</a> <span class="c-string">&quot;presets/depth.txt&quot;</span></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></div>
+</div>
+<div class="item" id="preset">
+<h3><a href="#preset">preset</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L31">line 31</a></div>
+<pre class="code">preset ← <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> (<a href="builtins.html#w_here" class="c-builtin">w̲here</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#text">text</a> <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;0123456789.- \n&quot;</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#text">text</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#dataSeed">dataSeed</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#per">per</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#spread">spread</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#splitSeed">splitSeed</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sweeps">sweeps</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pull">pull</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#mixSpread">mixSpread</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#weightScale">weightScale</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#rate">rate</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a></div>
+</div>
+<div class="item" id="n">
+<h3><a href="#n">n</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L32">line 32</a></div>
+<pre class="code">n ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#p">p</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.e_mbed"><span class="c-userfunc">ᵘe̲mbed</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_roduct"><span class="c-userfunc">ᵘp̲roduct</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_aking"><span class="c-userfunc">ᵘm̲aking</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></div>
+</div>
+<div class="item" id="d">
+<h3><a href="#d">d</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L33">line 33</a></div>
+<pre class="code">d ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#p">p</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.e_mbed"><span class="c-userfunc">ᵘe̲mbed</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_roduct"><span class="c-userfunc">ᵘp̲roduct</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></div>
+</div>
+<div class="item" id="dataSeed">
+<h3><a href="#dataSeed">dataSeed</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L34">line 34</a></div>
+<pre class="code">dataSeed ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a></div>
+</div>
+<div class="item" id="k">
+<h3><a href="#k">k</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L35">line 35</a></div>
+<pre class="code">k ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="per">
+<h3><a href="#per">per</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L36">line 36</a></div>
+<pre class="code">per ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">5</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a></div>
+</div>
+<div class="item" id="spread">
+<h3><a href="#spread">spread</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L37">line 37</a></div>
+<pre class="code">spread ← <span class="c-number">6</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a></div>
+</div>
+<div class="item" id="splitSeed">
+<h3><a href="#splitSeed">splitSeed</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L38">line 38</a></div>
+<pre class="code">splitSeed ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">7</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a></div>
+</div>
+<div class="item" id="sweeps">
+<h3><a href="#sweeps">sweeps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L39">line 39</a></div>
+<pre class="code">sweeps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">8</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_aking"><span class="c-userfunc">ᵘm̲aking</span></a></div>
+</div>
+<div class="item" id="pull">
+<h3><a href="#pull">pull</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L40">line 40</a></div>
+<pre class="code">pull ← <span class="c-number">9</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a></div>
+</div>
+<div class="item" id="mixSpread">
+<h3><a href="#mixSpread">mixSpread</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L41">line 41</a></div>
+<pre class="code">mixSpread ← <span class="c-number">10</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></div>
+</div>
+<div class="item" id="weightScale">
+<h3><a href="#weightScale">weightScale</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L42">line 42</a></div>
+<pre class="code">weightScale ← <span class="c-number">11</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></div>
+</div>
+<div class="item" id="rate">
+<h3><a href="#rate">rate</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L43">line 43</a></div>
+<pre class="code">rate ← <span class="c-number">12</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="steps">
+<h3><a href="#steps">steps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L44">line 44</a></div>
+<pre class="code">steps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">13</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#recLen">recLen</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.a_fter"><span class="c-userfunc">ᵘa̲fter</span></a></div>
+</div>
+<div class="item" id="seeds">
+<h3><a href="#seeds">seeds</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L45">line 45</a></div>
+<pre class="code">seeds ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">14</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_eeds"><span class="c-userfunc">ᵘs̲eeds</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_ecords"><span class="c-userfunc">ᵘr̲ecords</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordLosses">recordLosses</a></div>
+</div>
+<div class="item" id="depths">
+<h3><a href="#depths">depths</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L46">line 46</a></div>
+<pre class="code">depths ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">15</span> <span class="c-number">16</span> <span class="c-number">17</span> <span class="c-number">18</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#top">top</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#cost">cost</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a></div>
+</div>
+<div class="item" id="pageSteps">
+<h3><a href="#pageSteps">pageSteps</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L47">line 47</a></div>
+<pre class="code">pageSteps ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-number">19</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#preset">preset</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageRuns">pageRuns</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageLosses">pageLosses</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordLosses">recordLosses</a></div>
+</div>
+<div class="item" id="top">
+<h3><a href="#top">top</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L48">line 48</a></div>
+<pre class="code">top ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a></div>
+</div>
+<div class="item" id="X">
+<h3><a href="#X">X</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L54">line 54</a></div>
+<div class="doc">
+<p>The kit's flat clusters in the plane, the split (X_eTaL-ML's by GM5,
+written out: a seeded held-out quarter), each input standardized by
+the training rows' mean and spread.</p>
+</div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#y">y</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#dataSeed">dataSeed</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#per">per</a>, <span class="c-number">2</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#spread">spread</a>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#mu">mu</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sd">sd</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xh">Xh</a></div>
+</div>
+<div class="item" id="y">
+<h3><a href="#y">y</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L54">line 54</a></div>
+<div class="doc">
+<p>The kit's flat clusters in the plane, the split (X_eTaL-ML's by GM5,
+written out: a seeded held-out quarter), each input standardized by
+the training rows' mean and spread.</p>
+</div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#y">y</a>) ← <a href="libs-Kit-src-Kit.xtl.html#l.f_lat" class="c-libfunc">ᵏᵗf̲lat</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#dataSeed">dataSeed</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#per">per</a>, <span class="c-number">2</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#spread">spread</a>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#yt">yt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#yh">yh</a></div>
+</div>
+<div class="item" id="u.s_plit">
+<h3><a href="#u.s_plit"><span class="c-userfunc">ᵘs̲plit</span></a> <span class="type">: (Int, Int) -&gt; (Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L55">line 55</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲plit</span> ← { (seed, m) → order ← <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="libs-Kit-src-Kit.xtl.html#l.u_niform" class="c-libfunc">ᵏᵗu̲niform</a> (seed, m)◆ h ← m <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">4</span>◆ (h <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> order, h <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> order) }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a></div>
+</div>
+<div class="item" id="train">
+<h3><a href="#train">train</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L56">line 56</a></div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#held">held</a>) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#splitSeed">splitSeed</a>, <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#mu">mu</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sd">sd</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#yt">yt</a></div>
+</div>
+<div class="item" id="held">
+<h3><a href="#held">held</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L56">line 56</a></div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#held">held</a>) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_plit" class="c-userfunc">ᵘs̲plit</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#splitSeed">splitSeed</a>, <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xh">Xh</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#yh">yh</a></div>
+</div>
+<div class="item" id="mu">
+<h3><a href="#mu">mu</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L57">line 57</a></div>
+<pre class="code">mu ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#sd">sd</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tandard"><span class="c-userfunc">ᵘs̲tandard</span></a></div>
+</div>
+<div class="item" id="sd">
+<h3><a href="#sd">sd</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L58">line 58</a></div>
+<pre class="code">sd ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-builtin">'</span><a href="builtins.html#r_ight" class="c-builtin">r̲ight</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#mu">mu</a>) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tandard"><span class="c-userfunc">ᵘs̲tandard</span></a></div>
+</div>
+<div class="item" id="u.s_tandard">
+<h3><a href="#u.s_tandard"><span class="c-userfunc">ᵘs̲tandard</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L59">line 59</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tandard</span> ← { M → (M <a href="builtins.html#-2d" class="c-symbol">−</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-builtin">'</span><a href="builtins.html#r_ight" class="c-builtin">r̲ight</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#mu">mu</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-builtin">'</span><a href="builtins.html#r_ight" class="c-builtin">r̲ight</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#sd">sd</a> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xh">Xh</a></div>
+</div>
+<div class="item" id="Xt">
+<h3><a href="#Xt">Xt</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L60">line 60</a></div>
+<pre class="code">Xt ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tandard" class="c-userfunc">ᵘs̲tandard</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xc">Xc</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="Xh">
+<h3><a href="#Xh">Xh</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L61">line 61</a></div>
+<pre class="code">Xh ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tandard" class="c-userfunc">ᵘs̲tandard</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#held">held</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#X">X</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="yt">
+<h3><a href="#yt">yt</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L62">line 62</a></div>
+<pre class="code">yt ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#train">train</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#y">y</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="yh">
+<h3><a href="#yh">yh</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L63">line 63</a></div>
+<pre class="code">yh ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#held">held</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#y">y</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="Yt">
+<h3><a href="#Yt">Yt</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L64">line 64</a></div>
+<pre class="code">Yt ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.o_neHot" class="c-libfunc">ⁿⁿo̲neHot</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#yt">yt</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yc">Yc</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="B">
+<h3><a href="#B">B</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L65">line 65</a></div>
+<pre class="code">B ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#yt">yt</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_roduct"><span class="c-userfunc">ᵘp̲roduct</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></div>
+</div>
+<div class="item" id="p">
+<h3><a href="#p">p</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L75">line 75</a></div>
+<div class="doc">
+<p>The input (two numbers) goes into the n streams by a seeded matrix
+E, each stream its own d numbers; L layers of Mixing's stack (each
+the read a' X, F = tanh(r W + c), the streams H X + b F); the top
+read by aout and a dense layer to k scores, softmax, cross-entropy
+(NN's). Every trained number is in one vector: E (2 n d), aout (n),
+the read-out's weights with its bias ((d + 1) k), then each layer's
+row (Mixing's p_arts: T, W with c, a, b).</p>
+</div>
+<pre class="code">p ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#q">q</a></div>
+</div>
+<div class="item" id="g">
+<h3><a href="#g">g</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L76">line 76</a></div>
+<pre class="code">g ← (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#q">q</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a></div>
+</div>
+<div class="item" id="u.s_tart">
+<h3><a href="#u.s_tart"><span class="c-userfunc">ᵘs̲tart</span></a> <span class="type">: (Int, Int) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L82">line 82</a></div>
+<div class="doc">
+<p>The start for a seed: E and the read-out seeded, aout = 1/n; each
+layer's mixing numbers T seeded with spread mixSpread (the same T
+for every kind, so the kinds start from the same numbers), W seeded
+at weightScale / sqrt d, c = 0, a = 1/n, b = 1. The layers of a
+shallow stack are the first layers of the deepest.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲tart</span> ← { (seed, L) →
+  s ← <span class="c-number">100</span> <a href="builtins.html#-2a" class="c-symbol">×</a> seed
+  E ← (<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormal" class="c-libfunc">ᵏᵗn̲ormal</a> (s, <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>)
+  Vb ← ((<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormal" class="c-libfunc">ᵏᵗn̲ormal</a> (s <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  T ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#mixSpread">mixSpread</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ᵏᵗn̲ormals</a> (s <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#top">top</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>)
+  W ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#weightScale">weightScale</a> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Kit-src-Kit.xtl.html#l.n_ormals" class="c-libfunc">ᵏᵗn̲ormals</a> (s <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">3</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#top">top</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>)
+  rest ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#top">top</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>
+  E <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> Vb <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> L <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> T <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> W <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> rest
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="u.e_mbed">
+<h3><a href="#u.e_mbed"><span class="c-userfunc">ᵘe̲mbed</span></a> <span class="type">: Num a =&gt; (a, a) -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L93">line 93</a></div>
+<div class="doc">
+<p>The streams of a batch from the inputs: n rows, the coordinates of
+each example in Mixing's order.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘe̲mbed</span> ← { (E, Xin) → (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Xin) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> Xin <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> E }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a></div>
+</div>
+<div class="item" id="u.u_npack">
+<h3><a href="#u.u_npack"><span class="c-userfunc">ᵘu̲npack</span></a> <span class="type">: Num a =&gt; (Int, a) -&gt; (Float, Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L96">line 96</a></div>
+<div class="doc">
+<p>The trained numbers of a stack of L layers as (E, aout, the
+read-out's weights with their bias, the layers' rows).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘu̲npack</span> ← { (L, w) →
+  v ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> w
+  o1 ← <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>
+  o2 ← o1 <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>
+  (o1 <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> v, <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> o1 <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v, ((<a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2d" class="c-symbol">−</a> o2) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> o2 <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v, (L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#p">p</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v)
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a></div>
+</div>
+<div class="item" id="u.p_ass">
+<h3><a href="#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a> <span class="type">: (Num a, Num b) =&gt; (a, Int, b, Float, Float) -&gt; (Float, Float, Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L108">line 108</a></div>
+<div class="doc">
+<p>One pass over a batch (inputs Xin, one-hot targets Y): forward
+through the stack and the read-out, then the gradient of the mean
+cross-entropy carried back through the read-out (written out), the
+stack (Mixing's s_tackBack) and E. (the loss, the gradient of every
+trained number in w's order, every state, the gradient's size at
+every state from the bottom up, the probabilities.)</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘp̲ass</span> ← { (kind, L, w, Xin, Y) →
+  m ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Xin
+  (E, aout, Vb, P) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack" class="c-userfunc">ᵘu̲npack</a> (L, w)
+  (Xs, Fs) ← (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sweeps">sweeps</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pull">pull</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack" class="c-libfunc">ʰᶜs̲tack</a> (P, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.e_mbed" class="c-userfunc">ᵘe̲mbed</a> (E, Xin))
+  XL ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> Xs
+  R ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> aout <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> XL
+  Pr ← <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.s_oftmax" class="c-libfunc">ⁿⁿs̲oftmax</a> R <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.d_ense" class="c-libfunc">ⁿⁿd̲ense</a> Vb
+  dZ ← (Pr <a href="builtins.html#-2d" class="c-symbol">−</a> Y) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m
+  dVb ← (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> R <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> (m <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> dZ
+  dr ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">-1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> Vb) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> dZ
+  (dP, dX0, sizes) ← (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sweeps">sweeps</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pull">pull</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack" class="c-libfunc">ʰᶜs̲tackBack</a> (P, Xs, Fs, aout <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> dr)
+  dE ← (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> Xin) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dX0
+  (Y <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.c_rossEntropy" class="c-libfunc">ⁿⁿc̲rossEntropy</a> Pr, (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dE) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (XL <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> dr) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dVb) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dP, Xs, sizes, Pr)
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="u.m_ixes">
+<h3><a href="#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a> <span class="type">: (Num a, Num b) =&gt; (a, Int, b) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L126">line 126</a></div>
+<div class="doc">
+<p>Every layer's mixing matrix for a stack: their product (the
+composite, the last layer's on the left), the largest distance of
+any of them from the doubly stochastic matrices and from the
+orthogonal ones (Mixing's s_tochasticOff, o_rthogonalOff).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘm̲ixes</span> ← { (kind, L, w) →
+  (_, _, _, P) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.u_npack" class="c-userfunc">ᵘu̲npack</a> (L, w)
+  (C, ds, oo, _) ← L <span class="c-quote">'</span>{ (C, ds, oo, i) → (T, _, _, _) ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.p_arts" class="c-libfunc">ʰᶜp̲arts</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> P◆ H ← (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#sweeps">sweeps</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pull">pull</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix" class="c-libfunc">ʰᶜm̲ix</a> T◆ (H <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> C, ds <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tochasticOff" class="c-libfunc">ʰᶜs̲tochasticOff</a> H, oo <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.o_rthogonalOff" class="c-libfunc">ʰᶜo̲rthogonalOff</a> H, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ᵐˣi̲dentity</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <span class="c-number">0.0</span>, <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  (C, ds, oo)
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="u.f_inite">
+<h3><a href="#u.f_inite"><span class="c-userfunc">ᵘf̲inite</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L133">line 133</a></div>
+<div class="doc">
+<p>Whether every number is finite: 1 or 0 (a NaN fails every comparison;
+a largest-of reduction would pass over it).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘf̲inite</span> ← { v → <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1e300</span> <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> v }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a></div>
+</div>
+<div class="item" id="u.r_un">
+<h3><a href="#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a> <span class="type">: Num a =&gt; (a, Int, Int, Int) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L144">line 144</a></div>
+<div class="doc">
+<p>One training run: steps of plain gradient descent at the rate
+(Optim's s_gd) on all the training rows from the seed's start. The
+record, one line: the loss before each step and after the last
+(steps + 1), the gradient's size at each step (steps), then the
+training and held-out accuracy at the end, 1 if every number stayed
+finite, the largest distance of a mixing matrix from the doubly
+stochastic ones and from the orthogonal ones at the end, the
+composite's gain (forward, backward), and at the end the size and
+the spread of the streams at the top over those at the bottom (on
+the training rows).</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘr̲un</span> ← { (kind, L, seed, S) →
+  (w, losses, sizes) ← S <span class="c-quote">'</span>{ (w, ls, gs) → (loss, gr, _, _, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, L, w, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a>)◆ (<a href="demos-mhc-explorer-mhc-depth.xtl.html#rate">rate</a> <a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html#l.s_gd" class="c-libfunc">ᵒᵖs̲gd</a> (w, gr), ls <a href="builtins.html#c_at" class="c-builtin">c̲at</a> loss, gs <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> gr <a href="builtins.html#-2a" class="c-symbol">×</a> gr) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> (seed, L), <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)
+  (lossEnd, _, XsEnd, _, Pt) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, L, w, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a>)
+  sz ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.s_izes" class="c-libfunc">ʰᶜs̲izes</a> XsEnd
+  sp ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_preads" class="c-libfunc">ʰᶜs̲preads</a> XsEnd
+  (_, _, _, _, Ph) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, L, w, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xh">Xh</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#k">k</a> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.o_neHot" class="c-libfunc">ⁿⁿo̲neHot</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#yh">yh</a>)
+  (C, ds, oo) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes" class="c-userfunc">ᵘm̲ixes</a> (kind, L, w)
+  losses <a href="builtins.html#c_at" class="c-builtin">c̲at</a> lossEnd <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sizes <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#yt">yt</a> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.a_ccuracy" class="c-libfunc">ⁿⁿa̲ccuracy</a> Pt) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#yh">yh</a> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.a_ccuracy" class="c-libfunc">ⁿⁿa̲ccuracy</a> Ph) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.f_inite" class="c-userfunc">ᵘf̲inite</a> w <a href="builtins.html#c_at" class="c-builtin">c̲at</a> lossEnd) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ds <a href="builtins.html#c_at" class="c-builtin">c̲at</a> oo <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="libs-Mixing-src-Mixing.xtl.html#l.g_ain" class="c-libfunc">ʰᶜg̲ain</a> C) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> sz) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> sz) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> sp) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> sp
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageRuns">pageRuns</a></div>
+</div>
+<div class="item" id="L0">
+<h3><a href="#L0">L0</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L162">line 162</a></div>
+<div class="doc">
+<p>Every gradient the program trains with, against central
+differences (h = 1e-6), for each kind on a stack of the smallest
+depth and the first six training rows: ten numbers of w, one from
+each part (E, aout, the read-out, then of the first layer its T, W,
+c, a and b, and of the last layer its T and W); the largest gap
+over the largest gradient, one number per kind.</p>
+</div>
+<pre class="code">L0 ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#q">q</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageRuns">pageRuns</a></div>
+</div>
+<div class="item" id="Xc">
+<h3><a href="#Xc">Xc</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L163">line 163</a></div>
+<pre class="code">Xc ← <span class="c-number">6</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a></div>
+</div>
+<div class="item" id="Yc">
+<h3><a href="#Yc">Yc</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L164">line 164</a></div>
+<pre class="code">Yc ← <span class="c-number">6</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a></div>
+</div>
+<div class="item" id="q">
+<h3><a href="#q">q</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L165">line 165</a></div>
+<pre class="code">q ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#p">p</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a></div>
+</div>
+<div class="item" id="picks">
+<h3><a href="#picks">picks</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L166">line 166</a></div>
+<pre class="code">picks ← <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#g">g</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#q">q</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#q">q</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a></div>
+</div>
+<div class="item" id="u.c_heck">
+<h3><a href="#u.c_heck"><span class="c-userfunc">ᵘc̲heck</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L167">line 167</a></div>
+<pre class="code"><span class="c-userfunc">ᵘc̲heck</span> ← { kind →
+  w ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> (<span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>)
+  (_, gr, _, _, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, w, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xc">Xc</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yc">Yc</a>)
+  (num, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a>) <span class="c-quote">'</span>{ (o, i) → e ← <span class="c-number">0.000001</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a>) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w◆ (lu, _, _, _, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, w <a href="builtins.html#-2b" class="c-symbol">+</a> e, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xc">Xc</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yc">Yc</a>)◆ (ld, _, _, _, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, w <a href="builtins.html#-2d" class="c-symbol">−</a> e, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xc">Xc</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yc">Yc</a>)◆ (o <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (lu <a href="builtins.html#-2d" class="c-symbol">−</a> ld) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">0.000002</span>, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  an ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#picks">picks</a> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> gr
+  (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> an <a href="builtins.html#-2d" class="c-symbol">−</a> num) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> an
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#gradientGaps">gradientGaps</a></div>
+</div>
+<div class="item" id="gradientGaps">
+<h3><a href="#gradientGaps">gradientGaps</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L174">line 174</a></div>
+<pre class="code">gradientGaps ← (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck" class="c-userfunc">ᵘc̲heck</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck" class="c-userfunc">ᵘc̲heck</a> <span class="c-number">2</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck" class="c-userfunc">ᵘc̲heck</a> <span class="c-number">3</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_heck" class="c-userfunc">ᵘc̲heck</a> <span class="c-number">4</span></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L288">demos/mhc-explorer/mhc-depth.xtl:288</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L296">demos/mhc-explorer/mhc-depth.xtl:296</a></div>
+</div>
+<div class="item" id="u.p_rofile">
+<h3><a href="#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a> <span class="type">: Num a =&gt; (a, Int, Int) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L184">line 184</a></div>
+<div class="doc">
+<p>For each kind, depth and seed, one pass at the start over the
+training rows: the size of the streams at every state (Mixing's
+s_izes), the size of the loss's gradient at every state, the
+streams' spread at every state (s_preads), the composite's gain and
+the largest distance of a mixing matrix from each set. A row: those
+three profiles (L + 1 numbers each, bottom to top), then the gain
+(forward, backward) and the two distances.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘp̲rofile</span> ← { (kind, L, seed) →
+  w ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_tart" class="c-userfunc">ᵘs̲tart</a> (seed, L)
+  (_, _, Xs, gs, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass" class="c-userfunc">ᵘp̲ass</a> (kind, L, w, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Xt">Xt</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#Yt">Yt</a>)
+  (C, ds, oo) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes" class="c-userfunc">ᵘm̲ixes</a> (kind, L, w)
+  (<a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.s_izes" class="c-libfunc">ʰᶜs̲izes</a> Xs) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> gs <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_preads" class="c-libfunc">ʰᶜs̲preads</a> Xs) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="libs-Mixing-src-Mixing.xtl.html#l.g_ain" class="c-libfunc">ʰᶜg̲ain</a> C) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ds <a href="builtins.html#c_at" class="c-builtin">c̲at</a> oo
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_eeds"><span class="c-userfunc">ᵘs̲eeds</span></a></div>
+</div>
+<div class="item" id="u.s_eeds">
+<h3><a href="#u.s_eeds"><span class="c-userfunc">ᵘs̲eeds</span></a> <span class="type">: Num a =&gt; (a, Int) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L190">line 190</a></div>
+<pre class="code"><span class="c-userfunc">ᵘs̲eeds</span> ← { (kind, L) → (rows, _) ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <span class="c-quote">'</span>{ (R, s) → (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile" class="c-userfunc">ᵘp̲rofile</a> (kind, L, s), s <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)◆ (<a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> rows }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a></div>
+</div>
+<div class="item" id="u.t_hree">
+<h3><a href="#u.t_hree"><span class="c-userfunc">ᵘt̲hree</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L192">line 192</a></div>
+<div class="doc">
+<p>The mean, the smallest and the largest of a few numbers.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘt̲hree</span> ← { v → ((<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_ummary"><span class="c-userfunc">ᵘs̲ummary</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.a_fter"><span class="c-userfunc">ᵘa̲fter</span></a></div>
+</div>
+<div class="item" id="u.s_ummary">
+<h3><a href="#u.s_ummary"><span class="c-userfunc">ᵘs̲ummary</span></a> <span class="type">: (Int, Float) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L198">line 198</a></div>
+<div class="doc">
+<p>Over the seeds: the signal's growth from bottom to top (top size
+over bottom size), the gradient's growth from top to bottom (bottom
+over top), the spread's change (top over bottom), each as mean,
+smallest, largest; the composite's gain, mean forward and backward;
+the largest distance from each set. 13 numbers.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘs̲ummary</span> ← { (L, M) →
+  e ← L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>
+  up ← (e <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M
+  down ← ((e <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M
+  sp ← ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#-2f" class="c-symbol">÷</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M
+  (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> up) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> down) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> sp) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">3</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> e) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">4</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> M
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a></div>
+</div>
+<div class="item" id="nd">
+<h3><a href="#nd">nd</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L205">line 205</a></div>
+<pre class="code">nd ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#start">start</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#cost">cost</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#after">after</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#h2">h2</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordLosses">recordLosses</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L290">demos/mhc-explorer/mhc-depth.xtl:290</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L291">demos/mhc-explorer/mhc-depth.xtl:291</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L292">demos/mhc-explorer/mhc-depth.xtl:292</a></div>
+</div>
+<div class="item" id="startTable">
+<h3><a href="#startTable">startTable</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L208">line 208</a></div>
+<div class="doc">
+<p>Kinds by depths, kind first: a summary row each, and the first
+seed's three profiles each (raveled, every depth's in turn).</p>
+</div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#profiles">profiles</a>, _) ← (<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <span class="c-quote">'</span>{ (S, Pf, j) →
+  kind ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>
+  L ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a>
+  M ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_eeds" class="c-userfunc">ᵘs̲eeds</a> (kind, L)
+  (S <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_ummary" class="c-userfunc">ᵘs̲ummary</a> (L, M), Pf <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M, j <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+} <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#start">start</a></div>
+</div>
+<div class="item" id="profiles">
+<h3><a href="#profiles">profiles</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L208">line 208</a></div>
+<div class="doc">
+<p>Kinds by depths, kind first: a summary row each, and the first
+seed's three profiles each (raveled, every depth's in turn).</p>
+</div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#profiles">profiles</a>, _) ← (<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <span class="c-quote">'</span>{ (S, Pf, j) →
+  kind ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>
+  L ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a>
+  M ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_eeds" class="c-userfunc">ᵘs̲eeds</a> (kind, L)
+  (S <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.s_ummary" class="c-userfunc">ᵘs̲ummary</a> (L, M), Pf <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> M, j <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+} <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a></div>
+</div>
+<div class="item" id="start">
+<h3><a href="#start">start</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L214">line 214</a></div>
+<pre class="code">start ← ((<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">13</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#startTable">startTable</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#h2">h2</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L290">demos/mhc-explorer/mhc-depth.xtl:290</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L291">demos/mhc-explorer/mhc-depth.xtl:291</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L292">demos/mhc-explorer/mhc-depth.xtl:292</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L298">demos/mhc-explorer/mhc-depth.xtl:298</a></div>
+</div>
+<div class="item" id="u.p_roduct">
+<h3><a href="#u.p_roduct"><span class="c-userfunc">ᵘp̲roduct</span></a> <span class="type">: Num a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L229">line 229</a></div>
+<div class="doc">
+<p>Multiplications and divisions per training step on all the training
+rows (analytical; exponentials and additions not counted; a
+product's backward counted as two of its forward, as for any
+layer): every layer reads the streams (n m, m = d B), runs its dense
+layer (B d^2) and writes back (n m), forward and back, 3 (2 n m +
+B d^2); the mixing's product H X adds 3 n^2 m for every kind but
+the plain residual, which needs none; making H adds nothing for free
+mixing, 2 n^2 per sweep and three times that back for doubly
+stochastic mixing (8 k n^2), and about n^3 for the solve and three
+times that back for orthogonal mixing (4 n^3). The read-in and the
+read-out are the same for every kind and left out. One row per
+kind, a number per depth.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘp̲roduct</span> ← { kind → kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <span class="c-number">0</span>◆ <span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></div>
+</div>
+<div class="item" id="u.m_aking">
+<h3><a href="#u.m_aking"><span class="c-userfunc">ᵘm̲aking</span></a> <span class="type">: Num a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L230">line 230</a></div>
+<pre class="code"><span class="c-userfunc">ᵘm̲aking</span> ← { kind → kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">3</span> ? <span class="c-number">8</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#sweeps">sweeps</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>◆ kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">4</span> ? <span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a>◆ <span class="c-number">0</span> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a></div>
+</div>
+<div class="item" id="u.c_ost">
+<h3><a href="#u.c_ost"><span class="c-userfunc">ᵘc̲ost</span></a> <span class="type">: Num a =&gt; (a, Int) -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L231">line 231</a></div>
+<pre class="code"><span class="c-userfunc">ᵘc̲ost</span> ← { (kind, L) → L <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#n">n</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#B">B</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#d">d</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_roduct" class="c-userfunc">ᵘp̲roduct</a> kind) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_aking" class="c-userfunc">ᵘm̲aking</a> kind }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#cost">cost</a></div>
+</div>
+<div class="item" id="cost">
+<h3><a href="#cost">cost</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L232">line 232</a></div>
+<pre class="code">cost ← (<span class="c-number">4</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-quote">'</span>{ j → <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.c_ost" class="c-userfunc">ᵘc̲ost</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>, (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a>) } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#h2">h2</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L300">demos/mhc-explorer/mhc-depth.xtl:300</a></div>
+</div>
+<div class="item" id="pageRuns">
+<h3><a href="#pageRuns">pageRuns</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L237">line 237</a></div>
+<div class="doc">
+<p>The first pageSteps steps of every kind at the smallest depth with
+the first seed, trained here as the offline runs were.</p>
+</div>
+<pre class="code">pageRuns ← (<span class="c-number">4</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">10</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, <span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<span class="c-number">2</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, <span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<span class="c-number">3</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, <span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a>)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un" class="c-userfunc">ᵘr̲un</a> (<span class="c-number">4</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#L0">L0</a>, <span class="c-number">1</span>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageLosses">pageLosses</a></div>
+</div>
+<div class="item" id="recLen">
+<h3><a href="#recLen">recLen</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L242">line 242</a></div>
+<div class="doc">
+<p>data/KIND-L.txt, written by train/train.sh from this program: a
+line per seed, each u:r_un's record at the preset's steps.</p>
+</div>
+<pre class="code">recLen ← (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">10</span></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_ecords"><span class="c-userfunc">ᵘr̲ecords</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a></div>
+</div>
+<div class="item" id="u.n_ame">
+<h3><a href="#u.n_ame"><span class="c-userfunc">ᵘn̲ame</span></a> <span class="type">: Num a =&gt; a -&gt; Char</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L243">line 243</a></div>
+<pre class="code"><span class="c-userfunc">ᵘn̲ame</span> ← { kind → kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <span class="c-string">&quot;plain&quot;</span>◆ kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">2</span> ? <span class="c-string">&quot;free&quot;</span>◆ kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">3</span> ? <span class="c-string">&quot;stochastic&quot;</span>◆ <span class="c-string">&quot;orthogonal&quot;</span> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_ecords"><span class="c-userfunc">ᵘr̲ecords</span></a></div>
+</div>
+<div class="item" id="u.r_ecords">
+<h3><a href="#u.r_ecords"><span class="c-userfunc">ᵘr̲ecords</span></a> <span class="type">: Num a =&gt; (a, b) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L244">line 244</a></div>
+<pre class="code"><span class="c-userfunc">ᵘr̲ecords</span> ← { (kind, L) → (<a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#recLen">recLen</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> <a href="builtins.html#-5b-5dN_GET" class="c-builtin">⎕N̲GET</a> <span class="c-string">&quot;data/&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.n_ame" class="c-userfunc">ᵘn̲ame</a> kind) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;-&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> L) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;.txt&quot;</span> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a></div>
+</div>
+<div class="item" id="recordsFlat">
+<h3><a href="#recordsFlat">recordsFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L245">line 245</a></div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a>, _) ← (<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <span class="c-quote">'</span>{ (R, j) → (R <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_ecords" class="c-userfunc">ᵘr̲ecords</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>, (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#depths">depths</a>), j <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a></div>
+</div>
+<div class="item" id="records">
+<h3><a href="#records">records</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L246">line 246</a></div>
+<pre class="code">records ← ((<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#recLen">recLen</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordsFlat">recordsFlat</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordLosses">recordLosses</a></div>
+</div>
+<div class="item" id="u.a_fter">
+<h3><a href="#u.a_fter"><span class="c-userfunc">ᵘa̲fter</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L257">line 257</a></div>
+<div class="doc">
+<p>Each kind at each depth over its seeds, from the records: the
+seeds trained (every number finite and the loss at the end below
+the loss at the start), the seeds that stayed finite, then over the
+finite seeds the loss at the end and the held-out accuracy (mean,
+smallest, largest), the largest gradient size met, the training
+accuracy (mean); over every seed the largest distance of a mixing
+matrix from each set at the end and the composite's gain (mean,
+forward); then at the end the size and the spread at the top over
+the bottom (mean over the finite seeds). -1 where no seed stayed
+finite. 15 numbers.</p>
+</div>
+<pre class="code"><span class="c-userfunc">ᵘa̲fter</span> ← { R →
+  e ← <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>
+  fin ← (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">4</span>
+  ok ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> fin <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R
+  trained ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> fin <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R) <a href="builtins.html#-26" class="c-symbol">∧</a> (e <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ok ? (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> trained) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">13</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-1.0</span>
+  G ← ok <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> R
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> trained) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ok) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> e <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">3</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (e <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">5</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">6</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> R) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">7</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">9</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.t_hree" class="c-userfunc">ᵘt̲hree</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#steps">steps</a>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">10</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> G
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a></div>
+</div>
+<div class="item" id="afterFlat">
+<h3><a href="#afterFlat">afterFlat</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L266">line 266</a></div>
+<pre class="code">(<a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a>, _) ← (<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <span class="c-quote">'</span>{ (A, j) → (A <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.a_fter" class="c-userfunc">ᵘa̲fter</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> (<a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <a href="builtins.html#-2a" class="c-symbol">×</a> j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a>, j <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#after">after</a></div>
+</div>
+<div class="item" id="after">
+<h3><a href="#after">after</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L267">line 267</a></div>
+<pre class="code">after ← ((<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">15</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#afterFlat">afterFlat</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#h2">h2</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L292">demos/mhc-explorer/mhc-depth.xtl:292</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L304">demos/mhc-explorer/mhc-depth.xtl:304</a></div>
+</div>
+<div class="item" id="h2">
+<h3><a href="#h2">h2</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L276">line 276</a></div>
+<div class="doc">
+<p>Kind by depth (kind first): at the start, the signal's growth up
+the stack, the gradient's growth down it and the spread kept (means
+over the seeds) and the composite's forward gain; after training,
+the seeds trained, the seeds that stayed finite, the loss at the end
+and the held-out accuracy (mean, smallest, largest; -1 when none
+stayed finite) and the spread kept at the end; the cost of a step.</p>
+</div>
+<pre class="code">h2 ← (<span class="c-number">1</span> <span class="c-number">4</span> <span class="c-number">7</span> <span class="c-number">10</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#start">start</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> (<span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">6</span> <span class="c-number">7</span> <span class="c-number">8</span> <span class="c-number">15</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#after">after</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> ((<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#cost">cost</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L306">demos/mhc-explorer/mhc-depth.xtl:306</a></div>
+</div>
+<div class="item" id="pageLosses">
+<h3><a href="#pageLosses">pageLosses</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L282">line 282</a></div>
+<div class="doc">
+<p>The page's run against the first seed's record at the smallest
+depth: the loss before each step and after the last, and the
+gradient's size at each step.</p>
+</div>
+<pre class="code">pageLosses ← (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageRuns">pageRuns</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageGap">pageGap</a></div>
+</div>
+<div class="item" id="recordLosses">
+<h3><a href="#recordLosses">recordLosses</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L283">line 283</a></div>
+<pre class="code">recordLosses ← (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageSteps">pageSteps</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#nd">nd</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#seeds">seeds</a> <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">4</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#records">records</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageGap">pageGap</a></div>
+</div>
+<div class="item" id="pageGap">
+<h3><a href="#pageGap">pageGap</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L284">line 284</a></div>
+<pre class="code">pageGap ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#pageLosses">pageLosses</a> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="demos-mhc-explorer-mhc-depth.xtl.html#recordLosses">recordLosses</a></pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L289">demos/mhc-explorer/mhc-depth.xtl:289</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.src.html#L302">demos/mhc-explorer/mhc-depth.xtl:302</a></div>
+</div>
+</main>
+</body>
+</html>

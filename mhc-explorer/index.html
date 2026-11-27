@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mHC explorer</title>
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-manifolds/mhc-explorer/mhc-explorer-web-e6bed385a51846fc.js';
+const wasm = await init({ module_or_path: '/X_eTaL-manifolds/mhc-explorer/mhc-explorer-web-e6bed385a51846fc_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  <link rel="icon" href="/X_eTaL-manifolds/mhc-explorer/favicon-a11bc0a2bcd81290.ico" integrity="sha384-xOjSLs9ZRBKy2hF6zlqNv+0U86E4BqZOJy7H7a4GXSVwDQMNie0D851/sRBSYI9a"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/mhc-explorer/microscope-22257fd62318e7bf.css" integrity="sha384-HhCElH/+Dn/dCD6BMktfya0hcEUbJTzOz+U+aDZwhSMfcwqIb3L1cSWYSUVqWKI9"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/mhc-explorer/lesson-34dbb6604bad61b6.css" integrity="sha384-32SC5tV26l0GhJMT87oR5gbnsMRFCC06TJaqmsZHp85+UZcym11aTJ1QM8DDyxW+"/>
+  <link rel="stylesheet" href="/X_eTaL-manifolds/mhc-explorer/site-ddd98f9cf651962e.css" integrity="sha384-N2tC05JEkGNmZNrlxfmRhTKjb5wZPBlI5uCGIJHOab/+rIm8qKpBXDStI62oCCrS"/>
+<link rel="modulepreload" href="/X_eTaL-manifolds/mhc-explorer/mhc-explorer-web-e6bed385a51846fc.js" crossorigin="anonymous" integrity="sha384-d58VrEdx/wq3+lONgucHIL2groxIIMqA3qYdRQof3v64C4IWe86M7BV8r+pNhKFx"><link rel="preload" href="/X_eTaL-manifolds/mhc-explorer/mhc-explorer-web-e6bed385a51846fc_bg.wasm" crossorigin="anonymous" integrity="sha384-cwd1qGZWPKzv8evO4zPiG0oN1T+hn611hgiH9nim7Xg8uparFmcE+JTvzkox4wzD" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>

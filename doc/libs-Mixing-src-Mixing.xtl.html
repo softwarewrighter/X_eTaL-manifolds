@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Mixing/src/Mixing.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>demos/baseline-knn/</h3>
+<ul>
+<li><a href="demos-baseline-knn-baseline-knn.xtl.html">baseline-knn.xtl</a></li>
+</ul>
+<h3>demos/dynamics-explorer/</h3>
+<ul>
+<li><a href="demos-dynamics-explorer-dynamics-explorer.xtl.html">dynamics-explorer.xtl</a></li>
+</ul>
+<h3>demos/manifold-tour/</h3>
+<ul>
+<li><a href="demos-manifold-tour-manifold-tour.xtl.html">manifold-tour.xtl</a></li>
+</ul>
+<h3>demos/mhc-explorer/</h3>
+<ul>
+<li><a href="demos-mhc-explorer-mhc-depth.xtl.html">mhc-depth.xtl</a></li>
+<li><a href="demos-mhc-explorer-mhc-explorer.xtl.html">mhc-explorer.xtl</a></li>
+</ul>
+<h3>demos/optimization-explorer/</h3>
+<ul>
+<li><a href="demos-optimization-explorer-optimization-explorer.xtl.html">optimization-explorer.xtl</a></li>
+<li><a href="demos-optimization-explorer-optimization-training.xtl.html">optimization-training.xtl</a></li>
+</ul>
+<h3>demos/representation-explorer/</h3>
+<ul>
+<li><a href="demos-representation-explorer-representation-explorer.xtl.html">representation-explorer.xtl</a></li>
+<li><a href="demos-representation-explorer-representation-hyperbolic.xtl.html">representation-hyperbolic.xtl</a></li>
+</ul>
+<h3>demos/sphere-hello/</h3>
+<ul>
+<li><a href="demos-sphere-hello-sphere-hello.xtl.html">sphere-hello.xtl</a></li>
+</ul>
+<h3>libs/Kit/demos/</h3>
+<ul>
+<li><a href="libs-Kit-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Kit/src/</h3>
+<ul>
+<li><a href="libs-Kit-src-Kit.xtl.html">Kit.xtl</a></li>
+</ul>
+<h3>libs/Manifold/demos/</h3>
+<ul>
+<li><a href="libs-Manifold-demos-sphere.xtl.html">sphere.xtl</a></li>
+<li><a href="libs-Manifold-demos-tour.xtl.html">tour.xtl</a></li>
+</ul>
+<h3>libs/Manifold/src/</h3>
+<ul>
+<li><a href="libs-Manifold-src-Manifold.xtl.html">Manifold.xtl</a></li>
+</ul>
+<h3>libs/Mixing/demos/</h3>
+<ul>
+<li><a href="libs-Mixing-demos-sinkhorn.xtl.html">sinkhorn.xtl</a></li>
+</ul>
+<h3>libs/Mixing/src/</h3>
+<ul>
+<li><a href="libs-Mixing-src-Mixing.xtl.html">Mixing.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Check/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Graphs/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="work-xetal-libraries-libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Matrix/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>work/xetal-libraries/libs/Trig/src/</h3>
+<ul>
+<li><a href="work-xetal-libraries-libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Activations/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Activations-src-Activations.xtl.html">Activations.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Learn/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Learn-src-Learn.xtl.html">Learn.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Net/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Net-src-Net.xtlm.html">Net.xtlm</a></li>
+</ul>
+<h3>work/xetal-ml/libs/NN/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-NN-src-NN.xtl.html">NN.xtl</a></li>
+</ul>
+<h3>work/xetal-ml/libs/Optim/src/</h3>
+<ul>
+<li><a href="work-xetal-ml-libs-Optim-src-Optim.xtl.html">Optim.xtl</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li><a href="#section-1">Streams</a></li>
+<li class="item"><a href="#h.m_atrix"><span class="c-libfunc">ʰm̲atrix</span></a></li>
+<li class="item"><a href="#h.b_ack"><span class="c-libfunc">ʰb̲ack</span></a></li>
+<li class="item"><a href="#l.e_xpand"><span class="c-libfunc">ˡe̲xpand</span></a></li>
+<li class="item"><a href="#l.m_ean"><span class="c-libfunc">ˡm̲ean</span></a></li>
+<li class="item"><a href="#l.d_ifferences"><span class="c-libfunc">ˡd̲ifferences</span></a></li>
+<li class="item"><a href="#l.s_pread"><span class="c-libfunc">ˡs̲pread</span></a></li>
+<li><a href="#section-2">The layer</a></li>
+<li class="item"><a href="#l.l_ayer"><span class="c-libfunc">ˡl̲ayer</span></a></li>
+<li><a href="#section-3">The path from the identity to uniform mixing</a></li>
+<li class="item"><a href="#l.b_lend"><span class="c-libfunc">ˡb̲lend</span></a></li>
+<li><a href="#section-4">How far a matrix is from each kind</a></li>
+<li class="item"><a href="#l.s_umErrors"><span class="c-libfunc">ˡs̲umErrors</span></a></li>
+<li class="item"><a href="#l.n_egativity"><span class="c-libfunc">ˡn̲egativity</span></a></li>
+<li class="item"><a href="#l.s_tochasticOff"><span class="c-libfunc">ˡs̲tochasticOff</span></a></li>
+<li class="item"><a href="#l.o_rthogonalOff"><span class="c-libfunc">ˡo̲rthogonalOff</span></a></li>
+<li class="item"><a href="#l.g_ain"><span class="c-libfunc">ˡg̲ain</span></a></li>
+<li><a href="#section-5">Four kinds of mixing, made from trained numbers</a></li>
+<li class="item"><a href="#l.m_ix"><span class="c-libfunc">ˡm̲ix</span></a></li>
+<li class="item"><a href="#h.e_ye"><span class="c-libfunc">ʰe̲ye</span></a></li>
+<li class="item"><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a></li>
+<li class="item"><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a></li>
+<li class="item"><a href="#l.m_ixBack"><span class="c-libfunc">ˡm̲ixBack</span></a></li>
+<li class="item"><a href="#h.h_alf"><span class="c-libfunc">ʰh̲alf</span></a></li>
+<li class="item"><a href="#h.r_owsBack"><span class="c-libfunc">ʰr̲owsBack</span></a></li>
+<li class="item"><a href="#h.c_olumnsBack"><span class="c-libfunc">ʰc̲olumnsBack</span></a></li>
+<li class="item"><a href="#h.h_alfBack"><span class="c-libfunc">ʰh̲alfBack</span></a></li>
+<li class="item"><a href="#h.s_inkhornBack"><span class="c-libfunc">ʰs̲inkhornBack</span></a></li>
+<li><a href="#section-6">A stack of layers</a></li>
+<li class="item"><a href="#l.p_arts"><span class="c-libfunc">ˡp̲arts</span></a></li>
+<li class="item"><a href="#l.b_lock"><span class="c-libfunc">ˡb̲lock</span></a></li>
+<li class="item"><a href="#l.b_lockBack"><span class="c-libfunc">ˡb̲lockBack</span></a></li>
+<li class="item"><a href="#l.s_tack"><span class="c-libfunc">ˡs̲tack</span></a></li>
+<li class="item"><a href="#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a></li>
+<li class="item"><a href="#l.s_izes"><span class="c-libfunc">ˡs̲izes</span></a></li>
+<li class="item"><a href="#l.s_preads"><span class="c-libfunc">ˡs̲preads</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Mixing/src/Mixing.xtl</h1>
+<div class="doc">
+<p>Mixing: residual streams mixed under a constraint. A residual block
+carries one stream x and adds what a layer computes from it,
+x + F(x); hyper-connections (Zhu et al., ICLR 2025) carry n streams
+side by side, a matrix of n rows, and mix them at every layer by an
+n by n matrix; mHC (Xie et al., 2025) holds that matrix to the doubly
+stochastic matrices (no entry negative, every row and every column
+summing to 1). This library: the layer over n streams as mHC writes
+it, x &lt;- H x + b F(a' x); the streams' mean and differences; the
+path from the identity to uniform mixing; and how far a matrix is
+from each kind of mixing (doubly stochastic, orthogonal), with the
+gain mHC measures. Sinkhorn's iteration, which makes a positive
+matrix doubly stochastic, is matrix scaling and general: it is asked
+of X_eTaL-libraries (docs/xetal-libraries-asks.md, GL3), not kept
+here.
+Import it with an alias of your choice: &quot;hc:&quot; u_se&lt; &quot;Mixing&quot;.
+Put libs/Mixing/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Mixing/docs.
+Names with l: are exported; those under h: are private to this file.</p>
+<p>Streams are a matrix with one row per stream (n rows) and one
+column per coordinate (d columns); a vector is n streams of one
+number each. A mixing matrix is n by n. Every result is a Float.</p>
+</div>
+<p class="meta"><a href="libs-Mixing-src-Mixing.xtl.src.html">source</a> &middot; imports <code><span class="c-error">mx:</span></code> <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html">work/xetal-libraries/libs/Matrix/src/Matrix.xtl</a>; <code><span class="c-error">nn:</span></code> <a href="work-xetal-ml-libs-NN-src-NN.xtl.html">work/xetal-ml/libs/NN/src/NN.xtl</a></p>
+<h2 class="section" id="section-1">Streams</h2>
+<div class="item" id="h.m_atrix">
+<h3><a href="#h.m_atrix"><span class="c-libfunc">ʰm̲atrix</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L30">line 30</a></div>
+<div class="doc">
+<p><code><a href="libs-Mixing-src-Mixing.xtl.html#h.m_atrix" class="c-libfunc">ʰm̲atrix</a> X</code>: a vector as n streams of one number (an n by 1
+matrix); a matrix as it is.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲atrix</span> ← { X → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X ? <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> X◆ ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> X) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> X }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ean"><span class="c-libfunc">ˡm̲ean</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.d_ifferences"><span class="c-libfunc">ˡd̲ifferences</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.l_ayer"><span class="c-libfunc">ˡl̲ayer</span></a></div>
+</div>
+<div class="item" id="h.b_ack">
+<h3><a href="#h.b_ack"><span class="c-libfunc">ʰb̲ack</span></a> <span class="type">: a -&gt; b -&gt; b</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L33">line 33</a></div>
+<div class="doc">
+<p><code>X <a href="libs-Mixing-src-Mixing.xtl.html#h.b_ack" class="c-libfunc">ʰb̲ack</a> M</code>: M back to X's rank: a vector when X was one.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲ack</span> ← { X M → <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X ? M◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> M }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.d_ifferences"><span class="c-libfunc">ˡd̲ifferences</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.l_ayer"><span class="c-libfunc">ˡl̲ayer</span></a></div>
+</div>
+<div class="item" id="l.e_xpand">
+<h3><a href="#l.e_xpand"><span class="c-libfunc">ˡe̲xpand</span></a> <span class="type">: Num a =&gt; (Int, a) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L41">line 41</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">e̲xpand</span> (n, x)</code>: one stream x copied into n streams, the start of
+hyper-connections: n rows, each x.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.e_xpand" class="c-libfunc">ʰᶜe̲xpand</a> (<span class="c-number">2</span>, <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span>)
+1.0 2.0 3.0
+1.0 2.0 3.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡe̲xpand</span> ← { (n, x) → (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> x) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-explorer.xtl.html#copies">copies</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.src.html#L190">demos/mhc-explorer/mhc-explorer.xtl:190</a></div>
+</div>
+<div class="item" id="l.m_ean">
+<h3><a href="#l.m_ean"><span class="c-libfunc">ˡm̲ean</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L49">line 49</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">m̲ean</span> X</code>: the mean of the streams, coordinate by coordinate (a d
+vector; one number for a vector of streams). mHC's mixing keeps it
+when every column of the matrix sums to 1.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.m_ean" class="c-libfunc">ʰᶜm̲ean</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span> <span class="c-number">6.0</span>
+2.0 4.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ean</span> ← { X → M ← <a href="libs-Mixing-src-Mixing.xtl.html#h.m_atrix" class="c-libfunc">ʰm̲atrix</a> X◆ m ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> M) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M◆ <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X ? m◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> m }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L31">libs/Mixing/demos/sinkhorn.xtl:31</a>, <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L33">libs/Mixing/demos/sinkhorn.xtl:33</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.src.html#L193">demos/mhc-explorer/mhc-explorer.xtl:193</a></div>
+</div>
+<div class="item" id="l.d_ifferences">
+<h3><a href="#l.d_ifferences"><span class="c-libfunc">ˡd̲ifferences</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L56">line 56</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">d̲ifferences</span> X</code>: each stream less the streams' mean: what is left
+when the mean is taken out (X's shape).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.d_ifferences" class="c-libfunc">ʰᶜd̲ifferences</a> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">6.0</span>
+-2.0 -1.0 3.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲ifferences</span> ← { X → M ← <a href="libs-Mixing-src-Mixing.xtl.html#h.m_atrix" class="c-libfunc">ʰm̲atrix</a> X◆ X <a href="libs-Mixing-src-Mixing.xtl.html#h.b_ack" class="c-libfunc">ʰb̲ack</a> M <a href="builtins.html#-2d" class="c-symbol">−</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> M) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_pread"><span class="c-libfunc">ˡs̲pread</span></a></div>
+</div>
+<div class="item" id="l.s_pread">
+<h3><a href="#l.s_pread"><span class="c-libfunc">ˡs̲pread</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L63">line 63</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲pread</span> X</code>: the size of the differences, the square root of the sum
+of their squares: 0 when every stream is the same.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.s_pread" class="c-libfunc">ʰᶜs̲pread</a> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">6.0</span>
+3.7416573867739413</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲pread</span> ← { X → D ← <a href="libs-Mixing-src-Mixing.xtl.html#l.d_ifferences" class="c-libfunc">ˡd̲ifferences</a> X◆ <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> D <a href="builtins.html#-2a" class="c-symbol">×</a> D }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L32">libs/Mixing/demos/sinkhorn.xtl:32</a>, <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L34">libs/Mixing/demos/sinkhorn.xtl:34</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#u.r_ow"><span class="c-userfunc">ᵘr̲ow</span></a></div>
+</div>
+<h2 class="section" id="section-2">The layer</h2>
+<div class="item" id="l.l_ayer">
+<h3><a href="#l.l_ayer"><span class="c-libfunc">ˡl̲ayer</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; (Float -&gt; Float) -&gt; (a, b, c) -&gt; d -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L77">line 77</a></div>
+<div class="doc">
+<p><code>(H, a, b) <span class="c-quote">'</span>f <span class="c-builtin">l̲ayer</span> X</code>: one layer over the streams X (n by d), as
+mHC writes it (its equation 3): the streams read into one input for
+the layer, r = a' X (a weighted sum of the streams, a n numbers);
+the layer's output F(r), f_ applied to r; the streams mixed by H
+(n by n) and the output written back to each stream with weight b
+(n numbers): H X + b F(a' X). With one stream, H = a = b = 1, it is
+the residual block x + F(x).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-quote">'</span>{ v → v <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2.0</span> } <a href="libs-Mixing-src-Mixing.xtl.html#l.l_ayer" class="c-libfunc">ʰᶜl̲ayer</a> <span class="c-number">1</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">3.0</span>
+3.0 9.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡl̲ayer</span> ← { <span class="c-builtin">f̲</span> (H, a, b) X →
+  M ← <a href="libs-Mixing-src-Mixing.xtl.html#h.m_atrix" class="c-libfunc">ʰm̲atrix</a> X
+  r ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> M
+  out ← <span class="c-builtin">f̲</span> r
+  X <a href="libs-Mixing-src-Mixing.xtl.html#h.b_ack" class="c-libfunc">ʰb̲ack</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> M) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> out
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-explorer.xtl.html#copies">copies</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#mixedX">mixedX</a></div>
+</div>
+<h2 class="section" id="section-3">The path from the identity to uniform mixing</h2>
+<div class="item" id="l.b_lend">
+<h3><a href="#l.b_lend"><span class="c-libfunc">ˡb̲lend</span></a> <span class="type">: (Float, Int) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L94">line 94</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">b̲lend</span> (t, n)</code>: (1 - t) I + t J / n, J the n by n matrix of ones:
+the identity at t = 0 (each stream kept as it is), uniform mixing at
+t = 1 (every stream becomes the mean); doubly stochastic for every t
+from 0 to 1.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.b_lend" class="c-libfunc">ʰᶜb̲lend</a> (<span class="c-number">0.5</span>, <span class="c-number">2</span>)
+0.75 0.25
+0.25 0.75</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡb̲lend</span> ← { (t, n) → I ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>◆ ((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> t) <a href="builtins.html#-2a" class="c-symbol">×</a> I) <a href="builtins.html#-2b" class="c-symbol">+</a> (t <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2a" class="c-symbol">×</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-explorer.xtl.html#Hmid">Hmid</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#pathFlat">pathFlat</a></div>
+</div>
+<h2 class="section" id="section-4">How far a matrix is from each kind</h2>
+<div class="item" id="l.s_umErrors">
+<h3><a href="#l.s_umErrors"><span class="c-libfunc">ˡs̲umErrors</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L104">line 104</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲umErrors</span> H</code>: the largest error of a row sum and of a column sum,
+each against 1: (rows, columns), two numbers; 0 0 for a doubly
+stochastic matrix (Sinkhorn's iteration drives them toward 0).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.s_umErrors" class="c-libfunc">ʰᶜs̲umErrors</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.5</span> <span class="c-number">0.6</span> <span class="c-number">0.5</span> <span class="c-number">0.4</span>
+0.10000000000000009 0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲umErrors</span> ← { H → F ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H◆ (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> F) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> F) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tochasticOff"><span class="c-libfunc">ˡs̲tochasticOff</span></a>, <a href="libs-Mixing-demos-sinkhorn.xtl.html#errors">errors</a>, <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L22">libs/Mixing/demos/sinkhorn.xtl:22</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#S">S</a></div>
+</div>
+<div class="item" id="l.n_egativity">
+<h3><a href="#l.n_egativity"><span class="c-libfunc">ˡn̲egativity</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L111">line 111</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">n̲egativity</span> H</code>: how far below 0 the most negative entry is; 0 when
+no entry is negative.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.n_egativity" class="c-libfunc">ʰᶜn̲egativity</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.5</span> <span class="c-number">-0.25</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>
+0.25</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡn̲egativity</span> ← { H → <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tochasticOff"><span class="c-libfunc">ˡs̲tochasticOff</span></a></div>
+</div>
+<div class="item" id="l.s_tochasticOff">
+<h3><a href="#l.s_tochasticOff"><span class="c-libfunc">ˡs̲tochasticOff</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L120">line 120</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">s̲tochasticOff</span> H</code>: how far H is from the doubly stochastic
+matrices, as the largest of its row sum error, its column sum error
+and its negativity: 0 on the set; what a test of mHC's constraint
+reports.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.s_tochasticOff" class="c-libfunc">ʰᶜs̲tochasticOff</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lend" class="c-libfunc">ʰᶜb̲lend</a> (<span class="c-number">0.5</span>, <span class="c-number">2</span>)
+0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲tochasticOff</span> ← { H → <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="libs-Mixing-src-Mixing.xtl.html#l.s_umErrors" class="c-libfunc">ˡs̲umErrors</a> H) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Mixing-src-Mixing.xtl.html#l.n_egativity" class="c-libfunc">ˡn̲egativity</a> H }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L27">libs/Mixing/demos/sinkhorn.xtl:27</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#pathFlat">pathFlat</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#kindFlat">kindFlat</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#twoByTwoOff">twoByTwoOff</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#permChecks">permChecks</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.src.html#L215">demos/mhc-explorer/mhc-explorer.xtl:215</a></div>
+</div>
+<div class="item" id="l.o_rthogonalOff">
+<h3><a href="#l.o_rthogonalOff"><span class="c-libfunc">ˡo̲rthogonalOff</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L128">line 128</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">o̲rthogonalOff</span> H</code>: how far H is from orthogonal: the largest entry,
+in size, of H' H less the identity; 0 for an orthogonal matrix
+(one that keeps every length; its entries may be negative).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.o_rthogonalOff" class="c-libfunc">ʰᶜo̲rthogonalOff</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span>
+0.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡo̲rthogonalOff</span> ← { H → F ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H◆ n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> F◆ <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> F) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> F) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#kindFlat">kindFlat</a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#permChecks">permChecks</a></div>
+</div>
+<div class="item" id="l.g_ain">
+<h3><a href="#l.g_ain"><span class="c-libfunc">ˡg̲ain</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L138">line 138</a></div>
+<div class="doc">
+<p><code><span class="c-builtin">g̲ain</span> H</code>: how much H can enlarge the streams, as mHC measures it:
+the largest sum of the sizes of a row's entries (forward) and of a
+column's (backward): (forward, backward). A doubly stochastic
+matrix's are 1 1; a product's are at most the product of its
+factors'.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><a href="libs-Mixing-src-Mixing.xtl.html#l.g_ain" class="c-libfunc">ʰᶜg̲ain</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">-2.0</span> <span class="c-number">0.5</span> <span class="c-number">0.5</span>
+3.0 2.5</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡg̲ain</span> ← { H → A ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H◆ (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> A) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> A }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L23">libs/Mixing/demos/sinkhorn.xtl:23</a>, <a href="libs-Mixing-demos-sinkhorn.xtl.src.html#L36">libs/Mixing/demos/sinkhorn.xtl:36</a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a>, <a href="demos-mhc-explorer-mhc-explorer.xtl.html#kindFlat">kindFlat</a></div>
+</div>
+<h2 class="section" id="section-5">Four kinds of mixing, made from trained numbers</h2>
+<div class="item" id="l.m_ix">
+<h3><a href="#l.m_ix"><span class="c-libfunc">ˡm̲ix</span></a> <span class="type">: (Num a, Num b) =&gt; (a, Int, Float) -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L162">line 162</a></div>
+<div class="doc">
+<p><code>(kind, k, c) <span class="c-builtin">m̲ix</span> T</code>: the mixing matrix a layer uses, made from its
+n by n trained numbers T, so that T = 0 is the identity or as near
+it as the kind allows:
+kind 1, plain residual: the identity, T unused;
+kind 2, free (hyper-connections): I + T;
+kind 3, doubly stochastic (mHC): k sweeps of Sinkhorn's iteration
+(each row divided by its sum, then each column) on exp(c I + T),
+whose every entry is positive; c pulls it toward the identity, which
+no positive matrix reaches (at T = 0 each diagonal entry is
+e^c / (e^c + n - 1));
+kind 4, orthogonal: the Cayley transform (I - S)^-1 (I + S) of the
+skew-symmetric S = (T - T') / 2 (Matrix's s_olve), orthogonal for
+every T; it reaches every orthogonal matrix with no eigenvalue -1.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">2</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix" class="c-libfunc">ʰᶜm̲ix</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.5</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+1.5 0.0
+0.0 1.0</pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix" class="c-libfunc">ʰᶜm̲ix</a> <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+0.5 0.5
+0.5 0.5</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ix</span> ← { (kind, k, c) T →
+  F ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> T
+  I ← <a href="libs-Mixing-src-Mixing.xtl.html#h.e_ye" class="c-libfunc">ʰe̲ye</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> F
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? I
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">2</span> ? I <a href="builtins.html#-2b" class="c-symbol">+</a> F
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">3</span> ? k <span class="c-quote">'</span>{ M → <a href="libs-Mixing-src-Mixing.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> <a href="libs-Mixing-src-Mixing.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> M } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <a href="builtins.html#e_xp" class="c-builtin">e̲xp</a> (c <a href="builtins.html#-2a" class="c-symbol">×</a> I) <a href="builtins.html#-2b" class="c-symbol">+</a> F
+  S ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> F <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> F
+  (I <a href="builtins.html#-2b" class="c-symbol">+</a> S) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.s_olve" class="c-libfunc">ᵐˣs̲olve</a> I <a href="builtins.html#-2d" class="c-symbol">−</a> S
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack"><span class="c-libfunc">ˡs̲tack</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a></div>
+</div>
+<div class="item" id="h.e_ye">
+<h3><a href="#h.e_ye"><span class="c-libfunc">ʰe̲ye</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L173">line 173</a></div>
+<div class="doc">
+<p>The identity of size n, as Floats.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲ye</span> ← { n → <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix"><span class="c-libfunc">ˡm̲ix</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ixBack"><span class="c-libfunc">ˡm̲ixBack</span></a></div>
+</div>
+<div class="item" id="h.r_ows">
+<h3><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L176">line 176</a></div>
+<div class="doc">
+<p>Each row of M divided by its sum; each column divided by its sum.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰr̲ows</span> ← { M → M <a href="builtins.html#-2f" class="c-symbol">÷</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> M) <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix"><span class="c-libfunc">ˡm̲ix</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#h.h_alf"><span class="c-libfunc">ʰh̲alf</span></a></div>
+</div>
+<div class="item" id="h.c_olumns">
+<h3><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L177">line 177</a></div>
+<pre class="code"><span class="c-libfunc">ʰc̲olumns</span> ← { M → M <a href="builtins.html#-2f" class="c-symbol">÷</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> M }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix"><span class="c-libfunc">ˡm̲ix</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#h.h_alf"><span class="c-libfunc">ʰh̲alf</span></a></div>
+</div>
+<div class="item" id="l.m_ixBack">
+<h3><a href="#l.m_ixBack"><span class="c-libfunc">ˡm̲ixBack</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; (a, Int, Float) -&gt; (b, c) -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L189">line 189</a></div>
+<div class="doc">
+<p><code>(kind, k, c) <span class="c-builtin">m̲ixBack</span> (T, G)</code>: the gradient with respect to T of a
+loss whose gradient with respect to the mixing matrix (kind, k, c)
+m_ix T is G: 0 for the plain residual, G for free mixing, G carried
+back through every sweep and through exp for doubly stochastic
+mixing, and A^-T G (Q + I)' made skew for the Cayley transform Q
+(A = I - S). Checked against central differences in tests/stack.xtl.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">3</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ixBack" class="c-libfunc">ʰᶜm̲ixBack</a> (<span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">2</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>)
+ 0.125 -0.125
+-0.125  0.125</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ixBack</span> ← { (kind, k, c) (T, G) →
+  F ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> T
+  D ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> G
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> F
+  I ← <a href="libs-Mixing-src-Mixing.xtl.html#h.e_ye" class="c-libfunc">ʰe̲ye</a> n
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <span class="c-number">0.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> F
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">2</span> ? D
+  kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">3</span> ? <a href="libs-Mixing-src-Mixing.xtl.html#h.s_inkhornBack" class="c-libfunc">ʰs̲inkhornBack</a> (k, <a href="builtins.html#e_xp" class="c-builtin">e̲xp</a> (c <a href="builtins.html#-2a" class="c-symbol">×</a> I) <a href="builtins.html#-2b" class="c-symbol">+</a> F, D)
+  S ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> F <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> F
+  A ← I <a href="builtins.html#-2d" class="c-symbol">−</a> S
+  Q ← (I <a href="builtins.html#-2b" class="c-symbol">+</a> S) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.s_olve" class="c-libfunc">ᵐˣs̲olve</a> A
+  dS ← (D <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> Q <a href="builtins.html#-2b" class="c-symbol">+</a> I) <a href="work-xetal-libraries-libs-Matrix-src-Matrix.xtl.html#l.s_olve" class="c-libfunc">ᵐˣs̲olve</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> A
+  <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> dS <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> dS
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a></div>
+</div>
+<div class="item" id="h.h_alf">
+<h3><a href="#h.h_alf"><span class="c-libfunc">ʰh̲alf</span></a> <span class="type">: (Int, Float) -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L208">line 208</a></div>
+<div class="doc">
+<p>Sinkhorn's k sweeps on M0 carried back: the matrix before each half
+sweep kept going forward (odd: rows, even: columns), then the
+gradient D taken back through each, last first, and through exp
+(whose derivative is M0 itself).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰh̲alf</span> ← { (j, M) → <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> j <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">2</span> ? <a href="libs-Mixing-src-Mixing.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> M◆ <a href="libs-Mixing-src-Mixing.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> M }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#h.s_inkhornBack"><span class="c-libfunc">ʰs̲inkhornBack</span></a></div>
+</div>
+<div class="item" id="h.r_owsBack">
+<h3><a href="#h.r_owsBack"><span class="c-libfunc">ʰr̲owsBack</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L209">line 209</a></div>
+<pre class="code"><span class="c-libfunc">ʰr̲owsBack</span> ← { (X, D) → o ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>◆ s ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> X) <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> o◆ (D <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> D <a href="builtins.html#-2a" class="c-symbol">×</a> X <a href="builtins.html#-2f" class="c-symbol">÷</a> s) <span class="c-builtin">'</span><a href="builtins.html#l_eft" class="c-builtin">l̲eft</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> o) <a href="builtins.html#-2f" class="c-symbol">÷</a> s }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#h.h_alfBack"><span class="c-libfunc">ʰh̲alfBack</span></a></div>
+</div>
+<div class="item" id="h.c_olumnsBack">
+<h3><a href="#h.c_olumnsBack"><span class="c-libfunc">ʰc̲olumnsBack</span></a> <span class="type">: (Float, Float) -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L210">line 210</a></div>
+<pre class="code"><span class="c-libfunc">ʰc̲olumnsBack</span> ← { (X, D) → o ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>◆ s ← o <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> X◆ (D <a href="builtins.html#-2d" class="c-symbol">−</a> o <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> D <a href="builtins.html#-2a" class="c-symbol">×</a> X <a href="builtins.html#-2f" class="c-symbol">÷</a> s) <a href="builtins.html#-2f" class="c-symbol">÷</a> s }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#h.h_alfBack"><span class="c-libfunc">ʰh̲alfBack</span></a></div>
+</div>
+<div class="item" id="h.h_alfBack">
+<h3><a href="#h.h_alfBack"><span class="c-libfunc">ʰh̲alfBack</span></a> <span class="type">: (Int, Float, Float) -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L211">line 211</a></div>
+<pre class="code"><span class="c-libfunc">ʰh̲alfBack</span> ← { (j, X, D) → <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> j <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">2</span> ? <a href="libs-Mixing-src-Mixing.xtl.html#h.r_owsBack" class="c-libfunc">ʰr̲owsBack</a> (X, D)◆ <a href="libs-Mixing-src-Mixing.xtl.html#h.c_olumnsBack" class="c-libfunc">ʰc̲olumnsBack</a> (X, D) }</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#h.s_inkhornBack"><span class="c-libfunc">ʰs̲inkhornBack</span></a></div>
+</div>
+<div class="item" id="h.s_inkhornBack">
+<h3><a href="#h.s_inkhornBack"><span class="c-libfunc">ʰs̲inkhornBack</span></a> <span class="type">: (Int, Float, Float) -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L212">line 212</a></div>
+<pre class="code"><span class="c-libfunc">ʰs̲inkhornBack</span> ← { (k, M0, G) →
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> M0
+  (_, kept, _) ← (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k) <span class="c-quote">'</span>{ (M, K, j) → (<a href="libs-Mixing-src-Mixing.xtl.html#h.h_alf" class="c-libfunc">ʰh̲alf</a> (j, M), K <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> M, j <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (M0, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  Ins ← ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#-2a" class="c-symbol">×</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> kept
+  (D, _) ← (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k) <span class="c-quote">'</span>{ (D, j) → (<a href="libs-Mixing-src-Mixing.xtl.html#h.h_alfBack" class="c-libfunc">ʰh̲alfBack</a> (j, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> j <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> Ins, D), j <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (G, <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k)
+  D <a href="builtins.html#-2a" class="c-symbol">×</a> M0
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ixBack"><span class="c-libfunc">ˡm̲ixBack</span></a></div>
+</div>
+<h2 class="section" id="section-6">A stack of layers</h2>
+<div class="item" id="l.p_arts">
+<h3><a href="#l.p_arts"><span class="c-libfunc">ˡp̲arts</span></a> <span class="type">: Num a =&gt; (Int, Int) -&gt; a -&gt; (Float, Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L233">line 233</a></div>
+<div class="doc">
+<p>A layer's trained numbers are one row: T (n by n, the mixing's), W
+(d by d) and c (d) of the dense layer, a (n, the read) and b (n,
+the write), n^2 + d^2 + d + 2 n numbers.
+<code>(n, d) <span class="c-builtin">p̲arts</span> p</code>: the row p as (T, Wb, a, b), Wb the dense layer's
+weights with c as one more row at the bottom (X_eTaL-ML's NN's
+layout).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(T, Wb, a, b) ← (<span class="c-number">1</span>, <span class="c-number">1</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.p_arts" class="c-libfunc">ʰᶜp̲arts</a> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span> <span class="c-number">4.0</span> <span class="c-number">5.0</span></pre>
+<pre class="example"><span class="prompt">      </span>Wb
+2.0
+3.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡp̲arts</span> ← { (n, d) p →
+  v ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p
+  o1 ← n <a href="builtins.html#-2a" class="c-symbol">×</a> n
+  o2 ← o1 <a href="builtins.html#-2b" class="c-symbol">+</a> d <a href="builtins.html#-2a" class="c-symbol">×</a> (d <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+  ((n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> o1 <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> v, ((d <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (o2 <a href="builtins.html#-2d" class="c-symbol">−</a> o1) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> o1 <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v, n <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> o2 <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v, n <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> (o2 <a href="builtins.html#-2b" class="c-symbol">+</a> n) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> v)
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack"><span class="c-libfunc">ˡs̲tack</span></a>, <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.m_ixes"><span class="c-userfunc">ᵘm̲ixes</span></a></div>
+</div>
+<div class="item" id="l.b_lock">
+<h3><a href="#l.b_lock"><span class="c-libfunc">ˡb̲lock</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; (a, Float, b, c) -&gt; Float -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L250">line 250</a></div>
+<div class="doc">
+<p><code>(H, Wb, a, b) <span class="c-builtin">b̲lock</span> X</code>: one layer over the streams X of a batch, as
+mHC writes it (its equation 3), with a small dense layer and tanh for
+the layer F: the read r = a' X, the output F = tanh(r W + c) (NN's
+d_ense), the streams H X + b F. X has n rows, one per stream, and d
+times B columns: coordinate j of example e in column (j - 1) B + e.
+(the next streams, F as d by B).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(Y, F) ← (<span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lock" class="c-libfunc">ʰᶜb̲lock</a> <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2.0</span></pre>
+<pre class="example"><span class="prompt">      </span>Y
+2.964027580075817</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡb̲lock</span> ← { (H, Wb, a, b) X →
+  d ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Wb
+  B ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> d
+  R ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> B) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> X
+  Ft ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <a href="builtins.html#t_anh" class="c-builtin">t̲anh</a> R <a href="work-xetal-ml-libs-NN-src-NN.xtl.html#l.d_ense" class="c-libfunc">ⁿⁿd̲ense</a> Wb
+  (((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> X) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> Ft, Ft)
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack"><span class="c-libfunc">ˡs̲tack</span></a></div>
+</div>
+<div class="item" id="l.b_lockBack">
+<h3><a href="#l.b_lockBack"><span class="c-libfunc">ˡb̲lockBack</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; (a, Float, b, c) -&gt; (Float, Float, Float) -&gt; (Float, Float, Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L266">line 266</a></div>
+<div class="doc">
+<p><code>(H, Wb, a, b) <span class="c-builtin">b̲lockBack</span> (X, Ft, G)</code>: one layer carried back: from
+the gradient G of its output streams, the gradients of its input
+streams, of H, of Wb, of a and of b.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(Y, F) ← (<span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lock" class="c-libfunc">ʰᶜb̲lock</a> <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2.0</span></pre>
+<pre class="example"><span class="prompt">      </span>(dX, dH, dWb, da, db) ← (<span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lockBack" class="c-libfunc">ʰᶜb̲lockBack</a> (<span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2.0</span>, F, <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>)</pre>
+<pre class="example"><span class="prompt">      </span>dX
+1.0706508248531645</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡb̲lockBack</span> ← { (H, Wb, a, b) (X, Ft, G) →
+  d ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Wb
+  B ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> d
+  Rt ← (d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> B) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> X
+  dZ ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> B) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> G) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> Ft <a href="builtins.html#-2a" class="c-symbol">×</a> Ft
+  dWb ← (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> Rt) <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> (B <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> dZ
+  dr ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">-1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> Wb) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> dZ
+  (((<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> H) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> G) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> dr, G <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> X, dWb, X <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> dr, G <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> Ft)
+}</pre>
+<div class="uses">Used in: <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a></div>
+</div>
+<div class="item" id="l.s_tack">
+<h3><a href="#l.s_tack"><span class="c-libfunc">ˡs̲tack</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; (a, Int, Float, Int, Int) -&gt; (b, c) -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L284">line 284</a></div>
+<div class="doc">
+<p><code>(kind, k, c, n, d) <span class="c-builtin">s̲tack</span> (P, X0)</code>: the streams X0 through one layer
+per row of P (each (n, d) p_arts, its mixing (kind, k, c) m_ix T):
+(every state from X0 to the top, one raveled row each; every layer's
+F, one raveled row each).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(Xs, Fs) ← (<span class="c-number">1</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>, <span class="c-number">1</span>, <span class="c-number">1</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack" class="c-libfunc">ʰᶜs̲tack</a> (<span class="c-number">2</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span>, <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2.0</span>)</pre>
+<pre class="example"><span class="prompt">      </span><a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> Xs
+2.0 2.964027580075817 3.958714417836484</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲tack</span> ← { (kind, k, c, n, d) (P, X0) →
+  L ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P
+  m ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> X0
+  (_, Xs, Fs, _) ← L <span class="c-quote">'</span>{ (X, Xs, Fs, i) →
+    (T, Wb, a, b) ← (n, d) <a href="libs-Mixing-src-Mixing.xtl.html#l.p_arts" class="c-libfunc">ˡp̲arts</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> P
+    H ← (kind, k, c) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix" class="c-libfunc">ˡm̲ix</a> T
+    (X2, Ft) ← (H, Wb, a, b) <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lock" class="c-libfunc">ˡb̲lock</a> X
+    (X2, Xs <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> X2, Fs <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> Ft, i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+  } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> X0, <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> X0, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">1</span>)
+  (((L <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#-2a" class="c-symbol">×</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> Xs, (L <a href="builtins.html#c_at" class="c-builtin">c̲at</a> d <a href="builtins.html#-2a" class="c-symbol">×</a> m <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> Fs)
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a></div>
+</div>
+<div class="item" id="l.s_tackBack">
+<h3><a href="#l.s_tackBack"><span class="c-libfunc">ˡs̲tackBack</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; (a, Int, Float, Int, Int) -&gt; (b, Float, Float, c) -&gt; (Float, Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L306">line 306</a></div>
+<div class="doc">
+<p><code>(kind, k, c, n, d) <span class="c-builtin">s̲tackBack</span> (P, Xs, Fs, G)</code>: the gradient G of
+the top streams carried down the stack (P, Xs, Fs as s_tack gave
+them): (the gradient of P, one row per layer as P; of X0; the size
+of the gradient of the streams at each state, bottom to top, the
+square root of the sum of its squares).</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(Xs, Fs) ← (<span class="c-number">1</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>, <span class="c-number">1</span>, <span class="c-number">1</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tack" class="c-libfunc">ʰᶜs̲tack</a> (<span class="c-number">2</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span>, <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2.0</span>)</pre>
+<pre class="example"><span class="prompt">      </span>(dP, dX0, sizes) ← (<span class="c-number">1</span>, <span class="c-number">20</span>, <span class="c-number">0.0</span>, <span class="c-number">1</span>, <span class="c-number">1</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_tackBack" class="c-libfunc">ʰᶜs̲tackBack</a> (<span class="c-number">2</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span>, Xs, Fs, <span class="c-number">1</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>)</pre>
+<pre class="example"><span class="prompt">      </span>sizes
+1.0819976837773295 1.0105980947856845 1.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲tackBack</span> ← { (kind, k, c, n, d) (P, Xs, Fs, G) →
+  L ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P
+  m ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> Xs) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n
+  (D, dP, sz, _) ← L <span class="c-quote">'</span>{ (D, dP, sz, i) →
+    (T, Wb, a, b) ← (n, d) <a href="libs-Mixing-src-Mixing.xtl.html#l.p_arts" class="c-libfunc">ˡp̲arts</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> P
+    H ← (kind, k, c) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ix" class="c-libfunc">ˡm̲ix</a> T
+    (dX, dH, dWb, da, db) ← (H, Wb, a, b) <a href="libs-Mixing-src-Mixing.xtl.html#l.b_lockBack" class="c-libfunc">ˡb̲lockBack</a> ((n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> Xs, (d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> d) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> Fs, D)
+    dT ← (kind, k, c) <a href="libs-Mixing-src-Mixing.xtl.html#l.m_ixBack" class="c-libfunc">ˡm̲ixBack</a> (T, dH)
+    (dX, (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dT) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dWb) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> da <a href="builtins.html#c_at" class="c-builtin">c̲at</a> db <a href="builtins.html#c_at" class="c-builtin">c̲at</a> dP, (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> dX <a href="builtins.html#-2a" class="c-symbol">×</a> dX) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sz, i <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>)
+  } <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> G, <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> G) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>, L)
+  ((<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> P) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> dP, D, sz)
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_ass"><span class="c-userfunc">ᵘp̲ass</span></a></div>
+</div>
+<div class="item" id="l.s_izes">
+<h3><a href="#l.s_izes"><span class="c-libfunc">ˡs̲izes</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L325">line 325</a></div>
+<div class="doc">
+<p><code>B <span class="c-builtin">s̲izes</span> Xs</code>: the size of the streams at each state (a row of Xs)
+per example: the square root of the sum of the squares of all its
+numbers over B, the root mean square of an example's length.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span><span class="c-number">4</span> <a href="libs-Mixing-src-Mixing.xtl.html#l.s_izes" class="c-libfunc">ʰᶜs̲izes</a> <span class="c-number">2</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">2.0</span> <span class="c-number">2.0</span> <span class="c-number">2.0</span>
+1.0 2.0</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲izes</span> ← { B Xs → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> Xs) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> B }</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+<div class="item" id="l.s_preads">
+<h3><a href="#l.s_preads"><span class="c-libfunc">ˡs̲preads</span></a> <span class="type">: (Num a, Num b) =&gt; (Int, a) -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Mixing-src-Mixing.xtl.src.html#L335">line 335</a></div>
+<div class="doc">
+<p><code>(n, B) <span class="c-builtin">s̲preads</span> Xs</code>: the spread of the streams at each state per
+example: s_pread of the state as n streams (here as the sum of the
+squares less n times the squared mean, whole array at once), over
+the square root of
+B; 0 when every stream carries the same numbers.</p>
+<pre class="example"><span class="prompt">      </span><span class="c-string">&quot;hc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Mixing-src-Mixing.xtl.html" class="c-string">&quot;Mixing&quot;</a></pre>
+<pre class="example"><span class="prompt">      </span>(<span class="c-number">2</span>, <span class="c-number">1</span>) <a href="libs-Mixing-src-Mixing.xtl.html#l.s_preads" class="c-libfunc">ʰᶜs̲preads</a> <span class="c-number">1</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">3.0</span>
+1.4142135623730951</pre>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲preads</span> ← { (n, B) Xs →
+  F ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> Xs
+  m ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> F) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n
+  sums ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> F) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> m) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> F
+  <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (<span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> F <a href="builtins.html#-2a" class="c-symbol">×</a> F) <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> sums <a href="builtins.html#-2a" class="c-symbol">×</a> sums) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> n) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> B
+}</pre>
+<div class="uses">Used in: <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.r_un"><span class="c-userfunc">ᵘr̲un</span></a>, <a href="demos-mhc-explorer-mhc-depth.xtl.html#u.p_rofile"><span class="c-userfunc">ᵘp̲rofile</span></a></div>
+</div>
+</main>
+</body>
+</html>

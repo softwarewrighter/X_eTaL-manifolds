@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X_eTaL manifolds</title>
+<link rel="icon" href="favicon.ico">
+<style>
+:root { --bg:#fbfaf7; --fg:#1d1d1f; --muted:#5f6368; --card:#ffffff; --line:#e3e0d8;
+  --accent:#2457c5; --chip:#eef2fb; --live:#1f7a3a; --draft:#9a6200; --deferred:#8a8a8a;
+  --t-builtin:#1c5fd4; --t-user:#2b8a3e; --t-num:#9c6500; --t-sym:#0b7285; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg:#141518; --fg:#e8e6e3; --muted:#a0a4ab; --card:#1d1f23; --line:#30333a;
+  --accent:#8fb0ff; --chip:#262b36; --live:#5fcf7f; --draft:#e0a84a; --deferred:#8d9097;
+  --t-builtin:#8fb0ff; --t-user:#8ce99a; --t-num:#ffd43b; --t-sym:#66d9e8; } }
+:root[data-theme="dark"] { --bg:#141518; --fg:#e8e6e3; --muted:#a0a4ab; --card:#1d1f23;
+  --line:#30333a; --accent:#8fb0ff; --chip:#262b36; --live:#5fcf7f; --draft:#e0a84a; --deferred:#8d9097;
+  --t-builtin:#8fb0ff; --t-user:#8ce99a; --t-num:#ffd43b; --t-sym:#66d9e8; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main, footer { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+header { padding: 48px 0 24px; }
+h1 { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+.lede { color: var(--muted); max-width: 46rem; margin: 0; }
+.lede a, footer a { color: var(--accent); }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap:16px; padding: 8px 0 40px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px;
+  display:flex; flex-direction:column; gap:10px; }
+.card h2 { font-size:1.15rem; margin:0; }
+.shot img { width:100%; aspect-ratio: 13 / 9; object-fit: cover; object-position: top; border-radius:8px; border:1px solid var(--line); display:block; }
+.card p { margin:0; color:var(--muted); }
+.status { font-size:.8rem; font-weight:600; }
+.track { font-size:.8rem; color:var(--muted); }
+.status.live { color:var(--live); } .status.draft { color:var(--draft); } .status.deferred { color:var(--deferred); }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { background:var(--chip); border-radius:999px; padding:2px 10px; font-size:.8rem; }
+.links { margin-top:auto; display:flex; gap:16px; font-weight:600; }
+.links a { color:var(--accent); text-decoration:none; }
+.links a:hover { text-decoration:underline; }
+.empty { color:var(--muted); padding: 24px 0 48px; }
+footer { border-top:1px solid var(--line); padding-top:16px; padding-bottom:32px; color:var(--muted); font-size:.85rem; }
+footer .sep { margin: 0 8px; }
+.brand { display:flex; align-items:center; gap:16px; margin-bottom: 8px; }
+.brand h1 { margin: 0; }
+.logo { height: 60px; width: auto; border-radius: 8px; }
+.brand h1.ml { color: #ff7a00; font-weight: 800; }
+code { font-family: ui-monospace, "JuliaMono", Menlo, monospace; }
+pre { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px;
+  overflow-x:auto; font: 14px/1.5 ui-monospace, Menlo, monospace; }
+.rec { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; margin: 0 0 24px; }
+.rec h2 { margin:0 0 6px; font-size:1.2rem; } .rec p { margin:0 0 12px; color:var(--muted); }
+.rec img { width:100%; height:auto; border-radius:8px; display:block; background:#282a36; }
+.howto h2 { font-size:1.2rem; margin: 8px 0; }
+.card pre.xtl { margin:0; padding:8px 10px; font-size:.8rem; white-space:pre-wrap; overflow-wrap:anywhere; }
+.card p.why { font-size:.9rem; }
+.c-builtin { color: var(--t-builtin); } .c-userfunc, .c-libfunc, .c-macro { color: var(--t-user); }
+.c-number { color: var(--t-num); } .c-symbol { color: var(--t-sym); } .c-comment { color: var(--muted); font-style: italic; }
+/* the catalog's table of contents: a sidebar at the top left, above the cards on a phone */
+.with-toc { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+.with-toc main { max-width: none; margin: 0; padding: 0; }
+nav.toc { position: sticky; top: 16px; align-self: start; padding-top: 24px; font-size: .92rem; }
+nav.toc h2 { font-size: 1rem; margin: 0 0 8px; }
+nav.toc h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 4px; }
+nav.toc ul { list-style: none; padding: 0; margin: 0; }
+nav.toc li { margin: 3px 0; }
+nav.toc a { color: var(--accent); text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+@media (max-width: 760px) { .with-toc { grid-template-columns: 1fr; gap: 0; } nav.toc { position: static; padding-top: 12px; } }
+.start { max-width: 46rem; margin: 14px 0 0; padding: 0; list-style: none; color: var(--muted); }
+.start li { margin: 6px 0; } .start b { color: var(--fg); } .start a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="with-toc">
+<nav class="toc" aria-label="Experiments"><h2>Experiments</h2><ul><li><a href="#manifold-tour">Manifold tour</a></li><li><a href="#sphere-hello">Sphere hello</a></li><li><a href="#baseline-knn">Baseline: nearest neighbors</a></li><li><a href="#representation-explorer">Representation explorer: flat, the sphere and the disk</a></li><li><a href="#optimization-explorer">Optimization explorer: is downhill one direction, and does a ruler pay?</a></li><li><a href="#mhc-explorer">mHC explorer: what may the mixing do?</a></li><li><a href="#dynamics-explorer">Dynamics explorer: must a state head downhill?</a></li></ul><h3>More</h3><ul><li><a href="recorded/">Run them yourself</a></li><li><a href="doc/">The cross-reference</a></li><li><a href="https://github.com/softwarewrighter/X_eTaL-manifolds">The repository</a></li></ul></nav>
+<main>
+<header>
+<div class="brand"><img class="logo" src="xetal-logo-orange.png" alt="X_eTaL logo"><h1 class="ml">X_eTaL manifolds</h1></div>
+<p class="lede">The geometry of machine learning, in <a href="https://github.com/softwarewrighter/X_eTaL">X_eTaL</a>, a typed array
+language: small experiments that change the shape of the space a model works in (a representation,
+a gradient step, a constraint, a flow) and measure what that does.</p>
+<ul class="start">
+<li><b>What you are looking at.</b> Each page is a short X_eTaL program running in your browser
+(WebAssembly). It opens with a question, compares at least two geometric choices on one small
+machine-learning problem, says what changed in measured numbers, and keeps the mathematics and
+all the code it runs a click away. A result that says a geometry helped nothing is kept.</li>
+<li><b>New here?</b> <a href="manifold-tour/">Start with Manifold tour</a>: what a manifold is and which kinds these pages use.</li>
+<li><b>Who it is for.</b> Someone who may know neither geometry nor machine learning nor
+X_eTaL. Every term opens a plain explanation; every symbol and control is explained, by mouse,
+keyboard or touch; a surface or a cloud in three dimensions turns, with a flat view and the
+numbers beside it.</li>
+<li><b>Where it comes from.</b> The machine learning is that of
+<a href="https://softwarewrighter.github.io/X_eTaL-ML/">X_eTaL-ML</a>'s libraries; the pages' shell
+is shared with <a href="https://softwarewrighter.github.io/X_eTaL-fine-tuning/">X_eTaL-fine-tuning</a>.
+More X_eTaL: <a href="https://softwarewrighter.github.io/X_eTaL/">the language</a>,
+<a href="https://softwarewrighter.github.io/X_eTaL-demos/">visual demos</a>,
+<a href="https://softwarewrighter.github.io/X_eTaL-games/">games</a>,
+<a href="https://softwarewrighter.github.io/X_eTaL-libraries/">libraries</a>,
+<a href="https://softwarewrighter.github.io/X_eTaL-extensions/">extensions</a>,
+<a href="https://softwarewrighter.github.io/X_eTaL-gpu/">GPUs</a>,
+<a href="https://hardwarewrighter.github.io/X_eTaL-fpga/">FPGAs</a>.</li>
+<li><b>Run them yourself.</b> <a href="recorded/">Every experiment at the command
+line</a>, from a clone.</li>
+<li><b>Read the code.</b> <a href="doc/">The cross-reference</a> (made by <code>xetal doc</code>):
+every program and library here, its documentation and sections, its source drawn as X_eTaL
+draws it, every name linked to where it is defined and used.</li>
+</ul>
+</header>
+<section class="grid">
+<article class="card" id="manifold-tour">
+<a class="shot" href="manifold-tour/"><img src="manifold-tour/screenshot.png" alt="Manifold tour" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Start here &middot; an introduction</span>
+<h2>Manifold tour</h2>
+<p>What a manifold is, on five of them: the circle, the sphere, the torus, the Swiss roll and the Poincare disk, each turning in the browser from X_eTaL&#x27;s coordinates, with its map beside it and one measurement each of near and far, along the space and through it; and what each is for in the experiments to come.</p>
+<pre class="xtl">(p, q) <span class="c-libfunc">ᵐᶠs̲phereArc</span> <span class="c-number">48</span></pre>
+<p class="why">The great circle from p to q as 49 points X_eTaL computed; the browser only draws them, turned.</p>
+<div class="chips"><span class="chip">manifold</span><span class="chip">intrinsic and ambient dimension</span><span class="chip">locally flat</span><span class="chip">geodesic</span><span class="chip">data manifold</span></div>
+<div class="links"><a href="manifold-tour/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/manifold-tour#readme">How it works</a> <a href="doc/demos-manifold-tour-manifold-tour.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="sphere-hello">
+<a class="shot" href="sphere-hello/"><img src="sphere-hello/screenshot.png" alt="Sphere hello" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Start here &middot; an introduction</span>
+<h2>Sphere hello</h2>
+<p>Six points on the unit sphere: the straight line through it and the great circle along it order every point&#x27;s neighbors the same way, and the plain average of the points is not on the sphere, where the mean along it is.</p>
+<pre class="xtl"><span class="c-libfunc">ᵐᶠs̲phereMean</span> P</pre>
+<p class="why">The mean that stays on the sphere, in one call; the plain mean, (&#x27;+ r_/ P) / 6.0, is inside it.</p>
+<div class="chips"><span class="chip">manifold</span><span class="chip">geodesic distance</span><span class="chip">mean on a manifold</span></div>
+<div class="links"><a href="sphere-hello/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/sphere-hello#readme">How it works</a> <a href="doc/demos-sphere-hello-sphere-hello.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="baseline-knn">
+<a class="shot" href="baseline-knn/"><img src="baseline-knn/screenshot.png" alt="Baseline: nearest neighbors" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Start here &middot; an introduction</span>
+<h2>Baseline: nearest neighbors</h2>
+<p>k nearest neighbors under the straight-line distance on the kit&#x27;s three data sets (flat clusters, directions, a tree), split the same seeded way, each run&#x27;s accuracy and cost recorded as the experiment schema says: the row every comparison of H1 is set against, with no geometry chosen yet; and how badly a plain layout of the tree keeps its distances.</p>
+<pre class="xtl">(k, train <span class="c-builtin">s̲elect</span> X, train <span class="c-builtin">s̲elect</span> y) <span class="c-libfunc">ᵐˡk̲nn</span> held <span class="c-builtin">s̲elect</span> X</pre>
+<p class="why">Learn&#x27;s nearest neighbors on the held-out quarter, one line; everything else on this page is what was held equal.</p>
+<div class="chips"><span class="chip">nearest neighbors</span><span class="chip">the experiment kit</span><span class="chip">a run&#x27;s record</span><span class="chip">distortion</span></div>
+<div class="links"><a href="baseline-knn/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/baseline-knn#readme">How it works</a> <a href="doc/demos-baseline-knn-baseline-knn.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="representation-explorer">
+<a class="shot" href="representation-explorer/"><img src="representation-explorer/screenshot.png" alt="Representation explorer: flat, the sphere and the disk" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Representation &middot; classification by nearest neighbors and by a small network on flat clusters and on directions; an embedding of a tree that keeps its distances, and classification of its branches from it: flat: the points as they are, the straight line; the plane the tree is fitted in vs the sphere: the points&#x27; directions, the angle; the unit sphere the tree is fitted on vs the Poincare disk: the tree fitted in it, and at eight curvatures from +1 to -4 &middot; H1</span>
+<h2>Representation explorer: flat, the sphere and the disk</h2>
+<p>Three data sets of the kit, three spaces to keep them in. Part 1: the same points kept flat (the straight line) and as directions on the unit sphere (the angle), on the flat clusters and the directions: three distances on the same pairs with one worked in full, a shortest path and a mean in each space, nearest neighbors and the decision boundary under each distance, a small classifier trained on each representation, and the distortion of each. Part 2: the Poincare disk, its distance worked and its shortest path drawn, the room a tree needs counted; the tree fitted in the plane, on the sphere and in the disk from the same start by the same steps, three starts for the spread, a classifier from each embedding, and the same fit at eight curvatures; the H1 table, seven cells of nine, with its null results.</p>
+<pre class="xtl"><span class="c-string">&quot;u:s_tepDirUnit Dut Yd lr&quot;</span> <span class="c-macro">ⁿᵉᵗt̲rain&lt;</span> <span class="c-string">&quot;3 8 tanh 4 softmax&quot;</span></pre>
+<p class="why">Net writes the whole training step, backpropagation and Adam, from the network&#x27;s spec; the same line on each representation is what makes the two runs the same but for the space.</p>
+<div class="chips"><span class="chip">representation</span><span class="chip">great-circle distance</span><span class="chip">cosine distance</span><span class="chip">decision boundary</span><span class="chip">cross-entropy</span><span class="chip">distortion</span><span class="chip">the Poincare disk</span><span class="chip">curvature</span><span class="chip">embedding</span><span class="chip">tree distance</span><span class="chip">local minimum</span></div>
+<div class="links"><a href="representation-explorer/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/representation-explorer#readme">How it works</a> <a href="doc/demos-representation-explorer-representation-explorer.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="optimization-explorer">
+<a class="shot" href="optimization-explorer/"><img src="optimization-explorer/screenshot.png" alt="Optimization explorer: is downhill one direction, and does a ruler pay?" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Optimization &middot; gradient descent on one fixed quadratic loss (the training step with the model removed); the leading eigenvector of a symmetric matrix found as the largest Rayleigh quotient on the unit sphere; the training of a small softmax classifier on flat clusters, with one input badly scaled and as it is: the plain step: the metric is the identity vs a step under the metric diag(a, 1), a the control vs Newton&#x27;s direction: the loss&#x27;s own curvature as the metric vs on the sphere: a step that stays on it (the gradient&#x27;s tangent part, the exponential map, or the cheap retraction) against a flat step repaired by scaling back vs on the model: plain gradient descent, a diagonal preconditioner (the Fisher&#x27;s diagonal) and the natural-gradient step (the Fisher matrix as the metric)</span>
+<h2>Optimization explorer: is downhill one direction, and does a ruler pay?</h2>
+<p>Part 1: one bowl-shaped loss that does not change, L = (x^2 + 3 y^2) / 2, its contours and its gradient field, and gradient descent on it under three rulers from the same start with the same step size policy (an exact line search): the plain step, a step under the metric diag(a, 1) with a as the control from 1/9 to 9, and Newton&#x27;s direction (the loss&#x27;s own curvature as the metric). The path and the steps to a target change; the bowl does not. The steepest direction at the start under two rulers, worked in full with each ruler&#x27;s unit ball. Then on the sphere: the leading eigenvector of a small symmetric matrix climbed to by a step that stays on the sphere (Manifold&#x27;s) against a flat step repaired afterward, with how far the flat step leaves the sphere measured. Part 2: a softmax model of six weights trained on the flat clusters from the same start, data and split by plain gradient descent, a diagonal preconditioner and the natural-gradient step (the exact Fisher, damped), once with one input twenty times too large and once as it is: loss by step, held-out accuracy, steps to a target, update sizes and the cost of a step counted; with the bad scaling the plain step does not settle at any of four rates and the metric pays; on clean data the natural step takes fewer steps and more multiplies, a null result for it; undamped, the natural step ignores any linear rewriting of the inputs and the diagonal only a rescaling.</p>
+<pre class="xtl"><span class="c-userfunc">ᵘs̲tep</span> ← { P (p, path, L) → g ← <span class="c-userfunc">ᵘg̲rad</span> p◆ d ← P <span class="c-libfunc">ᵐˣm̲ul</span> g◆ q ← p <span class="c-symbol">−</span> (<span class="c-userfunc">ᵘe̲ta</span> (g, d)) <span class="c-symbol">×</span> d◆ (q, path <span class="c-builtin">c̲at</span> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-builtin">r̲eshape</span> q, L <span class="c-builtin">c̲at</span> <span class="c-userfunc">ᵘl̲oss</span> q) }</pre>
+<p class="why">One step under any ruler: P g is the direction the ruler calls steepest, u:e_ta the line search along it; the same line serves the plain step, the control and Newton&#x27;s direction.</p>
+<div class="chips"><span class="chip">metric</span><span class="chip">preconditioner</span><span class="chip">contour</span><span class="chip">gradient field</span><span class="chip">line search</span><span class="chip">condition number</span><span class="chip">Riemannian gradient</span><span class="chip">exponential map and retraction</span><span class="chip">eigenvector</span><span class="chip">Fisher matrix</span><span class="chip">damping</span></div>
+<div class="links"><a href="optimization-explorer/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/optimization-explorer#readme">How it works</a> <a href="doc/demos-optimization-explorer-optimization-explorer.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="mhc-explorer">
+<a class="shot" href="mhc-explorer/"><img src="mhc-explorer/screenshot.png" alt="mHC explorer: what may the mixing do?" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Constraints &middot; the mixing of residual streams in a deep network: what one mixing matrix, applied again and again, does to the streams&#x27; mean, their differences and their size; then a stack of small residual layers over four streams, its signal and gradient by depth at the start and its training on the flat clusters at four depths: doubly stochastic mixing (mHC&#x27;s constraint, made by Sinkhorn&#x27;s iteration) vs free mixing (hyper-connections, no constraint) vs orthogonal mixing (the nearest orthogonal matrix in part 1, the Cayley transform in part 2) vs the plain residual (the identity, no mixing; part 2) &middot; H2</span>
+<h2>mHC explorer: what may the mixing do?</h2>
+<p>Part 1, the matrices: from one residual stream x + F(x) to three streams mixed by a 3 by 3 matrix as the mHC paper writes the layer; the doubly stochastic matrices of size 3, nine entries and four free, counted; the path from the identity to uniform mixing, every matrix on it doubly stochastic, its singular values 1 and 1 - t; Sinkhorn&#x27;s iteration from a free positive matrix, one sweep worked in full, its errors by sweep to a tolerance; what a doubly stochastic, a free and an orthogonal matrix each do to a signal mixed 1, 10 and 100 times (the mean kept and the differences shrunk; the signal blown up or dying away; the length kept); the Birkhoff polytope, its corners the permutation matrices, a polytope and not a smooth manifold. Part 2, the stack: a small network of 4, 8, 16 and 32 layers over four streams with the plain residual, free, doubly stochastic (Sinkhorn on exp) and orthogonal (Cayley) mixing made from the same trained numbers; at the start, the signal&#x27;s size up the stack, the gradient&#x27;s down it, the streams&#x27; spread and the composite gain layer by layer over three seeds, drawn as a strip per layer; then trained on the flat clusters (48 offline runs read back, the first steps trained again on the page): free mixing&#x27;s gain grows to 272 at 32 layers and its training stops being finite at 16 and 32, the constrained stacks train at every depth, the doubly stochastic one forgets its streams&#x27; differences, and against the plain residual no constraint differs beyond the seeds&#x27; range but one point at 8 layers; the H2 table.</p>
+<pre class="xtl"><span class="c-userfunc">ᵘs̲weep</span> ← { M → <span class="c-userfunc">ᵘc̲olumns</span> <span class="c-userfunc">ᵘr̲ows</span> M }</pre>
+<p class="why">Sinkhorn&#x27;s iteration in one line: each row divided by its sum, then each column; p_ower repeats it, and the errors fall at every sweep.</p>
+<div class="chips"><span class="chip">residual stream</span><span class="chip">hyper-connections</span><span class="chip">mHC</span><span class="chip">doubly stochastic matrix</span><span class="chip">Sinkhorn&#x27;s iteration</span><span class="chip">singular value</span><span class="chip">gain</span><span class="chip">orthogonal group</span><span class="chip">polytope</span><span class="chip">Cayley transform</span><span class="chip">signal propagation</span></div>
+<div class="links"><a href="mhc-explorer/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/mhc-explorer#readme">How it works</a> <a href="doc/demos-mhc-explorer-mhc-explorer.xtl.html">Read the code</a></div>
+</article>
+<article class="card" id="dynamics-explorer">
+<a class="shot" href="dynamics-explorer/"><img src="dynamics-explorer/screenshot.png" alt="Dynamics explorer: must a state head downhill?" loading="lazy"></a>
+<span class="status live">Live</span>
+<span class="track">Dynamics &middot; following a rule of motion step by step: five linear plane fields; the rotation followed by two integrators; gradient descent on a loss beside simultaneous descent and ascent on the two-player objective f(x, y) = x y: a gradient field (minus the gradient of a loss) against a general vector field that turns vs Euler&#x27;s step against a fourth-order Runge-Kutta step, at the same step size and with the same work vs gradient descent on a loss against simultaneous descent and ascent on a game vs on the game: simultaneous steps, taking turns, and the look-ahead step (extragradient)</span>
+<h2>Dynamics explorer: must a state head downhill?</h2>
+<p>Part 1: five plane vector fields v(x) = A x (attractor, rotation, spiral, saddle, expanding spiral) as arrows on a grid, with the paths from four starts by a fourth-order Runge-Kutta step beside the exact paths exp(t A) x0; the divergence and curl of each by central differences beside the exact values; the sum of v . dx round a loop, zero for the two fields that are minus the gradient of a loss and the curl times the area for the three that turn, worked in full on a square; the rest point&#x27;s stability from the trace and determinant against what the paths did. Euler&#x27;s step against Runge-Kutta&#x27;s on the rotation at four step sizes: Euler spirals out by exactly sqrt(1 + s^2) per step, and with the same looks at the field over the same time Runge-Kutta ends about a thousand times nearer the circle. As machine learning meets it: gradient descent on a loss settles, while simultaneous descent and ascent on the two-player objective f = x y, Euler&#x27;s step on a rotation, spirals away from the solution; taking turns keeps the players circling at a bounded distance and the look-ahead step (extragradient) brings them in, at two looks per step.</p>
+<pre class="xtl"><span class="c-userfunc">ᵘt̲urns</span> ← { p → x ← (<span class="c-number">1</span> <span class="c-builtin">s̲elect</span> p) <span class="c-symbol">−</span> eta <span class="c-symbol">×</span> <span class="c-number">2</span> <span class="c-builtin">s̲elect</span> p◆ x <span class="c-builtin">c̲at</span> (<span class="c-number">2</span> <span class="c-builtin">s̲elect</span> p) <span class="c-symbol">+</span> eta <span class="c-symbol">×</span> x }</pre>
+<p class="why">Taking turns: player one moves x down the slope of x y, then player two answers the new x; one change of order from the simultaneous step, and the players stop spiraling out.</p>
+<div class="chips"><span class="chip">vector field</span><span class="chip">gradient field</span><span class="chip">integrator</span><span class="chip">divergence and curl</span><span class="chip">sum round a loop</span><span class="chip">rest point</span><span class="chip">eigenvalue</span><span class="chip">two-player game</span><span class="chip">extragradient</span></div>
+<div class="links"><a href="dynamics-explorer/">Open the demo</a> <a href="https://github.com/softwarewrighter/X_eTaL-manifolds/tree/main/demos/dynamics-explorer#readme">How it works</a> <a href="doc/demos-dynamics-explorer-dynamics-explorer.xtl.html">Read the code</a></div>
+</article>
+</section>
+</main>
+</div>
+<footer>
+<span>Copyright (c) 2026 Michael A Wright</span><span class="sep">&middot;</span>
+<span>MIT License</span><span class="sep">&middot;</span>
+<a href="https://github.com/softwarewrighter/X_eTaL-manifolds" target="_blank">GitHub</a><span class="sep">&middot;</span>
+<a href="doc/">Cross-reference</a><span class="sep">&middot;</span>
+<span>X_eTaL-ML <a href="https://github.com/softwarewrighter/X_eTaL-ML/commit/2d23a96519f8eeb34eeb95578eccffe490bdc02f" target="_blank">2d23a96</a></span><span class="sep">&middot;</span>
+<span>X_eTaL-libraries <a href="https://github.com/softwarewrighter/X_eTaL-libraries/commit/3465af308b0794fd54768912b43efe53935292fe" target="_blank">3465af3</a></span><span class="sep">&middot;</span>
+<span>X_eTaL <a href="https://github.com/softwarewrighter/X_eTaL/commit/abdd371dd4ae644f00e04d04e09d67576056f031" target="_blank">abdd371</a></span><span class="sep">&middot;</span>
+<span class="build" data-sha="77bdd8b">max 77bdd8b 20261127T2233</span>
+</footer>
+</body>
+</html>
