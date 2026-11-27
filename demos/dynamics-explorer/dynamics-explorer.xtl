@@ -1,0 +1,311 @@
+#!/usr/bin/env xetal
+## Dynamics explorer, part 1: must a state head downhill? A
+## vector field gives a direction and a size at every point of the
+## plane, dx/dt = v(x); a state that follows it traces a path. Five
+## linear fields v(x) = A x (attractor, rotation, spiral, saddle,
+## expanding spiral): the arrows on a grid, the paths from four starts
+## by a fourth-order Runge-Kutta step beside the exact paths, the
+## divergence and curl of each by central differences beside the exact
+## values, the sum of v . dx round a loop (zero for a field that is
+## minus the gradient of a loss, not for one that turns), and the
+## stability of the rest point from the trace and determinant of A.
+## Then integration as a choice: Euler's step against Runge-Kutta's on
+## the rotation, whose exact paths are circles, at four step sizes.
+## And as machine learning meets it: gradient descent on a loss (a
+## gradient field: it settles) beside simultaneous descent and ascent
+## on the two-player objective f(x, y) = x y (a rotation: it spirals
+## out), with two known repairs, the players taking turns and a
+## look-ahead step (extragradient), from the same start at the same
+## rate.
+"mx:" u_se< "Matrix"
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+
+# -- the preset
+## The run's numbers are data, presets/fields.txt: the file's words are
+## dropped and its numbers kept in order (the preset reader is
+## X_eTaL-libraries' by GL9, written out): the five fields' matrices by
+## rows; four starts; the path's step and step count; the grid; the
+## difference step; the loop's points; the rotation's start, its four
+## step sizes and its step count; the game's start, rate and steps; the
+## tolerance of the paths against the exact ones.
+text := []N_GET "presets/fields.txt"
+preset := n_umbers (w_here text m_ember? "0123456789.- \n") s_elect text
+fields := 5 2 2 r_eshape 20 t_ake preset
+starts := 4 2 r_eshape 21 22 23 24 25 26 27 28 s_elect preset
+pathStep := 29 s_elect preset
+pathSteps := f_loor 30 s_elect preset
+half := 31 s_elect preset
+side := f_loor 32 s_elect preset
+dh := 33 s_elect preset
+loopN := f_loor 34 s_elect preset
+r0 := 35 36 s_elect preset
+sizes := 37 38 39 40 s_elect preset
+rotSteps := f_loor 41 s_elect preset
+game0 := 42 43 s_elect preset
+eta := 44 s_elect preset
+gameSteps := f_loor 45 s_elect preset
+tol := 46 s_elect preset
+I := f_loat mx:i_dentity 2
+
+# -- the fields
+## Field k is v(x) = A x with A = `k s_elect fields`. At the rows of a
+## matrix of points P the field is P A' (each row times A's transpose).
+u:f_ield := { (A, P) -> P mx:m_ul o_\ A }
+## The grid: side by side points from -half to half on each axis, one
+## row per point (x across, then y); the field's arrows are the field
+## at each, five fields one after another (side^2 rows each).
+np := side * side
+ticks := (0.0 - half) + (f_loat (r_ange side) - 1) * (2.0 * half) / f_loat side - 1
+grid := o_\ (2 c_at np) r_eshape (r_avel (side c_at side) r_eshape ticks) c_at r_avel o_\ (side c_at side) r_eshape ticks
+(arrowsFlat, _) := 5 '{ (F, k) -> (F c_at r_avel u:f_ield (k s_elect fields, grid), k + 1) } p_ower (0 r_eshape 0.0, 1)
+arrows := ((5 * np) c_at 2) r_eshape arrowsFlat
+
+# -- integration: Euler's step and Runge-Kutta's
+## One step of size s along v(x) = A x from x (the integrators are
+## X_eTaL-libraries' by GL4, written out). Euler: x + s v(x), the
+## straight step along the arrow where it starts. Runge-Kutta of
+## fourth order: four looks at the field, at the start, twice half way
+## and at the end, averaged with weights 1 2 2 1.
+u:e_uler := { (A, s) x -> x + s * A mx:m_ul x }
+u:r_k4 := { (A, s) x -> k1 := A mx:m_ul x; k2 := A mx:m_ul x + (s / 2.0) * k1; k3 := A mx:m_ul x + (s / 2.0) * k2; k4 := A mx:m_ul x + s * k3; x + (s / 6.0) * k1 + (2.0 * k2) + (2.0 * k3) + k4 }
+u:o_ne := { (A, s, kind) x -> kind = 1 ? (A, s) u:e_uler x; (A, s) u:r_k4 x }
+## `(A, s, kind, n) u:p_ath x0`: n steps from x0 (kind 1 Euler, 2
+## Runge-Kutta), the n + 1 points as rows, the start first.
+u:p_ath := { (A, s, kind, n) x0 -> (_, P) := n '{ (x, P) -> y := (A, s, kind) u:o_ne x; (y, P c_at 1 2 r_eshape y) } p_ower (x0, 1 2 r_eshape x0); P }
+
+# -- the exact paths
+## For a linear field the exact path is x(t) = exp(t A) x0, and for a
+## 2 by 2 matrix exp(t A) has a closed form: write A = tau I + B with
+## tau half the trace, so B has trace 0 and B B = -det(B) I. Then
+## exp(t A) = e^(tau t) (cos(w t) I + sin(w t) / w B) when det B > 0
+## (w = sqrt det B: the path turns), the same with cosh and sinh when
+## det B < 0 (w = sqrt -det B), and e^(tau t) (I + t B) when det B = 0.
+u:f_low := { (A, t) -> tau := (mx:t_race A) / 2.0; B := A - tau * I; del := mx:d_et B; w := s_qrt a_bs del; del = 0.0 ? (e_xp tau * t) * I + t * B; del > 0.0 ? (e_xp tau * t) * ((c_os w * t) * I) + ((s_in w * t) / w) * B; (e_xp tau * t) * ((tr:c_osh w * t) * I) + ((tr:s_inh w * t) / w) * B }
+u:e_xactPath := { (A, s, n) x0 -> (_, P) := n '{ (k, P) -> y := (u:f_low (A, s * f_loat k)) mx:m_ul x0; (k + 1, P c_at 1 2 r_eshape y) } p_ower (1, 1 2 r_eshape x0); P }
+## Every field from every start, Runge-Kutta at the preset's step and
+## exactly: 5 fields by 4 starts by pathSteps + 1 points, one after
+## another. The gap: the largest distance between a Runge-Kutta point
+## and the exact point at the same time, over the larger of 1 and the
+## exact point's length (so a path that grows is held to a relative
+## tolerance), per field.
+u:p_aths := { k -> A := k s_elect fields; (R, E, _) := 4 '{ (R, E, j) -> x0 := j s_elect starts; (R c_at r_avel (A, pathStep, 2, pathSteps) u:p_ath x0, E c_at r_avel (A, pathStep, pathSteps) u:e_xactPath x0, j + 1) } p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1); (R, E) }
+(rkFlat, exactFlat, _) := 5 '{ (R, E, k) -> (r, e) := u:p_aths k; (R c_at r, E c_at e, k + 1) } p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+pathRows := 5 * 4 * pathSteps + 1
+rkPaths := (pathRows c_at 2) r_eshape rkFlat
+exactPaths := (pathRows c_at 2) r_eshape exactFlat
+pathGap := s_qrt '+ r_/_2 (rkPaths - exactPaths) ^ 2.0
+pathScale := 1.0 m_ax s_qrt '+ r_/_2 exactPaths ^ 2.0
+pathErrors := 'm_ax r_/_2 (5 c_at 4 * pathSteps + 1) r_eshape pathGap / pathScale
+
+# -- divergence and curl
+## By central differences at every grid point, step dh (the field
+## measures are X_eTaL-libraries' by GL5, written out): the divergence
+## d vx / dx + d vy / dy (how fast the arrows spread out from a point:
+## negative where they gather) and the curl d vy / dx - d vx / dy (how
+## fast they turn about it). For v = A x both are constant: the
+## divergence is the trace a + d, the curl c - b. Per field: the exact
+## divergence and curl, the mean of each over the grid, and the
+## largest gap from the exact value.
+ex := (np r_eshape dh) '* t_able 1.0 0.0
+ey := (np r_eshape dh) '* t_able 0.0 1.0
+u:d_iff := { (A, E, c) -> ((c s_elect_2 u:f_ield (A, grid + E)) - c s_elect_2 u:f_ield (A, grid - E)) / 2.0 * dh }
+u:m_easures := { A -> div := (u:d_iff (A, ex, 1)) + u:d_iff (A, ey, 2); curl := (u:d_iff (A, ex, 2)) - u:d_iff (A, ey, 1); dv := mx:t_race A; cv := (1 s_elect 2 s_elect A) - 2 s_elect 1 s_elect A; dv c_at cv c_at (('+ r_/ div) / f_loat np) c_at (('+ r_/ curl) / f_loat np) c_at ('m_ax r_/ a_bs div - dv) c_at 'm_ax r_/ a_bs curl - cv }
+(measuresFlat, _) := 5 '{ (F, k) -> (F c_at u:m_easures k s_elect fields, k + 1) } p_ower (0 r_eshape 0.0, 1)
+measures := 5 6 r_eshape measuresFlat
+
+# -- round a loop
+## Walk round a closed loop and add up v . dx along it: for each
+## straight piece, the field at its middle dotted with the piece (exact
+## for a linear field, which changes linearly along the piece). If v
+## is minus the gradient of a loss L, each piece adds L(start) - L(end)
+## of that piece, so the whole loop adds 0: the "height" comes back to
+## itself. Green's theorem says the sum is the curl times the area
+## enclosed, and the flow out across the loop (v dotted with the
+## outward normal, (dy, -dx) when the loop runs anticlockwise) is the
+## divergence times the area. The loop: a regular polygon of loopN
+## pieces on the unit circle.
+u:l_oop := { (A, Q) -> a := (0 - 1) d_rop Q; b := 1 d_rop Q; d := b - a; v := u:f_ield (A, (a + b) / 2.0); ('+ r_/ r_avel v * d) c_at '+ r_/ ((1 s_elect_2 v) * 2 s_elect_2 d) - (2 s_elect_2 v) * 1 s_elect_2 d }
+u:a_rea := { Q -> a := (0 - 1) d_rop Q; b := 1 d_rop Q; ('+ r_/ ((1 s_elect_2 a) * 2 s_elect_2 b) - (2 s_elect_2 a) * 1 s_elect_2 b) / 2.0 }
+angles := ((2.0 * p_i @) / f_loat loopN) * f_loat (r_ange loopN + 1) - 1
+circle := o_\ (2 c_at loopN + 1) r_eshape (c_os angles) c_at s_in angles
+area := u:a_rea circle
+## Per field: the sum round the loop, the flow out, and the curl and
+## the divergence times the area (Green's theorem's prediction).
+(loopsFlat, _) := 5 '{ (F, k) -> A := k s_elect fields; m := k s_elect measures; (F c_at (u:l_oop (A, circle)) c_at area * 2 1 s_elect m, k + 1) } p_ower (0 r_eshape 0.0, 1)
+loops := 5 4 r_eshape loopsFlat
+## Worked in full: the square with corners (-1, -1), (1, -1), (1, 1),
+## (-1, 1), walked anticlockwise, one piece per side; the four sides'
+## v . dx for the rotation (field 2) and the attractor (field 1), and
+## the running "height" for the rotation (minus the running sum).
+square := 5 2 r_eshape -1.0 -1.0 1.0 -1.0 1.0 1.0 -1.0 1.0 -1.0 -1.0
+u:s_ides := { A -> a := (0 - 1) d_rop square; b := 1 d_rop square; '+ r_/_2 (u:f_ield (A, (a + b) / 2.0)) * b - a }
+sidesRotation := u:s_ides 2 s_elect fields
+sidesAttractor := u:s_ides 1 s_elect fields
+heightRotation := 0.0 - '+ s_\ sidesRotation
+## The square worked side by side, a row per side: the middle of the
+## side, the side as a step, the rotation's arrow at the middle and the
+## attractor's.
+squareMid := ((0 - 1) d_rop square) + 0.5 * (1 d_rop square) - (0 - 1) d_rop square
+squareWork := squareMid c_at_2 ((1 d_rop square) - (0 - 1) d_rop square) c_at_2 (u:f_ield (2 s_elect fields, squareMid)) c_at_2 u:f_ield (1 s_elect fields, squareMid)
+## A field that is minus a gradient: for a symmetric A, v = A x is
+## minus the gradient of L(x) = -x' A x / 2. Checked by central
+## differences of L at the grid for the attractor and the saddle (the
+## two symmetric fields), and A against its transpose for all five.
+u:p_otential := { (A, P) -> -0.5 * '+ r_/_2 P * u:f_ield (A, P) }
+u:g_radientGap := { A -> gx := ((u:p_otential (A, grid + ex)) - u:p_otential (A, grid - ex)) / 2.0 * dh; gy := ((u:p_otential (A, grid + ey)) - u:p_otential (A, grid - ey)) / 2.0 * dh; 'm_ax r_/ a_bs r_avel (u:f_ield (A, grid)) + o_\ (2 c_at np) r_eshape gx c_at gy }
+gradientGaps := (u:g_radientGap 1 s_elect fields) c_at u:g_radientGap 4 s_elect fields
+symmetric := '{ k -> A := k s_elect fields; 'm_ax r_/ a_bs r_avel A - o_\ A } e_ach r_ange 5
+
+# -- stability at the rest point
+## The rest point is x = 0 (A x = 0). Whether paths fall into it or
+## leave it is decided by the eigenvalues of A: falling in along every
+## direction if both real parts are negative, leaving along some if
+## one is positive. For a 2 by 2 matrix, written out from the trace T
+## and the determinant D: the eigenvalues are T / 2 +- sqrt(T^2 / 4 -
+## D); when T^2 / 4 < D they are complex, both with real part T / 2 and
+## imaginary parts +- sqrt(D - T^2 / 4) (the path turns). Per field:
+## T, D, the two real parts (largest first), the size of the imaginary
+## part; and what the Runge-Kutta paths did: the largest and the
+## smallest, over the four starts, of the distance from the rest point
+## at the end over the distance at the start.
+u:e_igen := { A -> t := mx:t_race A; d := mx:d_et A; q := ((t * t) / 4.0) - d; q < 0.0 ? t c_at d c_at (t / 2.0) c_at (t / 2.0) c_at s_qrt 0.0 - q; t c_at d c_at ((t / 2.0) + s_qrt q) c_at ((t / 2.0) - s_qrt q) c_at 0.0 }
+u:r_atios := { k -> '{ j -> P := (pathSteps + 1) t_ake ((((k - 1) * 4) + j - 1) * pathSteps + 1) d_rop rkPaths; (s_qrt '+ r_/ ((pathSteps + 1) s_elect P) ^ 2.0) / s_qrt '+ r_/ (1 s_elect P) ^ 2.0 } e_ach r_ange 4 }
+(stabilityFlat, _) := 5 '{ (F, k) -> r := u:r_atios k; (F c_at (u:e_igen k s_elect fields) c_at ('m_ax r_/ r) c_at 'm_in r_/ r, k + 1) } p_ower (0 r_eshape 0.0, 1)
+stability := 5 7 r_eshape stabilityFlat
+
+# -- Euler against Runge-Kutta on the rotation
+## The rotation v(x, y) = (-y, x): its exact paths are circles about
+## the rest point, and the start is on the unit circle. At each step
+## size of the preset, rotSteps steps of each integrator from the same
+## start; per step the distance from the circle (the point's distance
+## from the rest point, less 1). Analytical, for the check: each
+## Euler step multiplies the distance from the rest point by exactly
+## sqrt(1 + s^2), each Runge-Kutta step by the size of 1 + z + z^2 / 2
+## + z^3 / 6 + z^4 / 24 at z = i s, which is sqrt((1 - s^2 / 2 + s^4 /
+## 24)^2 + (s - s^3 / 6)^2), just under 1. Rows of rotOff and of rotPaths
+## (rotSteps + 1 points each), per step size in turn: Euler, then
+## Runge-Kutta.
+rotation := 2 s_elect fields
+u:o_ff := { P -> (s_qrt '+ r_/_2 P ^ 2.0) - 1.0 }
+(rotFlat, offFlat, _) := 4 '{ (R, O, j) -> s := j s_elect sizes; e := (rotation, s, 1, rotSteps) u:p_ath r0; r := (rotation, s, 2, rotSteps) u:p_ath r0; (R c_at (r_avel e) c_at r_avel r, O c_at (u:o_ff e) c_at u:o_ff r, j + 1) } p_ower (0 r_eshape 0.0, 0 r_eshape 0.0, 1)
+rotPaths := ((8 * rotSteps + 1) c_at 2) r_eshape rotFlat
+rotOff := (8 c_at rotSteps + 1) r_eshape offFlat
+eulerFactor := s_qrt 1.0 + sizes ^ 2.0
+rkFactor := s_qrt ((1.0 - ((sizes ^ 2.0) / 2.0) - (sizes ^ 4.0) / 24.0) ^ 2.0) + (sizes - (sizes ^ 3.0) / 6.0) ^ 2.0
+## The analytical distance from the circle at the end, per step size,
+## Euler then Runge-Kutta, and the measured, for the check.
+predictedEnd := ((eulerFactor ^ f_loat rotSteps) - 1.0) c_at (rkFactor ^ f_loat rotSteps) - 1.0
+## The same work: a Runge-Kutta step looks at the field four times,
+## Euler's once. Euler at the second step size for rotSteps steps
+## against Runge-Kutta at the fourth for the steps that cover the same
+## time: the same looks at the field when the fourth size is four times
+## the second (0.4 and 0.1 in the preset). The time covered by each,
+## the looks at the field by each, the distance from the circle at the
+## end of each, and Runge-Kutta's step count.
+sameSteps := f_loor 0.5 + (f_loat rotSteps) * (2 s_elect sizes) / 4 s_elect sizes
+sameWork := ((f_loat rotSteps) * 2 s_elect sizes) c_at ((f_loat sameSteps) * 4 s_elect sizes) c_at (f_loat rotSteps) c_at (4.0 * f_loat sameSteps) c_at ((rotSteps + 1) s_elect 3 s_elect rotOff) c_at ((sameSteps + 1) s_elect 8 s_elect rotOff) c_at f_loat sameSteps
+measuredEnd := (1 3 5 7 s_elect (rotSteps + 1) s_elect_2 rotOff) c_at 2 4 6 8 s_elect (rotSteps + 1) s_elect_2 rotOff
+
+# -- as machine learning meets it: descent, and a game
+## Gradient descent on the loss L(x, y) = (x^2 + y^2) / 2: the step
+## p - eta (x, y) follows the field minus the gradient of L, an
+## attractor; it settles. A two-player game: player one picks x to
+## make f(x, y) = x y small, player two picks y to make it large. Each
+## steps along its own slope at the same rate: x - eta y (down f), y +
+## eta x (up f). Taken together that is the field (-y, x), the
+## rotation, stepped by Euler's rule, and it spirals out from the
+## solution (0, 0), where neither player can do better alone. Two
+## repairs, from the papers (docs/papers.md): the players take turns,
+## the second answering the first's new x (bounded, it circles and
+## keeps x^2 + y^2 - eta x y fixed, Bailey, Gidel and Piliouras 2019);
+## and a look-ahead step (extragradient, Korpelevich 1976, analyzed on
+## this game by Gidel et al. 2019): both step to a trial point, then
+## step from the start along the slopes found at the trial point. The
+## same start, rate and number of steps for all four.
+u:d_escent := { p -> p - eta * p }
+u:s_imultaneous := { p -> x := 1 s_elect p; y := 2 s_elect p; (x - eta * y) c_at y + eta * x }
+u:t_urns := { p -> x := (1 s_elect p) - eta * 2 s_elect p; x c_at (2 s_elect p) + eta * x }
+u:l_ookAhead := { p -> q := u:s_imultaneous p; ((1 s_elect p) - eta * 2 s_elect q) c_at (2 s_elect p) + eta * 1 s_elect q }
+u:p_lay := { k p -> k = 1 ? u:d_escent p; k = 2 ? u:s_imultaneous p; k = 3 ? u:t_urns p; u:l_ookAhead p }
+u:g_ame := { k -> (_, P) := gameSteps '{ (p, P) -> q := k u:p_lay p; (q, P c_at 1 2 r_eshape q) } p_ower (game0, 1 2 r_eshape game0); P }
+(gameFlat, _) := 4 '{ (F, k) -> (F c_at r_avel u:g_ame k, k + 1) } p_ower (0 r_eshape 0.0, 1)
+gamePaths := ((4 * gameSteps + 1) c_at 2) r_eshape gameFlat
+gameDistance := (4 c_at gameSteps + 1) r_eshape s_qrt '+ r_/_2 gamePaths ^ 2.0
+## Each rule is a fixed matrix M applied at every step, p <- M p; its
+## trace and determinant give the factor each step multiplies the
+## distance by in the long run, the largest eigenvalue's size (written
+## out as above; for M a multiple of a rotation, as three of these are,
+## every step multiplies by it exactly): descent (1 - eta) I;
+## simultaneous (1 -eta / eta 1), size sqrt(1 + eta^2); turns (1 -eta /
+## eta 1 - eta^2), determinant 1, complex eigenvalues of size 1 while
+## eta < 2; look-ahead (1 - eta^2 -eta / eta 1 - eta^2), size sqrt(1 -
+## eta^2 + eta^4).
+u:g_ameMatrix := { k -> k = 1 ? (1.0 - eta) * I; k = 2 ? 2 2 r_eshape 1.0 c_at (0.0 - eta) c_at eta c_at 1.0; k = 3 ? 2 2 r_eshape 1.0 c_at (0.0 - eta) c_at eta c_at 1.0 - eta * eta; 2 2 r_eshape (1.0 - eta * eta) c_at (0.0 - eta) c_at eta c_at 1.0 - eta * eta }
+u:s_ize := { M -> e := u:e_igen M; (a_bs 3 s_elect e) m_ax s_qrt ((3 s_elect e) ^ 2.0) + (5 s_elect e) ^ 2.0 }
+gameMatrices := 4 4 r_eshape (r_avel u:g_ameMatrix 1) c_at (r_avel u:g_ameMatrix 2) c_at (r_avel u:g_ameMatrix 3) c_at r_avel u:g_ameMatrix 4
+gameFactors := '{ k -> u:s_ize u:g_ameMatrix k } e_ach r_ange 4
+## Taking turns keeps E = x^2 + y^2 - eta x y fixed at every step (the
+## quantity Bailey, Gidel and Piliouras give for alternating play).
+turnsPath := (gameSteps + 1) t_ake (2 * gameSteps + 1) d_rop gamePaths
+turnsEnergy := ('+ r_/_2 turnsPath ^ 2.0) - eta * (1 s_elect_2 turnsPath) * 2 s_elect_2 turnsPath
+## The band the players stay in while taking turns: the smallest and the
+## largest distance from the solution over the steps.
+turnsBand := ('m_in r_/ 3 s_elect gameDistance) c_at 'm_ax r_/ 3 s_elect gameDistance
+## The game's field is the rotation: player one's velocity is minus
+## the slope of f along x, -y; player two's is plus the slope along
+## y, x. Checked by central differences of f at the grid.
+u:x_y := { P -> (1 s_elect_2 P) * 2 s_elect_2 P }
+gameField := o_\ (2 c_at np) r_eshape (0.0 - ((u:x_y grid + ex) - u:x_y grid - ex) / 2.0 * dh) c_at ((u:x_y grid + ey) - u:x_y grid - ey) / 2.0 * dh
+gameFieldGap := 'm_ax r_/ a_bs r_avel gameField - u:f_ield (rotation, grid)
+# -- end of the core
+
+### The preset
+preset
+
+### The fields
+fields
+measures
+"the divergence and curl by differences are the trace and c - b" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ (5 s_elect_2 measures) c_at 6 s_elect_2 measures
+pathErrors
+"every Runge-Kutta path is within the tolerance of the exact path" ch:t_est 1 1 1 1 1 ch:i_s pathErrors < tol
+
+### Round a loop
+area
+loops
+"the sum round the loop is the curl times the area, the flow out the divergence times the area" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs ((1 s_elect_2 loops) - 3 s_elect_2 loops) c_at (2 s_elect_2 loops) - 4 s_elect_2 loops
+"the sum is zero for the attractor and the saddle and not for the rotation" ch:t_est 1 ch:i_s (0.000000001 > a_bs 1 s_elect 1 s_elect loops) & (0.000000001 > a_bs 1 s_elect 4 s_elect loops) & 6.0 < 1 s_elect 2 s_elect loops
+sidesRotation
+heightRotation
+sidesAttractor
+"the rotation's four sides each add 2: the height falls by 8 round the square" ch:t_est 2.0 2.0 2.0 2.0 ch:n_ear sidesRotation
+"the attractor's sides add nothing" ch:t_est 0.0 0.0 0.0 0.0 ch:n_ear sidesAttractor
+gradientGaps
+symmetric
+"the attractor and the saddle are minus the gradient of a loss" ch:t_est 1 ch:i_s 0.000001 > 'm_ax r_/ gradientGaps
+"only the attractor and the saddle are symmetric" ch:t_est 1 0 0 1 0 ch:i_s symmetric = 0.0
+
+### Stability at the rest point
+stability
+"a negative largest real part: every path ends nearer; a positive one: some path ends farther" ch:t_est 1 ch:i_s '& r_/ '{ k -> r := k s_elect stability; m := 3 s_elect r; (m < 0.0) ? 1.0 > 6 s_elect r; (m > 0.0) ? 1.0 < 6 s_elect r; 0.001 > a_bs 1.0 - 6 s_elect r } e_ach r_ange 5
+
+### Euler against Runge-Kutta on the rotation
+eulerFactor
+rkFactor
+predictedEnd
+measuredEnd
+sameWork
+"the same work covers the same time; Runge-Kutta ends nearer the circle" ch:t_est 1 ch:i_s ((1 s_elect sameWork) = 2 s_elect sameWork) & ((3 s_elect sameWork) = 4 s_elect sameWork) & (a_bs 6 s_elect sameWork) < a_bs 5 s_elect sameWork
+"the measured distance from the circle at the end is the analytical one" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs (predictedEnd - measuredEnd) / 1.0 + a_bs predictedEnd
+"Euler spirals out; Runge-Kutta stays within 0.001 of the circle at step 0.1" ch:t_est 1 ch:i_s (0.0 < 'm_in r_/ 4 t_ake predictedEnd) & 0.001 > a_bs 6 s_elect measuredEnd
+
+### Descent and a game
+gameFieldGap
+"the game's field is the rotation" ch:t_est 1 ch:i_s gameFieldGap < 0.000001
+gameMatrices
+gameFactors
+(gameSteps + 1) s_elect_2 gameDistance
+"each rule's distance at the end is its factor to the power of the steps" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs ((1 2 4 s_elect gameFactors) ^ f_loat gameSteps) - (1 2 4 s_elect (gameSteps + 1) s_elect_2 gameDistance) / s_qrt 2.0
+"descent settles, simultaneous steps spiral out, turns stay bounded, the look-ahead settles" ch:t_est 1 1 1 1 ch:i_s (0.001 > (gameSteps + 1) s_elect 1 s_elect gameDistance) c_at (2.0 < (gameSteps + 1) s_elect 2 s_elect gameDistance) c_at (2.0 > 'm_ax r_/ 3 s_elect gameDistance) c_at 0.5 > (gameSteps + 1) s_elect 4 s_elect gameDistance
+turnsBand
+"taking turns keeps x^2 + y^2 - eta x y fixed" ch:t_est 1 ch:i_s 0.000000001 > 'm_ax r_/ a_bs turnsEnergy - 1 s_elect turnsEnergy

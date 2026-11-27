@@ -1,0 +1,17 @@
+# One demo's description: read by scripts/demos.py for the tests, the
+# README's demo list and the live catalog (pages/index.html).
+slug = "dynamics-explorer"            # the directory name, demos/<slug>/
+title = "Dynamics explorer: must a state head downhill?"
+summary = "Part 1: five plane vector fields v(x) = A x (attractor, rotation, spiral, saddle, expanding spiral) as arrows on a grid, with the paths from four starts by a fourth-order Runge-Kutta step beside the exact paths exp(t A) x0; the divergence and curl of each by central differences beside the exact values; the sum of v . dx round a loop, zero for the two fields that are minus the gradient of a loss and the curl times the area for the three that turn, worked in full on a square; the rest point's stability from the trace and determinant against what the paths did. Euler's step against Runge-Kutta's on the rotation at four step sizes: Euler spirals out by exactly sqrt(1 + s^2) per step, and with the same looks at the field over the same time Runge-Kutta ends about a thousand times nearer the circle. As machine learning meets it: gradient descent on a loss settles, while simultaneous descent and ascent on the two-player objective f = x y, Euler's step on a rotation, spirals away from the solution; taking turns keeps the players circling at a bounded distance and the look-ahead step (extragradient) brings them in, at two looks per step."
+concepts = ["vector field", "gradient field", "integrator", "divergence and curl", "sum round a loop", "rest point", "eigenvalue", "two-player game", "extragradient"]
+status = "live"              # draft | live | deferred
+order = 60
+track = "dynamics"           # start | representation | optimization | constraints | dynamics | adaptive (docs/plan.md, Tracks)
+# Every demo compares (docs/plan.md, G5): the ML problem, two or more
+# geometric choices compared on it, and the hypothesis it bears on.
+problem = "following a rule of motion step by step: five linear plane fields; the rotation followed by two integrators; gradient descent on a loss beside simultaneous descent and ascent on the two-player objective f(x, y) = x y"
+compares = ["a gradient field (minus the gradient of a loss) against a general vector field that turns", "Euler's step against a fourth-order Runge-Kutta step, at the same step size and with the same work", "gradient descent on a loss against simultaneous descent and ascent on a game", "on the game: simultaneous steps, taking turns, and the look-ahead step (extragradient)"]
+hypothesis = "none"          # the dynamics area's question (docs/research-questions.md): does the kind of field, and how it is stepped, decide whether a state settles?
+needs = ["GL4", "GL5", "GL6", "GL9"]  # written out: the integrators (GL4), divergence and curl by differences (GL5), the arrows and paths drawn by the page from printed numbers (GL6), the preset reader (GL9)
+line = "u:t_urns := { p -> x := (1 s_elect p) - eta * 2 s_elect p; x c_at (2 s_elect p) + eta * x }"
+why = "Taking turns: player one moves x down the slope of x y, then player two answers the new x; one change of order from the simultaneous step, and the players stop spiraling out."

@@ -520,6 +520,63 @@ what this repository plans to build from it.
   until it lands; the row and column sum errors by sweep (step
   mhc-matrices).
 
+### A Variational Inequality Perspective on Generative Adversarial Networks
+
+- Gauthier Gidel, Hugo Berard, Gaetan Vignoud, Pascal Vincent, Simon
+  Lacoste-Julien. arXiv 1802.10551 (v1 28 Feb 2018, v5 28 Aug 2020);
+  ICLR 2019. <https://arxiv.org/abs/1802.10551>. Read 2026-11-27
+  (step vector-fields) by an agent: the abstract page, and the HTML
+  version (v5) **at source** for its first part (the introduction and
+  Section 3 through Proposition 1); the rest of the HTML (Proposition 2
+  and Appendix B) only through a summary the agent made, marked as
+  such here.
+- Leaned on for: simultaneous gradient descent-ascent on the bilinear
+  game min over x, max over y of x y diverges, alternating steps stay
+  bounded, the extrapolation (extragradient) step converges.
+  **Holds:** Section 3.1, equation (10) is this game; equation (11)
+  the simultaneous and alternating updates; Proposition 1 (equation
+  12): the simultaneous iterates' squared norm grows by (1 + eta^2)
+  per step, and the alternating iterates are bounded but do not
+  converge. Section 3.2 credits the extragradient method to Korpelevich
+  (1976; Matecon 12) and its idea to Polyak (1963). Through the
+  summary only: Proposition 2 (equation 19), the extrapolation's
+  squared norm shrinks by (1 - eta^2 + eta^4) per step for eta < 1.
+- Notes: the paper's setting is unconstrained and one-dimensional in
+  Section 3, generalized to bilinear games in an appendix; its main
+  results are for monotone operators, which a bilinear objective is
+  but not strongly; averaging the alternating iterates converges
+  (equation 13).
+- Here: dynamics-explorer's game (step vector-fields). Reproduced at
+  toy scale: from (1, 1) at rate 0.2 the simultaneous steps' distance
+  grows by sqrt(1 + 0.04) per step, the look-ahead step's shrinks by
+  sqrt(1 - 0.04 + 0.0016) per step (both to rounding, so the summary's
+  Proposition 2 is confirmed by the run, not by reading), and the
+  alternating steps stay between 1.28 and 1.42 (the start) from the
+  solution. Averaging is not
+  measured.
+
+### Finite Regret and Cycles with Fixed Step-Size via Alternating Gradient Descent-Ascent
+
+- James P. Bailey, Gauthier Gidel, Georgios Piliouras. arXiv
+  1907.04392 (v1 9 Jul 2019); the arXiv pages read do not name a venue
+  (COLT 2020 is recalled, not verified). <https://arxiv.org/abs/1907.04392>.
+  Read 2026-11-27 (step vector-fields) by an agent: the abstract page
+  and the HTML version **at source** for its first half (through
+  Section 2.4); the rest through a summary.
+- Leaned on for: alternating steps on a zero-sum bilinear game keep a
+  quantity fixed and cycle. **Holds:** Section 2.2 (AltGD) is the
+  alternating update; Section 2.4 states that with both players
+  alternating the quantity |x1|^2 / eta1 + |x2|^2 / eta2 + <x1, A x2>
+  is preserved and the strategies cycle for sqrt(eta1 eta2) <= 2 /
+  |A|; the abstract says simultaneous updates diverge.
+- Notes: unconstrained two-agent zero-sum games with fixed step sizes;
+  the paper's main result is bounded regret for the alternating
+  player (Theorem 2).
+- Here: dynamics-explorer's "taking turns" (step vector-fields): with
+  one number each, A = -1 in the paper's sign convention and eta1 =
+  eta2 = eta, the preserved quantity times eta is x^2 + y^2 - eta x y,
+  which the program finds fixed to rounding over 100 steps.
+
 ### Birkhoff's theorem (the Birkhoff polytope)
 
 - G. Birkhoff, "Tres observaciones sobre el algebra lineal", Univ.

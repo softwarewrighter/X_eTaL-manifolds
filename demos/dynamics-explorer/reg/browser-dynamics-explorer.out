@@ -1,0 +1,25 @@
+page: loaded
+frame: question
+frame: background
+frame: rationale
+frame: purpose
+frame: intuition
+frame: mathematics
+frame: experiment
+frame: run
+frame: analysis
+frame: extension
+frame: summary
+frame: next
+errors: none
+found: Five fields, their arrows and their paths
+found: The rotation: A = (0 -1 / 1 0)
+found: every path ended as far from the rest point as it started
+found: Worked in full
+found: Euler's factor per step, sqrt(1 + s^2)
+found: 1.004988
+found: the look-ahead step (extragradient)
+found: 0.980612
+found: Two integrators on the rotation
+found: html: class="numbers comparison"
+cross-reference links: 45, dead: none

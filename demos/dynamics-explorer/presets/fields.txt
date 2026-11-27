@@ -1,0 +1,23 @@
+fields preset: five plane fields, two integrators and one small game
+(data, not code: the program keeps the numbers in this order and
+drops every word; no word may hold a digit)
+each field is the matrix A of dx/dt = A x, by rows a b c d for (a b / c d)
+attractor -1 0 0 -0.5
+rotation 0 -1 1 0
+spiral -0.2 -1 1 -0.2
+saddle 1 0 0 -1
+expanding spiral 0.2 -1 1 0.2
+starts as x y pairs 1.5 0 0 1.5 -1.2 -0.9 0.6 -1.4
+path step 0.1
+path steps 40
+grid half width 2
+grid points per side 9
+difference step 0.0001
+loop points 64
+rotation start 1 0
+step sizes 0.05 0.1 0.2 0.4
+rotation steps 200
+game start 1 1
+game rate 0.2
+game steps 100
+path tolerance 0.0001

@@ -1,0 +1,15 @@
+[package]
+name = "dynamics-explorer-web"
+description = "Dynamics explorer: five plane vector fields with their arrows, paths, divergence, curl and rest points; Euler's step against Runge-Kutta's on the rotation; gradient descent beside simultaneous descent and ascent on a two-player game, and two repairs"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+site = { path = "../../../shared/site" }
+lesson = { path = "../../../work/xetal-ml/shared/lesson" }
+microscope = { path = "../../../work/xetal-ml/shared/microscope" }
+yew = { version = "0.21", features = ["csr"] }
+console_error_panic_hook = "0.1"
+
+[workspace]

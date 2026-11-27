@@ -1,0 +1,11 @@
+# Text the page shows only after X_eTaL has run (scripts/browser-check.sh).
+Five fields, their arrows and their paths
+The rotation: A = (0 -1 / 1 0)
+every path ended as far from the rest point as it started
+Worked in full
+Euler's factor per step, sqrt(1 + s^2)
+1.004988
+the look-ahead step (extragradient)
+0.980612
+Two integrators on the rotation
+html: class="numbers comparison"

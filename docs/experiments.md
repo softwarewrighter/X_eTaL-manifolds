@@ -263,6 +263,58 @@ Against what was written before the run (`docs/research-questions.md`, H2):
   plus the same seeded numbers for every kind, not from the identity
   (from the identity the four stacks are the same at the start).
 
+## Dynamics (no hypothesis: the area's question)
+
+Does the kind of field, and the way it is stepped, decide whether a
+state settles? Measured on five linear plane fields and one
+two-player game (dynamics-explorer, part 1, step vector-fields;
+`demos/dynamics-explorer/reg/cli-dynamics-explorer.out`). Every
+number has an exact value beside it; the expectations were written
+into the program's checks before it first ran.
+
+| field, A by rows | divergence; curl | sum round the unit loop (curl times area 3.1365) | eigenvalues' real parts | paths' end over start (4 starts, 40 Runge-Kutta steps of 0.1) |
+| ---------------- | ---------------- | ------------------------------------------------ | ----------------------- | ------------------------------------------------------------- |
+| attractor (-1 0 / 0 -0.5) | -1.5; 0 | -7.5e-17 (0) | -0.5, -1 | 0.018 to 0.135: all in |
+| rotation (0 -1 / 1 0) | 0; 2 | 6.2731 (6.2731) | 0, 0 | 1.0000 to 1.0000 (to 3e-7) |
+| spiral (-0.2 -1 / 1 -0.2) | -0.4; 2 | 6.2731 (6.2731) | -0.2, -0.2 | 0.449: all in |
+| saddle (1 0 / 0 -1) | 0; 0 | -1.9e-16 (0) | 1, -1 | 0.018 to 54.6: one in, three out |
+| expanding spiral (0.2 -1 / 1 0.2) | 0.4; 2 | 6.2731 (6.2731) | 0.2, 0.2 | 2.226: all out |
+
+On the rotation from (1, 0), 200 steps, distance from the circle at
+the end (positive outside):
+
+| step size | Euler (factor sqrt(1 + s^2) per step) | fourth-order Runge-Kutta |
+| --------- | ------------------------------------- | ------------------------ |
+| 0.05 | 0.284 | -2.2e-8 |
+| 0.1 | 1.70 | -1.4e-6 |
+| 0.2 | 49.5 | -8.8e-5 |
+| 0.4 | 2.79e6 | -0.0056 |
+| same work: 200 looks over time 20 | 1.70 (step 0.1) | -0.0014 (step 0.4, 50 steps) |
+
+The game f(x, y) = x y from (1, 1) at rate 0.2, 100 steps, and
+gradient descent on L = (x^2 + y^2) / 2 at the same rate:
+
+| rule | looks at the slopes per step | factor per step (analytical) | distance from the solution at the end |
+| ---- | ---------------------------- | ---------------------------- | ------------------------------------- |
+| descent on the loss | 1 | 0.8 | 2.9e-10 |
+| simultaneous descent and ascent | 1 | 1.0198 | 10.05 |
+| taking turns | 1 | 1 (eigenvalues' size) | 1.30 (between 1.28 and 1.41 throughout) |
+| look-ahead (extragradient) | 2 | 0.9806 | 0.200 |
+
+What this shows, and its limits:
+- The curl and the loop sum tell a field from a loss from one that
+  turns; for linear fields that is a check of the arithmetic, not a
+  discovery.
+- How a field is stepped changes the path: Euler's step leaves the
+  rotation's circles at every step size by exactly its factor.
+- The game's simultaneous steps are Euler's step on a rotation and go
+  out; taking turns stays bounded without converging, the look-ahead
+  step converges at twice the looks, as Gidel et al. 2019 and Bailey,
+  Gidel and Piliouras 2019 prove for this bilinear case
+  (`docs/papers.md`).
+- Linear fields only (one rest point, no attracting closed loops); a
+  game of one number per player. Learned fields are part 2.
+
 ## H3: geometry learned with the model
 
 No rows yet (Saga 2).

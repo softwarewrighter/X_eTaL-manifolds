@@ -215,7 +215,7 @@ built in Saga 1; the rest are a roadmap.
 | 01 | representation-explorer | classification and clustering | flat, spherical, hyperbolic | P0 | 1 |
 | 02 | optimization-explorer | training a small model | Euclidean and metric-aware updates | P0 | 1 |
 | 04 | mhc-explorer | stability of residual streams | plain residual, unconstrained, doubly stochastic, orthogonal mixing | P0 | 1 |
-| 03 | dynamics-explorer | evolving hidden states | gradient flow and general vector fields; a flow in flat space and one held to a sphere | P0 | 1 |
+| 03 | dynamics-explorer | evolving hidden states | gradient flow and general vector fields; a flow in flat space and one held to a sphere (part 1 live since 2026-11-27: five plane fields, Euler against Runge-Kutta, descent beside a two-player game and two repairs) | P0 | 1 |
 | 05 | learned-curvature | hierarchical classification | fixed and learned curvature | P1 | 2 |
 | 06 | attention-geometry | similarity and retrieval | dot product, angular, geodesic | P1 | 2 |
 | 07 | generative-flows | transport of a distribution | Euclidean and manifold-constrained flows | P1 | 2 |
@@ -286,7 +286,7 @@ Asked of the siblings:
 | the new-eyes checklist, one copy | X_eTaL-fine-tuning (GF2) | not yet taken | not a blocker: cited at a commit meanwhile |
 | pairwise distances in any dimension; small array words | X_eTaL-libraries (GL1, GL2) | the straight-line distance between every pair of rows; pairs, repeats, a polyline's length | every demo; written out meanwhile |
 | matrix scaling | X_eTaL-libraries (GL3) | Sinkhorn's alternating row and column normalization, its sweep count and the row and column sum errors; the polar factor (one line on `mx:s_vd`, which is at the pin) | mhc-explorer |
-| integrators and field measures | X_eTaL-libraries (GL4, GL5) | Euler and Runge-Kutta steps of dx/dt = v(x, t); the divergence and curl of a plane field by differences | dynamics-explorer |
+| integrators and field measures | X_eTaL-libraries (GL4, GL5) | Euler and Runge-Kutta steps of dx/dt = v(x, t); the divergence and curl of a plane field by differences | dynamics-explorer (written out since step vector-fields, for linear fields given as their matrix; step manifold-flows needs a learned, not linear, field, so the general form taking the field as a function, GL4's, matters more there) |
 | field and contour pictures | X_eTaL-libraries (GL6) | a vector field drawn as arrows, trajectories over it, the contours of a function of two variables; the pages draw from printed numbers meanwhile | optimization-explorer; dynamics-explorer |
 | a Cholesky solve | X_eTaL-libraries (GL7) | for the Fisher matrix; `mx:s_olve` meanwhile (step metric-training: a 6 by 6 system, cost not a concern at this size) | optimization-explorer |
 | a step under a metric | X_eTaL-ML (GM4) | a gradient step preconditioned by a diagonal or a matrix (Optim); the empirical Fisher matrix of a small softmax model | optimization-explorer |

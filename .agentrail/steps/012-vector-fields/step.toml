@@ -1,6 +1,6 @@
 number = 12
 slug = "vector-fields"
-status = "pending"
+status = "in-progress"
 description = """
 Step vector-fields (docs/plan.md, Saga 1 row 12: the research's
 milestone M4,..."""
